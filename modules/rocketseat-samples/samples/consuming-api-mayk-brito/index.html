@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consuming API</title>
+  </head>
+  <body>
+    <main></main>
+  </body>
+</html>
+
+<script>
+  // Função executável
+  (async () => {
+    try {
+      const response = await fetch('http://localhost:4567/');
+      // Espere (await) transformar response em JSON, depois salve na variável data.
+      const data = await response.json();
+      show(data)
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+
+  function show(users) {
+    let output = '';
+    for(let user of users) output += `<li>${user.name}</li>`
+    document.querySelector('main').innerHTML = output;
+  }
+</script>
