@@ -1,8 +1,10 @@
+**NOTE:**  
+Currently this project is being translated from Portuguese (Brazil) to English. But, you can see many codes, examples, tutorials in Portuguese (Brazil) on branch [master-pt-br](https://github.com/drigols/studies/tree/master-pt-br).
+
+
 # Studies - Theory and Practice
 
 [![License MIT](res/license-MIT-blue.svg)](LICENSE.md)
-
-> Soon...
 
 ![title](res/newlogo.gif)
 
@@ -71,12 +73,12 @@
 ---
 
  - __Artificial Intelligence:__
-   - [Inteligência Artificial - Algoritmos](modules/ai-algorithms)
+   - [Inteligência Artificial](modules/ai-codes)
 
 ---
 
  - __Mathematics:__
-   - [Matemática - Tópicos](modules/math-codes)
+   - [Matemática](modules/math-codes)
 
 ---
 
