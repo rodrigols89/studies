@@ -14,18 +14,13 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 
  - __Programming:__
    - __Programming Languages:__
-     - [JavaScript](modules/javascript-codes)
-     - [Python](modules/python-codes)
-     - [Java](modules/java-codes)
-     - [C++](modules/cc-codes)
-     - [C](modules/c-codes)
+     - [x](#)
    - __Clean Code:__
      - [x](#)
    - __Design Patterns:__
      - [x](#)
    - __Web Development:__
-     - [Rocketseat (Coding Samples)](modules/rocketseat-samples)
-     - [RESTful API](modules/restful-api)
+     - [x](#)
    - __Game Development:__
      - [x](#)
    - __Software Testing:__
@@ -38,7 +33,7 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 ---
 
  - __Algorithms and Data Structures:__
-   - [Análise de Algoritmos](modules/analysis-of-algorithms)
+   - [x](#)
 
 ---
 
@@ -73,19 +68,19 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 ---
 
  - __Artificial Intelligence:__
-   - [Inteligência Artificial](modules/ai-codes)
+   - [x](#)
 
 ---
 
  - __Mathematics:__
-   - [Matemática](modules/math-codes)
+   - [x](#)
 
 ---
 
  - __Tools:__
-   - [Git Guide (docs)](modules/git-docs)
+   - [x](#)
 
 ---
 
  - __BONUS:__
-   - [Fundamentos de Eletricidade & Manutenção Elétrica (Teoria & Prática)](modules/electrician)
+   - [x](#)
