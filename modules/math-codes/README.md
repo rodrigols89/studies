@@ -46,7 +46,7 @@
 
  - **Vectors:**
    - [Introduction to Vectors](modules/linear-algebra/vectors/intro-to-vectors.md)
-   - [Calculating Magnitude of a Vector](/modules/linear-algebra/vectors/calculating-magnitude.md)
+   - [Calculating Magnitude of a Vector](modules/linear-algebra/vectors/calculating-magnitude.md)
    - [Calculating the Direction (amplitude) of a Vector](modules/linear-algebra/vectors/calculating-direction.md)
 
 ---
