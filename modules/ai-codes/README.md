@@ -1,4 +1,4 @@
-# Artificial Intelligence
+# Artificial Intelligence - Theory and Practice
 
 > My **Artificial Intelligence** *studies*, *codes*, and *guides*.
 
