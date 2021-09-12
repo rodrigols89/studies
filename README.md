@@ -68,7 +68,7 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 ---
 
  - __Artificial Intelligence:__
-   - [x](#)
+   - [Artificial Intelligence - Theory and Practice](modules/ai-codes)
 
 ---
 
