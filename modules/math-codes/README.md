@@ -23,8 +23,8 @@
 ## Algebra
 
  - **Polynomials:**
-   - [Introduction to Polynomials](modules/math-codes/modules/algebra/polynomials/intro-to-polynomials.md)
-   - [Operations with Polynomials](modules/math-codes/modules/algebra/polynomials/operations-w-polynomials.md)
+   - [Introduction to Polynomials](modules/algebra/polynomials/intro-to-polynomials.md)
+   - [Operations with Polynomials](modules/algebra/polynomials/operations-w-polynomials.md)
 
 ---
 
@@ -45,9 +45,9 @@
 ## Linear Algebra
 
  - **Vectors:**
-   - [Introduction to Vectors](modules/math-codes/modules/linear-algebra/vectors/intro-to-vectors.md)
-   - [Calculating Magnitude of a Vector](modules/math-codes/modules/linear-algebra/vectors/calculating-magnitude.md)
-   - [Calculating the Direction (amplitude) of a Vector](modules/math-codes/modules/linear-algebra/vectors/calculating-direction.md)
+   - [Introduction to Vectors](modules/linear-algebra/vectors/intro-to-vectors.md)
+   - [Calculating Magnitude of a Vector](/modules/linear-algebra/vectors/calculating-magnitude.md)
+   - [Calculating the Direction (amplitude) of a Vector](modules/linear-algebra/vectors/calculating-direction.md)
 
 ---
 
@@ -56,7 +56,7 @@
 ## Differential Calculus
 
  - **Derivatives:**
-   - [Introduction to Derivatives](modules/math-codes/modules/differential-calculus/derivatives/intro-to-derivatives.md)
+   - [Introduction to Derivatives](modules/differential-calculus/derivatives/intro-to-derivatives.md)
 
 ---
 
@@ -89,12 +89,12 @@
 ## Useful Libraries
 
  - **NumPy:**
-   - [Settings](modules/math-codes/modules/useful-libraries/numpy/settings.md)
-   - [NumPy Functions](modules/math-codes/modules/useful-libraries/numpy/numpy-functions.md)
+   - [Settings](modules/useful-libraries/numpy/settings.md)
+   - [NumPy Functions](modules/useful-libraries/numpy/numpy-functions.md)
  - **Pandas:**  
-   - [Settings](modules/math-codes/modules/useful-libraries/pandas/settings.md)
-   - [Series](modules/math-codes/modules/useful-libraries/pandas/series.md)
-   - [DataFrame](modules/math-codes/modules/useful-libraries/pandas/dataframe.md)
+   - [Settings](modules/useful-libraries/pandas/settings.md)
+   - [Series](modules/useful-libraries/pandas/series.md)
+   - [DataFrame](modules/useful-libraries/pandas/dataframe.md)
 
 ---
 
