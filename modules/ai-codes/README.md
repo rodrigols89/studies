@@ -1,26 +1,30 @@
-# Inteligência Artificial
+# Artificial Intelligence
 
-![title](res/ml-logo.gif)
+> My **Artificial Intelligence** *studies*, *codes*, and *guides*.
 
-## Conteúdo
+![project-logo](res/logo.jpg)
+
+## Contents
 
  - [Machine Learning](#ml)
  - [Neural Nets & Deep Learning](#ann-dp)
- - [Deep/+Reinforcement Learning](#drl)
- - [Dicas & Truques](#tips-and-tricks)
- - [Configurações do projeto](#settings)
+ - [Reinforcement Learning](#drl)
+ - [Computer Vision](#cv)
+ - [Useful Libraries](#useful-libraries)
+ - [Tips & Tricks](#tips-and-tricks)
+ - [Project Settings](#settings)
 
 ---
 
 <div id="ml"></div>
 
-### Machine Learning
+## Machine Learning
 
  - __Machine Learning:__
    - __Classical Learning:__
      - __Supervised Learning:__
-       - __[Regression:](modules/regression)__
-         - Linear Regression & Gradient Descent
+       - __Regression:__
+         - Linear Regression
            - [Regressão Linear](modules/linear-regression)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
@@ -65,15 +69,15 @@
 
 <div id="ann-dp"></div>
 
-### Neural Nets & Deep Learning
+## Neural Networks & Deep Learning
 
- - __Neural Nets and Deep Learning:__
+ - __Neural Networks & Deep Learning:__
    - __Neural Networks:__
      - [Introdução às Redes Neurais Artificiais (RNA)](modules/neural-networks/intro-to-ann.md)
      - [Funções de Ativação](modules/neural-networks/activation-functions.md)
      - [Redes Neurais com Keras](modules/neural-networks/ann-with-keras.md)
    - __Deep Learning:__
-   - __Convolutional Neural Networks (CNN):__
+     - __Convolutional Neural Networks (CNN):__
    - __Recurrent Neural Netowkrs (RNN):__
      - LSM
      - LSTM
@@ -81,41 +85,60 @@
    - __Autoencoders:__
      - seq2seq
    - __Generative Adversarial Networks (GAN):__
-   - __Deep Reinforcement Learning:__
 
 ---
 
 <div id="drl"></div>
 
-### Deep/+Reinforcement Learning
+## Reinforcement Learning
 
- - __Reinforcement Learning:__
-   - [Introdução ao Reinforcement Learning (Aprendizado por Reforço)](modules/deep-and-rl/intro-to-rl.md)
-   - [O que são Ações, Estados e Recompensas](modules/deep-and-rl/actions-states-rewards.md)
-   - [K-Armed Bandit Problem](modules/deep-and-rl/k-armed-bandit-problem.md)
-   - [Exploitation vs Exploration](modules/deep-and-rl/exploitation-vs-exploration.md)
+ - [Introdução ao Reinforcement Learning (Aprendizado por Reforço)](modules/rl/intro-to-rl.md)
+ - [O que são Ações, Estados e Recompensas](modules/rl/actions-states-rewards.md)
+ - [K-Armed Bandit Problem](modules/rl/k-armed-bandit-problem.md)
+ - [Exploitation vs Exploration](modules/rl/exploitation-vs-exploration.md)
+
+---
+
+<div id="cv"></div>
+
+## Computer Vision
+
+ - **x:**
+   - [x](#)
+
+---
+
+<div id="useful-libraries"></div>
+
+## Useful Libraries
+
+ - **x:**
+   - [x](#)
 
 ---
 
 <div id="tips-and-tricks"></div>
 
-### Dicas & Truques
+## Tips & Tricks
 
-   - [Dados de Treino vs Dados de Teste](modules/training-vs-Testing)
+ - **Preprocessing:**
    - [Pré-Processamento](modules/preprocessing)
+ - **Data Splitting:**
+   - [Dados de Treino vs Dados de Teste](modules/data-splitting)
+ - **Cross-Validation:**
    - [Validação Cruzada e Ajuste Fino dos Parâmetros](modules/cross-validation-and-parameter-tuning)
 
 ---
 
 <div id="settings"></div>
 
-### Configurações do projeto
+## Project Settings
 
-Para utilizar o projeto basta instalar os [requirements.txt](requirements.txt) *(Python>=3.7 é um requisito para o TensorFlow 2.0)*:
+To use the project codes just install [requirements.txt](requirements.txt) *(Python>=3.7 is requirement for TensorFlow 2.0)*:
 
 **virtualenv settings:**  
 ```python
-where python7 # find python source.
+where python3.7 # find python source.
 
 virtual --python="python-source" .
 source Script/Active
@@ -126,8 +149,4 @@ source Script/Active
 pip install --upgrade -r requirements.tx
 ```
 
-**Agora, Seja feliz!!!** 😬
-
----
-
-**Rodrigo Leite -** *Software Engineer*
+**Now, Be Happy!!!** 😬
