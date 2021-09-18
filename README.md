@@ -1,6 +1,5 @@
 **NOTE:**  
-Currently this project is being translated from Portuguese (Brazil) to English. But, you can see many codes, examples, tutorials in Portuguese (Brazil) on branch [master-pt-br](https://github.com/drigols/studies/tree/master-pt-br).
-
+Currently this project is being gradually translated from Portuguese (Brazil) to English. Most studies are currently in Portuguese (Brazil).
 
 # Studies - Theory and Practice
 
@@ -14,7 +13,11 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 
  - __Programming:__
    - __Programming Languages:__
-     - [x](#)
+     - [JavaScript](modules/javascript-codes)
+     - [Python](modules/python-codes)
+     - [Java](modules/java-codes)
+     - [C++](modules/cc-codes)
+     - [C](modules/c-codes)
    - __Clean Code:__
      - [x](#)
    - __Design Patterns:__
@@ -22,7 +25,8 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
    - __Web Development:__
      - [x](#)
    - __Game Development:__
-     - [x](#)
+     - [RESTful API](modules/restful-api)
+     - [Rocketseat](modules/rocketseat-samples)
    - __Software Testing:__
      - [x](#)
    - __Parallel Programming:__
@@ -33,7 +37,7 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 ---
 
  - __Algorithms and Data Structures:__
-   - [x](#)
+   - [Análise de Algoritmos](modules/analysis-of-algorithms)
 
 ---
 
@@ -68,19 +72,19 @@ Currently this project is being translated from Portuguese (Brazil) to English. 
 ---
 
  - __Artificial Intelligence:__
-   - [Artificial Intelligence - Theory and Practice](modules/ai-codes)
+   - [Inteligência Artificial](modules/ai-codes)
 
 ---
 
  - __Mathematics:__
-   - [Math](modules/math-codes)
+   - [Matemática](modules/math-codes)
 
 ---
 
  - __Tools:__
-   - [x](#)
+   - [Git - Guide](modules/git-docs)
 
 ---
 
  - __BONUS:__
-   - [x](#)
+   - [Fundamentos de Eletricidade & Manutenção Elétrica (Teoria & Prática)](modules/electrician)
