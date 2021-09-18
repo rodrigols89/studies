@@ -1,4 +1,4 @@
-# Artificial Intelligence - Theory and Practice
+# Artificial Intelligence
 
 > My **Artificial Intelligence** *studies*, *codes*, and *guides*.
 
@@ -11,7 +11,7 @@
  - [Reinforcement Learning](#drl)
  - [Computer Vision](#cv)
  - [Useful Libraries](#useful-libraries)
- - [Tips and Tricks](#tips-and-tricks)
+ - [Tips & Tricks](#tips-and-tricks)
  - [Project Settings](#settings)
 
 ---
@@ -25,11 +25,16 @@
      - __Supervised Learning:__
        - __Regression:__
          - Linear Regression
+           - [Introduction to Linear Regression](modules/linear-regression/intro-to-linear-regression.md)
+           - [Gradient Descent Method](modules/linear-regression/gradient-descent-method.md)
+           - [Coefficient of Determination (R<sup>2</sup>)](modules/linear-regression/r2.md)
+           - [Linear Regression with Scikit-Learn](modules/linear-regression/linear-regression-w-sklearn.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
          - Elastic Net
        - __Classification:__
          - Logistic Regression
+           - [Introduction to Logistic Regression](modules/logistic-regression/intro-to-lr.md)
          - Decision Trees
          - SVM - (Support Vector Machine)
          - Naive Bayes
@@ -69,6 +74,9 @@
 
  - __Neural Networks & Deep Learning:__
    - __Neural Networks:__
+     - [History & Introduction to Artificial Neural Networks](modules/neural-networks/ann-history-intro.md)
+     - [Activation Functions](modules/neural-networks/activation-functions.md)
+     - [Neural Networks with Keras](modules/neural-networks/ann-with-keras.md)
    - __Deep Learning:__
      - __Convolutional Neural Networks (CNN):__
    - __Recurrent Neural Netowkrs (RNN):__
@@ -85,8 +93,8 @@
 
 ## Reinforcement Learning
 
- - **x:**
-   - [x](#)
+  - [Introduction to Reinforcement Learning](modules/rl/intro-to-rl.md)
+  - [Actions, States and Rewards](modules/rl/actions-states-rewards.md)
 
 ---
 
@@ -103,18 +111,28 @@
 
 ## Useful Libraries
 
- - **x:**
-   - [x](#)
+ - **NumPy:**
+   - [Settings](modules/useful-libraries/numpy/settings.md)
+   - [NumPy Functions](modules/useful-libraries/numpy/numpy-functions.md)
+ - **Pandas:**  
+   - [Settings](modules/useful-libraries/pandas/settings.md)
+   - [Series](modules/useful-libraries/pandas/series.md)
+   - [DataFrame](modules/useful-libraries/pandas/dataframe.md)
 
 ---
 
 <div id="tips-and-tricks"></div>
 
-## Tips and Tricks
+## Tips & Tricks
 
  - **Preprocessing:**
+   - [Data types](modules/preprocessing/data-types.md)
+   - [Missing Data](modules/preprocessing/missing-data.md)
+   - [Feature selection - Correlation](modules/preprocessing/correlation.md)
  - **Data Splitting:**
+   - [Training vs Test sets](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
+   - [K-Fold](modules/cross-validation/k-fold.md)
 
 ---
 
@@ -122,7 +140,7 @@
 
 ## Project Settings
 
-To use the project codes just install [requirements.txt](requirements.txt) *(Python=>3.7 is requirement for TensorFlow=>2.0)*:
+To use the project codes just install [requirements.txt](requirements.txt) *(Python>=3.7 is requirement for TensorFlow 2.0)*:
 
 **virtualenv settings:**  
 ```python
