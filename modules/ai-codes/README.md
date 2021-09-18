@@ -10,7 +10,6 @@
  - [Neural Nets & Deep Learning](#ann-dp)
  - [Reinforcement Learning](#drl)
  - [Computer Vision](#cv)
- - [Math for A.I](#math-for-ai)
  - [Useful Libraries](#useful-libraries)
  - [Tips & Tricks](#tips-and-tricks)
  - [Project Settings](#settings)
@@ -105,27 +104,6 @@
 
  - **x:**
    - [x](#)
-
----
-
-<div id="math-for-ai"></div>
-
-## Math for A.I
-
- - **Algebra:**
-   - **Polynomials:**
-     - [Introduction to Polynomials](modules/math-for-ai/algebra/polynomials/intro-to-polynomials.md)
-     - [Operations with Polynomials](modules/math-for-ai/algebra/polynomials/operations-w-polynomials.md)
- - **Linear Algebra:**
-   - **Vectors:**
-     - [Introduction to Vectors](modules/math-for-ai/linear-algebra/vectors/intro-to-vectors.md)
-     - [Calculating Magnitude of a Vector](modules/math-for-ai/linear-algebra/vectors/calculating-magnitude.md)
-     - [Calculating the Direction (amplitude) of a Vector](modules/math-for-ai/linear-algebra/vectors/calculating-direction.md)
- - **Differential Calculus:**
-   - **Derivatives:**
-     - [Introduction to Derivatives](modules/math-for-ai/differential-calculus/derivatives/intro-to-derivatives.md)
- - **Tips & Tricks:**
-   - [Introduction to Chain Rule](modules/math-for-ai/tips-and-tricks/the-chain-rule/intro-to-the-chain-rule.md)
 
 ---
 
