@@ -126,7 +126,7 @@
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting)
  - **Cross-Validation:**
-   - [Validação Cruzada e Ajuste Fino dos Parâmetros](modules/cross-validation-and-parameter-tuning)
+   - [K-Fold](modules/cross-validation/k-fold.md)
 
 ---
 
