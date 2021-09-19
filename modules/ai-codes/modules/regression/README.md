@@ -1,6 +1,6 @@
 # Regressões
 
- - [01 - História & Introdução à Regressão](#01)
+ - [01 - História e Introdução à Regressão](#01)
  - [02 - Método dos Mínimos Quadrados (Sum of Squared Errors: SSE)](#02)
  - [03 - Método dos Mínimos Quadrados Ordinários (Ordinary Least Squares: OLS)](#03)
    - [03.1 - Outliers](#03-1)
@@ -8,9 +8,11 @@
  - [04 - Galton e a Regressão](#04)
  - [05- Regressão vs Classificação](#05)
 
+---
+
 <div id='01'></div>
 
-## 01 - História & Introdução à Regressão
+## 01 - História e Introdução à Regressão
 
 > A *Regressão* é uma ferramenta estatística para **investigar a relação entre variáveis**.
 
@@ -28,13 +30,15 @@ Na virada do século 18, melhorar a navegação oceânica era talvez o problema 
 
 > Com maior precisão de navegação, os navios - e suas cargas - teriam mais probabilidade de chegar ao local pretendido com segurança e rapidez.
 
-Dadas as enormes recompensas econômicas de uma melhor navegação, a [geodésia](https://en.wikipedia.org/wiki/Geodesy), o estudo da medição da Terra, estava na moda. Naquela época, uma ferramenta fundamental dos geodesistas era o uso dos movimentos de outros planetas e cometas, em relação à Terra, como forma de entender a forma e o comportamento da Terra. Isso levou a um melhor mapeamento e a um melhor conhecimento da localização, o que, por sua vez, tornou mais fácil encontrar o caminho de forma rápida e segura de *Portugal* para a *Índia*.
+Dadas as enormes recompensas econômicas de uma melhor navegação, a [geodésia](https://en.wikipedia.org/wiki/Geodesy) (o estudo da medição da Terra) estava na moda. Naquela época, uma ferramenta fundamental dos geodesistas era o uso dos movimentos de outros planetas e cometas, em relação à Terra, como forma de entender a forma e o comportamento da Terra. Isso levou a um melhor mapeamento e a um melhor conhecimento da localização, o que, por sua vez, tornou mais fácil encontrar o caminho de forma rápida e segura de *Portugal* para a *Índia*.
 
 Foi nesse contexto histórico que os matemáticos **Carl Friedrich Gauss** e **Adrien-Marie Legendre** descobriram independentemente o método dos **mínimos quadrados**, a característica essencial da regressão estatística.
 
 > **Mínimos quadrados é uma forma de usar dados para fazer previsões quantitativas.**
 
 Essas previsões são otimizadas de forma que, para qualquer ponto do conjunto de dados, o erro do modelo multiplicado por ele mesmo seja minimizado. Tanto **Gauss** quanto **Legendre** usaram o método dos mínimos quadrados para entender as órbitas dos cometas, com base em medições inexatas das localizações anteriores dos cometas.
+
+---
 
 <div id='02'></div>
 
@@ -166,6 +170,8 @@ Sum of Squared Errors (SSE):  5226.222222222223
 
 **NOTE:**  
 Vale ressaltar aqui que nós estamos elevando todos os erros ao quadrado<sup>2</sup> porque alguns deles vão ser negativos, e como nós queremos **somar todos os erros** isso acabaria modificando o resultado... Por isso, nós estamos elevando todos os erros ao quadrado<sup>2</sup> para que todos fiquem positivos.
+
+---
 
 <div id='03'></div>
 
@@ -391,6 +397,8 @@ Aqui, usamos a *extrapolação* linear para estimar as vendas a 29 °C (que é m
 **Cuidado:**  
 A extrapolação pode dar resultados enganosos porque estamos em um "território desconhecido".
 
+---
+
 <div id='04'></div>
 
 ## 04 - Galton e a Regressão
@@ -458,13 +466,16 @@ A análise de regressão é usada em estatísticas para encontrar tendências no
 
 Se você tem ganhado peso nos últimos anos, pode prever quanto você pesará em dez anos se continuar a ganhar peso na mesma proporção. 
 
+---
+
 <div id='05'></div>
 
 ## 05 - Regressão vs Classificação
 
-A regressão é uma tarefa de aprendizagem indutiva que tem sido amplamente estudada e é amplamente utilizada em aplicações práticas.
+A regressão é uma tarefa de aprendizagem indutiva que tem sido amplamente estudada e é amplamente utilizada em aplicações práticas. Mas qual a maior diferença da **classificação**?
 
-> Ao contrário dos processos de *classificação*, onde você está tentando prever rótulos de classes discretas - **Os modelos de regressão prevêem valores numéricos**.
+ - Os modelos de **regressão** prevêem valores numéricos**;
+ - Os modelos de **classificação** tentam prever rótulos de classes discretas.
 
 ---
 
@@ -475,7 +486,3 @@ A regressão é uma tarefa de aprendizagem indutiva que tem sido amplamente estu
 [Least Squares Regression](https://www.mathsisfun.com/data/least-squares-regression.html)  
 [Scatter Plots](https://www.mathsisfun.com/data/scatter-xy-plots.html)  
 [Regression - How to program the Best Fit Line](https://pythonprogramming.net/how-to-program-best-fit-line-machine-learning-tutorial/?completed=/how-to-program-best-fit-line-slope-machine-learning-tutorial/)  
-
----
-
-**Rodrigo Leite -** *Software Engineer*
