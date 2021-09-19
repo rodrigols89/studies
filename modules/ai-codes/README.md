@@ -124,7 +124,7 @@
  - **Preprocessing:**
    - [Pré-Processamento](modules/preprocessing)
  - **Data Splitting:**
-   - [Dados de Treino vs Dados de Teste](modules/data-splitting)
+   - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
    - [K-Fold](modules/cross-validation/k-fold.md)
 
