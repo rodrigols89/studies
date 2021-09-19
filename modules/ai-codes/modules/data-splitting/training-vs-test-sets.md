@@ -1,13 +1,13 @@
 # Dados de Treino vs Dados de Teste
 
  - [01 - Dados de Treino vs Dados de Teste - Teoria](#01)
- - [02 - Treinando & Testando dados com Scikit-Learn](#02)
+ - [02 - Treinando e Testando dados com Scikit-Learn](#02)
 
 <div id='01'></div>
 
 ## 01 - Dados de Treino vs Dados de Teste - Teoria
 
-> Uma coisa que vocês tem que entender primeiro é que os modelos de **Machine Learning** aprendem a partir de dados. Sabendo disso é interessante dividir nosso conjunto de dados em **Dados de Treino** & **Dados de Teste**.
+> Uma coisa que vocês tem que entender primeiro é que os *modelos* de **Machine Learning** aprendem a partir de dados. Sabendo disso é interessante dividir nosso conjunto de dados em **Dados de Treino** e **Dados de Teste**.
 
 **DADOS DE TREINO:**  
 Ok, suponha que nós queremos desenvolver um programa (modelo) que identifique se uma imagem **é um cachorro** ou **não é um cachorro**.
@@ -20,6 +20,8 @@ Então, esses são os **Dados de Testes**. Nós vamos passar os dados de testes 
 
 > Isso aqui é um cachorro?
 
+![img](images/dog-running.gif)  
+
 E o nosso modelo vai ter que dar um retorno dizendo se é um cachorro ou não.
 
 **NOTE:**  
@@ -29,7 +31,7 @@ Viram como é interessante dividir o conjunto de dados (amostra) em `treino` e `
 
 <div id='02'></div>
 
-## 02 - Treinando & Testando dados com Scikit-Learn
+## 02 - Treinando e Testando dados com Scikit-Learn
 
 Vamos ver como fica isso em Python utilizando Scikit-Learn?
 
@@ -98,7 +100,7 @@ Depois nós passamos os seguintes argumentos para esse método:
 
  - **1ª -** Os dados no eixo-x do conjunto de dados;
  - **2ª -** Os seus correspondentes no eixo-y;
- - **3ª -** Por fim, quanto nós reservamos dos dados para teste: **test_size=0.30 = 30%**.
+ - **3ª -** Por fim, quanto nós reservamos os dados para teste: **test_size=0.30 = 30%**.
 
 ```python
 x_train, x_test, y_train, y_test = train_test_split(reg[0], reg[1], test_size=0.30)
@@ -117,7 +119,3 @@ model.fit(x_train, y_train)
 
 **REFERENCES:**  
 [Didatica Tech - MÓDULO - I](https://didatica.tech/)  
-
----
-
-**Rodrigo Leite -** *Software Engineer*

@@ -23,7 +23,7 @@
  - __Machine Learning:__
    - __Classical Learning:__
      - __Supervised Learning:__
-       - __Regression:__
+       - __[Regression:](modules/regression)__
          - Linear Regression
            - [Regressão Linear](modules/linear-regression)
          - Polynomial Regression
@@ -124,9 +124,9 @@
  - **Preprocessing:**
    - [Pré-Processamento](modules/preprocessing)
  - **Data Splitting:**
-   - [Dados de Treino vs Dados de Teste](modules/data-splitting)
+   - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
-   - [Validação Cruzada e Ajuste Fino dos Parâmetros](modules/cross-validation-and-parameter-tuning)
+   - [K-Fold](modules/cross-validation/k-fold.md)
 
 ---
 

@@ -1,17 +1,17 @@
-# Validação Cruzada e Ajuste Fino dos Parâmetros
+# K-Fold
 
 ## Conteúdo
 
  - [01 - Introdução a divisão de dados](#01)
  - [02 - O problema da divisão dos dados](#02)
  - [03 - Validação Cruzada: K-Fold](#03)
- - [04 - KFold na Prática](#k-fold-in-practice)
+ - [04 - K-Fold na Prática](#k-fold-in-practice)
 
 <div id="01"></div>
 
 ## 01 - Introdução a divisão de dados
 
-Bem, é muito comum quando estamos iniciando com *Data Science* e *Machine Learning* dividirmos nosso conjunto de dados em dados de **treino** e **teste**. A porcentagem mais comum é essa:
+Bem, é muito comum quando estamos iniciando com *Data Science* e *Machine Learning* dividirmos nosso conjunto de dados em dados de **treino** e **teste**. A porcentagem mais comum é a seguinte:
 
 ![image](images/01.png)  
 
@@ -52,10 +52,6 @@ Essa técnica de **validação cruzada** é conhecida de **K-Fold** pelo o segui
  - **K -** Significa o número de subdivisões (iguais) que nós fizemos: No nosso caso **K = 5**;
  - **Fold -** Sifnifica cada um dos **blocos** de cada **K**.
 
-Veja essa outra imagem abaixo para ficar mais claro:
-
-![image](images/k-fold.png)  
-
 **Ok, mas o que muda essa abordagem da que nós utilizavamos antes?**  
 Bem, pensem comigo... Para cada subdivisão vamos utilizar dados diferentes para **treino** e **teste**. Ou seja, vamos ter resultados diferentes de acordo com cada iteração **K** do nosso modelo.
 
@@ -74,7 +70,7 @@ Mas se pensarmos bem, uma maneira mais inteligente seria tirar a média de todos
 
 ![image](images/genius.gif)  
 
-**Ótimo, então essa abordagem é perfeita não é?**  
+**Ótimo, então essa abordagem é perfeita?**  
 Pensando bem, nós devemos ter sempre muita cuatela quando aplicarmos essa abordagem. Isso, porque dependendo do nosso dataset o **custo computacional** pode ser muito grande já que nós vamos treinar o mesmo modelo em várias subdivisões.
 
 **NOTE:**  
@@ -84,7 +80,7 @@ Isso é interessante para comparar a performance de vários modelos e ver qual �
 
 <div id="k-fold-in-practice"></div>
 
-## 04 - KFold na Prática
+## 04 - K-Fold na Prática
 
 Agora vamos praticar isso com **Python** e **Scikit-Learn**. Para isso vamos utilizar o dataset [Graduate Admission 2 - Predicting admission from important parameters](https://www.kaggle.com/mohansacharya/graduate-admissions).
 
@@ -156,7 +152,7 @@ def ApplyesKFold(x_axis, y_axis):
   ridge_result            = cross_val_score(ridge, x, y, cv = kfold)
   lasso_result            = cross_val_score(lasso, x, y, cv = kfold)
 
-  # Creates a dictionary to store Linear Models.
+  # Create a dictionary to store Linear Models.
   dic_models = {
     "LinearRegression": linearRegression_result.mean(),
     "ElasticNet": elasticNet_result.mean(),
@@ -215,7 +211,3 @@ Vejam que eu rodei a função 3 vezes e como os dados de treino são aleatórios
 
 **REFERENCES:**  
 [Didática Tech - Inteligência Artificial & Data Science](https://didatica.tech/)  
-
----
-
-**Rodrigo Leite -** *Software Engineer*

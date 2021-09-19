@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from sklearn.model_selection import cross_val_score # Cross Validation Function.
-from sklearn.model_selection import KFold # KFold Class.
+from sklearn.model_selection import KFold # K-Fold Class.
 from sklearn.linear_model import LinearRegression # Linear Regression class.
 
 df = pd.read_csv("../datasets/Admission_Predict.csv")
