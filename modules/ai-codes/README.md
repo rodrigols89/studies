@@ -23,7 +23,7 @@
  - __Machine Learning:__
    - __Classical Learning:__
      - __Supervised Learning:__
-       - __Regression:__
+       - __[Regression:](modules/regression)__
          - Linear Regression
            - [Regressão Linear](modules/linear-regression)
          - Polynomial Regression
