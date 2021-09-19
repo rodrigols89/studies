@@ -122,7 +122,8 @@
 ## Tips & Tricks
 
  - **Preprocessing:**
-   - [Pré-Processamento](modules/preprocessing)
+   - [Tipos de Dados](modules/preprocessing/data-types.md)
+   - [Dados Missing](modules/preprocessing/missing-data.md)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**

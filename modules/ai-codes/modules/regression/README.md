@@ -474,7 +474,7 @@ Se você tem ganhado peso nos últimos anos, pode prever quanto você pesará em
 
 A regressão é uma tarefa de aprendizagem indutiva que tem sido amplamente estudada e é amplamente utilizada em aplicações práticas. Mas qual a maior diferença da **classificação**?
 
- - Os modelos de **regressão** prevêem valores numéricos**;
+ - Os modelos de **regressão** prevêem valores numéricos;
  - Os modelos de **classificação** tentam prever rótulos de classes discretas.
 
 ---
