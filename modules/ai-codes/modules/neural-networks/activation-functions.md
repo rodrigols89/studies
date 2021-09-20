@@ -1,6 +1,6 @@
 # Funções de Ativação
 
-## Contents
+## Conteúdo
 
  - [01 - Introdução às Funções de Ativação](#01)
  - [02 - Função Sigmóide](#02)
