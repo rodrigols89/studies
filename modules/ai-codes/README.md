@@ -25,7 +25,7 @@
      - __Supervised Learning:__
        - __[Regression:](modules/regression)__
          - Linear Regression
-           - [Regressão Linear](modules/linear-regression)
+           - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
            - [Ridge Regression (+Regularização L1 & L2)](modules/ridge-regression)
