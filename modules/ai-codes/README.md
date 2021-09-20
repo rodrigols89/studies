@@ -33,7 +33,7 @@
            - [Elastic Net](modules/elastic-net)
        - __Classification:__
          - Logistic Regression
-           - [Introdução à Regressão Logística](modules/logistic-regression)
+           - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
          - Decision Trees
          - SVM - (Support Vector Machine)
          - Naive Bayes
