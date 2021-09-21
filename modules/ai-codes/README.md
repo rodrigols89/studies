@@ -26,6 +26,7 @@
        - __[Regression:](modules/regression)__
          - Linear Regression
            - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
+           - [Regressão Linear (SSE, OLS, GD)](modules/linear-regression/linear-regression-sse-ols-gd.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
            - [Ridge Regression (+Regularização L1 & L2)](modules/ridge-regression)
