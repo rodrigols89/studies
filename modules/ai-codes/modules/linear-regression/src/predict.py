@@ -1,10 +1,9 @@
 ########################################################
 # Rodrigo Leite - drigols                              #
-# Last update: 21/09/2021                              #
+# Last update: 22/09/2021                              #
 ########################################################
 
-def GD(dic):
-  from matplotlib import pyplot as plt
+def predict_salary(dic, x_value):
   import pandas as pd
 
   df = pd.DataFrame(dic)
@@ -25,19 +24,13 @@ def GD(dic):
     b = b - (learning_rate * b_derivative)
     # print(m, b) # Remove comments to view step-by-step.
 
+  # Linear Regression formula.
+  predict_y = m*x_value + b
+
   print("\nAngular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+  print("Student with grade {0} may have {1} salary approximately".format(round(x_value), round(predict_y)))
 
-  regression_line = [(m*x) + b for x in df['Grade']]
 
-  plt.figure(figsize=(10, 7))
-  plt.scatter(df.Grade, df.Salary, color='g')
-  plt.plot(df.Grade, regression_line, color='b')
-  plt.title('Grades vs Salaries | Gradient descent Approach')
-  plt.xlabel('Grade')
-  plt.ylabel('Salary')
-  plt.grid()
-  plt.savefig('../images/plot-03.png', format='png')
-  plt.show()
 
 if __name__ =="__main__":
 
@@ -46,4 +39,4 @@ if __name__ =="__main__":
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
 
-  GD(students_dic)
+  predict_salary(students_dic, 85)

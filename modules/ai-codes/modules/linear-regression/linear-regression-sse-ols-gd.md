@@ -12,6 +12,13 @@
    - [07.1 - Aplicando a Regra da Cadeia na Função de Custo](#07-1)
  - [08 - Taxa de Aprendizagem (Learning Rate)](#08)
  - [09 - Aplicando o Método do Gradiente Descendente na prática](#09)
+ - [10 - Tentando fazer previsões (predict)](#10)
+ - [11 - Regressão Linear com Scikit-Learn](#11)
+   - [11.1 - Instalando o Scikit-Learn e salvando no ambiente virtual](#11-1)
+   - [11.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn](#11-2)
+   - [11.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")](#11-3)
+   - [11.4 - Dividindo os dados em Treino e Teste com Scikit-Learn](#11-4)
+   - [11.5 - Tentando fazer previsões (predict) com Scikit-Learn](#11-5)
 
 ---
 
@@ -25,23 +32,25 @@ O código vai ser o seguinte:
 
 [students.py](src/students.py)
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+if __name__ =="__main__":
 
-df = pd.DataFrame(
-  {
+  from matplotlib import pyplot as plt
+  import pandas as pd
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-plt.figure(figsize=(10, 7))
-plt.scatter(df.Grade, df.Salary, color='g')
-plt.title('Grades vs Salaries')
-plt.xlabel('Grade')
-plt.ylabel('Salary')
-plt.savefig('../images/plot-01.png', format='png')
-plt.show()
+  df = pd.DataFrame(students_dic)
+
+  plt.figure(figsize=(10, 7))
+  plt.scatter(df.Grade, df.Salary, color='g')
+  plt.title('Grades vs Salaries')
+  plt.xlabel('Grade')
+  plt.ylabel('Salary')
+  plt.savefig('../images/plot-01.png', format='png')
+  plt.show()
 ```
 
 **OUTPUT:**  
@@ -75,20 +84,24 @@ Agora vamos transformar tudo isso em Python para ficar algo mais automatizado:
 
 [students_sse.py](src/students_sse.py)
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+def SSE(dic):
+  import pandas as pd
 
-df = pd.DataFrame(
-  {
+  df = pd.DataFrame(dic)
+
+  df['Error'] = df['Salary'] - df['Salary'].mean()
+  df['Squared Errors'] = df['Error']**2
+  print(df)
+  print("Sum of Squared Errors (SSE): ", round(sum(df['Squared Errors'])))
+
+if __name__ =="__main__":
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-df['Error'] = df['Salary'] - df['Salary'].mean()
-df['Squared Errors'] = df['Error']**2
-print(df)
-print("Sum of Squared Errors (SSE): ", round(sum(df['Squared Errors'])))
+  SSE(students_dic)
 ```
 
 **OUTPUT:**  
@@ -164,27 +177,31 @@ Uma maneira de tentar encontrar os valores para os coeficiente **m** e **b** é 
 
 Agora vamos testar essa bruxaria em Python para praticar um pouco:
 
-[students_mb_formula.py](src/students_mb_formula.py)
+[students_ols.py](src/students_ols.py)
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+def OLS(dic):
+  import pandas as pd
 
-df = pd.DataFrame(
-  {
+  df = pd.DataFrame(dic)
+
+  df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
+  df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
+  df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
+  df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
+
+  m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
+  b = df['Salary'].mean() - (m * df['Grade'].mean())
+
+  print("Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+
+if __name__ =="__main__":
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
-df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
-df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
-df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
-
-m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
-b = df['Salary'].mean() - (m * df['Grade'].mean())
-
-print("Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+  OLS(students_dic)
 ```
 
 **OUTPUT:**  
@@ -195,40 +212,52 @@ Linear Coefficient (b): -5732.0
 
 Ok, agora que nós já temos os melhores valores para os coeficientes **m** e **b** `para esse conjunto de dados`  podemos aplicar eles na **Equação da Reta** e criar a **reta de melhor ajuste**:
 
-[students_bestLine_OLS.py](src/students_bestLine_OLS.py)  
+[students_ols_bestLineFit.py](src/students_ols_bestLineFit.py)  
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+def OLS(dic):
+  from matplotlib import pyplot as plt
+  import pandas as pd
 
-df = pd.DataFrame(
-  {
+  df = pd.DataFrame(dic)
+
+  df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
+  df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
+  df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
+  df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
+
+  m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
+  b = df['Salary'].mean() - (m * df['Grade'].mean())
+
+  print("Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+
+  regression_line = [(m*x) + b for x in df['Grade']]
+
+  plt.figure(figsize=(10, 7))
+  plt.scatter(df.Grade, df.Salary, color='g')
+  plt.plot(df.Grade, regression_line, color='b')
+  plt.title('Grades vs Salaries | Ordinary Least Squares: OLS')
+  plt.xlabel('Grade')
+  plt.ylabel('Salary')
+  plt.grid()
+  plt.savefig('../images/plot-02.png', format='png')
+  plt.show()
+
+if __name__ =="__main__":
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
-df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
-df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
-df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
-
-m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
-b = df['Salary'].mean() - (m * df['Grade'].mean())
-
-regression_line = [(m*x) + b for x in df['Grade']]
-
-plt.figure(figsize=(10, 7))
-plt.scatter(df.Grade, df.Salary, color='g')
-plt.plot(df.Grade, regression_line, color='b')
-plt.title('Grades vs Salaries | Ordinary Least Squares: OLS')
-plt.xlabel('Grade')
-plt.ylabel('Salary')
-plt.grid()
-plt.savefig('../images/plot-02.png', format='png')
-plt.show()
+  OLS(students_dic)
 ```
 
 **OUTPUT:**  
+
+```python
+Angular Coefficient (m): 1516
+Linear Coefficient (b): -5732.0
+```
 
 ![image](images/plot-02.png)  
 
@@ -238,34 +267,38 @@ plt.show()
 
 Ótimo, agora é só tirar a `variância` de cada ponto **y<sub>i</sub>** em relação a **reta de melhor ajuste**:
 
-[students_error_OLS.py](src/students_error_OLS.py)
+[students_ols_error.py](src/students_ols_error.py)
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+def OLS_error(dic):
+  import pandas as pd
 
-df = pd.DataFrame(
-  {
+  df = pd.DataFrame(dic)
+
+  df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
+  df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
+  df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
+  df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
+
+  m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
+  b = df['Salary'].mean() - (m * df['Grade'].mean())
+
+  df['y = mx + b'] = [(m*x) + b for x in df['Grade']]
+  df['y_i - y = mx + b'] = df['Salary'] - df['y = mx + b']
+  df['(y_i - y = mx + b)^2'] = df['y_i - y = mx + b'] ** 2
+
+  newDF = df[['Grade', 'Salary', 'y = mx + b', 'y_i - y = mx + b', '(y_i - y = mx + b)^2']]
+
+  print(newDF)
+  print("Sum of Squared Errors (OLS): ", round(sum(newDF['(y_i - y = mx + b)^2'])))
+
+if __name__ =="__main__":
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-df['(x_i - x_mean)'] = df['Grade'] - df['Grade'].mean()
-df['(y_i - y_mean)'] = df['Salary'] - df['Salary'].mean()
-df['(x_i - x_mean)(y_i - y_mean)'] = df['(x_i - x_mean)'] * df['(y_i - y_mean)']
-df['(x_i - x_mean)^2'] = (df['Grade'] - df['Grade'].mean())**2
-
-m = (sum(df['(x_i - x_mean)'] * df['(y_i - y_mean)'])) / sum(df['(x_i - x_mean)^2'])
-b = df['Salary'].mean() - (m * df['Grade'].mean())
-
-df['y = mx + b'] = [(m*x) + b for x in df['Grade']]
-df['y_i - y = mx + b'] = df['Salary'] - df['y = mx + b']
-df['(y_i - y = mx + b)^2'] = df['y_i - y = mx + b'] ** 2
-
-newDF = df[['Grade', 'Salary', 'y = mx + b', 'y_i - y = mx + b', '(y_i - y = mx + b)^2']]
-
-print(newDF)
-print("Sum of Squared Errors (OLS): ", round(sum(newDF['(y_i - y = mx + b)^2'])))
+  OLS_error(students_dic)
 ```
 
 **OUTPUT**
@@ -292,7 +325,7 @@ Sum of Squared Errors (OLS):  6958885882
 Agora a *Soma dos Erros* foi reduzida significativamente de **26.501.600.000** para **6.958.885.882**. Isso porque nós estamos utilizando uma reta de melhor ajuste que tem os melhores valores de **m** e **b** `para esse conjunto de dados`, não apenas subtraindo os pontos **(x<sub>i</sub>, y<sub>i</sub>)** pelo a média de todos os **y**.
 
 **NOTE:**  
-Mas essa solução não é escalonável... Aplicar isso à Regressão Linear foi bastante fácil, pois tínhamos bons coeficientes e equações lineares, mas aplicar isso a algoritmos complexos e não lineares como *Support Vector Machine* não seria viável. 
+Mas essa solução não é escalonável... Aplicar isso à Regressão Linear foi bastante fácil, pois tínhamos bons coeficientes e equações lineares, mas aplicar isso a algoritmos complexos e não lineares como **Support Vector Machine** não seria viável. 
 
 > Então vamos encontrar a aproximação numérica desta solução por um **método iterativo**?.
 
@@ -640,41 +673,50 @@ Ok, mas depois de todas essas **bruxarias teóricas**, como colocar tudo isso em
 
 [students_gd_bestLine.py](src/students_gd_bestLine.py)  
 ```python
-from matplotlib import pyplot as plt
-import pandas as pd
+def GD(dic):
+  from matplotlib import pyplot as plt
+  import pandas as pd
 
-df = pd.DataFrame(
-  {
+  df = pd.DataFrame(dic)
+
+  # Start coefficients (Angular and Linear).
+  m = 7
+  b = 1
+
+  # Learning rate
+  learning_rate = 0.000001
+
+  # Search best value for coefficients m and b.
+  for i in range(1, 1000+1, 1):
+    y_pred = m*df['Grade'] + b
+    m_derivative = sum(2*df['Grade']*(y_pred - df['Salary']))
+    b_derivative = sum(2*(y_pred - df['Salary']))
+    m = m - (learning_rate * m_derivative)
+    b = b - (learning_rate * b_derivative)
+    # print(m, b) # Remove comments to view step-by-step.
+
+  print("\nAngular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+
+  regression_line = [(m*x) + b for x in df['Grade']]
+
+  plt.figure(figsize=(10, 7))
+  plt.scatter(df.Grade, df.Salary, color='g')
+  plt.plot(df.Grade, regression_line, color='b')
+  plt.title('Grades vs Salaries | Gradient descent Approach')
+  plt.xlabel('Grade')
+  plt.ylabel('Salary')
+  plt.grid()
+  plt.savefig('../images/plot-03.png', format='png')
+  plt.show()
+
+if __name__ =="__main__":
+
+  students_dic = {
     'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
     'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
   }
-)
 
-m = 7
-b = 1
-learning_rate = 0.000001
-
-for i in range(1, 1000+1, 1):
-  y_pred = m*df['Grade'] + b
-  m_derivative = sum(2*df['Grade']*(y_pred - df['Salary']))
-  b_derivative = sum(2*(y_pred - df['Salary']))
-  m = m - (learning_rate * m_derivative)
-  b = b - (learning_rate * b_derivative)
-  # print(m, b) # Remove comments to view step-by-step.
-
-print("\nAngular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
-
-regression_line = [(m*x) + b for x in df['Grade']]
-
-plt.figure(figsize=(10, 7))
-plt.scatter(df.Grade, df.Salary, color='g')
-plt.plot(df.Grade, regression_line, color='b')
-plt.title('Grades vs Salaries | Gradient descent Approach')
-plt.xlabel('Grade')
-plt.ylabel('Salary')
-plt.grid()
-plt.savefig('../images/plot-03.png', format='png')
-plt.show()
+  GD(students_dic)
 ```
 
 **OUTPUT:**  
@@ -695,7 +737,480 @@ Veja que com o **Método do Gradiente Descendente** nós conseguimos melhores va
    - Angular Coefficient (m): 1425
    - Linear Coefficient (b): -7
 
+**NOTE:**  
+Você também pode acompanhar todo esse processo passo a passo (step-by-step) removendo o comentário lá no código na linha 26.
+
+[students_gd_bestLine.py](src/students_gd_bestLine.py)
+```python
+# print(m, b) # Remove comments to view step-by-step.
+```
+
 ---
+
+<div id="10"></div>
+
+## 10 - Tentando fazer previsões (predict)
+
+Até aqui está tudo ótimo, mas como eu posso `tentar fazer previsões (predict)` com esses dados?
+
+Primeiro, vamos recapitular nossa **Equação da Reta (Regressão Linear)**:
+
+![img](images/0001.png)  
+
+**NOTE:**  
+Lembrem que agora nós temos os os melhores valores para os coeficientes **"m"** e **"b"** que conseguimos com o **Gradiente Descendente**. Agora é só tentar prever o valor da **Variável Dependente "Salary"** com base em algum valor da **Variável Independente "Grade"**.
+
+Por exemplos, suponha que nós queremos saber quanto vai ganhar um aluno que teve a nota (grade) 85 (vamos começar tentando com um valor já existente no nosso conjunto de dados para ver se ele chega perto):
+
+![img](images/predict-01.png)  
+
+**NOTE:**  
+Vejam que não ficou muito longe do salário (Salary) do nosso aluno que tinha a nota (grade) 85 - **130000**  
+Lembrem também que essas tentativas de previsões não são exatas. Nenhum modelo de Machine Learning vai te dar uma predição exata **(Só se for muita coincidência)**.
+
+Agora vamos tentar aplicar isso em Python para ver como fica?
+
+[predict.py](src/predict.py)
+```python
+def predict_salary(dic, x_value):
+  import pandas as pd
+
+  df = pd.DataFrame(dic)
+
+  # Start coefficients (Angular and Linear).
+  m = 7
+  b = 1
+
+  # Learning rate
+  learning_rate = 0.000001
+
+  # Search best value for coefficients m and b.
+  for i in range(1, 1000+1, 1):
+    y_pred = m*df['Grade'] + b
+    m_derivative = sum(2*df['Grade']*(y_pred - df['Salary']))
+    b_derivative = sum(2*(y_pred - df['Salary']))
+    m = m - (learning_rate * m_derivative)
+    b = b - (learning_rate * b_derivative)
+    # print(m, b) # Remove comments to view step-by-step.
+
+  # Linear Regression formula.
+  predict_y = m*x_value + b
+
+  print("\nAngular Coefficient (m): {0}\nLinear Coefficient (b): {1}".format(round(m), round(b)))
+  print("Student with grade {0} may have {1} salary approximately".format(round(x_value), round(predict_y)))
+
+
+
+if __name__ =="__main__":
+
+  students_dic = {
+    'Grade':[50, 50, 46, 95, 50, 5, 57, 42, 26, 72, 78, 60, 40, 17, 85],
+    'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000, 42000, 47000, 78000, 119000, 95000, 49000, 29000, 130000]
+  }
+
+  predict_salary(students_dic, 85)
+```
+
+**OUTPUT:**  
+```python
+Angular Coefficient (m): 1425
+Linear Coefficient (b): -7
+Student with grade 85 may have 121083 salary approximately
+```
+
+---
+
+<div id="11"></div>
+
+## 11 - Regressão Linear com Scikit-Learn
+
+Ok, até aqui já vimos todas essas bruxarias matemáticas e teóricas, mas como resolver isso de uma maneira mais simples?
+
+Graças ao Python e a maravilhosa comunidade **Open-Source** nós temos a biblioteca [Scikit-Learn](https://scikit-learn.org/stable/index.html) que deixa todo esse trabalho **MUITO FÁCIL**!
+
+<div id="11-1"></div>
+
+## 11.1 - Instalando o Scikit-Learn e salvando no ambiente virtual
+
+Vamos começar instalando a biblioteca:
+
+```
+pip install scikit-learn --upgrade
+```
+
+**NOTE:**  
+Se você estiver utilizando um ambiente virtual (assim como eu) é recomendado salvar essa dependência:
+
+```
+pip freeze > requirements.txt
+```
+
+Ok, agora vamos ver a nossa versão atual do Scikit-Learn?
+
+[checkVersion.py](src/checkVersion.py)
+```python
+def checkVersion():
+  import sklearn
+  print('Scikit-Learn Version: {0}'.format(sklearn.__version__))
+
+if __name__ =='__main__':
+  checkVersion()
+```
+
+**OUTPUT:**  
+```
+Scikit-Learn Version: 0.23.1
+```
+
+<div id="11-2"></div>
+
+## 11.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn
+
+Ótimo, tudo lindo e maravilhoso a nossa disposição! Mas como eu crio um exemplo de **Regressão Linear**?  
+Simples, primeiro vamos criar um conjunto de dados aleatórios (mesmo sem sentido) para representar o nosso conjunto de dados:
+
+[make_sample.py](src/make_sample.py)
+```python
+def createRegression(samples, variavel_numbers, n_noise):
+  from sklearn.datasets import make_regression
+  x, y = make_regression(n_samples=samples, n_features=variavel_numbers, noise=n_noise)
+  return x, y
+
+if __name__ =='__main__':
+  from matplotlib import pyplot as plt
+
+  reg = createRegression(200, 1, 30)
+
+  plt.figure(figsize=(10, 7))
+  plt.scatter(*reg)
+  plt.title('Linear Regression Sample')
+  plt.savefig('../images/plot-04.png', format='png')
+  plt.show()
+```
+
+**OUTPUT:**  
+![IMAGE](images/plot-04.png)  
+
+A biblioteca **Scikit-Learn** tem um método chamado [make_regression](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html) que pode ser usado para criar um conjunto de dados para que possamos trabalhar com eles. Os argumentos mais comuns (que foram o que nós utilizamos) para esse método são:
+
+ - **n_samples:** O número de Amostra de Dados;
+ - **n_features:** O número de variáveis/características;
+ - **noise:** Quanto ruído terá nosso gráfico, ou seja, quão bagunçado vai está os dados.
+
+**NOTE:**  
+Toda vez que você rodar o código [make_sample.py](src/make_sample.py) vai ser gerado um conjunto de dados diferentes. Ou seja, vai ser outro gráfico/plot.
+
+**NOTE:**  
+Outra observação importante que você deve prestar atenção é que a função [make_regression](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html) nos retornou 2 conjuntos de dados - **x** e **y**, ou seja:
+
+```python
+x, y = make_regression(n_samples=samples, n_features=variavel_numbers, noise=n_noise)
+```
+
+ - Os valores aleatórios criados para o nosso **eixo-x**;
+ - E os seus correspondente no **eixo-y**.
+
+<div id="11-3"></div>
+
+## 11.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")
+
+Ótimo, agora voltando para o nosso problema (Regressão Linear):
+
+> Como crio uma **reta de melhor ajuste** com Scikit-Learn?
+
+Dá para fazer isso de forma automática e simples? Claro, com **Scikit-Learn** e suas bruxarias:
+
+[reg-v1.py](src/reg-v1.py)
+```python
+def createRegression(samples, variavel_numbers, n_noise):
+  from sklearn.datasets import make_regression
+  x, y = make_regression(n_samples=samples, n_features=variavel_numbers, noise=n_noise)
+  return x, y
+
+if __name__ =='__main__':
+
+  from sklearn.linear_model import LinearRegression
+  from matplotlib import pyplot as plt
+
+  reg = createRegression(200, 1, 30)
+  model = LinearRegression() # Linear Regression Instance.
+
+  model.fit(*reg)
+
+  a_coeff = model.coef_ # Angular Coefficient - m
+  l_coeff = model.intercept_ # Linear Coefficient - b
+
+  print('Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}'.format(a_coeff, l_coeff))
+
+  plt.figure(figsize=(10, 7))
+  plt.scatter(*reg)
+  plt.plot(reg[0], a_coeff*reg[0] + l_coeff,color='red')
+  plt.savefig('../images/plot-05.png', format='png')
+  plt.show()
+```
+
+**OUTPUT:**  
+```python
+Angular Coefficient (m): [34.34928509]
+Linear Coefficient (b): -0.23447017542042375
+```
+
+![IMAGE](images/plot-05.png)  
+
+**Lindo não?**  
+Vou comentar apenas as partes cruciais de agora em diante... Começando por aqui:
+
+```python
+model.fit(*reg)
+```
+
+É aqui que entra a mágica de achar os melhores valores para **m** e **b**. Já está tudo pronto, nós só precisamos importar a classe [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) e depois utilizar o método **fit()** que é responsável por conseguir os melhores valores para os nossos *Coeficientes* **Angular** e **Linear**.
+
+Pronto, agora que já temos os melhores valores para **m** e **b**, vamos pegar esses valores com os atributos **coef_** e **intercept_** e imprimir os mesmos:
+
+```python
+a_coeff = model.coef_ # Angular Coefficient - m
+l_coeff = model.intercept_ # Linear Coefficient - b
+print('Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}'.format(a_coeff, l_coeff))
+```
+
+E por fim, vamos gerar a parte visual:
+
+ - Primeiro vamos criar um Scatter Plot para exibir nosso conjunto de dados (os dados de amostra);
+ - E depois adiciona uma **reta de melhor ajuste**.
+
+```python
+plt.scatter(*reg)
+plt.plot(reg[0], a_coeff*reg[0] + l_coeff,color='red')
+```
+
+**NOTE:**  
+Lembrem que para criar essa **reta de melhor ajuste** nós utilizamos a *Equação da Reta*:
+
+![image](images/linear-regression-formule.png)  
+
+```python
+m = a_coeff
+x = x[0]
+b = l_coeff
+```
+
+<div id='11-4'></div>
+
+## 11.4 - Dividindo os dados em Treino e Teste com Scikit-Learn
+
+Uma coisa que vocês tem que entender primeiro é que os modelos de **Machine Learning** aprendem a partir de dados. Sabendo disso é interessante dividir nosso conjunto de dados em **Dados de Treino** & **Dados de Teste**.
+
+**DADOS DE TREINO:**  
+Ok, suponha que nós queremos desenvolver um programa (modelo) que identifique se uma imagem **é um cachorro** ou **não é um cachorro**.
+
+De início nós vamos receber um conjunto (amostra) com várias imagens de cachorros, depois nós vamos pegar uma parte desse conjunto (normalmente 70%) e dar para o nosso modelo aprender identificando características comuns entre cachorros.
+
+**DADOS DE TESTE:**  
+Ok, Nós reservamos 70% do nosso conjunto de dados (amostra) para o nosso algoritmo aprender e os outros 30%?  
+Então, esses são os **Dados de Testes**. Nós vamos passar os dados de testes para o nosso modelo e ver quão bem ele está aprendendo. Por exemplo:
+
+> Isso aqui é um cachorro?
+
+![image](images/dog.gif)  
+
+E o nosso modelo vai ter que dar um retorno dizendo se é um cachorro ou não.
+
+**NOTE:**  
+Viram como é interessante dividir o conjunto de dados (amostra) em **treino** e **teste**? Outro exemplo, seria identificar uma doença em pacientes, como nós saberíamos se nosso modelo aprendeu (ou está aprendendo) bem se deixar ele aprender com todo o conjunto de dados?
+
+> Por isso, ele vai aprender com uma parte (70% no nosso caso) e vamos reserva outra parte (30% no nosso caso) para testar e ver quão bem ele (nosso modelo) está aprendendo.
+
+[reg-v2.py](src/reg-v2.py)
+```python
+def createRegression(samples,variavel_numbers, n_noise):
+  from sklearn.datasets import make_regression
+  x, y = make_regression(n_samples=samples, n_features=variavel_numbers, noise=n_noise)
+  return x, y
+
+if __name__ =='__main__':
+
+  from sklearn.linear_model import LinearRegression
+  from sklearn.model_selection import train_test_split
+  from matplotlib import pyplot as plt
+
+  reg = createRegression(200, 1, 30)
+  model = LinearRegression()
+
+  # Divide the data into Training and Testing - 30% for testing.
+  x_train, x_test, y_train, y_test = train_test_split(reg[0], reg[1], test_size=0.30)
+
+  # Just the training data is transferred to the fit() function (which finds the best values ​​for m and b).
+  model.fit(x_train, y_train)
+
+  a_coeff = model.coef_ # Angular Coefficient - m
+  l_coeff = model.intercept_ # Linear Coefficient - b
+  print('Angular Coefficient (m): {0}\nLinear Coefficient (b): {1}'.format(a_coeff, l_coeff))
+
+  # Create plot.
+  plt.figure(figsize=(10, 7))
+  plt.subplot(211)
+  plt.scatter(reg[0], reg[1])
+  plt.title('Complete Sample')
+  plt.plot(x_train, a_coeff*x_train + l_coeff,color='red')
+  plt.subplot(223)
+  plt.scatter(x_train, y_train)
+  plt.title('Training Set (70%)')
+  plt.plot(x_train, a_coeff*x_train + l_coeff,color='blue')
+  plt.subplot(224)
+  plt.scatter(x_test, y_test)
+  plt.title('Testing set (30%)')
+  plt.plot(x_train, a_coeff*x_train + l_coeff,color='green')
+  plt.savefig('../images/plot-06.png', format='png')
+  plt.show()
+```
+
+**OUTPUT:**  
+```python
+Angular Coefficient (m): [4.65851642]
+Linear Coefficient (b): 0.760506738734484
+```
+
+![image](images/plot-06.png)
+
+Agora vamos comentar só as partes cruciais que foram utilizadas para dividir os dados em **treino** e **teste**. Primeiro nós importamos o método **train_test_split()**.
+
+```python
+from sklearn.model_selection import train_test_split
+```
+
+Depois nós passamos os seguintes argumentos para esse método:
+
+ - **1ª -** Os dados no eixo-x do conjunto de dados;
+ - **2ª -** Os seus correspondentes no eixo-y;
+ - **3ª -** Por fim, quanto nós reservamos dos dados para teste: **test_size=0.30 = 30%**.
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(reg[0], reg[1], test_size=0.30)
+```
+
+**NOTE:**  
+Veja que o método **train_test_split()** retorna os dados já separados *(aleatoriamente)* em dados de treino e teste.
+
+Agora por fim, nós vamos treinar o nosso módelo apenas com os dados de treino *(como foi explicado anteriormente)*:
+
+```python
+model.fit(x_train, y_train)
+```
+
+<div id='11-5'></div>
+
+## 11.5 - Tentando fazer previsões (predict) com Scikit-Learn
+
+Ótimo, até então nós fizemos vários exemplos de **Regressão Linear**, mas como tentar fazer previsões com os nossos modelos com Scikit-Learn?
+
+Vamos começar com uma nova abordagem... Suponha que nós amamos pizzas e nos últimos dias nós compramos 15. Sabendo que nós compramos muitas pizzas vamos tentar prever qual o preço de uma pizza de acordo com o seu diâmetro.
+
+Então, os dados das nossas 15 pizzas foram os seguintes:
+
+
+|Instância | Diâmetro(cm) | Preço(R$) |
+|----------|--------------|-----------|
+|   1      |    	7       |   	8     |
+|   2      |      10      |     11    |
+|   3	     |      15	    |     16    |
+|   4      |      30      |     38.5  |
+|   5	     |      45      |     52    |
+|   6      |    	13      |   	14    |
+|   7      |      60      |     70    |
+|   8	     |      100     |     90    |
+|   9      |      5       |     6     |
+|   10     |      30      |     38.5  |
+|   11     |    	90      |   	102   |
+|   12     |      18      |     20    |
+|   13     |      70	    |     85    |
+|   14     |      110     |     100   |
+|   15     |      25      |     34    |
+
+Ótimo, primeiro vamos fazer todo aquele paranauê:
+
+ - Dividir os dados em treino e teste;
+ - Criar uma reta de Regressão Linear que melhor explique essa relação;
+ - E por fim, criar um gráfico com tudo isso.
+
+Vai ficar assim:
+
+[pizza_predict.py](src/pizza_predict.py)  
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from matplotlib import pyplot as plt
+
+
+diameter = [[7], [10], [15], [30], [45], [13], [60], [100], [5], [30], [90], [18], [70], [110], [25]] 
+prices   = [[8], [11], [16], [38.5], [52], [14], [70], [90], [6], [38.5], [102], [20], [85], [100], [34]]
+
+model = LinearRegression()
+
+x_train, x_test, y_train, y_test = train_test_split(diameter, prices, test_size=0.30, random_state=10)
+
+model.fit(x_train, y_train)
+
+a_coeff = model.coef_ # Angular Coefficient - m
+l_coeff = model.intercept_ # Linear Coefficient - b
+
+plt.figure(figsize=(10, 7))
+plt.subplot(211)
+plt.scatter(diameter, prices)
+plt.title('Complete Sample')
+plt.plot(x_train, a_coeff*x_train + l_coeff,color='red')
+plt.subplot(223)
+plt.scatter(x_train, y_train)
+plt.title('Training Set (70%)')
+plt.plot(x_train, a_coeff*x_train + l_coeff,color='blue')
+plt.subplot(224)
+plt.scatter(x_test, y_test)
+plt.title('Testing set (30%)')
+plt.plot(x_train, a_coeff*x_train + l_coeff,color='green')
+plt.savefig('../images/plot-07.png', format='png')
+plt.show()
+```
+
+**OUTPUT:**  
+
+![image](images/plot-07.png)  
+
+Ok, isso nós já aplicamos várias vezes, mas agora eu quero saber o seguinte:
+
+> Se eu desejar comprar uma pizza de 20cm diâmetro qual vai ser o preço?
+
+A classe [LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) além do método **fit()** utilizado para treinar nosso modelo, também tem o método **predict()** que utiliza o nosso modelo linear para tentar fazer previsões.
+
+Veja como fica isso com o código abaixo:
+
+[pizza_predict-v2.py](src/pizza_predict-v2.py)
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from matplotlib import pyplot as plt
+
+diameterPassed = float(input("What's the diameter(cm) of the pizza you want? "))
+
+diameters = [[7], [10], [15], [30], [45], [13], [60], [100], [5], [30], [90], [18], [70], [110], [25]]
+prices   = [[8], [11], [16], [38.5], [52], [14], [70], [90], [6], [38.5], [102], [20], [85], [100], [34]]
+
+model = LinearRegression()
+
+x_train, x_test, y_train, y_test = train_test_split(diameters, prices, test_size=0.30, random_state=10)
+
+model.fit(x_train, y_train)
+price = model.predict([[diameterPassed]])
+
+print("A {0} cm diameter pizza should cost:: R${1}".format(diameterPassed, round(price[0][0])))
+```
+
+**NOTE:**  
+Na verdade nós fizemos ainda melhor do que tentar prever só para uma pizza de 20cm de diâmetro. Nós criamos um programa de Machine Learning que para **qualquer diâmetro passado**, ele vai retorna qual será mais ou menos o **preço da pizza** para esse conjunto (amostra) de dados.
+
+![image](images/genius.gif)  
+
+---
+
 **REFERENCES:**  
 [Didatica Tech - MÓDULO - I](https://didatica.tech/)  
 [A matemática do Gradiente Descendente & Regressão Linear (machine learning)](https://www.youtube.com/watch?v=htfh2xrnlaE)  
