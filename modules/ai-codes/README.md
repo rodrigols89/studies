@@ -30,7 +30,7 @@
            - [Coeficiente de Determinação R<sup>2</sup>](modules/linear-regression/r2.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
-           - [Ridge Regression (+Regularização L1 & L2)](modules/ridge-regression)
+           - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
          - Elastic Net
            - [Elastic Net](modules/elastic-net)
        - __Classification:__
