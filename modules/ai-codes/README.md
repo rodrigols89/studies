@@ -32,7 +32,7 @@
          - Ridge/Lasso Regression (+Regularization L1 & L2)
            - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
          - Elastic Net
-           - [Elastic Net](modules/elastic-net)
+           - [Elastic Net](modules/elastic-net/intro-to-elastic-net.md)
        - __Classification:__
          - Logistic Regression
            - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
