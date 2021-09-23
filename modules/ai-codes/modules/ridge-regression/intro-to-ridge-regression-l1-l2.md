@@ -1,10 +1,10 @@
-# Ridge Regression (+Regularização L1 & L2)
+# Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)
 
 ## Conteúdo
 
  - [01 - Recapitulando o calculo de Regressão Linear com várias variáveis + Função de Custo](#01)
- - [02 - Introdução ao Algoritmos Ridge Regression](#02)
- - [03 - Ridge Regression na Prática](#03)
+ - [02 - Introdução ao Algoritmo Ridge Regression](#02)
+ - [03 - Ridge Regression na prática com Scikit-Learn](#03)
  - [04 - Regularização L1 vs L2](#04)
 
 <div id='01'></div>
@@ -17,40 +17,39 @@ Bem, antes de iniciarmos nossos estudos com o algoritmos de regressão **Ridge R
 
 Não podemos deixar de esquercer dessa função que:
 
- - Os meus **x<sub>i</sub>** representam as variáveis.
+ - Os meus **x<sub>i</sub>** representam as *variáveis independentes*.
  - Os meus **m<sub>i</sub>** ("a" ou pesos "w") representa o Coeficiente Angular:
    - Que altera a inclinação da reta;
    - E que é representado por um valor constante.
  - O meu **b** representa o deslocamento da Reta:
    - Que também é representado por um valor constante.
 
-**NOTE:**  
-Lembrando que a lógica por trás da função de custo é esse --> [Função de Custo](https://github.com/drigols/estudos/tree/master/modules/artificial-intelligence-topics/modules/linear-regression-and-gd#02---ideia-por-tr%C3%A1s-do-gradiente-descendente)
+---
 
 <div id='02'></div>
 
-## 02 - Introdução ao Algoritmos Ridge Regression
+## 02 - Introdução ao Algoritmo Ridge Regression
 
 O Algoritmo **Ridge Regression** segue a mesma lógica do Algoritmo de *Regressão Linear*:
 
 > Ele tenta construir uma reta que melhor explique a relação entre os dados (ou variáveis).
 
-**NOTE:**  
 Ué, mas o que muda então? **Função de Custo**!
 
 ![image](images/02.svg)  
 
-**What?** E o que significa o resto equação para a função de custo?
+**What?**  
+E o que significa o resto da equação para a função de custo?
 
- - Nós vamos somar a nossa `Função de Custo`:
-   - Uma constante **λ (lambda do grego)** que multiplica:
+ - Nós vamos somar a nossa **Função de Custo**:
+   - A uma constante **λ (lambda do grego)** que multiplica:
      - Somatório de todos os pesos **m<sub>i</sub>** elevado ao quadrado - **Σ m<sub>i</sub><sup>2</sup>**
 
 **NOTE:**  
  - Vale salientar que a nossa constante **λ (lambda do grego)** é responsável por trazer o somatórios de todos os pesos **m<sub>i</sub>** elevado ao quadrado, para ordem de grandeza do nosso interesse:
    - Por exemplo: 10, 100, 1000...
 
-Ta ok, mas o que isso muda da **Função de Custo** do Algoritmo de **Regressão Linear**?
+OK, mas o que isso muda da **Função de Custo** do Algoritmo de **Regressão Linear**?
 
 > O Algoritmo **Ridge Regression** tenta diminuir o tamanho dos pesos (coeficientes).
 
@@ -75,7 +74,7 @@ Agora suponha que o **Algoritmo Ridge Regression** viu que estava um pouco grand
 
 Opa, vejam que agora estamos seguindo exatamente o que **Algoritmo Ridge Regression** se propõe a fazer:
 
-> Interessados nos menores erros desde que os coeficientes **(m<sub>i</sub>)** também sejam pequenos.
+> Interessado nos menores erros desde que os coeficientes **(m<sub>i</sub>)** também sejam pequenos.
 
 **NOTE:**  
 Isso piorou os erros um pouco, porém, os pesos (coeficientes angulares) **m<sub>i</sub>** melhoraram. Sabendo disto você tem que refletir bem quando escolher entre os Algoritmos de **Regressão Linear** e **Ridge Regression**:
@@ -84,17 +83,18 @@ Isso piorou os erros um pouco, porém, os pesos (coeficientes angulares) **m<sub
  - **Ridge Regression -** Menores erros possíveis desde que os coeficientes **m<sub>i</sub>** também sejam pequenos.
 
 **NOTE:**  
-No fim das contas você vai ter que colocar na balança e pensar o que pesa mais. Outra coisa importante a se saber é que com isso nós estamos impedindo alguns pesos tenham uma relevância muito grande em relação aos outros. Issa tecnica em *Machine Learning* é o que nós chamamos de **Regularização**.
+No fim das contas você vai ter que colocar na balança e pensar o que pesa mais. Outra coisa importante a se saber é que com isso nós estamos impedindo que alguns pesos tenham uma relevância muito grande em relação aos outros. Issa tecnica em *Machine Learning* é o que nós chamamos de **Regularização**.
 
-Se você comparar os pesos do exemplo anterior com o último vai ver que antes eles estavam muito distantes:
+**NOTE:**  
+Se você comparar os pesos do primeiro exemplo com os do segundo vai ver que antes eles estavam muito distantes um do outro:
 
 ![image](images/05.svg)  
 
 <div id='03'></div>
 
-## 03 - Ridge Regression na Prática
+## 03 - Ridge Regression na prática com Scikit-Learn
 
-Chegou a hora de colocar em prática (e de maneira fácil é claro) toda essa teoria que aprendemos. Para isso vamos utilizar o mesmo Dataset que utilizamos quando estudamos [Regressão Linear & Gradiente Descendente](https://github.com/drigols/estudos/tree/master/modules/artificial-intelligence-topics/modules/linear-regression-and-gd), referente a dados das casas vendidas no município de **[King County (Washington/USA)](https://www.kaggle.com/harlfoxem/housesalesprediction)**.
+Chegou a hora de colocar em prática (e de maneira fácil é claro) toda essa teoria que aprendemos. Para isso vamos utilizar o Dataset **[King County (Washington/USA)](https://www.kaggle.com/harlfoxem/housesalesprediction)** referente a dados des casas vendidas no município de *King County (Washington/USA)*.
 
 [ridge_regression.py](src/ridge_regression.py)
 ```python
@@ -116,20 +116,22 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 model = LinearRegression()
 model.fit(x_train, y_train)
 r2 = model.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos de Regressão Linear: {0}'.format(r2))
+print('Coefficient of Determination R^2 for Linear Regression Algorithm: {0}'.format(r2))
 
 # Ridge Regression
 ridgeModel = Ridge(alpha=1.0) # Alpha = Learning Rate.
 ridgeModel.fit(x_train, y_train)
 ridgeR2 = ridgeModel.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression: {0}'.format(ridgeR2))
+print('Coefficient of Determination R^2 for Ridge Regression Algorithm: {0}'.format(ridgeR2))
 ```
 
 **OUTPUT:**  
 ```python
-Coeficiente de Determinação R^2 para o Algoritmos de Regressão Linear: 0.653809419628071
-Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression: 0.6539029726255619
+Coefficient of Determination R^2 for Linear Regression Algorithm: 0.653809419628071
+Coefficient of Determination R^2 for Ridge Regression Algorithm: 0.6539029726255619
 ```
+
+---
 
 <div id='04'></div>
 
@@ -170,36 +172,32 @@ x = df.drop(['price'], axis=1)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=14)
 
 # Linear Regression
-linearRegressionModel = LinearRegression()
-linearRegressionModel.fit(x_train, y_train)
-r2 = linearRegressionModel.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos de Regressão Linear: {0}'.format(r2))
+model = LinearRegression()
+model.fit(x_train, y_train)
+r2 = model.score(x_test, y_test)
+print('Coefficient of Determination R^2 for Linear Regression Algorithm: {0}'.format(r2))
 
-# Ridge Regression - L2
-ridgeModel = Ridge(alpha=10)
+# Ridge Regression
+ridgeModel = Ridge(alpha=1.0) # Alpha = Learning Rate.
 ridgeModel.fit(x_train, y_train)
 ridgeR2 = ridgeModel.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression - L2: {0}'.format(ridgeR2))
+print('Coefficient of Determination R^2 for Ridge Regression Algorithm: {0}'.format(ridgeR2))
 
 # Lasso Regression - L1
 lassoModel = Lasso(alpha=10, max_iter=1000, tol=0.1)
 lassoModel.fit(x_train, y_train)
 lassoR2 = lassoModel.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression - L1/Lasso: {0}'.format(lassoR2))
+print('Coefficient of Determination R^2 for Ridge Regression (L1/Lasso) Algorithm: {0}'.format(lassoR2))
 ```
 
 **OUTPUT:**  
 ```python
-Coeficiente de Determinação R^2 para o Algoritmos de Regressão Linear: 0.653809419628071
-Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression - L2: 0.6545037069731695
-Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression - L1/Lasso: 0.6538322613120116
+Coefficient of Determination R^2 for Linear Regression Algorithm: 0.653809419628071
+Coefficient of Determination R^2 for Ridge Regression Algorithm: 0.6539029726255619
+Coefficient of Determination R^2 for Ridge Regression (L1/Lasso) Algorithm: 0.6538322613120116
 ```
 
 ---
 
 **REFERENCES:**  
-[Didatica Tech - MÓDULO I](https://didatica.tech/)
-
----
-
-**Rodrigo Leite -** *Software Engineer*
+[Didatica Tech - MÓDULO I](https://didatica.tech/)  

@@ -1,6 +1,6 @@
 # Introdução às Redes Neurais Artificiais (RNA)
 
-## Contents
+## Conteúdo
 
  - [01 - História & Introdução às Redes Neurais Artificiais (RNA)](#intro-to-rna)
  - [02 - O primeiro Neurônio Artificial (Perceptron)](#perceptron)

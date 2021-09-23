@@ -25,15 +25,17 @@
      - __Supervised Learning:__
        - __[Regression:](modules/regression)__
          - Linear Regression
-           - [Regressão Linear](modules/linear-regression)
+           - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
+           - [Regressão Linear (SSE, OLS, GD)](modules/linear-regression/linear-regression-sse-ols-gd.md)
+           - [Coeficiente de Determinação R<sup>2</sup>](modules/linear-regression/r2.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
-           - [Ridge Regression (+Regularização L1 & L2)](modules/ridge-regression)
+           - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
          - Elastic Net
-           - [Elastic Net](modules/elastic-net)
+           - [Introdução ao Algoritmo Elastic Net](modules/elastic-net/intro-to-elastic-net.md)
        - __Classification:__
          - Logistic Regression
-           - [Introdução à Regressão Logística](modules/logistic-regression)
+           - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
          - Decision Trees
          - SVM - (Support Vector Machine)
          - Naive Bayes

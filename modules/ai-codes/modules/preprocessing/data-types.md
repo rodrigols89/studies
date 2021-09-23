@@ -1,6 +1,6 @@
 # Tipos de Dados
 
-## Contents
+## Conteúdo
 
  - [01 - Introdução aos tipos de dados](#01)
  - [02 - Alterando os tipos de dados](#02)

@@ -17,10 +17,10 @@ Os problemas de classificação são aqueles onde se busca encontrar uma classe,
  - Se um aluno foi **aprovado** ou **reprovado**;
  - Se uma pessoa **possui uma doença** ou **não**;
 
-**NOTE:**  
-Sendo que nestes casos ou a previsão será uma ou outra. As classes também podem possuir mais de duas opções, como separar pessoas em três grupos, A, B e C, ou 1, 2 e 3, ou ainda prever a marca de um determinado carro.
+Sendo que nestes casos ou a previsão será uma ou outra. As classes também podem possuir mais de duas opções, como separar pessoas em três grupos, **A**, **B** e **C**, ou **1**, **2** e **3**, ou ainda prever a marca de um determinado carro.
 
-Mas e a Matemática muda muito em relação aos problemas de *Regressão*? Não necessariamente, mas temos algumas peculiaridades. Vamos começar revisando a *Equação da Reta* para uma ou mais variáveis:
+**Mas e a Matemática muda muito em relação aos problemas de *Regressão*?**  
+Não necessariamente, mas temos algumas peculiaridades. Vamos começar revisando a *Equação da Reta* para uma ou mais variáveis:
 
 ![image](images/01.png)  
 
@@ -48,7 +48,3 @@ Agora eu vou partir do pressuposto que você já conhece a **Função Sigmóide*
 **REFERENCES:**  
 [Didática Tech - Inteligência Artificial & Data Science](https://didatica.tech/)  
 [Problemas de Classificação e Regressão](https://didatica.tech/problemas-de-classificacao-e-regressao/)  
-
----
-
-**Rodrigo Leite -** *Software Engineer*

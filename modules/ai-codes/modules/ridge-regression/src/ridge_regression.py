@@ -1,3 +1,8 @@
+########################################################
+# Rodrigo Leite - drigols                              #
+# Last update: 22/09/2021                              #
+########################################################
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
@@ -16,10 +21,10 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 model = LinearRegression()
 model.fit(x_train, y_train)
 r2 = model.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos de Regressão Linear: {0}'.format(r2))
+print('Coefficient of Determination R^2 for Linear Regression Algorithm: {0}'.format(r2))
 
 # Ridge Regression
 ridgeModel = Ridge(alpha=1.0) # Alpha = Learning Rate.
 ridgeModel.fit(x_train, y_train)
 ridgeR2 = ridgeModel.score(x_test, y_test)
-print('Coeficiente de Determinação R^2 para o Algoritmos Ridge Regression: {0}'.format(ridgeR2))
+print('Coefficient of Determination R^2 for Ridge Regression Algorithm: {0}'.format(ridgeR2))

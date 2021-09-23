@@ -1,3 +1,8 @@
+########################################################
+# Rodrigo Leite - drigols                              #
+# Last update: 22/09/2021                              #
+########################################################
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from matplotlib import pyplot as plt
@@ -14,10 +19,6 @@ model.fit(x_train, y_train)
 
 a_coeff = model.coef_ # Angular Coefficient - m
 l_coeff = model.intercept_ # Linear Coefficient - b
-
-# Coefficient of Determination: R^2 / R-Squared.
-r2 = model.score(x_test, y_test)
-print('Coefficient of Determination: R^2: {0}'.format(r2))
 
 plt.figure(figsize=(10, 7))
 plt.subplot(211)

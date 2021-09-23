@@ -1,3 +1,8 @@
+########################################################
+# Rodrigo Leite - drigols                              #
+# Last update: 22/09/2021                              #
+########################################################
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from matplotlib import pyplot as plt
