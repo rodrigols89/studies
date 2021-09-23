@@ -13,12 +13,13 @@
  - [08 - Taxa de Aprendizagem (Learning Rate)](#08)
  - [09 - Aplicando o Método do Gradiente Descendente na prática](#09)
  - [10 - Tentando fazer previsões (predict)](#10)
- - [11 - Regressão Linear com Scikit-Learn](#11)
-   - [11.1 - Instalando o Scikit-Learn e salvando no ambiente virtual](#11-1)
-   - [11.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn](#11-2)
-   - [11.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")](#11-3)
-   - [11.4 - Dividindo os dados em Treino e Teste com Scikit-Learn](#11-4)
-   - [11.5 - Tentando fazer previsões (predict) com Scikit-Learn](#11-5)
+ - [11 - Interpolação vs Extrapolação](#11)
+ - [12 - Regressão Linear com Scikit-Learn](#12)
+   - [12.1 - Instalando o Scikit-Learn e salvando no ambiente virtual](#12-1)
+   - [12.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn](#12-2)
+   - [12.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")](#12-3)
+   - [12.4 - Dividindo os dados em Treino e Teste com Scikit-Learn](#12-4)
+   - [12.5 - Tentando fazer previsões (predict) com Scikit-Learn](#12-5)
 
 ---
 
@@ -822,15 +823,43 @@ Student with grade 85 may have 121083 salary approximately
 
 <div id="11"></div>
 
-## 11 - Regressão Linear com Scikit-Learn
+## 11 - Interpolação vs Extrapolação
+
+No exemplo acima nós estamos procurando um valor dentro do nosso conjunto de dados. Isso é o que nós conhecemos como **Interpolação**.
+
+**Não entendeu?**  
+Vamos ver isso visualmente então..
+
+**Interpolação:**  
+Interpolação é quando encontramos um valor dentro de nosso conjunto de pontos de dados:
+
+![image](images/interpolate.svg)
+
+Aqui, usamos *interpolação* linear para estimar as vendas a 21 °C.
+
+**Extrapolação:**  
+Extrapolação é quando encontramos um valor fora de nosso conjunto de pontos de dados:
+
+![image](images/extrapolate.svg)  
+
+Aqui, usamos a *extrapolação* linear para estimar as vendas a 29 °C (que é maior do que qualquer valor que temos).
+
+**Cuidado:**  
+A extrapolação pode dar resultados enganosos porque estamos em um "território desconhecido".
+
+---
+
+<div id="12"></div>
+
+## 12 - Regressão Linear com Scikit-Learn
 
 Ok, até aqui já vimos todas essas bruxarias matemáticas e teóricas, mas como resolver isso de uma maneira mais simples?
 
 Graças ao Python e a maravilhosa comunidade **Open-Source** nós temos a biblioteca [Scikit-Learn](https://scikit-learn.org/stable/index.html) que deixa todo esse trabalho **MUITO FÁCIL**!
 
-<div id="11-1"></div>
+<div id="12-1"></div>
 
-## 11.1 - Instalando o Scikit-Learn e salvando no ambiente virtual
+## 12.1 - Instalando o Scikit-Learn e salvando no ambiente virtual
 
 Vamos começar instalando a biblioteca:
 
@@ -862,9 +891,9 @@ if __name__ =='__main__':
 Scikit-Learn Version: 0.23.1
 ```
 
-<div id="11-2"></div>
+<div id="12-2"></div>
 
-## 11.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn
+## 12.2 - Criando um conjunto de dados aleatório (para teste) com Scikit-Learn
 
 Ótimo, tudo lindo e maravilhoso a nossa disposição! Mas como eu crio um exemplo de **Regressão Linear**?  
 Simples, primeiro vamos criar um conjunto de dados aleatórios (mesmo sem sentido) para representar o nosso conjunto de dados:
@@ -910,9 +939,9 @@ x, y = make_regression(n_samples=samples, n_features=variavel_numbers, noise=n_n
  - Os valores aleatórios criados para o nosso **eixo-x**;
  - E os seus correspondente no **eixo-y**.
 
-<div id="11-3"></div>
+<div id="12-3"></div>
 
-## 11.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")
+## 12.3 - Criando uma reta de melhor ajuste com Scikit-Learn (+Pegando os melhores valores para "m" e "b")
 
 Ótimo, agora voltando para o nosso problema (Regressão Linear):
 
@@ -995,9 +1024,9 @@ x = x[0]
 b = l_coeff
 ```
 
-<div id='11-4'></div>
+<div id='12-4'></div>
 
-## 11.4 - Dividindo os dados em Treino e Teste com Scikit-Learn
+## 12.4 - Dividindo os dados em Treino e Teste com Scikit-Learn
 
 Uma coisa que vocês tem que entender primeiro é que os modelos de **Machine Learning** aprendem a partir de dados. Sabendo disso é interessante dividir nosso conjunto de dados em **Dados de Treino** & **Dados de Teste**.
 
@@ -1098,9 +1127,9 @@ Agora por fim, nós vamos treinar o nosso módelo apenas com os dados de treino 
 model.fit(x_train, y_train)
 ```
 
-<div id='11-5'></div>
+<div id='12-5'></div>
 
-## 11.5 - Tentando fazer previsões (predict) com Scikit-Learn
+## 12.5 - Tentando fazer previsões (predict) com Scikit-Learn
 
 Ótimo, até então nós fizemos vários exemplos de **Regressão Linear**, mas como tentar fazer previsões com os nossos modelos com Scikit-Learn?
 
