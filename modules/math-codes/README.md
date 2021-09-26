@@ -1,70 +1,144 @@
-# Matemática
+# Math
 
 ![title](res/math-logo.gif)
 
-# Conteúdo
+# Contents
 
- - **Algebra:**
+ - [Algebra](#algebra)
+ - [Geometry](#geometry)
+ - [Trigonometry](#trigonometry)
+ - [Statistics and Probability](#statistics-probability)
+ - [Linear Algebra](#linear-algebra)
+ - [Differential Calculus](#differential-calculus)
+ - [Integral Calculus](#integral-calculus)
+ - [Differential Equations](#differential-equations)
+ - [Multivariable Calculus](#multivariable-calculus)
+ - [Tips and Tricks](#tips-tricks)
+ - [Useful Libraries](#useful-libraries)
+ - [Project Settings](#settings)
+
+---
+
+<div id="algebra"></div>
+
+## Algebra
+
    - [Introdução às equações](modules/algebra/intro-to-equations)
    - [Equações Lineares](modules/algebra/linear-equations)
    - [Sistemas de Equações](modules/algebra/systems-of-equations)
    - [Potenciação, Radicais e Logaritmos](modules/algebra/exponentials-radicals-and-logarithms)
    - [Funções](modules/algebra/functions)
- - **Geometria:**
-   - [x](#)
- - **Trigonometria:**
-   - [x](#)
- - **Estatistica & Probabilidade:**
-   - [Visualizando dados com Gráficos](modules/statistics-and-probability/visualizing-data-with-graphs/)
-   - [Dados & Visualização de Dados](modules/statistics-and-probability/data-and-data-visualization/)
-   - [Fundamentos de Estatísticas](modules/statistics-and-probability/statistics-fundamentals)
-   - [Comparando dados](modules/statistics-and-probability/comparing-data/)
-   - [Probabilidade](modules/statistics-and-probability/probability/)
-   - [Revisão - Média, Mediana, Moda e Intervalo(range)](modules/statistics-and-probability/review-mean-median-mode-range)
- - **Algebra Linear:**
-   - [Introdução às matrizes](modules/linear-algebra/intro-to-matrices)
-   - [Introdução aos vetores](modules/linear-algebra/intro-to-vectors)
- - **Calculo Diferencial:**
-   - [Taxa de variação](modules/differential-calculus/rate-of-change)
-   - [Limites](modules/differential-calculus/limits)
-   - [Derivadas (diferenciação)](modules/differential-calculus/derivatives)
-   - [Máximos & Mínimos de uma Função](modules/differential-calculus/max-min-functions)
- - **Calculo Integral:**
-   - [x](#)
- - **Equações Diferenciais:**
-   - [x](#)
- - **Cálculo com Múltiplas Variáveis (Cálculo Multivariável):**
-   - [x](#)
- - **Dicas & Truques:**
-   - [O Número Pi (π)](modules/tips-and-tricks/pi-number)
-   - [O Número de Euler (e)](modules/tips-and-tricks/e-number)
-   - [Somatórios - Σ](modules/tips-and-tricks/summation)
- - **Bibliotecas Úteis:**
-   - [NumPy](modules/useful-libraries/numpy)
-   - [Pandas](modules/useful-libraries/pandas)
-   - [Matplotlib](modules/useful-libraries/matplotlib)
 
 ---
 
-## Configurações do Projeto
+<div id="geometry"></div>
 
-Para usar o projeto é muito simples, basta instalar os requisitos em [requirements.txt](requirements.txt):
+## Geometry:
 
-**Configurando o virtualenv:**  
+---
+
+<div id="trigonometry"></div>
+
+## Trigonometry
+   - [x](#)
+
+---
+
+<div id="statistics-probability"></div>
+
+## Statistics and Probability
+
+ - **Dados:**
+   - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
+ - **Data visualization:**
+   - [Gráfico de Barras (Bar Charts)](modules/statistics-and-probability/bar-chart.md)
+   - [Histograma](modules/statistics-and-probability/histogram.md)
+   - [Gráficos de Pizza (Pie Charts)](modules/statistics-and-probability/pie-chart.md)
+   - [Gráficos de Dispersão (Scatter Plots)](modules/statistics-and-probability/scatter-plots.md)
+   - [Gráficos de Linhas (Line Charts)](modules/statistics-and-probability/line-charts.md)
+
+---
+
+<div id="linear-algebra"></div>
+
+## Linear Algebra
+
+ - **Matrices:**
+   - [Introdução às matrizes](modules/linear-algebra/intro-to-matrices)
+ - **Vectors:**
+   - [Introdução aos vetores](modules/linear-algebra/intro-to-vectors)
+
+---
+
+<div id="differential-calculus"></div>
+
+## Differential calculus
+
+ - **Rate of change:**
+   - [Taxa de variação](modules/differential-calculus/rate-of-change)
+ - **Limits:**
+   - [Limites](modules/differential-calculus/limits)
+ - **Derivatives:**
+   - [Derivadas (diferenciação)](modules/differential-calculus/derivatives)
+   - [Máximos & Mínimos de uma Função](modules/differential-calculus/max-min-functions)
+
+---
+
+<div id="integral-calculus"></div>
+
+## Integral Calculus
+
+---
+
+<div id="differential-equations"></div>
+
+## Differential Equations
+
+---
+
+<div id="multivariable-calculus"></div>
+
+## Multivariable Calculus
+
+---
+
+<div id="tips-tricks"></div>
+
+## Tips and Tricks
+
+ - [O Número Pi (π)](modules/tips-and-tricks/pi-number)
+ - [O Número de Euler (e)](modules/tips-and-tricks/e-number)
+ - [Somatórios - Σ](modules/tips-and-tricks/summation)
+
+---
+
+<div id="useful-libraries"></div>
+
+## Useful Libraries
+
+ - [NumPy](modules/useful-libraries/numpy)
+ - [Pandas](modules/useful-libraries/pandas)
+ - [Matplotlib](modules/useful-libraries/matplotlib)
+
+---
+
+<div id='settings'></div>
+
+## Project Settings
+
+To use the project codes just install [requirements.txt](requirements.txt):
+
+**virtualenv settings:**  
 ```python
 where python7 # find python source.
 
 virtual --python="python-source" .
-source Script/Active
+source Script/Active #Windows
 ```
 
-**Instalando os requisitos:**  
+**Installing the Requirements:**  
 ```python
 pip install --upgrade -r requirements.tx
 ```
 
-**Agora, seja feliz!!!** 😬
-
----
-
-**Rodrigo Leite -** *Software Engineer*
+**Now, Be Happy!!!** 😬
