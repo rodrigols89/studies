@@ -53,6 +53,7 @@
  - **Data visualization:**
    - [Gráfico de Barras (Bar Charts)](modules/statistics-and-probability/bar-chart.md)
    - [Histograma](modules/statistics-and-probability/histogram.md)
+   - [Gráficos de pizza (Pie Charts)](modules/statistics-and-probability/pie-chart.md)
 
 ---
 
