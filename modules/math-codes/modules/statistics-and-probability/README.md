@@ -6,61 +6,7 @@
 
 ---
 
-Gráficos de barras funcionam bem para comparar valores numéricos categóricos ou discretos. __Quando você precisa comparar valores `quantitativos contínuos`, você pode usar um estilo semelhante de gráfico chamado histograma__.
-
-> Histogramas diferem dos gráficos de barras porque que eles agrupam os valores contínuos em intervalos ou faixas - __Portanto, o gráfico não mostra uma barra para cada valor individual, mas sim uma barra para cada intervalo de valores categorizados.__
-
-__NOTE:__  
-Como essas faixas representam dados contínuos em vez de dados discretos, as barras não são separadas por uma lacuna. Normalmente, um histograma é usado para mostrar a frequência relativa dos valores no conjunto de dados.
-
-[histogram.py](src/histogram.py)
-```python
-import statsmodels.api as sm # Importa a biblioteca statsmodels.
-from matplotlib import pyplot as plt # Importa a bibliote pyplot do Matplotlib.
-
-df = sm.datasets.get_rdataset('GaltonFamilies', package='HistData').data
-
-df['father'].plot.hist(title='Alturas dos Pai')
-plt.xlabel('Altura')
-plt.ylabel('Frequência')
-plt.savefig('../images/plot-03.png', format='png')
-plt.show()
-```
-
-**OUTPUT:**  
-![image](images/plot-03.png)
-
-O histograma mostra que as alturas mais freqüentes tendem a estar na faixa intermediária. Há menos pais extremamente baixos ou extremamente altos.
-
-<div id='02-3'></div>
-
-### 02.3 - Gráficos de pizza - (Pie Charts)
-
-Gráficos de pizza são __outra maneira de comparar quantidades relativas de categorias__. Eles não são comumente usados por cientistas de dados, mas podem ser úteis em muitos contextos de negócios com números gerenciáveis ​​de categorias, porque eles não apenas facilitam a comparação de quantidades relativas por categorias; eles também mostram essas quantidades como uma proporção de todo o conjunto de dados.
-
-[pie_chart.py](src/pie_chart.py)
-```python
-from matplotlib import pyplot as plt
-import statsmodels.api as sm
-
-df = sm.datasets.get_rdataset('GaltonFamilies', package='HistData').data
-genderCounts = df['gender'].value_counts() # Conta e pega os valores de gêneros - male/female
-
-genderCounts.plot(kind='pie', title='Gender Counts', figsize=(6,6))
-plt.legend()
-plt.savefig('../images/plot-04.png', format='png')
-plt.show()
-```
-
-**OUTPUT:**  
-![image](images/plot-04.png)
-
-Observe que o gráfico inclui uma legenda para deixar claro qual categoria cada área colorida no __gráfico de pizza(Pie Charts)__ representa.  
-A partir deste gráfico, você pode ver que os homens representam um pouco mais da metade do número total de crianças; com as fêmeas representando o resto.
-
-<div id='02-4'></div>
-
-### 02.4 - Gráficos de dispersão - (Scatter Plots)
+### 02.4 - Gráficos de dispersão (Scatter Plots)
 
 __Muitas vezes você vai querer comparar valores quantitativos__. Isso pode ser especialmente útil em cenários de ciência de dados em que você está explorando dados antes de criar um modelo de `Machine Learning(Aprendizado de máquina)`, pois ele pode ajudar a identificar relações aparentes entre recursos numéricos.
 
