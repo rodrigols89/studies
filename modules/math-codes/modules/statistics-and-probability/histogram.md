@@ -3,7 +3,7 @@
 ## Conteúdo
 
  - [01 - Gráfico de Barras vs Histograma](#01)
- - [02 - Histograma na prática com Python, Pandas, Matplotlib e Statsmodels](#02)
+ - [02 - Histograma na prática com Python, Matplotlib e Statsmodels](#02)
 
 ---
 
@@ -22,9 +22,9 @@ Como essas faixas representam dados contínuos em vez de dados discretos, as bar
 
 <div id="02"></div>
 
-## 02 - Histograma na prática com Python, Pandas, Matplotlib e Statsmodels
+## 02 - Histograma na prática com Python, Matplotlib e Statsmodels
 
-Agora vamos ver como criar um **Histograma** na prática com Python, Pandas, Matplotlib e Statsmodels. Para isso vamos utilizar o Dataset do **Galton**
+Agora vamos ver como criar um **Histograma** na prática com Python, Matplotlib e Statsmodels. Para isso vamos utilizar o Dataset do **Galton**:
 
 [histogram.py](src/histogram.py)
 ```python

@@ -3,6 +3,7 @@
 ## Conteúdo
 
  - [01 - Introdução ao Gráficos de pizza (Pie Charts)](#01)
+ - [02 - Gráficos de pizza (Pie Charts) na prática com Python, Matplotlib e Statsmodels](#02)
 
 ---
 
@@ -11,6 +12,14 @@
 ## 01 - Introdução ao Gráficos de pizza (Pie Charts)
 
 Gráficos de pizza são __outra maneira de comparar quantidades relativas de categorias__. Eles não são comumente usados por cientistas de dados, mas podem ser úteis em muitos contextos de negócios com números gerenciáveis ​​de categorias, porque eles não apenas facilitam a comparação de quantidades relativas por categorias; eles também mostram essas quantidades como uma proporção de todo o conjunto de dados.
+
+---
+
+<div id="02"></div>
+
+## 02 - Gráficos de pizza (Pie Charts) na prática com Python, Matplotlib e Statsmodels
+
+Agora vamos ver como criar um **Gráficos de pizza (Pie Charts)** na prática com Python, Matplotlib e Statsmodels. Para isso vamos utilizar o Dataset do **Galton**:
 
 [pie_chart.py](src/pie_chart.py)
 ```python
