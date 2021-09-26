@@ -48,9 +48,9 @@
 
 ## Statistics and Probability
 
- - Dados:
+ - **Dados:**
    - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
- - Data visualization:
+ - **Data visualization:**
    - [Gráfico de Barras (Bar Charts)](modules/statistics-and-probability/bar-chart.md)
    - [Histograma](modules/statistics-and-probability/histogram.md)
 
