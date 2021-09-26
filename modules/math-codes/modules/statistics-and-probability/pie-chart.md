@@ -1,4 +1,4 @@
-# Gráficos de pizza (Pie Charts)
+# Gráficos de Pizza (Pie Charts)
 
 ## Conteúdo
 

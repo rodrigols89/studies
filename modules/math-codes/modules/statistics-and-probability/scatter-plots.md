@@ -1,4 +1,4 @@
-# Gráficos de dispersão (Scatter Plots)
+# Gráficos de Dispersão (Scatter Plots)
 
 ## Conteúdo
 
