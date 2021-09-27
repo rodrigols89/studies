@@ -1,6 +1,16 @@
-from create_dataframe import create_df
+########################################################
+# Rodrigo Leite - drigols                              #
+# Last update: 27/09/2021                              #
+########################################################
+
+def create_df(**df):
+  my_df = {}
+  import pandas as pd
+  my_df = pd.DataFrame(df)
+  return my_df
 
 if __name__ =='__main__':
+
   import matplotlib.pyplot as plt
 
   sleep_search = {
@@ -12,9 +22,10 @@ if __name__ =='__main__':
   print(my_df)
 
   plt.plot(my_df, marker='o')
-  plt.title("Comparação entre as amostras (variáveis) A & B")
-  plt.xlabel("Dias da Semana - x")
-  plt.ylabel("Horas dormida - x")
+  plt.title("A vs B")
+  plt.xlabel("Days of the week - x")
+  plt.ylabel("Sleeped hours - y")
   plt.legend(['A', 'B'])
-  plt.savefig('../images/plot-01.png', format='png')
+  plt.grid()
+  plt.savefig('../images/mean-median.png', format='png')
   plt.show()
