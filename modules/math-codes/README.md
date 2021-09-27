@@ -58,7 +58,7 @@
    - [Gráficos de Linhas (Line Charts)](modules/statistics-and-probability/line-charts.md)
  - **Fundamentals of Statistics:**
    - [Medidas de Tendência Central (mean)](modules/statistics-and-probability/mean.md)
-   - [](modules/statistics-and-probability/)
+   - [Mediana (median)](modules/statistics-and-probability/median.md)
    - [](modules/statistics-and-probability/)
    - [](modules/statistics-and-probability/)
    - [](modules/statistics-and-probability/)

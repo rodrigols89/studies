@@ -102,7 +102,7 @@ Salary mean:  71000.0
 Então, __71.000__ é realmente o valor central? Ou, em outras palavras, seria razoável para um graduado desta escola esperar ganhar 71 mil dólares? Afinal, esse é o salário médio de um graduado desta escola.
 
 **NOTE:**  
-> Se você observar de perto os salários, verá que, dos sete ex-alunos, seis ganham menos do que o salário médio. ***Os dados são distorcidos* pelo fato de que Rosie conseguiu encontrar um trabalho bem mais bem remunerado do que seus colegas de classe**. Como resolver isso ? - *Mediana (median)*.
+> Se você observar de perto os salários, verá que, dos sete ex-alunos, seis ganham menos do que o salário médio. ***Os dados são distorcidos* pelo fato de que Rosie conseguiu encontrar um trabalho bem mais remunerado do que seus colegas de classe**. Como resolver isso ? - *Mediana (median)*.
 
 ---
 
