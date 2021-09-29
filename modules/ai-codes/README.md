@@ -37,6 +37,7 @@
          - Logistic Regression
            - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
          - Decision Trees
+           - [Introdução a Decision trees (Árvores de Decisão)](modules/decision-trees/intro-to-decision-trees.md)
          - SVM - (Support Vector Machine)
          - Naive Bayes
          - K-Nearest Neighbors - (KNN)
