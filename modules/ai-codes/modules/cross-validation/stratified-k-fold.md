@@ -1,7 +1,7 @@
 **NOTE:**  
 É muito importante que antes de você aprender como funciona o algoritmos de validação cruzada **Stratified K-Fold** você já saiba como funciona o algoritmo de validação cruzada [K-Fold](k-fold.md).  
 
-# Stratified K-Fold 
+# Stratified K-Fold
 
 ## Conteúdo
 
