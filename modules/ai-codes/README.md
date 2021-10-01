@@ -132,6 +132,8 @@
  - **Cross-Validation:**
    - [K-Fold](modules/cross-validation/k-fold.md)
    - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
+ - **Hyperparameter Tuning:**
+   - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
 
 ---
 
