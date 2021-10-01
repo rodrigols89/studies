@@ -7,6 +7,8 @@
  - [03 - Validação Cruzada: K-Fold](#03)
  - [04 - K-Fold na Prática](#k-fold-in-practice)
 
+---
+
 <div id="01"></div>
 
 ## 01 - Introdução a divisão de dados
@@ -26,6 +28,8 @@ Vale dar enfâse que os dados de **treino** e **teste** são escolhidos **aleat�
  - 30mil vão ser escolhidas **aleatóriamente** para **teste**;
  - 70mil vão ser escolhidas **aleatóriamente** para **treino**.
 
+---
+
 <div id="02"></div>
 
 ## 02 - O problema da divisão dos dados
@@ -38,6 +42,8 @@ Agora pensem comigo... Se eu dividir o mesmo modelo novamente com a mesma porcen
 Os dados são divididos **aleatóriamente** para **treino** e **teste**. Ou seja, os dados que antes eram utilizados para teste agora podem está sendo utilizados para treino e vice-versa.
 
 Então, temos um probleminha... Como podemos resolver isso?
+
+---
 
 <div id="03"></div>
 
@@ -77,6 +83,8 @@ Pensando bem, nós devemos ter sempre muita cuatela quando aplicarmos essa abord
 Outra observação muito importante é que a **Validação Cruzada K-Fold** não retorma um modelo (Por exemplo, Regressão Linear) pronto para nós utilizarmos. Ele retorna os **scores** de cada subdivisão, ou seja, quão performático cada uma é.
 
 Isso é interessante para comparar a performance de vários modelos e ver qual é mais performático.
+
+---
 
 <div id="k-fold-in-practice"></div>
 

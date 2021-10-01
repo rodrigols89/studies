@@ -131,6 +131,9 @@
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
    - [K-Fold](modules/cross-validation/k-fold.md)
+   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
+ - **Hyperparameter Tuning:**
+   - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
 
 ---
 
