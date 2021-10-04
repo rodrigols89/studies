@@ -4,6 +4,7 @@
 
  - [01 - Classificando desodorantes com o Dataset "Deodorant Instant Liking Data"](#01)
    - [01.1 - Escolhendo melhores Hiper-parâmetros com a função GridSearchCV](#01-1)
+ - [02 - Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn](#02)
 
 ---
 
@@ -261,6 +262,200 @@ Regularization: l2
 
 **NOTE:**  
 Veja que agora nós temos uma **accuracy** um pouco melhor, mas foi tão pouco que às vezes seja irrelevante. Isso porque nós já estavamos com os valores quase ideais se comparado com os de antes.
+
+---
+
+<div id="02"></div>
+
+## 02 - Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn
+
+Bem, como o capítulo diz vamos classificar se mulheres tem ou não câncer de mama com o Dataset [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html).
+
+O código inicial vai ser o seguinte:
+
+[load_breast_cancer.py](src/load_breast_cancer.py)
+```python
+from sklearn.datasets import load_breast_cancer
+import pandas as pd
+
+pd.set_option('display.max_columns', 30)
+
+df = load_breast_cancer() # Dataset instance.
+
+x = pd.DataFrame(df.data, columns=[df.feature_names])
+y = pd.Series(df.target)
+
+print(x.head(10))
+```
+
+**OUTPUT:**  
+```python
+A SAÍDA VAI SER UM POUCO GRANDE, ENTÃO VOU DEIXAR VOCÊ VER NO SEU COMPUTADOR MESMO...
+```
+
+Partindo do pressuposto que você já viu e analisou todas as colunas, então agora você pode dar uma olhadinha na variável tardet (variável dependente):
+
+[load_breast_cancer.py](src/load_breast_cancer.py)
+```python
+print("Target values:\n", y.head(50))
+```
+
+**OUTPUT:**  
+```python
+Target values:
+ 0     0
+1     0
+2     0
+3     0
+4     0
+5     0
+6     0
+7     0
+8     0
+9     0
+10    0
+11    0
+12    0
+13    0
+14    0
+15    0
+16    0
+17    0
+18    0
+19    1
+20    1
+21    1
+22    0
+23    0
+24    0
+25    0
+26    0
+27    0
+28    0
+29    0
+30    0
+31    0
+32    0
+33    0
+34    0
+35    0
+36    0
+37    1
+38    0
+39    0
+40    0
+41    0
+42    0
+43    0
+44    0
+45    0
+46    1
+47    0
+48    1
+49    1
+```
+
+A classificação é basicamente a seguinte:
+
+ - **Zero (0)** para quem não tem câncer de mama;
+ - **Um (1)** para quem tem câncer de mama.
+
+Agora como eu posso ver as dimensões do meu Dataset?
+
+[load_breast_cancer.py](src/load_breast_cancer.py)
+```python
+print("Dataframe shape: {0}\nTarget variable shape: {1}".format(x.shape, y.shape))
+```
+
+**OUTPUT:**  
+```python
+Dataframe shape: (569, 30) # 569 statistical sample + 30 columns
+Target variable shape: (569,) # Classification result.
+```
+
+> Ok, mas como eu consigo a melhor **accuracy** para o meu modelo?
+
+Bem, para isso nós podemos utilizar as funções de validações cruzada em conjunto com a procura dos melhores hiper-parâmetros.
+
+Vai ficar assim:
+
+[load_breast_cancer-v2.py](src/load_breast_cancer-v2.py)
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_breast_cancer
+import pandas as pd
+import numpy as np
+
+pd.set_option('display.max_columns', 30)
+
+df = load_breast_cancer() # Dataset instance.
+x = pd.DataFrame(df.data, columns=[df.feature_names])
+y = pd.Series(df.target)
+
+C_value = np.array([0.01, 0.1, 0.5, 1, 2, 3, 5, 10, 20, 50, 100])
+regularization = ['l1', 'l2']
+grid_values = {'C': C_value, 'penalty': regularization}
+
+model = LogisticRegression(max_iter=2000)
+
+logistic_regression_grid = GridSearchCV(estimator = model, param_grid = grid_values, cv = 5)
+logistic_regression_grid.fit(x, y)
+
+print("Best Accuracy:", logistic_regression_grid.best_score_)
+print("Best C value:", logistic_regression_grid.best_estimator_.C)
+print("Regularization:", logistic_regression_grid.best_estimator_.penalty)
+```
+
+**OUTPUT:**  
+```python
+Best Accuracy: 0.9560937742586555
+Best C value: 100.0
+Regularization: l2
+```
+
+O nosso retorno foi uma **accuracy de 95%** e o **melhor hiper-parâmetro foi 100**. Vejam que foi um pouco grande a diferença do hiper-parâmetro 100 para o seu antecessor (50).
+
+**Será que ele não pode ser melhorado com valores mais próximos de 100?**  
+É isso que vamos fazer, rodar o mesmo modelo, porém, com hiper-parâmetros ligeiramente próximos de 100 *(para menos e para mais)*.
+
+[load_breast_cancer-v3.py](src/load_breast_cancer-v3.py)
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_breast_cancer
+import pandas as pd
+import numpy as np
+
+pd.set_option('display.max_columns', 30)
+
+df = load_breast_cancer() # Dataset instance.
+x = pd.DataFrame(df.data, columns=[df.feature_names])
+y = pd.Series(df.target)
+
+C_value = np.array([95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105])
+regularization = ['l1', 'l2']
+grid_values = {'C': C_value, 'penalty': regularization}
+
+model = LogisticRegression(max_iter=2000)
+
+logistic_regression_grid = GridSearchCV(estimator = model, param_grid = grid_values, cv = 5)
+logistic_regression_grid.fit(x, y)
+
+print("Best Accuracy:", logistic_regression_grid.best_score_)
+print("Best C value:", logistic_regression_grid.best_estimator_.C)
+print("Regularization:", logistic_regression_grid.best_estimator_.penalty)
+```
+
+**OUTPUT:**  
+```python
+Best Accuracy: 0.9578481602235678
+Best C value: 97
+Regularization: l2
+```
+
+**NOTE:**  
+Vejam que agora nós temos uma melhor **accuracy** *(com uma diferença insignificante)* e um hiper-parâmetro melhor que foi o 97.
 
 ---
 
