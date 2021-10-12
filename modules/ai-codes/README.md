@@ -37,6 +37,7 @@
          - Logistic Regression
            - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
            - [Regressão Logística com Scikit-Learn](modules/logistic-regression/lr-w-sklearn.md)
+           - [Confusion Matrix](modules/logistic-regression/confusion-matrix.md)
          - Decision Trees
            - [Introdução a Decision trees (Árvores de Decisão)](modules/decision-trees/intro-to-decision-trees.md)
          - SVM - (Support Vector Machine)
