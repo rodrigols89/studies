@@ -42,7 +42,8 @@
            - [Introdução a Decision trees (Árvores de Decisão)](modules/decision-trees/intro-to-decision-trees.md)
          - SVM - (Support Vector Machine)
          - Naive Bayes
-         - K-Nearest Neighbors - (KNN)
+         - K-Nearest Neighbors (KNN)
+           - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](modules/knn/intro-to-knn.md)
      - __Unsupervised Learning:__
        - __Clustering:__
          - Fuzzy C-Means
