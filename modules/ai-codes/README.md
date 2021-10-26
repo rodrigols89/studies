@@ -44,6 +44,7 @@
          - Naive Bayes
          - K-Nearest Neighbors (KNN)
            - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](modules/knn/intro-to-knn.md)
+           - [KNN com Scikit-Learn](modules/knn/knn-w-sklearn.md)
      - __Unsupervised Learning:__
        - __Clustering:__
          - Fuzzy C-Means
