@@ -2,11 +2,11 @@
 
 ![logo](res/cpp-logo.svg)
 
-## Contents
+## Conteúdo
 
- - [Fundamentos Básicos](modules/basics)
- - [Entrada e Saída em C++ (I/O)](modules/io)
-
----
-
-**Rodrigo Leite -** *Software Engineer*
+ - **Fundamentos:**
+   - [Fundamentos Básicos](modules/basics)
+ - **Entrada/Saída:**
+   - [Entrada e Saída em C++ (I/O)](modules/io)
+ - **Debug (Debugging):**
+   - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
