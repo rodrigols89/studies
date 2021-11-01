@@ -11,3 +11,4 @@
  - **Conditionals:**
    - [Estrutura condicional if](modules/conditionals/if.md)
    - [Estrutura condicional elif](modules/conditionals/elif.md)
+   - [Comparadores lógicos "in" e "not" em estruturas condicionais](modules/conditionals/in-not.md)
