@@ -15,3 +15,6 @@
  - **Strings:**
    - [Introdução a strings em Python](modules/strings/intro-to-strings.md)
    - [Função len()](modules/strings/len-function.md)
+ - **Object-Oriented Programming (OOP):**
+   - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
+   - [Métodos Construtores](modules/oop/construtors.md)
