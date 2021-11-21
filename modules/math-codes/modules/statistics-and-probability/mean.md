@@ -34,7 +34,7 @@ Agora, alguns dos ex-alunos podem ganhar muito e outros podem ganhar menos; mas 
 
 ## 02 - Média (mean)
 
-Uma maneira comum de definir o valor central é usar a média , geralmente chamada de *mean/average*. Isso é calculado como:
+Uma maneira comum de definir o valor central é usar a média, geralmente chamada de *mean/average*. Isso é calculado como:
 
  - A soma dos valores no conjunto de dados;
  - Dividido pelo número de observações no conjunto de dados.
