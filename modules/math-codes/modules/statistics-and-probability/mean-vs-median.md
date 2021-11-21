@@ -27,7 +27,7 @@ O cálculo da média para esse exemplo vai ser algo parecido com isso:
 O interessante de você trabalhar com o método da média é que ela considera todos os valores **(diferente da mediana que depois do valor do meio os dados são ignorados)**.
 
 **Mas isso tem um impacto muito grande?**  
-Claro, vamos demonstrar isso agora. Suponha que você tenha 2 amostras de 2 pessoas com suas respectivas horas dorminas por semana *(Vamos dá os dados já ordenados porque para trabalhar com a mediana primeiro devemos ordenar os dados)*:
+Claro, vamos demonstrar isso agora. Suponha que você tenha 2 amostras de 2 pessoas com suas respectivas horas dormidas por semana *(Vamos dá os dados já ordenados porque para trabalhar com a mediana primeiro devemos ordenar os dados)*:
 
 **PESSOA "A":**  
 | Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
@@ -46,10 +46,10 @@ Veja que o nosso valor médio de uma Mediana para ambas as amostras das pessoas 
 
 **NOTE:**  
 E o que isso que dizer?
- - **1ª -** Isso que dizer que os dados **não são bem distribuídos**;
+ - **1ª -** Isso que dizer que os dados **não estão bem distribuídos**;
  - **2ª -** Nesse caso seria melhor aplicar a *Média* - **Já que ela considera TODOS os valores de amostras**.
 
-Mas quando temos muitos dados para trabalhar talvez seja difícil ver essa diferença não é? Não porque nós temos os **plots** que nos dão uma ***abstração visual***.
+Mas quando temos muitos dados para trabalhar talvez seja difícil ver essa diferença não é? Não porque nós temos os **gráficos (plots)** que nos dão uma ***abstração visual***.
 
 Vamos criar um plot em Python para visualizar essas 2 amostras **A** e **B**:
 

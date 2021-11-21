@@ -5,7 +5,6 @@
  - [01 - Introdução e problema](#01)
  - [02 - Introdução à Mediana (median)](#02)
  - [03 - Calculando a mediana (median) na prática com Python e Pandas](#03)
- - [BONUS: Média vs Mediana](#bonus)
 
 ---
 
