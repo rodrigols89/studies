@@ -28,10 +28,6 @@ Uma boa *abordagem* para diferenciar **imagens** e **contêineres** é tentar pe
 **NOTE:**  
 A mesma imagem pode criar mais contêineres, assim, como uma classe pode ser utilizada para criar vários objetos.
 
-```
-Você pode ver todas as suas imagens com docker imagesenquanto você pode ver seus contêineres em execução com docker ps(e você pode ver todos os contêineres com docker ps -a).
-```
-
 ---
 
 <div id="02"></div>
