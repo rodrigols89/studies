@@ -8,5 +8,6 @@
 
  - **Docker Overview:**
    - [Arquitetura Docker (+Componentes)](modules/docker-architecture.md)
+   - [Docker Image vs Docker Container](modules/image-vs-container.md)
  - **Get Started:**
    - [](modules/)
