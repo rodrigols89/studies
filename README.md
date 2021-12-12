@@ -71,7 +71,8 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 ---
 
- - __Artificial Intelligence:__
+ - __Artificial Intelligence & Data Science:__
+   - [Bootcamp de Data Science do canal Stack (Outubro 2021)](modules/stack-bootcamp-ds-2021-10)
    - [Inteligência Artificial](modules/ai-codes)
 
 ---
