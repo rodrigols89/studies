@@ -11,6 +11,7 @@
  - [BONUS - Resumindo a distribuição de dados no Python](#13)
 
 ---
+
 ## 06 - Distribuição & densidade
 
 Agora que sabemos algo sobre encontrar o centro, podemos começar a explorar como os dados são distribuídos em torno dele (o centro). O que nos interessa aqui é entender a *"forma"* geral da distribuição de dados, de modo que possamos começar a ter uma ideia do que um valor *"típico"* poderia ser esperado.
