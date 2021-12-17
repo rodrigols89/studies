@@ -65,6 +65,7 @@
      - [Assimetria & Curtose](modules/statistics-and-probability/skewness-kurtosis.md)
      - [Distribuição Normal (De onde vem e Para que serve)](modules/statistics-and-probability/normal-distribution.md)
    - [Medidas de Variação (Intervalo, Percentil, Quartil, Boxplot & Outliers)](modules/statistics-and-probability/measures-of-variation.md)
+   - [Variância & Desvio Padrão](modules/statistics-and-probability/variance-and-standard-deviation.md)
 
 ---
 
