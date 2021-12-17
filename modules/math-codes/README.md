@@ -60,6 +60,7 @@
    - [Medidas de Tendência Central (mean)](modules/statistics-and-probability/mean.md)
    - [Mediana (median)](modules/statistics-and-probability/median.md)
    - [Média vs Mediana](modules/statistics-and-probability/mean-vs-median.md)
+   - [Moda (mode) e Dados Multimodais](modules/statistics-and-probability/mode.md)
    - [Distribuição Normal (De onde vem e Para que serve)](modules/statistics-and-probability/normal-distribution.md)
 
 ---
