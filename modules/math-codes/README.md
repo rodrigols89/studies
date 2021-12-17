@@ -63,7 +63,8 @@
    - [Moda (mode) e Dados Multimodais](modules/statistics-and-probability/mode.md)
    - [Distribuição & Densidade de dados](modules/statistics-and-probability/distribution-and-density.md)
      - [Assimetria & Curtose](modules/statistics-and-probability/skewness-kurtosis.md)
-   - [Distribuição Normal (De onde vem e Para que serve)](modules/statistics-and-probability/normal-distribution.md)
+     - [Distribuição Normal (De onde vem e Para que serve)](modules/statistics-and-probability/normal-distribution.md)
+   - [Medidas de Variação (Intervalo, Percentil, Quartil, Boxplot & Outliers)](modules/statistics-and-probability/measures-of-variation.md)
 
 ---
 

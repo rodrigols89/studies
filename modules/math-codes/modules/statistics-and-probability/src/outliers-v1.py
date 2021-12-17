@@ -15,7 +15,7 @@ df = pd.DataFrame(
   }
 )
 
-# Cria um plot/gráfico do tipo (kind) "box" a partir das horas trabalhas dos ex-alunos.
-df['Hours'].plot(kind='box', title='Weekly Hours Distribution', figsize=(10, 8))
-plt.savefig('../images/first-boxplot-01.png', format='png')
+# Cria um plot/gráfico do tipo(kind) "box" a partir dos salários dos ex-alunos.
+df['Salary'].plot(kind='box', title='Salary Distribution', figsize=(10, 8))
+plt.savefig('../images/first-boxplot-02.png', format='png')
 plt.show()
