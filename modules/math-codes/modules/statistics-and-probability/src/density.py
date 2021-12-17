@@ -1,13 +1,23 @@
-from create_dataframe import create_df
-import matplotlib.pyplot as plt
-import scipy.stats as stats
+########################################################
+# Rodrigo Leite - drigols                              #
+# Last update: 17/12/2021                              #
+########################################################
+
+def create_df(**df):
+  my_df = {}
+  import pandas as pd
+  my_df = pd.DataFrame(df)
+  return my_df
+
 
 if __name__ =='__main__':
 
+  import matplotlib.pyplot as plt
+  import scipy.stats as stats
 
   students = {
     'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic'],
-    'Salary':[50000,54000,50000,189000,59000,40000,59000]
+    'Salary':[50000, 54000, 50000, 189000, 59000, 40000, 59000]
   }
 
   my_df = create_df(**students)
@@ -19,5 +29,5 @@ if __name__ =='__main__':
   plt.plot(x, density(x)*5) # Cria a linha de densidade no plot.
   plt.axvline(salary.mean(), color='magenta', linestyle='dashed', linewidth=2) # Adiciona mean() lane no plot.
   plt.axvline(salary.median(), color='green', linestyle='dashed', linewidth=2) # Adiciona median() lane no plot.
-  plt.savefig('../images/plot-03.png', format='png')
+  plt.savefig('../images/density-01.png', format='png')
   plt.show()

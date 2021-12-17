@@ -1,3 +1,7 @@
+# Gráficos de Linhas (Line Charts)
+
+## Conteúdo
+
  - [06 - Distribuição & densidade](#07)
  - [07 - Assimetria & curtose](#08)
  - [08 - Medidas de variação (Intervalo, Percentil & Quartil)](#09)
