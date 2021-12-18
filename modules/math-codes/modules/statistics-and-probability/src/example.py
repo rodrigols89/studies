@@ -3,16 +3,17 @@
 # Last update: 17/12/2021                              #
 ########################################################
 
-import pandas as pd
-from scipy import stats
+def create_df(**df):
+  my_df = {}
+  import pandas as pd
+  my_df = pd.DataFrame(df)
+  return my_df
 
-df = pd.DataFrame(
-  {
+if __name__ =='__main__':
+  students = {
     'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic'],
-    'Salary':[50000,54000,50000,189000,55000,40000,59000],
-    'Hours':[41,40,36,30,35,39,40],
-    'Grade':[50,50,46,95,50,5,57]
+    'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000]
   }
-)
 
-print(stats.percentileofscore(df['Grade'], 50, 'rank'))
+  my_df = create_df(**students)
+  print(my_df)
