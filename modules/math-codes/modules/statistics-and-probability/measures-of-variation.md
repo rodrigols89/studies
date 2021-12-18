@@ -4,6 +4,7 @@
 
  - [01 - Introdução e problema](#01)
  - [02 - Intervalo (range)](#02)
+   - [02.1 - Calculando intervalos (range) sem importar bibliotecas externas](#02-1)
  - [03 - Percentil](#03)
  - [04 - Quartil](#04)
    - [04.1 - Pegando os 3 Quartils com a função quantile() do Pandas](#04-1)
@@ -76,11 +77,6 @@ Veja o código a seguir para ver como é simples:
 
 [test_interval.py](src/test_interval.py)
 ```python
-########################################################
-# Rodrigo Leite - drigols                              #
-# Last update: 17/12/2021                              #
-########################################################
-
 import pandas as pd
 
 df = pd.DataFrame(
@@ -115,6 +111,33 @@ O ***intervalo (range)*** é fácil de calcular, mas não é uma estatística pa
  - O intervalo (range) nos diz muito pouco sobre a posição comparativa de um valor individual dentro da distribuição.
 
 Por exemplo, Frederic marcou 57 em sua nota final na escola; que é uma boa pontuação (é mais do que todos, menos um de seus colegas); mas isso não é imediatamente aparente a partir de uma pontuação de 57 e alcance de 90.
+
+<div id='02-1'></div>
+
+## 02.1 - Calculando intervalos (range) sem importar bibliotecas externas
+
+Para esse exemplo vamos imaginar que recebemos um conjunto de dados referente a doações e precisamos saber o intervalo (range) dessas doações.
+
+O código vai ser o seguinte:
+
+[my_range.py](src/my_range.py)
+```python
+def find_range(numbers):
+  lowest = min(numbers)
+  highest = max(numbers)
+  r = highest-lowest
+  return lowest, highest, r
+
+if __name__ == '__main__':
+  donations = [100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200]    
+  lowest, highest, r = find_range(donations)
+  print('Menor doação: {0} | Maior doação: {1} | Intervalo(range): {2}'.format(lowest, highest, r))
+```
+
+**OUTPUT:**  
+```python
+Menor doação: 60 | Maior doação: 1200 | Intervalo(range): 1140
+```
 
 ---
 
