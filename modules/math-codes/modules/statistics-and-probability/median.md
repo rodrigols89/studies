@@ -5,6 +5,7 @@
  - [01 - Introdução e problema](#01)
  - [02 - Introdução à Mediana (median)](#02)
  - [03 - Calculando a mediana (median) na prática com Python e Pandas](#03)
+ - [04 - Encontrando a mediana sem importar funções externas (Da teoria a prática)](#04)
 
 ---
 
@@ -136,6 +137,114 @@ Salary median:  54000.0
 
 **NOTE:**  
 Veja que realmente bateu com a nossa tabela e cálculos.
+
+---
+
+<div id="04"></div>
+
+## 04 - Encontrando a mediana sem importar funções externas (Da teoria a prática)
+
+Encontrar a  __Mediana (Median)__ de uma coleção de números/dados é outro tipo de média:  
+
+ - **1ª -** Para encontrar a *mediana*, primeiro __ordenamos__ os números em __ordem crescente__;
+ - **2ª -** Se o tamanho da lista de números/dados for *ímpar*, o número no meio da lista é a mediana - __1, 2, (ímpar = mediana), 4, 5__;
+ - **3ª -** Se o tamanho da lista de números/dados for *par*, obtemos a mediana pegando a média dos dois números do meio.
+
+Vamos encontrar a mediana da seguinte lista de doações:
+  
+> 100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200
+  
+Primeiro, precisamos ordenar do menor para o maior - (ordem crescente):
+
+> 60, 70, 100, 100, 200, 500, 500, 503, 600, 900, 1000, 1200
+
+Temos um número par de itens na lista (12), então, para obter a mediana, **precisamos pegar a média dos dois números do meio**. Nesse caso, os números do meio são o sexto e o sétimo números - *500* e *500* - e a média desses dois números é __(500 + 500)/2__, que chega resultará em __500__.
+
+ - A median (median) é 500
+
+Agora suponha - apenas para este exemplo - que tenhamos outro total de doações para 13 itens de uma list que se pareça com isto:
+
+> 100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200, 800
+
+Mais uma vez, temos que ordenar a lista primeiro:
+
+> 60, 70, 100, 100, 200, 500, 500, 503, 600, 800, 900, 1000, 1200
+
+Existem 13 números nesta lista, um número __ímpar__, portanto, a mediana dessa lista é simplesmente o número do meio. Nesse caso, esse é o sétimo número, que é **500**.
+
+**NOTE:**  
+Antes de escrevermos um programa para encontrar a mediana de uma lista de números/dados, vamos pensar em como podemos calcular automaticamente os elementos do meio de uma lista nos dois casos:
+
+__Método para uma lista de números par - (even):__  
+Se *N (número de elementos/dados)* for par, os dois elementos do meio são __N/2__ e __(N/2) + 1__:
+
+Por exemplo, a lista abaixo:
+
+> [1, 2, 3, 4]
+
+ - N = 4;
+ - O primeiro elemento da mediana: 4/2 = __(2)__
+ - O segundo elemento da mediana: 4/2 + 1 = __(3)__
+
+__Método para uma lista de número ímpar - (odd):__  
+Se o tamanaho de uma lista *N (número de elementos/dados)* for ímpar, o número do meio é o da posição __(N + 1)/2__:
+
+Poe exemplo, a lista abaixo:
+
+> [1, 2, 3, 4, 5]
+
+ - N = 5
+ - Mediana(median) = (5 + 1)/2 = __(3)__
+
+**NOTE:**  
+Para escrever uma função que calcula a mediana, primeiro precisamos ordenar uma lista em ordem crescente.  Felizmente, o método __sort()__ faz exatamente isso:
+
+[sort_example.py](src/sort_example.py)
+```python
+simplelist = [4, 3, 2, 1]
+print(simplelist)
+
+simplelist.sort()
+print(simplelist)
+```
+
+**NOTE:**  
+Vale lembrar que o método **sort()** apenas ordenas os dados, ele não retorna dados ordenados.
+
+Agora podemos escrever nosso programa, que encontra a mediana(median) de uma lista de números/dados:
+
+[my_median.py](src/my_median.py)  
+```python
+def calculate_median(items):
+  
+  n_items = len(items)
+  items.sort()
+
+  if n_items % 2 == 0:
+    m1 = n_items/2
+    m2 = (n_items/2) + 1
+    
+    m1 = int(m1) - 1
+    m2 = int(m2) - 1
+    
+    median = (items[m1] + items[m2])/2
+  else:
+    m = (n_items+1)/2        
+    m = int(m) - 1
+    median = items[m]
+  return median
+
+if __name__ == '__main__':
+  donations = [100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200]
+  median = calculate_median(donations)
+  N = len(donations)
+  print('A Mediana (median) de doações nós últimos {0} dias é {1}'.format(N, median))
+```
+
+**OUTPUT:**  
+```python
+A Mediana (median) de doações nós últimos 12 dias é 500.0
+```
 
 ---
 

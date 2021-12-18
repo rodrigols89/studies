@@ -5,6 +5,7 @@
  - [01 - Medidas de Tendência Central (mean)](#01)
  - [02 - Média (mean)](#02)
  - [03 - Calculando a média na prática com Python e Pandas](#03)
+ - [04 - Encontrando a média sem importar funções externas (Da teoria a prática)](#04)
 
 ---
 
@@ -103,6 +104,33 @@ Então, __71.000__ é realmente o valor central? Ou, em outras palavras, seria r
 
 **NOTE:**  
 > Se você observar de perto os salários, verá que, dos sete ex-alunos, seis ganham menos do que o salário médio. ***Os dados são distorcidos* pelo fato de que Rosie conseguiu encontrar um trabalho bem mais remunerado do que seus colegas de classe**. Como resolver isso ? - *Mediana (median)*.
+
+---
+
+<div id="04"></div>
+
+## 04 - Encontrando a média sem importar funções externas (Da teoria a prática)
+
+De todas as medidas de tendência central calcular a média é a mais fácil. Imagine que nós temos um conjunto de dados representando um número de doações, para calcular a média dessas doações nós implementamos o seguinte código *(sem importar nenhuma biblioteca externa para isso)*:
+
+[my_mean.py](src/my_mean.py)
+```python
+def calculate_mean(items):
+  sum_items = sum(items)
+  number_items = len(items)
+  return sum_items/number_items
+
+if __name__ =='__main__':
+  donations = [100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200]
+  mean = calculate_mean(donations)
+  N = len(donations)
+  print('A Média (mean) de doações nós últimos {0} dias é {1}'.format(N, mean))
+```
+
+**OUTPUT:**  
+```python
+A Média (mean) de doações nós últimos 12 dias é 477.75
+```
 
 ---
 

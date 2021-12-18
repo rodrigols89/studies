@@ -1,4 +1,4 @@
-# Probabilidade
+# Introdução à Probabilidade
 
 Muitos dos problemas que tentamos resolver usando estatísticas têm a ver com probabilidade. Por exemplo:
 
