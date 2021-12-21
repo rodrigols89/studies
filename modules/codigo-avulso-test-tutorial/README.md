@@ -1,7 +1,6 @@
-# Python com Unittest, Travis CI, Coveralls e Landscape
+# Python com Unittest
 
 > Minhas notas do tutorial do **[Michell Stuttgart](https://github.com/mstuttgart)**.
-
 
 ## Conteúdo
 
