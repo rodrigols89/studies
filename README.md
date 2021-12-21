@@ -28,7 +28,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
      - [RESTful API](modules/restful-api)
      - [Rocketseat](modules/rocketseat-samples)
    - __Software Testing:__
-     - [x](#)
+     - [Python com Unittest](modules/codigo-avulso-test-tutorial)
    - __Parallel Programming:__
      - [x](#)
    - __GUI (Graphical User Interface):__
