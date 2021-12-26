@@ -6,34 +6,39 @@
 
 ## Conteúdo
 
- - **O que eu aprendi (relembrei):**
-   - [01 - Data Science Lifecycle](#ds-lifecycle)
-   - [02 - Começar pelo problema: Qual problema vamos resolver?](#problem)
-     - [02.1 - Por onde começar](#problem-01)
-     - [02.2 - Olhar para os nossos dados (MySQL, JSON, EXCEL, CSV) e relacioná-los com nosso problema](#problem-02)
-     - [02.3 - Selecionar os dados que realmente são importantes para nosso problema](#problem-03)
-     - [02.4 - A pergunta chave](#problem-04)
-   - [03 - Como criar um Overview da solução](#overview)
-   - [04 - Trabalhar com Docker](#docker)
-     - [04.1 - Verificar a versão do Docker](#docker-01)
-     - [04.2 - Verificar/Testar se o Docker está instalado corretamente](#docker-02)
-     - [04.3 - Instalar uma imagem Docker com MySQL](#docker-03)
-     - [04.4 - Verififcar Containers em Execução](#docker-04)
-     - [04.5 - Executar e Parar Containers](#docker-05)
-   - **05 - Trabalhar com MySQL no VSCode:**
-     - [05.1 - Instalar a extensão Database Client e fazer conexão com o Banco de Dados](#vscode-01)
-     - [05.2 - Importar scripts SQL no VSCode](#vscode-02)
-   - **06 - Instalar e Configurar Datalakes com MinIO Server**
-     - [06.1 - Criar o sistema de diretórios e Instalar um container com MinIO Server](#datalake-01)
-     - [06.2 - Criar Buckets com o MinIO Server](#datalake-02)
-   - **07 - Instalar e Configurar o Airflow:**
-     - [07.1 - Criar os diretórios para trabalhar com o Airflow](#airflow-01)
-     - [07.2 - Criar um container com o Airflow e se conectar no Servidor Web](#airflow-02)
-     - [07.3 - Se conectar a um container docker (Airflow no nosso caso)](#airflow-03)
-     - [07.4 - Instalar bibliotecas dentro de um container (Airflow no nosso caso)](#airflow-04)
-     - [07.5 - Criar variáveis do Airflow](#airflow-05)
-   - **08 - Trabalhar com Modelagem de Dados em um projeto real:**
-     - [08.1 - Introdução e visão geral](#data-model-01)
+ - [01 - Data Science Lifecycle](#ds-lifecycle)
+ - [02 - Começando pelo problema: Qual problema vamos resolver?](#problem)
+   - [02.1 - Por onde começar](#problem-01)
+   - [02.2 - Olhando para os nossos dados (MySQL, JSON, EXCEL, CSV) e relacioná-los com nosso problema](#problem-02)
+   - [02.3 - Selecionando os dados que realmente são importantes para nosso problema](#problem-03)
+   - [02.4 - A pergunta chave](#problem-04)
+ - [03 - Criando um Overview da solução](#overview)
+ - **[04 - Introdução ao Docker](#docker)**
+   - [04.1 - Verificando a versão do Docker](#docker-01)
+   - [04.2 - Testando se o Docker está instalado corretamente](#docker-02)
+   - [04.3 - Instalando uma imagem Docker com MySQL](#docker-03)
+   - [04.4 - Verificando Containers em Execução](#docker-04)
+   - [04.5 - Executando e Parando Containers](#docker-05)
+ - **05 - Trabalhando com MySQL no VSCode:**
+   - [05.1 - Instalando a extensão Database Client e fazendo conexão com o Banco de Dados](#vscode-01)
+   - [05.2 - Importando scripts SQL no VSCode](#vscode-02)
+ - **06 - Instalar e Configurar Datalakes com MinIO Server**
+   - [06.1 - Criando o sistema de diretórios e Instalando um container com MinIO Server](#datalake-01)
+   - [06.2 - Criando Buckets (zonas) com o MinIO Server](#datalake-02)
+ - **07 - Instalar e Configurar o Airflow:**
+   - [07.1 - Criando os diretórios para trabalhar com o Airflow](#airflow-01)
+   - [07.2 - Criando um container com o Airflow e se conectando no Servidor Web](#airflow-02)
+   - [07.3 - Conectando a um container docker (Airflow no nosso caso)](#airflow-03)
+   - [07.4 - Instalando bibliotecas dentro de um container (Airflow no nosso caso)](#airflow-04)
+   - [07.5 - Criando variáveis no Airflow](#airflow-05)
+ - **08 - Aplicar ETL com Airflow:**
+   - [08.1 - O que são DAGs? (+pipelines)](#etl-01)
+   - [08.2 - Introdução ao processo de ETL](#etl-02)
+   - [08.3 - Quais os processos de ETL?](#etl-03)
+   - [08.4 - Stanging Area em um processo de ETL](#etl-04)
+ - **09 - Trabalhando com Streamlit:**
+   - [09.1 - Introdução ao Streamlit](#streamlit-01)
+   - [09.2 - Instalando o Pycaret & Streamlit](#streamlit-02)
 
 ---
 
@@ -53,7 +58,7 @@ Veja como funciona esse ciclo abaixo:
 
 <div id="problem"></div>
 
-## 02 - Começar pelo problema: Qual problema vamos resolver?
+## 02 - Começando pelo problema: Qual problema vamos resolver?
 
 Um problema que eu tinha até então *(estou tentando melhorar com isso)* é só estudar, estudar e estudar e não resolver nenhum tipo de problema.
 
@@ -97,7 +102,7 @@ Vale salientar que esse começo muitas vezes vai ser voltado para o nosso proble
 
 <div id="problem-02"></div>
 
-## 02.2 - Olhar para os nossos dados (MySQL, JSON, EXCEL, CSV) e relacioná-los com nosso problema
+## 02.2 - Olhando para os nossos dados (MySQL, JSON, EXCEL, CSV) e relacioná-los com nosso problema
 
 > **Uma maneira inteligente aqui seria relacionar os dados que nos foi disponibilizado com o nosso problema.**
 
@@ -121,9 +126,17 @@ E agora para as coisas ficarem ainda mais bonitas, imagine que a empresa tenha u
 
 ![img](images/excel-01.png)  
 
+
+Como vocês podem ver nem sempre nós vamos receber um conjunto de dados bonitinho para trabalharmos. Muitas vezes esses dados vão vir de várias fontes e formatos diferentes. Por exemplo veja a abstração abaixo:
+
+![img](images/data-model-01.png)  
+
+**NOTE:**  
+Vejam que os dados realmente vem de fontes diferentes: **MySQL**, **Arquivos CSV**, **Arquivos JSON (Por exemplo uma API)** e **Arquivos EXCEL**.
+
 <div id="problem-03"></div>
 
-## 02.3 - Selecionar os dados que realmente são importantes para nosso problema
+## 02.3 - Selecionando os dados que realmente são importantes para nosso problema
 
 Outra observação muito importante aqui é a seguinte:
 
@@ -143,7 +156,7 @@ Agora vem a pergunta chave:
 
 <div id="overview"></div>
 
-## 03 - Como criar um Overview técnico da nossa solução
+## 03 - Criando um Overview técnico da nossa solução
 
 Bem, como o nome já diz **Overview** é uma visão geral. Mas geral do que? No nosso caso, nosso problema. Ou seja, uma visão geral de como nós vamos resolver tecnicamente.
 
@@ -155,7 +168,7 @@ Bem, como o nome já diz **Overview** é uma visão geral. Mas geral do que? No 
 
 <div id="docker"></div>
 
-## 04 - Trabalhar com Docker
+## 04 - Introdução ao Docker
 
 **NOTE:**  
 Essa introdução inicial eu não aprendi no Bootcamp, porém, vou deixar aqui para que fique de exemplo para outras pessoas aprenderem mais sobre o assunto.
@@ -173,7 +186,7 @@ Com o Docker nós criamos uma virtualização *(por exemplo, uma máquina virtua
 
 <div id="docker-01"></div>
 
-## 04.1 - Verificar a versão do Docker
+## 04.1 - Verificando a versão do Docker
 
 Para verificar a versão atual do seu Docker é muito simples, basta digita **docker -v** no console:
 
@@ -184,7 +197,7 @@ Docker version 20.10.11, build dea9396
 
 <div id="docker-02"></div>
 
-## 04.2 - Verificar/Testar se o Docker está instalado corretamente
+## 04.2 - Testando se o Docker está instalado corretamente
 
 Para verificar (ou testar) se o Docker está instalado corretamente uma maneira é baixar uma imagem de teste. Isso é muito simples, basta digitar o seguinte:
 
@@ -222,7 +235,7 @@ Vejam que o resultado é o mesmo.
 
 <div id="docker-03"></div>
 
-## 04.3 - Instalar uma imagem Docker com MySQL
+## 04.3 - Instalando uma imagem Docker com MySQL
 
 Ok, mas como eu posso criar uma imagem *(máquina virtual)* Docker com o **MySQL** já instalado? É muito simples, veja o exemplo abaixo:
 
@@ -251,7 +264,7 @@ Mas o que significa todo esse comando e argumentos?
 
 <div id="docker-04"></div>
 
-## 04.4 - Verififcar Containers em Execução
+## 04.4 - Verificando Containers em Execução
 
 Agora como eu vejo os containers que estão em execução? Simples: **docker ps** ou **docker ps -a**
 
@@ -283,7 +296,7 @@ a5e2d4d001fb        mysql                    "docker-entrypoint.s…"   7 hours 
 
 <div id="docker-05"></div>
 
-## 04.5 - Executar e Parar Containers
+## 04.5 - Executando e Parando Containers
 
 Para executar e para os serviços de um container é muito simples, basta utilizar os comandos:
 
@@ -363,7 +376,7 @@ Veja que realmente agora os containers estão em execução, como também nós p
 
 <div id="vscode-01"></div>
 
-## 05.1 - Instalar a extensão Database Client e fazer conexão com o Banco de Dados
+## 05.1 - Instalando a extensão Database Client e fazendo conexão com o Banco de Dados
 
 O primeiro passo que você deve fazer se desejar trabalhar com MySQL que está no seu *Docker Container* e o VSCode é baixar a seguinte extensão do VSCode:
 
@@ -393,7 +406,7 @@ Veja que a conexão foi bem-sucedida! Esses bancos de dados que foram listados d
 
 <div id="vscode-02"></div>
 
-## 05.2 - Importar scripts SQL no VSCode
+## 05.2 - Importando scripts SQL no VSCode
 
 Bem, é muito comum nós termos scripts prontos quando se trata de Banco de Dados. Muitas vezes nós criamos um modelo relacional com *MySQL Workbench*, por exemplo, que nós gera um script SQL para toda a criação do Banco de Dados seguindo esse modelo criado.
 
@@ -405,7 +418,7 @@ Para executar um script SQL utilizando o VSCode é muito simples. Basta clicar c
 
 <div id="datalake-01"></div>
 
-## 06.1 - Criar o sistema de diretórios e Instalar um container com MinIO Server
+## 06.1 - Criando o sistema de diretórios e Instalando um container com MinIO Server
 
 Vamos começar criando o diretório **datalake**:
 
@@ -443,7 +456,7 @@ Supondo que tudo ocorreu bem você vai cair na seguinte tela do MinIO:
 
 <div id="datalake-02"></div>
 
-## 06.2 - Criar Buckets com o MinIO Server
+## 06.2 - Criando Buckets (zonas) com o MinIO Server
 
 Agora nós vamos criar os **Buckets** (você vai entender logo mais para que serve) no Servidor Web do MinIO. Para isso é muito simples, basta clicar em **buckets/create bucket**:
 
@@ -475,7 +488,7 @@ Se você voltar no diretório **datalake** da sua máquina local você vai ver q
 
 <div id="airflow-01"></div>
 
-## 07.1 - Criar os diretórios para trabalhar com o Airflow
+## 07.1 - Criando os diretórios para trabalhar com o Airflow
 
 Bem, de início nós vamos criar os diretórios que vamos configurar para trabalhar com o Airflow. Para isso utilize o seguinte comando aninhado:
 
@@ -485,7 +498,7 @@ mkdir airflow && cd airflow && mkdir dags
 
 <div id="airflow-02"></div>
 
-## 07.2 - Criar um container com o Airflow e se conectar no Servidor Web
+## 07.2 - Criando um container com o Airflow e se conectando no Servidor Web
 
 Agora vamos voltar para o diretório raiz do nosso projeto e criar o nosso Docker Container com o Airflow da seguinte maneira:
 
@@ -517,7 +530,7 @@ Se tudo ocorrer bem você vai cair na seguinte janela:
 
 <div id="airflow-03"></div>
 
-## 07.3 - Se conectar a um container docker (Airflow no nosso caso)
+## 07.3 - Conectando a um container docker (Airflow no nosso caso)
 
 Bem, até então nós estamos conectado na nossa máquina local, mas como se conectar ao terminal do nosso container com o Airflow?
 
@@ -540,7 +553,7 @@ Outra observação é que se você desejar voltar para a sua máquina local bast
 
 <div id="airflow-04"></div>
 
-## 07.4 - Instalar bibliotecas dentro de um container (Airflow no nosso caso)
+## 07.4 - Instalando bibliotecas dentro de um container (Airflow no nosso caso)
 
 Bem, agora que nós já estamos conectados dentro do container é muito simples, basta baixar/instalar as bibliotecas que nós vamos utilizar. Por exemplo:
 
@@ -569,7 +582,7 @@ Porque os códigos vão rodar no container Airflow e não na nossa máquina loca
 
 <div id="airflow-05"></div>
 
-## 07.5 - Criar variáveis do Airflow
+## 07.5 - Criando variáveis no Airflow
 
 > Essas variáveis são úteis para evitar de colocarmos valores sensíveis dentro dos nossos códigos.
 
@@ -597,16 +610,253 @@ database_name = employees
 
 ---
 
-<div id="data-model-01"></div>
+<div id="etl-01"></div>
 
-## 08.1 - Introdução e visão geral
+## 08.1 - O que são DAGs? (+pipelines)
 
-Nem sempre nós vamos receber um conjunto de dados bonitinho para trabalharmos. Muitas vezes esses dados vão vir de várias fontes e formatos diferentes. Por exemplo veja a abstração abaixo:
-
-![img](images/data-model-01.png)  
+> Antes de nós iniciarmos nossa introdução ao processo de uma **ETL** você sabe o que é uma DAG?
 
 **NOTE:**  
-Vejam que os dados realmente vem de fontes diferentes: **MySQL**, **Arquivos CSV**, **Arquivos JSON (Por exemplo uma API)** e **Arquivos EXCEL**.
+Uma DAG nada mais é do que um código Python, onde nós vamos definir algumas execuções **(por exemplo, com operadores do Airflow)** que serão feitas em sequencia. Ou seja, para nós criarmos e desenvolvermos um **pipeline**.
+
+> Um ***pipeline*** nada mas é do que uma sequencia de *ações* que serão executadas.
+
+<div id="etl-02"></div>
+
+## 08.2 - Introdução ao processo de ETL
+
+> Bem, antes de nós entrarmos de cara no *Processo de ETL*, você sabe bixo é esse?
+
+ETL É uma abreviação de:
+
+ - **Extract**;
+ - **Transform**;
+ - **Load**.
+
+**NOTE:**  
+Resumidamente, um sistema **ETL** tem que ter a capacidade de ler diferentes formatos de arquivos e tipos de dados, e transportá-los de um ambiente para outro.
+
+**Outros casos de uso são:**  
+ - O ETL serve para consolidar dados de origens diferentes e entregá-los a um novo ambiente. Além disso, pode ser utilizado quando uma empresa faz a troca de sistemas antigos por novos.
+ - Um sistema ETL ajuda também a reunir todos os dados de um negócio, contribuindo para a tomada de decisões.
+
+<div id="etl-03"></div>
+
+## 08.3 - Quais os processos de ETL? (Extract, Transform e Load)
+
+Para saber o que é **ETL** é preciso entender os seus *processos* que, basicamente, são:
+
+ - **Extração**;
+ - **Transformação** *(ou limpeza)*;
+ - **Carga de dados** *(ou entrega)*.
+
+**Extração (Extract):**  
+O primeiro processo de **ETL** é a **extração (Extract)** dos dados dos seus sistemas originais (Data Sources ou Sistemas Operacionais). 
+
+Nesta fase, esses dados são extraídos e transferidos para um ambiente Data Warehouse, local onde podem ser trabalhados pelo sistema **ETL** de maneira independente. 
+
+**Transformação (Transform):**  
+Na segunda parte do processo de **ETL** os dados são transformados e ajustados conforme a necessidade.
+
+Sobre esses dados podem ser atribuídas diferentes regras que vão ajudar a melhorar a sua qualidade. 
+
+Um dos propósitos desta etapa é combinar dados de diferentes fontes, de modo que possam ser enviados para um mesmo sistema, ainda que tenham vindo de sistemas diferentes.
+
+**Carga de dados (Load):**  
+Por fim, o último processo de **ETL** consiste na carga dos dados transformados, ou seja, na entrega dos dados consolidados ao sistema de destino.
+
+<div id="etl-04"></div>
+
+## 08.4 - Stanging Area em um processo de ETL
+
+Só a nível de revisão, vocês lembram que no **ETL** nós fazemos:
+
+ - A **Extração (Extract)** dos dados de uma fonte, que pode ser um arquivo TXT a uma base de dados;
+ - Temos o processo de **Transformação (Transform)**, que é onde os dados são tratados para serem direcionados para o repositório de destino;
+ - Temos o **Carregamento (Load)**, que é o processo de inserir os dados no destino.
+
+**Agora vem a pergunta chave:**  
+
+> Onde fica a ***Stanging Area***?
+
+Ok, veja a imagem abaixo para ficar mais claro:
+
+![img](images/fluxoETL-1.png)  
+
+**NOTE:**  
+Veja que a **Stanging Area** fica logo depois da **Extração (Extract)** dos dados.
+
+> Mas para que serve essa tal de **Stanging Area**?
+
+A **Staging Area** é uma localização temporária onde os dados dos sistemas de origem são copiados. Desta forma, ao invés de acessar os dados diretamente da fonte, o processo de **“transformação”** do **ETL** pega os dados da **Staging Area** para tratar e entregar os dados.
+
+Como alguns projetos precisam ter várias fontes de dados, a necessidade de termos uma “STAGING” acaba sendo obrigatório para que você possa reunir o máximo de dados possível e, com isso, poder selecionar os dados transformando-os em informação.
+
+O benefício deste recurso é poder armazenar os dados em sua origem “bruta” para poder trabalhar em cima deles ao invés de ficar sempre tendo que acessar a Fonte de dados. Assim você consegue evitar uma série de problemas, como baixa performance por exemplo.  Além disso, você tem a segurança que os dados estarão a sua disposição até que você execute algum *processo que limpe a STAGING*.
+
+---
+
+<div id="streamlit-01"></div>
+
+## 09.1 - Introdução ao Streamlit
+
+> Resumidamente, **Streamlit** é uma biblioteca (ferramenta) orientada a dados.
+
+---
+
+<div id="streamlit-02"></div>
+
+## 09.2 - Instalando o Pycaret & Streamlit
+
+Bem, até então nós não estavamos trabalhando em um Ambiente Virtual (Por exemplo, virtualenv), apenas no nosso querido *Jupyter Notebook*. Agora nós precisamos instalar o **Pycaret** & **Streamlit** para trabalharmos com os mesmos.
+
+**Para isso basta (Supondo que você já se conectou no ambiente virtual):**
+```python
+pip install streamlit pycaret
+```
+
+Agora vamos salvar essas dependências no nosso [requirements.txt](requirements.txt):
+```
+pip freeze > requirements.txt
+```
+
+Pronto, agora se nós ou outra pessoa for utilizar esse projeto basta baixar as dependências necessárias.
+
+---
+
+<div id="streamlit-02"></div>
+
+## 09.3 - App completo com Streamlit
+
+Ok, agora eu vou deixar abaixo o código completo do nosso App feito com Streamlit.
+
+**NOTE:**  
+Vai ter MUITOS comentários no código, mas vale lembrar que esse é um projeto de estudos e esses comentários são apenas para documentar o que está sendo feito. Você pode simplesmente remové-los.
+
+[app.py](app/app.py)
+```python
+from pycaret.classification import load_model, predict_model
+import matplotlib.pyplot as plt
+import streamlit as st
+import pandas as pd
+
+from minio import Minio
+import pickle
+import joblib
+
+
+# Cria uma instância do MinIO que vai representar a conexão com o Data Lake.
+client = Minio(
+  "localhost:9000",
+  access_key="minioadmin",
+  secret_key="minioadmin",
+  secure=False
+)
+
+# Pega os dados do Data Lake > curated.
+client.fget_object("curated", "my_model.pkl", "my_model.pkl") # Baixa o nosso modelo do Data Lake.
+client.fget_object("curated", "dataset.csv", "dataset.csv") # Baixa o nosso conjunto de dados do Data Lake.
+client.fget_object("curated", "cluster.joblib", "cluster.joblib") # Baixa o Cluster do nosso Data Lake.
+
+# Salva os arquivos baixados do Data Lake em variáveis.
+var_model = "my_model"
+var_model_cluster = "cluster.joblib"
+var_dataset = "dataset.csv"
+
+model = load_model(var_model) # Da um load no nosso modelo com Pycaret.
+model_cluster = joblib.load(var_model_cluster) # Da um load no nosso Cluster.
+
+# Carregar nosso conjunto de dados.
+dataset = pd.read_csv(var_dataset)
+
+########################## (Streamlit Main content) ##########################
+
+# Define um título para a página.
+st.title("Bootcamp de Data Science - Human Resource Analytics")
+
+# Define um subtítulo para a página.
+st.markdown("Este é um Data App utilizado para exibir a solução de Machine Learning para o problema de Human Resource Analytics.")
+
+# Exibe às 100 primeiras amostras do nosso Dataset (DataFrame) no App.
+st.dataframe(dataset.head(100))
+
+# Cria uma lógica que implementa cores para o nosso cluster.
+kmeans_colors = ['green' if c == 0 else 'red' if c == 1 else 'blue' for c in model_cluster.labels_]
+
+########################## (Streamlit Side content) ##########################
+
+# Define um header para a nossa barra lateral.
+st.sidebar.subheader("Defina os atributos do funcionário para predição de turnover")
+
+# [Mapeamento das principais Features (Atributos, Colunas, Variáveis) para o nosso App]
+# Nós estamos utilizando a média (mean) porque vai ser ela que vai ser exibida assim que o usuário
+# abrir o App. Ou seja, a caixa de entrada já vai iniciar com a média de cada Feature.
+# Isso porque nós estamos mapeando um valor para cada caixinha e esse atributo "value" precisa de uma
+# entrada inicial (mesmo que seja antes do usuário digitar algo). Outra alternativa seria você não utilizar
+# o atributo "value=dataset["x_feature"].mean" e nós teríamos uma caixinha vazia só esperando o usuário digitar algo.
+satisfaction = st.sidebar.number_input("satisfaction", value=dataset["satisfaction"].mean())
+evaluation = st.sidebar.number_input("evaluation", value=dataset["evaluation"].mean())
+averageMonthlyHours = st.sidebar.number_input("averageMonthlyHours", value=dataset["averageMonthlyHours"].mean())
+yearsAtCompany = st.sidebar.number_input("yearsAtCompany", value=dataset["yearsAtCompany"].mean())
+
+# Define um botão que ao ser clicado vai classificar (predizer)
+# se o funcionário vai continuar ou sair da empresa.
+btn_predict = st.sidebar.button("Realizar Classificação")
+
+# Verifica se o botão foi clicado e se (if) for clicado ele vai
+# implementar uma classificação que vai dizer se o funcionário
+# vai continuar ou sair da empresa.
+if btn_predict:
+
+  # Faz um mapeamento entre as entradas do usuário e nosso DataFrame de teste = data_teste.
+  data_teste = pd.DataFrame()
+  data_teste["satisfaction"] = [satisfaction]
+  data_teste["evaluation"] =	[evaluation]    
+  data_teste["averageMonthlyHours"] = [averageMonthlyHours]
+  data_teste["yearsAtCompany"] = [yearsAtCompany]
+    
+  # Realiza a predição com a função precit_model() do Pycaret, esse método vai receber:
+  # - Nosso modelo (que nós baixamos do Data Lake).
+  # - Os dados de teste, que vão ser passados pelo usuário.
+  result = predict_model(model, data=data_teste)
+    
+  # Escreve no App o resultado da predição do nosso modelo baseado nas entradas do usuário.
+  st.write(result)
+
+  ########################## (Definição do gráfico/plot) ##########################
+  fig = plt.figure(figsize=(10, 6)) # Define o tamando do gráfico
+  plt.scatter(
+    x = "satisfaction",
+    y = "evaluation",
+    data = dataset[dataset.turnover==1],
+    alpha = 0.25,color = kmeans_colors
+  )
+  plt.xlabel("Satisfaction")
+  plt.ylabel("Evaluation")
+  plt.scatter(
+    x = model_cluster.cluster_centers_[:,0],
+    y = model_cluster.cluster_centers_[:,1],
+    color  = "black",
+    marker = "X",s=100
+  )
+  # Exibe no gráfico/plot onde está o valor de entrada pelo usuário.
+  # Ou seja, onde nós estamos na predição se comparado com o gráfico.
+  plt.scatter(
+    x = [satisfaction],
+    y = [evaluation],
+    color  = "yellow",
+    marker = "X",s=300
+  )
+  plt.title("Grupos de Empregados - Satisfação vs Avaliação.")
+  plt.show()
+  st.pyplot(fig)
+```
+
+**Para rodar o App é muito simples (primeiro entre no mesmo diretório do arquivo app.py)**:
+
+```python
+streamlit run app.py
+```
 
 ---
 
