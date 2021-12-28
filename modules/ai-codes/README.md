@@ -131,6 +131,7 @@
  - **Preprocessing:**
    - [Tipos de Dados](modules/preprocessing/data-types.md)
    - [Dados Missing](modules/preprocessing/missing-data.md)
+   - [Correlação (Feature selection)](modules/preprocessing/correlation.md)
    - [Normalização de Dados](modules/preprocessing/data-normalization.md)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
