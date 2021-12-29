@@ -133,6 +133,14 @@
    - [Dados Missing](modules/preprocessing/missing-data.md)
    - [Correlação (Feature selection)](modules/preprocessing/correlation.md)
    - [Normalização de Dados](modules/preprocessing/data-normalization.md)
+     - **Text Preprocessing:**
+       - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.md)
+       - [Tokenization](modules/preprocessing/)
+       - [Text Normalization](modules/preprocessing/)
+       - [Stemming](modules/preprocessing/)
+       - [Lemmatization](modules/preprocessing/)
+       - [Stopword Removal](modules/preprocessing/)
+       - [Part-of-Speech Tagging](modules/preprocessing/)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
