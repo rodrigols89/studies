@@ -136,11 +136,9 @@
      - **Text Preprocessing:**
        - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.md)
        - [Tokenization (tokenização)](modules/preprocessing/tokenization.md)
-       - [Text Normalization](modules/preprocessing/)
-       - [Stemming](modules/preprocessing/)
-       - [Lemmatization](modules/preprocessing/)
-       - [Stopword Removal](modules/preprocessing/)
-       - [Part-of-Speech Tagging](modules/preprocessing/)
+       - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.md)
+       - [Stemming](modules/preprocessing/stemming.md)
+       - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.md)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**

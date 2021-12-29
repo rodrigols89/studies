@@ -46,3 +46,4 @@ threadpoolctl
 urllib3
 Werkzeug
 wrapt
+nltk
