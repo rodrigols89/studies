@@ -135,7 +135,7 @@
    - [Normalização de Dados](modules/preprocessing/data-normalization.md)
      - **Text Preprocessing:**
        - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.md)
-       - [Tokenization](modules/preprocessing/)
+       - [Tokenization (tokenização)](modules/preprocessing/tokenization.md)
        - [Text Normalization](modules/preprocessing/)
        - [Stemming](modules/preprocessing/)
        - [Lemmatization](modules/preprocessing/)
