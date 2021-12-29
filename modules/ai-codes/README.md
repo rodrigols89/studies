@@ -137,7 +137,7 @@
        - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.md)
        - [Tokenization (tokenização)](modules/preprocessing/tokenization.md)
        - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.md)
-       - [Stemming](modules/preprocessing/)
+       - [Stemming](modules/preprocessing/stemming.md)
        - [Lemmatization](modules/preprocessing/)
        - [Part-of-Speech Tagging](modules/preprocessing/)
  - **Data Splitting:**
