@@ -7,6 +7,12 @@
      - **[Missing Data](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/missing-data.md)**
      - **[Correlation between two numerical variables](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/correlation.md)**
      - **[Data Normalization](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-normalization.md)**
+     - **Text Preprocessing:**
+       - [Noise Removal (remoção de ruído)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/noise-removal.md)
+       - [Tokenization (tokenização)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/tokenization.md)
+       - [Stopword Removal (Remoção de palavras irrelevantes)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/stopword-removal.md)
+       - [Stemming](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/stemming.md)
+       - [Lemmatization & Part-of-Speech Tagging](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/lemmatization-post.md)
    - **Statistics & Probability Analysis:**
      - **[What types of data do I have? (Qualitative x Quantitative)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/data-types-in-statistic.md)**
      - **[Which chart (plot) to use in my analysis? (Data visualization)](https://github.com/drigols/studies/tree/master/modules/math-codes#statistics-and-probability)**
