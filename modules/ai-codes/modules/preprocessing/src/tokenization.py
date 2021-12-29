@@ -6,6 +6,6 @@
 from nltk.tokenize import word_tokenize
 
 text = "Tokenize this text"
-tokenized = word_tokenize(text)
+tokenized_by_word = word_tokenize(text)
 
-print(tokenized)
+print(tokenized_by_word)
