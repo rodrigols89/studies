@@ -138,8 +138,7 @@
        - [Tokenization (tokenização)](modules/preprocessing/tokenization.md)
        - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.md)
        - [Stemming](modules/preprocessing/stemming.md)
-       - [Lemmatization](modules/preprocessing/)
-       - [Part-of-Speech Tagging](modules/preprocessing/)
+       - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.md)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
  - **Cross-Validation:**
