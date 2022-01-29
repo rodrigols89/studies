@@ -80,6 +80,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Mathematics:__
+   - [Intro to Descriptive Statistics](modules/udacity-ud827)
    - [Matemática](modules/math-codes)
 
 ---
