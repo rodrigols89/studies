@@ -11,3 +11,9 @@
    - [Tupla (amostra)](modules/theory/tuple.md)
    - [Cardinalidade](modules/theory/cardinality.md)
  - **Practice:**
+   - **SQL:**
+     - [show databases](modules/practice/sql/show-databases.md)
+
+---
+
+**Rodrigo Leite -** *drigols*
