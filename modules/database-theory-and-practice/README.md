@@ -13,6 +13,7 @@
  - **Practice:**
    - **SQL:**
      - [show databases](modules/practice/sql/show-databases.md)
+     - [create database](modules/practice/sql/create-database.md)
 
 ---
 
