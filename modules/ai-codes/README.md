@@ -141,6 +141,8 @@
      - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
+   - [Dados de Treino, Validação & Teste](modules/data-splitting/training-validation-testing.md)
+   - [Overfitting & Underfitting](modules/data-splitting/overfitting-underfitting.md)
  - **Cross-Validation:**
    - [K-Fold](modules/cross-validation/k-fold.md)
    - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
