@@ -5,11 +5,18 @@
 ## Contents
 
  - **Theory:**
-   - [Entidade](modules/theory/entity.md)
-   - [Atributo (campo)](modules/theory/attribute.md)
-   - [Atributo Chave](modules/theory/key-attribute.md)
-   - [Tupla (amostra)](modules/theory/tuple.md)
-   - [Cardinalidade](modules/theory/cardinality.md)
+   - **Database:**
+     - [Entidade](modules/theory/database/entity.md)
+     - [Atributo (campo)](modules/theory/database/attribute.md)
+     - [Atributo Chave](modules/theory/database/key-attribute.md)
+     - [Tupla (amostra)](modules/theory/database/tuple.md)
+     - [Cardinalidade](modules/theory/database/cardinality.md)
+   - **SQL Constraints (Restrições):**
+     - [Introdução ao SQL Constraints (Restrições)](modules/theory/sql-constraints/intro-to-constraints.md)
+     - [NOT NULL](modules/theory/sql-constraints/not-null.md)
+     - [UNIQUE](modules/theory/sql-constraints/unique.md)
+     - [PRIMARY KEY](modules/theory/sql-constraints/primary-key.md)
+     - [FOREIGN KEY](modules/theory/sql-constraints/foreign-key.md)
  - **Practice:**
    - **SQL:**
      - [show databases](modules/practice/sql/show-databases.md)
@@ -36,7 +43,7 @@
      - [](modules/practice/sql/)
      - [](modules/practice/sql/)
      - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
+     - **SQL Challenges:**
 
 ---
 
