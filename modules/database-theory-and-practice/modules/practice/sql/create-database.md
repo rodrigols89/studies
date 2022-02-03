@@ -1,28 +1,28 @@
-# create database
+# CREATE DATABASE
 
 ## Conteúdo
 
- - [01 - Introdução ao comando "create database"](#intro)
+ - [01 - Introdução ao comando "CREATE DATABASE"](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "create database"
+## 01 - Introdução ao comando "CREATE DATABASE"
 
-> Como o nome já diz o comando **"create database"** é responsável por criar um banco de dados na nossa base de dados.
+> Como o nome já diz o comando **"CREATE DATABASE"** é responsável por criar um banco de dados na nossa base de dados.
 
 Por exemplo:
 
 ```sql
-create database bd_library
+CREATE DATABASE bd_library;
 ```
 
 **NOTE:**  
-Você pode utilizar o comando **"show databases"** para verificar se realmente o Banco de Dados foi criado.
+Você pode utilizar o comando **"SHOW DATABASES"** para verificar se realmente o Banco de Dados foi criado.
 
 ```sql
-show databases;
+SHOW DATABASES;
 ```
 
 **OUTPUT:**  

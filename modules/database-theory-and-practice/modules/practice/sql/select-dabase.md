@@ -1,21 +1,21 @@
-# select database()
+# SELECT database()
 
 ## Conteúdo
 
- - [01 - Introdução ao comando "select database()"](#intro)
+ - [01 - Introdução ao comando "SELECT database()"](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "select database()"
+## 01 - Introdução ao comando "SELECT database()"
 
-> O comando **select database();** é responsável por dizer em qual Banco de Dados estamos conectados.
+> O comando **SELECT database();** é responsável por dizer em qual Banco de Dados estamos conectados.
 
 Por exemplo:
 
 ```sql
-select database();
+SELECT database();
 ```
 
 **OUTPUT:**  
@@ -39,7 +39,7 @@ Database changed
 ```
 
 ```sql
-select database();
+SELECT database();
 ```
 
 **OUTPUT:**  

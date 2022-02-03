@@ -1,21 +1,21 @@
-# use
+# USE
 
 ## Conteúdo
 
- - [01 - Introdução ao comando "use"](#intro)
+ - [01 - Introdução ao comando "USE"](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "use"
+## 01 - Introdução ao comando "USE"
 
-> Quando você loga em uma base de dados *(ex: MySQL)* não necessariamente você já vai se conectar a um Banco de Dados "x". Para se conectar a um Banco de Dados é necessário utilizar o comando: **use database_name**.
+> Quando você loga em uma base de dados *(ex: MySQL)* não necessariamente você já vai se conectar a um Banco de Dados "x". Para se conectar a um Banco de Dados é necessário utilizar o comando: **USE database_name**.
 
 Por exemplo:
 
 ```sql
-use bd_library
+USE bd_library
 Database changed
 ```
 

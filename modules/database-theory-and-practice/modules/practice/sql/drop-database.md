@@ -1,21 +1,21 @@
-# drop database
+# DROP DATABASE
 
 ## Conteúdo
 
- - [01 - Introdução ao comando "drop database"](#intro)
+ - [01 - Introdução ao comando "DROP DATABASE"](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "drop database"
+## 01 - Introdução ao comando "DROP DATABASE"
 
-> O comando **"drop database"** é responsável por excluir um Banco de Dados existente.
+> O comando **"DROP DATABASE"** é responsável por excluir um Banco de Dados existente.
 
 Por exemplo:
 
 ```sql
-drop database bd_library;
+DROP DATABASE bd_library;
 ```
 
 **OUTPUT:**  

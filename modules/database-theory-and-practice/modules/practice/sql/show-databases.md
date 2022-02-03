@@ -1,21 +1,21 @@
-# show databases
+# SHOW DATABASES
 
 ## Conteúdo
 
- - [01 - Introdução ao comando "show databases"](#intro)
+ - [01 - Introdução ao comando "SHOW DATABASES"](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "show databases"
+## 01 - Introdução ao comando "SHOW DATABASES"
 
-> O comando **"show databases"** é responsável por exibir os banco de dados existentes em nassa base de dados.
+> O comando **"SHOW DATABASES"** é responsável por exibir os banco de dados existentes em nassa base de dados.
 
 Por exemplo:
 
 ```sql
-show databases;
+SHOW DATABASES;
 ```
 
 **OUTPUT:**  
