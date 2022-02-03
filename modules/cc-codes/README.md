@@ -5,8 +5,9 @@
 ## Conteúdo
 
  - **Fundamentos:**
-   - [Fundamentos Básicos](modules/basics)
- - **Entrada/Saída:**
-   - [Entrada e Saída em C++ (I/O)](modules/io)
+   - [Por que C++?](modules/fundamentals/why-cc.md)
+ - **Paradigmas:**
+   - **Estruturado:**
+     - [x](#)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)

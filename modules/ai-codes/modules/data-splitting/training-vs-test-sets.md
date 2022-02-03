@@ -5,6 +5,8 @@
  - [01 - Dados de Treino vs Dados de Teste - Teoria](#01)
  - [02 - Treinando e Testando dados com Scikit-Learn](#02)
 
+---
+
 <div id='01'></div>
 
 ## 01 - Dados de Treino vs Dados de Teste - Teoria
@@ -32,6 +34,8 @@ Viram como é interessante dividir o conjunto de dados (amostra) em `treino` e `
 > Por isso, ele vai aprender com uma parte (70% no nosso caso) e vamos reserva outra parte (30% no nosso caso) para testar e ver quão bem ele (nosso modelo) está aprendendo.
 
 <div id='02'></div>
+
+---
 
 ## 02 - Treinando e Testando dados com Scikit-Learn
 

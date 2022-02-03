@@ -141,11 +141,89 @@
      - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
  - **Data Splitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
+   - [Dados de Treino, Validação & Teste](modules/data-splitting/training-validation-testing.md)
+   - [Overfitting & Underfitting](modules/data-splitting/overfitting-underfitting.md)
+ - **[Feature Engineering:](modules/feature-engineering/intro-to-feature-engineering.md)**
+   - **Missing Data Imputation:**
+     - Complete case analysis
+     - Mean / Median / Mode imputation
+     - Random Sample Imputation
+     - Replacement by Arbitrary Value
+     - Missing Value Indicator
+     - Multivariate imputation
+   - **Categorical Encoding::**
+     - One hot encoding
+     - Count and Frequency encoding
+     - Target encoding / Mean encoding
+     - Ordinal encoding
+     - Weight of Evidence
+     - Rare label encoding
+     - BaseN, feature hashing and others
+   - **Variable Transformation:**
+     - Logarithm
+     - Reciprocal
+     - Square root
+     - Exponential
+     - Yeo-Johnson
+     - Box-Cox
+   - **Discretisation:**
+     - Equal frequency discretisation
+     - Equal length discretisation
+     - Discretisation with trees
+     - Discretisation with ChiMerge
+   - **Outlier Removal:**
+     - Removing outliers
+     - Treating outliers as NaN
+     - Capping
+     - Windsorisation
+   - **Feature Scaling:**
+     - Standardisation
+     - MinMax Scaling
+     - Mean Scaling
+     - Max Absolute Scaling
+     - Unit norm-Scaling
+   - **Date and Time Engineering:**
+     - Extracting days, months, years, quarters, time elapsed
+   - **Feature Creation::**
+     - Sum, subtraction, mean, min, max, product, quotient of group of features
+   - **Aggregating Transaction Data:**
+     - Same as above but in same feature over time window
+   - **Extracting features from text:**
+     - Bag of words
+     - TF-IDF
+     - n-grams
+     - word2vec
+     - topic extraction
+   - **extracting features from images:**
+     - Coming soon...
  - **Cross-Validation:**
+   - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
    - [K-Fold](modules/cross-validation/k-fold.md)
    - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
  - **Hyperparameter Tuning:**
    - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
+ - **[Evaluation Metrics:](modules/evaluation-metrics/evaluation-metrics.md)**
+   - **Regression Problems:**
+     - Mean absolute error (MAE)
+     - Mean squared error (MSE)
+     - Root mean squared error (RMSE)
+     - Root mean squared logarithmic error (RMSLE)
+     - R-square / R² / Adjusted R²
+     - Mean percentage error (MPE)
+     - Mean absolute percentage error (MAPE)
+   - **Classification Problems:**
+     - Accuracy
+     - Precision
+     - Recall
+     - F1 score (F1)
+     - Area under the ROC curve or AUC
+     - Log loss
+     - Precision at k (P@k)
+     - Average precision at k (AP@k)
+     - Mean average precision at k (MAP@k)
+     - Gini Coefficient
+     - Cross-Entropy Loss (Binary Classification)
+     - Hinge Loss(Binary Classification)
 
 ---
 
