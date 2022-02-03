@@ -18,6 +18,8 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
      - [Java](modules/java-codes)
      - [C++](modules/cc-codes)
      - [C](modules/c-codes)
+   - **Object-Oriented Programming:**
+     - [Object-Oriented Programming (Theory & Practice)](modules/oop)
    - __Clean Code:__
      - [x](#)
    - __Design Patterns:__
@@ -78,6 +80,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Mathematics:__
+   - [Intro to Descriptive Statistics](modules/udacity-ud827)
    - [Matemática](modules/math-codes)
 
 ---
