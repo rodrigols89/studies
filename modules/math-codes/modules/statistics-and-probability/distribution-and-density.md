@@ -3,10 +3,15 @@
 ## Conteúdo
 
  - [01 - Introdução e problema](#01)
- - [02 - Introdução a Distribuição de dados (Min e Max)](#02)
- - [03 - Visualização gráfica de uma distribuição de dados](#03)
- - [04 - Introdução a Densidade (ou linha de densidade) Assimétrica](#04)
- - [05 - Introdução a Densidade (ou linha de densidade) Simétrica](#05)
+ - [02 - Visualização gráfica de uma distribuição de dados](#02)
+ - **03- Curva (linha) de Densidade:**
+   - [03.1 - Introdução a Densidade (ou curva (linha) de densidade) Assimétrica](#03-1)
+   - [03.2 - Introdução a Densidade (ou curva (linha) de densidade) Simétrica](#03-2)
+ - **04 - Distribuição Normal:**
+   - [04.1 - Analogia com arremessos de basquete (evento discreto)](#04-1)
+   - [04.2 - Introdução & Caractetísticas de uma Distribuição Normal (Simétrica)](#04-2)
+   - [04.3 - Probabilidade de acertar arremessos de basquete por faixa (evento contínuo)](#04-3)
+   - [04.4 - Calculando a probabilidade da faixa que desejamos (Função Densidade de Probabilidade)](#04-4)
 
 ---
 
@@ -16,7 +21,9 @@
 
 Para entender melhor o conceito de **Distribuição & densidade** em um conjunto de dados vamos seguir com o seguinte exemplo...
 
-> Por exemplo, suponha que você decida realizar um estudo sobre os salários comparativos de pessoas que se formaram na mesma escola. Serão esses: 
+> Por exemplo, suponha que você decida realizar um estudo sobre os salários comparativos de pessoas que se formaram na mesma escola.
+
+Serão esses: 
 
 | Nome     | Salário     |
 |----------|-------------|
@@ -61,66 +68,18 @@ if __name__ =='__main__':
 6  Frederic   59000
 ```
 
-<div id='02'></div>
-
-## 02 - Introdução a Distribuição de dados (Min e Max)
-
-Supondo que vocês já conhecem o mínimo sobre encontrar o **centro (média, mediana e moda)**, podemos começar a explorar como os dados são distribuídos em torno dele *(o centro)*. O que nos interessa aqui é entender a *"forma"* geral da distribuição de dados, de modo que possamos começar a ter uma ideia do que um valor *"típico"* poderia ser esperado.
-
-> Podemos começar por encontrar os extremos - **o mínimo** e **o máximo**.
-
-No caso de nossos dados salariais:
-
- - **Com menor remuneração de nossa escola é Vicky, com um salário de 40.000;**
- - **O(a) mais bem pago é Rosie, com 189.000.**
-
-A classe pandas.dataframe possui funções **min()** e **max()** para retornar esses valores.
-
-[min_max.py](src/min_max.py)
-```python
-def create_df(**df):
-  my_df = {}
-  import pandas as pd
-  my_df = pd.DataFrame(df)
-  return my_df
-
-if __name__ =='__main__':
-  students = {
-    'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic'],
-    'Salary':[50000, 54000, 50000, 189000, 59000, 40000, 59000]
-  }
-
-  my_df = create_df(**students)
-  print ('Min: ' + str(my_df['Salary'].min())) # Pega o menor salário/elmento da lista.
-  print ('Mode: ' + str(my_df['Salary'].mode()[0])) # Encontra a moda (o/os mais frequente(s)).
-  print ('Median: ' + str(my_df['Salary'].median())) # Encontra a mediana (median).
-  print ('Mean: ' + str(my_df['Salary'].mean())) # Encontra a média (mean)
-  print ('Max: ' + str(my_df['Salary'].max())) # Pega o maior salário/elemento da lista.
-```
-
-**OUTPUT:**  
-```
-Min: 40000
-Mode: 50000
-Median: 54000.0
-Mean: 71571.42857142857
-Max: 189000
-```
-
-Podemos examinar esses valores e ter uma ideia de como os dados são distribuídos. Por exemplo, podemos ver que a média está mais próxima do máximo e que a mediana está mais próximos do mínimo que do máximo.
-
 ---
 
-<div id='03'></div>
+<div id='02'></div>
 
-## 03 - Visualização gráfica de uma distribuição de dados
+## 02 - Visualização gráfica de uma distribuição de dados
 
-No entanto, geralmente é mais fácil ter uma noção da distribuição visualizando os dados. Vamos começar criando um histograma dos salários, destacando:
+Geralmente é mais fácil ter uma noção de distribuição visualizando os dados. Vamos começar criando um histograma dos salários, destacando:
 
  - A média (mean) de salários;
  - Os salários medianos (median);
  - O min(), max() são bastante evidentes, um do lado esquerdo e o outro do lado direito, respectivamente **(você pode ver isso no eixo "x")**;
- - A moda é onde a barra é mais alta está **(mesmo não desenhado uma linha, mas você pode ver que é onde tem mais dados frequentes)**.
+ - A moda é onde a barra está mais alta **(mesmo não desenhado uma linha, mas você pode ver que é onde tem mais dados frequentes)**.
 
 [graph_model-01.py](src/graph_model-01.py)
 ```python
@@ -163,9 +122,9 @@ A ***Média (mean)*** e a ***Mediana (median)*** são mostradas como linhas trac
 
 ---
 
-<div id='04'></div>
+<div id='03-1'></div>
 
-## 04 - Introdução a Densidade (ou linha de densidade) Assimétrica
+## 03.1 - Introdução a Densidade (ou curva (linha) de densidade) Assimétrica
 
 O histograma mostra a frequência relativa de cada faixa salarial, com base no número de bins. Também nos dá uma noção da ***densidade*** dos dados para cada ponto da escala salarial.
 
@@ -261,13 +220,13 @@ if __name__ =='__main__':
 
 > Mais uma vez, a distribuição é distorcida, mas desta vez é distorcida a esquerda.
 
-Note que a curva é assimétrica com a ***média (mean)*** à esquerda da ***mediana (median)*** e a moda(mode); e a média de horas de trabalho semanais desviadas para a extremidade inferior.
+Note que a curva é assimétrica com a ***média (mean)*** à esquerda da ***mediana (median)*** e a **moda (mode)**; e a média de horas de trabalho semanais desviadas para a extremidade inferior.
 
 ---
 
-<div id='05'></div>
+<div id='03-2'></div>
 
-## 05 - Introdução a Densidade (ou linha de densidade) Simétrica
+## 03.2 - Introdução a Densidade (ou curva (linha) de densidade) Simétrica
 
 Mais uma vez, Rosie parece estar recebendo o melhor do negócio. Ela ganha mais do que seus ex-colegas de classe por trabalhar menos horas. Talvez uma olhada nas pontuações do teste que os alunos alcançaram na nota final da escola possa ajudar a explicar seu sucesso:
 
@@ -317,9 +276,171 @@ if __name__ =='__main__':
 **OUTPUT:**  
 ![images](images/plot-05.png)  
 
-> Desta vez, a distribuição é simétrica, formando uma curva ***"em forma de sino"***. A ***média (mean)***, ***mediana (median)*** e moda(mode) estão no mesmo local, e os dados caem uniformemente em ambos os lados de um pico central.
+> Desta vez, a distribuição é simétrica, formando uma curva ***"em forma de sino"***. A ***média (mean)***, ***mediana (median)*** e ***moda (mode)*** estão no mesmo local, e os dados caem uniformemente em ambos os lados de um pico central.
 
 Os estatísticos chamam isso de uma **distribuição normal (ou às vezes uma distribuição gaussiana)**, e ocorre bastante comumente em muitos cenários devido a algo chamado `Teorema do Limite Central`, que reflete a maneira como a probabilidade contínua funciona.
+
+---
+
+<div id='04-1'></div>
+
+## 04.1 - Analogia com arremessos de basquete (evento discreto)
+
+Vamos imaginar que um jogador de Basquete fez 10 arremessos para acertar a cesta de basquete.
+
+> **Qual a probabilidade dele acertar *1 arremesso*, *2 arremessos* ou até mesmo os *10 arremessos*?**
+
+Suponha (é só um exemplo) que nós temos o seguinte gráfico que representar essa probabilidade:
+
+![img](images/normal-distribution-01.png)  
+
+**NOTE:**  
+Seguindo a lógica do gráfico (barras/histograma) acima nós temos que entre os 10 arremessos as probabilidades de acerta de 1 a 10 arremessos são às seguintes:
+
+ - A probabilidade de nós acertamos apenas 1 arremesso é de 5%;
+ - A probabilidade de nós acertamos 2 arremessos é de 8%;
+ - A probabilidade de nós acertamos 3 arremessos é de 12%;
+ - A probabilidade de nós acertamos 4 arremessos é de 15%;
+ - A probabilidade de nós acertamos 5 arremessos é de 20%:
+   - **Essa é a maior probabilidade de todas: Acertar 5 arremessos de 10 = 20%**
+ - A probabilidade de nós acertamos 6 arremessos é de 15%;
+ - A probabilidade de nós acertamos 7 arremessos é de 12%;
+ - A probabilidade de nós acertamos 8 arremessos é de 8%;
+ - A probabilidade de nós acertamos 9 arremessos é de 5%;
+ - A probabilidade de nós acertamos 10 arremesso é de 3% *(mais ou menos)*;
+
+<div id="01-1"></div>
+
+### Evento discreto
+
+A primeira coisa que você tem que ter em mente é que esse tipo de evento que nós estamos imaginando (arremessos de basquete) é um **evento discreto**. Ou seja, não tem números intermediários entre um e outro. Por exemplo, não tem como arremessar uma bola e meia ou duas bolas e meia, vai ser sempre um número natural inteiro.
+
+Agora imagine que o mesmo jogador agora está treinando para uma final de basquete e fez **100 arremessos** que nos resultou no seguinte gráfico *(é só um exemplo)*:
+
+![img](images/normal-distribution-02.png)  
+
+**OBSERVAÇÕES:**
+
+ - Vejam que agora temos vários pontos que representam vários arremessos de **1** a **100**. Observem também que agora o meu ponto máximo de acertos *(50)* é de **2%**. O motivo disso é que agora eu tenho mais arremessos *(amostras)*.
+ - Uma observação muito importante é que quanto mais arremessos *(amostras)* o jogador fizer menor vai ser a probabilidade do ponto máximo. Isso, porque o **eixo-y** vai diminuindo se formos aumentando o número de arremessos *(amostras)*. *Ou seja, a curva vai ficar cada vez mais baixa*.
+ - Outra observação ainda mais importante é que quanto maior o número de arremessos *(amostras)*, mais difícil (menor a probabilidade) vai ser de acerta um número exato. Por exemplo, acertar **500** arremessos de **1000** ou **499** arremessos de **1000**.
+
+---
+
+<div id="04-2"></div>
+
+## 04.2 - Introdução & Caractetísticas de uma Distribuição Normal (Simétrica)
+
+Bem, no geral essa curva do nosso exemplo de 100 arremessos é o que nós conhecemos em estatística como ***Curva Simétrica (distribuição normal)***.
+
+Veja a imagem abaixo:
+
+![img](images/nd-01.jpg)  
+
+Vejam que na distribuição normal *(o exemplo do meio)* nós temos:
+
+ - Uma curva simétrica:
+   - A parte da esquerda é exatamente igual a parte da direita.
+ - A *média*, *mediana* e *moda* se localizam no meio (centro) da curva.
+
+**NOTE:**  
+Essas outras curvas de *distribuição não normal (assimétricas)* são apenas exemplos visuais para diferenciar de uma **Distribuição Normal (simétrica)**.
+
+---
+
+<div id="04-3"></div>
+
+## 04.3 - Probabilidade de acertar arremessos de basquete por faixa (evento contínuo)
+
+Voltando para o nosso problema de arremessos de basquete e partindo da última observação nós tinhamos o seguinte problema:
+
+> Quanto maior o número de arremessos *(amostras)*, mais difícil (menor a probabilidade) vai ser de acerta um número exato. Por exemplo, acertar **500** arremessos de **1000** ou **499** arremessos de **1000**.
+
+Sabendo disso, agora nós vamos seguir uma abordagem, onde, vamos focar em **faixas** de arremessos. Por exemplo:
+
+> Qual a probabilida do jogador de basquete acertar entre **450** e **550** arremessos.
+
+Seguindo essa abordagem nós teríamos um quadro similar ao primeiro e segundo exemplo (de 100 arremessos) simultaneamente, onde nós teríamos:
+
+ - Os blocos (faixas);
+ - Uma linha (curva) representando os 100 arremessos.
+
+Algo parecido com isso:
+
+![img](images/normal-distribution-03.png)  
+
+**NOTE:**  
+Vejam que nessa abstração nós estamos pensando em **faixas (ou blocos)** e não acertos exatos.
+
+> Isso, porque quando nós temos muitos arremessos (amostras) faz mais sentido nós pensarmos em **faixas** e não valores específicos.
+
+**NOTE:**  
+Tudo bem que nós estamos pensando em arremessos de basquete e talvez não faça sentido quando aumentarmos para 1000 arremessos ou 1 milhão de arremessos. Mas, nós poderíamos está falando de:
+
+ - Quantidade de pessoas que vivem na terra;
+ - Interações moleculares...
+
+**NOTE:**  
+Para finalizar essa abordagem nós temos que ter em mente que essa abordagem para grandes numeros de arremessos (amostras) é o que nós chamamos de **evento contínua**.
+
+---
+
+
+
+---
+
+
+<div id="04-4"></div>
+
+## 04.4 - Calculando a probabilidade da faixa que desejamos (Função Densidade de Probabilidade)
+
+Bem, para calcular a probabilidade da faixa que desejamor vamos seguir uma nova abordagem. Primeiramente, no **eixo-y** não vamos ter a *probabilidade* de acertar *x* arremessos e sim uma **Função Densidade de Probabilidade**.
+
+Algo parecido com isso:
+
+![img](images/normal-distribution-04.png)  
+
+**NOTE:**  
+Mas, por que **Função Densidade de Probabilidade**?
+
+> Porque nós vamos calcular uma **área (faixa) específica da curva**.
+
+Exemplo:
+
+![img](images/normal-distribution-05.png)  
+
+**NOTE:**  
+O cálculo dessa **área (faixa) específica da curva** que vai nos dar a probabilidade dessa faixa da curva. Por exemplo, probabilidade de acertar 499 de 1000 arremessos.
+
+> Mas como calcular essa **área (faixa) específica da curva**? Usando cálculo de ***Integral***.
+
+---
+
+
+
+
+
+
+
+---
+
+<div id="outliers"></div>
+
+## Outliers
+
+![img](images/nd-00.jpg)  
+![img](images/ttest_stability.png)  
+
+ - Veja também na última imagem que os outliers tendem a puxar a curva do centro (para o lado esquerdo ou direito, dependendo do outlier)
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -327,3 +448,4 @@ Os estatísticos chamam isso de uma **distribuição normal (ou às vezes uma di
 [Distribuição - Simétrica vs Assimétrica](https://www.youtube.com/watch?v=yhWyPiMi-i4)  
 [Distribuição Normal](https://www.youtube.com/watch?v=MoGes4OzsIk)  
 [Essential Math for Machine Learning: Python Edition](https://learning.edx.org/course/course-v1:Microsoft+DAT256x+2T2018/home)
+[Entenda a essência da Distribuição Normal (de onde vem, para que serve)](https://www.youtube.com/watch?v=OtDgQuDBgGk)
