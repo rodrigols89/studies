@@ -42,6 +42,7 @@
            - [Introdução a Decision trees (Árvores de Decisão)](modules/decision-trees/intro-to-decision-trees.md)
          - SVM - (Support Vector Machine)
          - Naive Bayes
+           - [Introdução ao Algoritmo Naive Bayes](modules/naive-bayes/intro-to-naive-bayes.md)
          - K-Nearest Neighbors (KNN)
            - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](modules/knn/intro-to-knn.md)
            - [KNN com Scikit-Learn](modules/knn/knn-w-sklearn.md)
