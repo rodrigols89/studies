@@ -77,9 +77,10 @@
 ## Linear Algebra
 
  - **Matrices:**
-   - [Introdução às matrizes](modules/linear-algebra/intro-to-matrices)
+   - [Introdução às matrizes](modules/linear-algebra/matrices/intro-to-matrices.md)
+   - [Matrizes Esparsas](modules/linear-algebra/matrices/sparse-matrices.md)
  - **Vectors:**
-   - [Introdução aos vetores](modules/linear-algebra/intro-to-vectors)
+   - [Introdução aos vetores](modules/linear-algebra/vectors/intro-to-vectors.md)
 
 ---
 
