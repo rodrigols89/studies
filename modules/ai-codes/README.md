@@ -191,11 +191,11 @@
    - **Extracting features from text:**
      - [CountVectorizer](modules/feature-engineering/extracting-features-from-text/countvectorizer.ipynb)
      - Bag of words
-     - [# TF, DF, IDF & TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-df-idf-tfidf.ipynb)
+     - [TF, DF, IDF & TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-df-idf-tfidf.ipynb)
      - n-grams
      - word2vec
      - topic extraction
-   - **extracting features from images:**
+   - **Extracting features from images:**
      - Coming soon...
 
 <div id="hyperparameter-tuning"></div>
