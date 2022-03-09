@@ -189,10 +189,10 @@
    - **Aggregating Transaction Data:**
      - Same as above but in same feature over time window
    - **Extracting features from text:**
-     - [CountVectorizer](modules/feature-engineering/extracting-features-from-text/countvectorizer.ipynb)
      - Bag of words
-     - [TF, DF, IDF & TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-df-idf-tfidf.ipynb)
      - n-grams
+     - [CountVectorizer](modules/feature-engineering/extracting-features-from-text/countvectorizer.ipynb)
+     - [TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-idf.ipynb)
      - word2vec
      - topic extraction
    - **Extracting features from images:**
