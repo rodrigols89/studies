@@ -6,13 +6,18 @@
 
 ## Contents
 
- - [Machine Learning](#ml)
- - [Neural Nets & Deep Learning](#ann-dp)
- - [Reinforcement Learning](#drl)
- - [Computer Vision](#cv)
- - [Useful Libraries](#useful-libraries)
- - [Tips & Tricks](#tips-and-tricks)
- - [Project Settings](#settings)
+ - [**Machine Learning**](#ml)
+ - [**Neural Nets & Deep Learning**](#ann-dp)
+ - [**Reinforcement Learning**](#drl)
+ - [**Computer Vision**](#cv)
+ - [**Useful Libraries**](#useful-libraries)
+ - **Tips & Tricks:**
+   - [Data Splitting/+Overfitting & Underfitting](#data-splitting)
+   - [Feature Engineering](#feature-engineering)
+   - [Hyperparameter Tuning](#hyperparameter-tuning)
+   - [Evaluation Metrics](#evaluation-metrics)
+   - [Cross-Validation](#cross-validation)
+ - [**Project Settings**](#settings)
 
 ---
 
@@ -129,21 +134,15 @@
 
 ## Tips & Tricks
 
- - **Preprocessing:**
-   - [Tipos de Dados](modules/preprocessing/data-types.md)
-   - [Dados Missing](modules/preprocessing/missing-data.md)
-   - [Correlação (Feature selection)](modules/preprocessing/correlation.md)
-   - [Normalização de Dados](modules/preprocessing/data-normalization.md)
-   - **Text Preprocessing:**
-     - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.ipynb)
-     - [Tokenization (tokenização)](modules/preprocessing/tokenization.ipynb)
-     - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.ipynb)
-     - [Stemming](modules/preprocessing/stemming.ipynb)
-     - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
- - **Data Splitting:**
+<div id="data-splitting"></div>
+
+ - **Data Splitting/+Overfitting & Underfitting:**
    - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
    - [Dados de Treino, Validação & Teste](modules/data-splitting/training-validation-testing.md)
    - [Overfitting & Underfitting](modules/data-splitting/overfitting-underfitting.md)
+
+<div id="feature-engineering"></div>
+
  - **[Feature Engineering:](modules/feature-engineering/intro-to-feature-engineering.md)**
    - **Missing Data Imputation:**
      - Complete case analysis
@@ -191,18 +190,21 @@
      - Same as above but in same feature over time window
    - **Extracting features from text:**
      - Bag of words
-     - TF-IDF
      - n-grams
+     - [CountVectorizer](modules/feature-engineering/extracting-features-from-text/countvectorizer.ipynb)
+     - [TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-idf.ipynb)
      - word2vec
      - topic extraction
-   - **extracting features from images:**
+   - **Extracting features from images:**
      - Coming soon...
- - **Cross-Validation:**
-   - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
-   - [K-Fold](modules/cross-validation/k-fold.md)
-   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
+
+<div id="hyperparameter-tuning"></div>
+
  - **Hyperparameter Tuning:**
    - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
+
+<div id="evaluation-metrics"></div>
+
  - **[Evaluation Metrics:](modules/evaluation-metrics/evaluation-metrics.md)**
    - **Regression Problems:**
      - Mean absolute error (MAE)
@@ -225,6 +227,12 @@
      - Gini Coefficient
      - Cross-Entropy Loss (Binary Classification)
      - Hinge Loss(Binary Classification)
+
+<div id="cross-validation"></div>
+
+ - **Cross-Validation:**
+   - [K-Fold](modules/cross-validation/k-fold.md)
+   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
 
 ---
 
