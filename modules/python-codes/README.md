@@ -21,3 +21,9 @@
  - **Object-Oriented Programming (OOP):**
    - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
    - [Métodos Construtores](modules/oop/construtors.md)
+ - **Tips & Tricks:**
+   - [Docstrings em Python](modules/tips-and-tricks/docstrings-in-python.ipynb)
+
+---
+
+**Rodrigo Leite -** *drigols*
