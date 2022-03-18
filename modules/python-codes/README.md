@@ -20,7 +20,7 @@
      - [List Comprehension](modules/basic-data-structures/list-comprehension.md)
  - **Object-Oriented Programming (OOP):**
    - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
-   - [Métodos Construtores](modules/oop/construtors.md)
+   - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)

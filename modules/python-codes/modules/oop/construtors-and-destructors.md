@@ -1,4 +1,4 @@
-# Métodos Construtores
+# Construtores & Destruidores
 
 ## Conteúdo
 
@@ -6,6 +6,7 @@
  - [02 - Construtores em Python: `__init__`](#02)
    - [02.1 - Adicionando valores default para os nossos construtores](#02-1)
    - [02.2 - Passando argumentos para o nosso construtor por Posição vs Keywords](#02-2)
+ - [03 - Destruidores em Python](#destructors)
 
 ---
 
@@ -186,6 +187,41 @@ Se você recebeu um método e não sabe quais parâmetros foram definidos é mui
 
  - Assim que você fechar o método, por exemplo **print(aqui dentro)**, dentro do parênteses você vai ver as definições do método;
  - Outra abordagem é **segurar Ctrl e clica no método** *(depende do seu editor de texto)* que vai abrir o **builtins.pyi**.
+
+---
+
+<div id="destructors"></div>
+
+## 03 - Destruidores em Python
+
+> **Destrutores** são chamados quando um objeto é destruído. Em Python, os destruidores não são tão necessários quanto em C++ porque Python tem o **Garbage Collector (coletor de lixo)** que lida com o gerenciamento de memória automaticamente. 
+
+O método `__del__()` é conhecido como método destruidor em Python. Ele é chamado quando todas as referências ao objeto foram excluídas, ou seja, quando um objeto é coletado como lixo. 
+
+Por exemplo, vejam o código abaixo:
+
+[destructors-01.py](src/destructors-01.py)
+```python
+class Employee:
+
+	def __init__(self):
+		print('Employee created.')
+
+	def __del__(self):
+		print('Destructor called, Employee deleted.')
+
+obj = Employee()
+del obj
+```
+
+**OUTPUT:**  
+```python
+Employee created.
+Destructor called, Employee deleted.
+```
+
+**NOTE:**  
+Não é comum programadores Python ficarem se preocupando com o uso de memória, mas em alguns programas que exigem alta performance é bom saber quando utillizar.
 
 ---
 
