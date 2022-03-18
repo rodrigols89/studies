@@ -23,6 +23,7 @@
    - [Métodos Construtores](modules/oop/construtors.md)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
+   - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
 
 ---
 
