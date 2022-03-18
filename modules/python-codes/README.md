@@ -22,7 +22,8 @@
    - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
    - [Métodos Construtores](modules/oop/construtors.md)
  - **Tips & Tricks:**
-   - [Docstrings em Python](modules/tips-and-tricks/docstrings-in-python.ipynb)
+   - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
+   - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
 
 ---
 
