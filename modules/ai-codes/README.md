@@ -12,7 +12,7 @@
  - [**Computer Vision**](#cv)
  - [**Useful Libraries**](#useful-libraries)
  - **Tips & Tricks:**
-   - [Data Splitting/+Overfitting & Underfitting](#data-splitting)
+   - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
    - [Feature Engineering](#feature-engineering)
    - [Hyperparameter Tuning](#hyperparameter-tuning)
    - [Evaluation Metrics](#evaluation-metrics)
@@ -134,12 +134,13 @@
 
 ## Tips & Tricks
 
-<div id="data-splitting"></div>
+<div id="ai-concepts"></div>
 
- - **Data Splitting/+Overfitting & Underfitting:**
-   - [Dados de Treino vs Dados de Teste](modules/data-splitting/training-vs-test-sets.md)
-   - [Dados de Treino, Validação & Teste](modules/data-splitting/training-validation-testing.md)
-   - [Overfitting & Underfitting](modules/data-splitting/overfitting-underfitting.md)
+ - **Artificial Intelligence & Data Science Concepts:**
+   - [Dados de Treino vs Dados de Teste](modules/concepts/training-vs-test-sets.md)
+   - [Dados de Treino, Validação & Teste](modules/concepts/training-validation-testing.md)
+   - [Overfitting & Underfitting](modules/concepts/overfitting-underfitting.md)
+   - [Data Storytelling](modules/concepts/data-storytelling.md)
 
 <div id="feature-engineering"></div>
 
