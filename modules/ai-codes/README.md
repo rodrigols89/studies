@@ -137,10 +137,11 @@
 <div id="ai-concepts"></div>
 
  - **Artificial Intelligence & Data Science Concepts:**
+   - [Review: Overfitting, Underfitting & O trade-off viés-variância](modules/concepts/overfitting-underfitting.ipynb)
    - [Tipos (etapas) de Projectos de Data Science](modules/concepts/project-types.md)
+   - [Learning Curves para Machine Learning](modules/concepts/learning-curves-for-ml.ipynb)
    - [Dados de Treino vs Dados de Teste](modules/concepts/training-vs-test-sets.md)
    - [Dados de Treino, Validação & Teste](modules/concepts/training-validation-testing.md)
-   - [Overfitting & Underfitting](modules/concepts/overfitting-underfitting.md)
    - [Data Storytelling](modules/concepts/data-storytelling.md)
    - [Data Pipeline](modules/concepts/data-pipeline.md)
 
