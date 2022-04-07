@@ -81,3 +81,7 @@ Bem, não são todos, mas o C++ é muito famoso por ter esses 3 paradigmas como 
 
 **REFERÊNCIAS:**  
 [Curso de Programação C++ | Aula 00 - Introdução | Computador | Linguagem | Aprenda a Programar](https://www.youtube.com/watch?v=ZFaGnEKEjFs&t=5238s)
+
+---
+
+**Rodrigo Leite -** *drigols*
