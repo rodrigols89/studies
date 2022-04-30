@@ -6,9 +6,12 @@
 
 ## Contents
 
+<div id=""></div>
+
  - [**Machine Learning**](#ml)
  - [**Neural Nets & Deep Learning**](#ann-dp)
- - [**Reinforcement Learning**](#drl)
+ - [**Recommender System**](#recommender-system)
+ - [**Deep/+Reinforcement Learning**](#drl)
  - [**Computer Vision**](#cv)
  - [**Useful Libraries**](#useful-libraries)
  - **Tips & Tricks:**
@@ -101,9 +104,17 @@
 
 ---
 
+<div id="recommender-system"></div>
+
+## Recommender System
+
+ - [Métodos (abordagens) utilizadas em Sistema de Recomendação](modules/recommender-system/recommender-system-methods.md)
+
+---
+
 <div id="drl"></div>
 
-## Reinforcement Learning
+## Deep/+Reinforcement Learning
 
  - [Introdução ao Reinforcement Learning (Aprendizado por Reforço)](modules/rl/intro-to-rl.md)
  - [O que são Ações, Estados e Recompensas](modules/rl/actions-states-rewards.md)
