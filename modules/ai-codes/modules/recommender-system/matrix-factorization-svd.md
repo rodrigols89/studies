@@ -38,7 +38,7 @@ Algo parecido com isso:
 ![img](images/matrix-factorization-02.png)  
 
 **Mas por que adicionar essas features para os filmes?**  
-Porque adicionar features para cada filme, fica mais fácil de tentar ***prever*** os valores **faltantes/missing (?)** relacionando quanto porcento (%) cada filme tem em relação a cada feature e quanto porcento cada usuário deu para cada filme.
+Porque adicionar features para cada filme fica mais fácil de tentar ***prever*** os valores **faltantes/missing (?)** relacionando quanto porcento (%) cada filme tem em relação a cada feature e quanto porcento cada usuário deu para cada filme.
 
 > Agora vem outra pergunta-chave, como eu posso criar essas features?
 
