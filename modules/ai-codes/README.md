@@ -111,6 +111,7 @@
  - [Métodos (abordagens) utilizadas em Sistema de Recomendação](modules/recommender-system/recommender-system-methods.md)
  - [Método Cosine Distance/ Similarity (Teoria)](modules/recommender-system/cosine-distance-similarity.md)
  - [Método Matrix Factorization/ SVD++ (Teoria)](modules/recommender-system/matrix-factorization-svd.md)
+ - [Sistema de Recomendação com a biblioteca Surprise](modules/recommender-system/surpriselib.ipynb)
 
 ---
 
