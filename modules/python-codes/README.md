@@ -23,6 +23,7 @@
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
+   - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
 
 ---
