@@ -21,6 +21,8 @@
  - **Object-Oriented Programming (OOP):**
    - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
+ - **APIs:**
+   - [Consumindo APIs com a biblioteca requests](modules/api/request.ipynb)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
