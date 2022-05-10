@@ -6,7 +6,7 @@
 
  - [01 - from directory.file import ClassFunction_x, ClassFunction_y, ClassFunction_z](#imports)
  - [02 - Rodando um teste específico](#specific-test)
- - [03 - [Mindset] Crie o teste + Codifique o mínimo possível + refatore (Step-By-Step)](#)
+ - [03 - [Mindset] Crie o teste + Codifique o mínimo possível + refatore (Step-By-Step)](#step-by-step)
 
 ---
 
