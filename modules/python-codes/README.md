@@ -25,6 +25,8 @@
    - [Consumindo APIs com a biblioteca requests](modules/api/request.ipynb)
  - **Testing:**
    - [Criando uma calculadora com pytest & TDD](modules/test/calculator)
+ - **Databases:**
+   - [SQLite3](modules/databases/sqlite3)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
