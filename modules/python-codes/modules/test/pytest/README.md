@@ -1,6 +1,6 @@
 # Pytest
 
-![img](images/logo.png)
+![img](res/logo.png)
 
 ## Contents
 

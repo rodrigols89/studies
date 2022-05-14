@@ -22,7 +22,7 @@
    - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **APIs:**
-   - [Consumindo APIs com a biblioteca requests](modules/api/request.ipynb)
+   - [Requests: HTTP for Humans](modules/api/requests)
  - **Testing:**
    - [PyTest](modules/test/pytest)
  - **Databases:**
