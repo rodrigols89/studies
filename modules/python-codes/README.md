@@ -24,8 +24,7 @@
  - **APIs:**
    - [Consumindo APIs com a biblioteca requests](modules/api/request.ipynb)
  - **Testing:**
-   - [Criando uma calculadora com pytest & TDD](modules/test/calculator)
-   - [PyTest - Tips & Tricks](modules/test/pytest/pytest-tips-tricks.md)
+   - [PyTest](modules/test/pytest)
  - **Databases:**
    - [SQLite3](modules/databases/sqlite3)
  - **Tips & Tricks:**
