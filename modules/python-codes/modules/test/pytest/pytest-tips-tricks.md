@@ -5,6 +5,7 @@
  - [Executando testes únicos/específicos](#specific-test)
  - [Pulando/Ignorando (Skipping) testes + Adicionando razão](#skipping-test)
  - [Marcando/Rotulando testes (Tagging)](#tagging)
+ - [Rodando testes em ordem de preferência](#order)
 
 ---
 
@@ -151,8 +152,48 @@ $ pytest -svv -m 'mac or linux'
 
 ---
 
+<div id="order"></div>
+
+## Rodando testes em ordem de preferência
+
+Em alguns casos nós vamos preferir que determinados testes rodem em uma sequência de nossa preferência. Para isso, o pyteste tem o atributo **order**, onde, nós podemos definir quais as prioridades de cada teste.
+
+Vejam o exemplo abaixo:
+
+**Teste sample:**  
+```python
+import pytest
+
+@pytest.mark.run(order=3)
+def test_three():
+  assert True
+
+@pytest.mark.run(order=4)
+def test_four():
+  assert True
+
+@pytest.mark.run(order=2)
+def test_two():
+  assert True
+
+@pytest.mark.run(order=1)
+def test_one():
+  assert True
+```
+
+**OUTPUT:**  
+```python
+test.py::test_one PASSED
+test.py::test_two PASSED
+test.py::test_three PASSED
+test.py::test_four PASSED
+```
+
+---
+
 **REFERÊNCIAS:**  
 [Useful pytest command line options](https://www.thedigitalcatonline.com/blog/2018/07/05/useful-pytest-command-line-options/)  
+[Execute pytest in order](https://stackoverflow.com/questions/34504929/execute-pytest-in-order)
 
 ---
 
