@@ -6,6 +6,7 @@
  - [02 - Inserindo dados de uma variável ou passadas pelo usuário em uma Tabela](#variables)
  - [03 - Inserindo várias linhas (registro) na tabela MySQL usando o método executemany() do objeto cursor()](#executemany)
  - [04 - Inserir timestamp e DateTime em uma tabela MySQL usando Python](#dateTime)
+ - [05 - Inserindo/Recuperando arquivo e imagens como um Blob no MySQL usando Python](#blob)
 
 ---
 
@@ -287,6 +288,180 @@ select * from laptop
 | 15 | Lenovo ThinkPad P71  |  6459 | 2019-08-14    |
 +----+----------------------+-------+---------------+
 ```
+
+---
+
+<div id="blob"></div>
+
+## 05 - Inserindo/Recuperando arquivo e imagens como um Blob no MySQL usando Python
+
+Agora nós vamos aprender como inserir ou salvar qualquer informação digital como um *arquivo*, *imagem*, *vídeo* ou *música* como dados **blob** em uma tabela MySQL do Python. Também aprenderemos como buscar o *arquivo*, *imagem*, *vídeo* ou *música* armazenada no MySQL usando Python.
+
+**NOTE:**  
+Para armazenar **dados BLOB** em uma tabela MySQL, precisamos criar uma tabela contendo dados binários. Como alternativa, se você tiver uma tabela, modifique-a adicionando uma coluna extra com **BLOB** como seu tipo de dados.
+
+Por exemplo, vejam a tabela abaixo:
+
+```python
+CREATE TABLE `Python_Employee` (
+  `id` INT NOT NULL,
+  `name` TEXT NOT NULL,
+  `photo` BLOB NOT NULL,
+  `biodata` BLOB NOT NULL,
+  PRIMARY KEY (`id`)
+)
+```
+
+Esta tabela contém as duas colunas **BLOB**:
+
+ - **photo**
+   - Para armazenar uma foto de funcionário.
+ - **biodata**
+   - Para armazenar detalhes do funcionário em formato de arquivo.
+
+### Mas o que é um BLOB?
+
+Um **BLOB (grande objeto binário)** é um tipo de dados MySQL usado para armazenar dados binários. Podemos converter nossos *arquivos* e *imagens* em dados binários em Python e mantê-los na tabela MySQL usando BLOB. O MySQL tem os quatro tipos de BLOB cada um contendo uma quantidade variável de dados:
+
+ - TINYBLOB
+ - BLOB
+ - MEDIUMBLOB
+ - LONGBLOB
+
+Vejam o exemplo de código abaixo para inserir dados BLOB em uma tabela no MySQL com Python:
+
+[blob-v1.py](src/blob-v1.py)
+```python
+import mysql.connector
+
+
+insert_blob_query = """
+  INSERT INTO python_employee (id, name, photo, biodata)
+                       VALUES (%s,%s,%s,%s)
+"""
+
+
+def convertToBinaryData(filename):
+  # Convert digital data to binary format
+  with open(filename, 'rb') as file:
+    binaryData = file.read()
+  return binaryData
+
+
+def insertBLOB(id, name, photo, biodata):
+  print("Inserting BLOB into python_employee table")
+  try:
+    connection = mysql.connector.connect(
+      host='localhost',
+      database='python_db',
+      user='root',
+      password='toor'
+    )
+  except mysql.connector.Error as error:
+      print("Failed inserting BLOB data into MySQL table {}".format(error))
+  else:
+    cursor = connection.cursor() # Cursor instance.
+
+    # Convert data to BLOB.
+    photo_converted = convertToBinaryData(photo)
+    biodata_converted = convertToBinaryData(biodata)
+    # Convert data into tuple format
+    insert_blob_tuple = (id, name, photo_converted, biodata_converted)
+
+    result = cursor.execute(insert_blob_query, insert_blob_tuple)
+    connection.commit()
+    print("Image and file inserted successfully as a BLOB into python_employee table", result)
+  finally:
+    if connection.is_connected():
+      cursor.close()
+      connection.close()
+      print("MySQL connection is closed")
+
+
+insertBLOB(
+  id=1,
+  name="Rodrigo",
+  photo="../images/profile-picture.jpg",
+  biodata="../resources/rodrigo_biodata.txt"
+)
+```
+
+**OUTPUT:**  
+```python
+Inserting BLOB into python_employee table
+Image and file inserted successfully as a BLOB into python_employee table None
+MySQL connection is closed
+```
+
+Agora é só verificar no Banco de Dados se os dados foram inseridos. Porém, agora vem outra pergunta...
+
+> Como eu posso recuperar esses dados do Banco de Dados MySQL em Python?
+
+Não é um bixo de sete cabeças fazer isso, vejam o exemplo abaixo:
+
+[read_blob.py](src/read_blob.py)
+```python
+import mysql.connector
+
+
+sql_fetch_blob_query = """
+  SELECT * from python_employee where id = %s
+"""
+
+
+def write_file(data, filename):
+  # Convert binary data to proper format and write it on Hard Disk
+  with open(filename, 'wb') as file:
+    file.write(data)
+
+
+def readBLOB(id, photo, biodata):
+  print("Reading BLOB data from python_employee table")
+  try:
+    connection = mysql.connector.connect(
+      host='localhost',
+      database='python_db',
+      user='root',
+      password='toor')
+  except mysql.connector.Error as error:
+    print("Error while connecting to MySQ {}".format(error))
+  else:
+    cursor = connection.cursor() # cursor instance.
+
+    cursor.execute(sql_fetch_blob_query, (id,))
+    record = cursor.fetchall()
+    for row in record:
+      print("Id = ", row[0], )
+      print("Name = ", row[1])
+      image = row[2]
+      file = row[3]
+      print("Storing employee image and bio-data on disk \n")
+      write_file(image, photo)
+      write_file(file, biodata)
+  finally:
+    if connection.is_connected():
+      cursor.close()
+      connection.close()
+      print("MySQL connection is closed")
+
+
+readBLOB(
+  id=1,
+  photo="../resources/image_downloaded.jpg",
+  biodata="../resources/biodata_downloaded.txt"
+)
+```
+
+**OUTPUT:**  
+```python
+Reading BLOB data from python_employee table
+Id =  1
+Name =  Rodrigo
+Storing employee image and bio-data on disk
+```
+
+**NOTE:**  
+Se você procurar no diretório que você especificou vai está lá a **imagem** e o **arquivo.txt** referente aos tipos agrupados do usuário.
 
 ---
 
