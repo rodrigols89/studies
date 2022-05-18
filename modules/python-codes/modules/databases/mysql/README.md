@@ -1,6 +1,6 @@
-# MySQL
+# MySQL in Python
 
-![logo](res/logo.jpg)
+![logo](res/logo.png)
 
 ## Contents
 

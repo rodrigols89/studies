@@ -26,8 +26,8 @@
  - **Testing:**
    - [PyTest](modules/test/pytest)
  - **Databases:**
+   - [MySQL in Python](modules/databases/mysql)
    - [SQLite3](modules/databases/sqlite3)
-   - [MySQL](modules/databases/mysql)
  - **Tips & Tricks:**
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
