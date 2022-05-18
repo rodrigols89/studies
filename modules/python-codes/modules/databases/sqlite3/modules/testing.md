@@ -105,8 +105,8 @@ x
 ---
 
 **REFERENCES:**  
-[Fun with Fixtures for Database Applications](https://medium.com/@geoffreykoh/fun-with-fixtures-for-database-applications-8253eaf1a6d)
-[Result and Error Codes](https://www.sqlite.org/rescode.html) 
+[Fun with Fixtures for Database Applications](https://medium.com/@geoffreykoh/fun-with-fixtures-for-database-applications-8253eaf1a6d)  
+[Result and Error Codes](https://www.sqlite.org/rescode.html)  
 [Exceptions](https://docs.python.org/3/library/sqlite3.html#exceptions)  
 
 ---
