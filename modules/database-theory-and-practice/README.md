@@ -30,20 +30,8 @@
      - [ALTER TABLE](modules/practice/sql/alter-table.md)
      - [SHOW COLUMNS](modules/practice/sql/show-columns.md)
      - [INSERT INTO (Inserindo dados)](modules/practice/sql/insert-into.md)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - [](modules/practice/sql/)
-     - **SQL Challenges:**
+   - **Exercises & Challenges:**
+     - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
 
 ---
 
