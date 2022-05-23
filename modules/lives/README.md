@@ -1,12 +1,13 @@
 # Lives
 
-> Meus *códigos* e *notas* obtidas durante **Lives**.
+> My *codes*, *notes* from online **Lives** and **Bootcamps**.
 
 ![logo](res/logo.png)
 
-## Conteúdo
+## Contents
 
-x
+ - **Artificial Intelligence:**
+   - [Resolvendo o problema do Titanic no Kaggle (Mario Filho)](modules/ai/titanic/titanic-notebook.ipynb)
 
 ---
 
