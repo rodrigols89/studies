@@ -8,10 +8,7 @@
  - [04 - Creating tables Hospital and Doctor](#create-table)
  - [05 - Inserting data in the tables](#inserting-data)
  - [06 - Fetch Hospital and Doctor Information using "hospital Id" and "doctor Id"](#fetch-by-id)
- - []()
- - []()
- - []()
- - []()
+ - [07 - Closing Database Connection](#closing)
 
 ---
 
@@ -396,6 +393,34 @@ Joining Date: 2004-06-04
 Specialty: Garnacologist
 Salary: 42000
 Experience: None
+```
+
+---
+
+<div id="closing"></div>
+
+## 07 - Closing Database Connection
+
+Just to finalizer we need closing the Database connection:
+
+
+[database.py](hospital/database.py)
+```python
+def close_connection(self):
+  if self.connection.is_connected():
+    self.connection.close()
+    print("MySQL connection is closed.")
+```
+
+[main.py](main.py)
+```python
+# Closing Databaseconnection.
+my_db.close_connection()
+```
+
+**OUTPUT:**  
+```python
+MySQL connection is closed.
 ```
 
 ---
