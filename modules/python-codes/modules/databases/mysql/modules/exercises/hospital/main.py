@@ -49,3 +49,6 @@ if __name__ =="__main__":
   my_db.get_hospital_detail(2)
   print("\n")
   my_db.get_doctor_detail(105)
+
+  # Closing Databaseconnection.
+  my_db.close_connection()

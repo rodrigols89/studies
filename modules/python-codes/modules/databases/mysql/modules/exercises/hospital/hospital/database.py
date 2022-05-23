@@ -5,7 +5,6 @@ from mysql.connector import Error
 
 class MySQL:
 
-
   def __init__(self, host='localhost', database=None, user=None, password=None):
     if database == None:
       return print("Please, enter your Database name!")
@@ -33,7 +32,6 @@ class MySQL:
 
 
   def create_table(self, sql_script=None):
-
     if sql_script == None:
       return print("Please, enter your SQL Script to Create Table.")
     else:
@@ -48,7 +46,6 @@ class MySQL:
 
 
   def insert_data(self, insert_query=None, records_to_insert=None):
-
     if insert_query == None:
       return print("Please, enter your SQL Script to insert data in the table.")
     elif records_to_insert == None:
@@ -107,3 +104,9 @@ class MySQL:
           print("Error while getting data", error)
       finally:
         cursor.close()
+
+
+  def close_connection(self):
+    if self.connection.is_connected():
+      self.connection.close()
+      print("MySQL connection is closed.")
