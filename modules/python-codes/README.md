@@ -29,11 +29,11 @@
    - [MySQL in Python](modules/databases/mysql)
    - [SQLite3](modules/databases/sqlite3)
  - **Tips & Tricks:**
+   - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
  - **Code Samples:**
-   - [Como criar uma CLI (CI-EL-LAI)](https://github.com/drigols/python-week-2022/blob/day5/beerlog/cli.py)
    - [Como modelar um objeto com SQLModel](https://github.com/drigols/python-week-2022/blob/day5/beerlog/models.py)
 
 ---

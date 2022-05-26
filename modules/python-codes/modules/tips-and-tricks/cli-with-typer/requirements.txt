@@ -1,0 +1,48 @@
+atomicwrites==1.4.0
+attrs==21.4.0
+CacheControl==0.12.11
+cachy==0.3.0
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
+cleo==0.8.1
+click==8.1.3
+clikit==0.6.2
+colorama==0.4.4
+crashtest==0.3.1
+distlib==0.3.4
+filelock==3.7.0
+html5lib==1.1
+idna==3.3
+importlib-metadata==4.11.4
+iniconfig==1.1.1
+keyring==23.5.1
+lockfile==0.12.2
+more-itertools @ file:///C:/Users/Drigo/AppData/Local/pypoetry/Cache/artifacts/5a/82/a3/1f05f9a59868424b35fcbc5fbad91be09d059bd688daff5cfc46e2017b/more_itertools-8.13.0-py3-none-any.whl
+msgpack==1.0.3
+packaging @ file:///C:/Users/Drigo/AppData/Local/pypoetry/Cache/artifacts/7f/d5/4c/1d3c4776012fc0bbe1f86e69bde2c5e36d2d32caa2e4845ac1fc08ab3f/packaging-21.3-py3-none-any.whl
+pastel==0.2.1
+pexpect==4.8.0
+pkginfo==1.8.2
+platformdirs==2.5.2
+pluggy @ file:///C:/Users/Drigo/AppData/Local/pypoetry/Cache/artifacts/9c/e5/0b/2d64d03361a081edeb5d2ec5f286ccf9719587781fbf6822e1b6384c27/pluggy-0.13.1-py2.py3-none-any.whl
+poetry==1.1.13
+poetry-core==1.0.8
+ptyprocess==0.7.0
+py==1.11.0
+pylev==1.4.0
+pyparsing==3.0.9
+pytest @ file:///C:/Users/Drigo/AppData/Local/pypoetry/Cache/artifacts/9d/40/6b/50d2cb06df545acea43c65379c5456f4fbc703115a703bc7cd433ddf70/pytest-5.4.3-py3-none-any.whl
+pywin32-ctypes==0.2.0
+requests==2.27.1
+requests-toolbelt==0.9.1
+rodrigo-portal-gun==0.1.0
+shellingham==1.4.0
+six==1.16.0
+tomli==2.0.1
+tomlkit==0.11.0
+typer==0.4.1
+urllib3==1.26.9
+virtualenv==20.14.1
+wcwidth @ file:///C:/Users/Drigo/AppData/Local/pypoetry/Cache/artifacts/36/68/e2/7232f431072d5e8aeec124120b9a1d095d45da10311d271fac10982473/wcwidth-0.2.5-py2.py3-none-any.whl
+webencodings==0.5.1
+zipp==3.8.0
