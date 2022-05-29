@@ -1,3 +1,59 @@
+# Entendendo o sistema de módulos do Python (from module import function)
+
+Imagine que nós temos um programa que vai importar um módulo externo, como esse:
+
+**program.py**  
+```python
+from email import send_email
+```
+
+Assim que o Python executar esse arquivo **"program.py"** ele vai rodar um script chamado **"sys.path"** que é responsável por encontrar um módulo Python dentro do Sistema de Arquivos:
+
+**SCRIPT:**
+```python
+python -c "import sys; print(sys.path)"
+```
+
+**OUTPUT:**  
+```python
+[
+  '',
+  'C:\\Users\\Drigo\\AppData\\Local\\Programs\\Python\\Python38\\python38.zip', 'C:\\Users\\Drigo\\AppData\\Local\\Programs\\Python\\Python38\\DLLs', 'C:\\Users\\Drigo\\AppData\\Local\\Programs\\Python\\Python38\\lib', 'C:\\Users\\Drigo\\AppData\\Local\\Programs\\Python\\Python38', 'C:\\Users\\Drigo\\AppData\\Roaming\\Python\\Python38\\site-packages', 'C:\\Users\\Drigo\\AppData\\Local\\Programs\\Python\\Python38\\lib\\site-packages'
+]
+```
+
+**NOTE:**  
+Vejam que nós temos como saída uma lista de strings representando diretórios onde podem está esse módulo que o Python está procurando. Vale lembrar que esse retorno representa diretórios do Windows, para Linux nós teríamos algo como isso:
+
+**OUTPUT:**  
+```python
+[
+  '',
+  '/usr/local/lib/python3.8',
+  '~/local/lib/python3.8/site-packages',
+  '/usr/local/lib/python3.8/site-packages'
+]
+```
+
+**Mas o que significa cada um desses diretórios? Vamos ver de uma perspetiva do Linux:**
+
+ - **''**
+   - Essa primeira string vazia representa o diretório atual.
+ - **'/usr/local/lib/python3.8'**
+   - Standard Library/Biblioteca Padrão, ou seja bateria inclusa.
+ - **'~/local/lib/python3.8/site-packages'**
+   - Esse diretório é *users path (vejam que estamos utilizando "~")*, isso para evitar conflito entre bibliotecas instaladas por usuários diferentes.
+   - Os pacotes instalados com o parâmetro **-u**
+ - **'/usr/local/lib/python3.8/site-packages'**
+   - Esse diretório representa o *System Path*, que é o diretório onde as bibliotecas do sistema estão instaladas.
+   - A maioria dos Sistemas Operacionais utiliza Python para suas próprias ferramentas e é lá no *System Path* que ficam instaladas essas bibliotecas.
+
+
+
+
+
+
+
 # Módulos & Pacotes
 
 ## 01 - Maneiras de importar pacotes/módulos em Python
