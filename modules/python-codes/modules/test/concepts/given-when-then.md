@@ -35,4 +35,9 @@ assert DatabaseRow.query.first().name == new_name
 
 ---
 
+**REFERENCES:**  
+[How I test my code: motivation and strategy (part 1)](https://www.robinandeer.com/blog/2016/06/18/how-i-test-my-code-part-1)
+
+---
+
 **Rodrigo Leite -** *drigols*
