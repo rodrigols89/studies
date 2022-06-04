@@ -24,7 +24,10 @@
  - **APIs:**
    - [Requests: HTTP for Humans](modules/api/requests)
  - **Testing:**
-   - [PyTest](modules/test/pytest)
+   - **Concepts and Theories:**
+     - [Strategy: GIVEN-WHEN-THEN](modules/test/concepts/given-when-then.md)
+   - **Tools:**
+     - [PyTest](modules/test/pytest)
  - **Databases:**
    - [MySQL in Python](modules/databases/mysql)
    - [SQLite3](modules/databases/sqlite3)
