@@ -4,8 +4,11 @@
 
 ## Contents
 
- - [Criando uma calculadora com pytest & TDD](modules/calculator)
- - [PyTest - Tips & Tricks](modules/pytest-tips-tricks.md)
+ - [Fixture Arrange, Act, Assert, Cleanup with Pytest](modules/aaac.md)
+ - [Pytest - Fixtures](modules/fixtures.md)
+ - [PyTest - Tips](modules/pytest-tips-tricks.md)
+ - [Pytest calc](modules/calculator/)
+
 
 ---
 
