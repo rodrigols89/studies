@@ -2,6 +2,16 @@
 
 ## Contents
 
+ - **Docker Commands:**
+   - [Checking docker version](#v)
+   - [Using a testing image](#testing-image)
+   - [](#)
+   - [](#)
+   - [](#)
+   - [](#)
+   - [](#)
+   - [](#)
+   - [](#)
  - **Image Commands:**
    - [listing docker images](#listing-docker-images)
    - [removing docker images](#remove-image)
@@ -16,15 +26,210 @@
  - **Container Commands:**
    - [Initialization a Container](#initialization)
    - [listing containers](#listing-containers)
+   - [Stopping a container](#stopping)
+   - [Starting a container](#starting)
+   - [Removing containers](#removing)
    - [](#)
    - [](#)
    - [](#)
    - [](#)
    - [](#)
    - [](#)
-   - [](#)
-   - [](#)
-   - [](#)
+
+---
+
+<div id="v"></div>
+
+## Checking docker version
+
+to check Docker version just enter **docker -v** on the console:
+
+**CONSOLE:**  
+```python
+docker -v
+```
+
+**OUTPUT:**  
+```python
+Docker version 20.10.17, build 100c701
+```
+
+---
+
+<div id="testing-image"></div>
+
+## Using a testing image
+
+To test if you Docker is okay, we go use a test image:
+
+**CONSOLE:**  
+```python
+docker run -d -p 80:80 docker/getting-started
+```
+
+---
+
+<div></div>
+
+
+
+
+
+
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+**CONSOLE:**  
+```python
+
+```
+
+**OUTPUT:**  
+```python
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -329,60 +534,96 @@ CONTAINER ID   IMAGE          COMMAND    CREATED       STATUS                   
 
 ---
 
-<div id=""></div>
+<div id="stopping"></div>
 
-## x
+## Stopping a container
 
-x
-
-
-
-
-
-
+To stop a running container just enter the follow command:
 
 **CONSOLE:**  
 ```python
+sudo docker container stop <id-name-container>
+```
 
+**NOTE:**  
+Don't confuse the **container** *ID/name *with the **image** *ID/name*, that's because they are different.
+
+---
+
+<div id="starting"></div>
+
+## Starting a container
+
+The first thing you need to remember that:
+
+> Don't confuse the **container** *ID/name *with the **image** *ID/name*, that's because they are different.
+
+To get a container ID/Name just use the command **"sudo docker container ps -a"**:
+
+**CONSOLE:**  
+```python
+sudo docker container ps -a
 ```
 
 **OUTPUT:**  
 ```python
-
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                      PORTS     NAMES
+16293c3424d5   mysql                    "docker-entrypoint.s…"   23 minutes ago   Exited (0) 16 minutes ago             mysqlbd1
+22ae77f745f3   docker/getting-started   "/docker-entrypoint.…"   24 minutes ago   Exited (0) 15 minutes ago             suspicious_colden
+3e1403575b74   hello-world              "/hello"                 28 minutes ago   Exited (0) 27 minutes ago             pensive_bouman
 ```
 
+Now you have container ID/Names. To start a container just enter the follow command on the console:
 
 **CONSOLE:**  
 ```python
-
+sudo docker container start <id-name-container>
 ```
 
-**OUTPUT:**  
-```python
+---
 
-```
+<div id="removing"></div>
 
+## Removing containers
+
+To remove docker containers is very easy:
 
 **CONSOLE:**  
 ```python
-
+sudo docker container rm <container-id-or-name>
 ```
+
+**NOTE**  
+If you try remove a running container you will get the following error:
 
 **OUTPUT:**  
 ```python
-
+Error response from daemon: You cannot remove a running container 16293c3424d.
+Stop the container before attempting removal or force remove
 ```
 
+**NOTE:**  
+That's no recommender, but you can use the **flag -f** to force remove the container.
 
 **CONSOLE:**  
 ```python
-
+sudo docker container rm <container-id-or-name> -f
 ```
 
-**OUTPUT:**  
-```python
+---
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 **CONSOLE:**  
