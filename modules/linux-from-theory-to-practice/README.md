@@ -6,6 +6,7 @@
 
  - **Networking Management:**
    - [ping](modules/ping.md)
+   - [iwd (iNet wireless daemon)](modules/iwd.md)
 
 ---
 
