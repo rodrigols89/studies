@@ -9,6 +9,7 @@
  - **Concepts:**
    - [Container Concepts](modules/container-concepts.md)
    - [Docker Image vs Docker Container](modules/image-vs-container.md)
+   - [Dockerfile](modules/my-dockerfile.md)
  - **Tips & Tricks:**
    - [Docker Commands](modules/docker-commands.md)
 
