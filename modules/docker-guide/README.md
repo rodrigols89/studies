@@ -13,6 +13,7 @@
  - **Tips & Tricks:**
    - [Docker Abstraction (Image)](modules/docker-ab.md)
    - [Docker Commands](modules/docker-commands.md)
+   - [Docker Compose](modules/docker-compose.md)
 
 ---
 
