@@ -11,9 +11,9 @@
    - [Docker Image vs Docker Container](modules/image-vs-container.md)
    - [Dockerfile](modules/my-dockerfile.md)
  - **Tips & Tricks:**
+   - [Docker Compose - Examples](modules/docker-compose-examples.md)
    - [Docker Abstraction (Image)](modules/docker-ab.md)
    - [Docker Commands](modules/docker-commands.md)
-   - [Docker Compose](modules/docker-compose.md)
 
 ---
 
