@@ -15,6 +15,10 @@
    - [Starting a container](#starting)
    - [Removing containers](#removing)
    - [Entering a container (exec -it)](#exec-it)
+ - **Docker Compose:**
+   - []()
+
+
 
 ---
 
@@ -259,6 +263,186 @@ sudo docker container exec -it <container-id-or-name> bash
 
 **NOTE:**  
 To exit docker container, type **exit** or **ctrl+d** in the console.
+
+---
+
+<div id=""></div>
+
+## Dota2Learning Example
+
+In this example, we will create two MySQL containers from the same Docker Compose file:
+
+```python
+version: '3.9'
+services:
+  db-production:
+    container_name: db-production
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+  db-testing:
+    container_name: db-testing
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test_dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
+```
+
+```python
+sudo docker compose up --no-start
+```
+
+**NOTE:**  
+See that we're not starting the containers, we're just creating **(--no-start)**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 

@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  db-production:
+    container_name: db-production
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+  db-testing:
+    container_name: db-testing
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test_dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
