@@ -15,6 +15,14 @@
    - [Starting a container](#starting)
    - [Removing containers](#removing)
    - [Entering a container (exec -it)](#exec-it)
+ - **Docker Compose:**
+   - [docker compose build](#compose-build)
+   - [docker compose images](#compose-images)
+   - [docker compose stop](#compose-stop)
+   - [docker compose run](#compose-run)
+   - [docker compose up](#compose-up)
+   - [docker compose ps](#compose-ps)
+   - [docker compose down](#compose-down)
 
 ---
 
@@ -262,8 +270,159 @@ To exit docker container, type **exit** or **ctrl+d** in the console.
 
 ---
 
+<div id="compose-build"></div>
+
+## docker compose build
+
+> This command builds images in the **docker-compose.yml file**.
+
+The job of the build command is to get the images ready to create containers, so if a service is using the prebuilt image, it will skip this service.
+
+```python
+sudo docker compose build
+```
+
+```python
+database uses an image, skipping
+Building web
+Step 1/11 : FROM python:3.9-rc-buster
+ ---> 2e0edf7d3a8a
+Step 2/11 : RUN apt-get update && apt-get install -y docker.io
+```
+
+---
+
+<div id="compose-images"></div>
+
+## docker compose images
+
+> This command will list the images you’ve built using the current **docker-compose** file.
+
+```python
+sudo docker compose images
+```
+
+```python
+          Container                  Repository        Tag       Image Id       Size  
+--------------------------------------------------------------------------------------
+7001788f31a9_docker_database_1   mysql/mysql-server   5.7      2a6c84ecfcb2   333.9 MB
+docker_database_1                mysql/mysql-server   5.7      2a6c84ecfcb2   333.9 MB
+docker_web_1                     <none>               <none>   d986d824dae4   953 MB
+```
+
+---
+
+<div id="compose-stop"></div>
+
+## docker compose stop
+
+> This command stops the running containers of specified services.
+
+```python
+sudo docker-compose stop
+```
+
+```python
+Stopping docker_web_1      ... done
+Stopping docker_database_1 ... done
+```
+
+---
+
+<div id="compose-run"></div>
+
+## docker compose run
+
+> This is similar to the **docker run** command. It will create containers from images built for the services mentioned in the compose file.
+
+```python
+sudo docker-compose run web
+```
+
+```python
+Starting 7001788f31a9_docker_database_1 ... done
+ * Serving Flask app "app.py" (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 116-917-688
+```
+
+---
+
+<div id="compose-up"></div>
+
+## docker compose up
+
+> This command does the work of the **docker compose build** and **docker compose run** commands.
+
+It builds the images if they are not located locally and starts the containers. If images are already built, it will fork the container directly.
+
+```python
+sudo docker compose up
+```
+
+```python
+Creating docker_database_1 ... done
+Creating docker_web_1      ... done
+Attaching to docker_database_1, docker_web_1
+```
+
+---
+
+<div id="compose-ps"></div>
+
+## docker compose ps
+
+> This command list all the containers in the current **docker-compose** file. They can then either be running or stopped.
+
+```python
+sudo docker compose ps
+```
+
+```python
+      Name                 Command             State               Ports         
+---------------------------------------------------------------------------------
+docker_database_1   /entrypoint.sh mysqld   Up (healthy)   3306/tcp, 33060/tcp   
+docker_web_1        flask run               Up             0.0.0.0:5000->5000/tcp
+ 
+$ docker-compose ps
+      Name                 Command          State    Ports
+----------------------------------------------------------
+docker_database_1   /entrypoint.sh mysqld   Exit 0        
+docker_web_1        flask run               Exit 0  
+```
+
+---
+
+<div id="compose-down"></div>
+
+## docker compose down
+
+> This command is similar to the **docker system prune** command. However, in Compose, it stops all the services and cleans up the containers, networks, and images.
+
+```python
+sudo docker compose down
+```
+
+```python
+Removing docker_web_1      ... done
+Removing docker_database_1 ... done
+Removing network docker_default
+(django-tuts) Venkateshs-MacBook-Air:Docker venkateshachintalwar$ docker-compose images
+Container   Repository   Tag   Image Id   Size
+----------------------------------------------
+(django-tuts) Venkateshs-MacBook-Air:Docker venkateshachintalwar$ docker-compose ps
+Name   Command   State   Ports
+------------------------------
+```
+
+---
+
 **REFERENCES:**  
-[x](#)  
+[Docker Compose Tutorial: advanced Docker made simple](https://www.educative.io/blog/docker-compose-tutorial)  
 
 ---
 
