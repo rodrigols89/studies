@@ -4,6 +4,8 @@
 
  - [Getting Started](#gettingstarted)
  - [How to Run MySQL Using Docker (Run MySQL with less effort)](#less-effort)
+ - [Dota2Learning Example](#dota2learning)
+ - [How create a MySQL Container from existing data](#existing-data)
 
 ---
 
@@ -487,87 +489,172 @@ The return will be large.
 
 ---
 
-<div id=""></div>
-
-## x
-
-x
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div id="dota2learning"></div>
+
+## Dota2Learning Example
+
+In this example, we will create two MySQL containers from the same Docker Compose file:
+
+```python
+version: '3.9'
+services:
+  db-production:
+    container_name: db-production
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+  db-testing:
+    container_name: db-testing
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test_dota2learning
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
+```
+
+```python
+sudo docker compose up --no-start
+```
+
+**NOTE:**  
+See that we're not starting the containers, we're just creating **(--no-start)**.
+
+**Sharing data between my Application and Docker container:**
+Now, how I save Docker MySQL data with my application? Easy...
+
+```python
+version: '3.9'
+services:
+  db-production:
+    container_name: dota2learning-db
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/db-production:/var/lib/mysql
+  db-testing:
+    container_name: test-dota2learning-db
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test-dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/db-testing:/var/lib/mysql
+volumes:
+  data:
+```
+
+**NOTE:**  
+The above configuration defined one data volume named **"data"**, which is attached to MySQL container and mounted on **/var/lib/mysql** directory. <u>This is the default directory used by MySQL to store all data files</u>.
+
+**However, we have a problem... The shared data are locked!**  
+To solve this problem, let's add the following command to Docker Compose:
+
+```
+command: chmod 777 /var/lib/mysql -R
+```
+
+```python
+version: '3.9'
+services:
+  db-production:
+    container_name: mysql-production
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+    command: chmod 777 /var/lib/mysql -R
+    volumes:
+      - ./data/db-production:/var/lib/mysql
+  db-testing:
+    container_name: mysql-testing
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test-dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
+    command: chmod 777 /var/lib/mysql -R
+    volumes:
+      - ./data/db-testing:/var/lib/mysql
+volumes:
+  data:
+```
+
+---
+
+<div id="existing-data"></div>
+
+## How create a MySQL Container from existing data
+
+First let's create Docker Compose file:
+
+```python
+version: '3.9'
+services:
+  db-production:
+    container_name: mysql-production
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
+    command: chmod 777 /var/lib/mysql -R
+    volumes:
+      - ./data/db-production:/var/lib/mysql
+  db-testing:
+    container_name: mysql-testing
+    image: mysql:latest
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: test-dota2learning-db
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3307:3306"
+    command: chmod 777 /var/lib/mysql -R
+    volumes:
+      - ./data/db-testing:/var/lib/mysql
+volumes:
+  data:
+```
+
+**NOTE:**  
+Suppose you have MySQL data saved in **/data** directory just run the following docker compose command:
+
+```python
+sudo docker compose up -d
+```
+
+Now you have a ready MySQL database to work.
+
+---
+
+**REFERENCES:**  
+[Docker-compose with Persistent MySQL Data](https://tecadmin.net/docker-compose-persistent-mysql-data/)  
+
+---
 
 **Rodrigo Leite -** *drigols*
