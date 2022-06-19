@@ -5,6 +5,7 @@
  - **Docker Commands:**
    - [Checking docker version](#v)
    - [Using a testing image](#testing-image)
+   - [docker system prune -a -f --volunes](#system-prune)
  - **Image Commands:**
    - [listing docker images](#listing-docker-images)
    - [removing docker images](#remove-image)
@@ -54,6 +55,26 @@ To test if you Docker is okay, we go use a test image:
 ```python
 docker run -d -p 80:80 docker/getting-started
 ```
+
+---
+
+<div id="system-prune"></div>
+
+## docker system prune -a -f --volunes
+
+> Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+
+**Options:**  
+
+| Name, shorthand | Description                                        |
+|-----------------|----------------------------------------------------|
+| --all , -a      | Remove all unused images not just dangling ones    |
+| --filter        | Provide filter values (e.g. 'label=<key>=<value>') |
+| --force , -f    | Do not prompt for confirmation                     |
+| --volumes       | Prune volumes                                      |
+
+**NOTE:**  
+By default, **volumes** are not removed to prevent important data from being deleted if there is currently no container using the volume. Use the **--volumes flag** when running the command to prune volumes as well.
 
 ---
 
