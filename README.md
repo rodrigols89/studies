@@ -93,6 +93,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
  - __BONUS:__
    - [Fundamentos de Eletricidade & Manutenção Elétrica (Teoria & Prática)](modules/electrician)
+   - [Scientific Paper](modules/scientific-paper)
    - [Lives](modules/lives)
 
 ---
