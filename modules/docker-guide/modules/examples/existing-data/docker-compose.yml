@@ -10,7 +10,6 @@ services:
       MYSQL_ROOT_PASSWORD: toor
     ports:
       - "3306:3306"
-    command: chmod 777 /var/lib/mysql -R
     volumes:
       - ./data/db-production:/var/lib/mysql
   db-testing:
@@ -22,7 +21,6 @@ services:
       MYSQL_ROOT_PASSWORD: toor
     ports:
       - "3307:3306"
-    command: chmod 777 /var/lib/mysql -R
     volumes:
       - ./data/db-testing:/var/lib/mysql
 volumes:

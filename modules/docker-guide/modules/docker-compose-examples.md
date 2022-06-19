@@ -563,42 +563,10 @@ volumes:
 The above configuration defined one data volume named **"data"**, which is attached to MySQL container and mounted on **/var/lib/mysql** directory. <u>This is the default directory used by MySQL to store all data files</u>.
 
 **However, we have a problem... The shared data are locked!**  
-To solve this problem, let's add the following command to Docker Compose:
+To solve this problem, let's add the following command on console:
 
 ```
-command: chmod 777 /var/lib/mysql -R
-```
-
-```python
-version: '3.9'
-services:
-  db-production:
-    container_name: mysql-production
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_HOST: localhost
-      MYSQL_DATABASE: dota2learning-db
-      MYSQL_ROOT_PASSWORD: toor
-    ports:
-      - "3306:3306"
-    command: chmod 777 /var/lib/mysql -R
-    volumes:
-      - ./data/db-production:/var/lib/mysql
-  db-testing:
-    container_name: mysql-testing
-    image: mysql:latest
-    environment:
-      MYSQL_HOST: localhost
-      MYSQL_DATABASE: test-dota2learning-db
-      MYSQL_ROOT_PASSWORD: toor
-    ports:
-      - "3307:3306"
-    command: chmod 777 /var/lib/mysql -R
-    volumes:
-      - ./data/db-testing:/var/lib/mysql
-volumes:
-  data:
+sudo chmod 777 /var/lib/mysql -R
 ```
 
 ---
@@ -622,7 +590,6 @@ services:
       MYSQL_ROOT_PASSWORD: toor
     ports:
       - "3306:3306"
-    command: chmod 777 /var/lib/mysql -R
     volumes:
       - ./data/db-production:/var/lib/mysql
   db-testing:
@@ -634,7 +601,6 @@ services:
       MYSQL_ROOT_PASSWORD: toor
     ports:
       - "3307:3306"
-    command: chmod 777 /var/lib/mysql -R
     volumes:
       - ./data/db-testing:/var/lib/mysql
 volumes:
