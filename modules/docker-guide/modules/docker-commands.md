@@ -5,7 +5,7 @@
  - **Docker Commands:**
    - [Checking docker version](#v)
    - [Using a testing image](#testing-image)
-   - [docker system prune -a -f --volunes](#system-prune)
+   - [docker system prune -a -f --volumes](#system-prune)
  - **Image Commands:**
    - [listing docker images](#listing-docker-images)
    - [removing docker images](#remove-image)
@@ -60,7 +60,7 @@ docker run -d -p 80:80 docker/getting-started
 
 <div id="system-prune"></div>
 
-## docker system prune -a -f --volunes
+## docker system prune -a -f --volumes
 
 > Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
 
