@@ -49,7 +49,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Computer Science Fundamentals:__
-   - [x](#)
+   - [Linux from Theory to Practice](modules/linux-from-theory-to-practice)
 
 ---
 
