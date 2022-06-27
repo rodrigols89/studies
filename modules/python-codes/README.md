@@ -8,6 +8,12 @@
 
  - **Fundamentals:**
    - [Fundamentos de Python](modules/fundamentals/python-fundamentals.md)
+ - **Type Hints:**
+   - [String (str)](modules/type-hints/str.md)
+   - [list[type]](modules/type-hints/list.md)
+   - [tuple[type]](modules/type-hints/tuple.md)
+   - [Class Type](modules/type-hints/class-type.md)   
+   - [Several Types](modules/type-hints/several-types.md)
  - **Conditionals:**
    - [Estrutura condicional if](modules/conditionals/if.md)
    - [Estrutura condicional elif](modules/conditionals/elif.md)
