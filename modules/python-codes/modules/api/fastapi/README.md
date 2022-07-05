@@ -4,8 +4,11 @@
 
 ## Contents
 
- - [Path (endpoint or route)](modules/path.md)
- - [FastAPI Operations (HTTP methods)](modules/operations.md)
+ - **Concepts:**
+   - [Path (endpoint or route)](modules/path.md)
+   - [FastAPI Operations (HTTP methods)](modules/operations.md)
+ - **Examples:**
+   - [](modules/)
 
 ---
 
