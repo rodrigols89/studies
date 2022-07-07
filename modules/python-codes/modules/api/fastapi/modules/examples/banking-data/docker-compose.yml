@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  db:
+    container_name: banking-data
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: my-bank
+      MYSQL_ROOT_PASSWORD: toor
+    ports:
+      - "3306:3306"
