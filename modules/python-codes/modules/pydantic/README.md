@@ -5,9 +5,9 @@
 ## Contents
 
  - **Concepts:**
-   - []()
+   - ["validate_arguments" decorator](modules/validate-arguments.md)
  - **Examples:**
-   - []()
+   - [Mapping examples](modules/mapping.md)
 
 ---
 
