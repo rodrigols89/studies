@@ -1,6 +1,6 @@
 # ANZ Banking Data
 
-> This example will follow the tutorial [How to Build a REST API Endpoint on Top of an Existing Legacy Database Using FastAPI](https://python.plainenglish.io/how-to-build-a-rest-api-endpoint-on-top-of-an-existing-legacy-database-using-fastapi-489f38feab98)
+> This example will follow the tutorial [How to Build a REST API Endpoint on Top of an Existing Legacy Database Using FastAPI](https://python.plainenglish.io/how-to-build-a-rest-api-endpoint-on-top-of-an-existing-legacy-database-using-fastapi-489f38feab98).
 
 ## Contents
 
@@ -280,8 +280,46 @@ Finally, we go to our **main.py** file where we will put the final touches to ou
 
 [main.py](main.py)
 ```python
-Coming soon...
+from database import SessionLocal,engine
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+
+import crud, models,schemas
+
+
+models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+@app.get("/finance-data", response_model=list[schemas.FinanceData])
+def read_financedata(
+    skip: int=0,
+    limit: int=1000,
+    db: Session = Depends(get_db)
+):
+    finance_data = crud.get_financedata(db,skip=skip,limit=limit)
+    return finance_data
 ```
+
+Now just run [main.py](main.py):
+
+```python
+uvicorn main:app --reload
+```
+
+---
+
+**REFERENCE:**  
+[How to Build a REST API Endpoint on Top of an Existing Legacy Database Using FastAPI](https://python.plainenglish.io/how-to-build-a-rest-api-endpoint-on-top-of-an-existing-legacy-database-using-fastapi-489f38feab98)
 
 ---
 
