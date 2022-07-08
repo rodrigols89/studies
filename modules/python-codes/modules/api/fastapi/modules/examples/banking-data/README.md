@@ -207,7 +207,7 @@ class FinanceData(Base):
 
 ## Creating the schemas
 
-After we have done the mapping , we then need to create a **schema**, once the data has been retrieved by SQLAlchemy using the connection engine it then passes through pydantic (which is a library within fastapi that performs data validation and settings management using python type annotations. pydantic enforces type hints at runtime, and provides user-friendly errors when data is invalid.)
+After we have done the mapping, we then need to create a **schema**, once the data has been retrieved by SQLAlchemy using the connection engine it then passes through pydantic (which is a library within fastapi that performs data validation and settings management using python type annotations. pydantic enforces type hints at runtime, and provides user-friendly errors when data is invalid.)
 
 [schemas.py](schemas.py)
 ```python
