@@ -1,7 +1,9 @@
 # Model → Schema
 
- - A **model** in the high-level framework language is the equivalent of a table in a database.
- - A **schema** is a mapping for a model (Pydantic allows us to validate a schema data).
+ - A **model** in the high-level framework language is the equivalent of a table in a database:
+   - **SQLAlchemy** model.
+ - A **schema** is a mapping for a model.
+   - **Pydantic** model (Pydantic allows us to validate a schema data).
 
 ## Contents
 
