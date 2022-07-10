@@ -12,6 +12,8 @@
    - [iwd (iNet wireless daemon)](modules/iwd.md)
  - **Compression & Decompression Tools:**
    - [tar](modules/tar.md)
+ - **Compilers:**
+   - [g++](modules/compilers/g-plus-plus)
 
 ---
 
