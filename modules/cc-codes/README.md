@@ -15,6 +15,7 @@
    - [gdb (GNU Debugger)](modules/debugging/gdb)
  - **Tools:**
    - [GNU Make](modules/tools/make)
+   - [CMake](modules/tools/cmake)
 
 ---
 
