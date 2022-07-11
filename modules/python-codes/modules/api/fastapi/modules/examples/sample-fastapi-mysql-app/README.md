@@ -1,4 +1,4 @@
-# x
+# Project Structure | Models | Endpoints | Routes
 
 ## Contents
 
@@ -9,9 +9,6 @@
  - [Create Database connection and session](#connect-db)
  - [Create API Endpoints](#endpoints)
  - [Create Routes](#routes)
- - [](#)
- - [](#)
- - [](#)
 
 ---
 
@@ -455,7 +452,7 @@ if __name__ == '__main__':
 ```
 
 **NOTE:**  
-Now just run **python main.py **to test.
+Now just run **python main.py** to test.
 
 ---
 
