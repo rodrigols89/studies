@@ -18,7 +18,7 @@
    - [Async Tests](https://fastapi.tiangolo.com/advanced/async-tests/)
  - **Examples:**
    - [Bigger Applications - Multiple Files](https://fastapi.tiangolo.com/tutorial/bigger-applications/)
-   - [Models | Endpoints | Routes](modules/examples/sample-fastapi-mysql-app)
+   - [Project Structure | Models | Endpoints | Routes](modules/examples/sample-fastapi-mysql-app)
    - [ANZ Banking Data](modules/examples/banking-data)
    - [Model → Schema](modules/model-schema.md)
 

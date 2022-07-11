@@ -8,15 +8,6 @@
 ## Contents
 
  - [Mapping "financial_data" table](#financial-data)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
 
 ---
 
@@ -98,59 +89,6 @@ class FinanceData(BaseModel):
 
 **NOTE:**  
 We are using Pydantic to validate the data types.
-
----
-
-<div id=""></div>
-
-## x
-
-x
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
