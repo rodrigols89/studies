@@ -13,6 +13,8 @@
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)
+ - **Tools:**
+   - [GNU Make](modules/tools/make)
 
 ---
 
