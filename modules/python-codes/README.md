@@ -31,6 +31,7 @@
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/api/requests)
+   - [FastAPI](modules/api/fastapi)
  - **Testing:**
    - **Concepts and Theories:**
      - [Strategy: GIVEN-WHEN-THEN](modules/test/concepts/given-when-then.md)
