@@ -41,13 +41,12 @@
    - [MySQL in Python](modules/databases/mysql)
    - [SQLite3](modules/databases/sqlite3)
  - **Tips & Tricks:**
+   - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)
    - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Poetry - Tips & Tricks](modules/tips-and-tricks/poetry/tips-and-tricks.md)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
- - **Code Samples:**
-   - [Como modelar um objeto com SQLModel](https://github.com/drigols/python-week-2022/blob/day5/beerlog/models.py)
 
 ---
 
