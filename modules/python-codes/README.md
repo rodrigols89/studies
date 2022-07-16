@@ -39,6 +39,7 @@
      - [PyTest](modules/test/pytest)
  - **Databases:**
    - [MySQL in Python](modules/databases/mysql)
+   - [SQLAlchemy](modules/databases/sqlalchemy)
    - [SQLite3](modules/databases/sqlite3)
  - **Tips & Tricks:**
    - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)
