@@ -3,7 +3,7 @@
 # License: MIT
 from __future__ import annotations
 
-from connections import get_engine_connection
+from connections import get_engine_connection, get_session
 from create_table import create_table
 from core_model import studentMetaData, student
 
@@ -45,6 +45,12 @@ if __name__ == '__main__':
     #print(bool(engine))
 
 
+    Session = get_session(engine)
+    print(Session)
+    print(type(Session))
+    print(bool(Session))
+
+
     # Testing connect() method.
     #print('\nTesting connect():')
     conn = engine.connect()
@@ -74,4 +80,9 @@ if __name__ == '__main__':
     #print(type(student_dict))
     #ins = student.insert().values(student_dict)
     #print(ins)
-    conn.execute(student.insert(), student_list)
+    #conn.execute(student.insert(), student_list)
+    #select_query = student.select().where(student.c.id > 3)
+    #s_result = conn.execute(select_query)
+    #for row in s_result:
+    #    print(row)
+

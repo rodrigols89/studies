@@ -7,6 +7,8 @@
  - [Engine Configuration](modules/engine-configuration.md)
  - [Creating Tables](modules/creating-table.md)
  - [Inserting Data](modules/insert.md)
+ - [Select](modules/select.md)
+ - [Session](modules/session.md)
 
 ---
 
