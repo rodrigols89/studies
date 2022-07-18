@@ -1,4 +1,4 @@
-# Amazon Elastic Compute Cloud (EC2=ei-ci-two)
+# Amazon Elastic Compute Cloud (Amazon EC2=êi-cí-two)
 
 ## Contents
 
