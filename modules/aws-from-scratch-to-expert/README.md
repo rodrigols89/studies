@@ -10,6 +10,7 @@
    - [Client-Server Model](modules/client-server.md)
    - [Cloud Computing](modules/cloud-computing.md)
    - [On Premises](modules/on-premises.md)
+   - [Services](modules/services.md)
  - **Tips & Tricks:**
 
 ---
