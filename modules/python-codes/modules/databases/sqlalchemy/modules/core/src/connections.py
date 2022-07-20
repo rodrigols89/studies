@@ -15,7 +15,7 @@ def get_engine_connection(
         engine = create_engine(
             f"mysql+pymysql://{username}:{password}@{host}:{port}/{database}?charset=utf8mb4",
             encoding='utf8',
-            echo=True,
+            echo=False,
         )
         return engine
     except Exception as error:

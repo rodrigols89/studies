@@ -4,11 +4,14 @@
 
 ## Contents
 
- - [Engine Configuration](modules/engine-configuration.md)
- - [Creating Tables](modules/creating-table.md)
- - [Inserting Data](modules/insert.md)
- - [Select](modules/select.md)
- - [Session](modules/session.md)
+ - **CORE:**
+   - [Engine Configuration](modules/core/engine-configuration.md)
+   - [Creating Tables](modules/core/creating-table.md)
+   - [Inserting Data](modules/core/insert.md)
+   - [Select](modules/core/select.md)
+   - [Working with Engines and Connections](modules/core/engines-connections.md)
+ - **ORM:**
+   - [Session](modules/orm/session.md)
 
 ---
 
