@@ -48,6 +48,7 @@
    - [Poetry - Tips & Tricks](modules/tips-and-tricks/poetry/tips-and-tricks.md)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
+   - [Returns](modules/tips-and-tricks/returns/README.md)
 
 ---
 
