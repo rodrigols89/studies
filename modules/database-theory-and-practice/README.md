@@ -29,10 +29,14 @@
      - [RENAME TABLE](modules/practice/sql/rename-table.md)
      - [ALTER TABLE](modules/practice/sql/alter-table.md)
      - [SHOW COLUMNS](modules/practice/sql/show-columns.md)
+     - [DESCRIBE (EXPLAIN)](modules/practice/sql/describe.md)
      - [INSERT INTO (Inserindo dados)](modules/practice/sql/insert-into.md)
+     - [PRIMARY KEY](modules/practice/sql/primary-key.md)
+     - [FOREIGN KEY](modules/practice/sql/foreign-key.md)
+     - [SELECT](modules/practice/sql/select.md)
    - **Exercises & Challenges:**
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
