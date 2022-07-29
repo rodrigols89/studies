@@ -11,6 +11,7 @@
    - [Selecionando linhas (registros) de uma tabela MySQL em Python](modules/theory-practice/select.md)
  - **Exercises & Challenges:**
    - [SUS (Brazil health system) Information System](modules/exercises/hospital)
+   - [Dota2Learning](modules/exercises/dota2learning)
 
 ---
 
