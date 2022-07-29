@@ -1,19 +1,37 @@
 # Command
 
-## Conteúdo
+## Contents
 
- - [01 - Introdução ao comando "X"](#intro)
+ - [x](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## 01 - Introdução ao comando "X"
+## x
 
 >
 
-Por exemplo:
 
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+()
+
+![img](images/)
+
+**INPUT:**  
 ```sql
 
 ```
@@ -25,4 +43,9 @@ Por exemplo:
 
 ---
 
-**Rodrigo Leite -** *drigols*
+**REFERENCES:**  
+[]()  
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
