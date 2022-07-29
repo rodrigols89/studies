@@ -36,6 +36,7 @@
      - [SELECT](modules/practice/sql/select.md)
      - [WHERE](modules/practice/sql/where.md)
    - **Exercises & Challenges:**
+     - [Agents, Customer, Orders (+FOREIGN KEY approach)](modules/practice/exercises-challenges/agents-customer-orders.md)
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
 
 ---
