@@ -34,6 +34,7 @@
      - [PRIMARY KEY](modules/practice/sql/primary-key.md)
      - [FOREIGN KEY](modules/practice/sql/foreign-key.md)
      - [SELECT](modules/practice/sql/select.md)
+     - [WHERE](modules/practice/sql/where.md)
    - **Exercises & Challenges:**
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
 
