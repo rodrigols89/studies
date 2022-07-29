@@ -98,4 +98,4 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
