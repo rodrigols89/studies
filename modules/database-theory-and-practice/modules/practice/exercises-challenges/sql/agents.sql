@@ -1,10 +1,10 @@
 CREATE TABLE `agents` (
-  AGENT_CODE CHAR(6) NOT NULL PRIMARY KEY, 
-  AGENT_NAME CHAR(40), 
-  WORKING_AREA CHAR(35), 
-  COMMISSION DOUBLE, 
-  PHONE_NO CHAR(15), 
-  COUNTRY VARCHAR(25) 
+  agent_code CHAR(6) NOT NULL PRIMARY KEY,
+  agent_name CHAR(40),
+  working_area CHAR(35),
+  commission DOUBLE,
+  phone_no CHAR(15),
+  country VARCHAR(25)
 );
 
 INSERT INTO agents VALUES ('A007', 'Ramasundar', 'Bangalore', '0.15', '077-25814763', '');
