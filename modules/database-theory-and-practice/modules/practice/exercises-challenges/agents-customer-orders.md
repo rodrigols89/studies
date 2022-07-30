@@ -26,12 +26,12 @@ To start, let's see the data model:
 [agents.sql](sql/agents.sql)
 ```sql
 CREATE TABLE `agents` (
-  AGENT_CODE CHAR(6) NOT NULL PRIMARY KEY, 
-  AGENT_NAME CHAR(40), 
-  WORKING_AREA CHAR(35), 
-  COMMISSION DOUBLE, 
-  PHONE_NO CHAR(15), 
-  COUNTRY VARCHAR(25) 
+  agent_code CHAR(6) NOT NULL PRIMARY KEY,
+  agent_name CHAR(40),
+  working_area CHAR(35),
+  commission DOUBLE,
+  phone_no CHAR(15),
+  country VARCHAR(25)
 );
 
 INSERT INTO agents VALUES ('A007', 'Ramasundar', 'Bangalore', '0.15', '077-25814763', '');
@@ -57,18 +57,18 @@ INSERT INTO agents VALUES ('A009', 'Benjamin', 'Hampshair', '0.11', '008-2253617
 [customer.sql](sql/customer.sql)
 ```sql
 CREATE TABLE IF NOT EXISTS `customer` (
-  CUST_CODE VARCHAR(6) NOT NULL PRIMARY KEY,
-  CUST_NAME VARCHAR(40) NOT NULL,
-  CUST_CITY VARCHAR(35),
-  WORKING_AREA VARCHAR(35) NOT NULL,
-  CUST_COUNTRY VARCHAR(20) NOT NULL,
-  GRADE DOUBLE,
-  OPENING_AMT DOUBLE NOT NULL,
-  RECEIVE_AMT DOUBLE NOT NULL,
-  PAYMENT_AMT DOUBLE NOT NULL,
-  OUTSTANDING_AMT DOUBLE NOT NULL,
-  PHONE_NO VARCHAR(17) NOT NULL,
-	AGENT_CODE CHAR(6) NOT NULL REFERENCES agents
+  cust_code VARCHAR(6) NOT NULL PRIMARY KEY,
+  cust_name VARCHAR(40) NOT NULL,
+  cust_city VARCHAR(35),
+  working_area VARCHAR(35) NOT NULL,
+  cust_country VARCHAR(20) NOT NULL,
+  grade DOUBLE,
+  opening_amt DOUBLE NOT NULL,
+  receive_amt DOUBLE NOT NULL,
+  payment_amt DOUBLE NOT NULL,
+  outstanding_amt DOUBLE NOT NULL,
+  phone_no VARCHAR(17) NOT NULL,
+  agent_code CHAR(6) NOT NULL REFERENCES agents
 );
 
 INSERT INTO customer VALUES ('C00013', 'Holmes', 'London', 'London', 'UK', '2', '6000.00', '5000.00', '7000.00', '4000.00', 'BBBBBBB', 'A003');
@@ -108,13 +108,13 @@ INSERT INTO customer VALUES ('C00011', 'Sundariya', 'Chennai', 'Chennai', 'India
 [orders.sql](sql/orders.sql)
 ```sql
 CREATE TABLE `orders` (
-  ORD_NUM DOUBLE NOT NULL PRIMARY KEY,
-  ORD_AMOUNT DOUBLE NOT NULL,
-  ADVANCE_AMOUNT DOUBLE NOT NULL,
-  ORD_DATE DATE NOT NULL,
-  CUST_CODE VARCHAR(6) NOT NULL REFERENCES customer,
-  AGENT_CODE CHAR(6) NOT NULL REFERENCES agents,
-	ORD_DESCRIPTION VARCHAR(60) NOT NULL
+  ord_num DOUBLE NOT NULL PRIMARY KEY,
+  ord_amount DOUBLE NOT NULL,
+  advance_amount DOUBLE NOT NULL,
+  ord_date DATE NOT NULL,
+  cust_code VARCHAR(6) NOT NULL REFERENCES customer,
+  agent_code CHAR(6) NOT NULL REFERENCES agents,
+  ord_description VARCHAR(60) NOT NULL
 );
 
 INSERT INTO orders VALUES('200100', '1000.00', '600.00', '2008/08/01', 'C00013', 'A003', 'SOD');
