@@ -29,7 +29,7 @@ x
 
 ()
 
-![img](images/)
+![img](images/)  
 
 **INPUT:**  
 ```sql

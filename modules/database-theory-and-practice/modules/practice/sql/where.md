@@ -1,4 +1,4 @@
-# WHERE
+# WHERE (+operators examples)
 
 ## Contents
 
@@ -12,6 +12,10 @@
  - [WHERE clause using the AND operator](#and)
  - [WHERE clause using the OR operator](#or)
  - [WHERE clause using the NOT operator](#not)
+ - [WHERE clause using the ANY operator](#any)
+ - [WHERE clause using the ALL operator](#all)
+ - [WHERE clause using the SOME operator](#some)
+ - [WHERE clause using the EXISTS operator](#exists)
 
 ---
 
@@ -282,16 +286,53 @@ WHERE department_id IN(60, 90, 100);
 
 ## WHERE clause using LIKE condition
 
-> The **LIKE** condition is used to perform wildcard searches of string values.
+> **LIKE** is the ANSI/ISO standard operator for comparing a column value to another column value, or to a quoted string. Returns either 1 (TRUE) or 0 (FALSE).
 
-The search condition can contain either numbers or literal characters:
+The SQL LIKE operator is only applied on a field of types **CHAR** or **VARCHAR** to match a pattern. To match a pattern from a word, special characters, and wildcards characters may have used with **LIKE** operator.
 
- - **_**
-   - Denotes one character
- - **%**
-   - Denotes zero or many characters.
+**NOTE:**  
+The **LIKE** operator can be used within any valid SQL statement, such as **SELECT**, **INSERT INTO**, **UPDATE** or **DELETE**.
 
-The following query displays the employee_id, first_name, last_name and salary of employees whose first_name starting with **'S'**:
+**SQL Wildcards:**
+ - The SQL wildcards can be used to search data within a table.
+ - SQL wildcards are used with SQL LIKE operator.
+ - The boolean NOT operator in the select statement can be used as wildcard NOT LIKE operator.
+
+In SQL, the wildcards are:
+
+| Wildcards                      | Description                                                                         |
+|--------------------------------|-------------------------------------------------------------------------------------|
+| **%**                          | The percent sign character (%) represent a sequence of 0 (zero) or more characters. |
+| **Underscore ( _ )**           | The underscore character ( _ ) represents a single character.                       |
+| **[charlist]**                 | It represents any single character within a charlist                                |
+| **[^charlist] or [!charlist]** | It represents any single character other than the charlist                          |
+
+**Pictorial Presentation: SQL LIKE Operator**  
+![img](images/sql-like-operator.png)  
+
+**Equals(=) vs. LIKE:**  
+
+The **equals to (=)** operator is a comparison operator and used for equality test within two numbers or expressions. For example:
+
+```sql
+SELECT *
+FROM agents
+WHERE commision = .11;
+```
+
+**LIKE** operator checks whether a specific character string matches a specified pattern. For example:
+
+```sql
+SELECT *
+FROM agents
+WHERE agent_name LIKE 'Sant%'
+```
+
+**NOTE:**  
+ - **LIKE** is generally used only with strings;
+ - And **equals (=)** is used for exact matching and it seems faster.
+
+For example, the following query displays the employee_id, first_name, last_name and salary of employees whose first_name starting with **'S'**:
 
 **INPUT:**  
 ```sql
@@ -560,8 +601,294 @@ NOT IN (90, 60, 100);
 
 ---
 
+<div id="any"></div>
+
+## WHERE clause using the ANY operator
+
+> ANY compares a value to each value in a list or results from a query and evaluates to true if the result of an inner query contains at least one row.
+
+**Pictorical Presentation: SQL ANY Operator**  
+![img](images/sql-any-operator.png)  
+
+For example, to get **agent_code**, **agent_name**, **working_area**, **commission** from <u>agents</u> table with following conditions:
+
+ - **agent_code** should be any **agent_code** from <u>customer</u> table, which satisfies the condition bellow:
+   - **cust_country** in the <u>customer</u> table must be **'UK'**,
+
+The following SQL statement can be used:
+
+**INPUT:**  
+```sql
+SELECT agent_code, agent_name, working_area, commission
+FROM  agents
+WHERE agent_code = ANY(
+    SELECT agent_code FROM customer
+    WHERE cust_country = 'UK'
+);
+```
+
+**OUTPUT:**  
+```sql
++------------+------------+--------------+------------+
+| agent_code | agent_name | working_area | commission |
++------------+------------+--------------+------------+
+| A009       | Benjamin   | Hampshair    |       0.11 |
+| A003       | Alex       | London       |       0.13 |
+| A006       | McDen      | London       |       0.15 |
++------------+------------+--------------+------------+
+```
+
+Another example, to get **agent_code**, **agent_name**, **working_area**, **commission** from <u>agents</u> table with following conditions:
+
+ - **agent_code** should be any **agent_code** from <u>customer</u> table, which satisfies the condition bellow:
+   - **agent_code** should be any **agent_code** from <u>orders</u> table, which satisfies the condition bellow:
+     - **advance_amount** of <u>orders</u> table must be more than 600.
+
+The following SQL statement can be used:
+
+**INPUT:**  
+```sql
+SELECT agent_code, agent_name, working_area, commission
+FROM agents
+WHERE agent_code = ANY(
+    SELECT agent_code FROM customer
+    WHERE agent_code = ANY(
+        SELECT agent_code
+        FROM orders
+        WHERE advance_amount>600
+    )
+);
+```
+
+**OUTPUT:**  
+```sql
++------------+------------+--------------+------------+
+| agent_code | agent_name | working_area | commission |
++------------+------------+--------------+------------+
+| A002       | Mukesh     | Mumbai       |       0.11 |
+| A005       | Anderson   | Brisban      |       0.13 |
+| A008       | Alford     | New York     |       0.12 |
+| A010       | Santakumar | Chennai      |       0.14 |
++------------+------------+--------------+------------+
+```
+
+---
+
+<div id="all"></div>
+
+## WHERE clause using the ALL operator
+
+> ALL is used to select all records of a SELECT STATEMENT. It compares a value to every value in a list or results from a query.
+
+**Pictorical Presentation: SQL ALL Operator**  
+![img](images/sql-all-operator.png)  
+
+---
+
+<div id="some"></div>
+
+## WHERE clause using the SOME operator
+
+> SOME compare a value to each value in a list or results from a query and evaluate to true if the result of an inner query contains at least one row.
+
+**Pictorical Presentation: SQL SOME Operator**  
+![img](images/sql-some-operator.png)  
+
+For example, to get **agent_code**, **agent_name**, **working_area**, **commission** from <u>agents</u> table with following conditions:
+
+ - **agent_code** should be within some **agent_code** from <u>customer</u> table, which satisfies the condition bellow:
+   - **cust_country** in the <u>customer</u> table must be **'UK'**.
+
+The following SQL statement can be used:
+
+**INPUT:**  
+```sql
+SELECT agent_code, agent_name, working_area, commission
+FROM agents
+WHERE agent_code = SOME(
+    SELECT agent_code
+    FROM customer
+    WHERE cust_country='UK'
+);
+```
+
+**OUTPUT:**  
+```sql
++------------+------------+--------------+------------+
+| agent_code | agent_name | working_area | commission |
++------------+------------+--------------+------------+
+| A009       | Benjamin   | Hampshair    |       0.11 |
+| A003       | Alex       | London       |       0.13 |
+| A006       | McDen      | London       |       0.15 |
++------------+------------+--------------+------------+
+```
+
+---
+
+<div id="exists"></div>
+
+## WHERE clause using the EXISTS operator
+
+> The EXISTS checks the existence of a result of a Subquery.
+
+**Pictorial Presentation: SQL EXISTS Operator**  
+![img](images/sql-exists-operator.png)  
+
+For example, to get **agent_code**, **agent_name**, **working_area** and **commission** from the <u>agents</u>, with following conditions:
+
+ 1. **grade** in <u>customer</u> table must be 3;
+ 2. **agent_code** in <u>customer</u> and <u>agents</u> table must match;
+ 3. **commission** of <u>agents</u> should arrange in ascending order;
+ 4. The above condition (1) and (2) should match at least one row.
+
+The following SQL statement can be used:
+
+
+**INPUT:**  
+```sql
+SELECT agent_code, agent_name, working_area, commission 
+FROM agents
+WHERE exists(
+    SELECT * FROM  customer
+    WHERE grade=3 AND agents.agent_code = customer.agent_code
+)
+ORDER BY commission;
+```
+
+**OUTPUT:**  
+```sql
++------------+------------+--------------+------------+
+| agent_code | agent_name | working_area | commission |
++------------+------------+--------------+------------+
+| A002       | Mukesh     | Mumbai       |       0.11 |
+| A009       | Benjamin   | Hampshair    |       0.11 |
+| A008       | Alford     | New York     |       0.12 |
+| A010       | Santakumar | Chennai      |       0.14 |
++------------+------------+--------------+------------+
+```
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+()
+
+![img](images/)  
+
+**INPUT:**  
+```sql
+
+```
+
+**OUTPUT:**  
+```sql
+
+```
+
+---
+
 **REFERENCES:**  
 [SQL WHERE clause](https://www.w3resource.com/sql/where-clause.php)  
+[SQL ANY Operator](https://www.w3resource.com/sql/special-operators/sql_any.php)  
+[SQL ALL Operator](https://www.w3resource.com/sql/special-operators/sql_all.php)  
 
 ---
 
