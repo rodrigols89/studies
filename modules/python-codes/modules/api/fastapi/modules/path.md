@@ -11,7 +11,7 @@
 
 ## Intro to path (endpoint or route)
 
-> **"Path"** refers to the last part of the **URL** starting from the first **/**.
+> **"Path"** refers to the last part of the **URL** starting from the first **"/"**.
 
 So, in a URL like:
 
