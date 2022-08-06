@@ -27,9 +27,7 @@
 x
 
 
-()
 
-![img](images/)  
 
 **INPUT:**  
 ```sql
@@ -40,6 +38,8 @@ x
 ```sql
 
 ```
+
+![img](images/)  
 
 ---
 
