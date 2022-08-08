@@ -37,6 +37,7 @@
      - [WHERE (+operators examples)](modules/practice/sql/where.md)
      - [ORDER BY](modules/practice/sql/order-by.md)
      - [GROUP BY](modules/practice/sql/group-by.md)
+     - [HAVING](modules/practice/sql/having.md)
      - **Functions:**
        - **Aggregate Functions:**
          - [COUNT() function](modules/practice/sql/count-function.md)
