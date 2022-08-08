@@ -1,14 +1,14 @@
-# Command
+# GROUP BY
 
 ## Contents
 
- - [x](#intro)
+ - [Intro to GROUP BY clause](#intro)
 
 ---
 
 <div id="intro"></div>
 
-## x
+## Intro to GROUP BY clause
 
 >
 
