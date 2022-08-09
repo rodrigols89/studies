@@ -48,6 +48,8 @@
 
 ## Statistics and Probability
 
+ - **Sampling methods**
+   - [Probabilistic Method](modules/statistics-and-probability/probabilistic-method.md)
  - **Dados:**
    - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
  - **Data visualization:**
@@ -152,7 +154,7 @@ source Script/Active #Windows
 
 **Installing the Requirements:**  
 ```python
-pip install --upgrade -r requirements.tx
+pip install --upgrade -r requirements.txt
 ```
 
 **Now, Be Happy!!!** 😬
