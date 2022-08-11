@@ -5,10 +5,15 @@
  - [Create a docker compose](#docker-compose)
  - [Create "product" table](#product-table)
  - [Create Files and Folders](#files-folders)
- - [Create Models](#create-models)
- - [Create Database connection and session](#connect-db)
- - [Create API Endpoints](#endpoints)
- - [Create Routes](#routes)
+ - [Creating "Product" model](#product-model)
+ - [Creating "User" model](#user-model)
+ - [Creating request schema](#request-schema)
+ - [Creating response model](#response-model)
+ - [Creating Database connection and session](#connect-db)
+ - [Implement main.py](#main)
+ - **Creating API Endpoints:**
+   - [Creating "product" endpoint](#product-endpoint)
+ - [Old approahch...](#continue)
 
 ---
 
@@ -61,8 +66,8 @@ mysql --user=root --password=toor my_test_db
 Finally, let's create a table:
 
 ```sql
-CREATE TABLE IF NOT EXISTS product(
-	id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(1024),
     price BIGINT DEFAULT 0,
     is_available BOOLEAN DEFAULT FALSE,
@@ -118,17 +123,16 @@ Now, let's create folders and files as shown below to make your project's file s
 
 ---
 
-<div id="create-models"></div>
+<div id="product-model"></div>
 
-## Create Models
+## Creating "Product" model
 
-Now, let's create models
+To start, let's create Product model (ref to **product** table):
 
-[models/models.py](models/models.py)
+[product.py](models/product.py)
 ```python
 from sqlalchemy import Column, INTEGER, String, TIMESTAMP, BIGINT, BOOLEAN, text
 from sqlalchemy.ext.declarative import declarative_base
-
 
 Base = declarative_base()
 
@@ -145,6 +149,22 @@ class Product(Base):
     created_at = Column(TIMESTAMP, nullable=False, server_default=text("CURRENT_TIMESTAMP"))
     updated_by = Column(INTEGER, nullable=True)
     updated_at = Column(TIMESTAMP, nullable=True, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
+```
+
+---
+
+<div id="user-model"></div>
+
+## Creating "User" model
+
+Now, let's create "User" model (ref to **user** table):
+
+[user.py](models/user.py)
+```python
+from sqlalchemy import Column, INTEGER, String, TIMESTAMP, BOOLEAN, text
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class User(Base):
@@ -159,7 +179,15 @@ class User(Base):
     updated_at = Column(TIMESTAMP, nullable=True, server_default=text("CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"))
 ```
 
-[models/request.py](models/request.py)
+---
+
+<div id="request-schema"></div>
+
+## Creating request schema
+
+Ok, now, let's create request schemas to request product from database and update product from database:
+
+[schemas/request.py](schemas/request.py)
 ```python
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
@@ -182,6 +210,14 @@ class ProductUpdateRequest(BaseModel):
     updated_by: int = Field(None, title="Updater Id")
 ```
 
+---
+
+<div id="response-model"></div>
+
+## Creating response model
+
+Now, let's create a response model (model to API return):
+
 [models/response.py](models/response.py)
 ```python
 def Response(data, code, message, error):
@@ -197,7 +233,7 @@ def Response(data, code, message, error):
 
 <div id="connect-db"></div>
 
-## Create Database connection and session
+## Creating Database connection and session
 
 Now, let's create Database connection and session:
 
@@ -257,7 +293,110 @@ class Database():
 
 ---
 
-<div id="endpoints"></div>
+<div id="main"></div>
+
+## Implement main.py
+
+Before create API Endpoints, let's create main.py to test API endpoints:
+
+[main.py](main.py)
+```python
+import uvicorn
+
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
+
+app = FastAPI()
+
+origins = ["http://localhost:8000"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+if __name__ == '__main__':
+    uvicorn.run(
+        "main:app",
+        host='127.0.0.1',
+        port=8000,
+        log_level="info",
+        reload = True
+    )
+```
+
+Now, to test just run **python main.py**.
+
+```python
+python main.py
+```
+
+**NOTE:**  
+Now, you have an API to test, but don't have endpoints operations.
+
+![img](images/01.png)  
+![img](images/02.png)  
+
+---
+
+<div id="product-endpoint"></div>
+
+## Creating "product" endpoint
+
+Initial, let's create **product** *endpoint* router setting:
+
+[endpoints/product.py](endpoints/product.py)
+```python
+from fastapi import APIRouter
+
+
+# APIRouter creates path operations for product module
+productRouterSettings = APIRouter(
+    prefix="/products",
+    tags=["Product"],
+    responses={404: {"description": "Not found"}},
+)
+```
+
+**Now, let's Add "product" endpoint in the [routes/api_routes.py](routes/api_routes.py):**
+
+[routes/api_routes.py](routes/api_routes.py)
+```python
+from fastapi import APIRouter
+from endpoints import product, user
+
+router = APIRouter()
+
+# Add product router.
+router.include_router(product.product_router)
+```
+
+**Ok, now, let's Add [routes/api_routes.py](routes/api_routes.py) on [main.py](main.py):**
+
+[main.py](main.py)
+```python
+//
+from routes.api_routes import apiRouter
+
+//
+
+app = FastAPI()
+
+app.include_router(apiRouter)
+
+if __name__ == '__main__':
+    //
+```
+
+**NOTE:**  
+Nice, we create a relationship beetween de **product endpoint**, **routes** and **main.py**.
+
+---
+
+<div id="continue"></div>
 
 ## Create API Endpoints
 
@@ -461,4 +600,4 @@ Now just run **python main.py** to test.
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**

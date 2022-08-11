@@ -47,8 +47,13 @@ async def read_item(item_id):
     return {"item_id": item_id}
 
 if __name__ == "__main__":
-
     read_item("foo")
+```
+
+To test:
+
+```python
+uvicorn path_parameters:app --reload
 ```
 
 **NOTE:**  
@@ -69,6 +74,13 @@ if __name__ == "__main__":
     read_item(10)
 ```
 
+To test:
+
+```python
+uvicorn path_parameters_with_types:app --reload
+```
+
+**NOTE:**  
 In this case, item_id is declared to be an int.
 
 ---
@@ -78,4 +90,4 @@ In this case, item_id is declared to be an int.
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**

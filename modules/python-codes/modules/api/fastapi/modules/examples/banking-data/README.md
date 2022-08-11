@@ -323,4 +323,4 @@ uvicorn main:app --reload
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**

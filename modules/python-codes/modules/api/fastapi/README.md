@@ -7,9 +7,8 @@
  - **Concepts:**
    - [Path (endpoint or route)](modules/path.md)
    - [FastAPI Operations (HTTP methods)](modules/operations.md)
-   - [Model → Schema](modules/model-schema.md)
  - **Examples:**
-   - [Project Structure | Models | Endpoints | Routes](modules/examples/sample-fastapi-mysql-app)
+   - [Project Structure | Models | Endpoints | Routes](modules/examples/sample-fastapi-mysql-app/README.md)
    - [ANZ Banking Data](modules/examples/banking-data)
 
 ---
