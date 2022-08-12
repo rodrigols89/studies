@@ -1,4 +1,4 @@
-# ANZ Banking Data
+# ANZ Banking Data (Models + Schemas)
 
 > This example will follow the tutorial [How to Build a REST API Endpoint on Top of an Existing Legacy Database Using FastAPI](https://python.plainenglish.io/how-to-build-a-rest-api-endpoint-on-top-of-an-existing-legacy-database-using-fastapi-489f38feab98).
 
@@ -323,4 +323,4 @@ uvicorn main:app --reload
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**

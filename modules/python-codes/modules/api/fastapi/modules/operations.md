@@ -56,6 +56,12 @@ async def root():
     return {"message": "Hello World"}
 ```
 
+To test:
+
+```python
+uvicorn first_sample:app --reload
+```
+
 The **@app.get("/")** tells **FastAPI** that the function right below is in charge of handling requests that go to:
 
  - the **<u>path</u> /**
@@ -68,4 +74,4 @@ The **@app.get("/")** tells **FastAPI** that the function right below is in char
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
