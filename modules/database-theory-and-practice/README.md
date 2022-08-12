@@ -35,6 +35,13 @@
      - [FOREIGN KEY](modules/practice/sql/foreign-key.md)
      - [SELECT](modules/practice/sql/select.md)
      - [WHERE (+operators examples)](modules/practice/sql/where.md)
+     - [ORDER BY](modules/practice/sql/order-by.md)
+     - [GROUP BY](modules/practice/sql/group-by.md)
+     - [HAVING](modules/practice/sql/having.md)
+     - [UPDATE](modules/practice/sql/update.md)
+     - **Functions:**
+       - **Aggregate Functions:**
+         - [COUNT() function](modules/practice/sql/count-function.md)
    - **Exercises & Challenges:**
      - [Agents, Customer, Orders (+FOREIGN KEY approach)](modules/practice/exercises-challenges/agents-customer-orders.md)
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
