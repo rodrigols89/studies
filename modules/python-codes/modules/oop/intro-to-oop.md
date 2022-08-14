@@ -1,4 +1,4 @@
-# Introdução básica a Orientação a Objetos
+# Introdução básica a Orientação a Objetos (04.1 | CTRL + Click)
 
 ## Conteúdo
 
@@ -6,7 +6,7 @@
  - [02 - Introdução a Objetos](#02)
  - [03 - Analogia a Objetos com a classe String](#03)
  - [04 - Variáveis também são Objetos](#04)
-   - [04.1 - Abusando do conhecimento de Orientação a Objetos em variáveis](#04-1)
+   - [04.1 - Abusando do conhecimento de Orientação a Objetos em variáveis](#041)
  - [05 - Saindo da programação Estrutural para a Orientada a Objetos](#05)
 
 ---
@@ -107,7 +107,7 @@ Consequentemente, sabendo a classe, sabemos o que podemos fazer com aquela vari�
 
 > Imagino que esteja pensando: **“Ok, até entendi mas e daí? Como uso isso?”**
 
-<div id="04-1"></div>
+<div id="041"></div>
 
 ### 04.1 - Abusando do conhecimento de Orientação a Objetos em variáveis
 

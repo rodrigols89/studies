@@ -27,7 +27,7 @@
    - **Lists:**
      - [List Comprehension](modules/basic-data-structures/list-comprehension.md)
  - **Object-Oriented Programming (OOP):**
-   - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
+   - [Introdução básica a Orientação a Objetos (04.1 | CTRL + Click)](modules/oop/intro-to-oop.md)
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/api/requests)
