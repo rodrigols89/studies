@@ -8,6 +8,7 @@
    - [Path (endpoint or route)](modules/path.md)
    - [FastAPI Operations (HTTP methods)](modules/operations.md)
    - [Response Model](modules/response-model.md)
+   - [Path Operation Configuration](modules/path-operation-configuration.md)
    - [Metadata and Docs URLs](modules/metadata-docs-urls.md)
  - **Examples:**
    - [Project Structure | Models | Endpoints | Routes](modules/examples/sample-fastapi-mysql-app/README.md)
