@@ -20,6 +20,7 @@
    - [Estrutura condicional if](modules/conditionals/if.md)
    - [Estrutura condicional elif](modules/conditionals/elif.md)
    - [Comparadores lógicos "in" e "not" em estruturas condicionais](modules/conditionals/in-not.md)
+   - [if not](modules/conditionals/if-not.md)
  - **Strings:**
    - [Introdução a strings em Python](modules/strings/intro-to-strings.md)
    - [Função len()](modules/strings/len-function.md)
@@ -27,7 +28,7 @@
    - **Lists:**
      - [List Comprehension](modules/basic-data-structures/list-comprehension.md)
  - **Object-Oriented Programming (OOP):**
-   - [Introdução básica a Orientação a Objetos](modules/oop/intro-to-oop.md)
+   - [Introdução básica a Orientação a Objetos (04.1 | CTRL + Click)](modules/oop/intro-to-oop.md)
    - [Construtores & Destruidores](modules/oop/construtors-and-destructors.md)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/api/requests)
@@ -46,10 +47,10 @@
    - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Poetry - Tips & Tricks](modules/tips-and-tricks/poetry/tips-and-tricks.md)
+   - [Functions return](modules/tips-and-tricks/returns/README.md)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
-   - [Returns](modules/tips-and-tricks/returns/README.md)
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**

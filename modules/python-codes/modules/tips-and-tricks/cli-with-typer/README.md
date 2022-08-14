@@ -17,12 +17,9 @@
  - [Ask with Prompt](modules/ask-with-prompt.md)
  - [Testing](modules/testing.md)
  - [Building a Package](modules/rodrigo-portal-gun)
+ - **Tips & Tricks:**
+   - [Working with args list[type]](modules/args-list.md)
 
 ---
 
-**REFERENCES:**  
-[Typer](https://typer.tiangolo.com/)  
-
----
-
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
