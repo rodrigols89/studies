@@ -47,9 +47,9 @@
    - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Poetry - Tips & Tricks](modules/tips-and-tricks/poetry/tips-and-tricks.md)
+   - [Functions return](modules/tips-and-tricks/returns/README.md)
    - [Debugger](modules/tips-and-tricks/debugger/README.md)
    - [Exceções](modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb)
-   - [Returns](modules/tips-and-tricks/returns/README.md)
 
 ---
 

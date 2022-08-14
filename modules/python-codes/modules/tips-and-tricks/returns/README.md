@@ -1,10 +1,11 @@
-# Returns
+# Functions return
 
 ## Contents
 
  - [The relationship between return statement + def](#def-return)
  - [Understanding print() function return](#print-return)
  - [Analyzing except block return (print case)](#except-case)
+ - [The return can be a "None"?](#return-none)
 
 ---
 
@@ -215,9 +216,34 @@ Now, all program will be stopped without return nothing.
 
 ---
 
+<div id="return-none"></div>
+
+## The return can be a "None"?
+
+<u>WHENEVER</u> you use a function ask yourself...
+
+> **Can return "None"?**
+
+If yes, I advise using **"if returned_value"** to check:
+
+```python
+def create_engine():
+    # Codes...
+
+if __name__ == "__main__":
+
+    engine = create_engine()
+
+    # Check if return is None.
+    if engine:
+        # Do something...
+```
+
+---
+
 **REFERENCES:**  
 [print vs return em Python! Qual a diferença?](https://www.youtube.com/watch?v=xKTRCGEOGC4&list=PLbIBj8vQhvm2OT4MpkrsKDDVuZ_RlNzli&index=94)  
 
 ---
 
-**Rodrigo Leite da Silva -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
