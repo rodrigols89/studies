@@ -39,6 +39,7 @@
      - [GROUP BY](modules/practice/sql/group-by.md)
      - [HAVING](modules/practice/sql/having.md)
      - [UPDATE](modules/practice/sql/update.md)
+     - [JOIN](modules/practice/sql/join.md)
      - **Functions:**
        - **Aggregate Functions:**
          - [COUNT() function](modules/practice/sql/count-function.md)
