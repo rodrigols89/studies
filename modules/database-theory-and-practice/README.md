@@ -40,6 +40,7 @@
      - [HAVING](modules/practice/sql/having.md)
      - [UPDATE](modules/practice/sql/update.md)
      - [JOIN](modules/practice/sql/join.md)
+     - [UNION](modules/practice/sql/union.md)
      - **Functions:**
        - **Aggregate Functions:**
          - [COUNT() function](modules/practice/sql/count-function.md)
