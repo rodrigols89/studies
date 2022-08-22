@@ -7,6 +7,7 @@
  - **Fundamentals:**
    - [Basic Concepts](modules/basic-concepts.md)
    - [Colors](modules/colors.md)
+   - [GPU](modules/gpu.md)
    - [3D](modules/3d.md)
 
 ---
