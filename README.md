@@ -34,7 +34,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
    - __Parallel Programming:__
      - [x](#)
    - __GUI (Graphical User Interface):__
-     - [x](#)
+     - [Computer Graphics](modules/computer-graphics)
 
 ---
 
