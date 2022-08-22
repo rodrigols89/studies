@@ -6,6 +6,7 @@
 
  - **Fundamentals:**
    - [Basic Concepts](modules/basic-concepts.md)
+   - [3D Illusion](modules/3d-illusion.md)
    - [Colors](modules/colors.md)
    - [GPU](modules/gpu.md)
    - [3D](modules/3d.md)
