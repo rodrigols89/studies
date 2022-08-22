@@ -16,8 +16,9 @@
    - [RIGHT JOIN](#right-join)
    - [FULL OUTER JOIN](#full-outer-join)
  - **Tips & Tricks:**
-   - [Difference between "JOIN" and "INNER JOIN"](#join-vs-inner-join)
    - [Difference between "NATURAL JOIN" and "INNER JOIN"](#nj-ij)
+   - [Difference between "JOIN" and "INNER JOIN"](#join-vs-inner-join)
+   - [Difference between WHERE and ON in SQL](#on-where)
    - [JOIN and Veen Diagrams](#diagrams)
  - **Examples:**
    - [Coming soon...](#)
@@ -661,6 +662,17 @@ See that now we don't have duplicate columns (like "company_id").
 
 ---
 
+<div id="on-where"></div>
+
+## Difference between WHERE and ON in SQL
+
+ - **ON:**
+   - ON should be used to define the join condition.
+ - **WHERE:**
+   - WHERE should be used to filter the data.
+
+---
+
 <div id="diagrams"></div>
 
 ## JOIN and Veen Diagrams
@@ -672,6 +684,7 @@ Now, let's see some **JOIN** and **Veen Diagrams**:
 ---
 
 **REFERENCES:**  
+[Difference between WHERE and ON in SQL](https://dataschool.com/how-to-teach-people-sql/difference-between-where-and-on-in-sql/)
 [SQL Inner Join](https://www.w3resource.com/sql/joins/perform-an-inner-join.php)  
 [SQL Natural Join](https://www.w3resource.com/sql/joins/natural-join.php)
 [SQL Cross Join](https://www.w3resource.com/sql/joins/cross-join.php)

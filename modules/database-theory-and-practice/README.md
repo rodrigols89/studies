@@ -17,6 +17,8 @@
      - [UNIQUE](modules/theory/sql-constraints/unique.md)
      - [PRIMARY KEY](modules/theory/sql-constraints/primary-key.md)
      - [FOREIGN KEY](modules/theory/sql-constraints/foreign-key.md)
+   - **Entity–Relationship model (or ER model):**
+     - [Associative Entity](modules/theory/er-model/associative-entity.md)
  - **Practice:**
    - **SQL:**
      - [SHOW DATABASES](modules/practice/sql/show-databases.md)
