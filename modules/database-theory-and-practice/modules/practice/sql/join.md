@@ -4,22 +4,21 @@
 
 <div id=""></div>
 
- - **introductions:**
-   - [JOIN clause](#intro)
+ - [Intro to JOIN clause](#intro)
+ - [INNER JOIN](#inner-join)
+ - [NATURAL JOIN](#natural-join)
+ - [LEFT JOIN](#left-join)
+ - [RIGHT JOIN](#right-join)
+ - [CROSS JOIN](#cross-join)
+ - [OUTER JOIN](#outer-join)
+ - [FULL OUTER JOIN](#full-outer-join)
+ - **Tips & Tricks:**
    - ["Equi" (=) JOIN](#equi-join)
    - ["Non" Equi (>, <, >=, <=) JOIN](#no-equi)
-   - [INNER JOIN](#inner-join)
-   - [NATURAL JOIN](#natural-join)
-   - [CROSS JOIN](#cross-join)
-   - [OUTER JOIN](#outer-join)
-   - [LEFT JOIN](#left-join)
-   - [RIGHT JOIN](#right-join)
-   - [FULL OUTER JOIN](#full-outer-join)
- - **Tips & Tricks:**
    - [Difference between "NATURAL JOIN" and "INNER JOIN"](#nj-ij)
-   - [Difference between "JOIN" and "INNER JOIN"](#join-vs-inner-join)
    - [Difference between WHERE and ON in SQL](#on-where)
    - [JOIN and Veen Diagrams](#diagrams)
+   - [JOINs and UNION mindset](#join-union-mindset)
  - **Examples:**
    - [Coming soon...](#)
 
@@ -27,163 +26,21 @@
 
 <div id="intro"></div>
 
-## JOIN clause
+## Intro to JOIN clause
 
-> An SQL JOIN clause combines rows from two or more tables. It creates a set of rows in a temporary table.
+ - An **SQL JOIN** clause combines rows from **two** or **more tables**.
+ - It creates a set of rows in a **temporary table**.
 
-**NOTE:**  
-A JOIN works on two or more tables if they have at least one common field and <u>have a relationship between them</u>.
+For example, imagine you have two tables <u>faceboook</u> and <u>linkedin</u>. Now, you want:
 
-For example, see image below:
+ - All rows from <u>faceboook</u> and <u>linkedin</u> tables;
+ - All columns from <u>faceboook</u> and <u>linkedin</u> tables;
+ - where (ON) name (column value) in <u>faceboook</u> is the equal name (column value) in <u>linkedin</u>;
 
-![img](images/sql-joins-all.gif)  
-
-For example, imagine you have the follows tables:
-
-[company.sql](../exercises-challenges/sql/company.sql)
-```sql
-CREATE TABLE IF NOT EXISTS `company` (
-  company_id INT NOT NULL PRIMARY KEY,
-  company_name VARCHAR(40) NOT NULL,
-  company_city VARCHAR(40)
-);
-
-INSERT INTO company VALUES (18, 'Order All', 'Boston');
-INSERT INTO company VALUES (15, 'Jack Hill Ltd', 'London');
-INSERT INTO company VALUES (16, 'Akas Foods', 'Delhi');
-INSERT INTO company VALUES (17, 'Foodies', 'London');
-INSERT INTO company VALUES (19, 'sip-n-Bite', 'New York');
-```
-
-[foods.sql](../exercises-challenges/sql/foods.sql)
-```sql
-CREATE TABLE IF NOT EXISTS `foods` (
-  item_id INT NOT NULL PRIMARY KEY,
-  item_name VARCHAR(40) NOT NULL,
-  item_unit VARCHAR(40),
-  company_id INT REFERENCES company
-);
-
-INSERT INTO foods VALUES (1, 'Chex Mix', 'Pcs', 16);
-INSERT INTO foods VALUES (6, 'Cheez-It', 'Pcs', 15);
-INSERT INTO foods VALUES (2, 'BN Biscuit', 'Pcs', 15);
-INSERT INTO foods VALUES (3, 'Mighty Munch', 'Pcs', 17);
-INSERT INTO foods VALUES (4, 'Pot Rice', 'Pcs', 15);
-INSERT INTO foods VALUES (5, 'Jaffa Cakes', 'Pcs', 18);
-INSERT INTO foods VALUES (7, 'Salt n Shake', 'Pcs', NULL);
-```
-
-To join two tables **'company'** and **'foods'**, the following SQL statement can be used:
-
-**INPUT:**  
-```sql
-SELECT
-    company.company_id, company.company_name,
-    foods.item_id, foods.item_name
-FROM
-    company, foods;
-```
-
-**OUTPUT:**  
-```SQL
-+------------+---------------+---------+--------------+
-| company_id | company_name  | item_id | item_name    |
-+------------+---------------+---------+--------------+
-|         19 | sip-n-Bite    |       1 | Chex Mix     |
-|         18 | Order All     |       1 | Chex Mix     |
-|         17 | Foodies       |       1 | Chex Mix     |
-|         16 | Akas Foods    |       1 | Chex Mix     |
-|         15 | Jack Hill Ltd |       1 | Chex Mix     |
-|         19 | sip-n-Bite    |       2 | BN Biscuit   |
-|         18 | Order All     |       2 | BN Biscuit   |
-|         17 | Foodies       |       2 | BN Biscuit   |
-|         16 | Akas Foods    |       2 | BN Biscuit   |
-|         15 | Jack Hill Ltd |       2 | BN Biscuit   |
-|         19 | sip-n-Bite    |       3 | Mighty Munch |
-|         18 | Order All     |       3 | Mighty Munch |
-|         17 | Foodies       |       3 | Mighty Munch |
-|         16 | Akas Foods    |       3 | Mighty Munch |
-|         15 | Jack Hill Ltd |       3 | Mighty Munch |
-|         19 | sip-n-Bite    |       4 | Pot Rice     |
-|         18 | Order All     |       4 | Pot Rice     |
-|         17 | Foodies       |       4 | Pot Rice     |
-|         16 | Akas Foods    |       4 | Pot Rice     |
-|         15 | Jack Hill Ltd |       4 | Pot Rice     |
-|         19 | sip-n-Bite    |       5 | Jaffa Cakes  |
-|         18 | Order All     |       5 | Jaffa Cakes  |
-|         17 | Foodies       |       5 | Jaffa Cakes  |
-|         16 | Akas Foods    |       5 | Jaffa Cakes  |
-|         15 | Jack Hill Ltd |       5 | Jaffa Cakes  |
-|         19 | sip-n-Bite    |       6 | Cheez-It     |
-|         18 | Order All     |       6 | Cheez-It     |
-|         17 | Foodies       |       6 | Cheez-It     |
-|         16 | Akas Foods    |       6 | Cheez-It     |
-|         15 | Jack Hill Ltd |       6 | Cheez-It     |
-|         19 | sip-n-Bite    |       7 | Salt n Shake |
-|         18 | Order All     |       7 | Salt n Shake |
-|         17 | Foodies       |       7 | Salt n Shake |
-|         16 | Akas Foods    |       7 | Salt n Shake |
-|         15 | Jack Hill Ltd |       7 | Salt n Shake |
-+------------+---------------+---------+--------------+
-```
-
----
-
-<div id="equi-join"></div>
-
-## "Equi" (=) JOIN
-
-> SQL EQUI JOIN performs a JOIN against <u>equality</u> or <u>matching</u> column(s) values of the associated tables.
+![img](images/innerJoin_3.gif)  
 
 **NOTE:**  
-An equal sign (=) is used as comparison operator in the where clause to refer equality.
-
-For example, see image below:
-
-![img](images/sql-equi-join-image.gif)  
-
-**NOTE:**  
-See that **"Equi Join"** <u>excludes different values</u> from the **SELECT** statement.
-
----
-
-<div id="no-equi"></div>
-
-## "Non" Equi (>, <, >=, <=) JOIN
-
-> The SQL **NON EQUI JOIN** uses <u>comparison operator</u> instead of the equal sign like **>, <, >=, <=** along with conditions.
-
-**Pictorial presentation of SQL Non Equi Join:**  
-![img](images/sql-non-equi-join-image.gif)  
-
-Another example is the following:
-
-**INPUT:**  
-```sql
-SELECT
-    a.ord_num, a.ord_amount,
-    b.cust_name, b.working_area
-FROM
-    orders a, customer b
-WHERE
-    a.ord_amount BETWEEN b.opening_amt AND b.opening_amt;
-```
-
-**OUTPUT:**  
-```sql
-+---------+------------+-----------+--------------+
-| ord_num | ord_amount | cust_name | working_area |
-+---------+------------+-----------+--------------+
-|  200101 |       3000 | Micheal   | New York     |
-|  200108 |       4000 | Cook      | London       |
-|  200108 |       4000 | Karl      | London       |
-|  200110 |       3000 | Micheal   | New York     |
-|  200113 |       4000 | Cook      | London       |
-|  200113 |       4000 | Karl      | London       |
-|  200119 |       4000 | Cook      | London       |
-|  200119 |       4000 | Karl      | London       |
-+---------+------------+-----------+--------------+
-```
+See that just **Matt** and **Lisa** has same name in the two tables.
 
 ---
 
@@ -191,50 +48,67 @@ WHERE
 
 ## INNER JOIN
 
-The INNER JOIN selects all rows from both participating tables as long as there is a match between the columns. An SQL INNER JOIN is same as JOIN clause, combining rows from two or more tables.
+> **NOTE:**  
+> **INNER JOIN** is the default type of **JOIN** in SQL, in fact you do not even need to specify **INNER JOIN** when writing a query. Only writing **JOIN** is an **INNER JOIN**.
 
-**Pictorial presentation of SQL Inner Join:**  
+Another thing you need to know is that **INNER JOIN (JOIN)** is equivalent to <u>Intersection</u> in **set theory**.
+
+**Pictorial presentation of SQL INNER JOIN (JOIN):**  
 ![img](images/sql-inner-jon.gif)  
 
-**NOTE:**  
-The INNER JOIN in SQL joins two tables according to the matching of a certain criteria using a comparison operator.
+For example:
 
-For example, to join **item_name**, item_unit columns from <u>foods</u> table and **company_name**, company_city columns from <u>company</u> table, with the following condition:
-
- 1. company_id of foods and company table must be same.
-
-The following SQL statement can be used:
-
-**INPUT:**  
 ```sql
 SELECT
-    foods.item_name, foods.item_unit,
-    company.company_name, company.company_city
-FROM foods INNER JOIN company
+    *
+FROM facebook JOIN linkedin
 ON
-    foods.company_id=company.company_id;
+    facebook.name = linkedin.name
 ```
 
-**OUTPUT:**  
+SQL first creates a new table with the columns of both of the tables you are trying to combine:
+
+![img](images/innerJoin_1.png)  
+
+**NOTE:**  
+It then tries to find values that match between the columns you specify in the **ON statement**.
+
 ```sql
-+--------------+-----------+---------------+--------------+
-| item_name    | item_unit | company_name  | company_city |
-+--------------+-----------+---------------+--------------+
-| Chex Mix     | Pcs       | Akas Foods    | Delhi        |
-| BN Biscuit   | Pcs       | Jack Hill Ltd | London       |
-| Mighty Munch | Pcs       | Foodies       | London       |
-| Pot Rice     | Pcs       | Jack Hill Ltd | London       |
-| Jaffa Cakes  | Pcs       | Order All     | Boston       |
-| Cheez-It     | Pcs       | Jack Hill Ltd | London       |
-+--------------+-----------+---------------+--------------+
+ON
+    facebook.name = linkedin.name
 ```
 
-**Example of SQL INNER JOIN using JOIN keyword:**  
-To get **item_name**, item_unit columns from <u>foods</u> table and **company_name**, **company_city** columns from <u>company</u> table, after joining these mentioned tables, with the following condition:
+**NOTE:**  
+Putting the table name with a *period (.)* before the column name makes it clear which two columns of the tables SQL will be looking for matches between.
 
- 1. company id of foods and company id of company table must be same.
+![img](images/innerJoin_2.jpeg)  
 
-The following SQL statement can be used:
+SQL then starts with the first value of the specified column in the first table **(facebook.name)** and then looks through every value in the specified column of the second table **(linkedin.name)** for a match:
+
+![img](images/innerJoin_3.gif)  
+
+ - If there is a match (correspondência) it copies the data from both the row of the first table and the row of the second table and puts it into the newly created table.
+ - SQL will not add in any rows that did not have a match.
+
+For example, **Jeff** had not match (correspondência):
+
+![img](images/innerJoin_4.gif)  
+
+> **NOTE:**
+> Another thing to consider is that SQL will join the rows every time there is a match. So if your data in the columns you are joining on are not unique you will get **duplicate** data in the final table.
+
+For example, non Unique data in Second table:
+
+![img](images/innerJoin_5.gif)  
+
+Non Unique data in First table:
+
+![img](images/innerJoin_6.gif)  
+
+**NOTE:**  
+As we can see the non unique data pulls in the same value from the other table twice. This is a common situation that can cause you to double count data if you are not aware that this is happening.
+
+Let's see another example, using **INNER JOIN (JOIN)**:
 
 **INPUT:**  
 ```sql
@@ -243,7 +117,7 @@ SELECT
     company.company_name, company.company_city
 FROM foods JOIN company
 ON
-    foods.company_id=company.company_id;
+    foods.company_id = company.company_id;
 ```
 
 **OUTPUT:**  
@@ -263,46 +137,14 @@ ON
 **Pictorial Presentation of SQL Inner Join of Company and Foods Tables:**  
 ![img](images/sql-inner-join-set-image.gif)  
 
-**Now, let's see INNER JOIN for all columns example:**  
-To get all the columns from <u>foods</u> and <u>company</u> table after joining, with the following condition:
-
- 1. **company_id** of <u>foods</u> and **company_id** of u>company</u> table must be same.
-
-The following SQL statement can be used:
-
-**INPUT:**  
-```sql
-SELECT
-    *
-FROM foods JOIN company
-ON
-    foods.company_id =company.company_id;
-```
-
-**OUTPUT:**  
-```sql
-+---------+--------------+-----------+------------+------------+---------------+--------------+
-| item_id | item_name    | item_unit | company_id | company_id | company_name  | company_city |
-+---------+--------------+-----------+------------+------------+---------------+--------------+
-|       1 | Chex Mix     | Pcs       |         16 |         16 | Akas Foods    | Delhi        |
-|       2 | BN Biscuit   | Pcs       |         15 |         15 | Jack Hill Ltd | London       |
-|       3 | Mighty Munch | Pcs       |         17 |         17 | Foodies       | London       |
-|       4 | Pot Rice     | Pcs       |         15 |         15 | Jack Hill Ltd | London       |
-|       5 | Jaffa Cakes  | Pcs       |         18 |         18 | Order All     | Boston       |
-|       6 | Cheez-It     | Pcs       |         15 |         15 | Jack Hill Ltd | London       |
-+---------+--------------+-----------+------------+------------+---------------+--------------+
-```
-
 ---
 
 <div id="natural-join"></div>
 
 ## NATURAL JOIN
 
-We have already learned that an EQUI JOIN performs a JOIN against equality or matching column(s) values of the associated tables and an equal sign (=) is used as comparison operator in the where clause to refer equality.
-
 > **NOTE:**  
-> The SQL NATURAL JOIN is a type of EQUI JOIN and is structured in such a way that, columns with the same name of associated tables will appear once only.
+> The SQL NATURAL JOIN is a type of EQUI JOIN and is structured in such a way that, <u>columns with the same name of associated tables will appear once only</u>.
 
 **Pictorial presentation of the above SQL Natural Join:**  
 ![img](images/natural-join-example.png)  
@@ -332,9 +174,161 @@ FROM foods NATURAL JOIN company;
 
 ---
 
+<div id="left-join"></div>
+
+## LEFT JOIN
+
+> <u>LEFT refers to the first table</u>, or <U>the table you will be joining to</U>.
+
+For example, see the image (Veen Diagram) below to understand more easily:
+
+**Pictorial presentation of SQL Left Join:**  
+![img](images/sql-left-jon.png)  
+
+Now, see the SQL query below:
+
+```sql
+SELECT
+    *
+FROM facebook LEFT JOIN linkedin
+ON
+    facebook.name = linkedin.name
+```
+
+**NOTE:**  
+ - The <u>condition (ON)</u> was **facebook.name = linkedin.name**;
+ - **LEFT JOIN** gets:
+   - All rows that appear just in the first table:
+     - Even if it does not satisfy the condition.
+   - Rows of the first table that satify the condition.
+   - Rows of the first table and second table that satisfy the condition simultaneously (Intersection).
+   - <u>However, it does not take rows that appear only in the second table</u>.
+
+**Animated example:**  
+![img](images/leftJoin_1.gif)  
+
+**NOTE:**  
+See that **Louis** in second table was ignored because only appears in the second table.
+
+Another example, to get **company_id** and **company_name** columns from <u>company</u> table and **company_id**, **item_name**, **item_unit** columns from <u>foods</u> table, after an OUTER JOINING with these mentioned tables, the following SQL statement can be used:
+
+**INPUT:**  
+```sql
+SELECT
+    company.company_id, company.company_name, company.company_city,
+    foods.company_id, foods.item_name, foods.item_unit
+FROM company LEFT JOIN foods
+ON
+    company.company_id = foods.company_id;
+```
+
+**OUTPUT:**  
+```sql
++------------+---------------+--------------+------------+--------------+-----------+
+| company_id | company_name  | company_city | company_id | item_name    | item_unit |
++------------+---------------+--------------+------------+--------------+-----------+
+|         15 | Jack Hill Ltd | London       |         15 | Cheez-It     | Pcs       |
+|         15 | Jack Hill Ltd | London       |         15 | Pot Rice     | Pcs       |
+|         15 | Jack Hill Ltd | London       |         15 | BN Biscuit   | Pcs       |
+|         16 | Akas Foods    | Delhi        |         16 | Chex Mix     | Pcs       |
+|         17 | Foodies       | London       |         17 | Mighty Munch | Pcs       |
+|         18 | Order All     | Boston       |         18 | Jaffa Cakes  | Pcs       |
+|         19 | sip-n-Bite    | New York     |       NULL | NULL         | NULL      |
++------------+---------------+--------------+------------+--------------+-----------+
+```
+
+**Pictorial Presentation of the above example SQL Left Join:**  
+![img](images/sql-left-join-set-image.png)  
+
+---
+
+<div id="right-join"></div>
+
+## RIGHT JOIN
+
+> SQL **RIGHT JOIN** is opposite to the **LEFT JOIN**.
+
+For example, see the image (Veen Diagram) below to understand more easily:
+
+**Pictorial presentation LEFT JOIN vs. SQL RIGHT JOIN:**  
+![img](images/left-vs-right-join.png)  
+
+Now, let's see **RIGHT JOIN** example:
+
+```sql
+SELECT
+    *
+FROM facebook RIGHT JOIN linkedin
+ON
+    facebook.name = linkedin.name
+```
+
+![img](images/leftJoin_3.gif)  
+
+**NOTE:**  
+See that now **Jeff** in the first table was ignored because only appears in the first table (LEFT).
+
+> **NOTE:**  
+> Now think with me... We can apply the same logic as the RIGHT JOIN by rewriting LEFT JOIN just changing the table order and we will have the same RIGHT JOIN result.
+
+```sql
+SELECT
+    *
+FROM linkedin LEFT JOIN facebook
+ON
+    linkedin.name = facebook.name
+```
+
+**NOTE:**  
+Now we have the same **RIGHT JOIN** result, only changed table order.
+
+Another example, to get **company_id**, **company_name** and **company_city** columns from <u>company</u> table and **company_id**, **item_name** columns from <u>foods</u> table, after an OUTER JOINING with these mentioned tables, the following SQL statement can be used:
+
+**INPUT:**  
+```sql
+SELECT
+    company.company_id, company.company_name, company.company_city,
+    foods.company_id, foods.item_name
+FROM company RIGHT JOIN foods
+ON
+    company.company_id = foods.company_id;
+```
+
+**OUTPUT:**  
+```sql
++------------+---------------+--------------+------------+--------------+
+| company_id | company_name  | company_city | company_id | item_name    |
++------------+---------------+--------------+------------+--------------+
+|         16 | Akas Foods    | Delhi        |         16 | Chex Mix     |
+|         15 | Jack Hill Ltd | London       |         15 | BN Biscuit   |
+|         17 | Foodies       | London       |         17 | Mighty Munch |
+|         15 | Jack Hill Ltd | London       |         15 | Pot Rice     |
+|         18 | Order All     | Boston       |         18 | Jaffa Cakes  |
+|         15 | Jack Hill Ltd | London       |         15 | Cheez-It     |
+|       NULL | NULL          | NULL         |       NULL | Salt n Shake |
++------------+---------------+--------------+------------+--------------+
+```
+
+**Pictorial Presentation of the above example:**  
+![img](images/sql-right-join-set-image.gif)  
+
+---
+
 <div id="cross-join"></div>
 
 ## CROSS JOIN
+
+> The **CROSS JOIN** statement <u>does not look for matches (correspondências)</u> between any values in the two data sets. Instead for each row in first table every row of second table will be attached to it and added to the final table one by one.
+
+For example, see the query and image below to understand more easily:
+
+```sql
+SELECT
+    *
+FROM facebook CROSS JOIN linkedin
+```
+
+![img](images/crossJoin_1.gif)  
 
 The SQL **CROSS JOIN** produces a result set which is the number of rows in the first table multiplied by the number of rows in the second table <u>if no WHERE clause is used</u> along with CROSS JOIN.
 
@@ -465,91 +459,6 @@ sip-n-Bite.     19
 
 ---
 
-<div id="left-join"></div>
-
-## LEFT JOIN
-
-The SQL **LEFT JOIN** (specified with the keywords LEFT JOIN and ON) joins two tables and fetches all matching rows of two tables for which the SQL-expression is true, plus rows from the frist table that do not match any row in the second table.
-
-**Pictorial presentation of SQL Left Join:**  
-![img](images/sql-left-jon.png)  
-
-For example, To get **company_id** and **company_name** columns from <u>company</u> table and **company_id**, **item_name**, **item_unit** columns from <u>foods</u> table, after an OUTER JOINING with these mentioned tables, the following SQL statement can be used:
-
-**INPUT:**  
-```sql
-SELECT
-    company.company_id, company.company_name, company.company_city,
-    foods.company_id, foods.item_name, foods.item_unit
-FROM company LEFT JOIN foods
-ON
-    company.company_id = foods.company_id;
-```
-
-**OUTPUT:**  
-```sql
-+------------+---------------+--------------+------------+--------------+-----------+
-| company_id | company_name  | company_city | company_id | item_name    | item_unit |
-+------------+---------------+--------------+------------+--------------+-----------+
-|         15 | Jack Hill Ltd | London       |         15 | Cheez-It     | Pcs       |
-|         15 | Jack Hill Ltd | London       |         15 | Pot Rice     | Pcs       |
-|         15 | Jack Hill Ltd | London       |         15 | BN Biscuit   | Pcs       |
-|         16 | Akas Foods    | Delhi        |         16 | Chex Mix     | Pcs       |
-|         17 | Foodies       | London       |         17 | Mighty Munch | Pcs       |
-|         18 | Order All     | Boston       |         18 | Jaffa Cakes  | Pcs       |
-|         19 | sip-n-Bite    | New York     |       NULL | NULL         | NULL      |
-+------------+---------------+--------------+------------+--------------+-----------+
-```
-
-**Explanation:**  
-This SQL statement would return all rows from the company table and only those rows from the foods table where the joined fields are equal and if the ON clause matches no records in the 'foods' table, the join will still return rows, but the NULL in each column of the right table.
-
-**Pictorial Presentation of the above example SQL Left Join:**  
-![img](images/sql-left-join-set-image.png)  
-
----
-
-<div id="right-join"></div>
-
-## RIGHT JOIN
-
-The SQL RIGHT JOIN, joins two tables and fetches rows based on a condition, which is matching in both the tables ( before and after the JOIN clause mentioned in the syntax below) , and the unmatched rows will also be available from the table written after the JOIN clause.
-
-**Pictorial presentation of SQL Right Join:**  
-![img](images/sql-right-jon.gif)  
-
-For example, to get **company_id**, **company_name** and **company_city** columns from <u>company</u> table and **company_id**, **item_name** columns from <u>foods</u> table, after an OUTER JOINING with these mentioned tables, the following SQL statement can be used:
-
-**INPUT:**  
-```sql
-SELECT
-    company.company_id, company.company_name, company.company_city,
-    foods.company_id, foods.item_name
-FROM company RIGHT JOIN foods
-ON
-    company.company_id = foods.company_id;
-```
-
-**OUTPUT:**  
-```sql
-+------------+---------------+--------------+------------+--------------+
-| company_id | company_name  | company_city | company_id | item_name    |
-+------------+---------------+--------------+------------+--------------+
-|         16 | Akas Foods    | Delhi        |         16 | Chex Mix     |
-|         15 | Jack Hill Ltd | London       |         15 | BN Biscuit   |
-|         17 | Foodies       | London       |         17 | Mighty Munch |
-|         15 | Jack Hill Ltd | London       |         15 | Pot Rice     |
-|         18 | Order All     | Boston       |         18 | Jaffa Cakes  |
-|         15 | Jack Hill Ltd | London       |         15 | Cheez-It     |
-|       NULL | NULL          | NULL         |       NULL | Salt n Shake |
-+------------+---------------+--------------+------------+--------------+
-```
-
-**Pictorial Presentation of the above example:**  
-![img](images/sql-right-join-set-image.gif)  
-
----
-
 <div id="full-outer-join"></div>
 
 ## FULL OUTER JOIN
@@ -591,14 +500,61 @@ As we know the **FULL OUTER JOIN** is the combination of the results of both **L
 
 ---
 
-<div id="join-vs-inner-join"></div>
+<div id="equi-join"></div>
 
-## Difference between "JOIN" and "INNER JOIN"
+## "Equi" (=) JOIN
 
- - **JOIN:**
-   - JOIN returns all rows from tables where the key record of one table is equal to the key records of another table.
- - **INNER JOIN:**
-   - O INNER JOIN seleciona todas as linhas de ambas as tabelas participantes, desde que haja correspondência entre as colunas. Um SQL INNER JOIN é o mesmo que uma cláusula JOIN, combinando linhas de duas ou mais tabelas.
+> SQL EQUI JOIN performs a JOIN against <u>equality</u> or <u>matching</u> column(s) values of the associated tables.
+
+**NOTE:**  
+An equal sign (=) is used as comparison operator in the where clause to refer equality.
+
+For example, see image below:
+
+![img](images/sql-equi-join-image.gif)  
+
+**NOTE:**  
+See that **"Equi Join"** <u>excludes different values</u> from the **SELECT** statement.
+
+---
+
+<div id="no-equi"></div>
+
+## "Non" Equi (>, <, >=, <=) JOIN
+
+> The SQL **NON EQUI JOIN** uses <u>comparison operator</u> instead of the equal sign like **>, <, >=, <=** along with conditions.
+
+**Pictorial presentation of SQL Non Equi Join:**  
+![img](images/sql-non-equi-join-image.gif)  
+
+Another example is the following:
+
+**INPUT:**  
+```sql
+SELECT
+    a.ord_num, a.ord_amount,
+    b.cust_name, b.working_area
+FROM
+    orders a, customer b
+WHERE
+    a.ord_amount BETWEEN b.opening_amt AND b.opening_amt;
+```
+
+**OUTPUT:**  
+```sql
++---------+------------+-----------+--------------+
+| ord_num | ord_amount | cust_name | working_area |
++---------+------------+-----------+--------------+
+|  200101 |       3000 | Micheal   | New York     |
+|  200108 |       4000 | Cook      | London       |
+|  200108 |       4000 | Karl      | London       |
+|  200110 |       3000 | Micheal   | New York     |
+|  200113 |       4000 | Cook      | London       |
+|  200113 |       4000 | Karl      | London       |
+|  200119 |       4000 | Cook      | London       |
+|  200119 |       4000 | Karl      | London       |
++---------+------------+-----------+--------------+
+```
 
 ---
 
@@ -683,6 +639,29 @@ Now, let's see some **JOIN** and **Veen Diagrams**:
 
 ---
 
+<div id="join-union-mindset"></div>
+
+## JOINs and UNION mindset
+
+> Why use a **CROSS JOIN** vs a **UNION**, **LEFT JOIN**, **RIGHT JOIN**, **INNER JOIN**, **FULL OUTER JOIN**?
+
+To help understand, Let’s think about the different questions they are asking:
+
+ - **INNER JOIN:**
+   - How many friends and connections do my friends who are on both on Facebook and LinkedIn have?
+ - **LEFT JOIN:**
+   - How many friends and connections do my Facebook friends have? (Regardless of if they are on LinkedIn)
+ - **RIGHT JOIN:**
+   - How many friends and connections do my LinkedIn connections have? (Regardless of if they are on facebook)
+ - **CROSS JOIN:**
+   - How many combinations of friends and connections do I have?
+ - **FULL OUTER JOIN:**
+   - How many friends and connections do my Facebook friends or LinkedIn connections have?
+ - **UNION:**
+   - How many friends do my Facebook friends have and how many connections do my LinkedIn connections have?
+
+---
+
 **REFERENCES:**  
 [Difference between WHERE and ON in SQL](https://dataschool.com/how-to-teach-people-sql/difference-between-where-and-on-in-sql/)
 [SQL Inner Join](https://www.w3resource.com/sql/joins/perform-an-inner-join.php)  
@@ -692,6 +671,7 @@ Now, let's see some **JOIN** and **Veen Diagrams**:
 [SQL Left Join](https://www.w3resource.com/sql/joins/perform-a-left-join.php)
 [SQL Right Join](https://www.w3resource.com/sql/joins/perform-a-right-join.php)
 [SQL Full Outer Join](https://www.w3resource.com/sql/joins/perform-a-full-outer-join.php)
+[Inner Join - Animated](https://dataschool.com/how-to-teach-people-sql/inner-join-animated/)
 
 ---
 
