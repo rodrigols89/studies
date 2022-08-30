@@ -4,14 +4,6 @@
 
  - [Installing Selenium](#install)
  - [Drivers](#drivers)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
- - [](#)
 
 ---
 
@@ -45,65 +37,14 @@ Supported browsers will have their own drivers available. Links to some of the m
 | **Safari:**  | https://webkit.org/blog/6900/webdriver-support-in-safari-10/          |
 
 **NOTE:**  
+Make sure it’s in your **PATH**, e. g., place it in *(for example, <u>chromedriver binary</u>)* **/usr/bin** or **/usr/local/bin**.
+
 For more information about driver installation, please refer the [official documentation (Install browser drivers)](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/).
 
 ---
 
-<div id=""></div>
-
-##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id=""></div>
-
-##
-
-
-
-
-
-
----
-
 **REFERENCES:**  
-[]()  
+[1. Installation](https://selenium-python.readthedocs.io/installation.html)  
 
 ---
 

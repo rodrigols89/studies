@@ -4,7 +4,8 @@
 
 ## Contents
 
- - [Settings](modules/settings.md)
+ - **Tips & Tricks:**
+   - [Settings](modules/settings.md)
 
 ---
 
