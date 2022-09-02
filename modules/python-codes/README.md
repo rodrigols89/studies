@@ -42,6 +42,8 @@
    - [MySQL in Python](modules/databases/mysql)
    - [SQLAlchemy](modules/databases/sqlalchemy)
    - [SQLite3](modules/databases/sqlite3)
+ - **Browser Automation & Web Scraping:**
+   - [Selenium](modules/ba-ws/selenium)
  - **Tips & Tricks:**
    - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)
    - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
