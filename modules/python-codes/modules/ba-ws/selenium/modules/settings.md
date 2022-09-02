@@ -40,6 +40,18 @@ Supported browsers will have their own drivers available. Links to some of the m
 **NOTE:**  
 Make sure it’s in your **PATH**, e. g., place it in *(for example, <u>chromedriver binary</u>)* **/usr/bin** or **/usr/local/bin**.
 
+**Linux example (you will need sudo permission):**  
+
+```
+sudo cp yourdrive /usr/bin
+```
+
+or
+
+```
+sudo cp yourdrive /usr/local/bin
+```
+
 For more information about driver installation, please refer the [official documentation (Install browser drivers)](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/).
 
 ---

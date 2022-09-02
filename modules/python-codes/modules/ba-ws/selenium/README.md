@@ -13,7 +13,7 @@
    - **Asserts:**
      - [x](#)
    - **Web scraping:**
-     - [x](#)
+     - [Getting temperature from Google](modules/temp-from-google.md)
 
 ---
 
