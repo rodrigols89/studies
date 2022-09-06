@@ -5,9 +5,10 @@
 ## Contents
 
  - **Tips & Tricks:**
-   - [Settings](modules/settings.md)
    - [Keys class](modules/keys-class.md)
    - [By class](modules/by-class.md)
+   - [Settings](modules/settings.md)
+   - [XPath](modules/xpath.md)
  - **Examples:**
    - [Screenshot](modules/screenshot.md)
    - **Asserts:**
