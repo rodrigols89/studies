@@ -10,7 +10,7 @@
      - [Atributo (campo)](modules/theory/database/attribute.md)
      - [Atributo Chave](modules/theory/database/key-attribute.md)
      - [Tupla (amostra)](modules/theory/database/tuple.md)
-     - [Cardinalidade](modules/theory/database/cardinality.md)
+     - [Relationship & Cardinality](modules/theory/database/cardinality.md)
    - **SQL Constraints (Restrições):**
      - [Introdução ao SQL Constraints (Restrições)](modules/theory/sql-constraints/intro-to-constraints.md)
      - [NOT NULL](modules/theory/sql-constraints/not-null.md)
