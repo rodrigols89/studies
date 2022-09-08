@@ -1,4 +1,4 @@
-# Cardinality
+# Relationship & Cardinality
 
 ## Contents
 
