@@ -3,6 +3,7 @@
 ## Contents
 
  - [Narayana “Vyas” Kondreddi approach (plural)](#narayana-approach)
+ - [My personal analysis](#rdg-approach)
 
 ---
 
@@ -29,6 +30,27 @@ SELECT * FROM customers
 
 **NOTE:**  
 When using plural name, one can consider a table like a crate (caixa) containing several items. A crate (caixa) of apples should be labelled Apples, whether it contains one or a hundred apples.
+
+---
+
+<div id="rdg-approach"></div>
+
+## My personal analysis
+
+My personal analysis is the following. Imagine you have the entity **Users**:
+
+> **NOTE:**  
+> **Users table** can have on or many registers.
+
+If I use the following select query:
+
+```sql
+SELECT id, name
+FROM users;
+```
+
+**NOTE:**  
+Even though the "Users" table has a single record. This entity (Users) represents a set of users that can have multiple rows.
 
 ---
 
