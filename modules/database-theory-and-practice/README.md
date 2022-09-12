@@ -49,6 +49,9 @@
    - **Exercises & Challenges:**
      - [Agents, Customer, Orders (+FOREIGN KEY approach)](modules/practice/exercises-challenges/agents-customer-orders.md)
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
+ - **Tips & Tricks:**
+   - [Table naming (Singular vs. Plural)](modules/tips-and-tricks/table-naming.md)
+   - [Many-to-Many (M:N) Relationship](modules/tips-and-tricks/many-to-many-relationship.md)
 
 ---
 
