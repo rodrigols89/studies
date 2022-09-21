@@ -48,8 +48,7 @@
 
 ## Statistics and Probability
 
- - **Sampling methods**
-   - [Probabilistic Method](modules/statistics-and-probability/probabilistic-method.md)
+ - ["Sampling" Methods](modules/statistics-and-probability/sampling-methods.md)
  - **Dados:**
    - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
  - **Data visualization:**
