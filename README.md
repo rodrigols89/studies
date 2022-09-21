@@ -39,7 +39,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Algorithms and Data Structures:__
-   - [Análise de Algoritmos](modules/analysis-of-algorithms)
+   - [Algoritmos](modules/algorithms)
 
 ---
 
