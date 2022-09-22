@@ -304,7 +304,7 @@ Below **fig.** shows a pictorial view of the same:
 
 The below **fig.** shows the pictorial view of the same:
 
-![img](images/convenience-sampling-01)  
+![img](images/convenience-sampling-01.png)  
 
  - The **Blue dot** is the `researcher`;
  - And **orange dots** are the **most accessible set of people in orange’s vicinity**.
