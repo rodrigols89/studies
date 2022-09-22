@@ -6,8 +6,15 @@
  - **Probability Sampling:**
    - [Simple Random Sampling](#srs)
    - [Stratified Sampling](#ss)
+   - [Cluster Sampling](#cs)
+   - [Systematic Sampling](#systematic)
+   - [Multistage Sampling](#multistage)
  - **Non-Probability Sampling:**
-   - [x](#)
+   - [Convenience Sampling](#convenience)
+   - [Voluntary Sampling](#voluntary)
+   - [Snowball Sampling](#snowball)
+   - [Quota Sampling](#quota)
+   - [Judgmental or Purposive Sampling](#jps)
 
 ---
 
@@ -18,7 +25,7 @@
 > **"Sampling"** is the process of selecting a subset *(a predetermined number of observations)* from a larger population.
 
 **NOTE:**  
-It’s a pretty common technique wherein, we run experiments and draw conclusions about the population, without the need of having to study the entire population.
+It’s a pretty common technique wherein (em que), we run experiments and draw conclusions about the population, without the need of having to study the entire population.
 
 The **"Sampling" Methods** are divided in two groups:
 
@@ -74,6 +81,19 @@ Below fig. shows a pictorial view of the same:
 ![img](images/ss-01.png)  
 
 We have two groups with a count ratio of **x** and **3x** based on the colour, we randomly sample from *yellow* and *green* sets separately and represent the final set in the same ratio of these groups.
+
+**Scikit-Learn example:**  
+```python
+from sklearn.model_selection import train_test_split
+
+stratified_sample, _ = train_test_split(
+  population,
+  test_size=0.9,
+  stratify=population[['label']]
+)
+
+print (stratified_sample)
+```
 
 **Example 1: Stratified Sampling Using Counts**  
 Suppose we have the following pandas DataFrame that contains data about:
@@ -226,149 +246,124 @@ print(perform)
  - Notice that the proportion of players from team A in the stratified sample (25%) matches the proportion of players from team A in the larger DataFrame.
  - Similarly, the proportion of players from team B in the stratified sample (75%) matches the proportion of players from team B in the larger DataFrame.
 
+---
 
+<div id="cs"></div>
 
+## Cluster Sampling
 
+> In **Cluster sampling**, we **divide the entire population into subgroups**, wherein, **each of those subgroups has similar characteristics to that of the population when considered in totality**.
 
+**NOTE:**  
+Also, instead of sampling individuals, we **randomly select the entire subgroups**. For example, see the example below:
 
+![img](images/cluster-sampling-01.png)  
 
-
-
-
-
-
+**NOTE:**  
+As you can be seen in the above **fig.** that we had **4 clusters** with similar properties (size and shape), we randomly select two clusters and treat them as samples.
 
 ---
 
-<div id=""></div>
+<div id="systematic"></div>
 
-##
+## Systematic Sampling
 
+> **Systematic sampling** is about sampling items from the population at regular predefined intervals (basically fixed and periodic intervals).
 
+**NOTE:**  
+For example — Every 5th element, 21st element and so on.
 
+This sampling method tends to be more effective than the **vanilla random sampling method** in general. Below fig. shows a pictorial view of the same — We sample every 9th and 7th element in order and then repeat this pattern:
 
-
-
-![img](images/)  
-
-[](src/)
-```python
-
-```
-
-**OUTPUT:**  
-```python
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img](images/systematic-sampling-01.png)  
 
 ---
 
-<div id=''></div>
+<div id="multistage"></div>
 
-## x
+## Multistage Sampling
 
-![img](images/)  
+> Under (na) **Multistage sampling**, we **stack multiple sampling methods (like: Random Sampling, Stratified Sampling, Cluster Sampling...)** one after the other.
 
-[](src/)
-```python
+For example:
+
+ - At the first stage, **Cluster Sampling** can be used to choose clusters from the population.
+ - And then we can perform **Random Sampling** to choose elements from each cluster to form the final set.
+
+Below **fig.** shows a pictorial view of the same:
+
+![img](images/multistage-sampling-01.png)  
+
+---
+
+<div id="convenience"></div>
+
+## Convenience Sampling
+
+> Under (na) **Convenience Sampling**, the researcher includes only those **individuals who are most accessible and available to participate in the study**.
+
+The below **fig.** shows the pictorial view of the same:
+
+![img](images/convenience-sampling-01)  
+
+ - The **Blue dot** is the `researcher`;
+ - And **orange dots** are the **most accessible set of people in orange’s vicinity**.
+
+---
+
+<div id="voluntary"></div>
+
+## Voluntary Sampling
+
+> Under (na) **Voluntary sampling**, **interested people usually take part by themselves** by filling in some sort of survey forms.
+
+**A good example of this is the youtube survey about:**
 
 ```
-
-**OUTPUT:**  
-```python
-
+“Have you seen any of these ads”
 ```
+
+**NOTE:**  
+The researcher who is conducting the survey has no right to choose anyone.
+
+The below **fig.** shows the pictorial view of the same:
+
+![img](images/voluntary-sampling-01.png)  
+
+ - The **Blue dot** is the **researcher**.
+ - **Orange one’s** are those who **voluntarily agreed to take part in the study**.
+
+---
+
+<div id="snowball"></div>
+
+## Snowball Sampling
+
+> Under (na) **Snowball sampling**, the final set is chosen via other participants, i.e. The researcher asks other known contacts to find people who would like to participate in the study.
+
+The below **fig.** shows the pictorial view of the same:
+
+![img](images/snowball-sampling-01.png)  
+
+ - The **blue dot** is the **researcher**.
+ - **orange ones** are **known contacts (of the researcher)**.
+ - And **yellow ones (orange’s contacts)** are **other people that got ready to participate in the study**.
+
+---
+
+<div id="quota"></div>
+
+## Quota Sampling
+
+x
+
+---
+
+<div id="jps"></div>
+
+## Judgmental or Purposive Sampling](#)
+
+x
 
 ---
 
