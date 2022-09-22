@@ -85,15 +85,16 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Tools:__
-   - [Git](modules/git-docs)
    - [Docker](modules/docker-guide)
    - [WSL](modules/wsl-tips-and-tricks/)
+   - [Git](modules/git-docs)
 
 ---
 
  - __BONUS:__
    - [Fundamentos de Eletricidade & Manutenção Elétrica (Teoria & Prática)](modules/electrician)
    - [Scientific Paper](modules/scientific-paper)
+   - [The Checklist](modules/the-checklist)
    - [Lives](modules/lives)
 
 ---
