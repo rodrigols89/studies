@@ -16,7 +16,7 @@
  - [**Useful Libraries**](#useful-libraries)
  - **Tips & Tricks:**
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
-   - [Data Preprocessing](dt-ppc)
+   - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
    - [Hyperparameter Tuning](#hyperparameter-tuning)
    - [Evaluation Metrics](#evaluation-metrics)
