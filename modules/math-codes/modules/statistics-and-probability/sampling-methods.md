@@ -37,7 +37,6 @@ The **"Sampling" Methods** are divided in two groups:
 ---
 
 <div id="srs"></div>
-
 ## Simple Random Sampling
 
 > Under (na) **Random sampling**, every element of the population has an **equal probability of getting selected**.
@@ -361,7 +360,7 @@ x
 
 <div id="jps"></div>
 
-## Judgmental or Purposive Sampling](#)
+## Judgmental or Purposive Sampling
 
 x
 
