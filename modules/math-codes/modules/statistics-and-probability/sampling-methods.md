@@ -1,8 +1,9 @@
-# "Sampling" Methods
+# "Sampling" Methods (+Population vs. Sample)
 
 # Contents
 
- - [Intro to Sampling Methods](#intro)
+ - [**Population vs. Sample**](#pop-vs-sample)
+ - [**Intro to Sampling Methods**](#intro)
  - **Probability Sampling:**
    - [Simple Random Sampling](#srs)
    - [Stratified Sampling](#ss)
@@ -15,6 +16,25 @@
    - [Snowball Sampling](#snowball)
    - [Quota Sampling](#quota)
    - [Judgmental or Purposive Sampling](#jps)
+
+---
+
+<div id="pop-vs-sample"></div>
+
+## Population vs. Sample
+
+> Before starting with *Sampling Methods*, let's learn what's difference between **Population** and **Sample** in statistics.
+
+Briefly (resumidamente):
+
+ - **Population:**
+   - A **population** is a set of sample units *(e.g. people, objects, transactions or events)* that we are interested in studying.
+ - **Sample:**
+   - A sample is a subset of the sample units of a population.  
+
+See the image below to understand more easily:
+
+![img](images/population-vs-sample.png)  
 
 ---
 
