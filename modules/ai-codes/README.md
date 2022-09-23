@@ -16,6 +16,7 @@
  - [**Useful Libraries**](#useful-libraries)
  - **Tips & Tricks:**
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
+   - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
    - [Hyperparameter Tuning](#hyperparameter-tuning)
    - [Evaluation Metrics](#evaluation-metrics)
@@ -158,6 +159,21 @@
    - [Dados de Treino, Validação & Teste](modules/concepts/training-validation-testing.md)
    - [Data Storytelling](modules/concepts/data-storytelling.md)
    - [Data Pipeline](modules/concepts/data-pipeline.md)
+
+<div id="dt-ppc"></div>
+
+ - **Data Preprocessing:**
+   - [Data types](modules/preprocessing/data-types.md)
+     - [Convert attributes to category (08)](https://github.com/drigols/studies/blob/master/modules/stack-bootcamp-ds-2021-10/notebooks/machine_learning_deploy.ipynb)
+   - [Missing Data](modules/preprocessing/missing-data.md)
+   - [Correlation between two numerical variables](modules/preprocessing/correlation.md)
+   - [Data Normalization](modules/preprocessing/data-normalization.md)
+   - Text Preprocessing:
+     - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.ipynb)
+     - [Tokenization (tokenização)](modules/preprocessing/tokenization.ipynb)
+     - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.ipynb)
+     - [Stemming](modules/preprocessing/stemming.ipynb)
+     - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
 
 <div id="feature-engineering"></div>
 

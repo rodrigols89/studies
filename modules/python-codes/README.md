@@ -41,6 +41,7 @@
  - **Databases:**
    - [MySQL in Python](modules/databases/mysql)
    - [SQLAlchemy](modules/databases/sqlalchemy)
+   - [MongoDB](modules/databases/mongodb)
    - [SQLite3](modules/databases/sqlite3)
  - **Browser Automation & Web Scraping:**
    - [Selenium](modules/ba-ws/selenium)
