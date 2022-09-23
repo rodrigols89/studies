@@ -48,8 +48,6 @@
 
 ## Statistics and Probability
 
- - **Sampling methods**
-   - [Probabilistic Method](modules/statistics-and-probability/probabilistic-method.md)
  - **Dados:**
    - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
  - **Data visualization:**
@@ -59,6 +57,7 @@
    - [Gráficos de Dispersão (Scatter Plots)](modules/statistics-and-probability/scatter-plots.md)
    - [Gráficos de Linhas (Line Charts)](modules/statistics-and-probability/line-charts.md)
  - **Fundamentals of Statistics:**
+   - ["Sampling" Methods](modules/statistics-and-probability/sampling-methods.md)
    - [Medidas de Tendência Central (mean)](modules/statistics-and-probability/mean.md)
    - [Mediana (median)](modules/statistics-and-probability/median.md)
    - [Média vs Mediana](modules/statistics-and-probability/mean-vs-median.md)
