@@ -4,6 +4,9 @@
 
 ## Contents
 
+ - **Software Engineering:**
+   - **Data Science/A.I Project management:**
+     - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/crisp-dm.md)
  - **Software Development & Engineering:**
    - **Algorithms:**
      - Analysis of Algorithms:
