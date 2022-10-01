@@ -43,6 +43,11 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 ---
 
+ - **Software Engineering:**
+   - [Agile Methodologies](modules/agile-methodologies)
+
+---
+
  - __Database:__
    - [Database - Theory and Practice](modules/database-theory-and-practice)
 
