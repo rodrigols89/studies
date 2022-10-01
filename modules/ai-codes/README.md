@@ -152,6 +152,7 @@
 <div id="ai-concepts"></div>
 
  - **Artificial Intelligence & Data Science Concepts:**
+   - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](modules/concepts/crisp-dm.md)
    - [Review: Overfitting, Underfitting & O trade-off viés-variância](modules/concepts/overfitting-underfitting.ipynb)
    - [Tipos (etapas) de Projectos de Data Science](modules/concepts/project-types.md)
    - [Learning Curves para Machine Learning](modules/concepts/learning-curves-for-ml.ipynb)
