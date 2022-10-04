@@ -48,8 +48,6 @@
 
 ## Statistics and Probability
 
- - **Dados:**
-   - [Tipos de Dados em Estatística](modules/statistics-and-probability/data-types-in-statistic.md)
  - **Data visualization:**
    - [Gráfico de Barras (Bar Charts)](modules/statistics-and-probability/bar-chart.md)
    - [Histograma](modules/statistics-and-probability/histogram.md)
@@ -58,6 +56,7 @@
    - [Gráficos de Linhas (Line Charts)](modules/statistics-and-probability/line-charts.md)
  - **Fundamentals of Statistics:**
    - ["Sampling" Methods](modules/statistics-and-probability/sampling-methods.md)
+   - [Data Types in Statistics](modules/statistics-and-probability/data-types-in-statistic.md)
    - [Medidas de Tendência Central (mean)](modules/statistics-and-probability/mean.md)
    - [Mediana (median)](modules/statistics-and-probability/median.md)
    - [Média vs Mediana](modules/statistics-and-probability/mean-vs-median.md)
@@ -157,3 +156,7 @@ pip install --upgrade -r requirements.txt
 ```
 
 **Now, Be Happy!!!** 😬
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
