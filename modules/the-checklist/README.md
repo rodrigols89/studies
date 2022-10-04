@@ -38,20 +38,19 @@
      - **[Data Normalization](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-normalization.md)**
    - **Feature Engineering:**
    - **Statistics & Probability:**
-     - **[What types of data do I have? (Qualitative x Quantitative)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/data-types-in-statistic.md)**
-     - **[Which chart (plot) to use in my analysis? (Data visualization)](https://github.com/drigols/studies/tree/master/modules/math-codes#statistics-and-probability)**
-     - **Fundamentals of Statistics:**
-       - [Mean](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean.md)
-       - [Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/median.md)
-       - [Mean vs Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean-vs-median.md)
-       - [Moda and Multimodal Data](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mode.md)
-       - [Data Distribution and Density](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/distribution-and-density.md):
-         - [Skewness & Kurtosis](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/skewness-kurtosis.md)
-         - [Normal distribution](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/normal-distribution.md)
-       - [Measures of Variation (Interval, Percentil, Quartil, Boxplot & Outliers)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/measures-of-variation.md)
-       - [Variance & Standard Deviation](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/variance-and-standard-deviation.md)
-       - [Z Score](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/z-score.md)
-       - [BONUS: Describe Statistics with describe() Pandas](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/bonus-describe.md)
+     - ["Sampling" Methods (+Population vs. Sample)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/sampling-methods.md)
+     - [Data Types in Statistics](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/data-types-in-statistic.md)
+     - [Mean](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean.md)
+     - [Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/median.md)
+     - [Mean vs Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean-vs-median.md)
+     - [Moda and Multimodal Data](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mode.md)
+     - [Data Distribution and Density](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/distribution-and-density.md):
+       - [Skewness & Kurtosis](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/skewness-kurtosis.md)
+       - [Normal distribution](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/normal-distribution.md)
+     - [Measures of Variation (Interval, Percentil, Quartil, Boxplot & Outliers)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/measures-of-variation.md)
+     - [Variance & Standard Deviation](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/variance-and-standard-deviation.md)
+     - [Z Score](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/z-score.md)
+     - [BONUS: Describe Statistics with describe() Pandas](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/bonus-describe.md)
    - **Machine Learning Algorithms::**
      - **[Regressions:](https://github.com/drigols/studies/tree/master/modules/ai-codes/modules/regression)**
        - [What type of regression do we have? Simple x Multiple x Multivariate](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/intro-to-linear-regression.md)
