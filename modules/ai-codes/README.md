@@ -186,14 +186,7 @@
      - Replacement by Arbitrary Value
      - Missing Value Indicator
      - Multivariate imputation
-   - **Categorical Encoding::**
-     - One hot encoding
-     - Count and Frequency encoding
-     - Target encoding / Mean encoding
-     - Ordinal encoding
-     - Weight of Evidence
-     - Rare label encoding
-     - BaseN, feature hashing and others
+   - **[Categorical Encoding](modules/feature-engineering/categorical-encoding/categorical-encoding.md)**
    - **Variable Transformation:**
      - Logarithm
      - Reciprocal
