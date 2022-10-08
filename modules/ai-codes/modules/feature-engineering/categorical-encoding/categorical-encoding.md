@@ -12,6 +12,7 @@
  - **BaseN, feature hashing and others:**
  - **Tips & Tricks:**
    - [Checking how many unique values each categorical variable has](#check-unique)
+   - [Checking percent of each unique value from one category](#check-percent)
 
 ---
 
@@ -73,6 +74,41 @@ drivetrain              3
 location_region         6
 dtype: int64
 ```
+
+---
+
+<div id="check-percent"></div>
+
+## Checking percent of each unique value from one category
+
+> To thist analyse we use the category **'ContractType'** from [Job Salary Prediction](https://www.kaggle.com/c/job-salary-prediction) dataset.
+
+To check the percent of the unique value of **'ContractType'** category we use the follow code:
+
+```python
+from collections import Counter
+c = Counter(df.ContractType)
+c.most_common()
+```
+
+**OUTPUT:**  
+```python
+[(nan, 179326), ('full_time', 57538), ('part_time', 7904)]
+```
+
+Now, let's check the percent by category:
+
+```python
+ContractType_values = c.most_common()
+
+# Check categories percent (%) + Missing data.
+for category in ContractType_values:
+    percentCategory = (category[1] / len(df.index)) * 100
+    print(f"The '{category[0]}' category has {category[1]} samples representing {round(percentCategory, 1)}% data.")
+```
+
+**OUTPUT:**  
+![img](images/category-percent.png)  
 
 ---
 
