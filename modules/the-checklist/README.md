@@ -37,6 +37,7 @@
      - **[Correlation between two numerical variables](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/correlation.md)**
      - **[Data Normalization](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-normalization.md)**
    - **Feature Engineering:**
+     - [Categorical Encoding](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/categorical-encoding/categorical-encoding.md)
    - **Statistics & Probability:**
      - ["Sampling" Methods (+Population vs. Sample)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/sampling-methods.md)
      - [Data Types in Statistics](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/data-types-in-statistic.md)
@@ -65,13 +66,14 @@
      - **Hyperparameter Tuning:**
        - [RandomizedSearchCV vs GridsearchCV](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
      - **Classification:**
-       - **Logistic Regression:**
+       - Logistic Regression
          - [Intro to Logistic Regression (Theory)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/intro-to-lr.md)
          - [Logistic Regression with Scikit-Learn](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/lr-w-sklearn.md)
          - [Confusion Matrix (ROC Curve & Curve AUC)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/confusion-matrix.md) 
-       - **K-Nearest Neighbors (KNN):**
+       - K-Nearest Neighbors (KNN)
          - [Intro to K-Nearest Neighbors (Theory)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/knn/intro-to-knn.md)
          - [K-Nearest Neighbors with Scikit-Learn](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/knn/knn-w-sklearn.md)
+     - [**Ensemble Methods**](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/ensemble-methods/ensemble-methods.md)
 
 ---
 
