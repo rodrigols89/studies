@@ -72,15 +72,7 @@
        - Euclat
        - Apriori
        - FP-Growth
-     - __Ensemble Methods:__
-       - Stacking  
-       - Bagging  
-         - Random Forest
-       - Booting
-         - AdaBoost
-         - CatBoost
-         - LightGBM
-         - XGBoost
+     - **[Ensemble Methods](modules/ensemble-methods/ensemble-methods.md)**
 
 ---
 
@@ -186,14 +178,7 @@
      - Replacement by Arbitrary Value
      - Missing Value Indicator
      - Multivariate imputation
-   - **Categorical Encoding::**
-     - One hot encoding
-     - Count and Frequency encoding
-     - Target encoding / Mean encoding
-     - Ordinal encoding
-     - Weight of Evidence
-     - Rare label encoding
-     - BaseN, feature hashing and others
+   - **[Categorical Encoding](modules/feature-engineering/categorical-encoding/categorical-encoding.md)**
    - **Variable Transformation:**
      - Logarithm
      - Reciprocal
