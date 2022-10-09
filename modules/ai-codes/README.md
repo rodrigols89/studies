@@ -171,14 +171,8 @@
 <div id="feature-engineering"></div>
 
  - **[Feature Engineering:](modules/feature-engineering/intro-to-feature-engineering.md)**
-   - **Missing Data Imputation:**
-     - Complete case analysis
-     - Mean / Median / Mode imputation
-     - Random Sample Imputation
-     - Replacement by Arbitrary Value
-     - Missing Value Indicator
-     - Multivariate imputation
-   - **[Categorical Encoding](modules/feature-engineering/categorical-encoding/categorical-encoding.md)**
+   - [Missing Data Imputation](modules/feature-engineering/missing-data-imputation/README.md)
+   - [Categorical Encoding](modules/feature-engineering/categorical-encoding/categorical-encoding.md)
    - **Variable Transformation:**
      - Logarithm
      - Reciprocal
