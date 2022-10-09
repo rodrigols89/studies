@@ -37,6 +37,7 @@
      - **[Correlation between two numerical variables](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/correlation.md)**
      - **[Data Normalization](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-normalization.md)**
    - **Feature Engineering:**
+     - [Missing Data Imputation](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/missing-data-imputation/README.md)
      - [Categorical Encoding](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/categorical-encoding/categorical-encoding.md)
    - **Statistics & Probability:**
      - ["Sampling" Methods (+Population vs. Sample)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/sampling-methods.md)
