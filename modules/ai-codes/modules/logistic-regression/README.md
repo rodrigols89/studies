@@ -1,16 +1,95 @@
-# Regressão Logística com Scikit-Learn
+# Logistic Regression
 
-## Conteúdo
+## Contents
 
- - [01 - Classificando desodorantes com o Dataset "Deodorant Instant Liking Data"](#01)
-   - [01.1 - Escolhendo melhores Hiper-parâmetros com a função GridSearchCV](#01-1)
- - [02 - Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn](#02)
+ - [Introdução aos problemas de Classificação](#intro-cp)
+ - [Revisão Matemática (Equação da Reta + Função Sigmóide)](#math-review)
+ - [Introdução à Regressão Logística](#intro-to-lg)
+ - **Logistic Regression with Scikit-Learn:**
+   - [Classificando desodorantes com o Dataset "Deodorant Instant Liking Data"](#deodorant-problem)
+   - [Escolhendo melhores Hiper-parâmetros com a função GridSearchCV](#hyperparameter-tuning)
+   - [Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn](#load-breast-cancer-problem)
+
+
+
+
+
 
 ---
 
-<div id="01"></div>
+<div id="intro-cp"></div>
 
-## 01 - Classificando desodorantes com o Dataset "Deodorant Instant Liking Data"
+## Introdução aos problemas de Classificação
+
+Bem, diferente dos problemas de **Regressões**, onde estamos interessados em investigar **relações entre variáveis *quantitativas (numéricas)***. Um problema de **Classificação** tenta prever rótulos de classes discretas. Como assim?
+
+> Bem, resumidamente (e não formal) nós estamos tentando classificar se um rótulo/classe é ou não o que estamos comparando.
+
+Os problemas de classificação são aqueles onde se busca encontrar uma classe, dentro das possibilidades limitadas existentes. Esta classe pode ser:
+
+ - Se um aluno foi **aprovado** ou **reprovado**;
+ - Se uma pessoa **possui uma doença** ou **não**;
+
+Sendo que nestes casos ou a previsão será uma ou outra.
+
+> As classes também podem possuir mais de duas opções, como separar pessoas em três grupos, **A**, **B** e **C**, ou **1**, **2** e **3**, ou ainda prever a marca de um determinado carro.
+
+---
+
+<div id="math-review"></div>
+
+## Revisão Matemática (Equação da Reta + Função Sigmóide)
+
+**Mas e a Matemática dos problemas de classificação muda muito em relação aos problemas de *Regressão*?**  
+Não necessariamente, mas temos algumas peculiaridades. Vamos começar revisando a *Equação da Reta* para uma ou mais variáveis:
+
+![image](images/01.png)  
+
+Bem, mas agora temos um probleminha... Isso, porque o resultado **y** da **Equação da Reta** nós dá uma reta como saída e nós estamos interessados em **classificar** em determinadas classes existentes. Por exemplo: **SIM** ou **NÃO**.
+
+Uma abordagem interessante para resolver nosso problema seria utilizar a **Função Sigmóide**:
+
+![image](images/02.png)  
+
+Graficamente fica assim:
+
+![image](images/sigmoide-function.png)  
+
+Agora eu vou partir do pressuposto que você já conhece a **Função Sigmóide** que resumidamente:
+
+ - Binariza as saídas entre: **0** ou **1**;
+ - E tem um **período** de **transição**;
+
+Ótimo, eu sei que com a **Função Sigmóide** eu posso binariza minha saída, mas como eu aplico isso para o meu problema de Classificação?
+
+---
+
+<div id="intro-to-lg"></div>
+
+## Introdução à Regressão Logística
+
+Então, agora que nós já sabemos qual a finalidade de um **problema de classificação** e revisamos os conceitos matemáticos de **Equação da Reta** e **Função Sigmóide** nós podemos unir tudo isso para resolver **problemas de classificação**. Mas como?
+
+**Primeiro, nós vamos criar uma *reta de melhor ajuste* com os nossos dados:**  
+![image](images/01.png)
+
+**Agora, vamos utilizar a *Função Sigmóide* para *binzar (classicar)* os dados entre 0 e 1:**  
+![img](images/sigmoide-function.png)
+
+Vair ficar, mais ou menos assim:
+
+![img](images/sigmoid.png)  
+
+**NOTE:**  
+Isso é o que nós conhecemos como **Regressão Logística**:
+
+![image](images/03.png)  
+
+---
+
+<div id="deodorant-problem"></div>
+
+## Classificando desodorantes com o Dataset "Deodorant Instant Liking Data"
 
 Para esse exemplo vamos utilizar o Dataset disponibilizado pelo Kaggle [Deodorant Instant Liking Data](https://www.kaggle.com/ramkumarr02/deodorant-instant-liking-data). Esse Dataset faz referência a uma pesquisa com várias pessoas que testaram vários desodorantes e depois nós vamos **classificar se elas gostaram ou não (YES/NO)** de cada desodorante.
 
@@ -202,9 +281,9 @@ Depois nós aplicamos a validação cruzada StratifiedKFold para tentar encontra
 
 ---
 
-<div id="01-1"></div>
+<div id="hyperparameter-tuning"></div>
 
-## 01.1 - Escolhendo melhores Hiper-parâmetros com a função GridSearchCV
+## Escolhendo melhores Hiper-parâmetros com a função GridSearchCV
 
 Bem, agora nós vamos utilizar a função GridSearchCV para testar alguns Hiper-parâmetros, para ver se conseguimos uma melhor **accuracy**.
 
@@ -265,9 +344,9 @@ Veja que agora nós temos uma **accuracy** um pouco melhor, mas foi tão pouco q
 
 ---
 
-<div id="02"></div>
+<div id="load-breast-cancer-problem"></div>
 
-## 02 - Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn
+## Classificando mulheres tem câncer de mama com o Dataset "load_breast_cancer" do SkLearn
 
 Bem, como o capítulo diz vamos classificar se mulheres tem ou não câncer de mama com o Dataset [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html).
 
@@ -462,3 +541,7 @@ Vejam que agora nós temos uma melhor **accuracy** *(com uma diferença insignif
 **REFERENCES:**  
 [Didática Tech - Inteligência Artificial & Data Science](https://didatica.tech/)  
 [logistic regression](https://www.kaggle.com/pedrimbh/logistic-regression)  
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
