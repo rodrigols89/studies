@@ -6,7 +6,9 @@
 
  - **Software Engineering:**
    - **Data Science/A.I Project management:**
+     - [Data Science projects types (+steps)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/project-types.md)
      - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/crisp-dm.md)
+     - [Data Pipeline](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-pipeline.md)
  - **Software Development & Engineering:**
    - **Algorithms:**
      - Analysis of Algorithms:
@@ -18,6 +20,7 @@
        - [Exceptions in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb/)
      - Object-Oriented Programming:
        - [Object-Oriented Programming (Theory & Practice)](https://github.com/drigols/studies/tree/master/modules/oop)
+     - [SOLID](https://www.youtube.com/watch?v=mkx0CdWiPRA)
      - Design Patterns:
      - Software Testing:
      - Debugger:
@@ -67,14 +70,30 @@
      - **Hyperparameter Tuning:**
        - [RandomizedSearchCV vs GridsearchCV](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
      - **Classification:**
-       - Logistic Regression
-         - [Intro to Logistic Regression (Theory)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/intro-to-lr.md)
-         - [Logistic Regression with Scikit-Learn](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/lr-w-sklearn.md)
-         - [Confusion Matrix (ROC Curve & Curve AUC)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/confusion-matrix.md) 
-       - K-Nearest Neighbors (KNN)
-         - [Intro to K-Nearest Neighbors (Theory)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/knn/intro-to-knn.md)
-         - [K-Nearest Neighbors with Scikit-Learn](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/knn/knn-w-sklearn.md)
+       - [Logistic Regression](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/README.md)
      - [**Ensemble Methods**](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/ensemble-methods/ensemble-methods.md)
+   - **Tips & Tricks:**
+     - [Training, Validation and Testing sets](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/training-validation-testing.md)
+     - [Review: Overfitting, Underfitting & O trade-off viés-variância](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/overfitting-underfitting.ipynb)
+     - [Learning Curves para Machine Learning](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/learning-curves-for-ml.ipynb)
+     - [Data Storytelling](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-storytelling.md)
+ - **Tools:**
+   - Project Settings:
+     - General:
+       - .gitignore
+       - Hooks (pre-commit)
+     - Python:
+       - Virtual Environment (Venv, Virtualenv, Poetry)
+       - requirements.txt
+       - pyproject.toml
+       - setup.cfg
+       - Code Style:
+         - reorder_python_imports
+         - Black
+         - Flake8
+     - Editor, IDE settings:
+       - VSCode:
+         - .editorconfig
 
 ---
 
