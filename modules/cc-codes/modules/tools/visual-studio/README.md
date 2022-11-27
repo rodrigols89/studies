@@ -1,4 +1,4 @@
-# x
+# Visual Studio (Tips & Tricks)
 
 ## Contents
 
@@ -336,7 +336,7 @@ x
 ---
 
 **REFERENCES:**  
-[]()  
+[Judson Santiago (Youtube channel)](https://www.youtube.com/@JudSan/videos)  
 []()  
 []()  
 []()  
