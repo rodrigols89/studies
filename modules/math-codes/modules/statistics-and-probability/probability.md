@@ -1,3 +1,264 @@
+# Probability
+
+## Contents
+
+ - Phenomenon types in Probability:
+   - [Deterministic Phenomenon](#deterministicf)
+   - [Random Phenomenon](#randomf)
+ - [Sample Space (Espaço Amostral)](#sample-space)
+ - [Sample Points (Pontos Amostral)](#sample-point)
+ - [Events](#events)
+
+---
+
+<div id="deterministicf"></div>
+
+## Deterministic Phenomenon
+
+We say that a **Phenomenon (experiment) is deterministic** when repeated many times on same (or similar) condition, leads an outcome (result) essentially identical.
+
+For example:
+
+ - Gravity acceleration.
+ - Some physical (classical mechanics) or chemistry laws.
+
+> **In general, are things that you repeat under (sob) the same condition, generate always the same results.**
+
+---
+
+<div id="randomf"></div>
+
+## Random Phenomenon
+
+The **phenomenon (experiment)** obtained under (sob) the same condition that generates different outcomes are called **Random Phenomenon (experiment)**.
+
+For example:
+
+ - toss a dice (or similar).
+ - Sportive event results.
+ - Climatic conditions for the next Sunday.
+
+---
+
+<div id="sample-space"></div>
+
+## Sample Space (Espaço Amostral)
+
+The **sample space** is:
+
+> **A set of all possible outcomes (results) of a *Random  Experiment*.**
+
+**SAMPLE SPACE NOTATION:**  
+To denote the sample space we'll use the **omega (Ω)** Greek letter.
+
+**NOTE:**  
+This sample space can contain a **finite** or **infinite** number of sample points.
+
+Examples of **sample space** are:
+
+ - **Flip (toss) a coin:**
+   - *Sample space:* {heads, tails}
+ - **Toss a dice:**
+   - *Sample space:* {1, 2, 3, 4, 5, 6}
+
+**NOTE:**  
+See that we have the set of all possible outcomes (results) to each sample space.
+
+---
+
+<div id="sample-point"></div>
+
+## Sample Points (Pontos Amostral)
+
+> The elements that compose a *sample space (Ω*) are called **Sample Points**.
+
+**SAMPLE POINTS NOTATION:**  
+To denote a single sample point we use lowercase Greek letter **Omega (ω)**.
+
+For example:
+
+ - **Flip (toss) a coin:**
+   - **Sample space:**
+     - {heads, tails}
+   - **Sample points:**
+     - ω<sub>1</sub> = heads, ω<sub>2</sub> = tails
+
+**NOTE:**  
+For example, when analyzing a chart with all  experiment samples *(sample space Ω)*, a *sample point (ω)* could be a single point on the chart.
+
+---
+
+<div id="events"></div>
+
+## Events
+
+> All outcome or subset of outcomes from a Random Experiment is an **Event**.
+
+**EVENT NOTATION:**  
+To denote Events from a sample space (Ω) we use upper letters: **A**, **B**, **C**,...., **Z**.
+
+Some Events examples can be:
+
+ - **Flip (toss) a coin:**
+   - **Sample space:** {heads, tails}
+   - **Sample points:** ω<sub>1</sub> = heads, ω<sub>2</sub> = tails
+   - **Event:** A = "Heads face", B = "Tails face".
+ - **Toss a dice:**
+   - **Sample space:** {1, 2, 3, 4, 5, 6}
+   - **Sample points:** ω<sub>1</sub> = 1, ω<sub>2</sub> = 2, ω<sub>3</sub> = 3, ω<sub>4</sub> = 4, ω<sub>5</sub> = 5, ω<sub>6</sub> = 6.
+   - **Event:** A = "Even", B = "Odd" 
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+**REFERENCES:**  
+[ESTATÍSTICA BÁSICA (DEST/UFPR)](http://www.leg.ufpr.br/~paulojus/estbas/)
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Introdução à Probabilidade
 
 Muitos dos problemas que tentamos resolver usando estatísticas têm a ver com probabilidade. Por exemplo:

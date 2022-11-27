@@ -68,7 +68,7 @@
    - [Z Score](modules/statistics-and-probability/z-score.md)
    - [BONUS - Resumindo Distribuição de dados no Python](modules/statistics-and-probability/bonus-describe.md)
  - **Probability:**
-   - [Introdução à Probabilidade](modules/statistics-and-probability/probability)
+   - [Probability](modules/statistics-and-probability/probability.md)
 
 ---
 
