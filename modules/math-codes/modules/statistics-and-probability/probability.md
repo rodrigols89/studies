@@ -8,6 +8,13 @@
  - [Sample Space (Espaço Amostral)](#sample-space)
  - [Sample Points (Pontos Amostral)](#sample-point)
  - [Events](#events)
+ - [Operations with Events](#op-events)
+   - [Empty Set](#empty-set)
+   - [Union](#union-set)
+   - [Intersection](#intersection-set)
+   - [Disjoint (Mutually Exclusive)](#disjoint)
+   - [Complement of Sets](#complement-set)
+   - [Example: Operations with Events (toss a dice)](#ex-event)
 
 ---
 
@@ -110,12 +117,379 @@ Some Events examples can be:
 
 ---
 
+<div id="op-events"></div>
+
+## Operations with Events
+
+We use the **Set Theory** to define operations with Events.
+
+---
+
+<div id="empty-set"></div>
+
+## Empty Set
+
+> It is the set without elements, denoted by **0 (zero)**.
+
+![img](images/empty-set-01.jpg)
+
+---
+
+<div id="union-set"></div>
+
+## Union
+
+> It is the Event that consists of the **Union of all the sample points** of the events that compose it.
+
+We call the *Union* of event **A** with event **B** by **AUB**:
+
+![img](images/union-01.png)  
+![img](images/union-02.png)  
+
+**NOTE:**  
+See that by definition a **sample point (ω)** can:
+
+ - Belongs (pertencer) to Event **A**.
+ - Belongs (pertencer) to Event **B**.
+ - Or can belongs under (ao) Events **A** and **B** simultaneously.
+
+---
+
+<div id="intersection-set"></div>
+
+## Intersection
+
+> It is the Event composed of the sample points common to the Events that compose it.
+
+![img](images/intersection-00.png)
+![img](images/intersection-01.png)
+
+**NOTE:**  
+See that different of the Union, the intersection is composed of all common sample points in all Events.
+
+> **NOTE:**  
+> That is, the sample points that appear simultaneously in Events **A** and **B**.
+
+---
+
+<div id="disjoint"></div>
+
+## Disjoint (Mutually Exclusive)
+
+Are **Events** that have **null Intersection**, that is:
+
+![img](images/disjoint-sets-00.png)
+![img](images/disjoint-sets-01.jpg)
+
+> **Wikipedia Definition:**  
+> In logic and probability theory, two events (or propositions) are **mutually exclusive** or **disjoint** if they cannot both occur at the same time.
+> - A clear example is the set of outcomes of a single coin toss, which can result in either heads or tails, but not both.
+
+---
+
+<div id="complement-set"></div>
+
+## Complement of Sets
+
+**Complement of a set A (Event A)**, denoted by **A<sup>c</sup>**, is the set of all elements that:
+
+ - Belongs (pertencem) to sample space.
+ - But does not belong (pertencem) to set A (Event A).
+
+![img](images/complement-set-00.jpg) 
+
+**NOTE:**  
+That is, they are part of the sample space, but do not belong to Event A.
+
+---
+
+<div id="ex-event"></div>
+
+## Example: Operations with Events (toss a dice)
+
+Consider the experiment of toss a dice and the Events are:
+
+ - A = {1, 2, 3, 4}
+ - B = {ω : ω <=3}
+ - C = "Even face"
+ - D = "Prime face"
+
+Now we have to solve the follows operations with Events:
+
+ - **UNION:**
+   - **AUB =** {1, 2, 3, 4} *or* {1, 2, 3} = {1, 2, 3, 4}
+   - **AUC =** {1, 2, 3, 4} *or* {2, 4, 6} = {1, 2, 3, 4, 6}
+   - **AUD =** {1, 2, 3, 4} *or* {2, 3, 5} = {1, 2, 3, 4, 5}
+ - **INTERSECTION:**
+   - **A∩B =** {1, 2, 3, 4} *and* {1, 2, 3} = {1, 2, 3}
+   - **A∩C =** {1, 2, 3, 4} *and* {2, 4, 6} = {2, 4}
+   - **A∩D =** {1, 2, 3, 4} *and* {2, 3, 5} = {2, 3}
+ - **COMPLEMENT OF SETS:**
+   - **A<sup>c</sup> =** {5, 6}
+   - **B<sup>c</sup> =** {ω : ω > 3}
+   - **C<sup>c</sup> =** {1, 3, 5}
+   - **D<sup>c</sup> =** Knowing that D = {2, 3, 5}, then D<sup>c</sup> = {1, 4, 6}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 <div id=""></div>
 
 ## x
 
 x
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
 
 
 
