@@ -15,6 +15,10 @@
    - [Disjoint (Mutually Exclusive)](#disjoint)
    - [Complement of Sets](#complement-set)
    - [Example: Operations with Events (toss a dice)](#ex-event)
+ - [Probability Axioms (definition)](#probability-axioms)
+   - [Classical approach](#classicala)
+   - [Frequency-based (or empirical) approach](#frequencya)
+   - [Subjective approach](subjectivea)
 
 ---
 
@@ -230,152 +234,80 @@ Now we have to solve the follows operations with Events:
    - **C<sup>c</sup> =** {1, 3, 5}
    - **D<sup>c</sup> =** Knowing that D = {2, 3, 5}, then D<sup>c</sup> = {1, 4, 6}
 
+---
 
+<div id="probability-axioms"></div>
 
+## Probability Axioms (definition)
 
+> **Probability is a function P()** that **attributes numerical values to Events of the sample space (Ω)** follow some rules.
 
+**NOTE:**  
+Knowing that a probability function **P()** attributes numerical values to Events of the *sample space (Ω)* and this function need follow some axiomatical rules, let's see which are these rules.
 
+ - **FIRST AXIOM: 0 <= P(A) <= 1, ∀A ∈ Ω:**
+   - The first axiom tells us that given a function **P()** that receives an **Event "A"**, the value (probability) to this Event must be:
+     - Higher or equal zero:
+       - 0 <= P(A)
+     - Less or equal one:
+       - P(A) <= 1 
+   - To all Event (∀) "A" that belongs under sample space (Ω):
+     - ∀A ∈ Ω
+ - **SECONT AXIOM: P(Ω) = 1:**
+   - The second axiom tells us that the probability to happen (acontecer) *omega (Ω)* is 1.
+   - That is, Some Event inside sample (Ω) space will happen (vai acontecer).
 
+Now, the ask is:
 
+> **How to attributes probability to the elements of the sample space (Ω)?**
 
+The most common approaches are:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - Classical approach
+ - Frequency-based (or empirical) approach
+ - Subjective approach
 
 ---
 
-<div id=""></div>
+<div id="classicala"></div>
 
-## x
+## Classical approach
 
-x
+This approach traces back to the field where probability was first sistematically employed, which is gambling *(flipping coins, tossing dice and so forth)*. Gambling problems are characterized by *random experiments* which have **"n"** possible outcomes, equally likely to occur.
 
+ - It means that none of them is more or less likely to occur than other ones, hence they are said to be in a **symmetrical** position.
+ - The idea of the classical approach is that, given a collection of **k** elements out of **"n"** (where 0 ≤ k ≤n), the probability of occurrence of the event **E** represented by that collection is equal to:
 
+For example, imagine you toss a dice, the **sample space (Ω)** are:
 
+```
+(Ω) = {1, 2, 3, 4, 5, 6}
+```
 
+ - Assume that the dice is honesty (não viciado/not addicted) we can say that:
+   - **P(1) = P(2) = P(3) = ... = P(6) = 1/6** 
+ - That is, all sides have the same probability to occur:
+   - **1/6**
 
+To give you the intuition, let’s imagine you are tossing a dice and you want to predict the probability of the following collection of outcomes:
 
+![img](images/probability-classical-approach-01.png)  
 
+**NOTE:**  
+See that independent how **many dice we have** to **each time we tossed the sides probability are always same**:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id=""></div>
-
-## x
-
-x
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - **1 Dice:**
+   - 1/6
+ - **2 Dice:**
+   - 2/6
+ - **3 Dice:**
+   - 3/6
+ - **4 Dice:**
+   - 4/6
+ - **5 Dice:**
+   - 5/6
+ - **6 Dice:**
+   - 6/6
 
 ---
 
