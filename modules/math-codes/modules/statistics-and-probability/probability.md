@@ -16,10 +16,12 @@
    - [Complement of Sets](#complement-set)
    - [Example: Operations with Events (toss a dice)](#ex-event)
  - [Probability Axioms (definition)](#probability-axioms)
+ - [Approaches of Probability](#approaches-probability)
    - [Classical approach](#classicala)
    - [Frequency-based (or empirical) approach](#frequencya)
    - [Subjective approach](#subjectivea)
    - [Example: Tossing a dice](#paex-tossing-dice)
+ - [Addition Rule in Probability](#addition-rule)
 
 ---
 
@@ -258,6 +260,12 @@ Knowing that a probability function **P()** attributes numerical values to Event
    - The second axiom tells us that the probability to happen (acontecer) *omega (Ω)* is 1.
    - That is, Some Event inside sample (Ω) space will happen (vai acontecer).
 
+---
+
+<div id="approaches-probability"></div>
+
+## Approaches of Probability
+
 Now, the ask is:
 
 > **How to attributes probability to the elements of the sample space (Ω)?**
@@ -371,66 +379,18 @@ What probability of Event **D = "Greater than or equal to 2 and less than or equ
 
 ---
 
-<div id=""></div>
+<div id="addition-rule"></div>
 
-## x
+## Addition Rule in Probability
 
-x
+The probability of the **union** between any two events, **A** and **B**, is given by the **Addition Rule in Probability**:
 
+![img](images/addition-rule-01.png)
 
+**NOTE:**  
+See also that the addition rule can be simplified **if and only if (⟺)** events **A** and **B** are **disjoint (or mutually exclusive)**:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img](images/addition-rule-02.png)
 
 ---
 
