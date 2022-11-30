@@ -576,9 +576,3 @@ package-lock.json
 
 # Venv
 *-environment
-
-# Ignore venv files
-environment
-
-# Venv
-environment
