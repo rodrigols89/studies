@@ -58,49 +58,10 @@ Based on these **types of sample spaces** we have the following **types of Rando
  - **CONTINUOUS RANDOM VARIABLE:**
    - A Random Variable is *continuous* **when your sample space (Ω) is continuous**.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id=''></div>
-
-## x
-
-![img](images/)  
-
-[](src/)
-```python
-
-```
-
-**OUTPUT:**  
-```python
-
-```
-
 ---
 
 **REFERENCES:**  
-[]()  
+[ESTATÍSTICA BÁSICA (DEST/UFPR)](http://www.leg.ufpr.br/~paulojus/estbas/)  
 
 ---
 
