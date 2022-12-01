@@ -15,7 +15,7 @@
 
 ![daa-logo](res/daa.png)
 
- - [Contando Instruções](modules/daa/counting-statements)
+ - [Counting instructions (In Algorithms)](modules/daa/counting-statements.md)
  - [Comportamento Assintótico](modules/daa/asymptotic-behavior)
  - [Análise do Pior, Médio & Melhor Caso de um Algoritmo](modules/daa/worst-average-and-best-cases)
 
