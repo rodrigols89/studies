@@ -67,6 +67,9 @@ For example, see the visual approach below:
 
 ![img](images/sd-02.png)  
 
+**NOTE:**  
+See that is more easy find patterns and relationships  between variables visually.
+
 ---
 
 <div id="crips-dm-rel"></div>
@@ -83,13 +86,13 @@ The **Descriptive Statistics** focus specifically on **step 2 (data understandin
 
 ## Some types of observations in a Descriptive Analysis
 
- - 1. Investigate the **behavior** of a variable.
- - 2. Examine the **relationship** between variables.
- - 3. Emphasize **sorting/classification** elements/categories.
- - 4. Understand the **organizational** structure of elements/categories.
- - 5. Explore the **chronological** evolution of a variable.
- - 6. Reveal **spatial** patterns in the data.
- - 7. Describe the **connection** between elements/categories.
+ - Investigate the **behavior** of a variable.
+ - Examine the **relationship** between variables.
+ - Emphasize **sorting/classification** elements/categories.
+ - Understand the **organizational** structure of elements/categories.
+ - Explore the **chronological** evolution of a variable.
+ - Reveal **spatial** patterns in the data.
+ - Describe the **connection** between elements/categories.
 
 ---
 
@@ -112,6 +115,7 @@ The **"Sampling" Methods** are divided in two groups:
 ---
 
 <div id="srs"></div>
+
 ## Simple Random Sampling
 
 > Under (na) **Random sampling**, every element of the population has an **equal probability of getting selected**.
@@ -429,7 +433,7 @@ The below **fig.** shows the pictorial view of the same:
 
 ## Quota Sampling
 
-x
+> Coming soon...
 
 ---
 
@@ -437,15 +441,7 @@ x
 
 ## Judgmental or Purposive Sampling
 
-x
-
----
-
-<div id=""></div>
-
-## x
-
-x
+> Coming soon...
 
 ---
 
