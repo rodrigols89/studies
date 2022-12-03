@@ -1,19 +1,19 @@
-# Counting instructions (In Algorithms)
+# Counting Statements
 
 ## Contents
 
- - [Simple Instructions](#simple-instructions)
- - [02 - Pior caso (Worst-case)](#worst-case)
+ - [Statement (simple) Counting](#statement-counting)
+ - [Worst Case Approach](#worst-case)
 
-<div id="simple-instructions"></div>
+<div id="statement-counting"></div>
 
-## Simple Instructions
+## Statement (simple) Counting
 
-To analyze an Algorithm we need count how many instructions the Algorithm run. Knowing, Knowing this, let's start counting **simple instructions**:
+To analyze an Algorithm we need count how many statements the Algorithm run. Knowing this, let's start counting **simple statements**:
 
-> **A simple instruction is an instruction that can be run directly by the CPU or something close to that.**
+> **A simple statements is an statements that can be run directly by the CPU or something close to that.**
 
- - **Instruction types:**
+ - **Statements types:**
    - Assign a value to a variable.
    - Access the value (element) of the determined array.
    - Compare Arrays.
@@ -24,8 +24,8 @@ To analyze an Algorithm we need count how many instructions the Algorithm run. K
      - Div
      - Mult
  - **Let's assume that:**
-   - The instructions have the same cost.
-   - The selections command has zero (0) cost.
+   - The statements have the same cost.
+   - The *selections command* has zero (0) cost.
 
 For example, imagine we have an Algorithm that receive an **Array "A"** with **"n"** elements and store the higher element into **"M"** variable:
 
@@ -36,7 +36,7 @@ For example, imagine we have an Algorithm that receive an **Array "A"** with **"
 04         M = A[i];
 ```
 
-Now, let's count how many **simple instructions** the Algorithm above running:
+Now, let's count how many **simple statements** the Algorithm above running:
 
 **Line 01:**
 ```cpp
@@ -47,11 +47,11 @@ Now, let's count how many **simple instructions** the Algorithm above running:
 04         M = A[i];
 ```
 
-**Cost to INITIALIZE the for() (line2) instruction is 2:**
- - The **for()** instruction need be initialized:
-   - 1 Instruction: **int i = 0**.
+**Cost to INITIALIZE the for() (line2) statements is 2:**
+ - The **for()** statements need be initialized:
+   - 1 statements: **int i = 0**.
  - And same that the **Array A** have size zero (0) at least (ao menos) one comparison will be run:
-   - **i < n**; That is, more 1 instruction.
+   - **i < n**; That is, more 1 statements.
 ```cpp
                                 Cost:     Times:
 01 int M = A[0];                c1        1
@@ -60,14 +60,14 @@ Now, let's count how many **simple instructions** the Algorithm above running:
 04         M = A[i];
 ```
 
-**Cost to RUN the for() (line 2) instruction is 2n:**
+**Cost to RUN the for() (line 2) statements is 2n:**
  - At the end (ao final) of each iteration of the *for() loop*, we need:
    - Increment:
      - **"i++"**
-   - And an instruction to compare if the loop will continue:
+   - And an statements to compare if the loop will continue:
      - **"i < n"**
- - The loop will be run **"n"** time, that is, the **2 instructions** above will be run **"n"** times:
-   - **+ 2n (Instructions)**.
+ - The loop will be run **"n"** time, that is, the **2 statements** above will be run **"n"** times:
+   - **+ 2n (statements)**.
 ```cpp
                                 Cost:     Times:
 01 int M = A[0];                c1        1
@@ -77,67 +77,66 @@ Now, let's count how many **simple instructions** the Algorithm above running:
 ```
 
 **NOTE:**  
-Ignorando os comando dentro do *laço for()*, teremos que o algoritmo precisa executar **3 + 2n Instruções**:
- - 3 Instruções antes de iniciar o *laço for()*;
- - 2 Instruções ao final de cada *laço for()*, que serão executadas **"n"** vezes.
+Ignoring commands inside **for()** statement, the algorithm has **3 +2n** statements.
 
-Assim, considerando um laço vazio, podemos definir uma função matemática que representa o custo do Algoritmo em relação ao tamanho do array de entrada como:
+ - **3** statements before initialize **for()** statements.
+ - **2** Statements at the end of each **for()** loop, which will be executed **"n"** times.
+
+Thus, considering an *empty loop (for)*, we can define a mathematical function that represents the cost of the Algorithm in relation to the size of the input array as:
 
 ![image](images/tn-01.png)  
 
-Ok, mas e as Instruções dentro do *laço for()* como nós contamos?
- - O comando **if()** tem *1 Instrução* de comparação: **(A[i] >= M)**;
- - E dentro do **if()** nós temos mais *1 Instrução* de atribuição: **M = A[i]**.
-```cpp
-                              Cost:     Times:
-int M = A[0];                 c1        1
-for(int i = 0; i < n; i++)    c2        2 + 2n
-  if (A[i] >= M)              c3        1 (Quantas vezes?)
-    M = A[i];                 c4        1 (Quantas vezes?)
-```
+Ok, but what about the statements inside the **for() loop** how do we count?
 
-**Problema:**  
-Bem, agora nós temos um probleminha, quantas vezes essas instruções serão executadas?
- - As Instruções vistas anteriormente eram sempre executadas;
- - Porém, as instruções dentro do *for()* podem ou não serem executadas.
-
-Ou seja, antes bastava saber o tamanho do array **A**, **"n"**, para definir a função de custo **T(n)**. Agora também precisamos considerar o conteúdo do array. Por exemplo, veja os dois arrays abaixo:
+ - The **if()** statement has 1 comparison statement: **(A[i] >= M)**;
+ - And inside the **if()** we have 1 more assignment statement: **M = A[i]**.
 
 ```cpp
-A1 = [1, 2, 3, 4]
-A2 = [4, 3, 2, 1]
+                                     Cost:     Times:
+01 int M = A[0];                     c1        1
+02 for(int i = 0; i < n; i++)        c2        2 + 2n
+03     if (A[i] >= M)                c3        1 (How many times?)
+04         M = A[i];                 c4        1 (How many times?)
 ```
 
- - O array **A1** terá mais instruções, isso porque o **if()** sempre será verdadeiro;
- - E o array **A2** terá menos instruções porque o **if()** sempre será faldo.
+> **PROBLEM:**  
+> Well, now we have a little problem, how many times will these statements be executed?
 
-**Coming soon...**  
-01.
-https://inst.eecs.berkeley.edu/~cs61b/sp06/labs/s7-2-1.html#:~:text=An%20alternative%20to%20timing%20a,coded%20in%20closely%20related%20languages
+ - statements seen previously were always executed;
+ - However, the statements inside *for()* may or may not be executed.
 
-02
-https://www.google.com/search?q=Counting+statements&sxsrf=ALiCzsarI_6oY5Wwq4DXtJJqY_sdkdp3EQ%3A1669683354593&ei=mliFY8bzI8vh1sQP2LSb6Ao&ved=0ahUKEwjGqPOZl9L7AhXLsJUCHVjaBq0Q4dUDCA8&uact=5&oq=Counting+statements&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICAAQFhAeEAoyBQgAEIYDMgUIABCGAzIFCAAQhgMyBQgAEIYDOgoIABBHENYEELADOgUIABCRAjoECAAQQzoFCC4QkQI6BQgAEIAEOggILhCABBDUAjoHCAAQgAQQCjoGCAAQFhAeSgQIQRgASgQIRhgAUNAEWLYbYLAdaAJwAXgAgAG5AYgBvgySAQQwLjEwmAEAoAEByAEIwAEB&sclient=gws-wiz-serp
+That is, before it was enough to know the size of array **A**, **"n"**, to define the cost function **T(n)**. Now we also need to consider the contents of the array. For example, look at the two arrays below:
 
+
+```cpp
+01 A1 = [1, 2, 3, 4]
+02 A2 = [4, 3, 2, 1]
+```
+
+ - Array **A1** will have more statements, because the **if()** will always be true;
+ - And the **A2** array will have less statements because the **if()** will always be false.
+
+---
 
 <div id="worst-case"></div>
 
-## 02 - Pior caso (Worst-case)
+## Worst Case Approach
 
-Ao analisarmos um Algoritmo, é muito comum considerarmos o **Pior caso (Worst-case)** possível.
+When analyzing an Algorithm, it is very common to consider the **worst case possible**.
 
-> **O pior caso é quando o maior número de instruções é executado.**
+> **The *Worst Case* is when the Algorithm executes as many statements as possible.**
 
-No nosso Algoritmo **Pior caso (Worst-case)** ocorre quando o array possui valores em ordem crescente:
- - O valor de **"M"** é sempre substituído;
- - E o *laço for()* sempre executa as 2 Instruções de dentro **"n"** vezes.
+In our Algorithm **Worst Case** occurs when the array has values in *ascending order*:
 
-Assim, a função de custo do Algoritmo será:
+ - The value of **"M"** is always substituted;
+ - And the **for() loop** always executes the 2 inside statements **"n"** times.
+
+Thus, the cost function of the Algorithm will be:
 
 ![image](images/tn-02.png)  
 
 **NOTE:**  
-Essa função representa o custo do Algoritmo em relação ao tamanho do array **A** **("n")** no **Pior caso (Worst-case)**
-
+This function represents the cost of the Algorithm in relation to the size of the array **A ("n")** in the **Worst case**.
 
 ---
 
