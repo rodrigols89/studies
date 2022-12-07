@@ -80,7 +80,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Mathematics:__
-   - [Matemática](modules/math-codes)
+   - [Math](modules/math-codes)
 
 ---
 
