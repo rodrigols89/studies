@@ -44,6 +44,7 @@
      - [Frequency table for quantitative variables (amplitude)](#ft-for-qv)
      - [Creating a histogram for quantitative variables](#histogram-for-qv)
      - [TIP: Number of "class amplitude"](#tip-clas-amplitude)
+   - **Measures of Position:**
  - **Tips & Tricks:**
    - [Population vs. Sample](#pop-vs-sample)
 
@@ -850,6 +851,113 @@ For example, see the examples below:
 
 **NOTE:**  
 See that the more **"class amplitude"** we have more hard to analyze the chart.
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
