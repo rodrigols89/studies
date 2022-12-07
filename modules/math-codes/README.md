@@ -49,9 +49,7 @@
 ## Statistics and Probability
 
  - [Descriptive Statistics](modules/statistics-and-probability/descriptive-statistics.md)
- - **Probability:**
-   - [Probability (English notes)](modules/statistics-and-probability/probability.md)
-   - [Probability (PT-BR)](modules/statistics-and-probability/probability-pt-br/README.md)
+ - [Probability (ENG/+PT-BR)](modules/statistics-and-probability/probability.md)
  - [Random Variables](modules/statistics-and-probability/random-variables.md)
 
 ---

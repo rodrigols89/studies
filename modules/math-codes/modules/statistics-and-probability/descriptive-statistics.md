@@ -44,6 +44,7 @@
      - [Frequency table for quantitative variables (amplitude)](#ft-for-qv)
      - [Creating a histogram for quantitative variables](#histogram-for-qv)
      - [TIP: Number of "class amplitude"](#tip-clas-amplitude)
+   - **Measures of Position:**
  - **Tips & Tricks:**
    - [Population vs. Sample](#pop-vs-sample)
 
@@ -562,11 +563,11 @@ To understand how create a **frequency table** for categorical variables imagine
 
 ![img](images/frequency-table-01.png)  
 
-To understand how to create a frequency table first, let's sorting Area variable:
+To understand how to create a frequency table first, let's sorting **"Area"** variable:
 
 ![img](images/frequency-table-02.png)
 
-see that the categorical variable Area has some categories:
+See that the categorical variable **"Area"** has some categories:
 
  - Biolog
  - Eng
@@ -591,7 +592,7 @@ For example, see the frequency table below, referent to our **Area variable**:
 
 ## Formula to calculate absolute and relative frequency table
 
-To calculate absolute and relative frequency table we use the following formulas: 
+To calculate **absolute** and **relative frequency table** we use the following formulas: 
 
 ![img](images/frequency-table-04.png)
 
@@ -623,7 +624,7 @@ See that **"Eng" category** represents **30%** of the data.
 
 > One of the most common graphs to analyze qualitative (categorical) variables is a Bar graph.
 
-For example, see the **Bar graph** below representing our categorical variable Area:
+For example, see the **Bar graph** below representing our categorical variable **Area**:
 
 ![img](images/frequency-table-07.png)  
 
@@ -671,7 +672,7 @@ Now, let's consider two categorical variables to make a frequency table. For exa
 ![img](images/frequency-table-10.png)  
 
 **NOTE:**  
-Ok, now to calculate the frequency table, we focus on Area and Email combinations:
+Ok, now to calculate the frequency table, we focus on **Area** and **Email** combinations:
 
 ![img](images/frequency-table-10.png)  
 
@@ -690,7 +691,7 @@ Another crucial observation is that we have a sum for each combination set:
 
 ![img](images/frequency-table-13.png)  
 
-Yes, we have two marginal frequencies on the sides and total frequency.
+Yes, we have *two marginal frequencies* on the sides and *total frequency*.
 
 **NOTE:**  
 You can also see this representation like a matrix:
@@ -790,7 +791,7 @@ Now, imagine we have the follow table to create a frequency table:
 ![img](images/quantitative-03.png)  
 
 > **NOTE:**  
-> The quantitative variable CH represent the **workload (carga horária)**.
+> The quantitative variable **CH** represent the **workload (carga horária)**.
 
 Now, let's create a **class amplitude** to generate a frequency table. However, first, let's go sorting the data:
 
@@ -830,6 +831,26 @@ For example, see the **histogram** below for our **CH** quantitative variable:
 However, depend you problem, you can also  make a **histogram** by the interval:
 
 ![img](images/quantitative-05.png)
+
+---
+
+<div id="tip-clas-amplitude"></div>
+
+## TIP: Number of "class amplitude"
+
+How we know **"class amplitude"** are group of values from our quantitative variables. For example:
+
+![img](images/quantitative-02.png)  
+
+**NOTE:**  
+However, the more **"amplitude class"** we have, the more **"noise (ruído)"** our chart will have.
+
+For example, see the examples below:
+
+![img](images/quantitative-06.png)  
+
+**NOTE:**  
+See that the more **"class amplitude"** we have more hard to analyze the chart.
 
 ---
 
@@ -876,25 +897,24 @@ x
 
 
 
----
 
-<div id="tip-clas-amplitude"></div>
 
-## TIP: Number of "class amplitude"
 
-How we know **"class amplitude"** are group of values from our quantitative variables. For example:
 
-![img](images/quantitative-02.png)  
 
-**NOTE:**  
-However, the more **"amplitude class"** we have, the more **"noise (ruído)"** our chart will have.
 
-For example, see the examples below:
 
-![img](images/quantitative-06.png)  
 
-**NOTE:**  
-See that the more **"class amplitude"** we have more hard to analyze the chart.
+
+
+
+
+
+
+
+
+
+
 
 
 
