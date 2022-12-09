@@ -8,6 +8,8 @@
    - [Call the function](#call-function)
  - [void functions](#void-functions)
  - [The "main" function (+argc and argv)](#main-function)
+ - **Tips & Tricks:**
+   - [Function Modularization](#func-mod)
 
 ---
 
@@ -201,6 +203,22 @@ g++ main_argc_argv-01.cpp -std=c++17 -o test-main
 Program name: C:\Workspace\p1\modules\cc-codes\modules\structured\src\test-main.exe
 argc: first-command
 ```
+
+---
+
+<div id="func-mod"></div>
+
+## Function Modularization
+
+Functions in C++ can be divided into different files, where:
+
+ - **file.h**
+   - The prototypes of the functions stay here.
+ - **file.cpp**
+   - Function definitions stay here.
+ - **main_file.cpp**
+   - Includes *( headers / .h )* from the functions.
+   - Functions calls
 
 ---
 
