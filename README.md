@@ -38,11 +38,6 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 ---
 
- - __Algorithms and Data Structures:__
-   - [Algoritmos](modules/algorithms)
-
----
-
  - **Software Engineering:**
    - [Agile Methodologies](modules/agile-methodologies)
 
@@ -85,7 +80,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Mathematics:__
-   - [Matemática](modules/math-codes)
+   - [Math](modules/math-codes)
 
 ---
 
