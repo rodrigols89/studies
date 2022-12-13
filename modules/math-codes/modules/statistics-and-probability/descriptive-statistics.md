@@ -25,6 +25,9 @@
      - [Nominal data (Are "names" for some "characteristic" "groups")](#nominal-data)
      - [Ordinal data (Indicate some kind (tipo) of inherent order or hierarchy)](#ordinal-data)
      - [Binary data (Variables that represents binarization: True/False, Yes/No, 0/1)](#binary-data)
+     - [Qualitative Data Discussion](#qdd)
+     - [Omitting Categories/Missing Data](#qdd-missing)
+     - [Pie Charts: No Missing Data](#piecharts-missing-data)
    - [**Quantitative Data (Aka, numerical)**](#quantitative-data)
      - [Continuous data (We measure (medimos) instead counting)](#continuous-data)
      - [Discrete data (It's something we count instead of measuring)](#discrete-data)
@@ -490,6 +493,81 @@ How description says, the **binary data are variables that represent binarizatio
  - **True** or **False**
  - **Yes** or **No**
  - **1** or **0**
+
+---
+
+<div id="qdd"></div>
+
+## Qualitative Data Discussion
+
+Below are tables comparing the number of **part-time** and **full-time** students at **De Anza College** and **Foothill College** enrolled for the spring 2010 quarter:
+
+![img](images/part-time-full-time-table.png)  
+
+The tables display:
+
+ - Counts;
+ - Frequencies;
+ - Percentages or proportions;
+ - Relative frequencies.
+
+**NOTE:**  
+ - For instance, to calculate the percentage of **part time** students at **De Anza College**, divide **9,200/22,496** to get **0.4089**.
+ - Round to the nearest thousandth—third decimal place and then multiply by 100 to get the percentage, which is **40.9 percent**.
+
+Tables are a good way of organizing and displaying data. But graphs can be even more helpful in understanding the data. Two graphs that are used to display qualitative data are **pie charts**, **bar graphs** and **Pareto chart**:
+
+ - In a **pie chart**, categories of data are shown by wedges in a circle that represent the percent of individuals/items in each category. We use pie charts when we want to show parts of a whole.
+ - In a **bar graph**, the length of the bar for each category represents the number or percent of individuals in each category. Bars may be vertical or horizontal. We use bar graphs when we want to compare categories or show changes over time.
+ - A **Pareto chart** consists of bars that are sorted into order by category size *(largest to smallest)*.
+
+For example, see the **graphs (Pie Chart and Bar Graph)** below to our table:
+
+![img](images/pie-chart-deanzacoleggue.jpg)
+![img](images/bar-graph-deanzacoleggue.jpg)
+
+---
+
+<div id="qdd-missing"></div>
+
+## Omitting Categories/Missing Data
+
+The table below displays **Ethnicity of Students** but is **missing** the **Other/Unknown category**:
+
+![img](images/qdd-missing-01.png)  
+
+**NOTE:**  
+
+ - This **category contains people who did not feel they fit into any of the ethnicity categories** **or declined to respond**.
+ - Notice that the frequencies do **not add up to the total number of students**:
+   - In this situation, create a **bar graph** and **not a pie chart**.
+
+![img](images/qdd-missing-02.png)  
+
+The following graph is the same as the previous graph but the **Other/Unknown percent (9.6 percent)** has been included:
+
+![img](images/qdd-missing-03.png)  
+
+> **NOTE:**  
+> - The **Other/Unknown category** is large compared to some of the other categories *(Native American, .6 percent, Pacific Islander 1.0 percent)*.
+> - This is important to know when we think about what the data are telling us.
+
+**The graphs above can be difficult to understand visually, to solve that we can use "Pareto chart"**
+The **Pareto chart has the bars sorted from largest to smallest** and is easier to read and interpret:
+
+![img](images/qdd-missing-04.png)  
+
+---
+
+<div id="piecharts-missing-data"></div>
+
+## Pie Charts: No Missing Data
+
+The **pie charts** below have the **Other/Unknown category** included:
+
+![img](images/piecharts-missing-data-01.jpg)  
+
+The chart above is **organized by the size of each wedge**, which makes it a more visually informative graph than the unsorted, alphabetical graph in **"Figure b"**.
 
 ---
 
