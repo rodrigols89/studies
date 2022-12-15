@@ -32,7 +32,10 @@
      - [Continuous data (We measure (medimos) instead counting)](#continuous-data)
      - [Discrete data (It's something we count instead of measuring)](#discrete-data)
  - **Frequency Distribution:**
-   - **Qualitative variables:**
+   - [Frequency](#intro-to-frequency)
+   - [Relative Frequency](#intro-to-relative-frequency)
+   - [Cumulative Relative Frequency](#intro-to-cumulative-relative-frequency)
+   - **Frequency Distribution in Qualitative Variables:**
      - [Creating a frequency table for categorical variables](#frequency-table-categorical-variables)
      - [Formula to calculate absolute and relative frequency table](#calculate-absolute-relative)
      - [Relative frequency observation](#relative-frequency-observation)
@@ -43,7 +46,7 @@
      - [Create a Bart Chart for two categorical variables](#cbcftcv)
      - [TIP: When uses each kind of chart (PT-BR notes)](#when-use-fqv)
      - [TIP: Nominal vs. Ordinal variables in Frequency tables](#normal-ordinal-ft)
-   - **Quantitative variables:**
+   - **Frequency Distribution in Quantitative Variables:**
      - [Frequency table for quantitative variables (amplitude)](#ft-for-qv)
      - [Creating a histogram for quantitative variables](#histogram-for-qv)
      - [TIP: Number of "class amplitude"](#tip-clas-amplitude)
@@ -633,6 +636,141 @@ See we have some ranges like **day**, **match**, **flight** and **dozen** and ou
 
 ---
 
+<div id="intro-to-frequency"></div>
+
+## Frequency
+
+Twenty students were asked how many hours they worked per day. Their responses, in hours, are as follows:
+
+```python
+5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3.
+```
+
+The **Frequency Table** for our example is:
+
+![img](images/intro-to-frequency-01.png)  
+
+**NOTE:**  
+
+ - A **frequency** is the *number of times* a *value of the data occurs*.
+ - The **sum of the values in the frequency column**, 20, **represents the total number of students included in the sample**.
+
+---
+
+<div id="intro-to-relative-frequency"></div>
+
+## Relative Frequency
+
+> A **Relative Frequency** is the **ratio (fraction or proportion)** of the number of times a value of the data occurs in the set of all outcomes to the total number of outcomes.
+
+For example, to our student table to find the **relative frequencies**:
+
+ - Divide each frequency;
+ - By the total number of students in the sample, in this case, 20.
+
+![img](images/relative-frequency-01.png)  
+
+**NOTE:**  
+
+ - See that each **Relative Frequency** represents the frequency percent (%) in the set of outcomes.
+ - The sum of each **Relative Frequency** is always 100% of the data.
+
+---
+
+<div id="intro-to-cumulative-relative-frequency"></div>
+
+## Cumulative Relative Frequency
+
+> The **Cumulative relative frequency** is the accumulation of the previous relative frequencies.
+
+To find the **cumulative relative frequencies**, add all the previous relative frequencies to the relative frequency for the current row, as shown in table below:
+
+![img](images/cumulative-relative-frequencies-01.png)  
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 <div id="frequency-table-categorical-variables"></div>
 
 ## Creating a frequency table for categorical variables
@@ -929,113 +1067,6 @@ For example, see the examples below:
 
 **NOTE:**  
 See that the more **"class amplitude"** we have more hard to analyze the chart.
-
----
-
-<div id=""></div>
-
-## x
-
-x
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
