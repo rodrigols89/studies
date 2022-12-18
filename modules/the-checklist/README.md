@@ -1,4 +1,4 @@
-# The Checklist
+# The Checklist (Good practices for good programmers)
 
 ![logo](res/tclogo.png)
 
@@ -11,8 +11,8 @@
      - [Data Pipeline](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-pipeline.md)
  - **Software Development & Engineering:**
    - **Algorithms:**
-     - Analysis of Algorithms:
-     - Data Structures:
+     - [Design and Analysis of Algorithms](https://github.com/drigols/algorithms#daa)
+     - [Data Structures](https://github.com/drigols/algorithms#ds)
    - **Clean Code:**
      - Docstrings:
        - [Docstrings in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
@@ -43,19 +43,9 @@
      - [Missing Data Imputation](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/missing-data-imputation/README.md)
      - [Categorical Encoding](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/categorical-encoding/categorical-encoding.md)
    - **Statistics & Probability:**
-     - ["Sampling" Methods (+Population vs. Sample)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/sampling-methods.md)
-     - [Data Types in Statistics](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/data-types-in-statistic.md)
-     - [Mean](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean.md)
-     - [Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/median.md)
-     - [Mean vs Median](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mean-vs-median.md)
-     - [Moda and Multimodal Data](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/mode.md)
-     - [Data Distribution and Density](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/distribution-and-density.md):
-       - [Skewness & Kurtosis](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/skewness-kurtosis.md)
-       - [Normal distribution](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/normal-distribution.md)
-     - [Measures of Variation (Interval, Percentil, Quartil, Boxplot & Outliers)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/measures-of-variation.md)
-     - [Variance & Standard Deviation](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/variance-and-standard-deviation.md)
-     - [Z Score](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/z-score.md)
-     - [BONUS: Describe Statistics with describe() Pandas](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/bonus-describe.md)
+     - [Descriptive Statistics](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/descriptive-statistics.md)
+     - [Probability (ENG/+PT-BR)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/probability.md)
+     - [Random Variables](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/random-variables.md)
    - **Machine Learning Algorithms::**
      - **[Regressions:](https://github.com/drigols/studies/tree/master/modules/ai-codes/modules/regression)**
        - [What type of regression do we have? Simple x Multiple x Multivariate](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/intro-to-linear-regression.md)
