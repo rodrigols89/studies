@@ -14,7 +14,7 @@
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)
  - **Tools:**
-   - [Visual Studio (Tips & Tricks)](modules/tools/visual-studio)
+   - [Visual Studio/+VSCode](modules/tools/visual-studio)
    - [GNU Make](modules/tools/make)
    - [CMake](modules/tools/cmake)
    - [g++](modules/tools/g-plus-plus)
