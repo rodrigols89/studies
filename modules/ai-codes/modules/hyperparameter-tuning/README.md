@@ -1,65 +1,66 @@
-# RandomizedSearchCV vs GridsearchCV
+# Hyperparameter Tuning
 
-## Conteúdo
+## Contents
 
- - [01 - Revisando o Algoritmo ElasticNet](#01)
- - [02 - Introdução e Problema](#02)
- - [03 - Escolhendo o melhor argumento para o meu L2 e L1 com a função RandomizedSearchCV](#03)
- - [04 - Escolhendo o melhor argumento para o meu L2 e L1 entre todas as combinações possíveis com a função GridsearchCV](#04)
-
----
-
-<div id="01"></div>
-
-## 01 - Introdução ao Algoritmo Elastic Net
-
-Ok, até então nós já estudamos o Algoritmo de [Regressão Linear](../linear-regression/linear-regression-sse-ols-gd.md) e [Ridge Regression (+Regularização L1 & L2)](../ridge-regression/intro-to-ridge-regression-l1-l2.md) e entendemos toda a lógica e prioridades de cada Algoritmo. Mas o que tem de especial o **Algoritmo Elas Net**?
-
-> O Algoritmo **Elastic Net** utiliza a mesma lógica da **Regressão Linear** +  **Ridge Regression (L1 + L2)** no mesmo Algoritmo.
-
-Não entendeu? Vamos ver na fórmula como fica:
-
-![image](images/01.svg)  
-
-Vejam que agora nós estamos utilizando todos os conceitos juntos: **Regressão Linear + Ridge Regression (L1 + L2)**
-
-**NOTE:**  
-Mas agora nós temos uma regrinha que vamos aplicar a nossa **constante λ (lambda do grego)**:
-
-![image](images/02.svg)  
-
-Isso significa que:
-
- - A nossa constante *λ (lambda do grego)* vai ser **maior** ou **igual a 0**;
- - E a nossa constante *λ (lambda do grego)* vai ser **menor** ou **igual a 1**.
-
-**Mas por que isso agora?**  
-Bem se você prestar atenção vai ver que essa constante multiplica as nossas regularizações **L1** e **L2**:
-
-![image](images/elastic-net-01.png)  
-
-**NOTE:**  
-Se você prestar bem atenção vai ver que no meu **L2** nós vamos ter **(1 - λ)**. O que isso significa?
-
-> Sigiffica que nós estamos *dividindo* a nossa constante **λ** em **porcentagem (%)** entre **L1** e **L2**.
-
-Vamos ver a imagem abaixo para ficar mais claro:
-
-![image](images/elastic-net-02.png)  
-
-**NOTE:**  
-Isso é importante para você dar uma *prioridade* entre a *Regularização* **L1** e **L2**.
+ - **Theory:**
+   - [Review Elastic Net algorithm](#review-elastic-net)
+   - [Intro and problem](#intro-problem)
+ - **RandomizedSearchCV:**
+   - [Choosing the best values for my L2 and L1 with RandomizedSearchCV function](#rscv-01)
+ - **GridsearchCV:**
+   - [Choosing the best values for my L2 and L1 among all possible combinations with GridsearchCV function](#gscv-01)
+   - [GridSearchCV observation](#gscv-observation)
 
 ---
 
-<div id="02"></div>
+<div id="review-elastic-net"></div>
 
-## 02 - Introdução e Problema
+## Review Elastic Net algorithm
+
+> The **Elastic Net** algorithm uses the same logic of *Linear Regression* and *Ridge Regression (L1 + L2)* in the same algorithm.
+
+Let's check Elastic net formula:
+
+![img](images/01.svg)
+
+> See that we using *Linear Regression* and *Ridge Regression (L1 + L2)* concepts together.
 
 **NOTE:**  
-Bem, para nossos exemplos vamos trabalhar com o Dataset [Graduate Admission 2](https://www.kaggle.com/mohansacharya/graduate-admissions) referente a estudantes que estão participando de um processo de Admissão em uma universidade na India.
+However, now we have the rule applied into lambda (λ) constant:
 
-Supondo que você já baixou o Dataset o código em Python para dar uma pequena visualizada é o seguinte:
+![img](images/02.svg)  
+
+This means that:
+
+ - Our **constant λ** is going to be greater than or equal to 0;
+ - And our **constant λ** is going to be less than or equal to 1.
+
+**But why this now?**
+Well, if you pay attention you will see that this constant multiplies our regularizations L1 and L2:
+
+![img](images/elastic-net-01.png)  
+
+> If you pay close attention, you will see that in my **L2** we will have **(1 - λ)**. **What does that mean?**
+
+**NOTE:**  
+It means that we are dividing our **constant λ** in **percentage (%)** between **L1** and **L2**.
+
+See the image below to understand more easily:
+
+![img](images/elastic-net-02.png)  
+
+**NOTE:**  
+It is important for you to give a priority between **L1** and **L2** *regularization*.
+
+---
+
+<div id="intro-problem"></div>
+
+## Intro and problem
+
+Well, for our examples we are going to work with the [Graduate Admission](https://www.kaggle.com/datasets/mohansacharya/graduate-admissions) 2 Dataset referring to students who are participating in an Admission process at a university in India.
+
+Assuming that you have already downloaded the Dataset, the code in Python to give you a little visualization is as follows:
 
 [graduate_admission_testing.py](src/graduate_admission_testing.py)  
 ```python
@@ -86,19 +87,19 @@ print(df.head(10))
 ```
 
 **NOTE:**  
-Se você prestar atenção vai ver que nós temos uma variável chamada **"Chance of Admit"**. Essa variável é a **probabilidade (%)** de um estudante ser admitido com base nas outras variáveis.
+If you pay attention will see we have a variable called **"Chance of Admit"**. This variable is the probability (%) of a student be admitted based on the other variables.
 
 ---
 
-<div id="03"></div>
+<div id="rscv-01"></div>
 
-## 03 - Escolhendo o melhor argumento para o meu L2 e L1 com a função RandomizedSearchCV
+## Choosing the best values for my L2 and L1 with RandomizedSearchCV function
 
-Se você não deixou passar nada na revisão sobre o algoritmo ElasticNet, você vai se lembrar que nós temos uma **constante λ (lambda do grego)** que dar uma certa prioridade para os meus parâmetros **L1** e **L2**.
+If you didn't miss anything in the review about the [Elastic Net algorithm](#review-elastic-net), you'll remember that we have a **constant λ (lambda from Greek)** that gives a certain priority to my parameters **L1** and **L2**.
 
-> **Mas, como escolher os melhores argumentos?**
+> But, how to **choose** the **best values** of **L1** and **L2**?
 
-Uma maneira bem interessante é utilizar o Algoritmo [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html). Veja em Python como é feito isso na prática:
+A very interesting way is to use the [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) Algorithm. See in Python how this is done in practice:
 
 [randomized_search_cv.py](src/randomized_search_cv.py)
 ```python
@@ -156,20 +157,21 @@ Best L1_Ratio: 0.02
 ```
 
 **NOTE:**  
-Vejam que nós passamos um dicionário contento vários valores de **alpha** e **L1** *(L2 e L1)* e o algoritmo [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) vai testando algumas combinações entre eles e depois mostra a melhor que ele achou (as que ele testou, caso ele não tenha testado todas). Como nós passamos para o parâmetro **n_iter=150** ele só vai rodar 150 iterações, mas o máximo de combinações posssíveis para esse dicionário era **19x11 = 209**.
+ - See that we pass a dictionary containing several values of **alpha** and **L1** *(L2 and L1)*.
+ - Then and the [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) algorithm tests some combinations between them and then shows the best one it found (the ones it tested, in case it hasn't tested all of them).
+ - As we passed the parameter **n_iter=150** it will only run 150 iterations, but the maximum possible combinations for this dictionary was **19x11 = 209**.
 
 ---
 
-<div id="04"></div>
+<div id="gscv-01"></div>
 
-## 04 - Escolhendo o melhor argumento para o meu L2 e L1 entre todas as combinações possíveis com a função GridsearchCV 
+## Choosing the best values for my L2 and L1 among all possible combinations with GridsearchCV function
 
-**NOTE:**  
-Bem, o Algortimo [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) é ótimo para procurar os melhores valores para **L2** e **L1** para um número **"n"** de iterações.
+The [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) algorithm is great for looking for the best values for **L2** and **L1** for **"n"** number of iterations.
 
-> Mas como eu posso testar para **TODAS AS COMBINAÇÕES POSSÍVEIS (MESMO QUE SEJA 1 MILHÃO DE ITERAÇÕES)**?
+> But how can I test for **ALL POSSIBLE COMBINATIONS (EVEN IF IT'S 1 MILLION ITERATIONS)**?
 
-Para isso nós temos um algoritmo específico chamado [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). Vamos ver como é simples aplicar ele na prática:
+For that we have a specific algorithm called [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). Let's see how simple it is to apply it in practice:
 
 [grid_search_cv.py](src/grid_search_cv.py)
 ```python
@@ -226,16 +228,26 @@ Best L1_Ratio: 0.02
 ```
 
 **NOTE:**  
-Bem, por sorte com 150 iterações nós conseguimos os melhores valores com o algoritmo [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html), mas se o nosso dicionário fosse maior **(com mais ou menos 100mil iterações)** talvez nós não teríamos conseguido. Ai sim nós precisaríamos do algoritmo [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) para testar todas as combinações possíveis.
-
-Outra observação que você tem que ter em mente é:
-
-> Quanto de **recurso computacional** eu vou gastar para testar todas as combinações possíveis?
-
-**NOTE:**  
-Lembrem que nós não temos **memória** e **tempo infinito**!
+Well, luckily with 150 iterations we got the best values with the [RandomizedSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html) algorithm, but if our dictionary was bigger *(with more or less 100k iterations)* maybe we wouldn't have gotten it. Then we would need the [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) algorithm to **test all possible combinations**.
 
 ---
 
-**REFERÊNCIA:**  
+<div id="gscv-observation"></div>
+
+## GridSearchCV observation
+
+One observation you have to keep in mind when using the [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) algorithm is:
+
+> How much **computational resources**  will I spend to test all possible combinations?
+
+**NOTE:**  
+Remember that we have *no* **memory** and **time** *infinite*!
+
+---
+
+**REFERENCES:**  
 [Didática Tech - Inteligência Artificial & Data Science](https://didatica.tech/)  
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**

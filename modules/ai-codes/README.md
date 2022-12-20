@@ -18,7 +18,7 @@
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
    - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
-   - [Hyperparameter Tuning](#hyperparameter-tuning)
+   - [Hyperparameter Tuning](modules/hyperparameter-tuning)
    - [Cross-Validation](#cross-validation)
    - [Evaluation Metrics](#evaluation-metrics)
  - [**Project Settings**](#settings)
