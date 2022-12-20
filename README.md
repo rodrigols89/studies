@@ -38,11 +38,6 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 ---
 
- - __Algorithms and Data Structures:__
-   - [Algoritmos](modules/algorithms)
-
----
-
  - **Software Engineering:**
    - [Agile Methodologies](modules/agile-methodologies)
 
@@ -85,7 +80,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Mathematics:__
-   - [Matemática](modules/math-codes)
+   - [Math](modules/math-codes)
 
 ---
 
@@ -97,9 +92,10 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __BONUS:__
-   - [Fundamentos de Eletricidade & Manutenção Elétrica (Teoria & Prática)](modules/electrician)
+   - [The Checklist (Good practices for good programmers)](modules/the-checklist)
+   - [Fundamentos de Eletricidade & Manutenção Elétrica](modules/electrician)
    - [Scientific Paper](modules/scientific-paper)
-   - [The Checklist](modules/the-checklist)
+   - [Google Sheets](modules/google-sheets)
    - [Lives](modules/lives)
 
 ---

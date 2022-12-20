@@ -48,28 +48,9 @@
 
 ## Statistics and Probability
 
- - **Data visualization:**
-   - [Gráfico de Barras (Bar Charts)](modules/statistics-and-probability/bar-chart.md)
-   - [Histograma](modules/statistics-and-probability/histogram.md)
-   - [Gráficos de Pizza (Pie Charts)](modules/statistics-and-probability/pie-chart.md)
-   - [Gráficos de Dispersão (Scatter Plots)](modules/statistics-and-probability/scatter-plots.md)
-   - [Gráficos de Linhas (Line Charts)](modules/statistics-and-probability/line-charts.md)
- - **Fundamentals of Statistics:**
-   - ["Sampling" Methods](modules/statistics-and-probability/sampling-methods.md)
-   - [Data Types in Statistics](modules/statistics-and-probability/data-types-in-statistic.md)
-   - [Medidas de Tendência Central (mean)](modules/statistics-and-probability/mean.md)
-   - [Mediana (median)](modules/statistics-and-probability/median.md)
-   - [Média vs Mediana](modules/statistics-and-probability/mean-vs-median.md)
-   - [Moda (mode) e Dados Multimodais](modules/statistics-and-probability/mode.md)
-   - [Distribuição & Densidade de dados](modules/statistics-and-probability/distribution-and-density.md)
-     - [Assimetria & Curtose](modules/statistics-and-probability/skewness-kurtosis.md)
-   - [Medidas de Variação (Intervalo, Percentil, Quartil, Boxplot & Outliers)](modules/statistics-and-probability/measures-of-variation.md)
-   - [Variância & Desvio Padrão](modules/statistics-and-probability/variance-and-standard-deviation.md)
-   - [Z Score](modules/statistics-and-probability/z-score.md)
-   - [BONUS - Resumindo Distribuição de dados no Python](modules/statistics-and-probability/bonus-describe.md)
- - **Probability:**
-   - [Probability (English notes)](modules/statistics-and-probability/probability.md)
-   - [Probability (PT-BR)](modules/statistics-and-probability/probability-pt-br/README.md)
+ - [Descriptive Statistics](modules/statistics-and-probability/descriptive-statistics.md)
+ - [Probability (ENG/+PT-BR)](modules/statistics-and-probability/probability.md)
+ - [Random Variables](modules/statistics-and-probability/random-variables.md)
 
 ---
 
