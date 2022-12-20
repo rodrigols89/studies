@@ -9,6 +9,7 @@
    - [Fluxo em um programa em C++](modules/fundamentals/flow-in-cc-program.md)
  - **Paradigm:**
    - **Structured:**
+     - [Variables & Data Types](modules/structured/variables-and-data-types.md)
      - [Functions](modules/structured/functions.md)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
