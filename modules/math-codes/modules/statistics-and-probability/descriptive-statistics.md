@@ -32,7 +32,10 @@
      - [Continuous data (We measure (medimos) instead counting)](#continuous-data)
      - [Discrete data (It's something we count instead of measuring)](#discrete-data)
  - **Frequency Distribution:**
-   - **Qualitative variables:**
+   - [Frequency](#intro-to-frequency)
+   - [Relative Frequency](#intro-to-relative-frequency)
+   - [Cumulative Relative Frequency](#intro-to-cumulative-relative-frequency)
+   - **Frequency Distribution in Qualitative Variables:**
      - [Creating a frequency table for categorical variables](#frequency-table-categorical-variables)
      - [Formula to calculate absolute and relative frequency table](#calculate-absolute-relative)
      - [Relative frequency observation](#relative-frequency-observation)
@@ -43,11 +46,13 @@
      - [Create a Bart Chart for two categorical variables](#cbcftcv)
      - [TIP: When uses each kind of chart (PT-BR notes)](#when-use-fqv)
      - [TIP: Nominal vs. Ordinal variables in Frequency tables](#normal-ordinal-ft)
-   - **Quantitative variables:**
+   - **Frequency Distribution in Quantitative Variables:**
      - [Frequency table for quantitative variables (amplitude)](#ft-for-qv)
      - [Creating a histogram for quantitative variables](#histogram-for-qv)
      - [TIP: Number of "class amplitude"](#tip-clas-amplitude)
    - **Measures of Position:**
+     - [Range](#range)
+     - [Quartiles and Percentiles](#quartiles-percentiles)
  - **Tips & Tricks:**
    - [Population vs. Sample](#pop-vs-sample)
 
@@ -633,6 +638,59 @@ See we have some ranges like **day**, **match**, **flight** and **dozen** and ou
 
 ---
 
+<div id="intro-to-frequency"></div>
+
+## Frequency
+
+Twenty students were asked how many hours they worked per day. Their responses, in hours, are as follows:
+
+```python
+5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 5, 4, 4, 3, 5, 2, 5, 3.
+```
+
+The **Frequency Table** for our example is:
+
+![img](images/intro-to-frequency-01.png)  
+
+**NOTE:**  
+
+ - A **frequency** is the *number of times* a *value of the data occurs*.
+ - The **sum of the values in the frequency column**, 20, **represents the total number of students included in the sample**.
+
+---
+
+<div id="intro-to-relative-frequency"></div>
+
+## Relative Frequency
+
+> A **Relative Frequency** is the **ratio (fraction or proportion)** of the number of times a value of the data occurs in the set of all outcomes to the total number of outcomes.
+
+For example, to our student table to find the **relative frequencies**:
+
+ - Divide each frequency;
+ - By the total number of students in the sample, in this case, 20.
+
+![img](images/relative-frequency-01.png)  
+
+**NOTE:**  
+
+ - See that each **Relative Frequency** represents the frequency percent (%) in the set of outcomes.
+ - The sum of each **Relative Frequency** is always 100% of the data.
+
+---
+
+<div id="intro-to-cumulative-relative-frequency"></div>
+
+## Cumulative Relative Frequency
+
+> The **Cumulative relative frequency** is the accumulation of the previous relative frequencies.
+
+To find the **cumulative relative frequencies**, add all the previous relative frequencies to the relative frequency for the current row, as shown in table below:
+
+![img](images/cumulative-relative-frequencies-01.png)  
+
+---
+
 <div id="frequency-table-categorical-variables"></div>
 
 ## Creating a frequency table for categorical variables
@@ -932,6 +990,89 @@ See that the more **"class amplitude"** we have more hard to analyze the chart.
 
 ---
 
+<div id="range"></div>
+
+## Range
+
+> A way simple to quantify the variation of the data set is identifying the **difference between** the **lower value** and the **higher value**.
+
+**NOTE:**  
+That's called **range** and is calculated subtracting the max value with the min value.
+
+For example, imagine that you decide realize a study about the salaries of undergraduate (graduados) students:
+
+
+| Nome     | Salário     |
+|----------|-------------|
+| Dan      | 50,000      |
+| Joann    | 54,000      |
+| Pedro    | 50,000      |
+| Rosie    | 189,000     |
+| Ethan    | 55,000      |
+| Vicky    | 40,000      |
+| Frederic | 59,000      |
+
+**Python code for our example:**  
+[range.py](src/range.py)
+````python
+import pandas as pd
+
+df = pd.DataFrame(
+    {
+        'Name': ['Dan', 'Joann', 'Pedro', 'Rosie', 'Ethan', 'Vicky', 'Frederic'],
+        'Salary':[50000, 54000, 50000, 189000, 55000, 40000, 59000],
+        'Hours':[41, 40, 36, 30, 35, 39, 40],
+        'Grade':[50, 50, 46, 95, 50, 5,57]
+    }
+)
+
+# Create a list to represents the DataFrame columns/labels.
+numcols = ['Salary', 'Hours', 'Grade']
+
+# Iterate for each DataFrame column/label and print the range.
+for col in numcols:
+    print(df[col].name + ' range: ' + str(df[col].max() - df[col].min()))
+````
+
+**OUTPUT:**  
+```python
+Salary range: 149000
+Hours range: 11
+Grade range: 90
+```
+
+ - **The range is easy to calculate, but it's not a particularly useful statistic:**
+   - For example, a range of 149.000 between the lowest and highest salary does not tell us what amount within that range a graduate is likely to earn;
+   - It tells us nothing about how wages are distributed around the mean within that range;
+   - The range tells us very little about the comparative position of an individual value within the distribution.
+
+**NOTE:**  
+For example, Frederic scored 57 on his final school grade; that it's a good score (it's more than all but one of your peers); but this is not immediately apparent from a score of 57 and range of 90.
+
+**Calculating ranges without use an external libraries:**  
+For this example, let's imagine that we receive a dataset referring to donations and we need to know the range of these donations:
+
+[range-v2.py](src/range-v2.py)
+```python
+def find_range(numbers):
+    lowest = min(numbers)
+    highest = max(numbers)
+    r = highest-lowest
+    return lowest, highest, r
+
+if __name__ == '__main__':
+    donations = [100, 60, 70, 900, 100, 200, 500, 500, 503, 600, 1000, 1200]
+    lowest, highest, r = find_range(donations)
+    print('Lowest donation: {0} | highest donation: {1} | Range: {2}'.format(lowest, highest, r))
+```
+
+**OUTPUT:**  
+```python
+Lowest donation: 60 | highest donation: 1200 | Range: 1140
+```
+
+---
+
 <div id=""></div>
 
 ## x
@@ -940,22 +1081,21 @@ x
 
 
 
+---
 
+<div id="quartiles-percentiles"></div>
 
+## Quartiles and Percentiles
 
+> The common measures of location are **quartiles** and **percentiles**.
 
+**Quartiles are special percentiles:**
 
+ - The **first quartile**, **Q<sub>1</sub>**, is the same as the **25<sup>th</sup> percentile**.
+ - The **median**, **M**, is called both the **second quartile** and the **50<sup>th</sup> percentile**.
+ - The **third quartile**, **Q<sub>3</sub>**, is the same as the **75<sup>th</sup> percentile**.
 
-
-
-
-
-
-
-
-
-
-
+x
 
 
 
