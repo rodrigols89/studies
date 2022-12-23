@@ -29,6 +29,7 @@
      - [List Comprehension](modules/basic-data-structures/list-comprehension.md)
  - **Object-Oriented Programming (OOP):**
    - [Intro to OOP in Python (Tips & Tricks)](modules/oop/intro-to-oop-python.md)
+   - [Classes and Objects in Python](modules/oop/classes-and-objects-in-python.md)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/api/requests)
    - [FastAPI](modules/api/fastapi)
