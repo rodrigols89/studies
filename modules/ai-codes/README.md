@@ -18,9 +18,9 @@
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
    - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
-   - [Hyperparameter Tuning](#hyperparameter-tuning)
-   - [Evaluation Metrics](#evaluation-metrics)
+   - [Hyperparameter Tuning](modules/hyperparameter-tuning)
    - [Cross-Validation](#cross-validation)
+   - [Evaluation Metrics](#evaluation-metrics)
  - [**Project Settings**](#settings)
 
 ---
@@ -153,6 +153,8 @@
    - [Data Storytelling](modules/concepts/data-storytelling.md)
    - [Data Pipeline](modules/concepts/data-pipeline.md)
 
+---
+
 <div id="dt-ppc"></div>
 
  - **Data Preprocessing:**
@@ -167,6 +169,8 @@
      - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.ipynb)
      - [Stemming](modules/preprocessing/stemming.ipynb)
      - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
+
+---
 
 <div id="feature-engineering"></div>
 
@@ -212,10 +216,22 @@
    - **Extracting features from images:**
      - Coming soon...
 
+---
+
 <div id="hyperparameter-tuning"></div>
 
  - **Hyperparameter Tuning:**
    - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
+
+---
+
+<div id="cross-validation"></div>
+
+ - **Cross-Validation:**
+   - [K-Fold](modules/cross-validation/k-fold.md)
+   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
+
+---
 
 <div id="evaluation-metrics"></div>
 
@@ -242,12 +258,6 @@
      - Cross-Entropy Loss (Binary Classification)
      - Hinge Loss(Binary Classification)
 
-<div id="cross-validation"></div>
-
- - **Cross-Validation:**
-   - [K-Fold](modules/cross-validation/k-fold.md)
-   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
-
 ---
 
 <div id="settings"></div>
@@ -256,17 +266,20 @@
 
 To use the project codes just install [requirements.txt](requirements.txt) *(Python>=3.7 is requirement for TensorFlow 2.0)*:
 
-**virtualenv settings:**  
+**CREATE VIRTUAL ENVIRONMENT:**  
 ```python
-where python3.7 # find python source.
-
-virtual --python="python-source" .
-source Script/Active
+# Venv approach.
+python -m venv environment
 ```
 
-**Installing the Requirements:**  
+**ACTIVATE THE VIRTUAL ENVIRONMENT:**  
 ```python
-pip install --upgrade -r requirements.tx
+python -m venv environment
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```python
+pip install -U -v --require-virtualenv -r requirements.tx
 ```
 
 **Now, Be Happy!!!** 😬
