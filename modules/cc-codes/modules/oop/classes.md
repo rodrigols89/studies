@@ -3,6 +3,9 @@
 ## Contents
 
  - [Classes in C++ (+Game example)](#classes-in-cpp)
+ - [Objects (instances) in C++](#objects-instances)
+ - **Tips & Tricks:**
+   - [Classes vs. Records (struct)](#class-vs-struct)
 
 ---
 
@@ -159,9 +162,56 @@ Gow R$160 8h = R$20/h
 
 ---
 
+<div id="objects-instances"></div>
+
+## Objects (instances) in C++
+
+> Once (uma vez) you have declared a class, we can create objects (instances)
+
+For example, see how to create two objects (instances) from **Game class** below:
+
+```cpp
+int main()
+{
+   Game gears;​
+   Game doom;​
+}
+```
+
+> An **instance** is the **creation of a type**, reference to our class (Game for our example).
+
+For example, see the image below how objects are created in the memory:
+
+![img](images/instance-01.png)  
+
+ - See we have two **objects (instances)** of the **type Game**.
+ - When we create an object (instance) automatically is reserved memory for your attributes *(Game was name, price, ours, cost)*.
+ - The **name of the object ("gears" and "doom" for our example)** is a **reference to the memory reserved for the object (instance)**.
+
+---
+
+<div id="class-vs-struct"></div>
+
+## Classes vs. Records (struct)
+
+> What if (e se) the **public** and **private** are omitted?​
+
+ - **Class members** are **private** by *default*.
+ - **Record (struct) members** are **public** by *default*. 
+
+For example:
+
+![img](images/classes-vs-records.png)  
+
+**NOTE:**  
+See we can *access* and *modify* **record (struct) members** directly, however, **class members** are *private* by *default*, then we can't *access* and *modify* directly, we needed and interface (method) for it.
+
+---
+
 **REFERENCES:**  
 [Aula 02 - Classes / Encapsulamento / Curso de C++](https://www.youtube.com/watch?v=pONnilIFY64&list=PLX6Nyaq0ebfhlKSTKlADladUNBHNBXxHg&index=5)  
 [Lab02 - Exercícios de Classes / Encapsulamento / Curso de C++](https://www.youtube.com/watch?v=XP91FuJjicM&list=PLX6Nyaq0ebfhlKSTKlADladUNBHNBXxHg&index=6)  
+[Aula 03 - Objetos / Instâncias / Curso de C++](https://www.youtube.com/watch?v=wO9IKAjZYyg&list=PLX6Nyaq0ebfhlKSTKlADladUNBHNBXxHg&index=8)  
 
 ---
 
