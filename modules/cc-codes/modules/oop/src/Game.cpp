@@ -24,7 +24,7 @@ void Game::play(int time)
 void Game::showInformation()
 {
     std::cout << name << " R$"
-        << price << " "
-        << hours << "h = R$"
-        << cost << "/h\n";
+              << price << " "
+              << hours << "h = R$"
+              << cost << "/h\n";
 }
