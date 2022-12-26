@@ -132,8 +132,7 @@
 
 ## Useful Libraries
 
- - **x:**
-   - [x](#)
+   - [CatBoost](modules/useful-libraries/catboost/catboost.ipynb)
 
 ---
 
