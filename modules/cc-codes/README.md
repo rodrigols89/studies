@@ -13,6 +13,7 @@
      - [Functions](modules/structured/functions.md)
    - **Object-Oriented Programming (OOP):**
      - [Classes](modules/oop/classes.md)
+     - [Member functions (Methods)](modules/oop/member-functions.md)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)
