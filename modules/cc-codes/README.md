@@ -22,6 +22,9 @@
    - [GNU Make](modules/tools/make)
    - [CMake](modules/tools/cmake)
    - [g++](modules/tools/g-plus-plus)
+ - **Tips & Tricks:**
+   - [Modularization in C++](modules/tips-and-tricks/modularization.md)
+
 
 ---
 

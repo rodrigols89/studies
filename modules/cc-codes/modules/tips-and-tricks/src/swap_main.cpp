@@ -13,12 +13,16 @@ int main()
     cout << "Enter the second value: ";
     cin >> y;
 
+    cout << "Initial values:\n" <<
+    "First value: " << x << 
+    "\nSecond value: " << y << endl;
+
     // Call the swap() function.
     swap(x, y);
 
-    cout << "After swapping " <<
-    "the first value is " << x <<
-    ", the second value is " << y << ".";
+    cout << "\nAfter swapping:\n" <<
+    "First value: " << x << 
+    "\nSecond value: " << y << endl;
 
 
     return 0;
