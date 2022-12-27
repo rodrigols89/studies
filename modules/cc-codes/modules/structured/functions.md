@@ -9,7 +9,7 @@
  - [void functions](#void-functions)
  - [The "main" function (+argc and argv)](#main-function)
  - **Tips & Tricks:**
-   - [Function Modularization](#func-mod)
+   - [Modularization in C++](#modularization)
 
 ---
 
@@ -206,16 +206,20 @@ argc: first-command
 
 ---
 
-<div id="func-mod"></div>
+<div id="modularization"></div>
 
-## Function Modularization
+## Modularization in C++
 
-Functions in C++ can be divided into different files, where:
+A C++ program can be divided into different files, where:
 
  - **file.h**
    - The prototypes of the functions stay here.
+   - Class declaration:
+     - Attributes.
+     - Methods prototypes.
  - **file.cpp**
    - Function definitions stay here.
+   - Implementations or definitions of a class are written here.
  - **main_file.cpp**
    - Includes *( headers / .h )* from the functions.
    - Functions calls
