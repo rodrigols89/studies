@@ -20,8 +20,9 @@ A C++ program can be divided into different files, where:
  - **file.h**
    - The prototypes of the functions stay here.
    - Class declaration:
-     - Attributes.
+     - Attributes (Members).
      - Methods prototypes.
+     - Constructors and Destructors prototypes.
  - **file.cpp**
    - Function definitions stay here.
    - Implementations or definitions of a class are written here.
