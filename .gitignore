@@ -573,3 +573,7 @@ tcl/
 
 # NPM
 package-lock.json
+
+# VSCode
+.vscode/
+.vscode/*
