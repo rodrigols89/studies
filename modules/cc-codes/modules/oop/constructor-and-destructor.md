@@ -1,4 +1,4 @@
-# Constructor & Destructor
+# Constructor & Destructor (+Object Lifecycle)
 
 ## Contents
 
@@ -7,8 +7,9 @@
    - [Initializing constructors](#initializing-constructors)
    - [Default parameters (Good example)](#default-parameters)
  - **Destructor:**
-   - [](#)
+   - [Intro to C++ Destructor](#intro-to-des)
  - **Tips & Tricks:**
+   - [Object Lifecycle in C++](#object-lifecycle)
    - [Attributes (members) & Constructor parameters conventions](#attributes-constructor-conventions)
 
 ---
@@ -360,6 +361,208 @@ See that now we have default parameters for our constructor.
 
 ---
 
+<div id="intro-to-des"></div>
+
+## Intro to C++ Destructor
+
+ - **Destructor** is a **special member function (method)** that has the same class name, however, preceded by **"~"**.
+
+For example, see below the **Destructor** for the Game class:
+
+[GameWithDestructor.h](src/GameWithDestructor.h)
+```cpp
+#pragma once
+#include <string>
+using std::string;
+
+class Game
+{
+private:
+    // Encapsulation.
+    string m_name; // Game name.
+    float m_price; // Game price.
+    int m_hours;   // Hours played.
+    float m_cost;  // Cost per hour player.
+
+    // Calculate the cost to played hours (Inline function/Method).
+    void calculate()
+    {
+        if (m_hours > 0)
+            m_cost = m_price / m_hours;
+    }
+
+public:
+    // Interfaces.
+    Game(const string &name, float cost = 0); // Constructor prototype.
+    ~Game(); // Destructor prototype.
+
+    void update(float cost);                  // Update game price.
+    void play(int hours);                     // Record (save) the hours played.
+    void showInformation();                   // show information.
+};
+```
+
+[GameWithDestructor.cpp](src/GameWithDestructor.cpp)
+```cpp
+#include <iostream>
+#include "GameWithDestructor.h"
+
+// Class (Game) constructor definition (implementation)
+Game::Game(const string &name, float cost)
+{
+    m_name = name;
+    m_price = cost;
+    m_hours = 0;
+    m_cost = cost;
+}
+
+// Class (Game) destructor definition (implementation)
+Game::~Game()
+{
+    // Empty
+}
+
+// Other codes...
+```
+
+**NOTE:**  
+An observation is that a **Destructor** doesn't have parameters.
+
+> **Ok, but what is a destructor for?**
+
+ - The **destructor** is called automatically when the *object's life comes to an end*.
+ - Or when you call him before the object's life runs out.
+
+For example, imagine we have the function **process()** that create an object Game:
+
+```cpp
+void process()
+{
+    Game gears; // The Constructor is called here.
+
+} // The Destructor is called here, in the end of the block.
+```
+
+**NOTE:**  
+See that, the Destructor is called automatically **in the end of the block** (If you don't call him first).
+
+> **Okay, but if destructors are called at the end of each block automatically, why do I need to create mine? (o meu)**
+
+ - The function of the destructor is to **terminate/destroy** things​:
+   - Important for working with resources​:
+     - Dynamic Memory Allocation.​
+     - File reading​.
+     - Opening of connections.
+
+For example, imagine we have a **constructor** to create a **set (yes, math set)**:
+
+```cpp
+Set::Set(int n)
+{
+    // Memory alocation.
+    vet = new int[n];
+}
+```
+
+The **destructor** to our example is:
+
+```cpp
+Sets::~Sets()
+{
+    delete [] vet;
+}​
+```
+
+ - Now, we just need call the destructor to destroy the object **Set** before our destructor is automatically called.
+ - The advantage is that we are saving (economizando) memory.
+
+---
+
+<div id="object-lifecycle"></div>
+
+## Object Lifecycle in C++
+
+Let's, getting started with the following question:
+
+> [EN] - When does an object's life come to an end?
+> [PT] - Quando a vida de um objeto chega ao fim?
+
+ - **Depends where your object was created:**
+   - Variable static or global?
+   - Variable local ou parameter?
+   - Dynamic allocation?
+   - Temporary?
+
+**GLOBAL OBJECTS:**  
+If you object is global him is destroyed in the end of the program. For example:
+
+```cpp
+Game gears { "gears" }; // The Constructor is called here.
+
+int main()
+{
+    ...
+}
+// The Destructor is called here, in the end of the program.​
+```
+
+**STATIC OBJECTS:**  
+Static objects are created in the object instance and destroyed in the end of the program. For example:
+
+```cpp
+void process()
+{
+    // Static object.
+    static Game doom { "Doom" }; // The Constructor is called here.
+    ...
+}
+
+int main()
+{
+    process();
+    ...
+}
+// The Destructor is called here, in the end of the program.​​
+```
+
+**LOCAL OBJECTS:**  
+Local objects are created in the object instance and destroyed in the end of the block where was created. For example:
+
+```cpp
+void process(Game j) // The Constructor is called here.
+{
+    ...
+} // The Destructor is called here, in the end of the block.
+
+int main()
+{
+    Game gta ( "GTA" ); // The Constructor is called here.
+
+    process(gta);
+    ...
+} // The Destructor is called here, in the end of the block.​
+```
+
+**OBJECTS CREATED DYNAMICALLY:**  
+Objects created dynamically are controlled by the programmer. Created when the programer use keyword *"new"* and destroyed when the programmer use keyword *"delete"*. For example:
+
+```cpp
+int main()
+{
+    Game * rdr = new Game { "RDR" }; // The Constructor is called here.
+
+    process(rdr);
+    ...
+}
+
+void process(Game * pJ)
+{
+    delete pJ;  // The Destructor is called here.
+}​
+```
+
+---
+
 <div id="attributes-constructor-conventions"></div>
 
 ## Attributes (members) & Constructor parameters conventions
@@ -418,18 +621,3 @@ public:
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-[](src/)
-```cpp
-
-```
-
-**COMPILATION AND RUN:**  
-```cpp
- 
-```
-
-**OUTPUT:**  
-```
-
-```
