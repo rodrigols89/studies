@@ -26,9 +26,7 @@
    - [g++](modules/tools/g-plus-plus)
  - **Tips & Tricks:**
    - [Modularization in C++](modules/tips-and-tricks/modularization)
-   - [Compilation](modules/tips-and-tricks/compilation)
-
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
