@@ -574,5 +574,9 @@ tcl/
 # NPM
 package-lock.json
 
-# Ignore venv files
-environment
+# Venv
+*-environment
+
+# VSCode
+.vscode/
+.vscode/*
