@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Game.h"
 
-void Game::purchase(const string &title, float value)
+void Game::purchase(const string& title, float value)
 {
     name = title;
     price = value;

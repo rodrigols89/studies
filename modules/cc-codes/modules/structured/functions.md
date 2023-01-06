@@ -9,7 +9,7 @@
  - [void functions](#void-functions)
  - [The "main" function (+argc and argv)](#main-function)
  - **Tips & Tricks:**
-   - [Function Modularization](#func-mod)
+   - [Coming soon...](#)
 
 ---
 
@@ -202,86 +202,6 @@ g++ main_argc_argv-01.cpp -std=c++17 -o test-main
 ```
 Program name: C:\Workspace\p1\modules\cc-codes\modules\structured\src\test-main.exe
 argc: first-command
-```
-
----
-
-<div id="func-mod"></div>
-
-## Function Modularization
-
-Functions in C++ can be divided into different files, where:
-
- - **file.h**
-   - The prototypes of the functions stay here.
- - **file.cpp**
-   - Function definitions stay here.
- - **main_file.cpp**
-   - Includes *( headers / .h )* from the functions.
-   - Functions calls
-
-For example, let's create a modularized function **swap()**:
-
-[swap.h](src/swap.h)  
-```cpp
-void swap(int& first, int& second); // Function prototype.
-```
-
-[swap.cpp](src/swap.cpp)  
-```cpp
-#include "swap.h"
-
-
-void swap(int& first, int& second)
-{
-    int temp = first;
-    first = second;
-    second = temp;
-}
-```
-
-[swap_main.cpp](src/swap_main.cpp)  
-```cpp
-#include <iostream>
-#include "swap.h"
-using namespace std;
-
-
-int main()
-{
-    int x, y;
-
-    cout << "Enter the first value: ";
-    cin >> x;
-
-    cout << "Enter the second value: ";
-    cin >> y;
-
-    // Call the swap() function.
-    swap(x, y);
-
-    cout << "After swapping " <<
-    "the first value is " << x <<
-    ", the second value is " << y << ".";
-
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**  
-```cpp
-g++ swap_main.cpp swap.cpp -o swap
-
-./swap.exe
-
-Enter the first value: 10
-Enter the second value: 20
-```
-
-**OUTPUT:**
-```cpp
-After swapping the first value is 20, the second value is 10.
 ```
 
 ---
