@@ -9,7 +9,10 @@
    - [Fluxo em um programa em C++](modules/fundamentals/flow-in-cc-program.md)
  - **Paradigm:**
    - **Structured:**
-     - [Variables & Data Types](modules/structured/variables-and-data-types.md)
+     - **Variables & Primitive Data types:**
+       - [Variables (Global, Local, Static)](modules/structured/variables.md)
+       - [Constants](modules/structured/constants.md)
+       - [Integer](modules/structured/integer.md)
      - [Functions](modules/structured/functions.md)
    - **Object-Oriented Programming (OOP):**
      - [Classes](modules/oop/classes.md)
@@ -26,9 +29,8 @@
    - [g++](modules/tools/g-plus-plus)
  - **Tips & Tricks:**
    - [Modularization in C++](modules/tips-and-tricks/modularization)
-   - [Compilation](modules/tips-and-tricks/compilation)
-
+   - [Overflow & Underflow](modules/tips-and-tricks/overflow-underflow)
 
 ---
 
-**Rodrigo Leite -** *drigols*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
