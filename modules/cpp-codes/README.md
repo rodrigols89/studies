@@ -14,6 +14,7 @@
        - [Constants](modules/structured/constants.md)
        - [Integer](modules/structured/integer.md)
        - [Character (char)](modules/structured/character.md)
+       - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
      - [Functions](modules/structured/functions.md)
    - **Object-Oriented Programming (OOP):**
      - [Classes](modules/oop/classes.md)
