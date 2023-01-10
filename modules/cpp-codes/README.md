@@ -13,6 +13,7 @@
        - [Variables (Global, Local, Static)](modules/structured/variables.md)
        - [Constants](modules/structured/constants.md)
        - [Integer](modules/structured/integer.md)
+       - [Character (char)](modules/structured/character.md)
      - [Functions](modules/structured/functions.md)
    - **Object-Oriented Programming (OOP):**
      - [Classes](modules/oop/classes.md)
