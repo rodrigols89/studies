@@ -1,36 +1,36 @@
 # Evaluation Metrics
 
-## Conteúdo
+## Contents
 
- - [01 - O que são Métricas de Avaliação (Evaluation Metrics)?](#01)
- - [02 - Por que isso é útil?](#02)
-
----
-
-<div id="01"></div>
-
-## 01 - O que são Métricas de Avaliação (Evaluation Metrics)?
-
-> As ***Métricas de Avaliação*** são usadas para medir a qualidade dos seus modelos *Estatísticos* ou de *Inteligência Artificial (Machine Learning, Deep Learning)*.
+ - [What are Evaluation Metrics?](#what-is)
+ - [Why is this useful?](#why-useful)
 
 ---
 
-<div id="02"></div>
+<div id="what-is"></div>
 
-## 02 - Por que isso é útil?
+## What are Evaluation Metrics?
 
-> É muito importante usar várias ***Métricas de Avaliação*** para avaliar seu modelo.
-
-**NOTE:**  
-Isso ocorre porque um modelo pode ter um bom desempenho usando uma *Métrica de Avaliação*, mas pode ter um desempenho ruim usando outra *Métrica de Avaliação*.
-
-> O uso de ***Métricas de Avaliação*** é fundamental para garantir que seu modelo esteja operando corretamente e de forma otimizada. 
+> The **Evaluation Metrics** are used to measure quality to our (your) *Statistics* or *Artificial Intelligence* **models**.
 
 ---
 
-**REFERÊNCIAS:**  
-[Myself for now](#)
+<div id="why-useful"></div>
+
+## Why is this useful?
+
+> It is very important to use multiple **Evaluation Metrics** to evaluate your *model*.
+
+ - This is because a *model* can perform well using one **Evaluation Metric**;
+ - But perform poorly using another **Evaluation Metric**.
+
+> Using **Evaluation Metrics** is critical to ensuring that your model is operating correctly and optimally.
 
 ---
 
-**Rodrigo Leite -** *drigols*
+**REFERENCES:**  
+[Myself for now](#)  
+
+---
+
+**R**odrigo **L**eite da **S**ilva - **drigols**
