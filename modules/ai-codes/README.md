@@ -36,7 +36,6 @@
          - Linear Regression
            - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
            - [Regressão Linear (SSE, OLS, GD)](modules/linear-regression/linear-regression-sse-ols-gd.md)
-           - [Coeficiente de Determinação R<sup>2</sup>](modules/linear-regression/r2.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
            - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
@@ -240,7 +239,7 @@
      - Mean squared error (MSE)
      - Root mean squared error (RMSE)
      - Root mean squared logarithmic error (RMSLE)
-     - R-square / R² / Adjusted R²
+     - [Coefficient of Determination (R-square / R² / Adjusted R²)](modules/evaluation-metrics/r2.md)
      - Mean percentage error (MPE)
      - Mean absolute percentage error (MAPE)
    - **Classification Problems:**
@@ -268,17 +267,26 @@ To use the project codes just install [requirements.txt](requirements.txt) *(Pyt
 **CREATE VIRTUAL ENVIRONMENT:**  
 ```python
 # Venv approach.
-python -m venv environment
+python -m venv ai-environment
 ```
 
 **ACTIVATE THE VIRTUAL ENVIRONMENT:**  
 ```python
-python -m venv environment
+source ai-environment/bin/activate
+```
+
+**UPDATE PIP:**
+```
+python -m pip install --upgrade pip
 ```
 
 **INSTALL PYTHON DEPENDENCIES:**  
 ```python
-pip install -U -v --require-virtualenv -r requirements.tx
+pip install -U -v --require-virtualenv -r requirements.txt
 ```
 
 **Now, Be Happy!!!** 😬
+
+---
+
+**R**odrigo **L**eite da **S**ilva - **drigols**
