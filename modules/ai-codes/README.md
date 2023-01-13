@@ -19,7 +19,7 @@
    - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
    - [Hyperparameter Tuning](modules/hyperparameter-tuning)
-   - [Cross-Validation](#cross-validation)
+   - [Cross-Validation](modules/cross-validation)
    - [Evaluation Metrics](#evaluation-metrics)
  - [**Project Settings**](#settings)
 
@@ -213,21 +213,6 @@
      - topic extraction
    - **Extracting features from images:**
      - Coming soon...
-
----
-
-<div id="hyperparameter-tuning"></div>
-
- - **Hyperparameter Tuning:**
-   - [RandomizedSearchCV vs GridsearchCV](modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
-
----
-
-<div id="cross-validation"></div>
-
- - **Cross-Validation:**
-   - [K-Fold](modules/cross-validation/k-fold.md)
-   - [Stratified K-Fold](modules/cross-validation/stratified-k-fold.md)
 
 ---
 

@@ -1,20 +1,10 @@
 def ApplyesKFold(x_axis, y_axis):
-  # Linear Models.
-  from sklearn.linear_model import LinearRegression
-  from sklearn.linear_model import ElasticNet
-  from sklearn.linear_model import Ridge
-  from sklearn.linear_model import Lasso
 
-  # Cross-Validation models.
-  from sklearn.model_selection import cross_val_score
-  from sklearn.model_selection import KFold
+  from sklearn.linear_model import LinearRegression, ElasticNet, Ridge, Lasso
+  from sklearn.model_selection import cross_val_score, KFold
 
-  # KFold settings.
-  kfold  = KFold(n_splits=10, shuffle=True) # shuffle=True, Shuffle (embaralhar) the data.
-
-  # Axis
-  x = x_axis
-  y = y_axis
+  # KFold instance and settings - shuffle=True, Shuffle (embaralhar) the data.
+  kfold  = KFold(n_splits=10, shuffle=True)
 
   # Models instances.
   linearRegression = LinearRegression()
@@ -22,7 +12,11 @@ def ApplyesKFold(x_axis, y_axis):
   ridge            = Ridge()
   lasso            = Lasso()
 
-  # Applyes KFold to models.
+  # Set the axes.
+  x = x_axis
+  y = y_axis
+
+  # Applyes KFold to the models.
   linearRegression_result = cross_val_score(linearRegression, x, y, cv = kfold)
   elasticNet_result       = cross_val_score(elasticNet, x, y, cv = kfold)
   ridge_result            = cross_val_score(ridge, x, y, cv = kfold)
@@ -37,12 +31,20 @@ def ApplyesKFold(x_axis, y_axis):
   }
   # Select the best model.
   bestModel = max(dic_models, key=dic_models.get)
-
-  print("Linear Regression Mean (R^2): {0}\nElastic Net Mean (R^2): {1}\nRidge Mean (R^2): {2}\nLasso Mean (R^2): {3}".format(linearRegression_result.mean(), elasticNet_result.mean(), ridge_result.mean(), lasso_result.mean()))
-  print("The best model is: {0} with value: {1}".format(bestModel, dic_models[bestModel]))
+  
+  # Print models scores and the best model.
+  models_cores = f'''
+  Mean of the R² for : {linearRegression_result.mean()}
+  Mean of the R² for Elastic Net Mean (R^2): {elasticNet_result.mean()}
+  Mean of the R² for Ridge Mean: {ridge_result.mean()}
+  Mean of the R² for Lasso Mean: {lasso_result.mean()}
+  The best model is: {bestModel} with R² value: {dic_models[bestModel]}
+  '''
+  print(models_cores)
 
 
 if __name__ =='__main__':
+
   import pandas as pd
 
   df = pd.read_csv("../datasets/Admission_Predict.csv")
