@@ -16,7 +16,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
      - [JavaScript](modules/javascript-codes)
      - [Python](modules/python-codes)
      - [Java](modules/java-codes)
-     - [C++](modules/cc-codes)
+     - [C++](modules/cpp-codes)
      - [C](modules/c-codes)
    - **Object-Oriented Programming:**
      - [Object-Oriented Programming (Theory & Practice)](modules/oop)
@@ -25,10 +25,10 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
    - __Design Patterns:__
      - [x](#)
    - __Web Development:__
-     - [x](#)
-   - __Game Development:__
      - [RESTful API](modules/restful-api)
      - [Rocketseat](modules/rocketseat-samples)
+   - __Game Development:__
+     - [Game Development](modules/game-dev)
    - __Software Testing:__
      - [x](#)
    - __Parallel Programming:__
