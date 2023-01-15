@@ -17,6 +17,7 @@
        - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
        - [Floating Point](modules/structured/floating-point.md)
      - [Functions](modules/structured/functions.md)
+     - [Pointers](modules/structured/pointers.md)
    - **Object-Oriented Programming (OOP):**
      - [Classes](modules/oop/classes.md)
      - [Member functions (Methods)](modules/oop/member-functions.md)
