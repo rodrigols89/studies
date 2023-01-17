@@ -4,6 +4,7 @@
 
  - [Intro to Pointers](#intro-to-pt)
  - [Pointers to struct (+Accessing data: Struct (".") vs. Pointer to a struct ("->"))](#pointers-to-structs)
+ - [Pointers and Dynamic Memory Allocation](#pointers-dma)
  - **Variables problems & Pointer solutions:**
    - [The variable (as argument) copy problem](#cp-problem)
    - [Scope variables problem](#scope-problem)
@@ -106,6 +107,74 @@ Player: Messi
 Salary: 100000
 Goals: 600
 ```
+
+---
+
+<div id="pointers-dma"></div>
+
+## Pointers and Dynamic Memory Allocation
+
+> The real power of pointers is in pointing to unlabeled memory - For example, memory allocated during program execution​.
+
+![img](images/unlabeled-memory​.png)
+
+**NOTE:**  
+See that in the memory abstraction above, we have a **pointer point** to **unlabeled memory**, that's, **not have a variable name to reference, just memory address**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
