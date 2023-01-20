@@ -13,7 +13,7 @@ int main()
     cout << "Salary: " << messi.salary << endl;
     cout << "Goals: " << messi.goals << endl;
 
-    cout << "\nData taken ('->') of a struct from a pointer:" << endl;
+    cout << "\nData taken ('->') of a struct from a pointer (memory address):" << endl;
     cout << "Player: " << pptr->name << endl;
     cout << "Salary: " << pptr->salary << endl;
     cout << "Goals: " << pptr->goals << endl;
