@@ -8,8 +8,7 @@
    - [Call the function](#call-function)
  - [void functions](#void-functions)
  - [The "main" function (+argc and argv)](#main-function)
- - **Tips & Tricks:**
-   - [Coming soon...](#)
+ - [Default parameters in C++ functions (+"ambiguous" problem in overloading functions)](#default-parameters)
 
 ---
 
@@ -203,6 +202,112 @@ g++ main_argc_argv-01.cpp -std=c++17 -o test-main
 Program name: C:\Workspace\p1\modules\cc-codes\modules\structured\src\test-main.exe
 argc: first-command
 ```
+
+---
+
+<div id="default-parameters"></div>
+
+## Default parameters in C++ functions (+"ambiguous" problem in overloading functions)
+
+> A default parameter is a value provided in a function declaration that is automatically assigned by the compiler if the calling function doesn’t provide a value for the argument.
+
+**NOTE:**  
+In case any value is passed, the default value is overridden. 
+
+The following is a simple C++ example to demonstrate the use of default arguments. Here, we don’t have to write 3 sum functions; only one function works by using the default values for 3rd and 4th arguments:
+
+[default_parameters.h](src/default_parameters.h)
+```cpp
+#pragma once;
+
+int sum(int x, int y, int z = 0, int w = 0);
+```
+
+[default_parameters.cpp](src/default_parameters.cpp)
+```cpp
+int sum(int x, int y, int z = 0, int w = 0) // assigning default values to z,w as 0
+{
+    return (x + y + z + w);
+}
+```
+
+[drive_default_parameters.cpp](src/drive_default_parameters.cpp)
+```cpp
+#include <iostream>
+#include "default_parameters.h"
+
+int main()
+{
+    std::cout << "Function return passing 2 arguments (10, 15): " << sum(10, 15) << "\n";
+    std::cout << "Function return passing 3 arguments (10, 15, 25): " << sum(10, 15, 25) << "\n";
+    std::cout << "Function return passing 4 arguments (10, 15, 25, 30): " << sum(10, 15, 25, 30) << "\n";
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ default_parameters.cpp drive_default_parameters.cpp -o defaultParameters && ./defaultParameters
+```
+
+**OUTPUT:**  
+```cpp
+Function return passing 2 arguments (10, 15): 25
+Function return passing 3 arguments (10, 15, 25): 50
+Function return passing 4 arguments (10, 15, 25, 30): 80
+```
+
+**NOTE:**  
+However, we need to take care if function overloading is done containing the default arguments, then we need to make sure it is not ambiguous to the compiler, otherwise it will throw an error.
+
+The following is the modified version of the above program:
+
+[test_dp_overloading.cpp](src/test_dp_overloading.cpp)
+```cpp
+#include <iostream>
+
+int sum(int x, int y, int z = 0, int w = 0)
+{
+    return (x + y + z + w);
+}
+
+int sum(int x, int y, float z = 0, float w = 0)
+{
+    return (x + y + z + w);
+}
+
+int main()
+{
+    std::cout << sum(10, 15) << "\n";
+    std::cout << sum(10, 15, 25) << "\n";
+    std::cout << sum(10, 15, 25, 30) << "\n";
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ test_dp_overloading.cpp -o test && ./test
+```
+
+**OUTPUT:**  
+```cpp
+test_dp_overloading.cpp: In function 'int main()':
+test_dp_overloading.cpp:15:28: error: call of overloaded 'sum(int, int)' is ambiguous
+     std::cout << sum(10, 15) << "\n";
+                            ^
+test_dp_overloading.cpp:3:5: note: candidate: 'int sum(int, int, int, int)'
+ int sum(int x, int y, int z = 0, int w = 0)
+     ^~~
+test_dp_overloading.cpp:8:5: note: candidate: 'int sum(int, int, float, float)'
+ int sum(int x, int y, float z = 0, float w = 0)
+     ^~~
+```
+
+**NOTE:**  
+See that we have an "ambiguous" problem. The compiler doesn't know which function uses... How both the functions need the two first arguments this is "ambiguous" to the compiler.
 
 ---
 
