@@ -16,6 +16,7 @@
        - [Character (char)](modules/structured/character.md)
        - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
        - [Floating Point](modules/structured/floating-point.md)
+     - [Namespace in C++](modules/structured/namespace)
      - [Functions](modules/structured/functions.md)
      - [Pointers](modules/structured/pointers.md)
      - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
