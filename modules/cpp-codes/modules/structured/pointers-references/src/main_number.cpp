@@ -1,14 +1,12 @@
 #include <iostream>
 #include "show_number.h"
 
-using namespace std;
-
 int main()
 {
     int number;
 
-    cout << "Enter a number: ";
-    cin >> number;
+    std::cout << "Enter a number: ";
+    std::cin >> number;
 
     showNumber(number);
 

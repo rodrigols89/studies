@@ -1,15 +1,13 @@
 #include <iostream>
 #include "show_number_pointer.h"
 
-using namespace std;
-
 int main()
 {
     int number;
     int *iptr = &number;
 
-    cout << "Enter a number: ";
-    cin >> number;
+    std::cout << "Enter a number: ";
+    std::cin >> number;
 
     showNumber(iptr);
 
