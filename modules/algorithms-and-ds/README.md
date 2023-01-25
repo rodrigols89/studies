@@ -1,4 +1,4 @@
-# Algorithms
+# Algorithms & Data Structures
 
 ![img](res/algorithms-logo.webp)
 
