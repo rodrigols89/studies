@@ -5,15 +5,15 @@
 ## Contents
 
   - **Variables (+Storage types) & Primitive Data types:**
-    - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/structured/variables)
+    - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/variables)
     - [Constants](modules/structured/constants.md)
     - [Integer](modules/structured/integer.md)
     - [Character (char)](modules/structured/character.md)
     - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
     - [Floating Point](modules/structured/floating-point.md)
- - [Namespace in C++](modules/structured/namespace)
+ - [Namespace in C++](modules/namespace)
  - [Functions](modules/structured/functions.md)
- - [Pointers & References](modules/structured/pointers-references)
+ - [Pointers & References](modules/pointers-references)
  - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
  - **Object-Oriented Programming (OOP):**
