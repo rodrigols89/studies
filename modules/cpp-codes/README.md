@@ -10,7 +10,7 @@
  - **Paradigm:**
    - **Structured:**
      - **Variables & Primitive Data types:**
-       - [Variables (Global, Local, Static)](modules/structured/variables.md)
+       - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/structured/variables)
        - [Constants](modules/structured/constants.md)
        - [Integer](modules/structured/integer.md)
        - [Character (char)](modules/structured/character.md)
@@ -18,7 +18,7 @@
        - [Floating Point](modules/structured/floating-point.md)
      - [Namespace in C++](modules/structured/namespace)
      - [Functions](modules/structured/functions.md)
-     - [Pointers](modules/structured/pointers.md)
+     - [Pointers & References](modules/structured/pointers-references)
      - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
      - [Exception Handling in C++](modules/structured/exception-handling.md)
    - **Object-Oriented Programming (OOP):**
