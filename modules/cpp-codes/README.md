@@ -5,7 +5,7 @@
 ## Contents
 
   - **Variables (+Storage types) & Primitive Data types:**
-    - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/variables)
+    - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/var-storages-data-types/storage-types)
     - [Constants](modules/structured/constants.md)
     - [Integer](modules/structured/integer.md)
     - [Character (char)](modules/structured/character.md)
