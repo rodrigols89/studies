@@ -4,28 +4,23 @@
 
 ## Contents
 
- - **Fundamentals:**
-   - [Por que C++?](modules/fundamentals/why-cc.md)
-   - [Fluxo em um programa em C++](modules/fundamentals/flow-in-cc-program.md)
- - **Paradigm:**
-   - **Structured:**
-     - **Variables & Primitive Data types:**
-       - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/structured/variables)
-       - [Constants](modules/structured/constants.md)
-       - [Integer](modules/structured/integer.md)
-       - [Character (char)](modules/structured/character.md)
-       - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
-       - [Floating Point](modules/structured/floating-point.md)
-     - [Namespace in C++](modules/structured/namespace)
-     - [Functions](modules/structured/functions.md)
-     - [Pointers & References](modules/structured/pointers-references)
-     - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
-     - [Exception Handling in C++](modules/structured/exception-handling.md)
-   - **Object-Oriented Programming (OOP):**
-     - [Classes](modules/oop/classes.md)
-     - [Member functions (Methods)](modules/oop/member-functions.md)
-     - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor.md)
-     - ['this' pointer in C++](modules/oop/this.md)
+  - **Variables (+Storage types) & Primitive Data types:**
+    - [Storage types in C++ (Automatic, Static, Thread, Dynamic)](modules/structured/variables)
+    - [Constants](modules/structured/constants.md)
+    - [Integer](modules/structured/integer.md)
+    - [Character (char)](modules/structured/character.md)
+    - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
+    - [Floating Point](modules/structured/floating-point.md)
+ - [Namespace in C++](modules/structured/namespace)
+ - [Functions](modules/structured/functions.md)
+ - [Pointers & References](modules/structured/pointers-references)
+ - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
+ - [Exception Handling in C++](modules/structured/exception-handling.md)
+ - **Object-Oriented Programming (OOP):**
+   - [Classes](modules/oop/classes.md)
+   - [Member functions (Methods)](modules/oop/member-functions.md)
+   - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor.md)
+   - ['this' pointer in C++](modules/oop/this.md)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)
