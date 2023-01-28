@@ -11,6 +11,7 @@
     - [Character (char)](modules/structured/character.md)
     - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
     - [Floating Point](modules/structured/floating-point.md)
+ - [Preprocessor Directives](modules/preprocessor-directives)
  - [Namespace in C++](modules/namespace)
  - [Functions](modules/structured/functions.md)
  - [Pointers & References](modules/pointers-references)
