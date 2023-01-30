@@ -10,7 +10,7 @@
     - [Integer](modules/structured/integer.md)
     - [Character (char)](modules/structured/character.md)
     - [Boolean ( sizeof() operator | Bitwise Operators (+casting) )](modules/structured/boolean.md)
-    - [Floating Point](modules/structured/floating-point.md)
+    - [Floating Point](modules/var-storages-data-types/floating-point)
  - [Preprocessor Directives](modules/preprocessor-directives)
  - [Namespace in C++](modules/namespace)
  - [Functions](modules/structured/functions.md)
