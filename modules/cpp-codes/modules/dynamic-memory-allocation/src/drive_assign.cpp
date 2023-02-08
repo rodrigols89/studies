@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     int vSize = 5;
@@ -13,11 +11,11 @@ int main()
     vec[3] = 28;
     vec[4] = 40;
 
-    cout << "The first value get by 'vec[0]': " << vec[0] << endl;
-    cout << "The first value get by '*vec': " << *vec << endl;
+    std::cout << "The first value get by 'vec[0]': " << vec[0] << "\n";
+    std::cout << "The first value get by '*vec': " << *vec << "\n";
 
     for (int i = 0; i < vSize; i++)
-        cout << "Value in index " << i << " is " << vec[i] << endl;
+        std::cout << "Value in index " << i << " is " << vec[i] << "\n";
 
     delete []vec;
     return 0;

@@ -1,13 +1,11 @@
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     int vSize;
 
-    cout << "Enter the Vector size: ";
-    cin >> vSize;
+    std::cout << "Enter the Vector size: ";
+    std::cin >> vSize;
 
     int *vec = new int[vSize];
     delete vec;

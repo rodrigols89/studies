@@ -15,7 +15,7 @@
  - [Namespace in C++](modules/namespace)
  - [Functions](modules/structured/functions.md)
  - [Pointers & References](modules/pointers-references)
- - [Dynamic Memory Allocation](modules/structured/dynamic-memory-allocation.md)
+ - [Dynamic Memory Allocation](modules/dynamic-memory-allocation)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
  - **Object-Oriented Programming (OOP):**
    - [Classes](modules/oop/classes.md)
