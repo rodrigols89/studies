@@ -42,26 +42,25 @@ To allocate memory (dynamically) with the **"new"** operator to an *unlabeled me
 
 For example, see the code below how allocate memory with the **"new"** operator:
 
-[memory_allocation-01.cpp](src/memory_allocation-01.cpp)
+[memory_allocation.cpp](src/memory_allocation.cpp)
 ```cpp
 #include <iostream>
-using namespace std;
 
 int main()
 {
     int *iptr = new int; // Allocate memory for an Integer.
     *iptr = 1001;        // Save a value (using "*" operator | Indirection Operator)
-    cout << "Integer value: " << *iptr << endl;
-    cout << "Location: " << iptr << endl;
-    cout << "Size of 'iptr': " << sizeof(iptr) << endl;
-    cout << "Size of '*iptr': " << sizeof(*iptr) << endl;
+    std::cout << "Integer value: " << *iptr << "\n";
+    std::cout << "Location: " << iptr << "\n";
+    std::cout << "Size of 'iptr': " << sizeof(iptr) << "\n";
+    std::cout << "Size of '*iptr': " << sizeof(*iptr) << "\n";
 
-    double *dprt = new double;     // Allocate memory for a double
-    *dprt = 500.35;                // Save a value (using "*" operator | Indirection Operator)
-    cout << "\nFloating-point value: " << *dprt << endl;
-    cout << "Location: " << dprt << endl;
-    cout << "Size of 'dprt': " << sizeof(dprt) << endl;
-    cout << "Size of '*dprt': " << sizeof(*dprt) << endl;
+    double *dprt = new double; // Allocate memory for a double
+    *dprt = 500.35;            // Save a value (using "*" operator | Indirection Operator)
+    std::cout << "\nFloating-point value: " << *dprt << "\n";
+    std::cout << "Location: " << dprt << "\n";
+    std::cout << "Size of 'dprt': " << sizeof(dprt) << "\n";
+    std::cout << "Size of '*dprt': " << sizeof(*dprt) << "\n";
 
     return 0;
 }
@@ -69,9 +68,7 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ memory_allocation-01.cpp -o testNew
-
-./testNew
+g++ memory_allocation.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -124,24 +121,27 @@ Why my **pointers have 8 Bytes (both)**?
 
 To freeing the allocated memory the programer need to use **"delete"** operator. For example, see the code below how delete allocated memory by the programer:
 
-[](src/)
+[main_delete.cpp](src/main_delete.cpp)
 ```cpp
 #include <iostream>
-using namespace std;
 
 int main()
 {
     int *iptr = new int; // Allocate memory for an Integer.
     *iptr = 30;          // Save a value (using "*" operator | Indirection Operator)
 
-    cout << "Memory Address save in 'iptr' pointer: " << iptr << endl;
-    cout << "Value save in the Memory Address save in 'iptr' pointer: " << *iptr << endl;
-    cout << "Memory Address of 'iptr' pointer: " << &iptr << endl << endl;
+    std::cout << "Memory Address save in 'iptr' pointer: " << iptr << "\n";
+    std::cout << "Value save in the Memory Address save in 'iptr' pointer: " << *iptr << "\n";
+    std::cout << "Memory Address of 'iptr' pointer: " << &iptr << "\n"
+              << "\n";
+
     delete iptr;
-    cout << "After use 'delete' operator in 'iptr' pointer: " << endl;
-    cout << "Memory Address save in 'iptr' pointer: " << iptr << endl;
-    cout << "Value save in the Memory Address save in 'iptr' pointer: " << *iptr << endl;
-    cout << "Memory Address of 'iptr' pointer: " << &iptr << endl;
+
+    std::cout << "After use 'delete' operator in 'iptr' pointer: "
+              << "\n";
+    std::cout << "Memory Address save in 'iptr' pointer: " << iptr << "\n";
+    std::cout << "Value save in the Memory Address save in 'iptr' pointer: " << *iptr << "\n";
+    std::cout << "Memory Address of 'iptr' pointer: " << &iptr << "\n";
 
     return 0;
 }
@@ -149,28 +149,27 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ delete_operator.cpp -o deleteProgram
-./deleteProgram 
+g++ main_delete.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
 ```cpp
-Memory Address save in 'iptr' pointer: 0x5c0eb0
+Memory Address save in 'iptr' pointer: 0xf125a0
 Value save in the Memory Address save in 'iptr' pointer: 30
-Memory Address of 'iptr' pointer: 0x7fffea7d70b8
+Memory Address of 'iptr' pointer: 0x61fe18
 
 After use 'delete' operator in 'iptr' pointer: 
-Memory Address save in 'iptr' pointer: 0x5c0eb0
-Value save in the Memory Address save in 'iptr' pointer: 0
-Memory Address of 'iptr' pointer: 0x7fffea7d70b8
+Memory Address save in 'iptr' pointer: 0xf125a0
+Value save in the Memory Address save in 'iptr' pointer: 15804688
+Memory Address of 'iptr' pointer: 0x61fe18
 ```
 
 Seeing for the above program output we can see some observations:
 
- - **Our 'iptr' pointer still exists (ainda existe) and has the same memory address (0x7fffea7d70b8):**
+ - **Our 'iptr' pointer still exists (ainda existe) and has the same memory address (0x61fe18):**
    - Yes, our **'iptr'** *pointer* still exists(ainda existe), the memory allocated was freed, however, the pointer still exists (ainda existe).
    - Knowing this, we also can save another memory address in the **'iptr'** *pointer*.
- - **Even after freeing the memory our pointer still points to the same memory space (0x5c0eb0):**
+ - **Even after freeing the memory our pointer still points to the same memory space (0xf125a0):**
    - Yes, our pointer still has the same memory address saved.
    - Knowing this, we need to take care to don't use this pointer to work because this pointer points to memory we don't allocate any more.
 
@@ -228,12 +227,10 @@ void printASCII(char ch);
 ```cpp
 #include <iostream>
 
-using namespace std;
-
 void printASCII(char ch)
 {
     int *p = new int{ch};
-    cout << "The ASCII number is: " << *p << endl;
+    std::cout << "The ASCII number is: " << *p << "\n";
 }
 ```
 
@@ -242,14 +239,12 @@ void printASCII(char ch)
 #include <iostream>
 #include "print_ascii.h"
 
-using namespace std;
-
 int main()
 {
     char ch;
 
-    cout << "Enter a character: ";
-    cin >> ch;
+    std::cout << "Enter a character: ";
+    std::cin >> ch;
 
     printASCII(ch);
 
@@ -259,8 +254,7 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ print_ascii.cpp drive_print_ascii.cpp -o printASCII
-./printASCII
+g++ print_ascii.cpp drive_print_ascii.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -303,21 +297,19 @@ int *getASCII(char ch)
 #include <iostream>
 #include "get_ascii.h"
 
-using namespace std;
-
 int main()
 {
     char ch;
 
-    cout << "Enter a character: ";
-    cin >> ch;
+    std::cout << "Enter a character: ";
+    std::cin >> ch;
 
     // Pointer (*pnum) var to save memory address returned by getASCII() function.
     int *pnum = getASCII(ch);
 
-    cout << "Value saved in '*pnum' pointer allocated inside getASCII() function: " << *pnum << endl;
+    std::cout << "Value saved in '*pnum' pointer allocated inside getASCII() function: " << *pnum << "\n";
     delete pnum; // delete allocated memory inside getASCII() function.
-    cout << "Value saved in '*pnum' pointer after delete allocated memory: " << *pnum << endl;
+    std::cout << "Value saved in '*pnum' pointer after delete allocated memory: " << *pnum << "\n";
 
     return 0;
 }
@@ -325,15 +317,18 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ get_ascii.cpp drive_get_ascii.cpp -o getASCII
-./getASCII 
+g++ get_ascii.cpp drive_get_ascii.cpp -o test.out && ./test.out
+```
+
+**INTPUT:**  
+```
+Enter a character: A
 ```
 
 **OUTPUT:**  
 ```cpp
-Enter a character: A
 Value saved in '*pnum' pointer allocated inside getASCII() function: 65
-Value saved in '*pnum' pointer after delete allocated memory: 0
+Value saved in '*pnum' pointer after delete allocated memory: 14821648
 ```
 
 ![img](images/memory-allocation-07.png)
@@ -355,8 +350,7 @@ Value saved in '*pnum' pointer after delete allocated memory: 0
 Now, let's see the difference between **Static Vectors vs. Dynamic Vectors**:
 
  - **Static Vectors:**
-   - It is necessary to define the size of the array in the declaration​
-(size needs to be an integer constant).
+   - It is necessary to define the size of the array in the declaration​ (size needs to be an integer constant).
  - **Dynamic Vectors:**
    - With the **"new"** *operator* it is possible to create a dynamic vector.
    - Its size can be set at any time​ (size can be read from the user)​
@@ -387,14 +381,12 @@ For example, let's see how creates a **Dynamic Vector** with the size passed by 
 ```cpp
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     int vSize;
 
-    cout << "Enter the Vector size: ";
-    cin >> vSize;
+    std::cout << "Enter the Vector size: ";
+    std::cin >> vSize;
 
     int *vec = new int[vSize];
     delete vec;
@@ -405,10 +397,10 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ drive_dynamic_vector.cpp -o dynamicVector.out && ./dynamicVector.out
+g++ drive_dynamic_vector.cpp -o test.out && ./test.out
 ```
 
-**OUTPUT:**  
+**INTPUT:**  
 ```cpp
 Enter the Vector size: 10
 ```
@@ -440,24 +432,22 @@ For example, let's see how assign values in a dynamic vector and show the first 
 ```cpp
 #include <iostream>
 
-using namespace std;
-
 int main()
 {
     int vSize = 5;
 
     int *vec = new int[vSize];
-    vec[0] = 10;
-    vec[1] = 20;
+    vec[0] = 15;
+    vec[1] = 5;
     vec[2] = 30;
-    vec[3] = 40;
-    vec[4] = 50;
+    vec[3] = 28;
+    vec[4] = 40;
 
-    cout << "The first value get by 'vec[0]': " << vec[0] << endl;
-    cout << "The first value get by '*vec': " << *vec << endl;
+    std::cout << "The first value get by 'vec[0]': " << vec[0] << "\n";
+    std::cout << "The first value get by '*vec': " << *vec << "\n";
 
     for (int i = 0; i < vSize; i++)
-        cout << "Value in index " << i << " is " << vec[i] << endl;
+        std::cout << "Value in index " << i << " is " << vec[i] << "\n";
 
     delete []vec;
     return 0;
@@ -466,7 +456,7 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ drive_assign.cpp -o assignEX.out && ./assignEX.out
+g++ drive_assign.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -498,7 +488,7 @@ For example, see the image below to understand more easily:
 
 ## Dynamic Records/Structs (+Vector of Records/Structs)
 
-> Ok, but I can create Dynamic Records (structs)? Yes, of course!
+> Ok, but can I create Dynamic Records (structs)? Yes, of course!
 
 For example, see the code below how create a Dynamic Records (structs):
 
@@ -508,7 +498,7 @@ For example, see the code below how create a Dynamic Records (structs):
 
 struct player
 {
-    char name[20];
+    std::string name;
     float salary;
     unsigned goals;
 };
@@ -519,15 +509,13 @@ struct player
 #include <iostream>
 #include "player.h"
 
-using namespace std;
-
 int main()
 {
     player *messi = new player{"Messi", 100000.00f, 600};
 
-    cout << "Player name: " << messi->name << endl;
-    cout << "Player salary: " << messi->salary << endl;
-    cout << "Player goals: " << messi->goals << endl;
+    std::cout << "Player name: " << messi->name << "\n";
+    std::cout << "Player salary: " << messi->salary << "\n";
+    std::cout << "Player goals: " << messi->goals << "\n";
 
     delete messi;
     return 0;
@@ -536,7 +524,7 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ drive_dynamic_struct.cpp -o dynamicStruct.out && ./dynamicStruct.out
+g++ drive_dynamic_struct.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -554,7 +542,7 @@ Player goals: 600
 
 struct player
 {
-    char name[20];
+    std::string name;
     float salary;
     unsigned goals;
 };
@@ -565,32 +553,30 @@ struct player
 #include <iostream>
 #include "player.h"
 
-using namespace std;
-
 int main()
 {
     int playersSize;
 
-    cout << "Enter the number of players: ";
-    cin >> playersSize;
+    std::cout << "Enter the number of players: ";
+    std::cin >> playersSize;
 
     player *vecToPlayers = new player[playersSize];
 
     for (int i = 0; i < playersSize; i++)
     {
-        cout << "\nEnter the name of player " << i << ": ";
-        cin >> vecToPlayers[i].name;
-        cout << "Enter the salary of player " << i << ": ";
-        cin >> vecToPlayers[i].salary;
-        cout << "Enter the number of goals of player " << i << ": ";
-        cin >> vecToPlayers[i].goals;
+        std::cout << "\nEnter the name of player " << i << ": ";
+        std::cin >> vecToPlayers[i].name;
+        std::cout << "Enter the salary of player " << i << ": ";
+        std::cin >> vecToPlayers[i].salary;
+        std::cout << "Enter the number of goals of player " << i << ": ";
+        std::cin >> vecToPlayers[i].goals;
     }
 
     for (int i = 0; i < playersSize; i++)
     {
-        cout << "\nThe name of player " << i << ": " << vecToPlayers[i].name << endl;
-        cout << "The salary of player " << i << ": " << vecToPlayers[i].salary << endl;
-        cout << "The number of goals of player " << i << ": " << vecToPlayers[i].goals << endl;
+        std::cout << "\nThe name of player " << i << ": " << vecToPlayers[i].name << "\n";
+        std::cout << "The salary of player " << i << ": " << vecToPlayers[i].salary << "\n";
+        std::cout << "The number of goals of player " << i << ": " << vecToPlayers[i].goals << "\n";
     }
 
     delete []vecToPlayers;
@@ -600,7 +586,7 @@ int main()
 
 **COMPILATION AND RUN:**
 ```cpp
-g++ drive_vector_to_struct.cpp -o vectorToStruct.out && ./vectorToStruct.out
+g++ drive_vector_to_struct.cpp -o test.out && ./test.out
 ```
 
 **INPUT:**  

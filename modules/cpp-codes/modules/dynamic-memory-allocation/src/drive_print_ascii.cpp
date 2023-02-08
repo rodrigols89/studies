@@ -1,14 +1,12 @@
 #include <iostream>
 #include "print_ascii.h"
 
-using namespace std;
-
 int main()
 {
     char ch;
 
-    cout << "Enter a character: ";
-    cin >> ch;
+    std::cout << "Enter a character: ";
+    std::cin >> ch;
 
     printASCII(ch);
 
