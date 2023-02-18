@@ -1,12 +1,11 @@
 #include <string>
-using std::string;
 
 class Car
 {
 private:
     // Encapsulation.
     int color;
-    string type;
+    std::string type;
     float velocity;
 
 public:

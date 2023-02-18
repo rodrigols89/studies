@@ -11,10 +11,10 @@
 
 ## Intro to Member functions
 
-**Methods** or **member functions** are normal functions, however, they differ only by two special characteristics:
+**Member Functions** or **Methods** are normal functions, however, they differ only by two special characteristics:
 
  - Access to private class members.
- - Using (uso) of the scope resolution operator **"::"**.
+ - Using (uso) of the *scope resolution operator* **"::"**.
 
 > **NOTE:**  
 > The **scope resolution operator "::"** is used to indicate what class the method belongs to.
@@ -23,21 +23,26 @@ For example in the [Game.h](src/Game.h) and [Game.cpp](src/Game.cpp):
 
 [Game.h](src/Game.h)  
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
-    ...
+    // Encapsulation.
+    std::string name; // Game name.
+    float price;      // Game price.
+    int hours;        // Hours played.
+    float cost;       // Cost per hour player.
+
+    // Calculate the cost to played hours (Inline function/Method).
+    void calculate() { if (hours > 0) cost = price / hours; }
 
 public:
-	// Interfaces.
-	void purchase(const string& title, float value);    // Method prototype.
-	void update(float value);                           // Method prototype.
-	void play(int time);                                // Method prototype.
-	void showInformation();                             // Method prototype.
+    // Interfaces.
+    void purchase(const std::string &title, float value); // Fill the information.
+    void update(float value);                             // Update game price.
+    void play(int time);                                  // Record (save) the hours played.
+    void showInformation();                               // show information.
 };
 ```
 
@@ -46,7 +51,7 @@ public:
 #include <iostream>
 #include "Game.h"
 
-void Game::purchase(const string& title, float value)
+void Game::purchase(const std::string &title, float value)
 {
     name = title;
     price = value;
@@ -69,15 +74,16 @@ void Game::play(int time)
 void Game::showInformation()
 {
     std::cout << name << " R$"
-        << price << " "
-        << hours << "h = R$"
-        << cost << "/h\n";
+              << price << " "
+              << hours << "h = R$"
+              << cost << "/h\n";
 }
 ```
 
  - **NOTE:**  
    - See that in the [Game.h](src/Game.h) we have the method prototypes.
-   - And in [Game.cpp](src/Game.cpp) we indicate what class the method belongs to.
+   - And in [Game.cpp](src/Game.cpp) we indicate what class the method belongs to:
+     - Using **scope resolution operator "::"**
 
 ---
 
@@ -90,24 +96,20 @@ void Game::showInformation()
 For example, the **calculate() method** below is inline because is defined in the class declaration:
 
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
+    // Encapsulation.
     ...
 
-    // Calculate the cost to played hours (Inline Method).
-    void calculate()
-    {
-        if (hours > 0)
-            cost = price / hours;
-    }
+    // Calculate the cost to played hours (Inline function/Method).
+    void calculate() { if (hours > 0) cost = price / hours; }
 
 public:
     // Interfaces.
+    ...
 };
 ```
 
@@ -117,11 +119,7 @@ However, these methods can also be defined outside the class declaration, But fo
 ```cpp
 #include "Game.h"
 
-inline void Game::calculate()
-{
-    if (hours > 0)
-        cost = price / hours;
-}
+inline void calculate() { if (hours > 0) cost = price / hours; }
 ```
 
 **NOTE:**  
@@ -158,24 +156,31 @@ inline void Game::calculate()
 
 To solve that we can define the inline method outside the class declaration, however, in the same **.h** file:
 
+[Game-v2.h](src/Game-v2.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
-    ...
+    // Encapsulation.
+    std::string name; // Game name.
+    float price;      // Game price.
+    int hours;        // Hours played.
+    float cost;       // Cost per hour player.
+
+    inline void calculate(); // Prototype.
+
 public:
-    ...
+    // Interfaces.
+    void purchase(const std::string &title, float value); // Fill the information.
+    void update(float value);                             // Update game price.
+    void play(int time);                                  // Record (save) the hours played.
+    void showInformation();                               // show information.
 };
 
-inline void Game::calculate()
-{
-    if (hours > 0)
-        cost = price / hours;
-}
+// Calculate the cost to played hours (Inline function/Method).
+void Game::calculate() { if (hours > 0) cost = price / hours; }
 ```
 
 **NOTE:**  

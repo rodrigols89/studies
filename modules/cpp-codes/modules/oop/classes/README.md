@@ -5,7 +5,7 @@
  - [Classes in C++ (+Game example)](#classes-in-cpp)
  - [Objects (instances) in C++](#objects-instances)
  - **Tips & Tricks:**
-   - [Classes vs. Records (struct)](#class-vs-struct)
+   - [Class members are private by default vs. Record (struct) members are public by default](#class-vs-struct)
 
 ---
 
@@ -24,7 +24,7 @@ A class in C++ is defined in two parts:
    - Methods implementations.
 
 > **NOTE:**  
-> Like a *record*, a *class* defines a new type.
+> Like a *record (struct)*, a *class* defines a new type.
 
 
 For example, the code below represent a **Car class**:
@@ -32,14 +32,13 @@ For example, the code below represent a **Car class**:
 [Car.h](src/Car.h)
 ```cpp
 #include <string>
-using std::string;
 
 class Car
 {
 private:
     // Encapsulation.
     int color;
-    string type;
+    std::string type;
     float velocity;
 
 public:
@@ -65,28 +64,30 @@ For example, imagine we have the **Game class**:
 
 [Game.h](src/Game.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
-	// Encapsulation.
-	string name;                                        // Game name.
-	float price;                                        // Game price.
-	int hours;                                          // Hours played.
-	float cost;                                         // Cost per hour player.
+    // Encapsulation.
+    std::string name; // Game name.
+    float price;      // Game price.
+    int hours;        // Hours played.
+    float cost;       // Cost per hour player.
 
-	// Calculate the cost to played hours (Inline function/Method).
-	void calculate() { if (hours > 0) cost = price / hours; }
+    // Calculate the cost to played hours (Inline function/Method).
+    void calculate()
+    {
+        if (hours > 0)
+            cost = price / hours;
+    }
 
 public:
-	// Interfaces.
-	void purchase(const string& title, float value);    // Fill the information.
-	void update(float value);                           // Update game price.
-	void play(int time);                                // Record (save) the hours played.
-	void showInformation();                             // show information.
+    // Interfaces.
+    void purchase(const std::string &title, float value); // Fill the information.
+    void update(float value);                             // Update game price.
+    void play(int time);                                  // Record (save) the hours played.
+    void showInformation();                               // show information.
 };
 ```
 
@@ -95,7 +96,7 @@ public:
 #include <iostream>
 #include "Game.h"
 
-void Game::purchase(const string& title, float value)
+void Game::purchase(const std::string &title, float value)
 {
     name = title;
     price = value;
@@ -118,9 +119,9 @@ void Game::play(int time)
 void Game::showInformation()
 {
     std::cout << name << " R$"
-        << price << " "
-        << hours << "h = R$"
-        << cost << "/h\n";
+              << price << " "
+              << hours << "h = R$"
+              << cost << "/h\n";
 }
 ```
 
@@ -130,27 +131,25 @@ void Game::showInformation()
 
 int main()
 {
-	Game gow; // Variable of type "Game".
+    Game gow; // Variable of type "Game".
 
-	// Call methods of Game (gow) object.
-	gow.purchase("Gow", 160.0f);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.purchase("Gow", 160.0f);
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(5);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(5);
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(3);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(3);
+    gow.showInformation();
 }
 ```
 
 **COMPILATION AND RUN:**  
 ```cpp
-g++ Game.cpp driver_game.cpp -o game
-
-./game.exe
+g++ Game.cpp driver_game.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -192,7 +191,7 @@ For example, see the image below how objects are created in the memory:
 
 <div id="class-vs-struct"></div>
 
-## Classes vs. Records (struct)
+## Class members are private by default vs. Record (struct) members are public by default
 
 > What if (e se) the **public** and **private** are omitted?​
 

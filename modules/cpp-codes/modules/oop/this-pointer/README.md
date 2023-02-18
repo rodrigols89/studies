@@ -47,7 +47,7 @@ Game gears; // Object reference.
 showInformation(&gears);​ // Pass gears object address (&).
 ```
 
- - See that in the function approach we have a pointer this as parameter (Game * this).
+ - See that in the function approach we have *a pointer this* as parameter (Game * this).
  - And when call the function we pass the object address (&).
 
 **NOTE:**  
@@ -99,18 +99,16 @@ For example, imagine we have the following Game class:
 
 [Game_this.h](src/Game_this.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
     // Encapsulation.
-    string name; // Game name.
-    float price; // Game price.
-    int hours;   // Hours played.
-    float cost;  // Cost per hour player.
+    std::string name; // Game name.
+    float price;      // Game price.
+    int hours;        // Hours played.
+    float cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
@@ -121,25 +119,17 @@ private:
 
 public:
     // Interfaces.
-    Game(const string &name, float cost = 0); // Constructor prototype.
-    void update(float cost);                  // Update game price.
-    void play(int hours);                     // Record (save) the hours played.
-    void showInformation();                   // show information.
+    Game(const std::string &name, float cost = 0); // Constructor prototype.
+    void update(float cost);                       // Update game price.
+    void play(int hours);                          // Record (save) the hours played.
+    void showInformation();                        // show information.
 };
 ```
 
-[Game.cpp](src/Game.cpp)
+[Game_this.cpp](src/Game_this.cpp)
 ```cpp
 #include <iostream>
-#include "Game.h"
-
-void Game::purchase(const string &title, float value)
-{
-    name = title;
-    price = value;
-    hours = 0;
-    cost = price;
-}
+#include "Game_this.h"
 
 void Game::update(float value)
 {

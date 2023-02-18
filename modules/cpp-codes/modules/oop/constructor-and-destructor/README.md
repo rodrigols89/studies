@@ -22,18 +22,16 @@ Imagine we have the follow Game class:
 
 [Game.h](src/Game.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
     // Encapsulation.
-    string name; // Game name.
-    float price; // Game price.
-    int hours;   // Hours played.
-    float cost;  // Cost per hour player.
+    std::string name; // Game name.
+    float price;      // Game price.
+    int hours;        // Hours played.
+    float cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
@@ -44,10 +42,10 @@ private:
 
 public:
     // Interfaces.
-    void purchase(const string &title, float value); // Fill the information.
-    void update(float value);                        // Update game price.
-    void play(int time);                             // Record (save) the hours played.
-    void showInformation();                          // show information.
+    void purchase(const std::string &title, float value); // Fill the information.
+    void update(float value);                             // Update game price.
+    void play(int time);                                  // Record (save) the hours played.
+    void showInformation();                               // show information.
 };
 ```
 
@@ -73,18 +71,18 @@ Here we have the method **purchase()** to init the attributes. However, imagine 
 
 int main()
 {
-	Game gow; // Variable of type "Game".
+    Game gow; // Variable of type "Game".
 
-	// Call methods of Game (gow) object.
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(5);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(5);
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(3);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(3);
+    gow.showInformation();
 }
 ```
 
