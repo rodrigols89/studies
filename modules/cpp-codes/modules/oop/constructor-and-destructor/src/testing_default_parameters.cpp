@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "default_parameters.h"
 
 int main()
 {
-    Game gow; // Variable of type "Game".
+    Game gow;
 
     // Call methods of Game (gow) object.
     gow.showInformation();

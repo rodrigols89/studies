@@ -653,16 +653,16 @@ class Game
 {
 private:
     // Encapsulation.
-    std::string name; // Game name.
-    float price;      // Game price.
-    int hours;        // Hours played.
-    float cost;       // Cost per hour player.
+    std::string m_name; // Game name.
+    float m_price;      // Game price.
+    int m_hours;        // Hours played.
+    float m_cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
     {
-        if (hours > 0)
-            cost = price / hours;
+        if (m_hours > 0)
+            m_cost = m_price / m_hours;
     }
 
 public:
@@ -679,16 +679,36 @@ public:
 #include <iostream>
 #include "Game.h"
 
-void Game::purchase(const string& title, float value)
+void Game::purchase(const std::string &title, float value)
 {
-    name = title;
-    price = value;
-    hours = 0;
-    cost = price;
+    m_name = title;
+    m_price = value;
+    m_hours = 0;
+    m_cost = m_price;
+}
+
+void Game::update(float cost)
+{
+    m_price = cost;
+    calculate();
+}
+
+void Game::play(int hours)
+{
+    hours += hours;
+    calculate();
+}
+
+void Game::showInformation()
+{
+    std::cout << m_name << " R$"
+              << m_price << " "
+              << m_hours << "h = R$"
+              << m_cost << "/h\n";
 }
 ```
 
-Here we have the method **purchase()** to init the attributes. However, imagine we make a Game object and use **play()** and **showInformation()** methods without use **purchase()**:
+Here, we have the method **purchase()** to init the attributes. However, imagine we make a Game object and use **play()** and **showInformation()** methods without use **purchase()**:
 
 [testing_game_wt_purchase.cpp](src/testing_game_wt_purchase.cpp)
 ```cpp
@@ -711,12 +731,9 @@ int main()
 }
 ```
 
-
 **COMPILATION AND RUN:**  
 ```cpp
-g++ Game.cpp testing_game_wt_purchase.cpp -o game
-
-./game.exe
+g++ Game.cpp testing_game_wt_purchase.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -742,18 +759,16 @@ For example, let's see a constructor for the class Game:
 
 [GameWithConstructor.h](src/GameWithConstructor.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
     // Encapsulation.
-    string m_name; // Game name.
-    float m_price; // Game price.
-    int m_hours;   // Hours played.
-    float m_cost;  // Cost per hour player.
+    std::string m_name; // Game name.
+    float m_price;      // Game price.
+    int m_hours;        // Hours played.
+    float m_cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
@@ -764,10 +779,10 @@ private:
 
 public:
     // Interfaces.
-    Game(const string &name, float cost = 0); // Constructor prototype.
-    void update(float cost);                  // Update game price.
-    void play(int hours);                     // Record (save) the hours played.
-    void showInformation();                   // show information.
+    Game(const std::string &name, float cost = 0); // Constructor prototype.
+    void update(float cost);                       // Update game price.
+    void play(int hours);                          // Record (save) the hours played.
+    void showInformation();                        // show information.
 };
 ```
 
@@ -777,7 +792,7 @@ public:
 #include "GameWithConstructor.h"
 
 // Class (Game) constructor definition (implementation)
-Game::Game(const string &name, float cost)
+Game::Game(const std::string &name, float cost)
 {
     m_name = name;
     m_price = cost;
@@ -812,26 +827,24 @@ void Game::showInformation()
 
 int main()
 {
-	Game gow = Game("Gears", 50.0f);
+    Game gow = Game("Gears", 50.0f);
 
-	// Call methods of Game (gow) object.
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(5);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(5);
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(3);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(3);
+    gow.showInformation();
 }
 ```
 
 **COMPILATION AND RUN:**  
 ```cpp
-g++ GameWithConstructor.cpp testing_constructor.cpp -o gamewc
-
-./gamewc.exe 
+g++ GameWithConstructor.cpp testing_constructor.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -883,24 +896,26 @@ For example, see default parameters for Game class below:
 
 [default_parameters.h](src/default_parameters.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
-    string m_name;
+    std::string m_name;
     float m_price;
     int m_hours;
     float m_cost;
 
     // Inline function.
-    void calculate() { if (m_hours > 0) m_cost = m_price / m_hours; }
+    void calculate()
+    {
+        if (m_hours > 0)
+            m_cost = m_price / m_hours;
+    }
 
 public:
     // Constructor prototype (with default parameters).
-    Game(const string &name = "Gears", float price = 100, int hours = 0, float cost = 0);
+    Game(const std::string &name = "Gears", float price = 100, int hours = 0, float cost = 0);
 
     void update(float cost);
     void play(int hours);
@@ -914,7 +929,7 @@ public:
 #include "default_parameters.h"
 
 // Class (Game) constructor definition (implementation)
-Game::Game(const string &name, float price, int hours, float cost)
+Game::Game(const std::string &name, float price, int hours, float cost)
 {
     m_name = name;
     m_price = price;
@@ -949,27 +964,24 @@ void Game::showInformation()
 
 int main()
 {
-	Game gow;
+    Game gow;
 
-	// Call methods of Game (gow) object.
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(5);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(5);
+    gow.showInformation();
 
-	// Call methods of Game (gow) object.
-	gow.play(3);
-	gow.showInformation();
+    // Call methods of Game (gow) object.
+    gow.play(3);
+    gow.showInformation();
 }
 ```
 
-
 **COMPILATION AND RUN:**  
 ```cpp
-g++ default_parameters.cpp testing_default_parameters.cpp -o game
-
-./game.exe
+g++ default_parameters.cpp testing_default_parameters.cpp -o test.out && ./test.out
 ```
 
 **OUTPUT:**  
@@ -994,18 +1006,16 @@ For example, see below the **Destructor** for the Game class:
 
 [GameWithDestructor.h](src/GameWithDestructor.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
     // Encapsulation.
-    string m_name; // Game name.
-    float m_price; // Game price.
-    int m_hours;   // Hours played.
-    float m_cost;  // Cost per hour player.
+    std::string m_name; // Game name.
+    float m_price;      // Game price.
+    int m_hours;        // Hours played.
+    float m_cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
@@ -1016,12 +1026,12 @@ private:
 
 public:
     // Interfaces.
-    Game(const string &name, float cost = 0); // Constructor prototype.
-    ~Game(); // Destructor prototype.
+    Game(const std::string &name, float cost = 0); // Constructor prototype.
+    ~Game();                                       // Destructor prototype.
 
-    void update(float cost);                  // Update game price.
-    void play(int hours);                     // Record (save) the hours played.
-    void showInformation();                   // show information.
+    void update(float cost); // Update game price.
+    void play(int hours);    // Record (save) the hours played.
+    void showInformation();  // show information.
 };
 ```
 
@@ -1031,7 +1041,7 @@ public:
 #include "GameWithDestructor.h"
 
 // Class (Game) constructor definition (implementation)
-Game::Game(const string &name, float cost)
+Game::Game(const std::string &name, float cost)
 {
     m_name = name;
     m_price = cost;
@@ -1107,8 +1117,8 @@ Sets::~Sets()
 
 Let's, getting started with the following question:
 
-> [EN] - When does an object's life come to an end?
-> [PT] - Quando a vida de um objeto chega ao fim?
+> - [EN] - When does an object's life come to an end?
+> - [PT] - Quando a vida de um objeto chega ao fim?
 
  - **Depends where your object was created:**
    - Variable static or global?
@@ -1204,18 +1214,16 @@ For example, to our Game class we used **prefix "m_"**:
 
 [GameWithConstructor.h](src/GameWithConstructor.h)
 ```cpp
-#pragma once
 #include <string>
-using std::string;
 
 class Game
 {
 private:
     // Encapsulation.
-    string m_name; // Game name.
-    float m_price; // Game price.
-    int m_hours;   // Hours played.
-    float m_cost;  // Cost per hour player.
+    std::string m_name; // Game name.
+    float m_price;      // Game price.
+    int m_hours;        // Hours played.
+    float m_cost;       // Cost per hour player.
 
     // Calculate the cost to played hours (Inline function/Method).
     void calculate()
@@ -1226,10 +1234,10 @@ private:
 
 public:
     // Interfaces.
-    Game(const string &name, float cost = 0); // Constructor prototype.
-    void update(float cost);                  // Update game price.
-    void play(int hours);                     // Record (save) the hours played.
-    void showInformation();                   // show information.
+    Game(const std::string &name, float cost = 0); // Constructor prototype.
+    void update(float cost);                       // Update game price.
+    void play(int hours);                          // Record (save) the hours played.
+    void showInformation();                        // show information.
 };
 ```
 
