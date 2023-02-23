@@ -46,6 +46,9 @@
      - **Functions:**
        - **Aggregate Functions:**
          - [COUNT() function](modules/practice/sql/count-function.md)
+   - **NoSQL:**
+     - **MongoDB:**
+       - [Settings](modules/practice/nosql/mongodb/settings)
    - **Exercises & Challenges:**
      - [Agents, Customer, Orders (+FOREIGN KEY approach)](modules/practice/exercises-challenges/agents-customer-orders.md)
      - [CDs Store](modules/practice/exercises-challenges/cds-store.md)
