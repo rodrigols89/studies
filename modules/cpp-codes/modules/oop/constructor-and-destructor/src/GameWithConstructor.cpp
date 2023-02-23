@@ -1,12 +1,13 @@
 #include <iostream>
-#include "Game.h"
+#include "GameWithConstructor.h"
 
-void Game::purchase(const std::string &title, float value)
+// Class (Game) constructor definition (implementation)
+Game::Game(const std::string &name, float cost)
 {
-    m_name = title;
-    m_price = value;
+    m_name = name;
+    m_price = cost;
     m_hours = 0;
-    m_cost = m_price;
+    m_cost = cost;
 }
 
 void Game::update(float cost)
@@ -17,7 +18,7 @@ void Game::update(float cost)
 
 void Game::play(int hours)
 {
-    hours += hours;
+    m_hours += hours;
     calculate();
 }
 

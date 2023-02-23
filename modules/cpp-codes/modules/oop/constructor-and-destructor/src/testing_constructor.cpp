@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "GameWithConstructor.h"
 
 int main()
 {
-    Game gow; // Variable of type "Game".
+    Game gow = Game("Gears", 50.0f);
 
     // Call methods of Game (gow) object.
     gow.showInformation();
