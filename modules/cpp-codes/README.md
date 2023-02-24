@@ -21,6 +21,7 @@
    - [Classes](modules/oop/classes)
    - [Member functions (Methods)](modules/oop/member-functions)
    - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor)
+   - [Access Modifiers & Encapsulation](modules/oop/access-modifiers-and-encapsulation)
    - ['this' pointer in C++](modules/oop/this-pointer)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
