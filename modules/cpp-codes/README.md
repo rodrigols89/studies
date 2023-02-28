@@ -23,6 +23,7 @@
    - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor)
    - [Access Modifiers & Encapsulation](modules/oop/access-modifiers-and-encapsulation)
    - [Inheritance](modules/oop/inheritance)
+   - [Polymorphism](modules/oop/polymorphism)
    - ['this' pointer in C++](modules/oop/this-pointer)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
