@@ -8,6 +8,7 @@
    - [`#define (Macros)`](#macros)
  - **Tips & Tricks:**
    - [Predefined C++ Macros](#predefined-macros)
+   - [Include Guard](#include-guard)
 
 ---
 
@@ -176,9 +177,217 @@ Value of __STDC_HOSTED__: 1
 
 ---
 
+<div id="include-guard"></div>
+
+## Include Guard
+
+> In the C and C++ programming languages, an **#include guard**, sometimes called a *macro guard*, *header guard* or *file guard*, is a particular construct used to avoid the problem of `double inclusion` when dealing with the include directive.
+
+For example, see the codes below:
+
+[vehicle.h](src/vehicle.h)
+```cpp
+class Vehicle
+{
+public:
+    void fuelAmount();
+    void capacity();
+    void applyBrakes();
+};
+```
+
+[vehicle.cpp](src/vehicle.cpp)
+```cpp
+#include <iostream>
+#include "vehicle.h"
+
+void Vehicle::fuelAmount()
+{
+    std::cout << "Vehicle 'fuelAmount' method called.\n";
+}
+
+void Vehicle::capacity()
+{
+    std::cout << "Vehicle 'capacity' method called.\n";
+}
+
+void Vehicle::applyBrakes()
+{
+    std::cout << "Vehicle 'applyBrakes' method called.\n";
+}
+```
+
+[bus.h](src/bus.h)
+```cpp
+#include "vehicle.h"
+
+class Bus : public Vehicle
+{
+    // Codes...
+};
+```
+
+[car.h](src/car.h)
+```cpp
+#include "vehicle.h"
+
+class Car : public Vehicle
+{
+    // Codes...
+};
+```
+
+[truck.h](src/truck.h)
+```cpp
+#include "vehicle.h"
+
+class Truck : public Vehicle
+{
+    // Codes...
+};
+```
+
+[driver_vehicle.cpp](src/driver_vehicle.cpp)
+```cpp
+#include <iostream>
+#include "bus.h"
+#include "car.h"
+#include "truck.h"
+
+int main()
+{
+    Bus bus;
+    std::cout << "'Bus' object examples:\n";
+    bus.fuelAmount();
+    bus.capacity();
+    bus.applyBrakes();
+
+    Car car;
+    std::cout << "\n'Car' object examples:\n";
+    car.fuelAmount();
+    car.capacity();
+    car.applyBrakes();
+
+    Truck truck;
+    std::cout << "'\nTruck' object examples:\n";
+    truck.fuelAmount();
+    truck.capacity();
+    truck.applyBrakes();
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ vehicle.cpp driver_vehicle.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```cpp
+In file included from car.h:1,
+                 from driver_vehicle.cpp:3:
+vehicle.h:1:7: error: redefinition of 'class Vehicle'
+ class Vehicle
+       ^~~~~~~
+In file included from bus.h:1,
+                 from driver_vehicle.cpp:2:
+vehicle.h:1:7: note: previous definition of 'class Vehicle'
+ class Vehicle
+       ^~~~~~~
+In file included from truck.h:1,
+                 from driver_vehicle.cpp:4:
+vehicle.h:1:7: error: redefinition of 'class Vehicle'
+ class Vehicle
+       ^~~~~~~
+In file included from bus.h:1,
+                 from driver_vehicle.cpp:2:
+vehicle.h:1:7: note: previous definition of 'class Vehicle'
+ class Vehicle
+       ^~~~~~~
+```
+
+> **What does that mean?**  
+> - error: redefinition of 'class Vehicle'
+> - note: previous definition of 'class Vehicle'
+> - error: redefinition of 'class Vehicle'
+> - note: previous definition of 'class Vehicle'
+
+The problem here is that the [vehicle.h](src/vehicle.h) is called many times in the preprocessor stage:
+
+![img](images/include-guard-01.png)  
+
+See that each class above call the [vehicle.h](src/vehicle.h) in the preprocessor stage. That's, we try to call the same file many time for the same purpose.
+
+> **Ok, but how solve that?**
+> Using *"Include Guard"*.
+
+How said above to solve our problem we can use the **"Include Guard"** in the file that is called many times in the preprocessor stage. For example, see the example below:
+
+```cpp
+#ifndef FILE-NAME-OR-CLASS_H_
+#define FILE-NAME-OR-CLASS_H_
+
+...
+
+#endif // FILE-NAME-OR-CLASS_H_
+```
+
+[vehicle.h](src/vehicle.h)
+```cpp
+#ifndef VEHICLE_H_
+#define VEHICLE_H_
+
+class Vehicle
+{
+public:
+    void fuelAmount();
+    void capacity();
+    void applyBrakes();
+};
+
+#endif // VEHICLE_H_
+```
+
+Now, let's try to run our program again:
+
+**COMPILATION AND RUN:**
+```cpp
+g++ vehicle.cpp driver_vehicle.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```cpp
+'Bus' object examples:
+Vehicle 'fuelAmount' method called.
+Vehicle 'capacity' method called.
+Vehicle 'applyBrakes' method called.
+
+'Car' object examples:
+Vehicle 'fuelAmount' method called.
+Vehicle 'capacity' method called.
+Vehicle 'applyBrakes' method called.
+'
+Truck' object examples:
+Vehicle 'fuelAmount' method called.
+Vehicle 'capacity' method called.
+Vehicle 'applyBrakes' method called.
+```
+
+**Nice, we solve the problem!**  
+This is equivalent to:
+
+![img](images/include-guard-02.png)  
+
+> **NOTE:**  
+> Another approach to solve that is use the **"#pragma once"** in the *file.h* definition.
+
+---
+
 **REFERENCES:**  
 [Preprocessor Directives in C++](https://www.scaler.com/topics/cpp/cpp-preprocessor-directives/)  
 [C/C++ Preprocessors](https://www.geeksforgeeks.org/cc-preprocessors/)  
 [C++ Preprocessor](https://www.tutorialspoint.com/cplusplus/cpp_preprocessor)  
+[include guard](https://en.wikipedia.org/wiki/Include_guard)
 
 ---
