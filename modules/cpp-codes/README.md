@@ -19,7 +19,7 @@
  - [Exception Handling in C++](modules/structured/exception-handling.md)
  - **Object-Oriented Programming (OOP):**
    - [Classes](modules/oop/classes)
-   - [Member functions (Methods)](modules/oop/member-functions)
+   - [Data Members](modules/oop/data-members)
    - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor)
    - [Access Modifiers & Encapsulation](modules/oop/access-modifiers-and-encapsulation)
    - [Inheritance](modules/oop/inheritance)
