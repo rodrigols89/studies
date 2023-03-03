@@ -1,9 +1,24 @@
-# Member functions (Methods)
+# Data Members
 
 ## Contents
 
+ - [Static data members](#static-data-members)
  - [Intro to Member functions](#intro-to-member-functions)
  - [Inline Methods](#inline-methods)
+
+---
+
+<div id="static-data-members"></div>
+
+## Static data members
+
+> Static data members are class members that are declared using **static** keywords.
+
+A static member has certain special characteristics. These are:
+
+ - Only one copy of that member is created for the entire class and is shared by all the objects of that class, no matter how many objects are created.
+ - It is initialized before any object of this class is being created, even before main starts.
+ - It is visible only within the class, but its lifetime is the entire program
 
 ---
 
@@ -193,6 +208,7 @@ Now who include this **.h** file can use calculate() method.
 
 **REFERENCES:**  
 [Aula 04 - Funções Membros / Métodos / Curso de C++](https://www.youtube.com/watch?v=_KEVmlFyAFI&list=PLX6Nyaq0ebfhlKSTKlADladUNBHNBXxHg&index=9)  
+[Static data members in C++](https://www.geeksforgeeks.org/static-data-members-c/)
 
 ---
 
