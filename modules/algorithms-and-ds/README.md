@@ -33,7 +33,7 @@
        - **Static:**
          - Array:
        - **Dynamic:**
-         - [Linked-List](modules/data-structures/linear/linked-list.md)
+         - [Linked-List](modules/data-structures/linear/linked-list)
          - Stack:
          - Queue:
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
