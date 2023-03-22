@@ -31,14 +31,14 @@
    - **Non-Primitive Data Structures:**
      - **[Linear:](modules/data-structures/linear/linear-ds.md)**
        - **Static:**
-         - Array:
+         - Array
        - **Dynamic:**
-         - [Linked-List](modules/data-structures/linear/linked-list)
-         - Stack:
-         - Queue:
+         - Linked-List
+         - [Stack](modules/data-structures/linear/stack)
+         - Queue
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
-       - Tree:
-       - Graph:
+       - Tree
+       - Graph
 
 ---
 
