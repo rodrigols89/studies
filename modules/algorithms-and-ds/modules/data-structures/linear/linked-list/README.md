@@ -761,39 +761,340 @@ list.printListFromHead() # Print new Node value.
 
 ## Add a new Node after a given node (insertAfterNodeN)
 
-x
+An approach to insert a new Node is insert after a determined Node "n". For example, see the image below:
+
+![img](images/Linkedlist_insert_middle.png)  
+
+Let's see how to implement this approach in **C++**:
+
+[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
+```cpp
+//...
+
+class SinglyLinkedList
+{
+public:
 
 
 
+    void insertAfterNodeN(Node *prev_node, int data); // Method prototype.
+};
 
+//...
+```
 
+[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
+```cpp
+//...
 
+void SinglyLinkedList::insertAfterNodeN(Node *prev_node, int data)
+{
+    if (this->head == nullptr)
+    {
+        std::cout << "List is empty!"
+                  << "\n";
+    }
+    else if (prev_node == NULL)
+    {
+        std::cout << "The given previous Node cannot be NULL!";
+        return;
+    }
+    else
+    {
+        // Allocate a new Node.
+        Node *new_node = new Node();
 
+        new_node->data  = data; // Put data in the new Node.
+        new_node->next  = prev_node->next; // Make "next" of the "new_node" point to "next" of the "prev_node".
+        prev_node->next = new_node; // Move the "next" of "prev_node" as "new_node".
+    }
+}
 
+//...
+```
 
+[driver_insertAfterNodeN.cpp](src/cpp/singly-linked-list/driver_insertAfterNodeN.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
 
+int main()
+{
+    SinglyLinkedList list;
+    list.head = new Node(10);
+    list.head->next = new Node(20);
+    list.head->next->next = new Node(30);
+    list.head->next->next->next = new Node(50);
+    list.printListFromHead(); // Print Node values.
 
+    list.insertAfterNodeN(list.head->next->next, 40);
+    list.printListFromHead(); // Print new Node values.
 
+    return 0;
+}
+```
 
+**COMPILATION AND RUN:**
+```cpp
+g++ Node.cpp SinglyLinkedList.cpp driver_insertAfterNodeN.cpp -o test.out && ./test.out
+```
 
+**OUTPUT:**  
+```cpp
+10 20 30 50 
+10 20 30 40 50 
+```
 
+---
 
+Ok, now let's see how to implement this same approach in **Python**:
 
+[SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
+```python
+#...
 
+# Method to insert a new Node after determined Node "n".
+def insertAfterNodeN(self, prev_node, data):
+    if self.head is None:
+        print("List is empty!")
+    elif prev_node is None:
+        print("The given previous Node cannot be NULL!")
+    else:
+        # Allocate a new Node.
+        new_node = Node()
 
+        new_node.data  = data           # Put data in the new Node.
+        new_node.next  = prev_node.next # Make "next" of the "new_node" point to "next" of the "prev_node".
+        prev_node.next = new_node       # Move the "next" of "prev_node" as "new_node".
 
+#...
+```
 
+[driver_insertAfterNodeN.py](src/python/singly-linked-list/driver_insertAfterNodeN.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+from Node import Node
 
+list = SinglyLinkedList()
+list.head = Node(10)
+list.head.next = Node(20)
+list.head.next.next = Node(30)
+list.head.next.next.next = Node(50)
+list.printListFromHead() # Print Nodes values.
 
+list.insertAfterNodeN(list.head.next.next, 40)
+list.printListFromHead() # Print new Node value.
+```
 
+**OUTPUT:**  
+```cpp
+10 20 30 50 
+10 20 30 40 50
+```
 
+---
 
+<div id="inserting-append-sll"></div>
 
+## Add a new Node at the end (append)
 
+Here, let's use an approach to insert a new Node at the end given **Singly Linked List**. For example if the given Linked List is:
 
+```
+5->10->15->20->25
+```
 
+And we add an item **30** at the end, then the Linked List becomes:
 
+```
+5->10->15->20->25->30
+```
 
+For example, see the image below to understand more easily:
+
+![img](images/Linkedlist_insert_last.png)  
+
+Let's see how to implement this approach in **C++**:
+
+[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
+```cpp
+//...
+
+class SinglyLinkedList
+{
+public:
+
+  //...
+
+    void append(int data);                            // Method prototype.
+};
+
+//...
+```
+
+[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
+```cpp
+//...
+
+void SinglyLinkedList::append(int data)
+{
+    // Allocate a new Node.
+    Node *new_node = new Node();
+
+    Node *last     = this->head; // Creates a Node "last" starting from the head.
+    new_node->data = data;       // Put data in the "new_Node".
+    new_node->next = NULL;       // Set "next" of new Node as NULL.
+
+    // If the Linked List is empty, then make the "new_node" as head
+    // and stop the method (return).
+    if (this->head == NULL)
+    {
+        this->head = new_node;
+        return;
+    }
+    else
+    {
+        // "Last" Node was inited as head, now let's change it to be last Node.
+        while (last->next != NULL)
+        {
+            last = last->next;
+        }
+
+        // Make "next" of "last" Node point to "new_node", that's,
+        // "new_node" will be last node.
+        last->next = new_node;
+        return; // Stop the method.
+    }
+}
+
+//...
+```
+
+[driver_append.cpp](src/cpp/singly-linked-list/driver_append.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
+
+int main()
+{
+
+    std::cout << "List1 = 5->10->15->20->25 + append(30):\n";
+    SinglyLinkedList list1;
+    list1.head = new Node(5);
+    list1.head->next = new Node(10);
+    list1.head->next->next = new Node(15);
+    list1.head->next->next->next = new Node(20);
+    list1.head->next->next->next->next = new Node(25);
+    list1.append(30);
+    list1.printListFromHead(); // Print new Node value.
+
+    std::cout << "\nList2 = append(30): \n";
+    SinglyLinkedList list2;
+    list2.append(30);
+    list2.printListFromHead(); // Print new Node value.
+
+    std::cout << "\nList3 = append(1) + append(2) + append(3): \n";
+    SinglyLinkedList list3;
+    list3.append(1);
+    list3.append(2);
+    list3.append(3);
+    list3.printListFromHead();
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ Node.cpp SinglyLinkedList.cpp driver_append.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```cpp
+List1 = 5->10->15->20->25 + append(30):
+5 10 15 20 25 30
+
+List2 = append(30): 
+30
+
+List3 = append(1) + append(2) + append(3): 
+1 2 3
+```
+
+---
+
+Ok, now let's implement this same approach in **Python**:
+
+[SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
+```python
+#...
+
+def append(self, data):
+    # Allocate a new Node.
+    new_node = Node(data)
+
+    last = self.head # Creates a Node "last" starting from the head.
+
+    # Put data in the "new_node" and set "next" of new Node as None.
+    new_node.data = data
+    new_node.next = None
+
+    # If the Linked List is empty, then make the "new_node" as head and stop the method (return).
+    if self.head is None:
+        self.head = new_node
+        return
+    else:
+        # "Last" Node was initialized as head, now let's change it to be the last Node.
+        while last.next is not None:
+            last = last.next
+
+        # Make "next" of "last" Node point to "new_node", that is,
+        # "new_node" will be the last node.
+        last.next = new_node
+        return # Stop the method.
+
+#...
+```
+
+[driver_append.py](src/python/singly-linked-list/driver_append.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+from Node import Node
+
+print("List1 = 5->10->15->20->25 + append(30):")
+List1 = SinglyLinkedList()
+List1.head = Node(5)
+List1.head.next = Node(10)
+List1.head.next.next = Node(15)
+List1.head.next.next.next = Node(20)
+List1.head.next.next.next.next = Node(25)
+List1.append(30)
+List1.printListFromHead() # Print Nodes values.
+
+print("\nList2 = append(30):")
+List2 = SinglyLinkedList()
+List2.append(30)
+List2.printListFromHead() # Print Nodes values.
+
+print("\nList3 = append(1) + append(2) + append(3):")
+list3 = SinglyLinkedList()
+list3.append(1)
+list3.append(2)
+list3.append(3)
+list3.printListFromHead() # Print Nodes values.
+```
+
+**OUTPUT:**  
+```python
+List1 = 5->10->15->20->25 + append(30):
+5 10 15 20 25 30 
+
+List2 = append(30):
+30 
+
+List3 = append(1) + append(2) + append(3):
+1 2 3 
+```
 
 <!--- ( GENERAL SECTION ) --->
 
