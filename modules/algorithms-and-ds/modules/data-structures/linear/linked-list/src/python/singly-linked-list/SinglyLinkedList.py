@@ -28,3 +28,12 @@ class SinglyLinkedList:
                 print(current_node.data, end=" ")
                 current_node = current_node.next
             print()
+
+    # Method to insert a new Node at front.
+    def push(self, data):
+
+        new_node = Node() # Allocate a new Node.
+
+        new_node.data = data      # Put data in the new Node.
+        new_node.next = self.head # Make "next" of the "new_node" point to head (old first Node).
+        self.head     = new_node  # Move the head to point to the new node.

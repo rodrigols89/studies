@@ -26,7 +26,7 @@ void SinglyLinkedList::printListFromNodeN(Node *n)
     }
 }
 
-void SinglyLinkedList::printListFromHead(SinglyLinkedList list)
+void SinglyLinkedList::printListFromHead()
 {
     if (this->head == nullptr)
     {
@@ -43,4 +43,14 @@ void SinglyLinkedList::printListFromHead(SinglyLinkedList list)
         }
         std::cout << "\n";
     }
+}
+
+void SinglyLinkedList::push(int data)
+{
+    // Allocate a new Node.
+    Node *new_node = new Node();
+
+    new_node->data = data;         // Put data in the new Node.
+    new_node->next = (this->head); // Make "next" of the "new_node" point to head (old first Node).
+    this->head     = new_node;     // Move the head to point to the new node.
 }

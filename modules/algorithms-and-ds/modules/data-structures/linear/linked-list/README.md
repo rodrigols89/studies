@@ -7,6 +7,10 @@
    - ["Linked List" class representation for a Singly Linked List](#ll-class-for-sll)
    - Singly Linked List Operations:
      - [Traversing in Singly Linked List (printListFromNodeN vs. printListFromHead)](#traversing-sll)
+     - Inserting a new Node in a Singly Linked List:
+       - [Add a new Node at the front (push)](#inserting-push-sll)
+       - [Add a new Node after a given node (insertAfterNodeN)](#inserting-insertafternoden-sll)
+       - [Add a new Node at the end (append)](#inserting-append-sll)
    - Singly Linked List Standard Template Library (STL):
    - [Singly Linked List: Advantages and Disadvantages](#singly-adv-disadv)
    - [Singly Linked List Real Examples](#singly-examples)
@@ -23,6 +27,8 @@
  - **General:**
    - [Linked List: Advantages and Disadvantages](#adv-disadv)
 
+<!--- ( SINGLY LINKED LIST SECTION ) --->
+
 ---
 
 <div id="node-class-for-sll"></div>
@@ -38,7 +44,6 @@ How we know a **Linked List** is composed of connected **"Nodes"**, where each *
 
 For example, see how represents a "Node" Data Structure in **C++**:
 
-**C++:**  
 [Node.h](src/cpp/singly-linked-list/Node.h)
 ```cpp
 #ifndef NODE_H_
@@ -56,7 +61,6 @@ public:
 #endif // NODE_H_
 ```
 
-**C++:**  
 [Node.cpp](src/cpp/singly-linked-list/Node.cpp)
 ```cpp
 #include "Node.h"
@@ -73,7 +77,6 @@ Node::Node(int data)
 
 Now, let's see how represents a "Node" Data Structure in **Python**:
 
-**Python:**  
 [Node.py](src/python/singly-linked-list/Node.py)
 ```python
 class Node:
@@ -96,7 +99,6 @@ class Node:
 
 Now, let's see how to implement a **Singly Linked List** in **C++** in practice:
 
-**C++:**  
 [SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
 ```cpp
 #ifndef LINKEDLIST_H_
@@ -115,7 +117,6 @@ public:
 #endif // LINKEDLIST_H_
 ```
 
-**C++:**  
 [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
 #include "SinglyLinkedList.h"
@@ -183,7 +184,6 @@ See that we use two approaches to init data in the "Nodes":
 **NOTE:**  
 Another approach to create new "Nodes" is use "next" reference (pointer) in the **Singly Linked List**. For example:
 
-**C++:**
 [driver_next_sinly_linked_list.cpp](src/cpp/singly-linked-list/driver_next_sinly_linked_list.cpp)
 ```cpp
 #include "SinglyLinkedList.h"
@@ -225,7 +225,6 @@ Value in the Third Node (tail): 30
 
 Now, let's see how implement a **Singly Linked List** in Python:
 
-**Python:**  
 [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
 from Node import Node
@@ -239,7 +238,6 @@ class SinglyLinkedList:
 
 Now, let's test in a drive file:
 
-**Python:**  
 [driver_sinly_linked_list.py](src/python/singly-linked-list/driver_sinly_linked_list.py)
 ```python
 from SinglyLinkedList import SinglyLinkedList
@@ -279,7 +277,6 @@ Value in the Third Node (tail): 30
 **NOTE:**  
 Now, let's use "next" reference (pointer) in the **Singly Linked List** to create new "Nodes". For example:
 
-**Python:**  
 [driver_next_sinly_linked_list.py](src/python/singly-linked-list/driver_next_sinly_linked_list.py)
 ```python
 from SinglyLinkedList import SinglyLinkedList
@@ -381,8 +378,6 @@ int main()
 }
 ```
 
-
-
 **COMPILATION AND RUN:**
 ```cpp
 g++ Node.cpp SinglyLinkedList.cpp driver_printListFromNodeN.cpp -o test.out && ./test.out
@@ -425,7 +420,7 @@ public:
 
   //...
 
-    void printListFromHead(SinglyLinkedList list); // Method prototype.
+    void printListFromHead(); // Method prototype.
 
   //...
 };
@@ -435,7 +430,7 @@ public:
 ```cpp
 //...
 
-void SinglyLinkedList::printListFromHead(SinglyLinkedList list)
+void SinglyLinkedList::printListFromHead()
 {
     if (this->head == nullptr)
     {
@@ -465,16 +460,16 @@ void SinglyLinkedList::printListFromHead(SinglyLinkedList list)
 int main()
 {
     SinglyLinkedList list;
-    list.printListFromHead(list);
+    list.printListFromHead();
 
     list.head = new Node(10);
-    list.printListFromHead(list);
+    list.printListFromHead();
 
     list.head->next = new Node(20);
-    list.printListFromHead(list);
+    list.printListFromHead();
 
     list.head->next->next = new Node(30);
-    list.printListFromHead(list);
+    list.printListFromHead();
 
     return 0;
 }
@@ -490,7 +485,7 @@ g++ Node.cpp SinglyLinkedList.cpp driver_printListFromHead.cpp -o test.out && ./
 List is empty!
 10 
 10 20 
-10 20 30 
+10 20 30
 ```
 
 **NOTE:**  
@@ -583,6 +578,227 @@ List is empty!
 
 ---
 
+<div id="inserting-push-sll"></div>
+
+## Add a new Node at the front (push)
+
+Now, we let's use the approach to insert a new node in the front of a **Singly Linked List**. For example, if the given Linked List is:
+
+```
+10->15->20->25
+```
+
+And we add an item **5** at the front, then the **Singly Linked List** becomes:
+
+```
+5->10->15->20->25
+```
+
+To understand more easily see the image below:
+
+![img](images/Linkedlist_insert_at_start.png)  
+
+See that:
+
+ - We set the "next" pointer to point to the old first Node (head).
+ - Then, we set the new Node to be the head. That's, the first node.
+
+> **NOTE:**  
+> Let us call the function that adds at the front of the list is **push()**.
+
+Let's, get started implementing this approach in **C++**:
+
+[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
+```cpp
+//...
+
+class SinglyLinkedList
+{
+public:
+
+    void push(int data); // Method prototype.
+};
+
+//...
+```
+
+[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
+```cpp
+//...
+
+void SinglyLinkedList::push(int data)
+{
+    // Allocate a new Node.
+    Node *new_node = new Node();
+
+    new_node->data = data;         // Put data in the new Node.
+    new_node->next = (this->head); // Make "next" of the "new_node" point to head (old first Node).
+    this->head     = new_node;     // Move the head to point to the new node.
+}
+
+//...
+```
+
+[driver_push.cpp](src/cpp/singly-linked-list/driver_push.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
+
+int main()
+{
+    SinglyLinkedList list;
+    list.head = new Node(10);
+    list.head->next = new Node(15);
+    list.head->next->next = new Node(20);
+    list.head->next->next->next = new Node(25);
+    list.printListFromHead(); // Print Nodes values.
+
+    list.push(5);
+    list.printListFromHead(); // Print new Node value.
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ Node.cpp SinglyLinkedList.cpp driver_push.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```cpp
+10 15 20 25 
+5 10 15 20 25 
+```
+
+> **Is this function work in an Empty List?**  
+> Yes!
+
+For example:
+
+[driver_push.cpp](src/cpp/singly-linked-list/driver_push.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
+
+int main()
+{
+    SinglyLinkedList list;
+    // list.head = new Node(10);
+    // list.head->next = new Node(15);
+    // list.head->next->next = new Node(20);
+    // list.head->next->next->next = new Node(25);
+    list.printListFromHead(); // Print Nodes values.
+
+    list.push(5);
+    list.printListFromHead(); // Print new Node value.
+
+    return 0;
+}
+
+
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ Node.cpp SinglyLinkedList.cpp driver_push.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```cpp
+List is empty!
+5 
+```
+
+**NOTE:**  
+See that, before we had an Empty List, and after we add a new Node with element **5**.
+
+---
+
+Now, let's implement the same approach in **Python**:
+
+[SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
+```python
+#...
+
+# Method to insert a new Node at front.
+def push(self, data):
+
+    new_node = Node() # Allocate a new Node.
+
+    new_node.data = data      # Put data in the new Node.
+    new_node.next = self.head # Make "next" of the "new_node" point to head (old first Node).
+    self.head     = new_node  # Move the head to point to the new node.
+
+#...
+```
+
+[driver_push.py](src/python/singly-linked-list/driver_push.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+from Node import Node
+
+list = SinglyLinkedList()
+list.head = Node(10)
+list.head.next = Node(15)
+list.head.next.next = Node(20)
+list.head.next.next.next = Node(25)
+list.printListFromHead() # Print Nodes values.
+
+list.push(5)
+list.printListFromHead() # Print new Node value.
+```
+
+**OUTPUT:**  
+```cpp
+10 15 20 25 
+5 10 15 20 25 
+```
+
+---
+
+<div id="inserting-insertafternoden-sll"></div>
+
+## Add a new Node after a given node (insertAfterNodeN)
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( GENERAL SECTION ) --->
+
+---
+
 <div id="adv-disadv"></div>
 
 ## Linked List: Advantages and Disadvantages
@@ -611,6 +827,8 @@ List is empty!
 
 **REFERENCES:**  
 [What is Linked List](https://www.geeksforgeeks.org/what-is-linked-list//)  
+[Insertion in Linked List](https://www.geeksforgeeks.org/insertion-in-linked-list/)  
+[]()
 
 ---
 
