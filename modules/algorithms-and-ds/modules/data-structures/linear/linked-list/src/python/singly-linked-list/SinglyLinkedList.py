@@ -52,6 +52,7 @@ class SinglyLinkedList:
             new_node.next  = prev_node.next # Make "next" of the "new_node" point to "next" of the "prev_node".
             prev_node.next = new_node       # Move the "next" of "prev_node" as "new_node".
 
+    # Method to insert a new Node at End of a Singly Linked List.
     def append(self, data):
         # Allocate a new Node.
         new_node = Node(data)
@@ -75,3 +76,38 @@ class SinglyLinkedList:
             # "new_node" will be the last node.
             last.next = new_node
             return # Stop the method.
+
+    # Method to delete a Node "n" by position.
+    def deleteNodeN(self, position):
+        if self.head is None:
+            print("List is empty!")
+            return
+        else:
+            temp = self.head
+            if position == 0:
+                self.head = temp.next
+                del temp
+                return
+            else:
+                # [Finds the "Node" before the "Node" (position) to be deleted]
+                for i in range(position - 1):
+                    if temp is None:
+                        break
+                    temp = temp.next
+
+                # Check if position is more than number of nodes.
+                if temp is None or temp.next is None:
+                    print("The Node position exceeded!")
+                    return
+
+                # As the "temp->next" is the Node that will be deleted,
+                # we need to save the "next" of the Node that will be
+                # deleted in some pointer (next).
+                next = temp.next.next
+
+                # Delete the Node in the position passed, "temp->next".
+                del temp.next
+
+                # Make the "Node" before the "Node" that was deleted point
+                # to the "Node" after the "Node" that was deleted.
+                temp.next = next
