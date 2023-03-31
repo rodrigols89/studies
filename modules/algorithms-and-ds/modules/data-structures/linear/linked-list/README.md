@@ -11,6 +11,8 @@
        - [Add a new Node at the front (push)](#inserting-push-sll)
        - [Add a new Node after a given node (insertAfterNodeN)](#inserting-insertafternoden-sll)
        - [Add a new Node at the end (append)](#inserting-append-sll)
+     - Deleting a Node in a Singly Linked List:
+       - [Delete a Singly Linked List node at a given position](#delete-node-given-position)
    - Singly Linked List Standard Template Library (STL):
    - [Singly Linked List: Advantages and Disadvantages](#singly-adv-disadv)
    - [Singly Linked List Real Examples](#singly-examples)
@@ -336,8 +338,8 @@ void SinglyLinkedList::printListFromNodeN(Node *n)
 {
     if (n == nullptr)
     {
-        std::cout << "Node is empty!"
-                  << "\n";
+        std::cout << "Node is empty!\n";
+        return;
     }
     else
     {
@@ -434,8 +436,8 @@ void SinglyLinkedList::printListFromHead()
 {
     if (this->head == nullptr)
     {
-        std::cout << "List is empty!"
-                  << "\n";
+        std::cout << "List is empty!\n";
+        return;
     }
     else
     {
@@ -791,8 +793,8 @@ void SinglyLinkedList::insertAfterNodeN(Node *prev_node, int data)
 {
     if (this->head == nullptr)
     {
-        std::cout << "List is empty!"
-                  << "\n";
+        std::cout << "List is empty!\n";
+        return;
     }
     else if (prev_node == NULL)
     {
@@ -1096,6 +1098,362 @@ List3 = append(1) + append(2) + append(3):
 1 2 3 
 ```
 
+---
+
+<div id="delete-node-given-position"></div>
+
+## Delete a Singly Linked List node at a given position
+
+Here, let's see how to delete a Node in a Singly Linked List given position. For example, imagine we have the following Singly Linked List:
+
+```
+8->2->3->1->7
+```
+
+Now, suppose we need delete the Node in **posiiton 2**:
+
+```
+8->2->1->7
+```
+
+> **NOTE:**  
+> Like Arrays, Linked Lists same start from the index 0. That's why (por isso) Node(3) was deleted.
+
+Let's start by implementing this approach in **C++**:
+
+[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
+```cpp
+class SinglyLinkedList
+{
+public:
+    // Codes...
+    void deleteNodeN(int position); // Method prototype.
+};
+```
+
+[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
+```cpp
+//...
+
+void SinglyLinkedList::deleteNodeN(int position)
+{
+    if (this->head == nullptr)
+    {
+        std::cout << "List is empty!\n";
+        return; // Stop the method.
+    }
+    else
+    {
+        Node *temp = this->head; // Store head node.
+
+        // If position=0, then remove the "head".
+        if (position == 0)
+        {
+            this->head = temp->next; // Change second Node to be the new "head".
+            free(temp);              // Free old head.
+            return;                  // Stop the method.
+        }
+        else
+        {
+            /**
+             * [Finds the "Node" before the "Node" (position) to be deleted]
+             * Check in all iterations if the de Node (starting from temp=head)
+             * is NULL and "i < position -1", that's, the Node before the "Node"
+             * (position) to be deleted.
+             *
+             * For example, imagine we have the following list: 8->2->3->1->7->NULL
+             *
+             * - temp = head (zero 0) = [8]->2->3->1->7->NULL
+             * - Imagine that passed position was: 4
+             *
+             * First iteration: i=0 < (position=4 - 1) = 3 | YES!
+             * (temp = temp->next) = 8->[2]->3->1->7->NULL
+             *
+             * Second iteration: i++, i=1 < (position=4 - 1) = 3 | YES!
+             * (temp = temp->next) = 8->2->[3]->1->7->NULL
+             *
+             * Third iteration: i++, i=2 < (position=4 - 1) = 3 | YES!
+             * (temp = temp->next) =  8->2->3->[1]->7->NULL
+             *
+             * Fourth iteration: i++, i=3 < (position=4 - 1) = 3 | NO!
+             * The internal statements in the loop "for" now not is executed!
+             *
+             * Ok, we have the "Node" before the "Node" that will be deleted
+             * saved in the "temp" pointer: 8->2->3->[1]->7->NULL
+             *
+             * [Another example was if the "position" was 1:]
+             *
+             * First iteration: i=0 < (position=1 - 1) = 0 | NO!
+             * That's, temp = [8]->2->3->1->7->NULL, a "Node" before the
+             * Node" that will be deleted saved in the "temp" pointer.
+             */
+            for (int i = 0; temp != NULL && i < position - 1; i++)
+                temp = temp->next;
+
+            // Check if position is more than number of nodes.
+            if (temp == NULL || temp->next == NULL)
+            {
+                std::cout << "The Node position exceeded!\n";
+                return; // Stop the method.
+            }
+
+            /**
+             * As the "temp->next" is the Node that will be deleted, we need to save
+             * the "next" of the Node that will be deleted in some pointer (next).
+             *
+             * For example, position=1:
+             *
+             *  next   =   temp -> next -> next
+             *              [8] ->  2   ->   3   ->1->7->NULL
+             *                      |        |
+             *                      |        ---(Node will be save in "next" pointer)
+             *                      |
+             *            (Node will be deleted)
+             */
+            Node *next = temp->next->next;
+
+            /**
+             * Delete the Node in the position passed, "temp->next":
+             *
+             *  next   =   temp ->        -> next
+             *              [8] ->        ->   3   ->1->7->NULL
+             *                                 |
+             *                                 ---(Node will be save in "next" pointer)
+             */
+            free(temp->next); // Free Node selected in memory.
+
+            /**
+             * Make the "Node" before the "Node" that was deleted point
+             * to the "Node" after the "Node" that was deleted.
+             *
+             *    [8]->3->1->7->NULL
+             *     |   |
+             *     |   ---------
+             *     |           |
+             * temp->next = next
+             */
+            temp->next = next;
+        }
+    }
+}
+
+//...
+```
+
+[driver_deleteNodeN.cpp](src/cpp/singly-linked-list/driver_deleteNodeN.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
+
+int main()
+{
+    SinglyLinkedList list;
+
+    std::cout << "Try delete a Node 'n' in an Empty List:\n";
+    list.deleteNodeN(0);
+
+    std::cout << "\nList = 8->2->3->1->7:\n";
+    list.append(8);
+    list.append(2);
+    list.append(3);
+    list.append(1);
+    list.append(7);
+    list.printListFromHead(); // Print Nodes values.
+
+    std::cout << "\nList = (8->2->3->1->7) + deleteNodeN(4):\n";
+    list.deleteNodeN(4);
+    list.printListFromHead(); // Print Nodes values after delete Node position 1.
+
+    std::cout << "\nTry to delete a Node 'n' that position is more than the number of nodes:\n";
+    list.deleteNodeN(4);
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```cpp
+g++ Node.cpp SinglyLinkedList.cpp driver_deleteNodeN.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```
+Try delete a Node 'n' in an Empty List:
+List is empty!
+
+List = 8->2->3->1->7:
+8 2 3 1 7 
+
+List = (8->2->3->1->7) + deleteNodeN(1):
+8 2 3 1 
+
+Try to delete a Node 'n' that position is more than the number of nodes:
+The Node position exceeded!
+```
+
+---
+
+Nice, now let's see how to implement this approach in **Python**:
+
+[SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
+```python
+#...
+
+    # Method to delete a Node "n" by position.
+    def deleteNodeN(self, position):
+        if self.head is None:
+            print("List is empty!")
+            return
+        else:
+            temp = self.head
+            if position == 0:
+                self.head = temp.next
+                del temp
+                return
+            else:
+                # [Finds the "Node" before the "Node" (position) to be deleted]
+                for i in range(position - 1):
+                    if temp is None:
+                        break
+                    temp = temp.next
+
+                # Check if position is more than number of nodes.
+                if temp is None or temp.next is None:
+                    print("The Node position exceeded!")
+                    return
+
+                # As the "temp->next" is the Node that will be deleted,
+                # we need to save the "next" of the Node that will be
+                # deleted in some pointer (next).
+                next = temp.next.next
+
+                # Delete the Node in the position passed, "temp->next".
+                del temp.next
+
+                # Make the "Node" before the "Node" that was deleted point
+                # to the "Node" after the "Node" that was deleted.
+                temp.next = next
+
+#...
+```
+
+[driver_deleteNodeN.py](src/python/singly-linked-list/driver_deleteNodeN.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+
+if __name__ == '__main__':
+    list = SinglyLinkedList()
+
+    print("Try delete a Node 'n' in an Empty List:")
+    list.deleteNodeN(0)
+
+    print("\nList = 8->2->3->1->7:")
+    list.append(8)
+    list.append(2)
+    list.append(3)
+    list.append(1)
+    list.append(7)
+    list.printListFromHead() # Print Nodes values.
+
+    print("\nList = (8->2->3->1->7) + deleteNodeN(4):")
+    list.deleteNodeN(4)
+    list.printListFromHead() # Print Nodes values after delete Node position 1.
+
+    print("\nTry to delete a Node 'n' that position is more than the number of nodes:")
+    list.deleteNodeN(4)
+```
+
+**OUTPUT:**  
+```python
+Try delete a Node 'n' in an Empty List:
+List is empty!
+
+List = 8->2->3->1->7:
+8 2 3 1 7 
+
+List = (8->2->3->1->7) + deleteNodeN(4):
+8 2 3 1 
+
+Try to delete a Node 'n' that position is more than the number of nodes:
+The Node position exceeded!
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( GENERAL SECTION ) --->
 
 ---
@@ -1129,7 +1487,7 @@ List3 = append(1) + append(2) + append(3):
 **REFERENCES:**  
 [What is Linked List](https://www.geeksforgeeks.org/what-is-linked-list//)  
 [Insertion in Linked List](https://www.geeksforgeeks.org/insertion-in-linked-list/)  
-[]()
+[Delete a Linked List node at a given position](https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position/)
 
 ---
 

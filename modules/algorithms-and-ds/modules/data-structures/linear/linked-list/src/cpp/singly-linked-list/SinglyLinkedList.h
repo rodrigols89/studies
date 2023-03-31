@@ -14,6 +14,7 @@ public:
     void push(int data);                              // Method prototype.
     void insertAfterNodeN(Node *prev_node, int data); // Method prototype.
     void append(int data);                            // Method prototype.
+    void deleteNodeN(int position);                   // Method prototype.
 };
 
 #endif // LINKEDLIST_H_
