@@ -1113,11 +1113,11 @@ Here, let's see how to delete a Node in a Singly Linked List given position. For
 Now, suppose we need delete the Node in **posiiton 2**:
 
 ```
-8->3->1->7
+8->2->1->7
 ```
 
 > **NOTE:**  
-> Like Arrays, Linked Lists same start from the index 0. That's why (por isso) Node(2) was deleted.
+> Like Arrays, Linked Lists same start from the index 0. That's why (por isso) Node(3) was deleted.
 
 Let's start by implementing this approach in **C++**:
 
