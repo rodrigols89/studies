@@ -12,7 +12,8 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Programming:__
-   - **[Algorithms & Data Structures](modules/algorithms-and-ds)**
+   - **Algorithms & Data Structures:**
+     - **[Algorithms & Data Structures](modules/algorithms-and-ds)**
    - __Programming Languages:__
      - [JavaScript](modules/javascript-codes)
      - [Python](modules/python-codes)
