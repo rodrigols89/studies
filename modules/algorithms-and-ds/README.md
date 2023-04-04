@@ -31,7 +31,7 @@
    - **Non-Primitive Data Structures:**
      - **[Linear:](modules/data-structures/linear/linear-ds.md)**
        - **Static:**
-         - Array
+         - [Array](modules/data-structures/linear/array)
        - **Dynamic:**
          - [Linked-List](modules/data-structures/linear/linked-list)
          - [Stack (Last-In First-Out)](modules/data-structures/linear/stack)
