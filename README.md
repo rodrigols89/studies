@@ -13,7 +13,8 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
  - __Programming:__
    - **Algorithms & Data Structures:**
-     - **[Algorithms & Data Structures](modules/algorithms-and-ds)**
+     - [Problem Solving with Algorithms and Data Structures using Python](modules/algorithms-ds-using-python)
+     - [Algorithms & Data Structures](modules/algorithms-and-ds)
    - __Programming Languages:__
      - [JavaScript](modules/javascript-codes)
      - [Python](modules/python-codes)
