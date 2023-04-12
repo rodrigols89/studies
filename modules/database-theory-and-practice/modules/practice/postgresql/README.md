@@ -2,21 +2,43 @@
 
 ## Contents
 
- - [](#)
- - [References](#references)
+ - [List databases (\l)](#list-databases)
  - **Settings:**
    - [Docker Compose Settings](#docker-compose-settings)
+ - [References](#references)
 
 ---
 
-<div id="references"></div>
+<div id="list-databases"></div>
 
-## References
+## List databases (\l)
 
- - **Settings:**
-   - [Setting up PgAdmin Docker Connection: 3 Critical Steps](https://hevodata.com/learn/pgadmin-docker/)
-   - [Connect to PostgreSQL Database on Linux, Windows](https://www.w3resource.com/PostgreSQL/connect-to-postgresql-database.php)
-   - [Install PostgreSQL on Linux and Windows](https://www.w3resource.com/PostgreSQL/install-postgresql-on-linux-and-windows.php)
+To list all databases in Postgres using **psql**, you can use the **"\l"** command. This command will display a table with information about each database, including:
+
+ - The database name.
+ - The owner of the database.
+ - The encoding for the database.
+ - The collation for the database.
+
+For example:
+
+**INTPUT:**  
+```
+\l
+```
+
+**OUTPUT:**  
+```
+   Name    | Owner | Encoding |  Collate   |   Ctype    | ICU Locale | Locale Provider | Access privileges 
+-----------+-------+----------+------------+------------+------------+-----------------+-------------------
+ postgres  | root  | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            | 
+ root      | root  | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            | 
+ template0 | root  | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            | =c/root          +
+           |       |          |            |            |            |                 | root=CTc/root
+ template1 | root  | UTF8     | en_US.utf8 | en_US.utf8 |            | libc            | =c/root          +
+           |       |          |            |            |            |                 | root=CTc/root
+(4 rows)
+```
 
 ---
 
@@ -39,7 +61,7 @@ sudo docker exec -it postgres-container bash
 Finally, to run the **PostgreSQL** inside the container run:
 
 ```
-psql -U root
+psql
 ```
 
 To quit run:
@@ -60,4 +82,27 @@ You can also open the **"pgAdmin 4"** on the browser to test your database queri
 
 ---
 
+<div id="references"></div>
+
+## References
+
+ - [PostgreSQL Data Types](https://www.w3resource.com/PostgreSQL/data-types.php)
+ - [PostgreSQL CONSTRAINTS](https://www.w3resource.com/PostgreSQL/constraint.php)
+ - **Settings:**
+   - [Setting up PgAdmin Docker Connection: 3 Critical Steps](https://hevodata.com/learn/pgadmin-docker/)
+   - [Connect to PostgreSQL Database on Linux, Windows](https://www.w3resource.com/PostgreSQL/connect-to-postgresql-database.php)
+   - [Install PostgreSQL on Linux and Windows](https://www.w3resource.com/PostgreSQL/install-postgresql-on-linux-and-windows.php)
+
+---
+
 Ro**drigo** **L**eite da **S**ilva - **drigols**
+
+**INTPUT:**  
+```
+
+```
+
+**OUTPUT:**  
+```
+
+```
