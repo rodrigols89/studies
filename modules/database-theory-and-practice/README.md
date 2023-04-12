@@ -46,6 +46,7 @@
      - **Functions:**
        - **Aggregate Functions:**
          - [COUNT() function](modules/practice/sql/count-function.md)
+   - [PostgreSQL](modules/practice/postgresql/)
    - **NoSQL:**
      - **MongoDB:**
        - [Settings](modules/practice/nosql/mongodb/settings)
