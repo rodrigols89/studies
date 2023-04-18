@@ -76,7 +76,6 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Artificial Intelligence & Data Science:__
-   - [Stack youtube channel - Bootcamps](modules/stack-bootcamps)
    - [Artificial Intelligence](modules/ai-codes)
 
 ---
@@ -96,6 +95,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
  - __BONUS:__
    - [The Checklist (Good practices for good programmers)](modules/the-checklist)
    - [Fundamentos de Eletricidade & Manutenção Elétrica](modules/electrician)
+   - [Step by Step Projects](modules/step-by-step-projects)
    - [Scientific Paper](modules/scientific-paper)
    - [Google Sheets](modules/google-sheets)
    - [Lives](modules/lives)
