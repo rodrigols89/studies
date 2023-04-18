@@ -4,86 +4,105 @@
 
 ## Contents
 
- - **Software Engineering:**
-   - **Data Science/A.I Project management:**
-     - [Data Science projects types (+steps)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/project-types.md)
-     - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/crisp-dm.md)
-     - [Data Pipeline](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-pipeline.md)
- - **Software Development & Engineering:**
-   - **Algorithms:**
-     - [Design and Analysis of Algorithms](https://github.com/drigols/algorithms#daa)
-     - [Data Structures](https://github.com/drigols/algorithms#ds)
-   - **Clean Code:**
-     - Docstrings:
-       - [Docstrings in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
-     - Exceptions:
-       - [Exceptions in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb/)
-     - Object-Oriented Programming:
-       - [Object-Oriented Programming (Theory & Practice)](https://github.com/drigols/studies/tree/master/modules/oop)
-     - [SOLID](https://www.youtube.com/watch?v=mkx0CdWiPRA)
-     - Design Patterns:
-     - Software Testing:
-     - Debugger:
-       - [Debugger in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/debugger/README.md)
-       - [Debugger in C++](https://github.com/drigols/studies/tree/master/modules/cc-codes/modules/debugging/gdb)
-   - **Parallel Programming & Concurrent Programming:**
-   - **Web Development:**
-     - RESTful API:
-       - [REST (Constraints)](https://github.com/drigols/studies/blob/master/modules/restful-api/modules/rest-constraints.md)
-       - [HTTP Methods](https://github.com/drigols/studies/blob/master/modules/restful-api/modules/http-methos.md)
-       - [Status Codes](https://github.com/drigols/studies/blob/master/modules/restful-api/modules/status-codes.md)
- - **Artificial Intelligence + Data Science Projects:**
-   - **Preprocessing:**
-     - **[Data types](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-types.md)**
-       - [Convert attributes to category (08)](https://github.com/drigols/studies/blob/master/modules/stack-bootcamp-ds-2021-10/notebooks/machine_learning_deploy.ipynb)
-     - **[Missing Data](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/missing-data.md)**
-     - **[Correlation between two numerical variables](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/correlation.md)**
-     - **[Data Normalization](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/preprocessing/data-normalization.md)**
-   - **Feature Engineering:**
-     - [Missing Data Imputation](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/missing-data-imputation/README.md)
-     - [Categorical Encoding](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/feature-engineering/categorical-encoding/categorical-encoding.md)
-   - **Statistics & Probability:**
-     - [Descriptive Statistics](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/descriptive-statistics.md)
-     - [Probability (ENG/+PT-BR)](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/probability.md)
-     - [Random Variables](https://github.com/drigols/studies/blob/master/modules/math-codes/modules/statistics-and-probability/random-variables.md)
-   - **Machine Learning Algorithms::**
-     - **[Regressions:](https://github.com/drigols/studies/tree/master/modules/ai-codes/modules/regression)**
-       - [What type of regression do we have? Simple x Multiple x Multivariate](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/intro-to-linear-regression.md)
-       - [Create a best fit straight](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/linear-regression-sse-ols-gd.md)
-     - **[Coefficient of Determination R²:](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/r2.md)**
-       - [Linear Regression](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/linear-regression/linear-regression-sse-ols-gd.md)
-       - [Ridge Regression (L1 + L2)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
-       - [Elastic Net](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/elastic-net/intro-to-elastic-net.md)
-     - **Cross-Validation:**
-       - [K-Fold](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/cross-validation/k-fold.md)
-       - [Stratified K-Fold](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/cross-validation/stratified-k-fold.md)
-     - **Hyperparameter Tuning:**
-       - [RandomizedSearchCV vs GridsearchCV](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/hyperparameter-tuning/randomizedsearchcv-vs-gridsearchcv.md)
-     - **Classification:**
-       - [Logistic Regression](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/logistic-regression/README.md)
-     - [**Ensemble Methods**](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/ensemble-methods/ensemble-methods.md)
-   - **Tips & Tricks:**
-     - [Training, Validation and Testing sets](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/training-validation-testing.md)
-     - [Review: Overfitting, Underfitting & O trade-off viés-variância](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/overfitting-underfitting.ipynb)
-     - [Learning Curves para Machine Learning](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/learning-curves-for-ml.ipynb)
-     - [Data Storytelling](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-storytelling.md)
- - **Tools:**
-   - Project Settings:
-     - General:
-       - .gitignore
-       - Hooks (pre-commit)
-     - Python:
-       - Virtual Environment (Venv, Virtualenv, Poetry)
-       - requirements.txt
+ - [Software Development good practices](#sd-gp)
+ - [Software Engineering](#software-engineering)
+ - [A.I/+D.S Projects](#ai-and-ds-projects)
+
+---
+
+<div id="sd-gp"></div>
+
+## Software Development good practices
+
+ - **Project Settings:**
+   - **.gitignore**
+   - **Editor, IDE settings:**
+     - **VSCode:**
+       - .editorconfig (or similar setting)
+   - **Virtual Environment:**
+     - **Python:**
+       - Poetry, Venv, Virtualenv
+   - **Project Metadata:**
+     - **Python:**
        - pyproject.toml
-       - setup.cfg
-       - Code Style:
-         - reorder_python_imports
-         - Black
-         - Flake8
-     - Editor, IDE settings:
-       - VSCode:
-         - .editorconfig
+       - requirements.txt
+   - **Project Management:**
+     - **Python:**
+       - taskipy
+   - **Hooks:**
+     - **Python:**
+       - pre-commit
+   - **CI/CD:**
+     - **CI (Continuous Integration):**
+       - GitHub Action
+     - **CD (Continuous Delivery):**
+   - **Project LICENSE**
+ - **Code Better:**
+   - **Lint:**
+     - **Python:**
+       - Black
+       - Blue
+       - Flake8
+       - isort
+       - reorder_python_imports
+   - **Documentation:**
+     - **Python:**
+       - MkDocs:
+         - mkdocs-material
+         - mkdocstrings
+         - mkdocstrings-python
+         - mkdocs-macros-plugin
+         - jinja2
+       - ReadTheDocs
+   - **Exceptions:**
+     - [Exceptions in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/errors-and-exceptions/exceptions.ipynb/)
+     - [Exception Handling in C++](https://github.com/drigols/studies/blob/master/modules/cpp-codes/modules/structured/exception-handling.md)
+   - **Object-Oriented Programming:**
+     - [OOP in Python](#)
+     - [OOP in C++](#)
+   - [SOLID](https://www.youtube.com/watch?v=mkx0CdWiPRA)
+   - **Design Patterns:**
+   - **Software Testing:**
+   - **Debugger:**
+     - [Debugger in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/debugger/README.md)
+ - **Web Development:**
+   - [RESTful API](https://github.com/drigols/studies/tree/master/modules/restful-api)
+ - **Parallel Programming & Concurrent Programming:**
+ - **Algorithms:**
+   - [Design and Analysis of Algorithms](https://github.com/drigols/studies/tree/master/modules/algorithms-and-ds#daa)
+   - [Data Structures](https://github.com/drigols/studies/tree/master/modules/algorithms-and-ds#ds)
+
+---
+
+<div id="software-engineering"></div>
+
+## Software Engineering
+
+ - **Data Science/A.I Project management:**
+   - [Data Science projects types (+steps)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/project-types.md)
+   - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/crisp-dm.md)
+   - [Data Pipeline](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-pipeline.md)
+
+---
+
+<div id="ai-and-ds-projects"></div>
+
+## A.I/+D.S Projects
+
+ - **Statistics & Probability:**
+ - **Machine Learning:**
+ - **Deep Learning:**
+ - **Reinforcement Learning:**
+   - **Good Practices (Tips & Tricks):**
+     - **Data Preprocessing:**
+     - **Feature Engineering:**
+     - **[Hyperparameter Tuning](https://github.com/drigols/studies/tree/master/modules/ai-codes/modules/hyperparameter-tuning)**
+     - **[Cross-Validation](https://github.com/drigols/studies/tree/master/modules/ai-codes/modules/cross-validation)**
+     - **Tips & Tricks:**
+       - [Training, Validation and Testing sets](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/training-validation-testing.md)
+       - [Review: Overfitting, Underfitting & O trade-off viés-variância](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/overfitting-underfitting.ipynb)
+       - [Learning Curves para Machine Learning](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/learning-curves-for-ml.ipynb)
+       - [Data Storytelling](https://github.com/drigols/studies/blob/master/modules/ai-codes/modules/concepts/data-storytelling.md)
 
 ---
 
