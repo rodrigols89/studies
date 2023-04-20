@@ -63,6 +63,7 @@
    - [SOLID](https://www.youtube.com/watch?v=mkx0CdWiPRA)
    - **Design Patterns:**
    - **Software Testing:**
+     - [Pytest](https://github.com/drigols/studies/tree/master/modules/python-codes/modules/test/pytest)
    - **Debugger:**
      - [Debugger in Python](https://github.com/drigols/studies/blob/master/modules/python-codes/modules/tips-and-tricks/debugger/README.md)
  - **Web Development:**
