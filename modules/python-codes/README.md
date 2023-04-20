@@ -34,10 +34,7 @@
    - [Requests: HTTP for Humans](modules/api/requests)
    - [FastAPI](modules/api/fastapi)
  - **Testing:**
-   - **Concepts and Theories:**
-     - [Strategy: GIVEN-WHEN-THEN](modules/test/concepts/given-when-then.md)
-   - **Tools:**
-     - [PyTest](modules/test/pytest)
+   - [PyTest](modules/test/pytest)
  - **Databases:**
    - [MySQL in Python](modules/databases/mysql)
    - [SQLAlchemy](modules/databases/sqlalchemy)

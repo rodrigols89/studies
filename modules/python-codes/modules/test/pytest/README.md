@@ -1,7 +1,5 @@
 # Pytest
 
-![img](images/logo.png)
-
 ## Contents
 
  - [Running a specific test in a test file (file_source::specifictest)](#running-specific-test)
