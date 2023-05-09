@@ -30,7 +30,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
      - [RESTful API](modules/restful-api)
      - [Rocketseat](modules/rocketseat-samples)
    - __Game Development:__
-     - [Game Development](modules/game-dev)
+     - [x](#)
    - __Software Testing:__
      - [x](#)
    - __Parallel Programming:__
