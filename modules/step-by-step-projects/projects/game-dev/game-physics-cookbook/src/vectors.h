@@ -40,4 +40,28 @@ typedef struct vec3
     }
 } vec3;
 
+// Operator Overloading (prototype) for Add (+) operation.
+vec2 operator+(const vec2 &l, const vec2 &r);
+vec3 operator+(const vec3 &l, const vec3 &r);
+
+// Operator Overloading (prototype) for Sub (-) operation.
+vec2 operator-(const vec2 &l, const vec2 &r);
+vec3 operator-(const vec3 &l, const vec3 &r);
+
+// Operator Overloading (prototype) for Scalar Multiplication (*) operation.
+vec2 operator*(const vec2 &l, float r);
+vec3 operator*(const vec3 &l, float r);
+
+// Operator Overloading (prototype) for Component-wise multiplication (*) operation.
+vec2 operator*(const vec2 &l, const vec2 &r);
+vec3 operator*(const vec3 &l, const vec3 &r);
+
+// Operator Overloading (prototype) for check equal (==) operation.
+bool operator==(const vec2 &l, const vec2 &r);
+bool operator==(const vec3 &l, const vec3 &r);
+
+// Operator Overloading (prototype) for check not equal (!=) operation.
+bool operator!=(const vec2 &l, const vec2 &r);
+bool operator!=(const vec3 &l, const vec3 &r);
+
 #endif
