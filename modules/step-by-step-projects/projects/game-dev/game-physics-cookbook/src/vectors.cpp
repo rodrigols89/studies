@@ -77,3 +77,15 @@ bool operator!=(const vec3 &l, const vec3 &r)
 {
     return !(l == r);
 }
+
+// Dot Product implementation.
+float Dot(const vec2 &l, const vec2 &r)
+{
+    return ((l.x * r.x) + (l.y * r.y));
+}
+
+// Dot Product implementation.
+float Dot(const vec3 &l, const vec3 &r)
+{
+    return ((l.x * r.x) + (l.y * r.y) + (l.z * r.z));
+}

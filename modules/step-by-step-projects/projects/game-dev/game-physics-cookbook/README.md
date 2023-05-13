@@ -7,12 +7,13 @@
  - **Vectors:**
    - [Vector definition](#vector-definition)
    - [Component-wise operations](#component-wise-operations)
+   - [Dot Product](#dot-product)
  - **Implementations:**
    - **Vectors:**
      - [2D Vector](#2d-vector)
      - [3D Vector](#3d-vector)
      - [Implementations of Component-wise operations](#implementations-component-wise-operations)
-
+     - [Dot Product implementation](#dot-product-implementation)
 
 <!--- ( Vectors ) -->
 
@@ -130,6 +131,109 @@ See the image below to understand more easily how the multiplication of a Vector
 
 > **NOTE:**  
 > See that in the two approaches, we multiply each component of the vector **"U"** by the respective component in the vector **"V"** (or scale).
+
+---
+
+<div id="dot-product"></div>
+
+## Dot Product
+
+> The **"Dot Product"** operation is the *sum (summation)* of the multiplication of the components.
+
+Different of *component-wise operations multiplications*, where only each component is multiplied by the respective component (or scale) in the **Dot Product** approach we:
+
+ - Multiply each component by the respective component.
+ - Next, *sum (summation)* all multiplications.
+
+The formula for the **Dot Product** is:
+
+![img](images/dot-01.jpg)  
+![img](images/dot-02.jpg)  
+
+**NOTE:**  
+The resulting scalar represents the directional relation of the vectors. That is, **A * B** represents how much **"A"** is pointing in the direction of **"B"**.
+
+Using the dot product we can tell if two vectors are pointing in the same direction or not following these rules:
+
+ - If the dot product is **positive**, the vectors are pointing in the **same direction**.
+ - If the dot product is **negative**, the vectors point in **opposing directions**.
+ - If the dot product is 00, the vectors are **perpendicular**.
+
+> **Ok, but when use that?**
+
+Imagine we have a **spaceship S**,  We know its forward vector, **"F"** and a vector that points to its right, **"R"**:
+
+![img](images/spaceship-01.jpg)  
+
+We also have an enemy **ship E**, and a vector that points from our **ship S** to the enemy **ship E**, vector **"T"**:
+
+![img](images/spaceship-02.jpg)  
+
+> **How can we tell if the the ship S needs to turn left or right to face the enemy ship E?**
+
+ - We need to take the dot product of **"T"** and **"R"**:
+   - If the result of the dot product is **positive**, the **ship needs to turn right**.
+   - If the result of the dot product is **negative**, the **ship needs to turn to the left**.
+   - If the result of the dot product is **0**, the **ship does not need to turn**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -658,11 +762,77 @@ v1_3d == v2_3d (0=false, 1=true): 0
 v1_3d != v2_3d (0=false, 1=true): 1
 ```
 
+---
 
+<div id="dot-product-implementation"></div>
 
+## Dot Product implementation
 
+To implement [Dot Product](#dot-product) concepts is very easy. For example, see the codes below:
 
+[vectors.h](src/vectors.h)
+```cpp
+// Prototype for Dot Product function.
+float Dot(const vec2& l, const vec2& r);
+float Dot(const vec3& l, const vec3& r);
+```
 
+[vectors.cpp](src/vectors.cpp)
+```cpp
+// Dot Product implementation.
+float Dot(const vec2 &l, const vec2 &r)
+{
+    return ((l.x * r.x) + (l.y * r.y));
+}
+
+// Dot Product implementation.
+float Dot(const vec3 &l, const vec3 &r)
+{
+    return ((l.x * r.x) + (l.y * r.y) + (l.z * r.z));
+}
+```
+
+[driver_dot_product.cpp](src/driver_dot_product.cpp)
+```cpp
+#include <iostream>
+#include "vectors.h"
+
+int main()
+{
+    std::cout << "================ ( 2D Vector example ) ================\n";
+
+    vec2 v1_2d = {5.0f, 4.0f};
+    vec2 v2_2d = {10.0f, 8.0f};
+    float dot_product_2d;
+
+    dot_product_2d = Dot(v1_2d, v1_2d);
+    std::cout << "Dot Product: " << dot_product_2d << "\n";
+
+    std::cout << "================ ( 3D Vector example ) ================\n";
+
+    vec3 v1_3d = {5.0f, 4.0f, 6.0f};
+    vec3 v2_3d = {10.0f, 8.0f, 3.0f};
+    float dot_product_3d;
+
+    dot_product_3d = Dot(v1_3d, v2_3d);
+    std::cout << "Dot Product: " << dot_product_3d;
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```bash
+g++ driver_dot_product.cpp vectors.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```bash
+================ ( 2D Vector example ) ================
+Dot Product: 41
+================ ( 3D Vector example ) ================
+Dot Product: 100
+```
 
 ---
 
