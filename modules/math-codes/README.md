@@ -6,7 +6,7 @@
 
  - [Algebra](#algebra)
  - [Geometry](#geometry)
- - [Trigonometry](#trigonometry)
+ - [Trigonometry](modules/trigonometry)
  - [Statistics and Probability](#statistics-probability)
  - [Linear Algebra](#linear-algebra)
  - [Differential Calculus](#differential-calculus)
@@ -34,13 +34,6 @@
 <div id="geometry"></div>
 
 ## Geometry:
-
----
-
-<div id="trigonometry"></div>
-
-## Trigonometry
-   - [x](#)
 
 ---
 
