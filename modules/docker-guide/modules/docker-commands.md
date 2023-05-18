@@ -1,32 +1,3 @@
-# Docker Commands
-
-## Contents
-
- - **Docker Commands:**
-   - [Checking docker version](#v)
-   - [Using a testing image](#testing-image)
-   - [docker system prune -a -f --volumes](#system-prune)
- - **Image Commands:**
-   - [listing docker images](#listing-docker-images)
-   - [removing docker images](#remove-image)
- - **Container Commands:**
-   - [Initialization a Container](#initialization)
-   - [listing containers](#listing-containers)
-   - [Stopping a container](#stopping)
-   - [Starting a container](#starting)
-   - [Removing containers](#removing)
-   - [Entering a container (exec -it)](#exec-it)
- - **Docker Compose:**
-   - [docker compose build](#compose-build)
-   - [docker compose images](#compose-images)
-   - [docker compose stop](#compose-stop)
-   - [docker compose run](#compose-run)
-   - [docker compose up](#compose-up)
-   - [docker compose ps](#compose-ps)
-   - [docker compose down](#compose-down)
-
----
-
 <div id="v"></div>
 
 ## Checking docker version
@@ -439,12 +410,3 @@ Container   Repository   Tag   Image Id   Size
 Name   Command   State   Ports
 ------------------------------
 ```
-
----
-
-**REFERENCES:**  
-[Docker Compose Tutorial: advanced Docker made simple](https://www.educative.io/blog/docker-compose-tutorial)  
-
----
-
-**Rodrigo Leite -** *drigols*
