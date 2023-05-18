@@ -8,12 +8,17 @@
    - [Vector definition](#vector-definition)
    - [Component-wise operations](#component-wise-operations)
    - [Dot Product](#dot-product)
+   - [Magnitude](#magnitude)
+   - [Find the distance between two points (Using Magnitude)](#distance-two-points)
  - **Implementations:**
    - **Vectors:**
      - [2D Vector](#2d-vector)
      - [3D Vector](#3d-vector)
      - [Implementations of Component-wise operations](#implementations-component-wise-operations)
      - [Dot Product implementation](#dot-product-implementation)
+     - [Magnitude implementation](#magnitude-implementation)
+     - [Distance between two points (Using Magnitude) implementation](#distance-two-points-implementation)
+
 
 <!--- ( Vectors ) -->
 
@@ -176,34 +181,55 @@ We also have an enemy **ship E**, and a vector that points from our **ship S** t
    - If the result of the dot product is **negative**, the **ship needs to turn to the left**.
    - If the result of the dot product is **0**, the **ship does not need to turn**.
 
+---
 
+<div id="magnitude"></div>
 
+## Magnitude
 
+> The **Magnitude (or length)** of a vector is written as the letter of the vector surrounded by two bars, **|| V ||**.
 
+The **Magnitude (or length)** of a vector is:
 
+> The square root of the dot product of the vector with itself:
 
+![img](images/magnitude-01.jpg)  
 
+See that:
 
+ - **We are taking square root (pegando a raiz quadrada).**
+ - **From Dot Product operation of a Vector "A" with itself (Da operação Dot Product de um vetor "A" consigo mesmo).**
 
+**NOTE:**  
+In addition to implementing the magnitude function, we're also going to implement a magnitude squared function. The formula is the same, but it avoids the expensive square root operation:
 
+![img](images/magnitude-02.jpg)  
 
+**NOTE:**  
+In games we often compare the magnitude of a vector to known numbers; however, doing a comparison between a number and the magnitude **is expensive (é caro) because of the square root operation**.
 
+---
 
+<div id="distance-two-points"></div>
 
+## Find the distance between two points (Using Magnitude)
 
+> The **Magnitude (or length)** of a vector **can be used to find the distance between two points**.
 
+Assuming we have points **"P1"** and **"P2"**, we can find a vector **"T"** that connects them by subtracting **"P2"** from **"P1"**. For example, see the image below to understand more easily:
 
+![img](images/distance-01.jpg)  
 
+**NOTE:**  
+The distance between the two points is the **length (or Magnitude)** of **"T"**.
 
+---
 
+<div id=""></div>
 
+## x
 
-
-
-
-
-
-
+x
 
 
 
@@ -833,6 +859,208 @@ Dot Product: 41
 ================ ( 3D Vector example ) ================
 Dot Product: 100
 ```
+
+---
+
+<div id="magnitude-implementation"></div>
+
+## Magnitude implementation
+
+**NOTE:**  
+Before starting to implement Magnitude functions, let's recap some things.
+
+The **Magnitude (or length)** of a vector is:
+
+> The square root of the dot product of the vector with itself:
+
+![img](images/magnitude-01.jpg)  
+
+See that:
+
+ - **We are taking square root (pegando a raiz quadrada).**
+ - **From Dot Product operation of a Vector "A" with itself (Da operação Dot Product de um vetor "A" consigo mesmo).**
+
+**NOTE:**  
+In addition to implementing the magnitude function, we're also going to implement a magnitude squared function. The formula is the same, but it avoids the expensive square root operation:
+
+![img](images/magnitude-02.jpg)  
+
+ - **[EN] -** The square root operation is a relatively expensive one that should be avoided whenever possible. For this reason, we are also going to implement a function to find the square magnitude of a vector.
+ - **[PT] -** A operação de raiz quadrada é relativamente cara e deve ser evitada sempre que possível. Por esse motivo, também vamos implementar uma função para encontrar a magnitude quadrada de um vetor.
+
+Now, let's do some implementations:
+
+[vectors.h](src/vectors.h)
+```cpp
+// Prototype for Magnitude functions (with square root).
+float Magnitude(const vec2 &v);
+float Magnitude(const vec3 &v);
+
+// Prototype for Magnitude functions (without square root).
+float MagnitudeSq(const vec2 &v);
+float MagnitudeSq(const vec3 &v);
+```
+
+[vectors.cpp](src/vectors.cpp)
+```cpp
+
+// Magnitude function implementation (with square root).
+float Magnitude(const vec2 &v)
+{
+    return sqrtf(Dot(v, v));
+}
+
+// Magnitude function implementation (with square root).
+float Magnitude(const vec3 &v)
+{
+    return sqrtf(Dot(v, v));
+}
+
+// Magnitude function implementation (without square root).
+float MagnitudeSq(const vec2 &v)
+{
+    return Dot(v, v);
+}
+
+// Magnitude function implementation (without square root).
+float MagnitudeSq(const vec3 &v)
+{
+    return Dot(v, v);
+}
+```
+
+[driver_magnitude.cpp](src/driver_magnitude.cpp)
+```cpp
+#include <iostream>
+#include "vectors.h"
+
+int main()
+{
+    std::cout << "================ ( 2D Vector example ) ================\n";
+
+    vec2 v_2d = {5.0f, 4.0f};
+    float mag2d = Magnitude(v_2d);
+    std::cout << "Magnitude: " << mag2d << "\n";
+
+    std::cout << "================ ( 3D Vector example ) ================\n";
+
+    vec3 v_3d = {5.0f, 4.0f, 6.0f};
+    float mag3d = Magnitude(v_2d);
+    std::cout << "Magnitude: " << mag3d;
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```bash
+g++ driver_magnitude.cpp vectors.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```bash
+================ ( 2D Vector example ) ================
+Magnitude: 6.40312
+================ ( 3D Vector example ) ================
+Magnitude: 6.40312
+```
+
+---
+
+<div id="distance-two-points-implementation"></div>
+
+## Distance between two points (Using Magnitude) implementation
+
+To implement the distance between two points in C++ we know that first we need to subtract a vector **"P1"** from **"P2"** and **the Magnitude (or length) of this subtraction is the distance between two points**.
+
+Let's, see how implement that in the practice:
+
+[vectors.h](src/vectors.h)
+```cpp
+// Prototypes for Distance functions (without square root).
+float Distance(const vec2 &p1, const vec2 &p2);
+float Distance(const vec3 &p1, const vec3 &p2);
+```
+
+[vectors.cpp](src/vectors.cpp)
+```cpp
+// Distance function implementation (2D).
+float Distance(const vec2 &p1, const vec2 &p2)
+{
+    vec2 t = p1 - p2;
+    return Magnitude(t);
+}
+
+// Distance function implementation (3D).
+float Distance(const vec3 &p1, const vec3 &p2)
+{
+    vec3 t = p1 - p2;
+    return Magnitude(t);
+}
+```
+
+**NOTE:**  
+See tha, the distance between two points is **Magnitude (or length)** of **"t"**, and **"t"** is  **"p1 - p2"**.
+
+[driver_distance.cpp](src/driver_distance.cpp)
+```cpp
+#include <iostream>
+#include "vectors.h"
+
+int main()
+{
+    std::cout << "================ ( 2D Vector example ) ================\n";
+
+    vec2 V1_2D = {6.0f, 3.0f};
+    vec2 V2_2D = {2.0f, 5.0f};
+
+    float t_distance_2D = Distance(V1_2D, V2_2D);
+    std::cout << "Distance: " << t_distance_2D << "\n";
+
+    std::cout << "================ ( 3D Vector example ) ================\n";
+
+    vec3 V1_3D = {15.0f, 3.0f, 7.0f};
+    vec3 V2_3D = {3.0f, 10.0f, 5.0f};
+
+    float t_distance_3D = Distance(V1_3D, V2_3D);
+    std::cout << "Distance: " << t_distance_3D;
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```bash
+g++ driver_distance.cpp vectors.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```bash
+================ ( 2D Vector example ) ================
+Distance: 4.47214
+================ ( 3D Vector example ) ================
+Distance: 14.0357
+```
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
