@@ -86,7 +86,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Tools:__
-   - [Docker](modules/docker-guide)
+   - [Docker](modules/docker)
    - [WSL](modules/wsl-tips-and-tricks/)
    - [Git](modules/git-docs)
 
