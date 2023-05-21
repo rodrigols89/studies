@@ -35,7 +35,7 @@
      - [docker compose ps](#compose-ps)
      - [docker compose down](#compose-down)
  - **Tips & Tricks:**
-   - [Dockerfile](modules/my-dockerfile.md)
+   - [Dockerfile](my-dockerfile.md)
  - [**References:**](#references)
 
 <!--- ( Concepts/General ) --->
@@ -495,5 +495,3 @@ Name   Command   State   Ports
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-   - [Docker Commands](modules/docker-commands.md)
