@@ -12,6 +12,12 @@
    - [Assert](#assert)
    - [Cleanup](#cleanup)
    - [Relationship between Fixture -> Arrange + Cleanup](#fixture-arrange)
+ - [**pytest.raises()**](https://docs.pytest.org/en/7.1.x/how-to/assert.html#assertions-about-expected-exceptions)
+ - **Useful Libraries:**
+   - [Pytest-Mock (Thin-wrapper around the mock package for easier use with pytest)](https://github.com/pytest-dev/pytest-mock)
+   - [Faker (Faker is a Python package that generates fake data for you)](https://github.com/joke2k/faker)
+   - [factory_boy (A test fixtures replacement for Python)](https://github.com/FactoryBoy/factory_boy)
+   - [Pytest-BDD (BDD library for the py.test runner)](https://github.com/pytest-dev/pytest-bdd)
  - **Fixtures:**
    - [Intro to Fixtures](#intro-to-fixtures)
    - [`conftest.py`](#conftest)
@@ -548,17 +554,22 @@ That means:
 
 ## Settings
 
-**Create Virtual Environment:**  
+**Create Virtual Environment:**
 ```bash
-pythonX.YZ -m venv environment
+python -m venv environment
 ```
 
-**Activate:**  
+**Activate:**
 ```bash
 source environment/bin/activate
 ```
 
-**Install Dependencies:**  
+**Update pip:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**Install Dependencies:**
 ```bash
 pip install -U -v --require-virtualenv -r requirements.txt
 ```
