@@ -299,7 +299,9 @@ user.email=your-git-email
 user.signingkey=ABA466EE517C403F
 ```
 
-Agora, toda vez que você fizer um git commit, ele será assinado com esta chave GPG. Ao fazer um commit, você será solicitado a inserir a chave de acesso para a chave GPG.
+ - Agora, toda vez que você fizer um git commit, ele será assinado com esta chave GPG.
+ - **Chave de acesso:** Quando nós criamos nossa chave GPG nós criamos uma senha que dá acesso a nossa chave GPG.
+   - Ao fazer um commit, você será solicitado a inserir a chave de acesso para a chave GPG.
 
 
 
