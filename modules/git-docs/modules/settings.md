@@ -246,7 +246,8 @@ uid           [ultimate] test gpg (this is a GPG test key) <testgpg@gmail.com>
 sub   rsa3072 2023-05-24 [E]
 ```
 
-Você pode utilizar comando **"gpg --list-secret-keys --keyid-format=long"** para listar o formato longo das chaves GPG para as quais você possui uma *chave pública* e *privada*:
+**NOTE:**  
+Você também pode utilizar comando **"gpg --list-secret-keys --keyid-format=long" (mais recomendado)** para listar o formato longo das chaves GPG para as quais você possui uma *chave pública* e *privada*:
 
 **INPUT:**
 ```bash
@@ -264,7 +265,7 @@ ssb   rsa3072/D3E0801728E02250 2023-05-24 [E]
 **NOTE:**  
 Você pode identificar a **chave primária** pelo que segue após **“sec”**. No exemplo acima, o *ID* da chave primária é **"ABA466EE517C403F"**.
 
-Agora extraia a **chave pública** da **chave privada** executando o comando *"export"* e especificando o ID da chave privada:
+Agora extraia a **chave pública** da **chave privada** executando o comando **"export"** e especificando o **ID** da chave privada:
 
 **INPUT:**
 ```bash
@@ -300,8 +301,26 @@ user.signingkey=ABA466EE517C403F
 ```
 
  - Agora, toda vez que você fizer um git commit, ele será assinado com esta chave GPG.
- - **Chave de acesso:** Quando nós criamos nossa chave GPG nós criamos uma senha que dá acesso a nossa chave GPG.
+ - **Chave de acesso a chave GPG:** Quando nós criamos nossa chave GPG nós criamos uma senha que dá acesso a nossa chave GPG.
    - Ao fazer um commit, você será solicitado a inserir a chave de acesso para a chave GPG.
+
+Porém, nós também precisamos configuar o GitHub, vá no seu GitHub em **settings/SSH and GPG Keys**:
+
+![img](images/ssh-gpg-settings.png)  
+
+Selecione **"New GPG Key"**:
+
+![img](images/add-key-button-github.png)  
+
+Cole todo o bloco de chave pública aqui e selecione **"Add GPG key"**.
+
+![img](images/paste-gpg-key-github.png)  
+
+Sua chave agora foi adicionada ao GitHub.
+
+Quando um git commit assinado for enviado para o GitHub, ele será verificado pela chave pública e o commit aparecerá como **“Verified”** nos logs de commit. Por exemplo:
+
+![img](images/verified-commit-github.png)  
 
 
 
