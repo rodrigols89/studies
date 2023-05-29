@@ -8,11 +8,7 @@
 
  - **Fundamentals:**
    - [Fundamentos de Python](modules/fundamentals/python-fundamentals.md)
- - **Type Hints:**
-   - [String (str)](modules/type-hints/str.md)
-   - [list[type]](modules/type-hints/list.md)
-   - [tuple[type]](modules/type-hints/tuple.md)
-   - [Class Type](modules/type-hints/class-type.md)   
+ - **[Type Hints](modules/type-hints)**
    - [Several Types](modules/type-hints/several-types.md)
  - **Data Validators:**
    - [Pydantic](modules/data-validators/pydantic)
