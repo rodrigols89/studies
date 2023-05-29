@@ -9,7 +9,6 @@
  - **Fundamentals:**
    - [Fundamentos de Python](modules/fundamentals/python-fundamentals.md)
  - **[Type Hints](modules/type-hints)**
-   - [Several Types](modules/type-hints/several-types.md)
  - **Data Validators:**
    - [Pydantic](modules/data-validators/pydantic)
  - **Conditionals:**
