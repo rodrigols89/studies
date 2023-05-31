@@ -1,15 +1,10 @@
-**NOTE:**  
-Currently this project is being gradually translated from Portuguese (Brazil) to English. Many studies are in Portuguese (Brazil) and gradually I am translating to English.
-
 # Studies - Theory and Practice
 
 [![License MIT](res/license-MIT-blue.svg)](LICENSE.md)
 
 ![title](res/newlogo.gif)
 
-# Contents
-
----
+## Contents
 
  - __Programming:__
    - **Algorithms:**
