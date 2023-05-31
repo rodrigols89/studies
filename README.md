@@ -9,8 +9,6 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 
 # Contents
 
----
-
  - __Programming:__
    - **Algorithms:**
      - [Algorithms & Data Structures](modules/algorithms-and-ds)
@@ -86,6 +84,7 @@ Currently this project is being gradually translated from Portuguese (Brazil) to
 ---
 
  - __Tools:__
+   - [GitHub Actions](modules/github-actions/)
    - [Docker](modules/docker)
    - [WSL](modules/wsl-tips-and-tricks/)
    - [Git](modules/git-docs)
