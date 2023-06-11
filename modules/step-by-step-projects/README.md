@@ -10,9 +10,6 @@
    - [Musical Notes](projects/cli/musical-notes)
  - **Cloud:**
    - [Bootcamp de Engenharia de Dados do canal Stack (Janeiro 2023)](projects/cloud/eng-data-2023-01)
- - **Game Development:**
-   - [Programação de Jogos (Judson Youtube Playlist)](projects/game-dev/judson-game-dev)
-   - [Game Physics Cookbook](projects/game-dev/game-physics-cookbook)
 
 ---
 
