@@ -10,6 +10,7 @@
    - [Configurando uma chave GPG para assinar commits](#sign-commits)
      - [git commit -S](#git-commit-s)
      - [Verificando se o commit foi assinato (--show-signature)](#show-signature)
+     - [git merge -S branch-name](#git-merge-s)
  - [**References**](#references)
 
 <!--- ( Useful commands ) -->
@@ -24,14 +25,33 @@
  - O comando `git checkout -b <branch-name>` além de criar uma nova branch, ela já muda automaticamente para essa nova branch sem precisar utilizar o comando `git checkout <branch-name>`.
 
 **CONSOLE:**  
-```
+```bash
 git checkout -b fix-999
 ```
 
 **OUTPUT:**  
-```
+```bash
 Switched to a new branch 'fix-999'
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Settings ) -->
 
@@ -48,7 +68,7 @@ A primeira coisa que você deve fazer quando instalar o **Git** é definir o seu
 
 Isso é importante porque todos os commits no **Git** utilizam essas informações, e está imutavelmente anexado nos commits que você realizar:
 
-```python
+```bash
 $ git config --global user.name "drigols"
 $ git config --global user.email drigols.creative@gmail.com
 ```
@@ -66,7 +86,7 @@ Relembrando, você só precisará fazer isso uma vez caso passe a opção <stron
 
 Caso você queira verificar suas configurações, você pode utilizar o comando **git config --list** para listar todas as configurações que o Git encontrar naquele momento:
 
-```python
+```bash
 user.name=drigols
 user.email=drigols.creative@gmail.com
 core.editor=emacs
@@ -80,16 +100,37 @@ core.logallrefupdates=true
 Você também pode verificar qual o valor que uma determinada **chave** tem para o **Git** digitando **git config {key}**:
 
 **Check username:**  
-```python
+```bash
 git config user.name
 drigols
 ```
 
 **Check email:**  
-```python
+```bash
 git config user.email
 drigols.creative@gmail.com
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Configurando uma chave GPG para assinar commits ) -->
 
 ---
 
@@ -493,6 +534,37 @@ Vejam que na imagem acima nós temos 3 tipos de commits:
    - `"gpg: Can't check signature: No public key"`
  - **Normais (sem cores):**
    - Por fim, nós temos commits que não tem chave alguma associada.
+
+<div id="git-merge-s"></div>
+
+### git merge -S branch-name
+
+> **Ok, but merges also can be signed? Yes of course!**
+
+To sign a merge with a GPG Key we need to pass the argument **-S** to the command line interface followed by the branch-name. For example:
+
+```bash
+git merge -S branch-name
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( References ) -->
 
