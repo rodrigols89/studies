@@ -23,7 +23,7 @@
      - [RESTful API](modules/restful-api)
      - [Rocketseat](modules/rocketseat-samples)
    - __Game Development:__
-     - [x](#)
+     - [Game Development](modules/game-dev)
    - __Software Testing:__
      - [x](#)
    - __Parallel Programming:__
