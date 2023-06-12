@@ -9,7 +9,9 @@
    - [Big (O) ( Worst-Case | Upper Bound | The "maximum" number of statements is run! )](#big-o-notation)
    - [Omega (Ω) ( Best Case | Lower Bound | The "minimum" number of statements is run! )](#omega-notation)
    - [Theta (Θ) ( Average Case | Average Bound | The "average" number of statements is run! )](#theta-notation)
- - **Counts of operations (statements/instructions):**
+ - **Tips & Tricks:**
+   - **Counts of operations (statements/instructions):**
+     - [Intro to statements (simple) counting (+Example)](#intro-to-statements-counting)
  - [**References**](#ref)
 
 <!--- ( Asymptotic Analysis ) -->
@@ -253,6 +255,240 @@ Note that the focus is always the largest term of the function.
    - Following is the value of Average-Case time complexity.
 
 ![img](images/avg-case.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Tips & Tricks/Counts of operations ) -->
+
+---
+
+<div id="intro-to-statements-counting"></div>
+
+## Intro to statements (simple) counting (+Example)
+
+To analyze an Algorithm we need to count how many statements the Algorithm run. Knowing this, let's start counting **simple statements**:
+
+> **A simple statement is a statement that can be run directly by the CPU or something close to that (ou algo parecido)..**
+
+ - **Statements types:**
+   - Assign a value to a variable.
+   - Access the value (element) of the determined array.
+   - Compare arrays.
+   - Increment a value.
+   - Arithmetic operations:
+     - Add
+     - Sub
+     - Div
+     - Mult
+ - **Let's assume that:**
+   - The statements have the same cost.
+   - The selections command has zero (0) cost.
+
+For example, imagine we have an Algorithm that receives an **array "A"** with **"n"** elements and stores the higher element in **"M"** variable:
+
+```cpp
+01 int M = A[0];
+02 for(int i = 0; i < n; i++)
+03     if (A[i] >= M)
+04         M = A[i];
+```
+
+Now, let's count how many **simple statements** the Algorithm above runs:
+
+**LINE 01 = 1 statement to assign the value zero (0) to the "M" variable**
+```cpp
+                                Cost:     Times:
+01 int M = A[0];                c1        1
+02 for(int i = 0; i < n; i++)
+03     if (A[i] >= M)
+04         M = A[i];
+```
+
+**NOTE:**  
+In the **LINE 02** we had the following statements to be *INITIALIZE* the **for(**) statement:
+
+ - **Cost to INITIALIZE the for() statements is 2:**
+   - The **for()** statements need be initialized:
+     - **int i = 0:** 1 statements.
+   - **EN -** And same that the **Array A** have size zero (0) at least (ao menos) one comparison will be run:
+   - **PT -** E mesmo que o **Array A** tenha tamanho zero (0) pelo menos uma comparação será executada:
+     - **i < n**; That's, another statement (+1).
+```cpp
+                                Cost:     Times:
+01 int M = A[0];                c1        1
+02 for(int i = 0; i < n; i++)   c2        2
+03     if (A[i] >= M)
+04         M = A[i];
+```
+
+**NOTE:**  
+Ok, now we know the cost to *INITIALIZE* the **for()** statement, but what is the cost to *RUN* the **for()** statement?
+
+ - **Cost to RUN the for() statements is 2n:**
+   - At the end (ao final) of each iteration of the *for() loop*, we need:
+     - Increment:
+       - **i++**
+     - And an statements to compare if the loop will continue:
+       - **i < n**
+   - The loop will be run **"n"** time, that is, the **2 statements** above will be run **"n"** times:
+     - **+ 2n (statements)**.
+
+```cpp
+                                Cost:     Times:
+01 int M = A[0];                c1        1
+02 for(int i = 0; i < n; i++)   c2        2 + 2n
+03     if (A[i] >= M)
+04         M = A[i];
+```
+
+**NOTE:**  
+Ignoring commands inside **for()** statement, the algorithm has **3 + 2n** statements.
+
+ - **3** statements before *RUN* the **for()** statements.
+ - **2** Statement at the end of each **for()** loop, which will be executed **"n"** times.
+
+Thus (assim), considering an *empty loop (for)*, we can define a mathematical function that represents the cost of the Algorithm in relation to the size of the input array, like:
+
+![image](images/tn-01.png)  
+
+> - **EN -** Ok, but what about the statements inside the **for() loop** how do we count?
+> - **PT -** Ok, mas e as instruções dentro do **loop for()** como contamos?
+
+
+ - The **if()** statement has 1 comparison statement: **(A[i] >= M)**;
+ - And inside the **if()** we have 1 more assignment statement: **M = A[i]**.
+
+```cpp
+                                     Cost:     Times:
+01 int M = A[0];                     c1        1
+02 for(int i = 0; i < n; i++)        c2        2 + 2n
+03     if (A[i] >= M)                c3        1 (How many times?)
+04         M = A[i];                 c4        1 (How many times?)
+```
+
+> **PROBLEM:**  
+> Well, now we have a little problem, how many times these statements be executed?
+
+ - Statements seen previously were always executed:
+   - **for() loop** statements.
+ - However, the statements inside **for() loop** may or may not be executed:
+   - [PT] - No entanto, as instruções dentro do *loop for()* podem ou não ser executadas.
+
+That's, before it was enough to know (antes bastava saber o tamanho do array) the size of the array **A ("n")** to define the cost function **T(n)**. Now, we also need to consider the contents of the array.
+
+For example, look at the two arrays below:
+
+
+```cpp
+01 A1 = [1, 2, 3, 4]
+02 A2 = [4, 3, 2, 1]
+```
+
+ - **The *array "A1"* will have more statements because:**
+   - The **if()** `will always be true`:
+   - Will always have a value (element) greater than another to the algorithm get.
+   - That's because array **A1** is in *ascending order*.
+ - **The *array "A2"* array will have less statements because:**
+   - The **if()** `will always be false`:
+   - How the array **A2** is in **descending order** never will have a value (element) greater than first. That is, the **if()** will always be false.
+
+**When analyzing an Algorithm, it is very common to consider the *Worst Case possible*:**  
+**EN -** The **"Worst Case"** is when the Algorithm executes as many statements as possible.  
+**PT -** O **"Pior Caso"** é quando o Algoritmo executa o maior número possível de instruções.  
+
+In our Algorithm (finding the greatest value (element) in an array) **Worst Case** occurs when the **array A** is in `ascending order`:
+
+**INPUT:**  
+```cpp
+A = [1, 2, 3, 4]
+```
+
+**Algorithms cost:**  
+```cpp
+                                     Cost:     Times:
+01 int M = A[0];                     c1        1
+02 for(int i = 0; i < n; i++)        c2        2 + 2n
+03     if (A[i] >= M)                c3        1 (always executed)
+04         M = A[i];                 c4        1 (always executed)
+```
+
+ - The value of **"M"** is always substituted;
+ - And the **for() loop** always executes the 2 inside statements **"n"** times.
+
+Thus (assim), the cost function of the Algorithm will be:
+
+![image](images/tn-02.png)  
+
+**NOTE:**  
+This function represents the cost of the Algorithm in relation to the size of the array **A ("n")** in the **"Worst case"**.
+
+> **Are all terms of the *cost function* of an Algorithm necessary?**
+
+For example, see the *Algorithm* and *cost function (worst-case)* below:
+
+```cpp
+                                     Cost:     Times:
+01 int M = A[0];                     c1        1
+02 for(int i = 0; i < n; i++)        c2        2 + 2n
+03     if (A[i] >= M)                c3        1
+04         M = A[i];                 c4        1
+```
+
+![image](images/tn-02.png)  
+
+In fact, not all terms are necessary. We can drop certain terms in the *Cost Function* and keep only the ones that tell us what happens to the function when the input data size **("n")** grows too large.
+
+> **NOTE:**  
+> If an Algorithm is faster than another for a large set of input data, it is very likely that it will continue to be faster on a smaller data set as well *(But it's not certain, it's just likely / mas não é certo, é apenas provável)*.
+
+Okay, now we know that not all terms are crucial, let's drop the terms that grow slowly and keep only the ones that grow faster as the *input ("n")* value gets bigger.
+
+For example, our Cost Function **T(n) = 4n + 3** has **2 terms**:
+
+ - **4n**
+ - **3**
+
+The **"3"** term are **initialization constants** and do not change as the *input ("n")* increases. So our Cost Function can be reduced to:
+
+![image](images/asymptotic-behavior-02.png)  
+
+Another observation is that *constants that multiply* the **"n"** term of the *Cost Function* must also be discarded. This makes sense if we think about different programming languages.
+
+For example, look at the following line of code in **Pascal Programming Language**:
+
+```pascal
+M := A[i];
+```
+
+Is equivalent to the following code in **C Programming Language**:
+
+```c
+if(i >= 0 && i < n)
+    M = A[i];
+```
+
+Ignoring these multiplication constants is equivalent to ignoring the particularities of each language and analyzing only the idea of the Algorithm.
+
+So (então), our *Cost Function* can be reduced again to:
+
+![image](images/asymptotic-behavior-03.png)  
 
 
 
