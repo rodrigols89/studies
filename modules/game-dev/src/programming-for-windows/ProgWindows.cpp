@@ -4,7 +4,6 @@
 
 #include "WinProc.h"
 
-
 int APIENTRY WinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPSTR lpCmdLine,
@@ -17,13 +16,13 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 
     // Define WindowClass, called "BasicWindow".
     wndclass.style = CS_HREDRAW | CS_VREDRAW;
-    wndclass.lpfnWndProc = WinProc;
+    wndclass.lpfnWndProc = WinProc; // Function used to deal with the messages.
     wndclass.cbClsExtra = 0;
     wndclass.cbWndExtra = 0;
-    wndclass.hInstance = hInstance;
+    wndclass.hInstance = hInstance; // Application handle (or Window identify).
     wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
     wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+    wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); // Window background color.
     wndclass.lpszMenuName = NULL;
     wndclass.lpszClassName = "BasicWindow";
 
@@ -35,7 +34,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
         return 0;
     }
 
-    // Create a Window based on "BasicWindow" class.
+    // Create a Window based on "BasicWindow" class defined above.
     hwnd = CreateWindow("BasicWindow",       // Window class.
                         "Application",       // Window title.
                         WS_OVERLAPPEDWINDOW, // Window style.
