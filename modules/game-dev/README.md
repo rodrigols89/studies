@@ -2,6 +2,9 @@
 
 ## Contents
 
+ - **Game Development Theories & Concepts:**
+   - [Frame Rate (expressed in Frames Per Second or FPS)](#frame-rate)
+   - [Game Loop (Architecture)](#game-loop-architecture)
  - **Game Physics:**
    - **Vectors:**
      - [Vector definition](#vector-definition)
@@ -17,12 +20,81 @@
      - [Find the distance between two points (Using Magnitude)](#distance-two-points)
  - **Tips & Tricks:**
    - **General:**
+     - [Screen (tela) resolution](#screen-resolution)
      - [Hungarian Notation](#hn-w)
    - **Programming for Windows:**
      - [Creating a Window (Janela) with WinMain() function](#winmain)
      - [Creating a message box with MessageBox function (Using "winuser.h" header)](#message-box-function)
      - [Creating a general propose window with CreateWindow class](#cw-01)
  - [**References**](#references)
+
+<!--- ( Game Development Theories & Concepts ) -->
+
+<div id="frame-rate"></div>
+
+## Frame Rate (expressed in Frames Per Second or FPS)
+
+> **A Game need to draw at least (pelo menos) 30 frames (quadros) on the screen per second -** *Minimum 30 FPS is recommended not a rule.*
+
+For example, imagine we have a loop to draw the frames per second in **60 FPS**, **30 FPS**, and **15 FPS**. The table for these **FPS** is:
+
+| FPS     | A frame (quadro) each |
+|---------|-----------------------|
+| **60**  | 16.6ms                |
+| **30**  | 33.3ms                |
+| **15**  | 66.6ms                |
+
+That means:
+
+ - **60 FPS:**
+   - Each *16.6ms* the loop draws a new image on the screen.
+ - **30 FPS:**
+   - Each *33.3ms* the loop draws a new image on the screen.
+ - **15 FPS:**
+   - Each *66.6ms* the loop draws a new image on the screen.
+
+See the image below to understand more easily:
+
+![img](images/fps-01.gif)  
+
+See that:
+
+ - **15 FPS** delay more to draw a frame if compared with **30 FPS**.
+ - **30 FPS** delay more to draw a frame if compared with **60 FPS**.
+
+> **NOTE:**  
+> That's, the more FPS the better!
+
+---
+
+<div id="game-loop-architecture"></div>
+
+## Game Loop (Architecture)
+
+> **A Game is a Loop running continuously in a fixed or variable frequency​.**
+
+Now, let's see an Architecture of a Game Loop:
+
+![img](images/game-loop-architecture-01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Game Physics ) -->
 
@@ -1185,6 +1257,86 @@ Distance: 14.0357
 
 
 <!--- ( Tips & Tricks/General ) -->
+
+---
+
+<div id="screen-resolution"></div>
+
+## Screen (tela) resolution
+
+> The **Window size** is limited by the *screen resolution*.
+
+For example, see the *screen resolution* below:
+
+![img](images/screen-resolution.png)  
+
+The *screen resolution* above, means:
+
+ - 1920 pixels in the horizontal.
+ - 1080 pixels in the vertical.
+ - That's, Full HD.
+
+To get this dimensions we can use the **GetSystemMetrics()** function in the `header <winuser.h>`:
+
+```cpp
+#include <windows.h>
+
+int width   = GetSystemMetrics(SM_CXSCREEN);
+int height  = GetSystemMetrics(SM_CYSCREEN);
+```
+
+---
+
+<div id=""></div>
+
+## Screen coordinates (x and y)
+
+Different of the *cartesian plane*, where:
+
+ - The **x-axis** grows to the right.
+ - The **y-axis** grows to the left.
+
+The screen coordinates (x and y) have a different approach. See the image below to understand more easily:
+
+![img](images/screen-coordinates-01.png)  
+
+> **NOTE:**  
+> See that the **origin (0, 0)** starts between the top and left.
+
+The `<windows.h> header` has a struct to represent this:
+
+```cpp
+struct RECT
+{
+    long left;
+    long top;
+    long right;
+    long bottom;
+}
+```
+
+This dimensions are called **"Client Area"** and we can modify the default values of this struct easily. For example, see the code below:
+
+```cpp
+            (END of the x-axis)
+                       |
+                       |    ----------- (END of the y-axis)
+                       |    |
+                       |    |
+                       |    |
+RECT winRect = {0, 0, 960, 540}
+                |  |
+                |  |
+                |  |
+                |  ----------
+     (START of the x-axis)  |
+                            |
+                  (START of the y-axis)
+```
+
+Now, our **"Client Area"** will have the same dimensions as the image shown early.
+
+![img](images/screen-coordinates-01.png)  
 
 ---
 
