@@ -9,16 +9,16 @@ List1.head.next.next = Node(15)
 List1.head.next.next.next = Node(20)
 List1.head.next.next.next.next = Node(25)
 List1.append(30)
-List1.printListFromHead() # Print Nodes values.
+List1.printListFromHead()
 
 print("\nList2 = append(30):")
 List2 = SinglyLinkedList()
 List2.append(30)
-List2.printListFromHead() # Print Nodes values.
+List2.printListFromHead()
 
 print("\nList3 = append(1) + append(2) + append(3):")
 list3 = SinglyLinkedList()
 list3.append(1)
 list3.append(2)
 list3.append(3)
-list3.printListFromHead() # Print Nodes values.
+list3.printListFromHead()

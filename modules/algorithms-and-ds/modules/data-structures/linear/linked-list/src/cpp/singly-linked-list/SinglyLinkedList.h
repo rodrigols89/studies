@@ -8,13 +8,21 @@ class SinglyLinkedList
 public:
     Node *head;
 
-    SinglyLinkedList();                               // Constructor prototype.
-    void printListFromNodeN(Node *n);                 // Method prototype.
-    void printListFromHead();                         // Method prototype.
+    // Constructor prototype.
+    SinglyLinkedList();
+
+    // Insert methods.
     void push(int data);                              // Method prototype.
     void insertAfterNodeN(Node *prev_node, int data); // Method prototype.
     void append(int data);                            // Method prototype.
+
+    // Delete methods.
     void deleteNodeN(int position);                   // Method prototype.
+
+    // Traversing methods.
+    void printListFromNodeN(Node *n);                 // Method prototype.
+    void printListFromHead();                         // Method prototype.
+
 };
 
 #endif // LINKEDLIST_H_
