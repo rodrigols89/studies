@@ -3,12 +3,11 @@
 ## Contents
 
  - **Singly Linked List:**
-   - **General:**
-     - ["Node" class representation for a Singly Linked List](#node-class-for-sll)
-     - ["Linked List" class representation for a Singly Linked List](#ll-class-for-sll)
+   - ["Node" class representation for a Singly Linked List](#node-class-for-sll)
+   - ["SinglyLinkedList" class representation](#ll-class-for-sll)
    - **Inserting Nodes manually (without functions):**
      - [Creating and Linking Nodes manually using only "Node" class (Using pointers)](#calnmuonc)
-     - [Creating Nodes using "LinkedList" class (Using "head.next" reference/pointer)](#cnulcuhnrp)
+     - [Creating Nodes using "SinglyLinkedList" class (Using "head.next" reference/pointer)](#cnulcuhnrp)
    - **Inserting Nodes (Using functions):**
        - [Add a new Node at the front (push)](#inserting-push-sll)
        - [Add a new Node after a given Node "n" (insertAfterNodeN)](#inserting-insertafternoden-sll)
@@ -16,18 +15,12 @@
    - **Deleting a Node in a Singly Linked List:**
        - [Delete a Singly Linked List node at a given position](#delete-node-given-position)
    - **Traversing:**
-     - [Traversing in Singly Linked List (printListFromNodeN vs. printListFromHead)](#traversing-sll)
-   - Singly Linked List Standard Template Library (STL):
+     - [Traversing in SinglyLinkedList from the Head until Tail](#traversing-sll-from-the-head)
+   - **Singly Linked List Standard Template Library (STL):**
  - **Doubly Linked List:**
-   - Doubly Linked List Operations:
-   - Doubly Linked List Standard Template Library (STL):
-   - [Doubly Linked List: Advantages and Disadvantages](#doubly-adv-disadv)
-   - [Doubly Linked List Real Examples](#doubly-examples)
  - **Circular Linked List:**
-   - Circular Linked List Operations:
-   - Circular Linked List Standard Template Library (STL):
-   - [Circular Linked List: Advantages and Disadvantages](#circular-adv-disadv)
-   - [Circular Linked List Real Examples](#circular-examples)
+ - **Tips & Tricks:**
+   - [Linked List: Advantages and Disadvantages](#advantages-disadvantages)
  - [**REFERENCES**](#ref)
 
 <!--- ( Singly Linked List/General ) --->
@@ -93,7 +86,7 @@ class Node:
 
 <div id="ll-class-for-sll"></div>
 
-## "Linked List" class representation for a Singly Linked List
+## "SinglyLinkedList" class representation
 
 > How we know a **Linked List** is composed of connected **"Nodes"**.
 
@@ -361,11 +354,11 @@ Value in the Third Node (tail): 30
 
 <div id="cnulcuhnrp"></div>
 
-## Creating Nodes using "LinkedList" class (Using "head.next" reference/pointer)
+## Creating Nodes using "SinglyLinkedList" class (Using "head.next" reference/pointer)
 
 > An approach to create a new "Nodes" is use "next" reference (pointer) of the **"head Node"** of **SinglyLinkedList** class to create other Nodes.
 
-**First, we need to create a instance (reference) of SinglyLinkedList class:**
+**First, we need to create an instance (reference) of the SinglyLinkedList class:**
 
 **C++:**
 ```cpp
@@ -387,27 +380,27 @@ sll = SinglyLinkedList()
 **C++:**
 ```cpp
 // Assign data using constructor.
-sll.head = new Node(10);
-sll.head->next = new Node(20);
-sll.head->next->next = new Node(30);
+sll.head = new Node(10);             // 10
+sll.head->next = new Node(20);       // 10->20
+sll.head->next->next = new Node(30); // 10->20->30
 
 // Assign data using "->" operator.
-sll.head->data              = 10;
-sll.head->next->data        = 20;
-sll.head->next->next->data  = 30;
+sll.head->data              = 10; // 10
+sll.head->next->data        = 20; // 10->20
+sll.head->next->next->data  = 30; // 10->20->30
 ```
 
 **Python:**
 ```python
 # Assign data using constructor.
-sll.head = Node(10)
-sll.head.next = Node(20)
-sll.head.next.next = Node(30)
+sll.head = Node(10)            # 10
+sll.head.next = Node(20)       # 10->20
+sll.head.next.next = Node(30)  # 10->20->30
 
 # Assign data using "." operator.
-sll.head.data = 1
-sll.head.next.data = 2
-sll.head.next.next.data = 3
+sll.head.data = 1            # 10
+sll.head.next.data = 2       # 10->20
+sll.head.next.next.data = 3  # 10->20->30
 ```
 
 **NOTE:**  
@@ -473,6 +466,10 @@ print("Value in the First Node (head):", sll.head.data)
 print("Value in the Second Node:", sll.head.next.data)
 print("Value in the Third Node (tail):", sll.head.next.next.data)
 ```
+
+> **NOTE:**  
+> - However, here we need to use the Node() class to reference a Node in a SinglyLinkedList class.
+> - This is because we don't have a function to do it.
 
 **INTPUT:**  
 ```bash
@@ -561,7 +558,6 @@ See that:
 
 **C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
-// Method to insert a new Node at front.
 void SinglyLinkedList::push(int data)
 {
     Node *new_node = new Node(data); // Allocate a new Node + put data.
@@ -572,7 +568,6 @@ void SinglyLinkedList::push(int data)
 
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
-# Method to insert a new Node at front.
 def push(self, data):
     new_node = Node(data)      # Allocate a new Node + put data.
     new_node.next = self.head  # Make "next" of the "new_node" point to head (old first Node).
@@ -581,10 +576,27 @@ def push(self, data):
 
 The **Time** and **Space complexity** of the **push()** function is:
 
- - **Time Complexity:**
-   - **O(1):** That's, constant complexity.
- - **Space Complexity:**
-   - **O(1):** That's, constant complexity.
+ - **[Worst Case] - Big O(O):**
+   - **Time Complexity:**
+     - **O(1):** The time complexity in the *worst case* for this function is **O(1)**, which means it is constant. This is because, regardless of the size of the list, the execution time will always be the same. The new node is added directly at the beginning of the list without the need to traverse all the elements.
+   - **Space Complexity:**
+     - **O(1):** The space complexity in the *worst case* for this function is **O(1)**, which means it is constant. This is because the space used by the function is always the same, regardless of the size of the list. The function creates only one new node and adjusts the necessary pointers, without requiring additional space proportional to the size of the list.
+
+
+   - **[Worst Case] - Big O(O):**
+     - **O(?):** Qual o pior caso de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
+   - **[Best Case] - Omega (Ω):**
+     - **Ω(?):** Qual o melhor caso de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
+   - **[Average Case] - Theta (Θ):**
+     - **Θ(?):** Qual o caso médio de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
+
+
+
+
+
+
+
+
 
 > **Is this function work in an Empty List?**  
 > Yes!
@@ -728,6 +740,26 @@ def insertAfterNodeN(self, prev_node, data):
 ```
 
 The **Time** and **Space complexity** of the **insertAfterNodeN()** function is:
+
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+
+
+
+
 
  - **Time Complexity:**
    - **O(1):** That's, constant complexity.
@@ -937,6 +969,23 @@ def append(self, data):
 ```
 
 The **Time** and **Space complexity** of the **foo()** function is:
+
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+
 
  - **Time Complexity:**
    - **Best case: O(1)**
@@ -1401,6 +1450,23 @@ def deleteNodeN(self, position):
 
 The **Time** and **Space complexity** of the **foo()** function is:
 
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+
+
  - **Time Complexity:**
    - **Best case: O(1)**
      - If the position is *0* (first node), the method runs in constant time, **O(1)**, as only a few assignments and memory deallocations are required.
@@ -1550,26 +1616,312 @@ The Node position exceeded!
 
 
 
+<!--- ( Singly Linked List/Traversing ) --->
+
+---
+
+<div id="traversing-sll-from-the-head"></div>
+
+## Traversing in SinglyLinkedList from the Head until Tail
+
+> An approach to **traverse a Singly Linked List** is to start from the Head until the last Node (Tail).
+
+Now, let's see how implement the **printListFromTheHead()** functions in **C++** and **Python**:
+
+**C++:**
+```cpp
+void SinglyLinkedList::printListFromHead()
+{
+    if (this->head == nullptr)
+    {
+        std::cout << "List is empty!\n";
+        return; // Stop the method.
+    }
+    else
+    {
+        Node *current_node = this->head;
+        while (current_node != NULL)
+        {
+            std::cout << current_node->data << " ";
+            current_node = current_node->next;
+        }
+        std::cout << "\n";
+    }
+}
+```
+
+**Python:**
+```python
+def printListFromHead(self):
+    if self.head is None:
+        print("List is empty!")
+        return
+    else:
+        current_node = self.head
+        while current_node is not None:
+            print(current_node.data, end=" ")
+            current_node = current_node.next
+        print()
+```
+
+The **Time** and **Space complexity** of the **printListFromHead()** function is:
+
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+
+
+
+ - **Time Complexity:**
+   - **Best cases: O(1)**
+     - In the best case, the list is empty, so the execution time is constant since we only need to print a message *("List is empty!")*. Therefore, the Best-Case of Time Complexity is **O(1)**.
+     - When there is only **1 element (Node)** in the list, the best case scenario occurs. In this case, the function will traverse the single node and print its value. Since there is only one node, the traversal will occur once, resulting in a time complexity of **O(1)**. 
+   - **Worst case: O(n)**
+     -  In the worst case, the list contains **"n"** Nodes. In this case, the function traverses all the nodes of the list to print them. This requires a time proportional to the number of nodes, resulting in a worst-case time complexity of **O(n)**.
+ - **Space Complexity:**
+    - **O(1):** Regarding the *Space Complexity*, the function uses a constant amount of additional space for local variables, regardless of the size of the list. Therefore, the space complexity is **O(1)** both in the best and worst cases.
+
+**NOTE:**  
+See the complete codes to test the functions in **C++** and **Python** below:
+
+**C++:** [driver_printListFromHead.cpp](src/cpp/singly-linked-list/driver_printListFromHead.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
+
+int main()
+{
+    SinglyLinkedList list;
+    list.printListFromHead();
+
+    list.head = new Node(10);
+    list.printListFromHead();
+
+    list.head->next = new Node(20);
+    list.printListFromHead();
+
+    list.head->next->next = new Node(30);
+    list.printListFromHead();
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```bash
+g++ Node.cpp SinglyLinkedList.cpp driver_printListFromHead.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**  
+```bash
+List is empty!
+10 
+10 20 
+10 20 30
+```
+
+**Python:** [driver_printListFromHead.py](src/python/singly-linked-list/driver_printListFromHead.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+from Node import Node
+
+print("####### ( Print values from the 'head' until 'tail' ) ######")
+
+sll = SinglyLinkedList()
+
+sll.printListFromHead()
+
+sll.head = Node(40)
+sll.printListFromHead()
+
+sll.head.next = Node(50)
+sll.printListFromHead()
+
+sll.head.next.next = Node(60)
+sll.printListFromHead()
+```
+
+**INPUT:** 
+```bash
+python driver_printListFromHead.py 
+```
+
+**OUTPUT:** 
+```bash
+####### ( Print Node values from the 'head' until 'tail' ) ######
+List is empty!
+40 
+40 50 
+40 50 60
+```
+
+---
+
+<div id=""></div>
+
+## Traversing in SinglyLinkedList from Node "n" until the last Node (tail)
+
+> An approach to **traverse a Singly Linked List** is to start from Node **"n"** until the last Node (tail).
+
+Now, let's see how implement the **printListFromNodeN()** functions in **C++** and **Python**:
+
+**C++:**
+```cpp
+void SinglyLinkedList::printListFromNodeN(Node *n)
+{
+    if (n == nullptr)
+    {
+        std::cout << "Node is empty!\n";
+        return; // Stop the method.
+    }
+    else
+    {
+        Node *current_node = n;
+        while (current_node != NULL)
+        {
+            std::cout << current_node->data << " ";
+            current_node = current_node->next;
+        }
+        std::cout << "\n";
+        return; // Stop the method.
+    }
+}
+```
+
+**Python:**
+```python
+def printListFromNodeN(self, n):
+    if n is None:
+        print("Node is empty!")
+    else:
+        current_node = n
+        while current_node is not None:
+            print(current_node.data, end=" ")
+            current_node = current_node.next
+        print()
+```
+
+The **Time** and **Space complexity** of the **printListFromNodeN()** function is:
+
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+
+
+ - **Best Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Worst Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
+ - **Average Case: O(?)**
+   - **Time Complexity:**
+     - x
+   - **Space Complexity:**
+     - x
 
+**NOTE:**  
+See the complete codes to test the functions in **C++** and **Python** below:
 
+[driver_printListFromNodeN.cpp](src/cpp/singly-linked-list/driver_printListFromNodeN.cpp)
+```cpp
+#include "SinglyLinkedList.h"
+#include <iostream>
 
+int main()
+{
+    SinglyLinkedList list;
 
+    list.printListFromNodeN(list.head);
 
+    list.head = new Node(10);
+    list.head->next = new Node(20);
+    list.head->next->next = new Node(30);
 
+    list.printListFromNodeN(list.head);
+    list.printListFromNodeN(list.head->next);
+    list.printListFromNodeN(list.head->next->next);
 
+    return 0;
+}
+```
 
+**COMPILATION AND RUN:**
+```bash
+g++ Node.cpp SinglyLinkedList.cpp driver_printListFromNodeN.cpp -o test.out && ./test.out
+```
 
+**OUTPUT:**  
+```bash
+Node is empty!
+10 20 30 
+20 30 
+30 
+```
 
+**Python:** [driver_printListFromNodeN.py](src/python/singly-linked-list/driver_printListFromNodeN.py)
+```python
+from SinglyLinkedList import SinglyLinkedList
+from Node import Node
 
+print("########## ( Print values from Node 'n' ) ##########")
 
+list = SinglyLinkedList()
 
+list.printListFromNodeN(list.head)
 
+list.head = Node(10)
+list.head.next = Node(20)
+list.head.next.next = Node(30)
 
+list.printListFromNodeN(list.head)
+list.printListFromNodeN(list.head.next)
+list.printListFromNodeN(list.head.next.next)
+```
 
+**INPUT:**
+```bash
+python driver_printListFromNodeN.py
+```
 
+**OUTPUT:**
+```bash
+########## ( Print values from Node 'n' ) ##########
+Node is empty!
+10 20 30 
+20 30 
+30
+```
 
 
-<!--- ( Implementations Tips/Singly Linked List ) --->
 
 
 
@@ -1608,22 +1960,33 @@ The Node position exceeded!
 
 
 
+<!--- ( Tips & Tricks ) --->
 
+---
 
+<div id="advantages-disadvantages"></div>
 
+## Linked List: Advantages and Disadvantages
 
-
-
-
-
-
-
-
-
-
-
-
-
+ - **Advantages:**
+   - Dynamic Array.
+   - Ease of Insertion/Deletion.
+   - Insertion at the beginning is a constant time operation and takes O(1) time:
+     - As compared to arrays where inserting an element at the beginning takes **O(n)** time, where **"n"** is the number of elements in the array.
+ - **Disadvantages (Drawbacks):**
+   - Random access is not allowed. We have to access elements sequentially starting from the first node (head node):
+     - So we cannot do a binary search with Linked Lists efficiently with its default implementation. 
+   - Extra memory space for a *pointer* is required with each element of the list.
+   - Not cache-friendly (Não compatível com cache):
+     - Since array elements are contiguous locations, there is the locality of reference which is not there in the case of linked lists.
+   - It takes a lot of time in traversing and changing the pointers.
+   - Reverse traversing is not possible in singly linked lists.
+   - It will be confusing when we work with pointers.
+   - Direct access to an element is not possible in a linked list as in an array by index.
+   - Searching for an element is costly and requires O(n) time complexity.
+   - Sorting of linked lists is very complex and costly.
+   - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
+     - As compared to arrays that take **O(1)** time.
 
 
 
@@ -1678,379 +2041,3 @@ The Node position exceeded!
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-**C++:**
-```cpp
-
-```
-
-**Python:**
-```python
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="adv-disadv"></div>
-
-## Linked List: Advantages and Disadvantages
-
- - **Advantages:**
-   - Dynamic Array.
-   - Ease of Insertion/Deletion.
-   - Insertion at the beginning is a constant time operation and takes O(1) time:
-     - As compared to arrays where inserting an element at the beginning takes **O(n)** time, where **"n"** is the number of elements in the array.
- - **Disadvantages (Drawbacks):**
-   - Random access is not allowed. We have to access elements sequentially starting from the first node (head node):
-     - So we cannot do a binary search with Linked Lists efficiently with its default implementation. 
-   - Extra memory space for a *pointer* is required with each element of the list.
-   - Not cache-friendly (Não compatível com cache):
-     - Since array elements are contiguous locations, there is the locality of reference which is not there in the case of linked lists.
-   - It takes a lot of time in traversing and changing the pointers.
-   - Reverse traversing is not possible in singly linked lists.
-   - It will be confusing when we work with pointers.
-   - Direct access to an element is not possible in a linked list as in an array by index.
-   - Searching for an element is costly and requires O(n) time complexity.
-   - Sorting of linked lists is very complex and costly.
-   - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
-     - As compared to arrays that take **O(1)** time.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="traversing-sll"></div>
-
-## Traversing in Singly Linked List (printListFromNodeN vs. printListFromHead)
-
-> Now, let's see how to **traverse a Singly Linked List**.
-
-First, let's create a method (or function) to **traverse a Singly Linked List** *printing* all elements in each node in C++:
-
-[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
-```cpp
-class SinglyLinkedList
-{
-public:
-
-  //...
-
-    void printListFromNodeN(Node* n); // Method prototype.
-
-  //...
-};
-```
-
-[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
-```cpp
-//...
-
-void SinglyLinkedList::printListFromNodeN(Node *n)
-{
-    if (n == nullptr)
-    {
-        std::cout << "Node is empty!\n";
-        return;
-    }
-    else
-    {
-        Node *current_node = n;
-        while (current_node != NULL)
-        {
-            std::cout << current_node->data << " ";
-            current_node = current_node->next;
-        }
-        std::cout << "\n";
-    }
-}
-
-//...
-```
-
-[driver_printListFromNodeN.cpp](src/cpp/singly-linked-list/driver_printListFromNodeN.cpp)
-```cpp
-#include "SinglyLinkedList.h"
-#include <iostream>
-
-int main()
-{
-    SinglyLinkedList list;
-
-    list.printListFromNodeN(list.head);
-
-    list.head = new Node(10);
-    list.head->next = new Node(20);
-    list.head->next->next = new Node(30);
-
-    list.printListFromNodeN(list.head);
-    list.printListFromNodeN(list.head->next);
-    list.printListFromNodeN(list.head->next->next);
-    list.printListFromNodeN(list.head->next->next->next);
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```cpp
-g++ Node.cpp SinglyLinkedList.cpp driver_printListFromNodeN.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**  
-```cpp
-Node is empty!
-10 20 30 
-20 30 
-30 
-Node is empty!
-```
-
-**NOTE:**  
-See that we are *print* the list from (a partir) the Node **"n"**:
-
- - **First, we try to print the list without init a Node "head":**
-   - That's, we have a NULL pointer in the *head*.
-   - The return was *"Node is empty!"*.
- - **Next, we inited value to three Nodes.**
- - **Next, we try print the values from (a partir) the "head" Node:**
-   - The return was *"10 20 30"*.
- - **Next, we try to print the values from (a partir) Node after the "head" Node:**
-   - The return was *"20 30"*.
- - **Next, we try to print the values from  (a partir) de last Node:**
-   - The return was *"30"*.
- - **Finally, we try to print the value from a NULL Node, that's, next=nullptr:**
-   - The return was *"Node is empty!"*.
-
-> **Ok, but how do I print always the Node elements from (a partir) de "head" Node?**
-
-For it, let's create a method (function) **printListFromHead()**:
-
-[SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
-```cpp
-class SinglyLinkedList
-{
-public:
-
-  //...
-
-    void printListFromHead(); // Method prototype.
-
-  //...
-};
-```
-
-[SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
-```cpp
-//...
-
-void SinglyLinkedList::printListFromHead()
-{
-    if (this->head == nullptr)
-    {
-        std::cout << "List is empty!\n";
-        return;
-    }
-    else
-    {
-        Node *current_node = this->head;
-        while (current_node != NULL)
-        {
-            std::cout << current_node->data << " ";
-            current_node = current_node->next;
-        }
-        std::cout << "\n";
-    }
-}
-
-//...
-```
-
-[driver_printListFromHead.cpp](src/cpp/singly-linked-list/driver_printListFromHead.cpp)
-```cpp
-#include "SinglyLinkedList.h"
-#include <iostream>
-
-int main()
-{
-    SinglyLinkedList list;
-    list.printListFromHead();
-
-    list.head = new Node(10);
-    list.printListFromHead();
-
-    list.head->next = new Node(20);
-    list.printListFromHead();
-
-    list.head->next->next = new Node(30);
-    list.printListFromHead();
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```cpp
-g++ Node.cpp SinglyLinkedList.cpp driver_printListFromHead.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**  
-```cpp
-List is empty!
-10 
-10 20 
-10 20 30
-```
-
-**NOTE:**  
-See that now we always pass a **Singly Linked List** object and the method prints all Node values from (a partir) the **"head"** node.
-
----
-
-Now, let's see how to **traverse a Singly Linked List** in Python.
-
-[SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
-```python
-#...
-
-# Method to print the Linked List starting from a given node.
-def printListFromNodeN(self, n):
-    if n is None:
-        print("Node is empty!")
-    else:
-        current_node = n
-        while current_node is not None:
-            print(current_node.data, end=" ")
-            current_node = current_node.next
-        print()
-
-# Method to print the entire Linked List starting from the "head".
-def printListFromHead(self):
-    if self.head is None:
-        print("List is empty!")
-    else:
-        current_node = self.head
-        while current_node is not None:
-            print(current_node.data, end=" ")
-            current_node = current_node.next
-        print()
-
-#...
-```
-
-[driver_traversing_in_singly_linked_list.py](src/python/singly-linked-list/driver_traversing_in_singly_linked_list.py)
-```python
-from SinglyLinkedList import SinglyLinkedList
-from Node import Node
-
-print("########## (Print values from Node 'n') ##########")
-
-list = SinglyLinkedList()
-
-list.printListFromNodeN(list.head)
-
-list.head = Node(10)
-list.head.next = Node(20)
-list.head.next.next = Node(30)
-
-list.printListFromNodeN(list.head)
-list.printListFromNodeN(list.head.next)
-list.printListFromNodeN(list.head.next.next)
-list.printListFromNodeN(list.head.next.next.next)
-
-print("\n####### (Print values from the 'head' Node) ######")
-
-list = SinglyLinkedList()
-
-list.printListFromHead()
-
-list.head = Node(40)
-list.printListFromHead()
-
-list.head.next = Node(50)
-list.printListFromHead()
-
-list.head.next.next = Node(60)
-list.printListFromHead()
-```
-
-**OUTPUT:**  
-```
-########## (Print values from Node 'n') ##########
-Node is empty!
-10 20 30 
-20 30 
-30 
-Node is empty!
-
-####### (Print values from the 'head' Node) ######
-List is empty!
-40
-40 50
-40 50 60
-```
-
----

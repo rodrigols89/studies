@@ -83,11 +83,16 @@ class SinglyLinkedList:
 
 
 
-
-
-
-
-
+    # Method to print the entire Linked List starting from the "head".
+    def printListFromHead(self):
+        if self.head is None:
+            print("List is empty!")
+        else:
+            current_node = self.head
+            while current_node is not None:
+                print(current_node.data, end=" ")
+                current_node = current_node.next
+            print()
 
 
 
@@ -102,13 +107,4 @@ class SinglyLinkedList:
                 current_node = current_node.next
             print()
 
-    # Method to print the entire Linked List starting from the "head".
-    def printListFromHead(self):
-        if self.head is None:
-            print("List is empty!")
-        else:
-            current_node = self.head
-            while current_node is not None:
-                print(current_node.data, end=" ")
-                current_node = current_node.next
-            print()
+

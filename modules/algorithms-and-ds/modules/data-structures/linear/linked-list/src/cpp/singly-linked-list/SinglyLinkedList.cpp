@@ -116,18 +116,29 @@ void SinglyLinkedList::deleteNodeN(int position)
 
 
 
+// Method to print the entire Linked List starting from the "head".
+void SinglyLinkedList::printListFromHead()
+{
+    if (this->head == nullptr)
+    {
+        std::cout << "List is empty!\n";
+        return; // Stop the method.
+    }
+    else
+    {
+        Node *current_node = this->head;
+        while (current_node != NULL)
+        {
+            std::cout << current_node->data << " ";
+            current_node = current_node->next;
+        }
+        std::cout << "\n";
+    }
+}
 
 
 
-
-
-
-
-
-
-
-
-
+// Method to print the Linked List starting from a given node.
 void SinglyLinkedList::printListFromNodeN(Node *n)
 {
     if (n == nullptr)
@@ -145,24 +156,5 @@ void SinglyLinkedList::printListFromNodeN(Node *n)
         }
         std::cout << "\n";
         return; // Stop the method.
-    }
-}
-
-void SinglyLinkedList::printListFromHead()
-{
-    if (this->head == nullptr)
-    {
-        std::cout << "List is empty!\n";
-        return; // Stop the method.
-    }
-    else
-    {
-        Node *current_node = this->head;
-        while (current_node != NULL)
-        {
-            std::cout << current_node->data << " ";
-            current_node = current_node->next;
-        }
-        std::cout << "\n";
     }
 }

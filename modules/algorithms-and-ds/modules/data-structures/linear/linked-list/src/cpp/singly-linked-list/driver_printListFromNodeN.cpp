@@ -14,7 +14,6 @@ int main()
     list.printListFromNodeN(list.head);
     list.printListFromNodeN(list.head->next);
     list.printListFromNodeN(list.head->next->next);
-    list.printListFromNodeN(list.head->next->next->next);
 
     return 0;
 }

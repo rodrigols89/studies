@@ -20,9 +20,8 @@ public:
     void deleteNodeN(int position);                   // Method prototype.
 
     // Traversing methods.
-    void printListFromNodeN(Node *n);                 // Method prototype.
     void printListFromHead();                         // Method prototype.
-
+    void printListFromNodeN(Node *n);                 // Method prototype.
 };
 
 #endif // LINKEDLIST_H_
