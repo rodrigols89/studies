@@ -9,16 +9,16 @@
      - [Creating and Linking Nodes manually using only "Node" class (Using pointers)](#calnmuonc)
      - [Creating Nodes using "SinglyLinkedList" class (Using "head.next" reference/pointer)](#cnulcuhnrp)
    - **Inserting Nodes (Using functions):**
-       - [Add a new Node at the front (push)](#inserting-push-sll)
-       - [Add a new Node after a given Node "n" (insertAfterNodeN)](#inserting-insertafternoden-sll)
-       - [Add a new Node at the end (append)](#inserting-append-sll)
+       - [Add a new Node at the front (push) | O(1)](#inserting-push-sll)
+       - [Add a new Node after a passed Node (insertAfterPassedNode) | O(1)](#inserting-insertafterpassed-node-sll)
+       - [Add a new Node at the end (append) | O(n)](#inserting-append-sll)
    - **Deleting a Node in a Singly Linked List:**
-       - [Delete a Singly Linked List node at a given position](#delete-node-given-position)
+       - [Delete a Singly Linked List node at a given position | O(n)](#delete-node-given-position)
    - **Traversing:**
-     - [Traversing in SinglyLinkedList from the Head until Tail](#traversing-sll-from-the-head)
-   - **Singly Linked List Standard Template Library (STL):**
+     - [Traversing in SinglyLinkedList from the Head until Tail | O(n)](#traversing-sll-from-the-head)
  - **Doubly Linked List:**
  - **Circular Linked List:**
+ - **List in C++ Standard Template Library (STL):**
  - **Tips & Tricks:**
    - [Linked List: Advantages and Disadvantages](#advantages-disadvantages)
  - [**REFERENCES**](#ref)
@@ -33,12 +33,12 @@
 
 > A **Linked List** is composed of connected **"Nodes"**, where each **"Node"** has:
 
- - A **"data"** stored.
+ - **"Data"** stored.
  - And a pointer **"next"** to the next *Node*.
 
 ![img](images/linked-list-single-in-c.png)  
 
-For example, see how represents a "Node" Data Structure in **C++**:
+For example, see how represents a **"Node"** data structure *class*:
 
 **C++:** [Node.h](src/cpp/singly-linked-list/Node.h)
 ```cpp
@@ -51,7 +51,7 @@ public:
     int data;
     Node *next;
 
-    Node(int data = 0); // Constructor prototype.
+    Node(int data); // Constructor prototype.
 };
 
 #endif // NODE_H_
@@ -69,17 +69,12 @@ Node::Node(int data)
 }
 ```
 
-**NOTE:**  
-Now, let's see how represents a "Node" Data Structure in **Python**:
-
 **Python:** [Node.py](src/python/singly-linked-list/Node.py)
 ```python
 class Node:
-
-    # Constructor to initialize the node object.
     def __init__(self, data=0):
         self.data = data
-        self.next = None  # Initialize "next" reference (pointer).
+        self.next = None
 ```
 
 ---
@@ -88,11 +83,7 @@ class Node:
 
 ## "SinglyLinkedList" class representation
 
-> How we know a **Linked List** is composed of connected **"Nodes"**.
-
-![img](images/sll-01.png)  
-
-Now, let's see how to implement a **Singly Linked List** *class* in **C++** in the practice:
+Now, let's see how to implement a **Singly Linked List** *class*:
 
 **C++:** [SinglyLinkedList.h](src/cpp/singly-linked-list/SinglyLinkedList.h)
 ```cpp
@@ -106,7 +97,7 @@ class SinglyLinkedList
 public:
     Node *head;
 
-    SinglyLinkedList(); // Constructor prototype.
+    SinglyLinkedList();
 };
 
 #endif // LINKEDLIST_H_
@@ -123,21 +114,15 @@ SinglyLinkedList::SinglyLinkedList()
 }
 ```
 
-Now, let's see how implement a **Singly Linked List** *class* in **Python**:
-
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
 from Node import Node
 
-class SinglyLinkedList:
 
-    # Constructor to initialize the Node head.
+class SinglyLinkedList:
     def __init__(self):
         self.head = None
 ```
-
-**NOTE:**  
-See that, we need to import the Node class to assign values to newly (recem) created Nodes.
 
 
 
@@ -209,9 +194,7 @@ third  = None
 **Allocate Nodes in the Heap. That's, allocate the memory to the new Nodes:**
 
    - We can use the constructor of the Node to assign the data here:
-     - For example: `head = new Node(10);`
-   - Or assign data next using *"->"* operator:
-     - For example: `head->data = 10;`,
+   - Or assign data next using *"-> (. in Python)"* operator:
 
 **C++:**
 ```cpp
@@ -258,11 +241,9 @@ second.next = third    # Link second node with the third.
 third.next  = None     # Set last Node (tail) as NULL.
 ```
 
-**NOTE:**  
-See the complete codes in **C++** and **Python** below:
+Let's, test it in practice:
 
-**C++:**
-[driver_insert_using_node_class.cpp](src/cpp/singly-linked-list/driver_insert_using_node_class.cpp)
+**C++:** [driver_insert_using_node_class.cpp](src/cpp/singly-linked-list/driver_insert_using_node_class.cpp)
 ```cpp
 #include "Node.h"
 #include <iostream>
@@ -309,8 +290,7 @@ Value in the Second Node: 20
 Value in the Third Node (tail): 30
 ```
 
-**Python:**
-[driver_insert_using_node_class.py](src/python/singly-linked-list/driver_insert_using_node_class.py)
+**Python:** [driver_insert_using_node_class.py](src/python/singly-linked-list/driver_insert_using_node_class.py)
 ```bash
 from Node import Node
 
@@ -356,9 +336,9 @@ Value in the Third Node (tail): 30
 
 ## Creating Nodes using "SinglyLinkedList" class (Using "head.next" reference/pointer)
 
-> An approach to create a new "Nodes" is use "next" reference (pointer) of the **"head Node"** of **SinglyLinkedList** class to create other Nodes.
+> Another approach to create a new "Node" is use "next" pointer of the **"head Node"** of **SinglyLinkedList** class to create other Nodes.
 
-**First, we need to create an instance (reference) of the SinglyLinkedList class:**
+**First, we need to create an instance (variable) of the SinglyLinkedList class:**
 
 **C++:**
 ```cpp
@@ -373,9 +353,7 @@ sll = SinglyLinkedList()
 **Now, we can use the "head Node" (Initialized as NULL by default in the constructor) to create other Nodes:**
 
    - We can use the constructor of the Node to assign the data here:
-     - For example: `sll.head = new Node(10);`.
-   - Or assign data next using *"->"* operator:
-     - For example: `sll.head->data = 10;`.
+   - Or assign data next using *"-> (. in Python)"* operator:
 
 **C++:**
 ```cpp
@@ -403,8 +381,7 @@ sll.head.next.data = 2       # 10->20
 sll.head.next.next.data = 3  # 10->20->30
 ```
 
-**NOTE:**  
-See the complete codes in **C++** and **Python** below:
+Let's, test it in practice:
 
 **C++:** [driver_insert_using_SinglyLinkedList_class.cpp](src/cpp/singly-linked-list/driver_insert_using_SinglyLinkedList_class.cpp)
 ```cpp
@@ -528,7 +505,7 @@ Value in the Third Node (tail): 30
 
 <div id="inserting-push-sll"></div>
 
-## Add a new Node at the front (push)
+## Add a new Node at the front (push) | O(1)
 
 > Now let's, see how to insert a new Node in the **front of a Singly Linked List (Also called push)**.
 
@@ -548,61 +525,51 @@ To understand more easily see the image below:
 
 ![img](images/sll-push-01.png)  
 
-See that:
+To apply these mechanics we need to:
 
- - We set the "next" pointer of the new Node to point to the old first Node (head).
- - Then, we set the new Node to be the head. That's, the first node.
+ 1. Allocate a new Node:
+   1.1. Here, we can assign data.
+ 2. Make "next" of the "new_node" point to head (old first Node).
+ 3. Move the head to point to the "new_node".
 
-> **NOTE:**  
-> Let us call the function that adds at the front of the list **push()**.
+Now, let's see how to implement the **push()** function:
 
 **C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
 void SinglyLinkedList::push(int data)
 {
-    Node *new_node = new Node(data); // Allocate a new Node + put data.
-    new_node->next = (this->head);   // Make "next" of the "new_node" point to head (old first Node).
-    this->head     = new_node;       // Move the head to point to the new node.
+    Node *new_node = new Node(data);
+    new_node->next = (this->head);
+    this->head = new_node;
 }
 ```
 
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
 def push(self, data):
-    new_node = Node(data)      # Allocate a new Node + put data.
-    new_node.next = self.head  # Make "next" of the "new_node" point to head (old first Node).
-    self.head     = new_node   # Move the head to point to the new node.
+    new_node = Node(data)
+    new_node.next = self.head
+    self.head = new_node
 ```
-
-The **Time** and **Space complexity** of the **push()** function is:
-
- - **[Worst Case] - Big O(O):**
-   - **Time Complexity:**
-     - **O(1):** The time complexity in the *worst case* for this function is **O(1)**, which means it is constant. This is because, regardless of the size of the list, the execution time will always be the same. The new node is added directly at the beginning of the list without the need to traverse all the elements.
-   - **Space Complexity:**
-     - **O(1):** The space complexity in the *worst case* for this function is **O(1)**, which means it is constant. This is because the space used by the function is always the same, regardless of the size of the list. The function creates only one new node and adjusts the necessary pointers, without requiring additional space proportional to the size of the list.
-
-
-   - **[Worst Case] - Big O(O):**
-     - **O(?):** Qual o pior caso de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
-   - **[Best Case] - Omega (Ω):**
-     - **Ω(?):** Qual o melhor caso de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
-   - **[Average Case] - Theta (Θ):**
-     - **Θ(?):** Qual o caso médio de tempo e espaço do algoritmo abaixo? Explique em português e depois em inglês:
-
-
-
-
-
-
-
-
 
 > **Is this function work in an Empty List?**  
 > Yes!
 
-**NOTE:**  
-See the complete codes to test the functions in **C++** and **Python** below:
+
+The **Time** and **Space complexity** of the **push()** function is:
+
+ - **Time Complexity:**
+   - **[Worst Case] - Big O(O)** 
+     - **O(1):** The time complexity of this function in the *worst case* is **O(1)**, which means it is constant. This is because the insertion always occurs at the beginning of the list, regardless (sem considerar) of the size of the list. No matter (não importa) how many elements the list already contains, the function performs a fixed number of operations.
+   - **[Best Case] - Omega (Ω)**
+     - **Ω(1):** The time complexity of this function in the *best case* is **O(1)**, which means it is constant. This is because the insertion always occurs at the beginning of the list, regardless (sem considerar) of the size of the list.
+   - **[Average Case] - Theta (Θ)**
+     - **Θ(1):** In the *average case*, the time complexity of the push function is **O(1)**, which means it is constant. This is because the function always inserts the new node at the beginning of the linked list, regardless (sem considerar) of the size of the list.
+     - Regardless (Independentemente) of the number of elements already present in the list, the function performs a fixed number of operations to carry out the insertion. Therefore, the time complexity remains constant in the average case.
+ - **Space Complexity:**
+   - **(1):** The space complexity of this function is **constant (1)**, regardless (Independentemente) of the case *(worst, best, or average)*. This is because the amount of space required to execute the function does not depend on the size of the input data but only on the creation of a new node.
+
+Finally, let's test the function **push()** in practice:
 
 **C++:** [driver_push.cpp](src/cpp/singly-linked-list/driver_push.cpp)
 ```cpp
@@ -684,90 +651,95 @@ Data in the fifth Node: 25
 
 ---
 
-<div id="inserting-insertafternoden-sll"></div>
+<div id="inserting-insertafterpassed-node-sll"></div>
 
-## Add a new Node after a given Node "n" (insertAfterNodeN)
+## Add a new Node after a passed Node (insertAfterPassedNode) | O(1)
 
-> Now let's, see how to insert a new Node after a determined Node **"n"** in a **Singly Linked List**.
+> Now let's, see how to insert a new Node after a passed Node in a **Singly Linked List**.
 
 For example, see the image below:
 
 ![img](images/insertafternoden-01.png)  
 
-Looking at the image above, we can see that to insert a new Node we need:
+**The first, thing we need to do is check if the passed Node is NULL (None):**
 
- - The *previous Node (pointer)*, that's, the Node **"n"**.
- - Data to insert in the new Node.
+**C++:**
+```cpp
+if (passed_node == NULL)
+{
+    std::cout << "The passed Node cannot be NULL!";
+    return;
+}
+```
 
-Now, let's see how implement the **insertAfterNodeN()** functions in **C++** and **Python**:
+**Python:**
+```python
+if passed_node is None:
+    print("The passed Node cannot be NULL!")
+    return
+```
+
+**Now, we need to create a new Node and link (connect) the Nodes:**
+
+ - Create a "new_node".
+ - Next, set the "next" point of the "new_node" to point to "next" of the passed Node.
+ - Finally, set the "next" point of the passed Node to point to the "new_node".
+
+**C++:**
+```cpp
+Node *new_node = new Node(data);
+new_node->next = passed_node->next;
+passed_node->next = new_node;
+```
+
+**Python:**
+```python
+new_node = Node(data)
+new_node.next = passed_node.next
+passed_node.next = new_node
+```
+
+See, the complete code to **insertAfterPassedNode()** function below:
 
 **C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
-```cpp
-void SinglyLinkedList::insertAfterNodeN(Node *prev_node, int data)
+```python
+void SinglyLinkedList::insertAfterPassedNode(Node *passed_node, int data)
 {
-    if (this->head == nullptr)
+    if (passed_node == NULL)
     {
-        std::cout << "List is empty!\n";
-        return; // Stop the method.
+        std::cout << "The passed Node cannot be NULL!";
+        return;
     }
-    else if (prev_node == NULL)
-    {
-        std::cout << "The given previous Node cannot be NULL!";
-        return; // Stop the method.
-    }
-    else
-    {
-        Node *new_node  = new Node(data);  // Allocate a new Node.
-        new_node->next  = prev_node->next; // Make "next" of the "new_node" point to "next" of the "prev_node".
-        prev_node->next = new_node;        // Make the "next" of "prev_node" point to the "new_node".
-    }
+    Node *new_node = new Node(data);
+    new_node->next = passed_node->next;
+    passed_node->next = new_node;
 }
 ```
 
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
-def insertAfterNodeN(self, prev_node, data):
-    if self.head is None:
-        print("List is empty!")
-        return # Stop the method.
-    elif prev_node is None:
-        print("The given previous Node cannot be NULL!")
-        return # Stop the method.
-    else:
-        new_node       = Node(data)      # Allocate a new Node.
-        new_node.next  = prev_node.next  # Make "next" of the "new_node" point to "next" of the "prev_node".
-        prev_node.next = new_node        # Make the "next" of "prev_node" point to the "new_node".
+def insertAfterPassedNode(self, passed_node, data):
+    if passed_node is None:
+        print("The passed Node cannot be NULL!")
+        return
+    new_node = Node(data)
+    new_node.next = passed_node.next
+    passed_node.next = new_node
 ```
 
-The **Time** and **Space complexity** of the **insertAfterNodeN()** function is:
-
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
-
-
-
+The **Time** and **Space complexity** of the **insertAfterPassedNode()** function is:
 
  - **Time Complexity:**
-   - **O(1):** That's, constant complexity.
+   - **[Worst Case] - Big O(O)** 
+     - **O(1):** The time complexity of this function in the *worst case* is **O(1)**. This is because the function performs a fixed number of operations, regardless of the size of the node list.
+   - **[Best Case] - Omega (Ω)**
+     - **Ω(1):** The time complexity of this function in the *best case* is also **O(1)**. This is because even in the best case, where the function doesn't need to print the error message and can proceed normally, it performs a fixed number of operations. 
+   - **[Average Case] - Theta (Θ)**
+     - **Θ(1):** The time complexity of the function in the *average case* is also **O(1)**, which means it has constant complexity.
  - **Space Complexity:**
-   - **O(1):** That's, constant complexity.
+   - **(1):** The space complexity of the function is constant in all cases because it does not use any additional data structure that grows with the input size. It only creates a new node and updates the references of the existing nodes.
 
-**NOTE:**  
-See the complete codes to test the functions in **C++** and **Python** below:
+Finally, let's test the **insertAfterPassedNode()** function in practice:
 
 **C++:** [driver_insertAfterNodeN.cpp](src/cpp/singly-linked-list/driver_insertAfterNodeN.cpp)
 ```cpp
@@ -841,7 +813,7 @@ print("Data in the second Node:", sll.head.next.data)
 print("Data in the third Node:", sll.head.next.next.data)
 print("Data in the four Node:", sll.head.next.next.next.data)
 
-sll.insertAfterNodeN(sll.head.next, 15)  # 5(head)->10(prev_node)->new_node(15)->20->25
+sll.insertAfterPassedNode(sll.head.next, 15)  # 5(head)->10(prev_node)->new_node(15)->20->25
 
 print("\nSinglye Linked List after insert the new Node:")
 print("Data in the first (head) Node:", sll.head.data)
@@ -876,7 +848,7 @@ Data in the fifth Node: 25
 
 <div id="inserting-append-sll"></div>
 
-## Add a new Node at the end (append)
+## Add a new Node at the end (append) | O(n)
 
 > Now let's, see how to inser a new Node **at the end given Singly Linked List (Also called append)**.
 
@@ -896,30 +868,87 @@ See the image below to understand more easily:
 
 ![img](images/ssl-insert-append-01.png)  
 
-Looking at the image above, we can see that to insert a new Node we need to:
+**To apply this first, we need to allocate memory to the "new_node":**
 
- - Data to insert in the new Node.
- - Allocate memory to the "new_node".
- - Check if the list is empty:
-   - If the list was empty set new_node as head:
-     - `this->head = new_node;`
-     - `self.head = new_node`
- - Create a temporary Node (*temp_node) with the memory of the head Node:
-   - This temporary Node (*temp_node) will loop to all Nodes until "next" pointer be NULL.
-   - That's, "temp_node" has the memory address of the last Node.
- - Finally, we need to set the "next" point of the temporary Node (last node address now) point to the "new_node". That's, now we have a new last node.
+**C++:**
+```cpp
+Node *new_node = new Node(data);
+```
 
-Now, let's see how implement the **append()** functions in **C++** and **Python**:
+**Python:**
+```python
+new_node = Node(data)
+```
+
+**How the "new_node" will always be the last (tail) we need to set the "next" pointer as NULL (None):**
+
+**C++:**
+```cpp
+new_node->next = NULL;
+```
+
+**Python:**
+```python
+new_node.next = None
+```
+
+**Now, we need to check if the Linked List is empty, this is because if the Singly Linked List is empty, then we need to make the "new_node" as head and stop the method (return):**
+
+**C++:**
+```cpp
+if (this->head == NULL)
+{
+    this->head = new_node;
+    return;
+}
+```
+
+**Python:**
+```python
+if self.head is None:
+    self.head = new_node
+    return
+```
+
+**Now, we need to find the last Node. For it, let's create a "temp_node" to loop until the last Node:**
+
+**C++:**
+```cpp
+Node *temp_node = this->head;
+while (temp_node->next != NULL)
+{
+    temp_node = temp_node->next;
+}
+```
+
+**Python:**
+```python
+temp_node = self.head
+while temp_node.next is not None:
+    temp_node = temp_node.next
+```
+
+**With the old last Node saved in "temp_node", now we need to set him to point to the "new_node" (new last Node):**
+
+**C++:**
+```cpp
+temp_node->next = new_node;
+```
+
+**Python:**
+```python
+temp_node.next = new_node
+```
+
+See, the complete code to **append()** function below:
 
 **C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
 void SinglyLinkedList::append(int data)
 {
-    Node *new_node  = new Node(data); // Allocate a new Node.
-    new_node->next  = NULL;           // Set "next" of new Node as NULL.
+    Node *new_node = new Node(data);
+    new_node->next = NULL;
 
-    // If the Linked List is empty, then make the "new_node" as head
-    // and stop the method (return).
     if (this->head == NULL)
     {
         this->head = new_node;
@@ -927,22 +956,12 @@ void SinglyLinkedList::append(int data)
     }
     else
     {
-        /**
-         * "temp_node" Node was inited with memory address of head Node,
-         * now let's loop to change it to be last Node.
-        */
         Node *temp_node = this->head;
         while (temp_node->next != NULL)
         {
             temp_node = temp_node->next;
         }
-
-        /**
-         * Make "next" pointer of "temp_node" Node point to "new_node".
-         * That's, "new_node" will be last node.
-        */
         temp_node->next = new_node;
-        return; // Stop the method.
     }
 }
 ```
@@ -950,53 +969,31 @@ void SinglyLinkedList::append(int data)
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
 def append(self, data):
-    new_node = Node(data)  # Allocate a new Node.
-    temp     = self.head   # Creates a Node "last" starting from the head.
-
-    # If the Linked List is empty, then make the "new_node" as head and stop the method (return).
+    new_node = Node(data)
+    new_node.next = None
     if self.head is None:
         self.head = new_node
         return
     else:
-        # "Last" Node was initialized as head, now let's change it to be the last Node.
-        while temp.next is not None:
-            temp = temp.next
-
-        # Make "next" pointer of "temp_node" Node point to "new_node".
-        # That's, "new_node" will be last node.
-        temp.next = new_node
-        return # Stop the method.
+        temp_node = self.head
+        while temp_node.next is not None:
+            temp_node = temp_node.next
+        temp_node.next = new_node
 ```
 
-The **Time** and **Space complexity** of the **foo()** function is:
-
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
+The **Time** and **Space complexity** of the **append()** function is:
 
  - **Time Complexity:**
-   - **Best case: O(1)**
-     - If the linked list is empty (i.e., head is NULL), a new node is assigned as the head, and the function returns. This operation takes constant time, **O(1)**.
-   - **Worst case: O(n)**
-     - Otherwise (caso contrário), the function traverses the linked list until the last node. The complexity of this operation is proportional to the number of nodes in the linked list, so it is **O(n)**, where **"n"** is the number of nodes in the linked list.
+   - **[Worst Case] - Big O(O)** 
+     - **O(n):** The time complexity of this function in the *worst case* is **O(n)**, where *"n"* is the number of elements in the linked list.
+   - **[Best Case] - Omega (Ω)**
+     - **Ω(1):** The *"append"* function has a special best case when the linked list is empty. In this case, the time complexity is **O(1)**, which is constant.
+   - **[Average Case] - Theta (Θ)**
+     - **Θ(n):** In the *average case*, the function will traverse the list using the "while" loop until it finds the last node. This involves visiting each node sequentially until reaching the last node. The number of iterations required will depend on the average size of the list, resulting in a time complexity proportional to the average number of elements in the list, which is **O(n)**, where *"n"* is the average number of elements.
  - **Space Complexity:**
-   - **O(1):** The function allocates memory space for a new node, which takes constant space, **O(1)**.
+   - **(1):** The space complexity of the *"append"* function is the same in all cases: *worst case*, *best case*, and *average case*. It is **O(1)**, which means it is constant. The function uses a constant amount of additional space, regardless of the size of the linked list. It only creates a new temporary node to store the data and then performs manipulations on the existing pointers of the list, without the need to allocate additional space to store the entire list.
 
-**NOTE:**  
-See the complete codes to test the functions in **C++** and **Python** below:
+Finally, let's test the **append()** function in practice:
 
 **C++:** [driver_append.cpp](src/cpp/singly-linked-list/driver_append.cpp)
 ```cpp
@@ -1140,7 +1137,7 @@ List3 = append(1) + append(2) + append(3):
 
 <div id="delete-node-given-position"></div>
 
-## Delete a Singly Linked List node at a given position
+## Delete a Singly Linked List node at a given position | O(n)
 
 Here, let's see how to delete a Node in a **Singly Linked List** given position. For example, imagine we have the following **Singly Linked List**:
 
@@ -1161,16 +1158,14 @@ For example, see the image below to understand more easily:
 
 ![img](images/sll-delete-given-position-01.png)
 
-Looking at the image above, we can see that to insert a new Node we need:
-
-**First, we need check if the Singly Linked List is empty:** If the Singly Linked List is empty stop the function.
+**First, we need check if the Singly Linked List is empty. If the Singly Linked List is empty, then stop the function:**
 
 **C++:**
 ```cpp
 if (this->head == nullptr)
 {
     std::cout << "List is empty!\n";
-    return; // Stop the method.
+    return;
 }
 ```
 
@@ -1204,12 +1199,11 @@ temp = self.head
 
 **C++:**
 ```cpp
-// If position=0, then remove the "head".
 if (position == 0)
 {
-    this->head = temp_node->next; // Change second Node to be the new "head".
-    free(temp_node);              // Free old head.
-    return;                       // Stop the method.
+    this->head = temp_node->next;
+    free(temp_node);
+    return;
 }
 ```
 
@@ -1221,7 +1215,7 @@ if position == 0:
     return
 ```
 
-**Now, let's make "temp_node" point to the previous Node that will be deleted (To understand how to do that, see the example below):**
+**Now, let's make "temp_node" point to the previous Node that will be deleted (to understand how to do that, see the example below):**
 
 ```cpp
 /**
@@ -1260,41 +1254,37 @@ if position == 0:
 
 **C++:**
 ```cpp
-// Finds the "Node" before the "Node" (position) to be deleted.
 for (int i = 0; temp_node != NULL && i < position - 1; i++)
     temp_node = temp_node->next;
 ```
 
 **Python:**
 ```python
-# Finds the "Node" before the "Node" (position) to be deleted.
 for i in range(position - 1):
     if temp_node is None:
         break
     temp_node = temp_node.next
 ```
 
-**However, we need to check if position is more than number of nodes:**
+**We also need to check if  the passed position is more than number of nodes:**
 
 **C++:**
 ```cpp
-// Check if position is more than number of nodes.
 if (temp_node == NULL || temp_node->next == NULL)
 {
     std::cout << "The Node position exceeded!\n";
-    return; // Stop the method.
+    return;
 }
 ```
 
 **Python:**
 ```python
-# Check if position is more than number of nodes.
 if temp_node is None or temp_node.next is None:
     print("The Node position exceeded!")
     return
 ```
 
-**Now, we need to save the "next (memory address of the next node)" of the Node will be deleted (To understand how to do that, see the example below):**
+**Now, we need to save the "next (memory address of the next node)" of the Node will be deleted (to understand how to do that, see the example below):**
 
 ```cpp
 /**
@@ -1316,12 +1306,12 @@ if temp_node is None or temp_node.next is None:
 
 **C++:**
 ```cpp
-Node *next = temp_node->next->next; // Save "next" of the Node will be deleted.
+Node *next = temp_node->next->next;
 ```
 
 **Python:**
 ```python
-next = temp_node.next.next # Save "next" of the Node will be deleted.
+next = temp_node.next.next
 ```
 
 **Now, let's delete the Node in the position (Free memory) passed:**
@@ -1342,15 +1332,15 @@ next = temp_node.next.next # Save "next" of the Node will be deleted.
 
 **C++:**
 ```cpp
-free(temp_node->next); // Delete the Node in the position passed, "temp_node->next".
+free(temp_node->next);
 ```
 
 **Python:**
 ```python
-del temp_node.next # Delete the Node in the position passed, "temp_node->next".
+del temp_node.next
 ```
 
-**Finally, let's link the unlinked Nodes (To understand how to do that, see the example below):**
+**Finally, let's link the unlinked Nodes (to understand how to do that, see the example below):**
 
 ```cpp
 /**
@@ -1369,116 +1359,86 @@ del temp_node.next # Delete the Node in the position passed, "temp_node->next".
 
 **C++:**
 ```cpp
-
+temp_node->next = next;
 ```
 
 **Python:**
 ```python
-temp_node.next = next # Link the nodes.
+temp_node.next = next
 ```
 
-Now, let's see the complete **deleteNodeN()** functions in **C++** and **Python**:
+See, the complete code to **deleteNodeN()** function below:
 
 **C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
-// Method to delete a Node "n" by position.
 void SinglyLinkedList::deleteNodeN(int position)
 {
     if (this->head == nullptr)
     {
         std::cout << "List is empty!\n";
-        return; // Stop the method.
+        return;
     }
-
-    Node *temp_node = this->head;
-
-    // If position=0, then remove the "head".
-    if (position == 0)
+    else
     {
-        this->head = temp_node->next; // Change second Node to be the new "head".
-        free(temp_node);              // Free old head.
-        return;                       // Stop the method.
+        Node *temp_node = this->head;
+        if (position == 0)
+        {
+            this->head = temp_node->next;
+            free(temp_node);
+            return;
+        }
+        for (int i = 0; temp_node != NULL && i < position - 1; i++)
+            temp_node = temp_node->next;
+        if (temp_node == NULL || temp_node->next == NULL)
+        {
+            std::cout << "The Node position exceeded!\n";
+            return;
+        }
+        Node *next = temp_node->next->next;
+        free(temp_node->next);
+        temp_node->next = next;
     }
-
-    // Finds the "Node" before the "Node" (position) to be deleted.
-    for (int i = 0; temp_node != NULL && i < position - 1; i++)
-        temp_node = temp_node->next;
-
-    // Check if position is more than number of nodes.
-    if (temp_node == NULL || temp_node->next == NULL)
-    {
-        std::cout << "The Node position exceeded!\n";
-        return; // Stop the method.
-    }
-
-    Node *next = temp_node->next->next; // Save "next" of the Node will be deleted.
-    free(temp_node->next);              // Delete the Node in the position passed, "temp_node->next".
-    temp_node->next = next;             //  # Link the nodes.
 }
 ```
 
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
-# Method to delete a Node "n" by position.
 def deleteNodeN(self, position):
     if self.head is None:
         print("List is empty!")
         return
-
-    temp_node = self.head
-
-    if position == 0:
-        self.head = temp_node.next
-        del temp_node
-        return
-
-    # Finds the "Node" before the "Node" (position) to be deleted.
-    for i in range(position - 1):
-        if temp_node is None:
-            break
-        temp_node = temp_node.next
-
-    # Check if position is more than number of nodes.
-    if temp_node is None or temp_node.next is None:
-        print("The Node position exceeded!")
-        return
-
-    next = temp_node.next.next # Save "next" of the Node will be deleted.
-    del temp_node.next         # Delete the Node in the position passed, "temp_node->next".
-    temp_node.next = next      # Link the nodes.
+    else:
+        temp_node = self.head
+        if position == 0:
+            self.head = temp_node.next
+            del temp_node
+            return
+        for i in range(position - 1):
+            if temp_node is None:
+                break
+            temp_node = temp_node.next
+        if temp_node is None or temp_node.next is None:
+            print("The Node position exceeded!")
+            return
+        next = temp_node.next.next
+        del temp_node.next
+        temp_node.next = next
 ```
 
-The **Time** and **Space complexity** of the **foo()** function is:
-
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
+The **Time** and **Space complexity** of the **deleteNodeN()** function is:
 
  - **Time Complexity:**
-   - **Best case: O(1)**
-     - If the position is *0* (first node), the method runs in constant time, **O(1)**, as only a few assignments and memory deallocations are required.
-   - **Worst case: O(n)**
-     - If the position is greater than *0*, the method needs to traverse the list to find the node before the node to be deleted. The time complexity will be **O(n)**, where **"n"** is the number of nodes in the linked list. This is because the method uses a loop to iterate through the nodes until it reaches the desired position.
+   - **[Worst Case] - Big O(O)** 
+     - **O(n):** If the position is not *"zero 0"*, and the list is no empty, the function traverses the nodes in the list until it finds the node before the one to be deleted. This involves a loop that traverses, at most, *n-1 nodes*, where *"n"* is the total number of nodes in the list. Therefore, the time complexity is **O(n)** in the *Worst Case*.
+   - **[Best Case] - Omega (Ω)**
+     - **Ω(1):** If the list is empty (i.e., head is nullptr), the function prints *"List is empty!"* and returns immediately. This requires only one operation, so the time complexity is **O(1)**.
+     - **Ω(1):** If the list is not empty, but the node to be deleted is at the beginning of the list (i.e., the position is zero "0"), the function updates the head pointer to the next node and frees the memory of the deleted node. These operations require a fixed number of operations regardless of the list size, so the time complexity is also **O(1)**.
+   - **[Average Case] - Theta (Θ)**
+     - **Θ(n):**Considering that the positions of the nodes to be deleted are equally likely and there is no special distribution, the average time complexity will be the same as the *worst case*, which is **O(n)**.
  - **Space Complexity:**
-   - **O(1):**
-     - **EN -** The *Space Complexity* of this function is constant, **O(1)**, as it does not use additional data structures that grow with the size of the list. It only uses a few auxiliary variables to perform the necessary operations.
-     - **PT -** A *Complexidade de Spaço* dessa função é constante, **O(1)**, pois não utiliza estruturas de dados adicionais que cresçam com o tamanho da lista. Ela apenas utiliza algumas variáveis auxiliares para realizar as operações necessárias.
+   - **(1):** The Space Complexity in all cases is constant.
 
-**NOTE:**  
-Finally, let's test the functions in **C++** and **Python** in the practice:
+Finally, let's test the **deleteNodeN()** function in practice:
 
 **C++:** [driver_deleteNodeN.cpp](src/cpp/singly-linked-list/driver_deleteNodeN.cpp)
 ```cpp
@@ -1622,20 +1582,68 @@ The Node position exceeded!
 
 <div id="traversing-sll-from-the-head"></div>
 
-## Traversing in SinglyLinkedList from the Head until Tail
+## Traversing in SinglyLinkedList from the Head until Tail | O(n)
 
 > An approach to **traverse a Singly Linked List** is to start from the Head until the last Node (Tail).
 
-Now, let's see how implement the **printListFromTheHead()** functions in **C++** and **Python**:
+**First, wee need to check if the list is empty:**
 
 **C++:**
+```cpp
+if (this->head == nullptr)
+{
+    std::cout << "List is empty!\n";
+    return;
+}
+```
+
+**Python:**
+```python
+if self.head is None:
+    print("List is empty!")
+    return
+```
+
+**Now, let's create a temporary Node to loop until de last Node printing your values:**
+
+**C++:**
+```cpp
+Node *current_node = this->head;
+```
+
+**Python:**
+```python
+current_node = self.head
+```
+
+**Finally, let's create a loop to iterate by all Nodes printing your values:**
+
+**C++:**
+```cpp
+while (current_node != NULL)
+{
+    std::cout << current_node->data << " ";
+    current_node = current_node->next;
+}
+```
+
+**Python:**
+```python
+while current_node is not None:
+    print(current_node.data, end=" ")
+    current_node = current_node.next
+```
+
+See, the complete code to **printListFromHead()** function below:
+
+**C++:** [SinglyLinkedList.cpp](src/cpp/singly-linked-list/SinglyLinkedList.cpp)
 ```cpp
 void SinglyLinkedList::printListFromHead()
 {
     if (this->head == nullptr)
     {
         std::cout << "List is empty!\n";
-        return; // Stop the method.
+        return;
     }
     else
     {
@@ -1645,12 +1653,11 @@ void SinglyLinkedList::printListFromHead()
             std::cout << current_node->data << " ";
             current_node = current_node->next;
         }
-        std::cout << "\n";
     }
 }
 ```
 
-**Python:**
+**Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
 ```python
 def printListFromHead(self):
     if self.head is None:
@@ -1661,40 +1668,22 @@ def printListFromHead(self):
         while current_node is not None:
             print(current_node.data, end=" ")
             current_node = current_node.next
-        print()
 ```
 
 The **Time** and **Space complexity** of the **printListFromHead()** function is:
 
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
-
-
  - **Time Complexity:**
-   - **Best cases: O(1)**
-     - In the best case, the list is empty, so the execution time is constant since we only need to print a message *("List is empty!")*. Therefore, the Best-Case of Time Complexity is **O(1)**.
-     - When there is only **1 element (Node)** in the list, the best case scenario occurs. In this case, the function will traverse the single node and print its value. Since there is only one node, the traversal will occur once, resulting in a time complexity of **O(1)**. 
-   - **Worst case: O(n)**
-     -  In the worst case, the list contains **"n"** Nodes. In this case, the function traverses all the nodes of the list to print them. This requires a time proportional to the number of nodes, resulting in a worst-case time complexity of **O(n)**.
+   - **[Worst Case] - Big O(O)** 
+     - **O(n):** The *worst case* time complexity occurs when the list is fully populated, and we need to traverse all nodes to print their values. In this case, the complexity will be **O(n)**, where **"n"** is the number of elements in the list. This happens because the function needs to traverse all the nodes in the list once.
+   - **[Best Case] - Omega (Ω)**
+     - **Ω(1):** A possible *best case* occurs when the list is empty, meaning there are no nodes in the list. In this case, the complexity will be **O(1)** because the function quickly checks if the list is empty and then returns immediately.
+     - **Ω(1):** Another possible *best case* occurs when the list has only one node. The function checks if the list is empty (which it is not), prints the single element, and returns immediately. This operation is performed in constant time, so the time complexity is **O(1)**.
+   - **[Average Case] - Theta (Θ)**
+     - **Θ(n):** In the *average case*, the time complexity will depend on the distribution of elements in the list. If we assume a random distribution of elements, the complexity will be **O(n)**, where **"n"** is the number of elements in the list. This happens because the function needs to traverse all the nodes in the list once.
  - **Space Complexity:**
-    - **O(1):** Regarding the *Space Complexity*, the function uses a constant amount of additional space for local variables, regardless of the size of the list. Therefore, the space complexity is **O(1)** both in the best and worst cases.
+   - **(1):** In the *worst case*, *best case*, and *average case*, the function doesn't require any additional space beyond what is already occupied by the linked list. It uses only one variable to track the "current_node", regardless of the size of the list. Therefore, the space complexity is constant, **O(1)**.
 
-**NOTE:**  
-See the complete codes to test the functions in **C++** and **Python** below:
+Finally, let's test the **printListFromHead()** function in practice:
 
 **C++:** [driver_printListFromHead.cpp](src/cpp/singly-linked-list/driver_printListFromHead.cpp)
 ```cpp
@@ -1765,160 +1754,6 @@ List is empty!
 40 
 40 50 
 40 50 60
-```
-
----
-
-<div id=""></div>
-
-## Traversing in SinglyLinkedList from Node "n" until the last Node (tail)
-
-> An approach to **traverse a Singly Linked List** is to start from Node **"n"** until the last Node (tail).
-
-Now, let's see how implement the **printListFromNodeN()** functions in **C++** and **Python**:
-
-**C++:**
-```cpp
-void SinglyLinkedList::printListFromNodeN(Node *n)
-{
-    if (n == nullptr)
-    {
-        std::cout << "Node is empty!\n";
-        return; // Stop the method.
-    }
-    else
-    {
-        Node *current_node = n;
-        while (current_node != NULL)
-        {
-            std::cout << current_node->data << " ";
-            current_node = current_node->next;
-        }
-        std::cout << "\n";
-        return; // Stop the method.
-    }
-}
-```
-
-**Python:**
-```python
-def printListFromNodeN(self, n):
-    if n is None:
-        print("Node is empty!")
-    else:
-        current_node = n
-        while current_node is not None:
-            print(current_node.data, end=" ")
-            current_node = current_node.next
-        print()
-```
-
-The **Time** and **Space complexity** of the **printListFromNodeN()** function is:
-
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
-
- - **Best Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Worst Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
- - **Average Case: O(?)**
-   - **Time Complexity:**
-     - x
-   - **Space Complexity:**
-     - x
-
-**NOTE:**  
-See the complete codes to test the functions in **C++** and **Python** below:
-
-[driver_printListFromNodeN.cpp](src/cpp/singly-linked-list/driver_printListFromNodeN.cpp)
-```cpp
-#include "SinglyLinkedList.h"
-#include <iostream>
-
-int main()
-{
-    SinglyLinkedList list;
-
-    list.printListFromNodeN(list.head);
-
-    list.head = new Node(10);
-    list.head->next = new Node(20);
-    list.head->next->next = new Node(30);
-
-    list.printListFromNodeN(list.head);
-    list.printListFromNodeN(list.head->next);
-    list.printListFromNodeN(list.head->next->next);
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ Node.cpp SinglyLinkedList.cpp driver_printListFromNodeN.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**  
-```bash
-Node is empty!
-10 20 30 
-20 30 
-30 
-```
-
-**Python:** [driver_printListFromNodeN.py](src/python/singly-linked-list/driver_printListFromNodeN.py)
-```python
-from SinglyLinkedList import SinglyLinkedList
-from Node import Node
-
-print("########## ( Print values from Node 'n' ) ##########")
-
-list = SinglyLinkedList()
-
-list.printListFromNodeN(list.head)
-
-list.head = Node(10)
-list.head.next = Node(20)
-list.head.next.next = Node(30)
-
-list.printListFromNodeN(list.head)
-list.printListFromNodeN(list.head.next)
-list.printListFromNodeN(list.head.next.next)
-```
-
-**INPUT:**
-```bash
-python driver_printListFromNodeN.py
-```
-
-**OUTPUT:**
-```bash
-########## ( Print values from Node 'n' ) ##########
-Node is empty!
-10 20 30 
-20 30 
-30
 ```
 
 

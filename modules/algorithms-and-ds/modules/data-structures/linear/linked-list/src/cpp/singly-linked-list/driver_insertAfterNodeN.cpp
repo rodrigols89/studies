@@ -16,7 +16,8 @@ int main()
     std::cout << "Data in the third Node: " << sll.head->next->next->data << "\n";
     std::cout << "Data in the four Node: " << sll.head->next->next->next->data << "\n";
 
-    sll.insertAfterNodeN(sll.head->next, 15); // 5(head)->10(prev_node)->new_node(15)->20->25
+    // 5(head)->10(passed_node)->new_node(15)->20->25
+    sll.insertAfterPassedNode(sll.head->next, 15);
 
     std::cout << "\nSinglye Linked List after insert the new Node:" << "\n";
     std::cout << "Data in the first (head) Node: " << sll.head->data << "\n";

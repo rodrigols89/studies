@@ -7,7 +7,7 @@ public:
     int data;
     Node *next;
 
-    Node(int data = 0); // Constructor prototype.
+    Node(int data); // Constructor prototype.
 };
 
 #endif // NODE_H_
