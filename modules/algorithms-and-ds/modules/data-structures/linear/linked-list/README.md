@@ -17,13 +17,18 @@
    - **Traversing:**
      - [Traversing in SinglyLinkedList from the Head until Tail | O(n)](#traversing-sll-from-the-head)
  - **Doubly Linked List:**
+   - ["Node" class representation for a Doubly Linked List](#node-class-for-dll)
  - **Circular Linked List:**
- - **List in C++ Standard Template Library (STL):**
+   - ["Node" class representation for a Circular Linked List](#node-class-for-cll)
+ - **Standard Template Library (STL):**
+   - [`std::forward_list<data-type> list-name (Dynamic Singly Linked List)`](#std-forward-list)
+   - [`std::list<data-type> list-name (Dynamic Doubly Linked List)` ](#std-list)
+   - [`boost::circular_buffer<data-type> list-name(capacity) (Dynamic Circular Linked List)`](#stl-cll)
  - **Tips & Tricks:**
    - [Linked List: Advantages and Disadvantages](#advantages-disadvantages)
  - [**REFERENCES**](#ref)
 
-<!--- ( Singly Linked List/General ) --->
+<!--- ( Singly Linked List ) --->
 
 ---
 
@@ -72,7 +77,7 @@ Node::Node(int data)
 **Python:** [Node.py](src/python/singly-linked-list/Node.py)
 ```python
 class Node:
-    def __init__(self, data=0):
+    def __init__(self, data):
         self.data = data
         self.next = None
 ```
@@ -1795,6 +1800,563 @@ List is empty!
 
 
 
+<!--- ( Doubly Linked List ) --->
+
+---
+
+<div id="node-class-for-dll"></div>
+
+## "Node" class representation for a Doubly Linked List
+
+> A **Doubly Linked List** is composed of connected **"Nodes"**, where each **"Node"** has:
+
+ - **"Data"** stored.
+ - A pointer **"prev"** to the previous *Node*.
+ - A pointer **"next"** to the next *Node*.
+
+![img](images/dll-01.png)  
+
+**See that:**
+
+ - The **"prev"** point of the first Node is NULL.
+ - The **"next"** point to the last Node is NULL.
+
+
+
+For example, see how represents a **"Node"** *class* for a **Doubly Linked List**:
+
+
+**C++:** [Node.h](src/cpp/doubly-linked-list/Node.h)
+```cpp
+#ifndef NODE_H_
+#define NODE_H_
+
+class Node
+{
+public:
+    int data;
+    Node *prev;
+    Node *next;
+
+    Node(int data); // Constructor prototype.
+};
+
+#endif // NODE_H_
+```
+
+**C++:** [Node.cpp](src/cpp/doubly-linked-list/Node.cpp)
+```cpp
+#include "Node.h"
+
+// Constructor implementation (definition).
+Node::Node(int data)
+{
+    this->data = data;
+    this->prev = nullptr;
+    this->next = nullptr;
+}
+```
+
+**Python:** [Node.py](src/python/doubly-linked-list/Node.py)
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Circular Linked List ) --->
+
+---
+
+<div id="node-class-for-cll"></div>
+
+## "Node" class representation for a Circular Linked List
+
+> There are generally two types of circular linked lists.
+
+ - **Circular singly linked list.**
+ - **Circular Doubly linked list.**
+
+**Circular singly linked list:**
+In a **Circular Singly Linked List**, the last node of the list contains a pointer to the first node of the list. We traverse the circular singly linked list until we reach the same node where we started. The circular singly linked list has no beginning or end. No null value is present in the next part of any of the nodes.
+
+See the image below to understand more easily:
+
+![img](images/CircularSinglyLinkedList-660x172.png)  
+
+**Circular Singly Linked Lists** are similar to *Single Linked Lists* with the exception of connecting the last node to the first node. For example, see the code below:
+
+**C++:**
+```cpp
+// Initialize the Nodes.
+Node first  = new Node(10);
+Node second = new Node(20);
+Node third  = new Node(30);
+ 
+// Connect nodes.
+first.next  = second;
+second.next = third;
+third.next  = first;
+```
+
+**Python:**
+```python
+# Initialize the Nodes.
+first  = Node(3)
+second = Node(5)
+third  = Node(9)
+ 
+# Connect nodes.
+first.next  = second
+second.next = third
+third.next  = first
+```
+
+**Circular Doubly linked list:**
+**Circular Doubly Linked List** has properties of both doubly linked list and circular linked list in which two consecutive elements are linked or connected by the previous and next pointer and the last node points to the first node by the next pointer and also the first node points to the last node by the previous pointer.
+
+See the image below to understand more easily:
+
+![img](images/Circulardoublylinkedlist-660x155.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( STL ) --->
+
+---
+
+<div id="std-forward-list"></div>
+
+## `std::forward_list<data-type> list-name (Dynamic Singly Linked List)` 
+
+> **"forward_list"** in STL implements **Dynamic Singly Linked List**.
+
+**Points to remember about *"forward_list"* container:**
+
+ - **Advantages:**
+   - Introduced from *C++11*, **forward_list** are more useful than other containers in *insertion*, *removal*, and moving operations (like sort) and allow time *constant* insertion and removal of elements.
+   - It differs from the **"std::list"** by the fact that the forward list keeps track of the location of only the next element while the **"std::list"** keeps track of both the next and previous elements, thus increasing the storage space required to store each element.
+   - **"Forward List"** is preferred over the **"std::list"** when only forward traversal is required (same as the singly linked list is preferred over doubly linked list) as we can save space.
+ - **Disadvantages:**
+   - The drawback of a **"forward_list"** is that it cannot be iterated backward and its individual elements cannot be accessed directly.
+
+**The *"forward_list"* Abstract Data Type (ADT) is:**
+
+ - **Insert functions:**
+   - **push_front():**
+     - This function is used to insert the element at the first position on forward list.
+   - **emplace_front():**
+     - This function is similar to the previous function but in this no copying operation occurs, the element is created directly at the memory before the first element of the forward list.
+   - **insert_after():**
+     - This function gives us a choice to insert elements at any position in forward list. The arguments in this function are copied at the desired position.
+   - **emplace_after():**
+     - This function also does the same operation as the above function but the elements are directly made without any copy operation.
+ - **Remove functions:**
+   - **pop_front():**
+     - This function is used to delete the first element of the list.
+   - **clear():**
+     - This function deletes all the elements from the list.
+ - **Useful functions:**
+   -  **empty():**
+     - This function returns true if the list is empty otherwise false.
+   - **reverse():**
+     - Reverses the order of the elements present in the forward_list.
+   - **merge():**
+     - This function is used to merge one forward list with other. If both the lists are sorted then the resultant list returned is also sorted.
+   - **sort():**
+     - This function is used to sort the forward list.
+   - **unique():**
+     - This function deletes the multiple occurrences of a number and returns a forward list with unique elements. The forward list should be sorted for this function to execute successfully. 
+
+---
+
+<div id="std-list"></div>
+
+## `std::list<data-type> list-name (Dynamic Doubly Linked List)` 
+
+> Lists are sequence *containers* that *allow non-contiguous memory allocation*.
+
+**Points to remember about *"List"* container:**
+
+ - It is generally implemented using a **Dynamic Doubly Linked List** with traversal in both directions.
+ - Faster insert and delete operation as compared to arrays and vectors:
+   - Constant Time Complexity: O(1).
+ - It provides only sequential access. Random Access to any middle element is not possible.
+ - It is defined as a template so it is able to hold any data type.
+ - It operates as an unsorted list would, which implies that by default, the list’s order is not preserved. However, there are techniques for sorting.
+
+**The *"List"* Abstract Data Type (ADT) is:**
+
+ - **Insert functions:**
+   - **push_front():**
+     - Adds a new element ‘g’ at the beginning of the list.
+   - **push_back():**
+     -  Adds a new element ‘g’ at the end of the list.
+   - **insert():**
+     - Inserts new elements in the list before the element at a specified position.
+ - **Remove functions:**
+   - **pop_front():**
+     - Removes the first element of the list, and reduces the size of the list by 1.
+   - **pop_back():**
+     - Removes the last element of the list, and reduces the size of the list by 1.
+   - **erase():**
+     - Removes a single element or a range of elements from the list.
+   - **remove():**
+     - Removes all the elements from the list, which are equal to a given element.
+   - **list::remove_if():**
+     - Used to remove all the values from the list that correspond true to the predicate or condition given as a parameter to the function.
+   - **list::clear():**
+     - Clear() function is used to remove all the elements of the list container, thus making it size 0.
+ - **Useful functions:**
+   - **empty():**
+     - Returns whether the list is *empty(1)* or *not(0)*.
+   - **size():**
+     - Returns the number of elements in the list.
+   - **front():**
+     - Returns the value of the first element in the list.
+   - **back():**
+     - Returns the value of the last element in the list.
+   - **reverse():**
+     - Reverses the list.
+   - **sort():**
+     - Sorts the list in increasing order.
+   - **merge()**:
+     - Merges two sorted lists into one.
+
+See the test code below:
+
+[driver_list_adt.cpp](src/stl/cpp/driver_list_adt.cpp)
+```cpp
+#include <iostream>
+#include <list>
+
+void showlist(std::list<int> mylist)
+{
+    std::cout << "List values:";
+    std::list<int>::iterator it;
+    for (it = mylist.begin(); it != mylist.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
+}
+
+int main()
+{
+    std::list<int> mylist;
+
+    std::cout << "---- ( push_front() examples ) -----\n";
+    mylist.push_front(5); // [5]
+    mylist.push_front(3); // [3]->5
+    mylist.push_front(1); // [1]->3->5
+    showlist(mylist);
+
+    mylist.push_back(10); // 1->3->5->[10]
+    mylist.push_back(15); // 1->3->5->10->[15]
+    mylist.push_back(20); // 1->3->5->10->15->[20]
+    showlist(mylist);
+
+    std::cout << "---- ( Useful Functions examples ) -----\n";
+    std::cout << "List is empty(1) or not(0): " << mylist.empty() << "\n";
+    std::cout << "List size(): " << mylist.size() << "\n";
+    std::cout << "front(): " << mylist.front() << "\n";
+    std::cout << "back(): " << mylist.back() << "\n";
+    mylist.reverse();
+    std::cout << "reverse() ";
+    showlist(mylist);
+
+    std::cout << "---- ( merge() + sort() examples ) -----\n";
+    std::list<int> mylist_one = {5, 1, 0, 50, 2, 10};
+    std::list<int> mylist_two = {3, 7, 8, 20, 4, 15};
+    std::cout << "List 1 = ";
+    showlist(mylist_one);
+    std::cout << "List 2 = ";
+    showlist(mylist_two);
+    mylist_one.merge(mylist_two);
+    std::cout << "List 1 merged with List 2 = ";
+    showlist(mylist_one);
+    std::cout << "List 1 before apply sort() function = ";
+    showlist(mylist_one);
+    mylist_one.sort();
+    std::cout << "List 1 after apply sort() function = ";
+    showlist(mylist_one);
+
+    return 0;
+}
+```
+
+**INPUT:** 
+```bash
+g++ driver_list_adt.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:** 
+```bash
+---- ( push_front() examples ) -----
+List values: 1 3 5
+List values: 1 3 5 10 15 20
+---- ( Useful Functions examples ) -----
+List is empty(1) or not(0): 0
+List size(): 6
+front(): 1
+back(): 20
+reverse() List values: 20 15 10 5 3 1
+---- ( merge() + sort() examples ) -----
+List 1 = List values: 5 1 0 50 2 10
+List 2 = List values: 3 7 8 20 4 15
+List 1 merged with List 2 = List values: 3 5 1 0 7 8 20 4 15 50 2 10
+List 1 before apply sort() function = List values: 3 5 1 0 7 8 20 4 15 50 2 10
+List 1 after apply sort() function = List values: 0 1 2 3 4 5 7 8 10 15 20 50
+```
+
+---
+
+<div id="stl-cll"></div>
+
+## `boost::circular_buffer<data-type> list-name(capacity) (Dynamic Circular Linked List)`
+
+> A **circular buffer** is a container of fixed size and a **contiguous blocks of memory** with the **front and back connected**.
+
+**NOTE:**  
+To understand how it works, let's see the abstraction below...
+
+In computer science, a **circular buffer**, **circular queue**, **cyclic buffer** or **ring buffer** is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.
+
+A circular buffer first starts out empty and has a set length. In the diagram below is a 7-element buffer:
+
+![img](images/circular-buffer-01.png)  
+
+Assume that 1 is written in the center of a circular buffer (the exact starting location is not important in a circular buffer):
+
+![img](images/circular-buffer-02.png)  
+
+Then assume that two more elements are added to the circular buffer — 2 & 3 — which get put after 1 (que são colocados após 1):
+
+![img](images/circular-buffer-03.png)  
+
+If two elements are removed, the two oldest values inside of the circular buffer would be removed:
+
+![img](images/circular-buffer-04.png)  
+
+**NOTE:**  
+This is because Circular buffers use **FIFO (first in, first out) logic**. In the example, 1 & 2 were the first to enter the circular buffer, they are the first to be removed, leaving 3 inside of the buffer.
+
+If the buffer has 7 elements, then it is completely full:
+
+![img](images/circular-buffer-05.png)  
+
+**NOTE:**  
+A property of the circular buffer is that when it is full and a subsequent write is performed, then it starts overwriting the oldest data.
+
+In the current example, two more elements — A & B — are added and they overwrite the 3 & 4:
+
+![img](images/circular-buffer-05-01.png)  
+![img](images/circular-buffer-06.png)  
+
+Finally, if two elements are now removed then what would be returned is not 3 & 4, but 5 & 6:
+
+![img](images/circular-buffer-07.png)  
+
+**NOTE:**  
+This is because the 5 and 6 were the old first to be added.
+
+Another approach to understanding how Circular Buffer works is an abstraction as a ring. For example, ses the image below:
+
+![img](images/circular-buffer-08.png)  
+
+A ring showing, conceptually, a circular buffer. This visually shows that the buffer has no real end and it can loop around the buffer.
+
+**NOTE:**  
+However, since memory is never physically created as a ring, a linear representation is generally used as is done below:
+
+![img](images/circular-buffer-09.gif)  
+
+**Points to remember about *"boost::circular_buffer"* container:**
+
+ - **Advantages:**
+ - **Disadvantages:**
+   - Even though it is of constant size, you can insert as many elements you want but the elements will be overwritten if the container is full.
+     - PT - Embora seja de tamanho constante, você pode inserir quantos elementos quiser, mas os elementos serão substituídos se o contêiner estiver cheio.
+ - **Tips & Tricks:**
+   - The circular buffer can be resized but it has to be explicitly mentioned by the user and resizing will add the extra spaces to the back of the container:
+     - The address of front container never changes while the back of the container changes as it resizes.
+
+**The *"boost::circular_buffer"* Abstract Data Type (ADT) is:**
+
+ - **Insert functions:**
+   - **push_front():**
+     - Inserts an element to the front of the beginning point.
+   - **push_back():**
+     - Inserts an element to the back of the beginning point.
+ - **Remove functions:**
+   - **pop_front():**
+     - Removes the element at the beginning of the container.
+   - **pop_back():**
+     - Removes the element at the end of the container.
+ - **Useful functions:**
+   - **size():**
+     - Returns the numbers of elements present in the container and not the size.
+   - **capacity()**
+     - Returns the actual size of the container.
+
+See the test code below:
+
+[driver_boost_circular_buffer.cpp](src/stl/cpp/driver_boost_circular_buffer.cpp)
+```cpp
+#include <boost/circular_buffer.hpp>
+
+int main(int /*argc*/, char * /*argv*/[])
+{
+    // Create a circular buffer with a capacity for 3 integers.
+    boost::circular_buffer<int> cb(3);
+
+    // Insert some elements into the buffer.
+    cb.push_back(1);
+    cb.push_back(2);
+    cb.push_back(3);
+
+    int a = cb[0]; // a == 1
+    int b = cb[1]; // b == 2
+    int c = cb[2]; // c == 3
+
+    cb.push_back(4); // Overwrite 1 with 4.
+    cb.push_back(5); // Overwrite 2 with 5.
+
+    // The buffer now contains 3, 4 and 5.
+    a = cb[0]; // a == 3
+    b = cb[1]; // b == 4
+    c = cb[2]; // c == 5
+
+    // Elements can be popped from either the front or the back.
+    cb.pop_back();  // 5 is removed.
+    cb.pop_front(); // 3 is removed.
+
+    int d = cb[0]; // d == 4
+
+    return 0;
+}
+```
+
+**INPUT:** 
+```bash
+g++ driver_boost_circular_buffer.cpp -o test.out && ./test.out
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Tips & Tricks ) --->
 
 ---
@@ -1803,25 +2365,26 @@ List is empty!
 
 ## Linked List: Advantages and Disadvantages
 
- - **Advantages:**
-   - Dynamic Array.
-   - Ease of Insertion/Deletion.
-   - Insertion at the beginning is a constant time operation and takes O(1) time:
-     - As compared to arrays where inserting an element at the beginning takes **O(n)** time, where **"n"** is the number of elements in the array.
- - **Disadvantages (Drawbacks):**
-   - Random access is not allowed. We have to access elements sequentially starting from the first node (head node):
-     - So we cannot do a binary search with Linked Lists efficiently with its default implementation. 
-   - Extra memory space for a *pointer* is required with each element of the list.
-   - Not cache-friendly (Não compatível com cache):
+ - **General:**
+   - **Advantages:**
+     - Dynamic Array.
+     - Ease of Insertion/Deletion.
+     - Insertion at the beginning is a constant time operation and takes O(1) time:
+       - As compared to arrays where inserting an element at the beginning takes **O(n)** time, where **"n"** is the number of elements in the array.
+   - **Disadvantages (Drawbacks):**
+     - Random access is not allowed. We have to access elements sequentially starting from the first node (head node):
+       - So we cannot do a *binary search* with Linked Lists efficiently with its default implementation. 
+     - Extra memory space for a *pointer* is required with each element of the list.
+     - Not cache-friendly (Não compatível com cache):
      - Since array elements are contiguous locations, there is the locality of reference which is not there in the case of linked lists.
-   - It takes a lot of time in traversing and changing the pointers.
-   - Reverse traversing is not possible in singly linked lists.
-   - It will be confusing when we work with pointers.
-   - Direct access to an element is not possible in a linked list as in an array by index.
-   - Searching for an element is costly and requires O(n) time complexity.
-   - Sorting of linked lists is very complex and costly.
-   - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
-     - As compared to arrays that take **O(1)** time.
+     - It takes a lot of time in traversing and changing the pointers.
+     - Reverse traversing is not possible in singly linked lists.
+     - It will be confusing when we work with pointers.
+     - Direct access to an element is not possible in a linked list as in an array by index.
+     - Searching for an element is costly and requires O(n) time complexity.
+     - Sorting of linked lists is very complex and costly.
+     - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
+       - As compared to arrays that take **O(1)** time.
 
 
 
@@ -1870,9 +2433,21 @@ List is empty!
 
 ## REFERENCES
 
- - [What is Linked List](https://www.geeksforgeeks.org/what-is-linked-list//)
- - [Insertion in Linked List](https://www.geeksforgeeks.org/insertion-in-linked-list/)
- - [Delete a Linked List node at a given position](https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position/)
+ - **Singly Linked List:**
+   - [What is Linked List](https://www.geeksforgeeks.org/what-is-linked-list//)
+   - [Insertion in Linked List](https://www.geeksforgeeks.org/insertion-in-linked-list/)
+   - [Delete a Linked List node at a given position](https://www.geeksforgeeks.org/delete-a-linked-list-node-at-a-given-position/)
+ - **Doubly Linked List:**
+   - [Introduction to Doubly Linked List – Data Structure and Algorithm Tutorials](https://www.geeksforgeeks.org/data-structures/linked-list/doubly-linked-list/?ref=appendix)
+ - **Circular Linked List:**
+   - [Introduction to Circular Linked List](https://www.geeksforgeeks.org/circular-linked-list/)
+ - **Standard Template Library (STL):**
+   - [List in C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/list-cpp-stl/)
+   - [Forward List in C++ | Set 1 (Introduction and Important Functions)](https://www.geeksforgeeks.org/forward-list-c-set-1-introduction-important-functions/)
+   - [Forward List in C++ | Set 2 (Manipulating Functions)](https://www.geeksforgeeks.org/forward-list-c-set-2-manipulating-functions/)
+   - [C++ boost::circular_buffer](https://cppsecrets.com/users/982115114100104114114971091071171099711464103109971051084699111109/C00-boostcircularbuffer.php)
+   - [Circular buffer](https://en.wikipedia.org/wiki/Circular_buffer)
+
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
