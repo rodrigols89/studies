@@ -9,6 +9,6 @@ int main()
     obj.radius = 5.5;
 
     std::cout << "Radius is: " << obj.radius << "\n";
-    std::cout << "Area is: " << obj.compute_area();
+    std::cout << "Area is: " << obj.compute_area() << "\n";
     return 0;
 }
