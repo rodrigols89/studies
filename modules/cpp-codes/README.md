@@ -17,7 +17,7 @@
  - [Pointers & References](modules/pointers-references)
  - [Dynamic Memory Allocation](modules/dynamic-memory-allocation)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
- - [**Object-Oriented Programming (OOP)**](modules/oop)
+ - [Object-Oriented Programming (OOP)](modules/oop)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)

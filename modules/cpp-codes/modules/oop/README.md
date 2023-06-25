@@ -45,7 +45,7 @@
      - [Virtual Function](#virtual-function)
        - [Override Identifier](#override-identifier)
        - [Virtual Function Demonstration (Animal example)](#vfd)
- - [**REFERENCES**](#ref)
+ - [**REFERENCES**](#references)
 
 <!--- ( Classes ) --->
 
@@ -3125,7 +3125,7 @@ Animal *cat_obj = new Cat();
 
 ---
 
-<div id="ref"></div>
+<div id="references"></div>
 
 ## REFERENCES
 
