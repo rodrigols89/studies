@@ -18,7 +18,7 @@
        - **Static:**
          - [Array](modules/data-structures/linear/array)
        - **Dynamic:**
-         - [Linked-List](modules/data-structures/linear/linked-list)
+         - [Linked List](modules/data-structures/linear/linked-list)
          - [Stack (Last-In First-Out)](modules/data-structures/linear/stack)
          - Queue
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
