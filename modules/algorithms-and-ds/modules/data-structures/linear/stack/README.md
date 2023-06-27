@@ -1,4 +1,4 @@
-# Stack (Last-In First-Out)
+# Stack (Last-In, First-Out)
 
 ## Contents
 

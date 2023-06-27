@@ -3,7 +3,16 @@
 ## Contents
 
  - [Design and Analysis of Algorithms](modules/design-and-analysis-of-algorithms)
+ - [Algorithms Implementations](#algorithms-implementations)
  - [Data Structures](#ds)
+
+---
+
+<div id="ds"></div>
+
+## Algorithms Implementations
+
+ - [Recursion](modules/algorithms-implementations/recursion)
 
 ---
 
@@ -19,7 +28,7 @@
          - [Array](modules/data-structures/linear/array)
        - **Dynamic:**
          - [Linked List](modules/data-structures/linear/linked-list)
-         - [Stack (Last-In First-Out)](modules/data-structures/linear/stack)
+         - [Stack (Last-In, First-Out)](modules/data-structures/linear/stack)
          - Queue
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
        - Tree
