@@ -17,9 +17,9 @@ private:
     }
 
 public:
-    // Interfaces.
-    void purchase(const std::string &title, float value); // Fill the information.
-    void update(float value);                             // Update game price.
-    void play(int time);                                  // Record (save) the hours played.
-    void showInformation();                               // show information.
+    Game(const std::string &name, float cost = 0); // Constructor prototype.
+
+    void update(float cost);                       // Update game price.
+    void play(int hours);                          // Record (save) the hours played.
+    void showInformation();                        // show information.
 };

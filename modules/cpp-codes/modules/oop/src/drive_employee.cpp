@@ -6,7 +6,7 @@ int main()
     Employee myObj;
     myObj.setSalary(50000);
 
-    std::cout << "The Employee salary is: " << myObj.getSalary();
+    std::cout << "The Employee salary is: " << myObj.getSalary() << "\n";
 
     return 0;
 }

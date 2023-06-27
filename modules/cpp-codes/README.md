@@ -17,14 +17,7 @@
  - [Pointers & References](modules/pointers-references)
  - [Dynamic Memory Allocation](modules/dynamic-memory-allocation)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
- - **Object-Oriented Programming (OOP):**
-   - [Classes](modules/oop/classes)
-   - [Data Members](modules/oop/data-members)
-   - [Constructor & Destructor (+Object Lifecycle)](modules/oop/constructor-and-destructor)
-   - [Access Modifiers & Encapsulation](modules/oop/access-modifiers-and-encapsulation)
-   - [Inheritance](modules/oop/inheritance)
-   - [Polymorphism](modules/oop/polymorphism)
-   - ['this' pointer in C++](modules/oop/this-pointer)
+ - [Object-Oriented Programming (OOP)](modules/oop)
  - **Debug (Debugging):**
    - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
    - [gdb (GNU Debugger)](modules/debugging/gdb)
