@@ -1,4 +1,4 @@
-# Linked List
+# Lists (+Linked Lists)
 
 ## Contents
 

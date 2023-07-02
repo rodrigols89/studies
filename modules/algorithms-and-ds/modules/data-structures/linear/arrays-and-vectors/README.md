@@ -1,4 +1,4 @@
-# Array
+# Arrays and Vectors
 
 ## Contents
 
