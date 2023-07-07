@@ -19,7 +19,7 @@
          - [add_executable()](#add-executable)
  - **Debugging:**
    - **gdb (GNU Debugger):**
-     - [](#)
+     - [Intro to gdb (GNU Debugger)](#intro-to-gdb)
  - [**References**](#ref)
 
 <!--- ( Compilation/Concepts ) --->
@@ -542,6 +542,103 @@ add_executable(studies tutorial.cxx)
 
 
 
+
+
+
+
+
+
+
+
+
+<!--- ( Debugging/gdb ) --->
+
+---
+
+<div id="intro-to-gdb"></div>
+
+## Intro to gdb (GNU Debugger)
+
+> The first thing you need to know is that before debugging a C++ program you'll need to compile the program (e.g. using "g++ -g" option).
+
+For example, see the code below:
+
+[showName.cpp](src/showName.cpp)
+```cpp
+#include <iostream>
+#include <string>
+#include <sstream>
+
+std::string showName(const int &age, const std::string &name)
+{
+    std::ostringstream ss;
+    ss << "Name: " << name << ", Age: " << age;
+    return ss.str();
+}
+
+int main()
+{
+    int age = 30;
+    std::string name = "Rodrigo";
+
+    std::string result = showName(age, name);
+    std::cout << result << "\n";
+    return 0;
+}
+```
+
+Now, let's compiler this code as debug:
+
+**COMPILATION:**
+```bash
+g++ showName.cpp -o test.out -g
+```
+
+The main gdb options are:
+
+| Command | Shortcut | Description                     |
+|---------|----------|---------------------------------|
+| run     | r        | Run until the first stop point. |
+| break   | b        | Add a stop point (breakpoint).  |
+| step    | s        |                                 |
+| next    | n        |                                 |
+| print   | p        | Print variable value.           |
+| quit    | q        | Exit from gdb.                  |
+
+The most common gdb, use case is:
+
+**CONSOLE:**  
+```cc
+gdb exec-file -tui
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[](src/)
+```cpp
+
+```
+
+**COMPILATION AND RUN:**
+```bash
+
+```
+
+**OUTPUT:**  
+```bash
+
+```
 
 
 
