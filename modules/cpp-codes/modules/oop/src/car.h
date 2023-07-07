@@ -1,6 +1,17 @@
-#include "vehicle.h"
+#include <string>
 
-class Car : public Vehicle
+class Car
 {
-    // Codes...
+private:
+    // Encapsulation.
+    int color;
+    std::string type;
+    float velocity;
+
+public:
+    // Interfaces.
+    void turnOn();
+    void turnOff();
+    void speed();
+    void brake();
 };
