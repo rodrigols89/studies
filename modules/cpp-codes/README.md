@@ -18,15 +18,13 @@
  - [Dynamic Memory Allocation](modules/dynamic-memory-allocation)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
  - [Object-Oriented Programming (OOP)](modules/oop)
- - **Debug (Debugging):**
-   - [Introdução ao Debug (Debugging)](modules/debugging/intro-to-debugging.md)
-   - [gdb (GNU Debugger)](modules/debugging/gdb)
  - **Tools:**
    - [Visual Studio/+VSCode](modules/tools/visual-studio)
    - [GNU Make](modules/tools/make)
    - [CMake](modules/tools/cmake)
    - [g++](modules/tools/g-plus-plus)
  - **Tips & Tricks:**
+   - [Compilation & Debugging](modules/compilation-and-debugging)
    - [Modularization in C++](modules/tips-and-tricks/modularization)
    - [Overflow & Underflow](modules/tips-and-tricks/overflow-underflow)
 
