@@ -2,19 +2,18 @@
 #include <string>
 #include <sstream>
 
-std::string showName(const int &age, const std::string &name)
+std::string showName(const std::string &name, const std::string &lastName)
 {
-    std::ostringstream ss;
-    ss << "Name: " << name << ", Age: " << age;
-    return ss.str();
+    std::string msg = "Name: " + name + " " + lastName;
+    return msg;
 }
 
 int main()
 {
-    int age = 30;
     std::string name = "Rodrigo";
+    std::string lastName = "Leite";
 
-    std::string result = showName(age, name);
+    std::string result = showName(name, lastName);
     std::cout << result << "\n";
     return 0;
 }
