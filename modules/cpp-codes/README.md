@@ -20,9 +20,6 @@
  - [Object-Oriented Programming (OOP)](modules/oop)
  - **Tools:**
    - [Visual Studio/+VSCode](modules/tools/visual-studio)
-   - [GNU Make](modules/tools/make)
-   - [CMake](modules/tools/cmake)
-   - [g++](modules/tools/g-plus-plus)
  - **Tips & Tricks:**
    - [Compilation & Debugging](modules/compilation-and-debugging)
    - [Modularization in C++](modules/tips-and-tricks/modularization)
