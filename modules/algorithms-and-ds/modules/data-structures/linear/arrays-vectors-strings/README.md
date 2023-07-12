@@ -1,16 +1,126 @@
-# Arrays and Vectors
+# Arrays, Vectors, Strings
 
 ## Contents
 
  - **Standard Template Library (STL):**
-   - [`std::array<data-type, numElements> array-name`](#std-array)
+   - **General:**
+     - [container::clear()](#container-clear)
+   - **std::array:**
+     - [`std::array<data-type, numElements> array-name`](#std-array)
+   - **std::vector:**
    - [`std::vector<data-type> vector-name`](#std-vector)
+   - **std::string:**
+     - [How to remove special characters and white spaces](#rsc-and-ws)
  - **Tips & Tricks:**
    - [Array: Advantages and Disadvantages](#array-advantages-disadvantages)
    - [std:array vs. std:vector](#array-vs-vector)
  - [**REFERENCES**](#ref)
 
-<!--- ( STL ) --->
+<!--- ( STL/General ) --->
+
+<div id="container-clear"></div>
+
+## container::clear()
+
+The **clear()** function can be used to *remove all the elements of the Vector or String container*, thus making it size 0.
+
+> **NOTE:**  
+> The **std::array** container has not this function.
+
+For example:
+
+[clear.cpp](src/stl/clear.cpp)
+```cpp
+#include <iostream>
+#include <array>
+#include <vector>
+#include <string>
+
+int main()
+{
+    std::cout << "------------- ( Vecto example ) --------------\n";
+    std::vector<int> myvector = {1, 2, 3, 4, 5};
+    std::cout << "Vector elements before apply clear() function:\n";
+    for (int element : myvector)
+        std::cout << element << " ";
+    myvector.clear();
+    std::cout << "\nVector elements before after clear() function:\n";
+    for (int element : myvector)
+        std::cout << element << " ";
+
+    std::cout << "\n------------- ( String example ) --------------";
+    std::string mystring = "Hello World!";
+    std::cout << "\nString elements before apply clear() function:\n";
+    std::cout << mystring;
+    mystring.clear();
+    std::cout << "\nString elements before after clear() function:\n";
+    std::cout << mystring;
+
+    return 0;
+}
+```
+
+**COMPILATION AND RUN:**
+```bash
+g++ clear.cpp -o test.out && ./test.out
+```
+
+**OUTPUT:**
+```bash
+------------- ( Vecto example ) --------------
+Vector elements before apply clear() function:
+1 2 3 4 5 
+Vector elements before after clear() function:
+
+------------- ( String example ) --------------
+String elements before apply clear() function:
+Hello World!
+String elements before after clear() function:
+```
+
+ - **Time Complexity:** O(N)
+ - **Auxiliary Space:** O(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( STL/std::array ) --->
 
 ---
 
@@ -125,6 +235,47 @@ Elements of the arr_three: 10 20 30 40 50
 Array filled with zeros: 0 0 0 0 0 0 0 0 0 0
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( STL/std::vector ) --->
+
 ---
 
 <div id="std-vector"></div>
@@ -215,6 +366,80 @@ data(): 0xf326c0
 Print Vector elements after use 'assing(5, 0)' function: 0 0 0 0 0 
 Print the Vector after 'push_back(10)': 0 0 0 0 0 10 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( STL/std::string ) --->
+
+<div id="rsc-and-ws"></div>
+
+## How to remove special characters and white spaces
+
+```cpp
+// Remove special characters and white spaces.
+search_number.erase(
+    std::remove_if(
+        search_number.begin(),
+        search_number.end(),
+        [](unsigned char c) { return !std::isalnum(c) || c == ' '; }),
+    search_number.end());
+```
+
+ - **erase():**
+   - A função **erase()** é um método da classe **std::string** que permite remover caracteres ou substrings de uma string.
+ - **std::remove_if():**
+   - A função **std::remove_if** é um algoritmo da biblioteca padrão do C++ que permite remover elementos de um contêiner (como um vetor, uma string, etc.) com base em uma condição especificada por meio de uma função ou um predicado:
+     - **NOTE:**É  importante ressaltar que **"std::remove_if"** não exclui fisicamente os elementos do contêiner, apenas os move para o final e altera o tamanho lógico do contêiner. Para remover efetivamente os elementos, é necessário usar métodos como **erase()** para ajustar o tamanho do contêiner.
+     - **std::remove_if(first, last, predicate)**:
+       - **first:** é um iterador apontando para o primeiro elemento do intervalo onde a remoção será aplicada:
+         - Para o nosso caso é o *PRIMEIRO CARACTERE* do número de telefone **"search_number.begin()"**
+       - **last:** é um iterador apontando para o elemento logo após o último elemento do intervalo onde a remoção será aplicada:
+         - Para o nosso caso é o *ÚLTIMO CARACTERE* do número de telefone **"search_number.end()"**.
+       - **predicate:** é uma função ou um predicado que retorna true para os elementos que devem ser movido para o final do container:
+         - Para o nosso caso são *CARACTERES NÃO ALFANUMÉRICOS* ou *ESPAÇOS EM BRANCO* **"[](unsigned char c) { return !std::isalnum(c) || c == ' '; })"**.
+     - **No caso do código acima, "std::remove_if" é usado para mover os caracteres não alfanuméricos (ou seja, os que não letras ou não números) ou espaços em brancos da string "search_number" para o final do container:**
+       - O predicado `[](unsigned char c) { return !std::isalnum(c) || c == ' '; }` é usado como a condição para mover os caracteres que não são alfanuméricos (ou seja, os que não letras ou não números) e os espaços em brancos e para o final do container:
+         - A função (predicado) lambda `[](unsigned char c) { return !std::isalnum(c) || c == ' '; }` recebe um caractere **"c"** como entrada e retorna *true*:
+           - Quando o caractere **"c"** não é alfanumérico (ou seja, os que não letras ou não números).
+           - Ou (||) quando é um espaço em branco.
+         - O algoritmo **"std::remove_if"** move todos esses caracteres para o final da string e, em seguida, **search_number.erase()** os remove da string, efetivamente removendo os caracteres não alfanuméricos (ou seja, os que não letras ou não números) e espaços em branco.
 
 
 
