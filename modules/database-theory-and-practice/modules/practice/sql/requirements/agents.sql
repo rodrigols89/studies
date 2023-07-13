@@ -2,13 +2,13 @@ CREATE TABLE IF NOT EXISTS `agents` (
   agent_code char(6) NOT NULL,
   agent_name char(25) NOT NULL,
   working_area char(25) NOT NULL,
-  comission char(6) NOT NULL,
+  commission char(6) NOT NULL,
   phone_no char(25),
   country char(25),
   PRIMARY KEY (`agent_code`)
 );
 
-INSERT INTO agents (agent_code, agent_name, working_area, comission, phone_no, country)
+INSERT INTO agents (agent_code, agent_name, working_area, commission, phone_no, country)
 values
 ('A007', 'Ramasundar', 'Bangalore', '0.15', '077-25814763', 'Brazil'),
 ('A003', 'Alex', 'London', '0.12', '075-12458969', 'United States'),
