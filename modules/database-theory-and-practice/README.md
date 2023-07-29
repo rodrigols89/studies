@@ -20,7 +20,7 @@
    - **Entity–Relationship model (or ER model):**
      - [Associative Entity](modules/theory/er-model/associative-entity.md)
  - **Practice:**
-   - [SQL](modules/practice/sql)
+   - [SQL (Q&A)](modules/practice/sql)
    - [PostgreSQL](modules/practice/postgresql/)
    - **NoSQL:**
      - **MongoDB:**
