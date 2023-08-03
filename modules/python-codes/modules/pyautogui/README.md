@@ -11,7 +11,10 @@
    - **Keyboard Control:**
      - [pyautogui.KEYBOARD_KEYS](#keyboard-keys)
      - [Writing texts with "pyautogui.write" function](#intro-to-write)
+   - **Screenshot Functions:**
+     - [Locating an image (object) on the screen and clicking on it](#laiotsacoi)
  - **Examples:**
+   - [[Hotkeys] - CTRL + a, CTRL + c, and CTRL + v](#ctrls-ex01)
  - [Settings](#settings)
  - [References](#ref)
 
@@ -138,6 +141,20 @@ try:
 except KeyboardInterrupt:
     print('\n')
 ```
+
+However, we have a most interesting approach using **"pyautogui.displayMousePosition()"**, that do it automatically:
+
+[displayMousePosition.py](src/displayMousePosition.py)
+```python
+import pyautogui
+
+print(pyautogui.displayMousePosition())
+```
+
+The return is:
+
+ - The x and y coordinates.
+ - And the RGB color reference of the position.
 
 ---
 
@@ -402,7 +419,159 @@ python write-v2.py
 Hello World!
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Concepts/Screenshot Functions ) --->
+
 ---
+
+<div id="laiotsacoi"></div>
+
+## Locating an image (object) on the screen and clicking on it
+
+Imagine we need to check if an image (object) exists on the screen. For example, my workspace has Dota2:
+
+![img](images/workspace.png)
+
+Knowing that, we can use the **"pyautogui.locateOnScreen"** function to check if the image (object) exists. However, first, we need to take a screenshot from the Dota2:
+
+![img](images/dota2.png)  
+
+Now, we pass the steam screenshot to the **"pyautogui.locateOnScreen"**:
+
+```python
+import pyautogui
+
+# 75% confidence.
+dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
+print(type(dota2Object))
+print(dota2Object)
+
+#try:
+#   while True:
+#        print(dota2Object)
+#except KeyboardInterrupt:
+#    print("\n")
+```
+
+**INPUT & RUN:**
+```bash
+python locateOnScreen-v1.py 
+```
+
+**OUTPUT:**
+```bash
+<class 'pyscreeze.Box'>
+Box(left=17, top=112, width=60, height=71)
+```
+
+See that the **"pyautogui.locateOnScreen"** function return:
+
+ - The image (object) coordinates.
+ - The image (object) size in width and height.
+
+> **NOTE:**
+> The argument **"confidence"** is very important. It tells you how accurate the image needs to be.
+> - 1 = 100% accurate.
+> - 0 = 0% accurate.
+> - NOTE: If you don't pass any value the **"pyautogui.locateOnScreen"** function set as 1=100% confidence:
+>   - This generally generates a problem, because the **"pyautogui.locateOnScreen"** function finds a perfect image.
+>   - That's, 100% accurate.
+> - **NOTE:** To use this argument you need first install **"opencv-python"**.
+
+Now, we need to click on the Dota2 image. However, first, we need to move the mouse to the center of the Dota2 image. To do it, let's use the **"pyautogui.center()"** that return the center coordinates to click on the image:
+
+```python
+x_coordinate, y_coordinate = pyautogui.center(dota2Object)
+```
+
+Now, let's move our mouse to this coordinates:
+
+```python
+pyautogui.moveTo(x=x_coordinate, y=y_coordinate, duration=1)
+```
+
+Finally, let's make the program double-click the image:
+
+```python
+pyautogui.click(
+    x=x_coordinate, y=y_coordinate, duration=1, clicks=2
+)  # double-click the left mouse button.
+```
+
+The complete code looks like this:
+
+[open_dota2.py](src/open_dota2.py)
+```python
+import pyautogui
+
+# 75% confidence.
+dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
+x_coordinate, y_coordinate = pyautogui.center(dota2Object)
+
+pyautogui.click(
+    x=x_coordinate, y=y_coordinate, duration=1, clicks=2
+)  # double-click the left mouse button.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,9 +588,45 @@ Hello World!
 
 ---
 
-<div id=""></div>
+<div id="ctrls-ex01"></div>
 
-## x
+## [Hotkeys] - CTRL + a, CTRL + c, and CTRL + v
+
+In this example, let's see how to automatically **select all the text (CTRL + A)**, do **CTRL + c**, and **CTRL + v**:
+
+[ctrls-v1.cpy](src/ctrls-v1.cpy)
+```python
+from time import sleep
+import pyautogui
+
+sleep(5)
+pyautogui.hotkey('ctrl', 'a') # ctrl - a to select all.
+pyautogui.hotkey('ctrl', 'c') # ctrl - c to copy.
+pyautogui.hotkey('ctrl', 'v') # ctrl - v to paste.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -518,10 +723,11 @@ pip install -U -v --require-virtualenv -r requirements.txt
  - [Keyboard Control Functions](https://pyautogui.readthedocs.io/en/latest/keyboard.html)
  - [Message Box Functions](https://pyautogui.readthedocs.io/en/latest/msgbox.html)
  - [Screenshot Functions](https://pyautogui.readthedocs.io/en/latest/screenshot.html)
- - []()
- - []()
+ - [PYTHON FOR GUI AUTOMATION – PYAUTOGUI](https://www.topcoder.com/thrive/articles/python-for-gui-automation-pyautogui)
+ - [Faça seu próprio bot com python para PXG 1/2](https://www.youtube.com/watch?v=tH3rHn37rG0)
  - []()
 
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
+

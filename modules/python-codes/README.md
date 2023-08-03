@@ -35,7 +35,7 @@
    - [SQLAlchemy](modules/databases/sqlalchemy)
    - [MongoDB](modules/databases/mongodb)
    - [SQLite3](modules/databases/sqlite3)
- - **Automation, Web scraping, Bot:**
+ - **Automation, Web scraping, Bots:**
    - [PyAutoGUI](modules/pyautogui)
    - [Selenium](modules/ba-ws/selenium)
  - **Tips & Tricks:**
