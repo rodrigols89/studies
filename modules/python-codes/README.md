@@ -35,7 +35,8 @@
    - [SQLAlchemy](modules/databases/sqlalchemy)
    - [MongoDB](modules/databases/mongodb)
    - [SQLite3](modules/databases/sqlite3)
- - **Browser Automation & Web Scraping:**
+ - **Automation, Web scraping, Bot:**
+   - [PyAutoGUI](modules/pyautogui)
    - [Selenium](modules/ba-ws/selenium)
  - **Tips & Tricks:**
    - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)

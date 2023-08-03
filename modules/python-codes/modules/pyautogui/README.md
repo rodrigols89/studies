@@ -1,0 +1,527 @@
+# PyAutoGUI
+
+## Contents
+
+ - **Concepts:**
+   - **Mouse Control:**
+     - [Get the current Mouse position (x, y)](#current-position)
+     - [Check if the position exists](#check-position-exists)
+     - [Moving the mouse](#moving-the-mouse)
+     - [Clicking with the mouse](#clicking-w-mouse)
+   - **Keyboard Control:**
+     - [pyautogui.KEYBOARD_KEYS](#keyboard-keys)
+     - [Writing texts with "pyautogui.write" function](#intro-to-write)
+ - **Examples:**
+ - [Settings](#settings)
+ - [References](#ref)
+
+<!--- ( Concepts/Mouse Control Functions ) --->
+
+---
+
+<div id="current-position"></div>
+
+## Get the current Mouse position (x, y)
+
+The first thing you need to know before getting the Mouse position is the coordinates system with **PyAutoGUI**:
+
+```bash
+0,0       X increases --->
++---------------------------+
+|                           | Y increases
+|                           |     |
+|   1920 x 1080 screen      |     |
+|                           |     V
+|                           |
+|                           |
++---------------------------+ 1919, 1079
+```
+
+See that:
+
+ - The coordinate system starts from:
+   - The *top* in the *axe-y*.
+   - The *left* in the *axe-x*.
+ - To increase the *axe-x* we move to the *right*.
+ - To increase the *axe-y* we move to the *bottom*.
+
+To get the current Mouse position with PyAutoGUI we use the **pyautogui.position()** function:
+
+[position-v1.py](src/position-v1.py)
+```python
+import pyautogui
+
+current_mouse_position = pyautogui.position()  # current mouse x and y.
+print(current_mouse_position)
+```
+
+**INPUT & RUN:**
+```bash
+python position-v1.py
+```
+
+**OUTPUT:**
+```bash
+Point(x=813, y=842)
+<class 'pyautogui.Point'>
+```
+
+See that the return was:
+
+ - The current mouse position (x, y).
+ - A *pyautogui.Point* object. 
+
+We can also get these coordinates separately:
+
+[position-v2.py](src/position-v2.py)
+```python
+import pyautogui
+
+current_mouse_position = pyautogui.position()
+print("Current mouse position: ", current_mouse_position)
+
+x, y = current_mouse_position
+print("x: ", x)
+print("x type: ", type(x))
+print("x: ", y)
+print("x type: ", type(y))
+```
+
+**INPUT & RUN:**
+```bash
+python position-v2.py 
+```
+
+**OUTPUT:**
+```bash
+Current mouse position:  Point(x=1554, y=194)
+x:  1554
+x type:  <class 'int'>
+x:  194
+x type:  <class 'int'>
+```
+
+> **NOTE:**  
+> See that now we have integers variables to the coordinates x and y separately.
+
+Knowing that we can create a loop to stay printing the current Mouse position while the program is running:
+
+[position-v3.py](src/position-v3.py)
+```python
+import pyautogui
+
+print('Press Ctrl-C to quit.')
+try:
+    while True:
+        current_mouse_position = pyautogui.position()
+        print(current_mouse_position)
+except KeyboardInterrupt:
+    print('\n')
+```
+
+The code above will generate many prints printing the current mouse coordinates. This is interesting if we wish to save that in some file (or database).
+
+**NOTE:**  
+However, has another approach to don't stay printing many times:
+
+[position-v4.py](src/position-v4.py)
+```python
+import pyautogui
+
+print('Press Ctrl-C to quit.')
+try:
+    while True:
+        x, y = pyautogui.position()
+        positionStr = 'X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
+        print(positionStr, end='')
+        print('\b' * len(positionStr), end='', flush=True)
+except KeyboardInterrupt:
+    print('\n')
+```
+
+---
+
+<div id="check-position-exists"></div>
+
+## Check if the position exists
+
+Sometimes we don't know the size of the screen. To check if the position exists on the screen we can use the **pyautogui.onScreen()** function:
+
+[onScreen.py](src/onScreen.py)
+```python
+import pyautogui
+
+print(pyautogui.onScreen(0, 0))
+print(pyautogui.onScreen(10, 10))
+print(pyautogui.onScreen(0, -1))
+print(pyautogui.onScreen(1919, 1079))
+print(pyautogui.onScreen(0, 99999999))
+```
+
+**INPUT & RUN:**
+```bash
+python onScreen.py 
+```
+
+**OUTPUT:**
+```bash
+True
+True
+False
+True
+False
+```
+
+> **NOTE:**
+> This function is interesting when we don't know the user screen size.
+
+---
+
+<div id="moving-the-mouse"></div>
+
+## Moving the mouse
+
+ - To move the mouse to a specific position (coordinates x and y) we can use the **moveTo()** function.
+ - The **None** value can be passed for a coordinate to mean *“the current mouse cursor position”*.
+ 
+For example:
+
+[moveTo-v1.py](src/moveTo-v1.py)
+```python
+import pyautogui
+
+pyautogui.moveTo(100, 200)   # moves the mouse to X = 100, Y = 200.
+pyautogui.moveTo(None, 500)  # moves the mouse to X = 100, Y = 500.
+pyautogui.moveTo(600, None)  # moves the mouse to X = 600, Y = 500.
+```
+
+**NOTE:**  
+Normally the mouse cursor will instantly move to the new coordinates. If you want the mouse to gradually move to the new location, pass a third argument for the duration (in seconds) the movement should take.
+
+For example:
+
+[moveTo-v2.py](src/moveTo-v2.py)
+```python
+import pyautogui
+
+pyautogui.moveTo(100, 200, 2)   # moves the mouse to X = 100, Y = 200 over 2 seconds.
+pyautogui.moveTo(None, 500, 2)  # moves the mouse to X = 100, Y = 500 over 2 seconds.
+pyautogui.moveTo(600, None, 2)  # moves the mouse to X = 600, Y = 500 over 2 seconds.
+```
+
+**NOTE:**  
+If you want to move the mouse cursor over a **few pixels** relative to its current position, use the **move()** function. This function has similar parameters as moveTo(). For example:
+
+[move.py](src/move.py)
+```python
+import pyautogui
+
+pyautogui.moveTo(100, 200, 2)  # moves the mouse to X = 100, Y = 200 over 2 seconds.
+pyautogui.move(0, 50, 2)       # move  the mouse down 50 pixels over 2 seconds.
+pyautogui.move(-30, 0, 2)      # move  the mouse left 30 pixels over 2 seconds.
+pyautogui.move(-30, None, 2)   # move  the mouse left 30 pixels over 2 seconds.
+```
+
+--
+
+<div id="clicking-w-mouse"></div>
+
+## Clicking with the mouse
+
+Sometimes we need to click on something with the mouse. To do it we can use the **pyautogui.click()** function that clicks on the current mouse position.
+
+For example:
+
+[click-v1.py](src/click-v1.py)
+```python
+import pyautogui
+
+pyautogui.moveTo(60, 20)  # moves mouse to X = 60, Y = 20.
+pyautogui.click()         # Click the mouse wit the burron "left".
+```
+
+![img](images/click-01.png)  
+
+**NOTE:**  
+However the **pyautogui.click()** function can also receives **x** and **y** as argument:
+
+[click-v2.py](src/click-v2.py)
+```python
+import pyautogui
+
+pyautogui.click(x=60, y=20)  # Click the mouse wit the burron "left".
+```
+
+**NOTE:**  
+You can also specify another mouse button to click: `LEFT`, `MIDDLE`, `RIGHT`, `PRIMARY`, or `SECONDARY`.
+
+[click-v3.py](src/click-v3.py)
+```python
+import pyautogui
+
+pyautogui.click(x=60, y=20, button="right")  # Click the mouse wit the burron "right".
+```
+
+![img](images/click-02.png)  
+
+Sometimes we will need to click the same button (or something) several times. For this we use the **"click"** attribute:
+
+[click-v4.py](src/click-v4.py)
+```python
+import pyautogui
+
+pyautogui.click(x=60, y=20, clicks=5, interval=1)
+```
+
+> **NOTE:**
+> In the code above we use the **"interval"** argument to say to the program wait 1-second interval to click again.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Concepts/Keyboard Control Functions ) --->
+
+---
+
+<div id="keyboard-keys"></div>
+
+## pyautogui.KEYBOARD_KEYS
+
+Some functions we will learn can receive a keyboard key as an argument to do something. Knowing that let's use the **"pyautogui.KEYBOARD KEYS"** that return the list of keyboard keys:
+
+[keyboard_keys.py](src/keyboard_keys.py)
+```python
+import pyautogui
+
+keys_list = pyautogui.KEYBOARD_KEYS
+print(type(keys_list))
+print(keys_list)
+
+# for key in keys_list:
+#    print(key)
+```
+
+**INPUT & RUN:**
+```bash
+python keyboard_keys.py 
+```
+
+**OUTPUT:**
+```bash
+<class 'list'>
+['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~', 'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace', 'browserback', 'browserfavorites', 'browserforward', 'browserhome', 'browserrefresh', 'browsersearch', 'browserstop', 'capslock', 'clear', 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal', 'del', 'delete', 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20', 'f21', 'f22', 'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'final', 'fn', 'hanguel', 'hangul', 'hanja', 'help', 'home', 'insert', 'junja', 'kana', 'kanji', 'launchapp1', 'launchapp2', 'launchmail', 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack', 'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9', 'numlock', 'pagedown', 'pageup', 'pause', 'pgdn', 'pgup', 'playpause', 'prevtrack', 'print', 'printscreen', 'prntscrn', 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select', 'separator', 'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab', 'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen', 'command', 'option', 'optionleft', 'optionright']
+```
+
+---
+
+<div id="intro-to-write"></div>
+
+## Writing texts with "pyautogui.write" function
+
+> To write texts somewhere (em algum lugar) we can use the "pyautogui.write" function.
+
+ - This function starts to write automatically the first letter:
+   - Sometimes is interesting create a *"sleep()"* to wait something.
+
+For example:
+
+[write-v1.py](src/write-v1.py)
+```python
+from time import sleep
+import pyautogui
+
+sleep(2)
+pyautogui.write("Hello World!")
+```
+
+**INPUT & RUN:**
+```bash
+python write-v1.p
+```
+
+**OUTPUT:**
+```bash
+Hello World!
+```
+
+> **NOTE:**  
+> The first letter will always be written automatically. However, we can use the "interval" argument to make an interval (in seconds) to write another letter.
+
+[write-v2.py](src/write-v2.py)
+```python
+from time import sleep
+import pyautogui
+
+sleep(2)
+pyautogui.write("Hello World!", interval=1)
+```
+
+**INPUT & RUN:**
+```bash
+python write-v2.py
+```
+
+**OUTPUT:**
+```bash
+Hello World!
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Examples ) --->
+
+---
+
+<div id=""></div>
+
+## x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Settings ) --->
+
+---
+
+<div id="settings"></div>
+
+## Settings
+
+**CREATE VIRTUAL ENVIRONMENT:**  
+```bash
+python -m venv environment
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (Windows):**  
+```bash
+source environment/Scripts/activate
+```
+
+**UPDATE PIP:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( References ) --->
+
+---
+
+<div id="ref"></div>
+
+## References
+
+ - [Mouse Control Functions](https://pyautogui.readthedocs.io/en/latest/mouse.html)
+ - [Keyboard Control Functions](https://pyautogui.readthedocs.io/en/latest/keyboard.html)
+ - [Message Box Functions](https://pyautogui.readthedocs.io/en/latest/msgbox.html)
+ - [Screenshot Functions](https://pyautogui.readthedocs.io/en/latest/screenshot.html)
+ - []()
+ - []()
+ - []()
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
