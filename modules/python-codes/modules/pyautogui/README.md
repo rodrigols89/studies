@@ -15,6 +15,7 @@
      - [Locating an image (object) on the screen and clicking on it](#laiotsacoi)
  - **Examples:**
    - [[Hotkeys] - CTRL + a, CTRL + c, and CTRL + v](#ctrls-ex01)
+   - [Apply opacity on a specific Window](#apply-opacity)
  - [Settings](#settings)
  - [References](#ref)
 
@@ -605,9 +606,112 @@ pyautogui.hotkey('ctrl', 'c') # ctrl - c to copy.
 pyautogui.hotkey('ctrl', 'v') # ctrl - v to paste.
 ```
 
+---
 
+<div id=""></div>
 
+<div id="apply-opacity"></div>
 
+## Apply opacity on a specific Window
+
+To apply opacity on a specific Window first, we need to get a Window. To get a specific Window we can use the **"pygetwindow.getWindowsWithTitle()"** function.
+
+The **"pygetwindow.getWindowsWithTitle()"** function returns a list of windows with the title we pass as argument. For example, imagine we pass the "chrome" as argument:
+
+```python
+import pygetwindow
+
+OPACITY = 1  # Opacity = 0 to 255
+WINDOW_TITLE = "chrome"  # Window title.
+
+# Get the Window.
+windows_list = pygetwindow.getWindowsWithTitle(WINDOW_TITLE)
+print(type(windows_list))
+print(windows_list)
+
+for window in windows_list:
+    print(window)
+```
+
+**OUTPUT:**
+```bash
+<class 'list'>
+[Win32Window(hWnd=37619942), Win32Window(hWnd=854206), Win32Window(hWnd=4065162), Win32Window(hWnd=1312996)]
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Google Translate - Google Chrome">
+<Win32Window left="-7", top="-7", width="1550", height="830", title="ChatGPT - Google Chrome">
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Bing - Google Chrome">
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Google - Google Chrome">
+```
+
+See that the return is:
+
+ - A list of windows.
+ - And your specific handle (window identify).
+ - We can iterate by the list and see each window's coordinates and size.
+
+**NOTE:**  
+To get a handle of each window we can use the **"_hWnd"** attribute:
+
+```python
+import pygetwindow
+
+OPACITY = 1  # Opacity = 0 to 255
+WINDOW_TITLE = "chrome"  # Window title.
+
+# Get the Window.
+windows_list = pygetwindow.getWindowsWithTitle(WINDOW_TITLE)
+
+for window in windows_list:
+    print(window)
+    print("Handle:", window._hWnd, "\n")
+```
+
+**OUTPUT:**
+```bash
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Google Docs - Google Chrome">
+Handle: 37619942 
+
+<Win32Window left="-7", top="-7", width="1550", height="830", title="ChatGPT - Google Chrome">
+Handle: 854206 
+
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Bing - Google Chrome">
+Handle: 4065162
+
+<Win32Window left="-7", top="-7", width="1550", height="830", title="Google - Google Chrome">
+Handle: 1312996
+```
+
+Now, let's see a complete code to apply opacity on a Tibia window:
+
+[apply_opacity_on_tibia.py](src/apply_opacity_on_tibia.py)
+```python
+import ctypes
+import pygetwindow
+
+GWL_EXSTYLE = -20
+WS_EX_LAYERED = 0x00080000
+LWA_ALPHA = 0x00000002
+
+OPACITY = 1  # Opacity = 0 to 255
+WINDOW_TITLE = "Tibia - Guardiao da Blessing"  # Window title.
+
+# Get the Window.
+target_window = pygetwindow.getWindowsWithTitle(WINDOW_TITLE)[0]
+
+if target_window is not None:
+    target_hwnd = target_window._hWnd
+
+    ex_style = ctypes.windll.user32.GetWindowLongA(target_hwnd, GWL_EXSTYLE)
+    ctypes.windll.user32.SetWindowLongA(
+        target_hwnd, GWL_EXSTYLE, ex_style | WS_EX_LAYERED
+    )
+
+    ctypes.windll.user32.SetLayeredWindowAttributes(target_hwnd, 0, OPACITY, LWA_ALPHA)
+
+    print("Window opacity modified.")
+else:
+    print("Window don't found.")
+```
 
 
 
@@ -725,9 +829,13 @@ pip install -U -v --require-virtualenv -r requirements.txt
  - [Screenshot Functions](https://pyautogui.readthedocs.io/en/latest/screenshot.html)
  - [PYTHON FOR GUI AUTOMATION – PYAUTOGUI](https://www.topcoder.com/thrive/articles/python-for-gui-automation-pyautogui)
  - [Faça seu próprio bot com python para PXG 1/2](https://www.youtube.com/watch?v=tH3rHn37rG0)
+ - [Faça seu próprio bot com python para o TIBIA 1/4](https://www.youtube.com/watch?v=R0_RhKaeWlg)
+ - []()
+ - []()
+ - []()
+ - []()
  - []()
 
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
