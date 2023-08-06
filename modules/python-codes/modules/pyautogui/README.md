@@ -467,90 +467,165 @@ Hello World!
 
 ## Locating an image (object) on the screen and clicking on it
 
-Imagine we need to check if an image (object) exists on the screen. For example, my workspace has Dota2:
+> To locate parts of an image (object) on the screen we can use the **"pyautogui.locateOnScreen"** function.
+
+For example, let's make a loop to check if Dota2 exists in my workspace and click on it
 
 ![img](images/workspace.png)
 
-Knowing that, we can use the **"pyautogui.locateOnScreen"** function to check if the image (object) exists. However, first, we need to take a screenshot from the Dota2:
+To find this Dota2 image we need to send an image to **"pyautogui.locateOnScreen"** function as argument:
 
+**dota2.png:**  
 ![img](images/dota2.png)  
-
-Now, we pass the steam screenshot to the **"pyautogui.locateOnScreen"**:
 
 ```python
 import pyautogui
 
-# 75% confidence.
-dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
-print(type(dota2Object))
-print(dota2Object)
+dota2Object = pyautogui.locateOnScreen("../images/dota2.png")
 
-#try:
-#   while True:
-#        print(dota2Object)
-#except KeyboardInterrupt:
-#    print("\n")
-```
+try:
+    while True:
+        print(dota2Object)
+except KeyboardInterrupt:
+    print("")
 
-**INPUT & RUN:**
-```bash
-python locateOnScreen-v1.py 
 ```
 
 **OUTPUT:**
 ```bash
-<class 'pyscreeze.Box'>
+None
+None
+None
+
+....
+
+None
+None
+None
+```
+
+**What?**  
+Here, we have some problems:
+
+ - **#PROBLEM-01:**
+   - **confidence default value: "str = 0.999":**
+     - The **"pyautogui.locateOnScreen"** function has an attribute called **"confidence"** that say how accurate the image needs to be.
+     - If you don't pass any value the default value was **"0.999"**, that's, **99% accurate**:
+       - That is, the image needs to be almost (quase) perfect when compared.
+       - This generally generates a problem, because the **"pyautogui.locateOnScreen"** function finds a perfect (almost/quase) image.
+       - 1 = 100% accurate.
+       - 0 = 0% accurate.
+     - **NOTE:** To use this argument you need first install **"opencv-python"**.
+ - **#PROBLEM-02:**
+   - We have to call the **"pyautogui.locateOnScreen()"** function on the screen where we are going to locate the image. We will need to switch from the code editor screen to the desktop screen:
+     - That is, there is no point in (não adianta) printing the same result (dota2Object) inside the loop if the function **"pyautogui.locateOnScreen()"** was called on the wrong screen.
+     - To solve this problem we have to put the **"pyautogui.locateOnScreen()"** function inside the loop as well (também).
+
+Now the code will be:
+
+```python
+import pyautogui
+
+try:
+    while True:
+        dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
+        print(dota2Object)
+except KeyboardInterrupt:
+    print("")
+```
+
+**OUTPUT:**
+```bash
+None
+None
+None
+
+Switch screen....
+
+Box(left=17, top=112, width=60, height=71)
+Box(left=17, top=112, width=60, height=71)
+Box(left=17, top=112, width=60, height=71)
 Box(left=17, top=112, width=60, height=71)
 ```
 
 See that the **"pyautogui.locateOnScreen"** function return:
 
- - The image (object) coordinates.
- - The image (object) size in width and height.
+ - The image (object) coordinates:
+   - **left =** Where *"x"* coordinate starts.
+   - **top =** Where *"y"* coordinate starts.
+ - The image (object) size in width and height:
+   - **width =** image size in width.
+   - **height =** image size in height.
 
-> **NOTE:**
-> The argument **"confidence"** is very important. It tells you how accurate the image needs to be.
-> - 1 = 100% accurate.
-> - 0 = 0% accurate.
-> - NOTE: If you don't pass any value the **"pyautogui.locateOnScreen"** function set as 1=100% confidence:
->   - This generally generates a problem, because the **"pyautogui.locateOnScreen"** function finds a perfect image.
->   - That's, 100% accurate.
-> - **NOTE:** To use this argument you need first install **"opencv-python"**.
+Knowing that we need to click on the Dota2 image. However, first, we need to move the mouse to the center of the Dota2 image found.
 
-Now, we need to click on the Dota2 image. However, first, we need to move the mouse to the center of the Dota2 image. To do it, let's use the **"pyautogui.center()"** that return the center coordinates to click on the image:
+To do it, let's use the **"pyautogui.center()"** function that returns the center coordinates of the passed image:
 
 ```python
 x_coordinate, y_coordinate = pyautogui.center(dota2Object)
-```
-
-Now, let's move our mouse to this coordinates:
-
-```python
-pyautogui.moveTo(x=x_coordinate, y=y_coordinate, duration=1)
 ```
 
 Finally, let's make the program double-click the image:
 
 ```python
-pyautogui.click(
-    x=x_coordinate, y=y_coordinate, duration=1, clicks=2
-)  # double-click the left mouse button.
+pyautogui.click(x=x_coordinate, y=y_coordinate, duration=1, clicks=2)
 ```
 
-The complete code looks like this:
+> **Now, see the code below, does it works (funciona)?**
+
+```python
+import pyautogui
+
+dota2Object = None
+
+while dota2Object == None:
+    dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
+    x_coordinate, y_coordinate = pyautogui.center(dota2Object)
+    pyautogui.click(x=x_coordinate, y=y_coordinate, duration=1, clicks=2)
+```
+
+> **Not!**
+
+ - How the **"dota2Object"** was initialized as `None` the first *while loop* always will be true.
+ - Then, if the **"pyautogui.locateOnScreen"** returns `None (don't find the image)` the **"pyautogui.center(dota2Object)"** will receive `None`, that's, this will generate an error.
+
+**NOTE:**  
+To solve that we need to check if the **"dota2Object"** variable is not None, before call the **"pyautogui.center()"** function:
 
 [open_dota2.py](src/open_dota2.py)
 ```python
 import pyautogui
 
-# 75% confidence.
-dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
-x_coordinate, y_coordinate = pyautogui.center(dota2Object)
+dota2Object = None
 
-pyautogui.click(
-    x=x_coordinate, y=y_coordinate, duration=1, clicks=2
-)  # double-click the left mouse button.
+while dota2Object is None:
+    try:
+        dota2Object = pyautogui.locateOnScreen("../images/dota2.png", confidence=0.75)
+        if dota2Object:
+            print("Image found on the screen:", dota2Object)
+            x_coordinate, y_coordinate = pyautogui.center(dota2Object)
+            pyautogui.click(x=x_coordinate, y=y_coordinate, duration=1, clicks=2)
+        else:
+            print("Image not found on the screen.")
+    except Exception as e:
+        print(f"Error while trying to locate the image: {e}")
+        break
 ```
+
+**OUTPUT:**
+```bash
+Image not found on the screen.
+Image not found on the screen.
+Image not found on the screen.
+Image not found on the screen.
+Image found on the screen: Box(left=17, top=112, width=60, height=71)
+```
+
+
+
+
+
+
 
 
 
