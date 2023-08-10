@@ -16,6 +16,7 @@
  - **Examples:**
    - [[Hotkeys] - CTRL + a, CTRL + c, and CTRL + v](#ctrls-ex01)
    - [Apply opacity on a specific Window](#apply-opacity)
+   - [Tibia Auto-Looting](src/tibia)
  - [Settings](#settings)
  - [References](#ref)
 
@@ -758,7 +759,7 @@ Handle: 1312996
 
 Now, let's see a complete code to apply opacity on a Tibia window:
 
-[apply_opacity_on_tibia.py](src/apply_opacity_on_tibia.py)
+[apply_opacity_on_tibia.py](src/tibia/apply_opacity_on_tibia.py)
 ```python
 import ctypes
 import pygetwindow
@@ -787,6 +788,10 @@ if target_window is not None:
 else:
     print("Window don't found.")
 ```
+
+
+
+
 
 
 
@@ -905,11 +910,6 @@ pip install -U -v --require-virtualenv -r requirements.txt
  - [PYTHON FOR GUI AUTOMATION – PYAUTOGUI](https://www.topcoder.com/thrive/articles/python-for-gui-automation-pyautogui)
  - [Faça seu próprio bot com python para PXG 1/2](https://www.youtube.com/watch?v=tH3rHn37rG0)
  - [Faça seu próprio bot com python para o TIBIA 1/4](https://www.youtube.com/watch?v=R0_RhKaeWlg)
- - []()
- - []()
- - []()
- - []()
- - []()
 
 ---
 
