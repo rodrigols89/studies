@@ -4,7 +4,9 @@
 
  - **Compilation:**
    - **Concepts:**
-     - [x](#)
+     - [Install project dependencies in a specific project vs. Operational system](#install-dependencies)
+     - [Static library](#static-library)
+     - [Dynamic library](#dynamic-library)
    - **Tools:**
      - **GNU Compiler Collection (GCC/G++):**
        - **Options:**
@@ -31,11 +33,85 @@
        - [set](#set)
  - [**References**](#ref)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Compilation/Concepts ) --->
 
 ---
 
-<div id=""></div>
+<div id="install-dependencies"></div>
+
+## Install project dependencies in a specific project vs. Operational system
+
+There, two common approaches to install dependencies for a project:
+
+ - Install on the project.
+ - Install on the Operating System.
+
+For example, imagine we need the install *SDL library* on our project:
+
+ - **Installing SDL in the Specific Project:**
+   - In this approach, you include SDL header files and libraries directly in your project.
+   - This means that SDL dependencies are controlled by your project and do not affect other projects or systems.
+   - This approach is common in smaller projects and when you want to ensure that your code is portable across different systems without relying on global system settings.
+   - **Pros:**
+     - Avoids conflicts with different versions of the SDL in different projects.
+     - Facilitates code portability between different systems.
+     - Allows you to use a specific version of SDL for the project.
+   - **Cons:**
+     - Can increase the project's size as library files and headers are included directly.
+     - May require more effort to set up libraries and paths correctly for the project.
+ - **Installing SDL on the Operating System:**
+   - In this approach, you install SDL globally on the operating system.
+   - This means that other projects can also leverage the same SDL installation without the need to replicate library files and headers in each individual project.
+   - This approach is often used in larger projects or when you want to take advantage of optimization and updates provided by the operating system.
+   - **Pros:**
+     - Avoids duplication of library files and headers across different projects.
+     - Can leverage optimizations and updates from the operating system.
+     - Configuration can be simpler for projects as you don't need to point to specific include and library paths.
+   - **Cons:**
+     - Can create dependencies between projects and the global SDL of the system.
+     - Can cause issues if there are version conflicts of SDL between projects.
+     - May not be as portable, as projects need to rely on the global SDL installation.
+
+---
 
 
 
@@ -46,6 +122,58 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="static-library"></div>
+
+## Static library
+
+ - The library code is directly copied into the executable during the compilation process.
+ - Makes the executable larger as the library code is included in it.
+ - Doesn't require external libraries during execution, as all the necessary code is embedded in the executable.
+ - Changes in the library require recompilation of the entire program.
+
+For example, let's make a **Static Library** that uses an *external library (SDL)*. But, first, let's consider some things:
+
+
+
+
+
+[]()
+
+
+
+---
+
+<div id="dynamic-library"></div>
+
+## Dynamic library
+
+ - The library code is kept separately in dynamic files (DLLs in Windows or shared objects in Linux).
+ - The executable contains references to functions and resources in the library.
+ - Makes the executable smaller since it doesn't embed the library code.
+ - Requires the presence of external libraries during execution, which can be slightly more complicated.
+ - Changes in the library usually don't require recompilation of the program unless the library's interface changes.
 
 
 
