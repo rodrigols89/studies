@@ -81,7 +81,7 @@
  - __Tools:__
    - [GitHub Actions](modules/github-actions/)
    - [Docker](modules/docker)
-   - [WSL](modules/wsl-tips-and-tricks/)
+   - [WSL](modules/wsl)
    - [Git](modules/git-docs)
 
 ---
@@ -91,7 +91,6 @@
    - [Fundamentos de Eletricidade & Manutenção Elétrica](modules/electrician)
    - [Step by Step Projects](modules/step-by-step-projects)
    - [Reverse Engineering](modules/reverse-engineering)
-   - [Scientific Paper](modules/scientific-paper)
    - [Google Sheets](modules/google-sheets)
    - [Lives](modules/lives)
 
