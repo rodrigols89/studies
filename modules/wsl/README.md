@@ -6,6 +6,7 @@
  - **Commands:**
    - **On Windows:**
      - [Checking installed (or online) machines on your WSL](#check-installed)
+     - [Checking installed machines by Windows Explorer (\\wsl.localhost)](#check-on-windowsexplorer)
      - [wsl --shutdown](#shutdown-command)
      - [wsl --terminate](#terminate-command)
    - **On Virtual Machine:**
@@ -68,6 +69,16 @@ wsl --list --verbose
 
 ```bash
 wsl -l -v
+```
+
+---
+
+<div id="check-on-windowsexplorer"></div>
+
+## Checking installed machines by Windows Explorer (\\wsl.localhost)
+
+```bash
+\\wsl.localhost
 ```
 
 ---
