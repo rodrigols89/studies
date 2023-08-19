@@ -7,10 +7,18 @@
  - **Settings:**
    - [Configurando sua identidade (Username + Email)](#identity)
    - [Verificando suas configurações (git config --list)](#check)
-   - [Configurando uma chave GPG para assinar commits](#sign-commits)
-     - [git commit -S](#git-commit-s)
+   - **Configurando uma chave GPG para assinar commits:**(#sign-commits)
+     - [Teoria Inicial](#gpg-theory)
+     - [Listando chaves GPG](#listing-gpg-keys)
+     - [Criando um par de chave GPG](#create-gpg-key)
+     - [Ativando assinatura de commits no cliente Git (git config --global commit.gpgsign true)](#active-sign-gitclient)
+     - [Adicionando o ID da chave GPG ao cliente Git](#add-gpg-key-to-gitclient)
+     - [Adicionando sua chave no GitHub](#add-key-to-github)
+     - [Salvando seu par de chaves](#save-gpg-keys)
+     - [Adicionando seu par de chaves a um computador novo](#add-key-newpc)
+     - [Assinando commits (git commit -S)](#git-commit-s)
      - [Verificando se o commit foi assinato (--show-signature)](#show-signature)
-     - [git merge -S branch-name](#git-merge-s)
+     - [Signing merges (git merge -S branch-name)](#git-merge-s)
  - [**References**](#references)
 
 <!--- ( Useful commands ) -->
@@ -69,14 +77,19 @@ A primeira coisa que você deve fazer quando instalar o **Git** é definir o seu
 Isso é importante porque todos os commits no **Git** utilizam essas informações, e está imutavelmente anexado nos commits que você realizar:
 
 ```bash
-$ git config --global user.name "drigols"
-$ git config --global user.email drigols.creative@gmail.com
+git config --global user.name "drigols"
 ```
-  
-Relembrando, você só precisará fazer isso uma vez caso passe a opção <strong>--global</strong>, pois o Git sempre usará essa informação para qualquer coisa que você faça nesse sistema.
+
+```bash
+git config --global user.email drigols.creative@gmail.com
+```
+
+ - Relembrando, você só precisará fazer isso uma vez caso passe a opção **--global**, pois o Git sempre usará essa informação para qualquer coisa que você faça nesse sistema.
+ - Se você não utilizar a opção **--global** essa configuração vai ser por projeto.
+ - **NOTE:** Por fim, mas não menos importante lembre-se de fazer essas configurações como *root (sudo)* também, porque lá são configurações diferentes.
 
 > **NOTE:**  
-> Caso você queira sobrepor estas com um nome ou endereço de e-mail diferentes para projetos específicos, você pode executar o comando <strong>sem a opção --global</strong> quando estiver no próprio projeto.
+> Caso você queira sobrepor estas com um nome ou endereço de e-mail diferentes para projetos específicos, você pode executar o comando **sem a opção --global** quando estiver no próprio projeto.
 
 ---
 
@@ -84,7 +97,7 @@ Relembrando, você só precisará fazer isso uma vez caso passe a opção <stron
 
 ## Verificando suas configurações (git config --list)
 
-Caso você queira verificar suas configurações, você pode utilizar o comando **git config --list** para listar todas as configurações que o Git encontrar naquele momento:
+Caso você queira verificar suas configurações, você pode utilizar o comando **"git config --list"** para listar todas as configurações que o Git encontrar naquele momento:
 
 ```bash
 user.name=drigols
@@ -134,9 +147,7 @@ drigols.creative@gmail.com
 
 ---
 
-<div id="sign-commits"></div>
-
-## Configurando uma chave GPG para assinar commits
+<div id="gpg-theory"></div>
 
 ### Teoria Inicial
 
@@ -172,17 +183,21 @@ Em vez disso, criar o hábito de assinar seus commits do Git dá a você:
  - Oferece a capacidade de garantir que ninguém possa modificar seu commit (ou seus metadados, como a hora em que você afirmou que foi feito) no futuro.
 
 > **NOTE:**  
-> Observe que só porque você assina seus commits do Git, isso não impede que outras pessoas se passem por você. Porém, **elas não podem garantir que são você**.
+> Observe que só porque você assina seus commits do Git, isso não impede que outras pessoas se passem por você. **"Porém, elas não podem garantir que são você"**.
+
+---
+
+<div id="listing-gpg-keys"></div>
 
 ### Listando chaves GPG
 
 Os comandos utilizados para listas chaves GPG no Linux são:
 
- - **gpg --list-keys:**
+ - **gpg --list-keys**
    - Lista as chaves públicas.
    - As chaves públicas são identificadas pelo campo **"pub"**.
    - Essas chaves ficam armazenas em `"~/.gnupg/pubring.kbx"`.
- - **gpg --list-secret-keys:**
+ - **gpg --list-secret-keys**
    - Lista as chaves privadas.
    - As chaves privadas são identificadas pelo campo **"sec"**.
    - Essas chaves também ficam armazenas em `"~/.gnupg/pubring.kbx"`.
@@ -240,6 +255,10 @@ Nós exemplos acima:
  - **O ID da chave pública (pub):** 4A233C93156944C5
  - **O ID da chave privada (sec):** 4A233C93156944C5
 
+---
+
+<div id="create-gpg-key"></div>
+
 ### Criando um par de chave GPG
 
 Se você não tiver uma chave, poderá gerar uma com o comando **"gpg --full-generate-key"**:
@@ -286,13 +305,17 @@ uid           [ultimate] test gpg (this is a GPG test key) <testgpg@gmail.com>
 sub   rsa3072 2023-05-24 [E]
 ```
 
-### Ativando assinatura de commits no cliente Git
+---
+
+<div id="active-sign-gitclient"></div>
+
+### Ativando assinatura de commits no cliente Git (git config --global commit.gpgsign true)
 
 Antes de de fato adicionar nossas chaves GPG no cliente Git, nós precisamos configurar para ele aceitar assinatura de commits.
 
 **INPUT:**
 ```bash
-git config commit.gpgsign true
+git config --global commit.gpgsign true
 ```
 
 **INPUT:**
@@ -307,6 +330,13 @@ git config --list
 ...
 core.logallrefupdates=true
 ```
+
+> **NOTE:**
+> Por fim, mas não menos importante lembre-se de fazer essa configuração como **root (sudo)** também, porque lá são configurações diferentes.
+
+---
+
+<div id="add-gpg-key-to-gitclient"></div>
 
 ### Adicionando o ID da chave GPG ao cliente Git
 
@@ -348,6 +378,13 @@ user.signingkey=4A233C93156944C5
 
 Agora, toda vez que você fizer um git commit, ele será assinado com esta chave GPG.
 
+> **NOTE:**
+> Por fim, mas não menos importante lembre-se de fazer essa configuração como **root (sudo)** também, porque lá são configurações diferentes.
+
+---
+
+<div id="add-key-to-github"></div>
+
 ### Adicionando sua chave no GitHub
 
 Bem, até aqui nós estamos apenas **assinando nossos commits com a chave pública**, mas para o GitHub verificar nós precisamos passar nossa chave pública completa para ele.
@@ -373,7 +410,7 @@ O que nós podemos fazer para resolver isso é transformar esse binário em hexa
 
 **INPUT:**
 ```bash
-gpg --export 4A233C93156944C5
+gpg --export --armor 4A233C93156944C5
 ```
 
 **OUTPUT:**
@@ -452,11 +489,15 @@ Quando um commit assinado for enviado para o GitHub, ele será verificado pela c
 
 ![img](images/verified-commit-github.png)  
 
+---
+
+<div id="save-gpg-keys"></div>
+
 ### Salvando seu par de chaves
 
-> **OK, mas eu tenho outro computador, como eu posso utilizar esse mesmo par de chaves nele?**
+> Imagine que você quer salvar seu par de chaves GPG para utilizar em outros computadores ou em caso de perda total do seu computador atual.
 
-Existem várias abordagens, por exemplo, vamos baixar (exportar) esse par de chaves:
+Para baixar as chaves é muito simples, basta executar os seguintes comandos:
 
 **INPUT:**
 ```bash
@@ -472,7 +513,21 @@ gpg --export-secret-keys --armor YOUR_ID_KEY_HERE > private.asc
 > **NOTE:**  
 > Você vai precisar colocar a **senha de acesso a chave** para exportar a *chave privada*.
 
-Agora copie esses arquivos e coloque na máquina de destino. Com os arquivos na máquina nova, vamos importar a chave:
+Agora é só salvar em um local seguro (por exemplo na Cloud) e baixar quando necessário.
+
+---
+
+<div id="add-key-newpc"></div>
+
+## Adicionando seu par de chaves a um computador novo
+
+Agora imagine que você comprou um computador novo e precisa adicionar suas chaves GPG nele.
+
+ - Primeiro você vai colocar as chaves GPG no computador novo:
+   - Baixando de um ambiente na nuvem.
+   - Ou com um pendrive.
+
+Agora é só executar o seguinte comandos:
 
 **INPUT:**
 ```bash
@@ -482,9 +537,11 @@ gpg --import public.asc private.asc
 > **NOTE:**  
 > Aqui você também vai precisar colocar a **senha de acesso a chave** para importar a *chave privada*.
 
+---
+
 <div id="git-commit-s"></div>
 
-### git commit -S
+### Assinando commits (git commit -S)
 
 Ok, mas como eu posso garantir que meu commit vai ser autenticado? Uma opção é sempre fazer um commit utilizando o argumento **"-S"**, por exemplo:
 
@@ -535,9 +592,11 @@ Vejam que na imagem acima nós temos 3 tipos de commits:
  - **Normais (sem cores):**
    - Por fim, nós temos commits que não tem chave alguma associada.
 
+---
+
 <div id="git-merge-s"></div>
 
-### git merge -S branch-name
+### Signing merges (git merge -S branch-name)
 
 > **Ok, but merges also can be signed? Yes of course!**
 
@@ -578,7 +637,6 @@ git merge -S branch-name
  - [[Git] Os Três Tipos de Reset](https://medium.com/@andgomes/os-tr%C3%AAs-tipos-de-reset-aa220658d9b2)
  - [Using GPG keys on GitHub: Creating and updating expired keys](https://inspirezone.tech/using-gpg-keys-on-github/)
  - [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
- - [x](#)
  - [ChatGPT](https://chat.openai.com/)
 
 ---
