@@ -6,7 +6,7 @@
    - [**Nouns (Substantivos)**](#nouns)
      - [Simple Noun (Substantivo Simples)](#simple-noun)
      - [Compound Noun (Substantivo Composto)](#compound-noun)
-     - [Primitive Noun (Substantivo Primitivo)](#primitive-noun)
+     - [Primitive and Derived Noun (Substantivos Primitivos e Derivados)](#primitive-derived)
      - [Derived Noun (Substantivo Derivado)](#derived-noun)
      - [Proper Noun (Substantivo Próprio)](#proper-noun)
      - [Common Noun (Substantivo Comum)](#common-noun)
@@ -123,27 +123,34 @@ Os substantivos classificam-se em:
 | Sunrise/Nascer do Sol (noun + verb(-ing))            | Roda-gigante/Ferris wheel (Noun + Noun)  |
 | Haircut/Corte de cabelo (noun + verb(-ing))          | Ponta-pé/Kick (Noun + Noun)              |
 
-
 ---
 
-<div id="primitive-noun"></div>
+<div id="primitive-derived"></div>
 
-## Primitive Noun (Substantivo Primitivo)
+## Primitive and Derived Noun (Substantivos Primitivos e Derivados)
 
->
+ - **Um substantivo é Primitivo (Primitive) quando:**
+   - Não deriva de nenhuma outra palavra.
+   - E dele derivam outras palavras.
+ - **Um substantivo é substantivo (Derived) quando:**
+   - Deriva de outra palavra já existentes, como.
+   - É formado a partir de um substantivos primitivos.
 
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
+| **Primitive:**              | **Derived**                 |
+|-----------------------------|-----------------------------|
+| **"happy"** (feliz)         | **Happiness** (Felicidade)  |
+| **"teach"** (ensinar)       | **Teacher** (Professor)     |
+| **"write"** (escrever)      | **Writer** (Escritor)       |
+| **"dark"** (escuro)         | **Darkness** (Escuridão)    |
+| **"friend"** (amigo)        | **Friendship** (Amizade)    |
+| **"careless"** (descuidado) | **Carelessness** (Descuido) |
+| **"sing"** (cantar)         | **Singer** (Cantor)         |
+| **"run"** (correr)          | **Runner** (Corredor)       |
+| **"child"** (criança)       | **Childhood** (Infância)    |
+| **"kind"** (gentil)         | **Kindness** (Bondade)      |
+
+
+
 
 
 ---
