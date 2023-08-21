@@ -7,7 +7,6 @@
      - [Simple Noun (Substantivo Simples)](#simple-noun)
      - [Compound Noun (Substantivo Composto)](#compound-noun)
      - [Primitive and Derived Noun (Substantivos Primitivos e Derivados)](#primitive-derived)
-     - [Derived Noun (Substantivo Derivado)](#derived-noun)
      - [Proper Noun (Substantivo Próprio)](#proper-noun)
      - [Common Noun (Substantivo Comum)](#common-noun)
      - [Concrete Noun (Substantivo Concreto)](#concrete-noun)
@@ -149,53 +148,26 @@ Os substantivos classificam-se em:
 | **"child"** (criança)       | **Childhood** (Infância)    |
 | **"kind"** (gentil)         | **Kindness** (Bondade)      |
 
-
-
-
-
----
-
-<div id="derived-noun"></div>
-
-## Derived Noun (Substantivo Derivado)
-
->
-
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-
-
 ---
 
 <div id="proper-noun"></div>
 
 ## Proper Noun (Substantivo Próprio)
 
->
+> Um substantivo próprio (Proper) nomeia um único ser em particular, especificando **nomes de pessoas**, **países**, **cidades**, **rios**, **empresas** etc.
 
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-
+| **English**           | **Portuguese**       |
+|-----------------------|----------------------|
+| **John**              | João                 |
+| **London**            | Londres              |
+| **Apple Inc.**        | Apple Inc.           |
+| **Eiffel Tower**      | Torre Eiffel         |
+| **Brazil**            | Brasil               |
+| **Shakespeare**       | Shakespeare          |
+| **Amazon River**      | Rio Amazonas         |
+| **Statue of Liberty** | Estátua da Liberdade |
+| **Coca-Cola**         | Coca-Cola            |
+| **United Nations**    | Nações Unidas        |
 
 ---
 
@@ -203,21 +175,20 @@ Os substantivos classificam-se em:
 
 ## Common Noun (Substantivo Comum)
 
->
+> Um substantivo Comum (Common) nomeia vários seres, generalizando-os.
 
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-
+| **English**     | **Portuguese** |
+|-----------------|----------------|
+| **Dog**         | Cachorro       |
+| **City**        | Cidade         |
+| **Person**      | Pessoa         |
+| **Country**     | País           |
+| **Book**        | Livro          |
+| **Car**         | Carro          |
+| **School**      | Escola         |
+| **Chair**       | Cadeora        |
+| **Fruit**       | Fruta          |
+| **Animal**      | Animnal        |
 
 ---
 
@@ -225,21 +196,23 @@ Os substantivos classificam-se em:
 
 ## Concrete Noun (Substantivo Concreto)
 
->
+ - **Um substantivo concreto (concrete) nomeia:**
+   - Seres ou objetos reais (mesa, cachorro, mulher).
+   - E imaginários (fada, saci, anjo).
+ - **Ele também se refere a algo tangível e perceptível pelos sentidos físicos.**
 
 | **English** | **Portuguese** |
 |-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-
+| **Table**   | Mesa           |
+| **Cat**     | Gato           |
+| **Phone**   | Telephone      |
+| **Flower**  | Flor           |
+| **Car**     | Carro          |
+| **Apple**   | Maçã           |
+| **Chair**   | Cadeira        |
+| **Ocean**   | Oceano         |
+| **House**   | Casa           |
+| **Book**    | Livro          |
 
 ---
 
@@ -247,20 +220,26 @@ Os substantivos classificam-se em:
 
 ## Abstract Noun (Substantivo Abstrato)
 
->
+ - **Um substantivo abstrato nomeia:**
+   - Ações.
+   - Qualidades.
+   - Defeitos.
+   - Estados emocionais.
+   - Sentimentos.
+   - **NOTE:** Coisas que não tangíveis.
 
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
+| **English**    | **Portuguese** |
+|----------------|----------------|
+| **Love**       | Amor           |
+| **Happiness**  | Felicidade     |
+| **Freedom**    | Liberdade      |
+| **Knowledge**  | Conhecimento   |
+| **Courage**    | Coragem        |
+| **Beauty**     | Beleza         |
+| **Friendship** | Amizade        |
+| **Honesty**    | Honestidade    |
+| **Joy**        | Alegria        |
+| **Patience**   | Paciência      |
 
 ---
 
@@ -268,20 +247,20 @@ Os substantivos classificam-se em:
 
 ## Collective Noun (Substantivo Coletivo)
 
->
+> Um substantivo coletivo (collective) se refere a um **grupo de itens**, **pessoas** ou **coisas como uma unidade**.
 
-| **English** | **Portuguese** |
-|-------------|----------------|
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
-|             |                |
+| **English**   | **Portuguese** |
+|---------------|----------------|
+| **Herd**      | Rebanho        |
+| **Team**      | Time           |
+| **Family**    | Família        |
+| **Flock**     | Bando          |
+| **Crowd**     | Multidão       |
+| **Army**      | Exército       |
+| **Pack**      | Matilha        |
+| **Group**     | Grupo          |
+| **Colony**    | Colônia        |
+| **Committee** | Comitê         |
 
 
 
