@@ -4,6 +4,9 @@
 
  - **Useful commands:**
    - [`git checkout <branch-name>` and `git checkout -b <new-branch>`](#checkout-b)
+   - [git commit -a -m 'commit message'](#add-plus-commit)
+ - **Tips & Tricks:**
+   - [Semantic Commit Messages](#semantic-commit-messages)
  - **Settings:**
    - [Configurando sua identidade (Username + Email)](#identity)
    - [Verificando suas configurações (git config --list)](#check)
@@ -41,6 +44,232 @@ git checkout -b fix-999
 ```bash
 Switched to a new branch 'fix-999'
 ```
+
+---
+
+<div id="add-plus-commit"></div>
+
+## git commit -a -m 'commit message'
+
+> As we know before committing something, first we must send it to "Staged" using the "add" command.
+
+For example to **add all**:
+
+```bash
+git add .
+```
+
+**NOTE:**  
+When we need to **add all** to the *"Staged"* we can skip the **"add ."** command and use the **"-a"** argument to the commit command knowing that need first **add all**:
+
+```bash
+git commit -a -m 'commit message'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Tips & Tricks ) -->
+
+---
+
+<div id="semantic-commit-messages"></div>
+
+## Semantic Commit Messages
+
+ - **Types:**
+   - **feat (New Feature):** Tratam adições de novas funcionalidades ou de quaisquer outras novas implantações ao código.
+     - **Examples:**
+       - feat(login): Add user authentication via OAuth.
+       - feat(cart): Implement product addition to the shopping cart.
+       - feat(profile): Create user profile page with personal information.
+       - feat(search): Introduce category-based product search.
+       - feat(payment): Integrate payment gateway for checkout.
+       - feat(orders): Display order history in the user account.
+       - feat(wishlist): Allow users to save items in a wishlist.
+       - feat(landing): Develop responsive landing page for mobile devices.
+       - feat(reviews): Add ability to rate products and write comments.
+       - feat(categories): Implement navigation by product categories.
+   - **fix (Bug Fix):** Essencialmente definem o tratamento de correções de bugs.
+     - **Examples:**
+       - fix(navbar): Fix broken links in the navigation menu.
+       - fix(validation): Resolve incorrect validation in the registration form.
+       - fix(cart): Correct erroneous subtotal calculation in the cart.
+       - fix(login): Fix redirection issue after authentication.
+       - fix(search): Rectify search error not showing accurate results.
+       - fix(order): Address failure to process orders with out-of-stock items.
+       - fix(styles): Adjust styles for improved readability on smaller devices.
+       - fix(filter): Correct non-functional product filtering by price.
+       - fix(ui): Resolve issue of element overlap in the interface.
+       - fix(wishlist): Fix improper removal of items from the wishlist.
+   - **perf:** O tipo de commit *"perf"* em mensagens de commit semântico é usado para indicar mudanças relacionadas à performance. Esse tipo é utilizado quando um commit inclui otimizações ou alterações com o objetivo de melhorar o desempenho do código, como tornar algoritmos mais eficientes, reduzir o uso de memória ou aumentar a velocidade de execução.
+     - **Examples:**
+       - perf(search): Optimize product search algorithm for faster results.
+       - perf(database): Improve database query performance for large datasets.
+       - perf(rendering): Enhance component rendering speed through memoization.
+       - perf(memory): Reduce memory usage in resource-intensive operations.
+       - perf(caching): Implement caching to reduce repetitive network requests.
+       - perf(loading): Speed up page loading by lazy loading non-critical assets.
+       - perf(algorithms): Rewrite sorting algorithm to have better time complexity.
+       - perf(network): Optimize API calls to minimize response time.
+       - perf(compilation): Reduce build time by optimizing code compilation process.
+       - perf(images): Implement lazy loading of images for quicker initial page load.
+   - **refactor (Code Refactoring):** Tipo utilizado em quaisquer mudanças que sejam executados no código, porém não alterem a funcionalidade final da tarefa impactada.
+     - **Examples:**
+       - refactor(cart): Rearrange price calculation logic in the cart.
+       - refactor(components): Split product component into smaller subcomponents.
+       - refactor(api): Simplify API calls using utility functions.
+       - refactor(database): Update database structure for better performance.
+       - refactor(auth): Centralize authentication logic in a dedicated service.
+       - refactor(routes): Restructure routing for better modularity.
+       - refactor(styles): Group related styles into separate files.
+       - refactor(tests): Improve unit test coverage in a critical module.
+       - refactor(state): Migrate from local state management to Redux.
+       - refactor(optimization): Apply performance optimizations to critical code parts.
+   - **test (Test Changes):** Adicionando testes ausentes ou corrigindo testes existentes nos processos de testes automatizados (TDD).
+     - **Examples:**
+       - test(components): Add unit tests for cart components.
+       - test(api): Create integration tests for authentication endpoints.
+       - test(validation): Verify validation behavior in form fields.
+       - test(utils): Write tests for formatting utility functions.
+       - test(redux): Implement action and reducer tests for application state.
+       - test(search): Add test cases for search results.
+       - test(payment): Verify smooth integration with the payment gateway.
+       - test(orders): Create tests for correct order processing.
+       - test(wishlist): Verify addition, removal, and display of wishlist items.
+       - test(e2e): Implement end-to-end tests for core user flows.
+   - **style (Style Changes):** Alterações referentes a formatações, efeitos visuais ou outras alterações que afetam apenas a aparência do código, mas não alteram sua funcionalidade ou comportamento, como por exemplo: espaço em branco, formatação, ponto e vírgula ausente etc.).
+     - **Examples:**
+       - style(buttons): Standardize button colors and sizes.
+       - style(typography): Update fonts and text sizes across the project.
+       - style(navbar): Adjust navigation bar layout on mobile devices.
+       - style(forms): Apply consistent spacing to form fields.
+       - style(images): Optimize images to enhance page performance.
+       - style(colors): Update color palette according to brand guidelines.
+       - style(modal): Enhance appearance and animations of dialog modals.
+       - style(grid): Refactor grid system for increased flexibility and responsiveness.
+       - style(icons): Replace icons with newer and styled versions.
+       - style(responsive): Make the interface more user-friendly on small and large screens.
+       - **NOTE:** Lembre-se de que o tipo style deve ser usado somente para mudanças de estilo e formatação, sem impacto funcional no código.
+   - **docs (Documentation Changes):** Referem-se a inclusão ou alteração somente de arquivos de documentação.
+     - **Examples:**
+       - docs(readme): Update setup instructions in the README file.
+       - docs(api): Add documentation for product API endpoints.
+       - docs(contributing): Clarify contribution guidelines in the developer guide.
+       - docs(usage): Improve usage examples in a component's documentation.
+       - docs(changelog): Update changelog with the latest project changes.
+       - docs(installation): Correct installation instructions to reflect new dependencies.
+       - docs(styleguide): Add section about code style conventions.
+       - docs(architecture): Updated architecture diagram with new components.
+       - docs(tutorials): Include step-by-step tutorial for initial setup.
+       - docs(deployment): Document deployment process in a production environment.
+   - **env:** Basicamente utilizado na descrição de modificações ou adições em arquivos de configuração em processos e métodos de integração contínua (CI), como parâmetros em arquivos de configuração de containers.
+     - **Examples:**
+       - env(config): Update environment configuration for development server.
+       - env(production): Configure production environment variables for deployment.
+       - env(testing): Adjust testing environment settings for integration tests.
+       - env(staging): Set up staging environment with specific database parameters.
+       - env(secrets): Add new secret keys to the environment configuration.
+       - env(deployment): Modify deployment scripts to handle different environments.
+       - env(ci/cd): Configure continuous integration and continuous deployment workflows.
+       - env(plugins): Install new plugins for enhancing the development environment.
+       - env(local): Update local environment settings for compatibility with new libraries.
+       - env(aws): Configure AWS credentials for accessing cloud resources.
+       - **NOTE:** Remember that the env type is typically used when making changes related to environment settings, configurations, or infrastructure, ensuring that the code can function properly in different contexts.
+   - **build:**
+     - Alterações que afetam o sistema de construção ou dependências externas (escopos de exemplo: gulp, broccoli, npm),
+     - **Examples:**
+       - build(dependencies): Update third-party libraries to their latest versions.
+       - build(package): Update packaging configuration for improved distribution.
+       - build(deployment): Enhance deployment scripts for smoother releases.
+       - build(webpack): Configure Webpack for better asset bundling and optimization.
+       - build(pipeline): Refine continuous integration pipeline for better testing.
+       - build(docker): Update Dockerfile for better containerization and deployment.
+       - build(ci/cd): Improve CI/CD setup for automated testing and deployment.
+       - build(npm): Adjust npm scripts for building and packaging the application.
+       - build(assets): Optimize asset generation process for improved performance.
+       - build(compile): Update compilation process for compatibility with new tools.
+       - **NOTE:** Remember that the build type is used when making changes related to the build process, tooling, dependencies, and overall build infrastructure.
+   - **ci:** Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs);
+     - **Examples:**
+       - ci(pipeline): Fix issue with failing tests in the CI pipeline.
+       - ci(travis): Update Travis CI configuration for better integration.
+       - ci(workflows): Refactor GitHub Actions workflows for smoother automation.
+       - ci(coverage): Improve code coverage reporting in the CI process.
+       - ci(deployment): Automate deployment to staging environment after successful build.
+       - ci(tests): Add new end-to-end tests to the continuous integration suite.
+       - ci(docker): Integrate Docker image build and push steps into CI workflow.
+       - ci(plugins): Update and configure new plugins for enhanced CI capabilities.
+       - ci(azure): Set up Azure Pipelines for seamless build and deployment.
+       - ci(jenkins): Adjust Jenkins configuration for improved build and test execution.
+       - **NOTE:** The ci type is used when making changes related to continuous integration and continuous deployment processes, workflows, configurations, and tools.
+   - **chore (Maintenance Tasks):** Atualização de tarefas que não ocasionam alteração no código de produção, mas mudanças de ferramentas, mudanças de configuração e bibliotecas que realmente não entram em produção.
+     - **Examples:**
+       - chore(deps): Update dependencies to their latest versions.
+       - chore(ci): Configure continuous integration pipeline with GitHub Actions.
+       - chore(linting): Adjust linting rules to enhance code consistency.
+       - chore(licenses): Update license files according to new company guidelines.
+       - chore(docs): Fix broken links and improve navigation in the documentation.
+       - chore(webpack): Optimize Webpack configuration for better performance.
+       - chore(formatting): Apply automated formatting across the source code.
+       - chore(cleanup): Remove unused code and obsolete files.
+       - chore(data): Update test data to reflect more recent scenarios.
+       - chore(release): Prepare version 1.2.0 for release with new features.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
