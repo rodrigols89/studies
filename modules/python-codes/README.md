@@ -37,7 +37,7 @@
    - [SQLite3](modules/databases/sqlite3)
  - **Automation, Web scraping, Bots:**
    - [PyAutoGUI](modules/pyautogui)
-   - [Selenium](modules/ba-ws/selenium)
+   - [Selenium](modules/selenium)
  - **Tips & Tricks:**
    - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)
    - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
