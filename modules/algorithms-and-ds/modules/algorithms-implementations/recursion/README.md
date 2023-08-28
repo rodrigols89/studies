@@ -57,37 +57,6 @@ Notice that the innermost (mais interno) set of parentheses, *(7 + 9)*, is a pro
 
 Another approach to solve this is using iterative programming (using a loop). For example, see the function implementation below:
 
-**C++:** [driver_sumElements_iterative_approach.cpp](src/cpp/driver_sumElements_iterative_approach.cpp)
-```cpp
-#include <iostream>
-#include <vector>
-
-int sumElements(std::vector<int> list)
-{
-    int sum = 0;
-    for (int element : list)
-        sum += element;
-    return sum;
-}
-
-int main()
-{
-    std::vector<int> myList = {1, 3, 5, 7, 9};
-    std::cout << "The sum of all element is: " << sumElements(myList);
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ driver_sumElements_iterative_approach.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**
-```bash
-The sum of all element is: 25
-```
-
 **Python:** [driver_sumElements_iterative_approach.py](src/python/driver_sumElements_iterative_approach.py)
 ```python
 def sumElements(myList: list[int]) -> int:
@@ -156,16 +125,6 @@ Back to our [**Problem of calculating the sum of a list of numbers**](#initial-p
 
 Following these laws, let's get started with the **base case (first law)**, that's, the recursion stop when the *list size = 1*:
 
-**C++:**
-```cpp
-int sumElementsRecursive(std::vector<int> list)
-{
-    if (list.size() == 1) {  // Base case.
-        return list[0];
-    }
-}
-```
-
 **Python:**
 ```python
 def sumElementsRecursive(myList: list[int]) -> int:
@@ -177,19 +136,6 @@ Following the second law, now we need to **change the state to go toward (para i
 
 > **NOTE:**  
 > Remember, that, a change of state means that some data that the algorithm is using is modified. For our case, the list is modified toward the base.
-
-**C++:**
-```cpp
-int sumElementsRecursive(std::vector<int> list)
-{
-    if (list.size() == 1) {  // Base case.
-        return list[0];
-    } else {
-        int lastElement = list.back();  // Get the last element.
-        list.pop_back();  // Remove the last element from the list.
-    }
-}
-```
 
 **Python:**
 ```python
@@ -206,21 +152,6 @@ See that we are removing the last element, that's, we are changing the state to 
 
 Finally, following the third law, we need to call the algorithm (function) itself.
 
-**C++:**
-```cpp
-int sumElementsRecursive(std::vector<int> list)
-{
-    if (list.size() == 1) {  // Base case.
-        return list[0];
-    } else {
-        int lastElement = list.back();  // Get the last element.
-        list.pop_back();  // Remove the last element from the list.
-        int sum = lastElement + sumElementsRecursive(list);  // Recursive call.
-        return sum;
-    }
-}
-```
-
 **Python:**
 ```python
 def sumElementsRecursive(myList: list[int]) -> int:
@@ -234,41 +165,6 @@ def sumElementsRecursive(myList: list[int]) -> int:
 ```
 
 See, the complete code to **sumElementsRecursive()** algorithms (function) below:
-
-**C++:** [driver_sumElements_recursive_approach.cpp](src/cpp/driver_sumElements_recursive_approach.cpp)
-```cpp
-#include <iostream>
-#include <vector>
-
-int sumElementsRecursive(std::vector<int> list)
-{
-    if (list.size() == 1) {  // Base case.
-        return list[0];
-    } else {
-        int lastElement = list.back();  // Get the last element.
-        list.pop_back();  // Remove the last element from the list.
-        int sum = lastElement + sumElementsRecursive(list);  // Recursive call.
-        return sum;
-    }
-}
-
-int main()
-{
-    std::vector<int> myList = {1, 3, 5, 7, 9};
-    std::cout << "The sum of all element is: " << sumElementsRecursive(myList);
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ driver_sumElements_recursive_approach.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**
-```bash
-The sum of all element is: 25
-```
 
 **Python:** [driver_sumElements_recursive_approach.py](src/python/driver_sumElements_recursive_approach.py)
 ```python
@@ -416,56 +312,6 @@ with
 
 See the examples of functions **recursive** and **iterative** below:
 
-**C++:** [driver_recursion_vs_iteration.cpp](src/cpp/driver_recursion_vs_iteration.cpp)
-```cpp
-#include <iostream>
-
-// ----- Recursion -----
-// method to find factorial of given number.
-unsigned long long int factorialUsingRecursion(int n)
-{
-    if (n == 0) // Base case.
-        return 1;
-    return n * factorialUsingRecursion(n - 1); // Recursion call
-}
-
-// ----- Iteration -----
-// Method to find the factorial of a given number.
-unsigned long long int factorialUsingIteration(int n)
-{
-    unsigned long long int res = 1, i;
-    for (i = 2; i <= n; i++) // Using iteration.
-        res *= i;
-    return res;
-}
-
-// Driver method.
-int main()
-{
-    unsigned long long int num;
-
-    std::cout << "Enter a number to find the factorial: ";
-    std::cin >> num;
-
-    std::cout << "Factorial of " << num << " using Recursion is: " << factorialUsingRecursion(num) << "\n";
-    std::cout << "Factorial of " << num << " using Iteration is: " << factorialUsingIteration(num);
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ driver_recursion_vs_iteration.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**
-```bash
-Enter a number to find the factorial: 5
-Factorial of 5 using Recursion is: 120
-Factorial of 5 using Iteration is: 120
-```
-
 **Python:** [driver_recursion_vs_iteration.py](src/python/driver_recursion_vs_iteration.py)
 ```python
 # ----- Recursion -----
@@ -518,39 +364,6 @@ Finite Recursion occurs when the recursion terminates after a finite number of r
 
 For example, below is an implementation to demonstrate **Finite Recursion**:
 
-[driver_finite_recursion.cpp](src/cpp/driver_finite_recursion.cpp)
-```cpp
-#include <iostream>
-
-// Recursive function.
-void Geek(int N)
-{
-    if (N == 0) // Base case.
-        return;
-    std::cout << N << " "; // Print the current value of "N".
-    Geek(N - 1);           // Call itself recursively.
-}
-
-// Driver code.
-int main()
-{
-    int N = 5; // Initial value of "N".
-    Geek(N);   // Call the recursive function.
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ driver_finite_recursion.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**
-```bash
-5 4 3 2 1
-```
-
 [driver_finite_recursion.py](src/python/driver_finite_recursion.py)
 ```python
 # Recursive function.
@@ -593,39 +406,6 @@ Infinite Recursion occurs when the recursion does not terminate after a finite n
 > As the base condition is never met (atendida), the recursion carries on infinitely.
 
 For example, below is an implementation to demonstrate **Infinite Recursion**:
-
-[driver_infinite_recursion.cpp](src/cpp/driver_infinite_recursion.cpp)
-```cpp
-#include <iostream>
-
-// Recursive function.
-void Geek(int N)
-{
-    if (N == 0) // Base case.
-        return;
-    std::cout << N << " "; // Print the current value of "N".
-    Geek(N);               // Call itself recursively.
-}
-
-// Driver code.
-int main()
-{
-    int N = 5; // Initial value of N
-    Geek(N);   // Call the recursive function
-
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ driver_infinite_recursion.cpp -o test.out && ./test.out
-```
-
-**OUTPUT:**
-```bash
-5 5 5 5 5 5 5 5 ..... 5 5 5 5 5 Until stack full.
-```
 
 [driver_infinite_recursion.py](src/python/driver_infinite_recursion.py)
 ```python
@@ -757,16 +537,6 @@ It is used to establish the validity of a theorem or result. It has two working 
  - [Difference Between Recursion and Induction](https://www.geeksforgeeks.org/difference-between-recursion-and-induction/)
  - [How to analyse Complexity of Recurrence Relation](https://www.geeksforgeeks.org/how-to-analyse-complexity-of-recurrence-relation/)
  - [What is Recursion?](https://www.geeksforgeeks.org/what-is-recursion/)
- - []()
- - []()
- - []()
- - []()
- - []()
- - []()
- - []()
- - []()
- - []()
- - []()
 
 ---
 
