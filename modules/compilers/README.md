@@ -50,7 +50,7 @@ See our **file.xx** passes by a *compiler* → next is generated a Machine Langu
          - *x64:* 64 architecture.
          - *ARM:* Cellphone architecture.
 
-> **NOTE:**
+> **NOTE:**  
 > **This is the traditional compilation, but how Python compiler works?**
 
 To understand how Python is interpreted, let's see another image (abstraction) below:
@@ -73,7 +73,7 @@ Looking at the image above we can see that:
  - This *Intermediate Language (IL)* is sended to a **Virtual Machine**.
  - The **Virtual Machine** communicates with the **computer (CPU)** and repeats this process until it finishes the tasks.
 
-> **NOTE:**
+> **NOTE:**  
 > See that here the Python compiler doesn't have a backend step to generate a *Machine Language*. **The *Virtual Machine* that communicates with the *computer (CPU)***.
 
 Knowing this, we can say that:
@@ -622,7 +622,7 @@ python3 -m tokenize -e tokenize-ex01.py
 25,0-25,0:          ENDMARKER      '' 
 ```
 
-> **NOTE:**
+> **NOTE:**  
 > See that now the tokenize return the actual name of the token in the Grammar.
 
 ---
