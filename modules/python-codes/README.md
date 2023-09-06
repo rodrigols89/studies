@@ -38,9 +38,10 @@
  - **Automation, Web scraping, Bots:**
    - [PyAutoGUI](modules/pyautogui)
    - [Selenium](modules/selenium)
+ - **Command-Line Interface (CLI):**
+   - [Typer](modules/typer)
  - **Tips & Tricks:**
    - [Iteráveis, Iterator, Generator (+yield)](modules/tips-and-tricks/iterators-generators)
-   - [CLI (CI-EL-LAI) with Typer](modules/tips-and-tricks/cli-with-typer)
    - [Docstrings em Python](modules/tips-and-tricks/docstrings/docstrings-in-python.ipynb)
    - [Poetry - Tips & Tricks](modules/tips-and-tricks/poetry/tips-and-tricks.md)
    - [Functions return](modules/tips-and-tricks/returns/README.md)
