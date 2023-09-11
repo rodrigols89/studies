@@ -1,6 +1,4 @@
-# Poetry - Tips & Tricks
-
-> My **Poetry** *Tips* & *Tricks*.
+# Poetry
 
 ## Contents
 
