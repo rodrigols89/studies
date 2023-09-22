@@ -25,9 +25,9 @@
    - **Non-Primitive Data Structures:**
      - **[Linear:](modules/data-structures/linear/linear-ds.md)**
        - **Static:**
-         - [Arrays, Vectors, Strings](modules/data-structures/linear/arrays-vectors-strings)
+         - Arrays, Vectors, Strings
        - **Dynamic:**
-         - [Lists (+Linked Lists)](modules/data-structures/linear/lists/)
+         - [Lists (Linked Lists)](modules/data-structures/linear/lists/)
          - [Stacks (Last-In, First-Out)](modules/data-structures/linear/stack)
          - Queues
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
