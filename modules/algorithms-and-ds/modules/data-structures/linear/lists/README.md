@@ -1,4 +1,4 @@
-# Lists (+Linked Lists)
+# Lists (Linked Lists)
 
 ## Contents
 
@@ -23,6 +23,45 @@
  - **Tips & Tricks:**
    - [Linked List: Advantages and Disadvantages](#advantages-disadvantages)
  - [**References**](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -402,11 +441,6 @@ The **Time** and **Space complexity** of the **push()** function is:
      - **O(1):** The time complexity of this function in the *worst case* is **O(1)**, which means it is constant. This is because the insertion always occurs at the beginning of the list, regardless (sem considerar) of the size of the list. No matter (não importa) how many elements the list already contains, the function performs a fixed number of operations.
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** The time complexity of this function in the *best case* is **O(1)**, which means it is constant. This is because the insertion always occurs at the beginning of the list, regardless (sem considerar) of the size of the list.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(1):** In the *average case*, the time complexity of the push function is **O(1)**, which means it is constant. This is because the function always inserts the new node at the beginning of the linked list, regardless (sem considerar) of the size of the list.
-     - Regardless (Independentemente) of the number of elements already present in the list, the function performs a fixed number of operations to carry out the insertion. Therefore, the time complexity remains constant in the average case.
- - **Space Complexity:**
-   - **(1):** The space complexity of this function is **constant (1)**, regardless (Independentemente) of the case *(worst, best, or average)*. This is because the amount of space required to execute the function does not depend on the size of the input data but only on the creation of a new node.
 
 Finally, let's test the function **push()** in practice:
 
@@ -472,6 +506,7 @@ if passed_node is None:
  - Next, set the "next" point of the "new_node" to point to "next" of the passed Node.
  - Finally, set the "next" point of the passed Node to point to the "new_node".
 
+<<<<<<< HEAD
 **Python:**
 ```python
 new_node = Node(data)
@@ -479,6 +514,8 @@ new_node.next = passed_node.next
 passed_node.next = new_node
 ```
 
+=======
+>>>>>>> algorithms-and-ds
 See, the complete code to **insertAfterPassedNode()** function below:
 
 **Python:** [SinglyLinkedList.py](src/python/singly-linked-list/SinglyLinkedList.py)
@@ -499,10 +536,6 @@ The **Time** and **Space complexity** of the **insertAfterPassedNode()** functio
      - **O(1):** The time complexity of this function in the *worst case* is **O(1)**. This is because the function performs a fixed number of operations, regardless of the size of the node list.
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** The time complexity of this function in the *best case* is also **O(1)**. This is because even in the best case, where the function doesn't need to print the error message and can proceed normally, it performs a fixed number of operations. 
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(1):** The time complexity of the function in the *average case* is also **O(1)**, which means it has constant complexity.
- - **Space Complexity:**
-   - **(1):** The space complexity of the function is constant in all cases because it does not use any additional data structure that grows with the input size. It only creates a new node and updates the references of the existing nodes.
 
 Finally, let's test the **insertAfterPassedNode()** function in practice:
 
@@ -642,10 +675,6 @@ The **Time** and **Space complexity** of the **append()** function is:
      - **O(n):** The time complexity of this function in the *worst case* is **O(n)**, where *"n"* is the number of elements in the linked list.
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** The *"append"* function has a special best case when the linked list is empty. In this case, the time complexity is **O(1)**, which is constant.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(n):** In the *average case*, the function will traverse the list using the "while" loop until it finds the last node. This involves visiting each node sequentially until reaching the last node. The number of iterations required will depend on the average size of the list, resulting in a time complexity proportional to the average number of elements in the list, which is **O(n)**, where *"n"* is the average number of elements.
- - **Space Complexity:**
-   - **(1):** The space complexity of the *"append"* function is the same in all cases: *worst case*, *best case*, and *average case*. It is **O(1)**, which means it is constant. The function uses a constant amount of additional space, regardless of the size of the linked list. It only creates a new temporary node to store the data and then performs manipulations on the existing pointers of the list, without the need to allocate additional space to store the entire list.
 
 Finally, let's test the **append()** function in practice:
 
@@ -950,10 +979,6 @@ The **Time** and **Space complexity** of the **deleteNodeN()** function is:
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** If the list is empty (i.e., head is nullptr), the function prints *"List is empty!"* and returns immediately. This requires only one operation, so the time complexity is **O(1)**.
      - **Ω(1):** If the list is not empty, but the node to be deleted is at the beginning of the list (i.e., the position is zero "0"), the function updates the head pointer to the next node and frees the memory of the deleted node. These operations require a fixed number of operations regardless of the list size, so the time complexity is also **O(1)**.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(n):**Considering that the positions of the nodes to be deleted are equally likely and there is no special distribution, the average time complexity will be the same as the *worst case*, which is **O(n)**.
- - **Space Complexity:**
-   - **(1):** The Space Complexity in all cases is constant.
 
 Finally, let's test the **deleteNodeN()** function in practice:
 
@@ -1100,10 +1125,6 @@ The **Time** and **Space complexity** of the **printListFromHead()** function is
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** A possible *best case* occurs when the list is empty, meaning there are no nodes in the list. In this case, the complexity will be **O(1)** because the function quickly checks if the list is empty and then returns immediately.
      - **Ω(1):** Another possible *best case* occurs when the list has only one node. The function checks if the list is empty (which it is not), prints the single element, and returns immediately. This operation is performed in constant time, so the time complexity is **O(1)**.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(n):** In the *average case*, the time complexity will depend on the distribution of elements in the list. If we assume a random distribution of elements, the complexity will be **O(n)**, where **"n"** is the number of elements in the list. This happens because the function needs to traverse all the nodes in the list once.
- - **Space Complexity:**
-   - **(1):** In the *worst case*, *best case*, and *average case*, the function doesn't require any additional space beyond what is already occupied by the linked list. It uses only one variable to track the "current_node", regardless of the size of the list. Therefore, the space complexity is constant, **O(1)**.
 
 Finally, let's test the **printListFromHead()** function in practice:
 

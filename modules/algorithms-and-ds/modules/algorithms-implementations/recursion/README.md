@@ -6,14 +6,55 @@
    - [Intro to Recursion](#intro-to-recursion)
    - [The problem of summing elements of a list](#initial-problem)
    - [The three laws of Recursion](#recursion-laws)
-   - **Complexity of Recursive Algorithms:**
-     - [???](#???)
-   - **Tips & Tricks:**
-     - [Recurrence vs. Recursion](#recurrence-relation-vs-recursion)
-     - [Recursion vs. Iteration](#recursion-vs-iteration)
-     - [Finite vs. Infinite Recursion](#finite-vs-infinite-recursion)
-     - [Recursion vs. Induction](#recursion-vs-induction)
+ - **Complexity of Recursive Algorithms:**
+   - [Tip for Recursion Time Complexity](#tip-rtc)
+ - **Tips & Tricks:**
+   - [Recurrence vs. Recursion](#recurrence-relation-vs-recursion)
+   - [Recursion vs. Iteration](#recursion-vs-iteration)
+   - [Finite vs. Infinite Recursion](#finite-vs-infinite-recursion)
+   - [Recursion vs. Induction](#recursion-vs-induction)
  - [References](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Concepts ) --->
 
@@ -91,8 +132,6 @@ The **Time Complexity** of the **sumElements()** function is:
        - The list empty.
        - The list has only 1 element.
        - In these two cases, we have a constant *Time Complexity*.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(n):** In the *average case*, the time complexity is also **O(n)**, assuming that the distribution of elements in the vector is random. The function still needs to iterate over each element of the vector once, adding them to the total sum.
 
 ---
 
@@ -200,8 +239,6 @@ The **Time** and **Space complexity** of the **sumElementsRecursive()** algorith
      - **O(n):** The *worst-case time complexity* occurs when the function needs to iterate through all the elements of the list. In this case, the function will make a recursive call for each element of the list, resulting in complete recursion. Therefore, the worst-case time complexity is **O(n)**, where **"n"** is the number of elements in the list.
    - **[Best Case] - Omega (Ω)**
      - **Ω(1):** The *best-case time complexity* occurs when the function reaches (atinge) the base case immediately, i.e., when the list has only one element. In this case, the function returns the value of the single element without the need for recursive calls. Therefore, the *best-case time complexity* is **O(1)**, as the execution time is *constant*.
-   - **[Average Case] - Theta (Θ)**
-     - **Θ(n):** The *average-case time complexity* depends on the distribution of input list sizes. If we assume a uniform distribution of input lists, each list size has an equal probability of occurrence. In this case, the *average time complexity* will be a weighted average of the time complexities for different list sizes. Therefore, the average time complexity is **O(n)**, where **"n"** is the average size of the input list.
 
 
 
@@ -246,11 +283,42 @@ The **Time** and **Space complexity** of the **sumElementsRecursive()** algorith
 
 ---
 
-<div id=""></div>
+<div id="tip-rtc"></div>
 
-### x
+## Tip for Recursion Time Complexity
 
-x
+> The **Time Complexity of Recursion** *depends on the number of times the function calls itself*.
+
+ - If a function calls itself one times then its *time complexity* is **O(N)**:
+   - Linear time complexity.
+ - If a function calls itself two times then its *time complexity* is **O(2<sup>N</sup>)**:
+   - Exponential time complexity.
+ - If a function calls itself three times then its *time complexity* is **O(3<sup>N</sup>)**:
+   - Exponential time complexity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -364,7 +432,11 @@ Finite Recursion occurs when the recursion terminates after a finite number of r
 
 For example, below is an implementation to demonstrate **Finite Recursion**:
 
+<<<<<<< HEAD
 [driver_finite_recursion.py](src/python/driver_finite_recursion.py)
+=======
+**Python:** [driver_finite_recursion.py](src/python/driver_finite_recursion.py)
+>>>>>>> algorithms-and-ds
 ```python
 # Recursive function.
 def Geek(N):
@@ -407,7 +479,11 @@ Infinite Recursion occurs when the recursion does not terminate after a finite n
 
 For example, below is an implementation to demonstrate **Infinite Recursion**:
 
+<<<<<<< HEAD
 [driver_infinite_recursion.py](src/python/driver_infinite_recursion.py)
+=======
+**Python:** [driver_infinite_recursion.py](src/python/driver_infinite_recursion.py)
+>>>>>>> algorithms-and-ds
 ```python
 # Recursive function.
 def Geek(N):
@@ -541,18 +617,3 @@ It is used to establish the validity of a theorem or result. It has two working 
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-
-
-
-
-> The **Time Complexity of Recursion** *depends on the number of times the function calls itself*.
-
- - If a function calls itself one times then its *time complexity* is **O(N)**:
-   - Linear time complexity.
- - If a function calls itself two times then its *time complexity* is **O(2<sup>N</sup>)**:
-   - Exponential time complexity.
- - If a function calls itself three times then its *time complexity* is **O(3<sup>N</sup>)**:
-   - Exponential time complexity.
-
-x

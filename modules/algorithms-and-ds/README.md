@@ -27,7 +27,7 @@
        - **Static:**
          - Arrays, Vectors, Strings
        - **Dynamic:**
-         - [Lists (+Linked Lists)](modules/data-structures/linear/lists/)
+         - [Lists (Linked Lists)](modules/data-structures/linear/lists/)
          - [Stacks (Last-In, First-Out)](modules/data-structures/linear/stack)
          - Queues
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
