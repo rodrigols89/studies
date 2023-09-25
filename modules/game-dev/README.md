@@ -2,9 +2,13 @@
 
 ## Contents
 
- - **Game Development Theories & Concepts:**
-   - [Frame Rate (expressed in Frames Per Second or FPS)](#frame-rate)
-   - [Game Loop (Architecture)](#game-loop-architecture)
+ - **Concepts:**
+   - **Game Windows:**
+     - [Screen (tela) Resolution](#screen-resolution)
+     - [Coordinate System (Cartesian plane vs. Screen coordinates)](#screen-coordinates)
+     - [Frame Rate (expressed in Frames Per Second or FPS)](#frame-rate)
+   - **Game Architectures:**
+     - [Game Loop (Architecture)](#game-loop-architecture)
  - **Game Physics:**
    - **Vectors:**
      - [Vector definition](#vector-definition)
@@ -19,16 +23,131 @@
      - [Magnitude](#magnitude)
      - [Find the distance between two points (Using Magnitude)](#distance-two-points)
  - **Tips & Tricks:**
-   - **General:**
-     - [Screen (tela) resolution](#screen-resolution)
-     - [Hungarian Notation](#hn-w)
-   - **Programming for Windows:**
-     - [Creating a Window (Janela) with WinMain() function](#winmain)
-     - [Creating a message box with MessageBox function (Using "winuser.h" header)](#message-box-function)
-     - [Creating a general propose window with CreateWindow class](#cw-01)
+   - [Hungarian Notation](#hn-w)
  - [**References**](#references)
 
-<!--- ( Game Development Theories & Concepts ) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Concepts/Game Windows ) -->
+
+---
+
+<div id="screen-resolution"></div>
+
+## Screen (tela) Resolution
+
+> The **Window size** is limited by the *screen resolution*.
+
+For example, see the *screen resolution* below:
+
+![img](images/screen-resolution.png)  
+
+The *screen resolution* above, means:
+
+ - 1920 pixels in the horizontal.
+ - 1080 pixels in the vertical.
+ - That's, Full HD.
+
+To get those dimensions with *C/C++* we can use the **GetSystemMetrics()** function in the `header <winuser.h>`:
+
+**C++:**
+```cpp
+#include <windows.h>
+
+int width   = GetSystemMetrics(SM_CXSCREEN);
+int height  = GetSystemMetrics(SM_CYSCREEN);
+```
+
+---
+
+<div id="screen-coordinates"></div>
+
+## Coordinate System (Cartesian plane vs. Screen coordinates)
+
+Different of the *cartesian plane*, where:
+
+ - The **x-axis** grows to the right.
+ - The **y-axis** grows to the left.
+
+The screen coordinates (x and y) have a different approach. See the image below to understand more easily:
+
+![img](images/screen-coordinates-01.png)  
+
+> **NOTE:**  
+> See that the **origin (0, 0)** starts between the top and left.
+
+In *C/C++* the `<windows.h> header` has a struct to represent this:
+
+```cpp
+struct RECT
+{
+    long left;
+    long top;
+    long right;
+    long bottom;
+}
+```
+
+Those dimensions are called **"Client Area"** and we can modify the default values of this struct easily. For example, see the code below:
+
+```cpp
+            (END of the x-axis)
+                       |
+                       |    ----------- (END of the y-axis)
+                       |    |
+                       |    |
+                       |    |
+RECT winRect = {0, 0, 960, 540}
+                |  |
+                |  |
+                |  |
+                |  ----------
+     (START of the x-axis)  |
+                            |
+                  (START of the y-axis)
+```
+
+Now, our **"Client Area"** will have the same dimensions as the image shown early.
+
+![img](images/screen-coordinates-01.png)  
+
+---
 
 <div id="frame-rate"></div>
 
@@ -65,6 +184,46 @@ See that:
 > **NOTE:**  
 > That's, the more FPS the better!
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Concepts/Game Architectures ) -->
+
 ---
 
 <div id="game-loop-architecture"></div>
@@ -76,6 +235,27 @@ See that:
 Now, let's see an Architecture of a Game Loop:
 
 ![img](images/game-loop-architecture-01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1256,87 +1436,7 @@ Distance: 14.0357
 
 
 
-<!--- ( Tips & Tricks/General ) -->
-
----
-
-<div id="screen-resolution"></div>
-
-## Screen (tela) resolution
-
-> The **Window size** is limited by the *screen resolution*.
-
-For example, see the *screen resolution* below:
-
-![img](images/screen-resolution.png)  
-
-The *screen resolution* above, means:
-
- - 1920 pixels in the horizontal.
- - 1080 pixels in the vertical.
- - That's, Full HD.
-
-To get this dimensions we can use the **GetSystemMetrics()** function in the `header <winuser.h>`:
-
-```cpp
-#include <windows.h>
-
-int width   = GetSystemMetrics(SM_CXSCREEN);
-int height  = GetSystemMetrics(SM_CYSCREEN);
-```
-
----
-
-<div id=""></div>
-
-## Screen coordinates (x and y)
-
-Different of the *cartesian plane*, where:
-
- - The **x-axis** grows to the right.
- - The **y-axis** grows to the left.
-
-The screen coordinates (x and y) have a different approach. See the image below to understand more easily:
-
-![img](images/screen-coordinates-01.png)  
-
-> **NOTE:**  
-> See that the **origin (0, 0)** starts between the top and left.
-
-The `<windows.h> header` has a struct to represent this:
-
-```cpp
-struct RECT
-{
-    long left;
-    long top;
-    long right;
-    long bottom;
-}
-```
-
-This dimensions are called **"Client Area"** and we can modify the default values of this struct easily. For example, see the code below:
-
-```cpp
-            (END of the x-axis)
-                       |
-                       |    ----------- (END of the y-axis)
-                       |    |
-                       |    |
-                       |    |
-RECT winRect = {0, 0, 960, 540}
-                |  |
-                |  |
-                |  |
-                |  ----------
-     (START of the x-axis)  |
-                            |
-                  (START of the y-axis)
-```
-
-Now, our **"Client Area"** will have the same dimensions as the image shown early.
-
-![img](images/screen-coordinates-01.png)  
+<!--- ( Tips & Tricks ) -->
 
 ---
 
@@ -1369,307 +1469,6 @@ For example:
 
 
 
-<!--- ( Tips & Tricks/Programming for Windows ) -->
-
----
-
-<div id="winmain"></div>
-
-## Creating a Window (Janela) with WinMain() function
-
-
-[HelloMsg.cpp](src/programming-for-windowsHelloMsg.cpp)
-```cpp
-#include <windows.h>
-
-int APIENTRY WinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPSTR lpCmdLine,
-                     _In_ int nCmdShow)
-{
-    MessageBox(NULL, "Msg here...", "Title here...", 0);
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ HelloMsg.cpp -o test.out && ./test.out
-```
-
-![img](images/windows-01.png)  
-
-**NOTE:**  
-[You can see all WinMain() function settings here...](https://learn.microsoft.com/en-us/windows/win32/learnwin32/winmain--the-application-entry-point)
-
----
-
-<div id="message-box-function"></div>
-
-## Creating a message box with MessageBox function (Using "winuser.h" header)
-
-The **MessageBox() function** displays a modal dialog box that contains:
-
- - System icon.
- - Set of buttons.
- - And a brief application-specific message:
-   - Such as status or error information.
-
-> **NOTE:**  
-> The message box returns an integer value that indicates which button the user clicked.
-
-For example, see the MessageBox below:
-
-[MsgBox.cpp](src/programming-for-windows/MsgBox.cpp)
-```cpp
-// Set to ignore 16 bits resources from <windows.h>.
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-// Get <sstream> "C" library.
-#include <sstream>
-using std::stringstream; // "stringstream" is inside  "<sstream>" to save texts.
-
-
-int APIENTRY WinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPSTR lpCmdLine,
-                     _In_ int nCmdShow)
-{
-    // Ask user if he wants to see your screen size (width and height).
-    int messageBoxResponse = MessageBox(NULL,
-                                        "You want to see the screen size (width and height)?", // Text for user.
-                                        "Window Title...",                                     // Title.
-                                        // Set yes button + set second button as default + Add question icon.
-                                        MB_YESNO | MB_DEFBUTTON2 | MB_ICONQUESTION);
-
-    // Check if the use clicked in the Button Yes (Return = 6 = IDYES)
-    if (messageBoxResponse == IDYES)
-    {
-        // GetSystemMetrics get information from the system.
-        int cxScreen = GetSystemMetrics(SM_CXSCREEN); // Get window width.
-        int cyScreen = GetSystemMetrics(SM_CYSCREEN); // Get window height.
-
-        // Create text variable.
-        stringstream text;
-        // Pass information to the text variable, like "cout" function.
-        text << "Window dimensions: " << cxScreen << " x " << cyScreen;
-
-        // Create a MessageBox to show the Window dimensions.
-        MessageBox(NULL,
-                   text.str().c_str(), // Message from "text" variable.
-                   "Window dimensions",
-                   // Set Ok Button + Information Icon.
-                   MB_OK | MB_ICONINFORMATION);
-    }
-    else
-    {
-        MessageBox(NULL,
-                   "A game must know the screen size!",
-                   "Title...",
-                   MB_OK | MB_ICONWARNING);
-    }
-    return 0;
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ MsgBox.cpp -o test.out && ./test.out
-```
-
-![img](images/windows-02.png)  
-
-[You can see all MessageBox() function settings here...](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messagebox)
-
----
-
-<div id="cw-01"></div>
-
-## Creating a general propose window with CreateWindow class
-
-To understand, how to create a general propose window with CreateWindow class, first let's, see the Windows **Event-Driven Architecture/EDA (Arquitetura de Software de Mensageria)**:
-
-![img](images/windows-03.png)  
-
-In the image above we have:
-
- - Two Windows (Window 1 and Window 2).
- - A queue of messages of the system.
- - A queue of messages to each Window.
-
-> **But, what's this messages?**
-
-This messages are **events**, like:
-
- - Click on the button.
- - Select Checkbox.
- - That is (ou seja), *events* in the window...
-
-**NOTE:**  
-However, those *messages (events)* are sent to **WinMain()**, and **WinMain()** needs to deal with (lidar/tratar) those messages.
-
-> **Ok, but how *deal with (lidar/tratar)* those messages?**
-
-**NOTE:**  
-We send those messages (events) to a helper function (função auxiliar). For example, see the code below:
-
-[WinProc.h](src/programming-for-windows/WinProc.h)
-```cpp
-#pragma once
-
-// Prorotype to window procedure (WinProc).
-LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
-```
-
-See that:
-
- - We define a name of a function **WinProc()**, that's, **Window Procedure**.
- - We define parameters:
-   - **HWND hwnd:** Window handle (or Window identify).
-   - **UINT message:** The received message.
-   - **WPARAM wParam:** Additional parameter from the message.
-   - **LPARAM lParam:** Additional parameter from the message.
-
-Now, let's implement the **WinProc()** function:
-
-[WinProc.cpp](src/programming-for-windows/WinProc.cpp)
-```cpp
-// Set to ignore 16 bits resources from <windows.h>.
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-#include "WinProc.h"
-
-
-// procedimento da janela
-LRESULT CALLBACK WinProc(HWND hwnd,
-                         UINT message,
-                         WPARAM wParam,
-                         LPARAM lParam)
-{
-    HDC hdc;
-    PAINTSTRUCT ps;
-    RECT rect;
-
-    switch (message)
-    {
-    case WM_PAINT:
-        hdc = BeginPaint(hwnd, &ps);
-
-        GetClientRect(hwnd, &rect);
-        DrawText(hdc, "Hello Window!", -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-
-        EndPaint(hwnd, &ps);
-        return 0;
-
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        return 0;
-    }
-    return DefWindowProc(hwnd, message, wParam, lParam);
-}
-```
-
-Finally, let's implement the WinMain() to generate a general propose window with CreateWindow class:
-
-[ProgWindows.cpp](src/programming-for-windows/ProgWindows.cpp)
-```cpp
-// Set to ignore 16 bits resources from <windows.h>.
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-#include "WinProc.h"
-
-
-int APIENTRY WinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPSTR lpCmdLine,
-                     _In_ int nCmdShow)
-{
-
-    HWND hwnd;         // Window handle (or Window identify).
-    MSG msg;           // Received message.
-    WNDCLASS wndclass; // Window class.
-
-    // Define WindowClass, called "BasicWindow".
-    wndclass.style = CS_HREDRAW | CS_VREDRAW;
-    wndclass.lpfnWndProc = WinProc;
-    wndclass.cbClsExtra = 0;
-    wndclass.cbWndExtra = 0;
-    wndclass.hInstance = hInstance;
-    wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-    wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-    wndclass.lpszMenuName = NULL;
-    wndclass.lpszClassName = "BasicWindow";
-
-    // Register WindowClass "BasicWindow".
-    if (!RegisterClass(&wndclass))
-    {
-        // MessageBox to say user we have an error to create the Window.
-        MessageBox(NULL, "Error creating window!", "Application", MB_ICONERROR);
-        return 0;
-    }
-
-    // Create a Window based on "BasicWindow" class.
-    hwnd = CreateWindow("BasicWindow",       // Window class.
-                        "Application",       // Window title.
-                        WS_OVERLAPPEDWINDOW, // Window style.
-                        CW_USEDEFAULT,       // x initial position.
-                        CW_USEDEFAULT,       // x initial position.
-                        CW_USEDEFAULT,       // initial width.
-                        CW_USEDEFAULT,       // initial height.
-                        NULL,                // parent window identifier.
-                        NULL,                // identificador do menu.
-                        hInstance,           // menu identifier.
-                        NULL);               // creation parameters.
-
-    // Show and update the Window.
-    ShowWindow(hwnd, nCmdShow);
-    UpdateWindow(hwnd);
-
-    // Handling (tratamento) messages destined for the application window.
-    while (GetMessage(&msg, NULL, 0, 0))
-    {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
-    // END the Program.
-    return int(msg.wParam);
-}
-```
-
-**COMPILATION AND RUN:**
-```bash
-g++ WinProc.cpp ProgWindows.cpp -o test.out -lgdi32 && ./test.out
-```
-
-![img](images/windows-04.png)
-
-**NOTE:**  
- - We used **"-lgdi32"** to say to the program add *DLL* to our program.
- - [You can see on StackOverflow why...](https://stackoverflow.com/questions/1340824/undefined-reference-to-getstockobject4#comment105944965_1340836)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--- ( References ) -->
 
@@ -1681,6 +1480,7 @@ g++ WinProc.cpp ProgWindows.cpp -o test.out -lgdi32 && ./test.out
 
  - [Programação de Jogos - Professor Judson Santiago (Youtube playlist)](https://www.youtube.com/playlist?list=PLX6Nyaq0ebfjfo4PlkAcKRxR66qXZk899)
  - [Game Physics Cookbook](https://learning.oreilly.com/library/view/game-physics-cookbook/9781787123663/)
+ - [Procedural Content Generation for C++ Game Development](https://learning.oreilly.com/library/view/procedural-content-generation/9781785886713/)
 
 ---
 
