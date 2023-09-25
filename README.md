@@ -4,31 +4,25 @@
 
 ## Contents
 
- - __Programming:__
+ - **Programming:**
    - **Algorithms:**
      - [Algorithms & Data Structures](modules/algorithms-and-ds)
-   - __Programming Languages:__
+   - **Programming Languages:**
      - [JavaScript](modules/javascript-codes)
      - [Python](modules/python-codes)
      - [Java](modules/java-codes)
      - [C++](modules/cpp-codes)
      - [C](modules/c-codes)
    - **Object-Oriented Programming:**
-     - [Object-Oriented Programming (Theory & Practice)](modules/oop)
-   - __Clean Code:__
-     - [x](#)
-   - __Design Patterns:__
-     - [x](#)
-   - __Web Development:__
+   - **Clean Code:**
+   - **Design Patterns:**
+   - **Web Development:**
      - [RESTful API](modules/restful-api)
      - [Rocketseat](modules/rocketseat-samples)
-   - __Game Development:__
-     - [Game Development](modules/game-dev)
-   - __Software Testing:__
-     - [x](#)
-   - __Parallel Programming:__
-     - [x](#)
-   - __GUI (Graphical User Interface):__
+   - [**Game Development**](modules/game-dev)
+   - **Software Testing:**
+   - **Parallel Programming:**
+   - **GUI (Graphical User Interface):**
      - [Computer Graphics](modules/computer-graphics)
 
 ---
@@ -38,47 +32,47 @@
 
 ---
 
- - __Database:__
+ - **Database:**
    - [Database - Theory and Practice](modules/database-theory-and-practice)
 
 ---
 
- - __Computer Science Fundamentals:__
+ - **Computer Science Fundamentals:**
    - [Linux from Theory to Practice](modules/linux-from-theory-to-practice)
 
 ---
 
- - __Reverse Engineering:__
+ - **Reverse Engineering:**
    - [x](#)
 
 ---
 
- - __Computer Networks:__
+ - **Computer Networks:**
    - [x](#)
 
 ---
 
- - __Cryptography:__
+ - **Cryptography:**
    - [x](#)
 
 ---
 
- - __Information Security (+Ethical Hacking):__
+ - **Information Security (+Ethical Hacking):**
    - [x](#)
 
 ---
 
- - __Artificial Intelligence & Data Science:__
+ - **Artificial Intelligence & Data Science:**
    - [Artificial Intelligence](modules/ai-codes)
 
 ---
 
- - __Mathematics:__
+ - **Mathematics:**
    - [Math](modules/math-codes)
 
 ---
 
- - __Tools:__
+ - **Tools:**
    - [GitHub Actions](modules/github-actions/)
    - [Docker](modules/docker)
    - [WSL](modules/wsl)
@@ -86,7 +80,7 @@
 
 ---
 
- - __BONUS:__
+ - **BONUS:**
    - [The Checklist (Good practices for good programmers)](modules/the-checklist)
    - [Fundamentos de Eletricidade & Manutenção Elétrica](modules/electrician)
    - [Step by Step Projects](modules/step-by-step-projects)
