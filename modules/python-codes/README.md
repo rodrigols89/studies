@@ -3,6 +3,7 @@
 ## Contents
 
  - [Errors and Exceptions](modules/errors-and-exceptions)
+ - [Object-Oriented Programming (OOP)](modules/oop)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/requests)
    - [FastAPI](modules/fastapi)
