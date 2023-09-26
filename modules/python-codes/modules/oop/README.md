@@ -12,7 +12,10 @@
      - [Class method](#class-method)
        - [Access Class Variables with Class Methods](#access-clas-variables)
      - [Static method](#static-method)
+ - **Encapsulation:**
+   - [Access Modifiers in Python](#access-modifiers-python)
  - [References](#ref)
+
 
 
 
@@ -267,6 +270,193 @@ class C:
     @staticmethod
     def f(arg1, arg2, ...): ...
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Encapsulation ) --->
+
+---
+
+<div id="access-modifiers-python"></div>
+
+## Access Modifiers in Python
+
+> Encapsulation can be achieved by declaring the data members and methods of a class either as **private** or **protected**.
+
+**NOTE:**  
+However, Python don’t have direct access modifiers like **public**, **private**, and **protected**. We can achieve this by using single **underscore** and **double underscores**.
+
+Access modifiers limit access to the variables and methods of a class. Python provides three types of access modifiers public, private, and protected.
+
+ - **Public Member:** Accessible anywhere from outside the class.
+ - **Private Member:** Accessible within (dentro) the class.
+ - **Protected Member:** Accessible within (dentro) the class and its sub-classes.
+
+For example:
+
+![img](images/python_data_hiding.jpg)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Inheritance ) --->
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Polymorphism ) --->
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
