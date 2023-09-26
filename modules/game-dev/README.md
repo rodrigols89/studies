@@ -3,11 +3,11 @@
 ## Contents
 
  - **Concepts:**
-   - **Game Windows:**
+   - **Windows:**
      - [Screen (tela) Resolution](#screen-resolution)
      - [Coordinate System (Cartesian plane vs. Screen coordinates)](#screen-coordinates)
      - [Frame Rate (expressed in Frames Per Second or FPS)](#frame-rate)
-   - **Game Architectures:**
+   - **Architectures:**
      - [Game Loop (Architecture)](#game-loop-architecture)
  - **Game Physics:**
    - **Vectors:**
@@ -64,7 +64,7 @@
 
 
 
-<!--- ( Concepts/Game Windows ) -->
+<!--- ( Concepts/Windows ) -->
 
 ---
 
@@ -222,7 +222,7 @@ See that:
 
 
 
-<!--- ( Concepts/Game Architectures ) -->
+<!--- ( Concepts/Architectures ) -->
 
 ---
 
