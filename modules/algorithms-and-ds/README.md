@@ -190,7 +190,7 @@ python -m pip install --upgrade pip
 pip install -U -v --require-virtualenv -r requirements.txt
 ```
 
-**RUN DATA DATA VISUALIZATIONS:**  
+**RUN DATA VISUALIZATIONS PROGRAM:**  
 ```bash
 python modules/datastructures-visualization/DatastructureVisualizations.py
 ```
