@@ -6,7 +6,7 @@
 
  - **Programming:**
    - **Algorithms:**
-     - [Algorithms & Data Structures](modules/algorithms-and-ds)
+     - [Algorithms implementations](modules/algorithms-implementations)
    - **Programming Languages:**
      - [JavaScript](modules/javascript-codes)
      - [Python](modules/python-codes)
