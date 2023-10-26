@@ -5,7 +5,7 @@ int main()
 {
     Circle obj;
 
-    // Accessing public dat amember outside the class.
+    // Accessing public data member outside the class.
     obj.radius = 5.5;
 
     std::cout << "Radius is: " << obj.radius << "\n";

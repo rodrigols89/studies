@@ -18,6 +18,7 @@
  - [Dynamic Memory Allocation](modules/dynamic-memory-allocation)
  - [Exception Handling in C++](modules/structured/exception-handling.md)
  - [Object-Oriented Programming (OOP)](modules/oop)
+ - **Commented codes**
  - **Tools:**
    - [Visual Studio/+VSCode](modules/tools/visual-studio)
  - **Tips & Tricks:**
