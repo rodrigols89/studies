@@ -45,7 +45,47 @@
      - [Virtual Function](#virtual-function)
        - [Override Identifier](#override-identifier)
        - [Virtual Function Demonstration (Animal example)](#vfd)
+ - **Examples & Commented codes**
  - [**REFERENCES**](#references)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Classes ) --->
 
@@ -785,6 +825,7 @@ id_protected is: 81
 
 
 
+
 <!--- ( Constructor & Destructor ) --->
 
 ---
@@ -1395,6 +1436,7 @@ void process(Game * pJ)
     delete pJ;  // The Destructor is called here.
 }​
 ```
+
 
 
 
@@ -2143,6 +2185,7 @@ Hybrid Constructor
 
 **NOTE:**  
 After updating the code, we can see that the *hybrid object* only contains one *Car class* copy.
+
 
 
 
@@ -3020,8 +3063,6 @@ int main()
 }
 ```
 
-```
-
 **COMPILATION AND RUN:**
 ```cpp
 g++ animal.cpp dog.cpp cat.cpp print.cpp driver_virtual_function.cpp -o test.out && ./test.out
@@ -3083,6 +3124,7 @@ Animal *cat_obj = new Cat();
  - When **print_type(animal_obj)** is called, the pointer points to an **Animal object**. So, the virtual function in *Animal* class is executed inside (dentro) of **print()**.
  - When **print_type(dog_obj)** is called, the pointer points to a **Dog object**. So, the virtual function is overridden and the function of *Dog* is executed inside (dentro) of **print()**.
  - When **print_type(cat_obj)** is called, the pointer points to a **Cat object**. So, the virtual function is overridden and the function of *Cat* is executed inside (dentro) of **print()**.
+
 
 
 
