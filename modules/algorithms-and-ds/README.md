@@ -4,7 +4,7 @@
 
  - [Design and Analysis of Algorithms](modules/design-and-analysis-of-algorithms)
  - [Algorithms Implementations](#algorithms-implementations)
- - [Data Structures](#ds)
+ - [Data Structures](#data-structures)
  - **Settings:**
    - [Python](#python-settings)
 
@@ -55,7 +55,7 @@
 
 ## Algorithms Implementations
 
- - [Recursion](modules/algorithms-implementations/recursion)
+ - [x](#)
 
 
 
@@ -109,13 +109,13 @@
    - **Non-Primitive Data Structures:**
      - **[Linear:](modules/data-structures/linear/linear-ds.md)**
        - **Static:**
-         - [Arrays, Vectors, Strings](modules/data-structures/linear/arrays-vectors-strings)
+         - Arrays, Vectors, Strings
        - **Dynamic:**
-         - [Lists (Linked Lists)](modules/data-structures/linear/lists/)
-         - [Stacks (Last-In, First-Out)](modules/data-structures/linear/stack)
+         - Lists (Linked Lists)
+         - Stacks (Last-In, First-Out)
          - Queues
      - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
-       - [Trees](modules/data-structures/non-linear/trees)
+       - Trees
        - Graphs
 
 
