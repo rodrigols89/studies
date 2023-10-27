@@ -170,14 +170,14 @@
 python -m venv environment
 ```
 
-**ACTIVATE THE VIRTUAL ENVIRONMENT (Windows):**  
-```bash
-source environment/Scripts/activate
-```
-
 **ACTIVATE THE VIRTUAL ENVIRONMENT (Linux):**  
 ```bash
 source environment/bin/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (Windows):**  
+```bash
+source environment/Scripts/activate
 ```
 
 **UPDATE PIP:**
@@ -192,7 +192,7 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 **RUN DATA VISUALIZATIONS PROGRAM:**  
 ```bash
-python modules/datastructures-visualization/DatastructureVisualizations.py
+python modules/visualization/main.py
 ```
 
 
