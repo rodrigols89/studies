@@ -104,6 +104,9 @@
 
 ## Data Structures
 
+> - Data Structure is a *format* to **organize**, **processing**, **retrieving**, **manage** and **store data** in a way that **allows efficient access and modification.**
+> - Estrutura de Dados é um formato para **organizar**, **processar**, **recuperar**, **gerenciar** e **armazenar dados** de uma forma que **permite acesso e modificação eficientes**.
+
  - **Data Structures:**
    - **Primitive Data Structures:**
    - **Non-Primitive Data Structures:**
@@ -194,43 +197,6 @@ pip install -U -v --require-virtualenv -r requirements.txt
 ```bash
 python modules/visualization/main.py
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
