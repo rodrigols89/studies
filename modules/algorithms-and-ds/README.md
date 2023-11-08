@@ -2,7 +2,7 @@
 
 ## Contents
 
- - [Design and Analysis of Algorithms](modules/design-and-analysis-of-algorithms)
+ - [Design and Analysis of Algorithms](#)
  - [Algorithms Implementations](#algorithms-implementations)
  - [Data Structures](#data-structures)
  - **Settings:**
@@ -110,14 +110,14 @@
  - **Data Structures:**
    - **Primitive Data Structures:**
    - **Non-Primitive Data Structures:**
-     - **[Linear:](modules/data-structures/linear/linear-ds.md)**
+     - **Linear:**
        - **Static:**
          - [Arrays, Vectors, Strings](modules/data-structures/linear/static/arrays-vectors-strings)
        - **Dynamic:**
          - Lists (Linked Lists)
          - Stacks (Last-In, First-Out)
          - Queues
-     - **[Non-Linear:](modules/data-structures/non-linear/non-linear-ds.md)**
+     - **Non-Linear:**
        - Trees
        - Graphs
 
