@@ -24,6 +24,7 @@
  - **Concatenation:**
  - **Merge:**
  - **Tips & Tricks:**
+   - [The duplicates items issue](#the-duplicates-issue)
  - [REFERENCES](#ref)
 
 
@@ -75,7 +76,7 @@
 
 A constructor for an **Array class** is very simple. For example, see the code below:
 
-[Array.py](src/python/Array.py)
+**Python** [Array.py](src/python/Array.py)
 ```python
 class Array:
     def __init__(self, size):
@@ -113,7 +114,7 @@ Looking at the examples above we can note that:
 
 > **Okay, but how does it work on Python?**
 
-[test_constructor.py](src/python/test_constructor.py)
+**Python** [test_constructor.py](src/python/test_constructor.py)
 ```python
 import Array as arr
 
@@ -183,7 +184,7 @@ See that:
 
 To check how many elements have the array we just need to return the value of the "nItems" variable. For example, see the code below:
 
-[Array.py](src/python/Array.py)
+**Python** [Array.py](src/python/Array.py)
 ```python
 def __len__(self):
     return self.nItems
@@ -192,9 +193,9 @@ def __len__(self):
  - See that to check the Array size we need only return the value of the "nItems" variable.
  - "nItems" is a counter variable that counts *"+1"* or *"-1"* when we *add* or *remove* an element.
 
-Let's see how it works in Python, step by step:
+Let's see how it works in practice:
 
-[test_len.py](src/python/test_len.py)
+**Python** [test_len.py](src/python/test_len.py)
 ```python
 import Array as arr
 
@@ -403,7 +404,7 @@ See that:
 
 Let's, see the code to do all this:
 
-[Array.py](src/python/Array.py)
+**Python** [Array.py](src/python/Array.py)
 ```python
 def insert_at_end(self, item):
     if self.nItems >= self.size:
@@ -416,9 +417,9 @@ def insert_at_end(self, item):
 > **NOTE:**
 > See that we always need to increment "nItems" variable after inserting a new value to ensure we have the index of the last empty block in the "nItems" variable.
 
-Let's see how it works in Python:
+Let's see how it works in practice:
 
-[test_insert_at_end.py](src/python/test_insert_at_end.py)
+**Python** [test_insert_at_end.py](src/python/test_insert_at_end.py)
 ```python
 import Array as arr
 
@@ -613,7 +614,7 @@ Number of elements: 10
 
 The code to do all this is:
 
-[Array.py](src/python/Array.py)
+**Python** [Array.py](src/python/Array.py)
 ```python
 def traverse(self):
     print("Array:", self.__arr)  # Prin all Array elements.
@@ -622,9 +623,9 @@ def traverse(self):
         print(f"Index: {current_index}, Item: {self.__arr[current_index]}")
 ```
 
-Let's see how it works in Python:
+Let's see how it works in practice:
 
-[test_traverse.py](src/python/test_traverse.py)
+**Python** [test_traverse.py](src/python/test_traverse.py)
 ```python
 import Array as arr
 
@@ -836,7 +837,7 @@ See that:
 
 Now let's see the code to do all this:
 
-[Array.py](src/python/Array.py)
+**Python** [Array.py](src/python/Array.py)
 ```python
 def delete(self, item):
     for current_item in range(self.nItems):
@@ -850,9 +851,9 @@ def delete(self, item):
     return False  # Made it here, so couldn't find the item.
 ```
 
-Let's see how it works in Python:
+Let's see how it works in practice:
 
-[test_delete-v1.py](src/python/test_delete-v1.py)
+**Python** [test_delete-v1.py](src/python/test_delete-v1.py)
 ```python
 import Array as arr
 
@@ -918,7 +919,7 @@ See that:
 
 Now, let's see an example with an array not full:
 
-[test_delete-v2.py](src/python/test_delete-v2.py)
+**Python** [test_delete-v2.py](src/python/test_delete-v2.py)
 ```python
 import Array as arr
 
@@ -1005,7 +1006,7 @@ Index: 3, Item: 40
 
 <!--- ( Tips & Tricks ) --->
 
-<div id="The Duplicates Issue"></div>
+<div id="the-duplicates-issue"></div>
 
 ## The duplicates items issue
 
