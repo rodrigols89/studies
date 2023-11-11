@@ -101,7 +101,7 @@ Here, let's see how to implement a Stack class using an Array (fixed size) appro
 
 Let's start by understanding the constructor:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def __init__(self, size):
     self.size = size
@@ -140,7 +140,7 @@ Stack: [None, None, None, None, None]
 
 Now, let's see how to add a new item in the Stack, that's, implement **push()** function:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def push(self, item):
     # "self.top+1" is used as count, not index.
@@ -226,7 +226,7 @@ Index: 4, Item: 50
 
 Now, let's implement the function to remove from the Stack. That's, implement the **pop()** function:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def pop(self):
     self.arr[self.top] = None
@@ -316,7 +316,7 @@ Stack: [None, None, None, None, None]
 
 Sometimes we need to check which element is at the "top" of the Stack without deleting it. To do this, let's implement the **peek()** function:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def peek(self):
     return self.arr[self.top]
@@ -397,7 +397,7 @@ Ok, we know how to **insert (push)**, **remove (pop)**, and **check the item at 
 
 Do to it, let's implement the `__len__()` function:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def __len__(self):
     return self.top + 1
@@ -476,7 +476,7 @@ Stack length: 5
 
 Like Arrays and Linked Lists, it is interesting to know how to traverse a Stack. Let's implement the **traverse()** function to do this:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def traverse(self):
     print("Stack:", self.arr)  # Prin all Stack elements.
@@ -549,7 +549,7 @@ Index: 4, Item: 50
 
 Ok, now let's check if the Stack is full or not. To do this, let's implement the **check_stack()** function.
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 def check_stack(self):
     # Here "self.top+1" is used as count, not index.
@@ -751,7 +751,7 @@ class StackUsingArray:
 
 Now, let's test in the practice:
 
-**Python:** [stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 
 ```
@@ -855,7 +855,7 @@ Once that decision is made, the operations can be implemented using the list met
 
 For example, let's see the code that implements this:
 
-[stacks.py](/src/python/stacks.py)
+**Python:** [stacks.py](src/python/stacks.py)
 ```python
 class StackUsingPythonList:
     def __init__(self):
@@ -880,16 +880,6 @@ class StackUsingPythonList:
 
 
 
-
-[stacks.py](/src/python/stacks.py)
-```python
-
-```
-
-**OUTPUT:**  
-```python
-
-```
 
 
 
