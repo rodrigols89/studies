@@ -115,7 +115,7 @@
          - [Arrays, Vectors, Strings](modules/data-structures/linear/static/arrays-vectors-strings)
        - **Dynamic:**
          - [Linked Lists](modules/data-structures/linear/dynamic/linked-lists)
-         - Stacks (LIFO: Last-In, First-Out)
+         - [Stacks (LIFO: Last-In, First-Out)](modules/data-structures/linear/dynamic/stacks)
          - Queues (FIFO: First In, First Out)
      - **Non-Linear:**
        - Trees
