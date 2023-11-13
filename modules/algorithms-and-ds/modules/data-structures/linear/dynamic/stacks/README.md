@@ -5,29 +5,44 @@
  - **Basics:**
    - [Intro to Stacks](#intro-to-stacks)
    - [Stack class using Array (fixed size) approach](#stack-class-using-array)
-   - [x](#)
-   - [x](#)
-   - [x](#)
-   - [x](#)
-   - [x](#)
-   - [Reverse Stack (e.g. Undo/Redo Operations)](#reverse-stack)
- - **Length or Size:**
- - **Insertion:**
- - **Traversal:**
- - **Deletion:**
- - **Sorting:**
- - **Search:**
- - **Operations by Index:**
+   - [Stack class using Singly Linked List (dynamic size) approach](#stack-class-using-linked-list)
+   - [Stack class using Python Build-in functions (append/pop)](#stack-class-using-python-build-in-functions)
  - **Reverse:**
- - **Split:**
- - **Clone or Copy:**
- - **Intersection and Union:**
- - **Detect Loops:**
- - **Concatenation:**
- - **Merge:**
- - **Tips & Tricks:**
-   - [The duplicates items issue](#the-duplicates-issue)
+   - [Intro to Reverse Stack problems (e.g. Undo/Redo Operations)](#reverse-stack-theory)
+   - [Reversing a Word/Phrase](#reversing-word-phrase)
  - [REFERENCES](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,28 +83,28 @@ See that:
  - The **"last item"** to enter *(last in)*;
  - Is the **"first item"** to out *(first out)*.
 
+We have two approaches to implementing Stacks:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - **Fixed Size Stack (Array implementation):**
+   - As the name suggests, a fixed size stack has a fixed size and cannot grow or shrink dynamically.
+   - If the stack is full and an attempt is made to add an element to it, an *Overflow error occurs*.
+   - If the stack is empty and an attempt is made to remove an element from it, an *Underflow error occurs*.
+   - **Advantages:**
+     - Easy to implement.
+     - Memory is saved as pointers are not involved.
+   - **Disadvantages:**
+     - It is not dynamic i.e., it doesn’t grow and shrink depending on needs at runtime. [But in case of dynamic sized arrays like vector in C++, list in Python, ArrayList in Java, stacks can grow and shrink with array implementation as well].
+     - The total size of the stack must be defined beforehand.
+ - **Dynamic Size Stack (Linked List implementation):**
+   - A dynamic size stack can grow or shrink dynamically.
+   - When the stack is full, it automatically increases its size to accommodate the new element, and when the stack is empty, it decreases its size.
+   - This type of stack is implemented using a *Linked List*, as it allows for easy resizing of the stack.
+   - **Advantages:**
+     - The linked list implementation of a stack can grow and shrink according to the needs at runtime.
+     - It is used in many virtual machines like JVM.
+   - **Disadvantages:**
+     - Requires extra memory due to the involvement of pointers.
+     - Random accessing is not possible in stack.
 
 ---
 
@@ -134,17 +149,38 @@ if __name__ == "__main__":
 ```
 
 **OUTPUT:**  
-```python
+```bash
 Stack: [None, None, None, None, None]
 ```
 
-Now, let's see how to add a new item in the Stack, that's, implement **push()** function:
+To start let's implement the useful methods:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def __len__(self):
+    return self.top + 1
+
+def isEmpty(self):
+    return self.top == -1
+
+def isFull(self):
+    return self.top + 1 == self.size
+```
+
+ - `__len__():`
+   - The `__len__()` method returns the length of the Stack.
+   - **NOTE:** Here *"self.top+1"* is used as count, not index.
+ - **isEmpty():**
+   - The *isEmpty()* method returns a verification if the Stack is empty.
+ - **isFull():**
+   - The *isEmpty()* method returns a verification if the Stack is full.
+
+Now, let's see how to add a new item in the Stack, that's, implement **push()** method:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
 def push(self, item):
-    # "self.top+1" is used as count, not index.
-    if self.top+1 >= self.size:
+    if self.isFull():
         print("The Stack is full.")
         return None
     self.top += 1
@@ -153,7 +189,7 @@ def push(self, item):
 
 See that:
 
- - First, we check if the Stack is full.
+ - First, we need to check if the Stack is full.
  - Next, how do we set the "top variable" as "-1" we need to first increment "+1":
    - This is because if the list (stack) is empty we can't insert at index "-1".
  - Finally, we just need to insert a new element at index "top", **"arr[self.top]"**.
@@ -191,8 +227,8 @@ if __name__ == "__main__":
 ```
 
 **OUTPUT:**  
-```python
-Stack: [None, None, None, None, None]
+```bash
+The Stack is empty.
 
 Stack: [10, None, None, None, None]
 Index: 0, Item: 10
@@ -224,20 +260,28 @@ Index: 4, Item: 50
 > - Looking at the output, we need to think that the "top" of the Stack is the higher index of the Array.
 > - In other words, the end of the Array (Stack).
 
-Now, let's implement the function to remove from the Stack. That's, implement the **pop()** function:
+Now, let's implement a method to remove from the Stack. That's, implement the **pop()** method:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
 def pop(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
+    popped_item = self.arr[self.top]
     self.arr[self.top] = None
     self.top -= 1
+    return popped_item
 ```
 
 See that:
 
- - First, we set the last item in the Stack as "None":
+ - First, we need to check if the Stack is empty.
+ - Next, we save the "top" item to return later.
+ - Next, we set the last item (top) in the Stack as "None":
    - The last item in the Stack is **"arr[self.top]"**:
  - Next, we need to decrement the "top" (index) variable.
+ - Finally, return the value of the old "top".
 
 Now, let's test in the practice:
 
@@ -249,38 +293,61 @@ if __name__ == "__main__":
 
     myStack = StackUsingArray(5)
 
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
+
     myStack.push(10)
     myStack.push(20)
     myStack.push(30)
     myStack.push(40)
     myStack.push(50)
-    print("Example Stack (5/5):")
+    print("\nStack Example (5/5):")
     myStack.traverse()
+    print("")
 
-    print("\nPOP...")
-    myStack.pop()
+    # 10->20->30->40
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
     myStack.traverse()
+    print("")
 
-    print("\nPOP...")
-    myStack.pop()
+    # 10->20->30
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
     myStack.traverse()
+    print("")
 
-    print("\nPOP...")
-    myStack.pop()
+    # 10->20
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
     myStack.traverse()
+    print("")
 
-    print("\nPOP...")
-    myStack.pop()
+    # 10
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
     myStack.traverse()
+    print("")
 
-    print("\nPOP...")
-    myStack.pop()
+    # Remove last item from the stack.
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
     myStack.traverse()
+    print("")
+
+    # Stack is empty.
+    popped_item = myStack.pop()
+    print("Popped item: ", popped_item)
+    myStack.traverse()
+    print("")
 ```
 
 **OUTPUT:**  
-```python
-Example Stack (5/5):
+```bash
+The Stack is empty.
+Popped item:  None
+
+Stack Example (5/5):
 Stack: [10, 20, 30, 40, 50]
 Index: 0, Item: 10
 Index: 1, Item: 20
@@ -288,37 +355,44 @@ Index: 2, Item: 30
 Index: 3, Item: 40
 Index: 4, Item: 50
 
-POP...
+Popped item:  50
 Stack: [10, 20, 30, 40, None]
 Index: 0, Item: 10
 Index: 1, Item: 20
 Index: 2, Item: 30
 Index: 3, Item: 40
 
-POP...
+Popped item:  40
 Stack: [10, 20, 30, None, None]
 Index: 0, Item: 10
 Index: 1, Item: 20
 Index: 2, Item: 30
 
-POP...
+Popped item:  30
 Stack: [10, 20, None, None, None]
 Index: 0, Item: 10
 Index: 1, Item: 20
 
-POP...
+Popped item:  20
 Stack: [10, None, None, None, None]
 Index: 0, Item: 10
 
-POP...
-Stack: [None, None, None, None, None]
+Popped item:  10
+The Stack is empty.
+
+The Stack is empty.
+Popped item:  None
+The Stack is empty.
 ```
 
-Sometimes we need to check which element is at the "top" of the Stack without deleting it. To do this, let's implement the **peek()** function:
+Sometimes we need to check which element is at the "top" of the Stack without deleting it. To do this, let's implement the **peek()** method:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
 def peek(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
     return self.arr[self.top]
 ```
 
@@ -361,7 +435,7 @@ if __name__ == "__main__":
 ```
 
 **OUTPUT:**  
-```python
+```bash
 Stack: [10, None, None, None, None]
 Index: 0, Item: 10
 Item at top: 10
@@ -393,95 +467,16 @@ Index: 4, Item: 50
 Item at top: 50
 ```
 
-Ok, we know how to **insert (push)**, **remove (pop)**, and **check the item at the top of the Stack (peek)**, but how to see how many elements are on the Stack?
-
-Do to it, let's implement the `__len__()` function:
-
-**Python:** [stacks.py](src/python/stacks.py)
-```python
-def __len__(self):
-    return self.top + 1
-```
-
-> **NOTE:**  
-The **"+1"** is added because *"self.top"* is *the index of the last element in the Stack*, and the length of the Stack should be one more than the index of the last element. So, **"self.top+1"** gives the correct length of the Stack.
-
-Now, let's test in the practice:
-
-**Python:**
-```python
-from stacks import StackUsingArray
-
-if __name__ == "__main__":
-
-    myStack = StackUsingArray(5)
-
-    myStack.push(10)
-    myStack.traverse()
-    print("Stack length:", myStack.__len__())
-    print("")
-
-    myStack.push(20)
-    myStack.traverse()
-    print("Stack length:", myStack.__len__())
-    print("")
-
-    myStack.push(30)
-    myStack.traverse()
-    print("Stack length:", myStack.__len__())
-    print("")
-
-    myStack.push(40)
-    myStack.traverse()
-    print("Stack length:", myStack.__len__())
-    print("")
-
-    myStack.push(50)
-    myStack.traverse()
-    print("Stack length:", myStack.__len__())
-```
-
-**OUTPUT:**  
-```python
-Stack: [10, None, None, None, None]
-Index: 0, Item: 10
-Stack length: 1
-
-Stack: [10, 20, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Stack length: 2
-
-Stack: [10, 20, 30, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Stack length: 3
-
-Stack: [10, 20, 30, 40, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Stack length: 4
-
-Stack: [10, 20, 30, 40, 50]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Stack length: 5
-```
-
-Like Arrays and Linked Lists, it is interesting to know how to traverse a Stack. Let's implement the **traverse()** function to do this:
+Like Linked Lists, it is interesting to know how to traverse a Stack. Let's implement the **traverse()** method to do this:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
 def traverse(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
     print("Stack:", self.arr)  # Prin all Stack elements.
     for current_index in range(self.top + 1):
-        # Print current element and index.
         print(f"Index: {current_index}, Item: {self.arr[current_index]}")
 ```
 
@@ -518,7 +513,7 @@ if __name__ == "__main__":
 ```
 
 **OUTPUT:**  
-```python
+```bash
 Stack: [None, None, None, None, None]
 
 Stack: [10, None, None, None, None]
@@ -547,301 +542,244 @@ Index: 3, Item: 40
 Index: 4, Item: 50
 ```
 
-Ok, now let's check if the Stack is full or not. To do this, let's implement the **check_stack()** function.
+---
+
+<div id="stack-class-using-linked-list"></div>
+
+## Stack class using Singly Linked List (dynamic size) approach
+
+To implement a **Stack** using the *Singly Linked List* concept, all the *Singly Linked List* operations should be performed based on Stack operations **LIFO (Last In, First Out)**.
+
+Let's start by implementing the Node class that will be used in the Stack class:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
-def check_stack(self):
-    # Here "self.top+1" is used as count, not index.
-    if self.top + 1 < self.size:
-        # Here "self.top+1" is used as count, not index.
-        print(f"The Stack is not full: {self.top+1}/{self.size}")
-        return True
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+```
+
+Ok, now let's implement the Stack class and your constructor:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+class StackUsingLinkedList(Node):
+    def __init__(self):
+        self.head = None
+```
+
+> **NOTE:**  
+> - See that we inherit from the "Node" class.
+> - As Linked Lists this class has only the "head" instance variable set by None.
+
+Now, let's implement the useful method to use later:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def isEmpty(self):
+    return self.head == None
+```
+
+> **NOTE:**  
+> The method above just checks if the Stack is empty. That's, the head is equal None.
+
+Now, to insert a new element in the Stack we need to implement a method to do this dynamically. Let's implement the **push()** method:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def push(self, item):
+    if self.isEmpty():
+        self.head = Node(item)
     else:
-        # Here "self.top+1" is used as count, not index.
-        print(f"The Stack is full: ({self.top+1}/{self.size})")
-        return False
+        new_node = Node(item)
+        new_node.next = self.head
+        self.head = new_node
 ```
 
 See that:
 
- - If the Stack is **not full**, then the return is **True**.
- - If the Stack if **full**, then the return is **False**.
+ - First, we check if the Stack is empty:
+   - If the head is None we only instance a new Node set by head.
+   - That's, the head now is the new Node.
+ - Else, we need to instance a new Node:
+   - Make the "next" pointer of the new Node point to the old head.
+   - Finally, we need to set the new Node as the head.
 
-> **NOTE:**
-> This approach is interesting to use the **check_stack()** function with the "while" statement to check if the Stack is full or not.
 
 Now, let's test in the practice:
 
 **Python:**
 ```python
-from stacks import StackUsingArray
+from stacks import StackUsingLinkedList
 
 if __name__ == "__main__":
 
-    myStack = StackUsingArray(5)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
-    print("")
-
+    myStack = StackUsingLinkedList()
+    
+    # 10(head)
     myStack.push(10)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
-    print("")
+    print(myStack.head.item)
 
+    # 20(head)->10
     myStack.push(20)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
-    print("")
+    print(myStack.head.item)
 
+    # 30(head)->20->10
     myStack.push(30)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
-    print("")
+    print(myStack.head.item)
 
+    # 40(head)->30->20->10
     myStack.push(40)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
-    print("")
+    print(myStack.head.item)
 
+    # 50(head)->40->30->20->10
     myStack.push(50)
-    stack_return = myStack.check_stack()
-    print("Return:", stack_return)
-    myStack.traverse()
+    print(myStack.head.item)
 ```
 
 **OUTPUT:**  
-```python
-The Stack is not full: 0/5
-Return: True
-Stack: [None, None, None, None, None]
-
-The Stack is not full: 1/5
-Return: True
-Stack: [10, None, None, None, None]
-Index: 0, Item: 10
-
-The Stack is not full: 2/5
-Return: True
-Stack: [10, 20, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-
-The Stack is not full: 3/5
-Return: True
-Stack: [10, 20, 30, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-
-The Stack is not full: 4/5
-Return: True
-Stack: [10, 20, 30, 40, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-
-The Stack is full: (5/5)
-Return: False
-Stack: [10, 20, 30, 40, 50]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
+```bash
+10
+20
+30
+40
+50
 ```
 
-**NOTE:**  
-You can see the complete code to do all this below:
+> **NOTE:**  
+> See that this approach insert a new element at the top (front) of the Stack/Linked List - **push()**.
+
+Now, let's see how to remove (pop) an element from the Stack, that's, implement **pop()** method:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
-class StackUsingArray:
-    def __init__(self, size):
-        self.size = size
-        self.arr = [None] * size
-        self.top = -1
-
-    def __len__(self):
-        return self.top + 1
-
-    def push(self, item):
-        # Here "self.top+1" is used as count, not index.
-        if self.top + 1 >= self.size:
-            print("The Stack is full.")
-            return None
-        self.top += 1
-        self.arr[self.top] = item
-
-    def pop(self):
-        self.arr[self.top] = None
-        self.top -= 1
-
-    def peek(self):
-        return self.arr[self.top]
-
-    def traverse(self):
-        print("Stack:", self.arr)  # Prin all Stack elements.
-        for current_index in range(self.top + 1):
-            # Print current element and index.
-            print(f"Index: {current_index}, Item: {self.arr[current_index]}")
-
-    def check_stack(self):
-        # Here "self.top+1" is used as count, not index.
-        if self.top + 1 < self.size:
-            # Here "self.top+1" is used as count, not index.
-            print(f"The Stack is not full: {self.top+1}/{self.size}")
-            return True
-        else:
-            # Here "self.top+1" is used as count, not index.
-            print(f"The Stack is full: ({self.top+1}/{self.size})")
-            return False
+def pop(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
+    else:
+        popped_item = self.head.item
+        old_head = self.head
+        self.head = self.head.next
+        del old_head
+        return popped_item
 ```
 
+See that:
 
+ - Again, first we need to check if the Stack is empty.
+ - If the Stack is not empty:
+   - We save the "popped" item to return in the method.
+   - We save the old head to be deleted later.
+     - This is interesting to avoid Memory Leaks.
+   - And do the "next" pointer of the old head as the new head.
+   - Delete the old head.
+   - Finally, return the "popped" item.
 
+Now, let's test in the practice:
 
+**Python:**
+```python
+from stacks import StackUsingLinkedList
 
+if __name__ == "__main__":
+    myStack = StackUsingLinkedList()
 
+    myStack.push(10)  # 10(head)
+    myStack.push(20)  # 20(head)->10
+    myStack.push(30)  # 30(head)->20->10
+    myStack.push(40)  # 40(head)->30->20->10
+    myStack.push(50)  # 50(head)->40->30->20->10
 
+    popped_item = myStack.pop()  # 50(DELETED) | 40(head)->30->20->10
+    print("Popped item:", popped_item)
 
+    popped_item = myStack.pop()  # 40(DELETED) | 30(head)->20->10
+    print("Popped item:", popped_item)
 
+    popped_item = myStack.pop()  # 30(DELETED) | 20(head)->10
+    print("Popped item:", popped_item)
 
+    popped_item = myStack.pop()  # 20(DELETED) | 10(head)
+    print("Popped item:", popped_item)
 
+    popped_item = myStack.pop()  # 10(DELETED)
+    print("Popped item:", popped_item)
 
+    popped_item = myStack.pop()  # The Stack is empty.
+```
 
+**OUTPUT:**  
+```bash
+Popped item: 50
+Popped item: 40
+Popped item: 30
+Popped item: 20
+Popped item: 10
+The Stack is empty.
+```
 
+Ok, now let's implement a method to check the item on the top of the Stack, that's, **peek()** method:
 
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def peek(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
+    else:
+        return self.head.item
+```
 
+See that:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - First, we need to check if the Stack is empty.
+ - If the Stack is not empty, we just return the item in the head.
 
 Now, let's test in the practice:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
+from stacks import StackUsingLinkedList
 
+if __name__ == "__main__":
+    myStack = StackUsingLinkedList()
+    myStack.peek()  # The Stack is empty.
+
+    myStack.push(10)  # 10(head/top)
+    print("TOP/HEAD->ITEM:", myStack.peek())
+
+    myStack.push(20)  # 20(head/top)->10
+    print("TOP/HEAD->ITEM:", myStack.peek())
+
+    myStack.push(30)  # 30(head/top)->20->10
+    print("TOP/HEAD->ITEM:", myStack.peek())
+
+    myStack.push(40)  # 40(head/top)->30->20->10
+    print("TOP/HEAD->ITEM:", myStack.peek())
+
+    myStack.push(50)  # 50(head/top)->40->30->20->10
+    print("TOP/HEAD->ITEM:", myStack.peek())
 ```
 
 **OUTPUT:**  
-```python
-
+```bash
+The Stack is empty.
+TOP/HEAD->ITEM: 10
+TOP/HEAD->ITEM: 20
+TOP/HEAD->ITEM: 30
+TOP/HEAD->ITEM: 40
+TOP/HEAD->ITEM: 50
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
-<div id=""></div>
+<div id="stack-class-using-python-build-in-functions"></div>
 
-## Stack implementation using Python mechanics (append() and pop() functions)
+## Stack class using Python Build-in functions (append/pop)
 
-In Python, we can abuse "object orientation" and "lists" to create Stacks just by using the **append()** and **pop()** functions to implement the necessary mechanisms in a Stack.
+In Python, we can abuse of the **"object orientation"**, **"lists"**, and the **"Built-in Functions"** to create Stacks just by using the **append()** and **pop()** functions to implement the necessary mechanisms in a Stack.
 
 ![img](images/append-and-pop.png)  
 
@@ -853,13 +791,213 @@ Knowing this:
 **NOTE:**  
 Once that decision is made, the operations can be implemented using the list methods such as **append()** and **pop()**.
 
-For example, let's see the code that implements this:
+Let's start by implementing the class and your constructor:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
-class StackUsingPythonList:
+class StackUsingPythonBuildIn:
     def __init__(self):
-        self.items = []
+        self.stack = []
+```
+
+> **NOTE:**
+> See that the constructor just creates an empty list.
+
+To start let's implement the useful **isEmpty()** method to use later:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def isEmpty(self):
+    return self.stack == []
+```
+
+Now, let's see how implement the **push()** method using the **append()** *Build-In* function:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def push(self, item):
+    self.stack.append(item)
+```
+
+> **NOTE:**
+> - See how easy it is, we just insert a new element at the end of the list using the **append()** function.
+> - This item inserted always will be the **"top"**.
+
+Now, let's test in the practice:
+
+**Python:**
+```python
+from stacks import StackUsingPythonBuildIn
+
+if __name__ == "__main__":
+    myStack = StackUsingPythonBuildIn()
+    print(myStack.stack)  # The Stack is empty = [].
+
+    myStack.push(10)  # 10(top)
+    print(myStack.stack)
+
+    myStack.push(20)  # 10->20(top)
+    print(myStack.stack)
+
+    myStack.push(30)  # 10->20->30(top)
+    print(myStack.stack)
+
+    myStack.push(40)  # 10->20->30->40(top)
+    print(myStack.stack)
+
+    myStack.push(50)  # 10->20->30->40->50(top)
+    print(myStack.stack)
+```
+
+**OUTPUT:**  
+```bash
+[]
+[10]
+[10, 20]
+[10, 20, 30]
+[10, 20, 30, 40]
+[10, 20, 30, 40, 50]
+```
+
+Now, let's see how implement the **pop()** method using the **pop()** Build-In function:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def pop(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
+    return self.stack.pop()
+```
+
+Now, let's test in the practice:
+
+**Python:**
+```python
+from stacks import StackUsingPythonBuildIn
+
+if __name__ == "__main__":
+
+    myStack = StackUsingPythonBuildIn()
+
+    myStack.push(10)  # 10(top)
+    myStack.push(20)  # 10->20(top)
+    myStack.push(30)  # 10->20->30(top)
+    myStack.push(40)  # 10->20->30->40(top)
+    myStack.push(50)  # 10->20->30->40->50(top)
+
+    print("Stack Items:", myStack.stack)  # 10->20->30->40->50(top)
+
+    popped_item = myStack.pop()  # 10->20->30->40(top) | popped_item = 50
+    print("\nPOPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+
+    popped_item = myStack.pop()  # 10->20->30(top) | popped_item = 40
+    print("\nPOPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+
+    popped_item = myStack.pop()  # 10->20(top) | popped_item = 30
+    print("\nPOPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+
+    popped_item = myStack.pop()  # 10(top) | popped_item = 20
+    print("\nPOPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+
+    popped_item = myStack.pop()  # popped_item = 10
+    print("\nPOPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+    print("")
+
+    popped_item = myStack.pop()  # The Stack is empty = [].
+    print("POPPED ITEM:", popped_item)
+    print("Stack Items:", myStack.stack)
+```
+
+**OUTPUT:**  
+```bash
+Stack Items: [10, 20, 30, 40, 50]
+
+POPPED ITEM: 50
+Stack Items: [10, 20, 30, 40]
+
+POPPED ITEM: 40
+Stack Items: [10, 20, 30]
+
+POPPED ITEM: 30
+Stack Items: [10, 20]
+
+POPPED ITEM: 20
+Stack Items: [10]
+
+POPPED ITEM: 10
+Stack Items: []
+
+The Stack is empty.
+POPPED ITEM: None
+Stack Items: []
+```
+
+Ok, to finalize let's implement the **peek()** method:
+
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+def peek(self):
+    if self.isEmpty():
+        print("The Stack is empty.")
+        return None
+    # "self.stack[-1]" get the last element of the list (Stack).
+    return self.stack[-1]
+```
+
+> **NOTE:**  
+> See that we use the index "self.stack[-1]" to get the last element of the list (Stack).
+
+Now, let's test in the practice:
+
+**Python:**
+```python
+from stacks import StackUsingPythonBuildIn
+
+if __name__ == "__main__":
+
+    myStack = StackUsingPythonBuildIn()
+
+    peek = myStack.peek()
+    print("TOP:", peek)
+
+    print("")
+    myStack.push(10)  # 10(top)
+    peek = myStack.peek()
+    print("TOP:", peek)
+
+    myStack.push(20)  # 10->20(top)
+    peek = myStack.peek()
+    print("TOP:", peek)
+
+    myStack.push(30)  # 10->20->30(top)
+    peek = myStack.peek()
+    print("TOP:", peek)
+
+    myStack.push(40)  # 10->20->30->40(top)
+    peek = myStack.peek()
+    print("TOP:", peek)
+
+    myStack.push(50)  # 10->20->30->40->50(top)
+    peek = myStack.peek()
+    print("TOP:", peek)
+```
+
+**OUTPUT:**  
+```bash
+The Stack is empty.
+TOP: None
+
+TOP: 10
+TOP: 20
+TOP: 30
+TOP: 40
+TOP: 50
 ```
 
 
@@ -895,11 +1033,19 @@ class StackUsingPythonList:
 
 
 
+
+
+
+
+
+
+<!--- ( Reverse ) --->
+
 ---
 
-<div id="reverse-stack"></div>
+<div id="reverse-stack-theory"></div>
 
-## Reverse Stack (e.g. Undo/Redo Operations)
+## Intro to Reverse Stack problems (e.g. Undo/Redo Operations)
 
 Consider what happens when you reverse objects in a Stack. The order in which they are removed is exactly the reverse of the order in which they were placed.
 
@@ -930,319 +1076,144 @@ See that in the above image, we **reversed Python objects**:
  - **FUNCTION CALL MANAGEMENT:**
    - A reserve stack can be used to manage function calls in a program. When a function is called, its arguments are pushed onto the reserve stack, and when the function returns, the arguments are popped.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Length or Size ) --->
-<!--- ( Insertion ) --->
-<!--- ( Traversal ) --->
-<!--- ( Deletion ) --->
-<!--- ( Sorting ) --->
-<!--- ( Search ) --->
-<!--- ( Operations by Index ) --->
-<!--- ( Reverse ) --->
-<!--- ( Split ) --->
-<!--- ( Clone or Copy ) --->
-<!--- ( Intersection and Union ) --->
-<!--- ( Detect Loops ) --->
-<!--- ( Concatenation ) --->
-<!--- ( Merge ) --->
-<!--- ( Tips & Tricks ) --->
-<!--- ( REFERENCES ) --->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
-<!--- ( Tips & Tricks ) --->
+<div id="reversing-word-phrase"></div>
 
-<div id="the-duplicates-issue"></div>
+## Reversing a Word/Phrase
 
-## The duplicates items issue
+> Imagine we need to implement a function/method that receives a Word/Phrase and returns it reversed.
 
-> To understand **"the duplicates items issue"** see the two examples below.
+Let's get started implementing the **reverser_word_phrase()** method to do this by using a Stack approach:
 
-### Searching without Duplicates
+**Python:** [stacks.py](src/python/stacks.py)
+```python
+class StackUsingArray:
 
-When you design a data storage structure, you need to decide whether items with duplicate keys will be allowed.
+    def reverser_word_phrase(self, string):
+      for letter in string:
+          self.push(letter)
+      reverse = ''
+      while self.__len__() > 0:
+          popped_item = self.pop()
+          reverse += popped_item
+      return reverse
 
- - If you’re writing a data storage program in which duplicates are not allowed, you may need to guard against human error during an insertion.
- - Checking all the data items in the array to ensure (garantir) that not one of them already has the same key value as the item being inserted.
- - **NOTE:** This check increases the steps required for an insertion from *1* to *N*:
-   - This is because the Algorithm now needs to check all elements, that's, "N" times.
 
-### Searching with Duplicates
 
- - Allowing duplicates complicates the search algorithm. Even if the search finds a match, it must continue looking for possible additional matches until the last occupied cell.
- - At least, this is one approach; you could also stop after the first match and perform subsequent searches after that.
- - How you proceed depends on whether the question is:
-   - “Find me everyone with the family name of Smith”.
-   - “Find me someone with the family name of Smith”.
-   - “Find how many entries have the family name Smith”.
- - Finding all items matching a search key is an exhaustive search.
- - **NOTE:** Exhaustive searches require *N* steps because the algorithm must go all the way to the last occupied cell, regardless of what is being sought.
 
-> **NOTE:**
-> You need to worry about duplicate items to **Insertion**, **Deletion**, **Traversal**, and **Search**.
+class StackUsingLinkedList(Node):
 
-The table below shows the **average (here the focus is the average)** number of comparisons and moves for the four operations.
+    def reverser_word_phrase(self, string):
+        for letter in string:
+            self.push(letter)
+        reverse = ''
+        while self.head is not None:
+            popped_item = self.pop()
+            reverse += popped_item
+        return reverse
 
-|               | **No Duplicates**          | **Duplicates OK**                  |
-|---------------|----------------------------|------------------------------------|
-| **Insertion** | <sup>N</sup>/<sub>2</sub> comparisons            | N comparisons                      |
-| **Deletion**  | No comparisons, one move   | No comparisons, one move           |
-| **Traversal** | <sup>N</sup>/<sub>2</sub> comparisons, <sup>N</sup>/<sub>2</sub> moves | N comparisons, more than <sup>N</sup>/<sub>2</sub> moves |
-| **Search**    | N processing steps         | N processing steps                 |
 
- - First where no duplicates are allowed and then where they are allowed.
- - **N** is the number of items in the array.
- - Inserting a new item counts as one move.
 
 
+class StackUsingPythonBuildIn:
 
+    def reverser_word_phrase(self, string):
+        for letter in string:
+            self.push(letter)
+        reverse = ''
+        while not self.isEmpty():
+            popped_item = self.pop()
+            reverse += popped_item
+        return reverse
+```
 
+To test these codes you can use the following code:
 
+```python
+from stacks import *
 
+if __name__ == "__main__":
 
+    stack_one = StackUsingArray(100)
+    stack_two = StackUsingLinkedList()
+    stack_three = StackUsingPythonBuildIn()
 
+    string = input("Word/Phrase to reverse: ")
+    print("Passed Word/Phrase:", string)
 
+    print("\nReversing Word/Phrase using StackUsingArray() class:")
+    reversed_string = stack_one.reverser_word_phrase(string)
+    print("Reversed Word/Phrase:", reversed_string)
 
+    print("\nReversing Word/Phrase using StackUsingLinkedList() class:")
+    reversed_string = stack_two.reverser_word_phrase(string)
+    print("Reversed Word/Phrase:", reversed_string)
 
 
+    print("\nReversing Word/Phrase using StackUsingPythonBuildIn() class:")
+    reversed_string = stack_three.reverser_word_phrase(string)
+    print("Reversed Word/Phrase:", reversed_string)
+```
 
+**OUTPUT:**
+```bash
+Word/Phrase to reverse: avlis ad etiel ogirdor
+Passed Word/Phrase: avlis ad etiel ogirdor
 
+Reversing Word/Phrase using StackUsingArray() class:
+Reversed Word/Phrase: rodrigo leite da silva
 
+Reversing Word/Phrase using StackUsingLinkedList() class:
+Reversed Word/Phrase: rodrigo leite da silva
 
+Reversing Word/Phrase using StackUsingPythonBuildIn() class:
+Reversed Word/Phrase: rodrigo leite da silva
+```
 
+You can also use the **reverse()** method to reverse a word/phrase and join with the **string.join()** method. For example:
 
+```python
+string = input("Word/Phrase to reverse: ")
+print("Passed Word/Phrase:", string)
 
+reversed_string = ''.join(reversed(string))
+print("Reversed Word/Phrase:",reversed_string)
 
+```
 
+**OUTPUT:**
+```bash
+Word/Phrase to reverse: avlis ad etiel ogirdor
 
+Passed Word/Phrase: avlis ad etiel ogirdor
+Reversed Word/Phrase: rodrigo leite da silva
+```
 
+Another approach to reversing a word/phrase is using *Python slicing mechanics*. For example:
 
+**Python:**
+```python
+string = input("Word/Phrase to reverse: ")
+print("Passed Word/Phrase:", string)
 
+reversed_string = string[::-1]
+print("Reversed Word/Phrase:", reversed_string)
+```
 
+**OUTPUT:**
+```bash
+Word/Phrase to reverse: avlis ad etiel ogirdor
 
+Passed Word/Phrase: avlis ad etiel ogirdor
+Reversed Word/Phrase: rodrigo leite da silva
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - `[::-1]` **- It creates a reversed copy of the sequence:**
+   - **[start:stop:step]**
+   - **start** is omitted, so it starts from the end of the sequence.
+   - **stop** is omitted, so it goes until the beginning of the sequence.
+   - **step** is -1, meaning it takes elements from back to front.
 
 
 
@@ -1293,6 +1264,8 @@ The table below shows the **average (here the focus is the average)** number of 
 
  - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/ns/books/published/pythonds/index.html)
  - [Data Structures & Algorithms in Python](https://learning.oreilly.com/library/view/data-structures/9780134855912/)
+ - [Introduction to Stack – Data Structure and Algorithm Tutorials](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
+ - [Implement a stack using singly linked list](https://www.geeksforgeeks.org/implement-a-stack-using-singly-linked-list/)
 
 ---
 
