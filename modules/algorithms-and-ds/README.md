@@ -107,19 +107,13 @@
 > - Data Structure is a *format* to **organize**, **processing**, **retrieving**, **manage** and **store data** in a way that **allows efficient access and modification.**
 > - Estrutura de Dados é um formato para **organizar**, **processar**, **recuperar**, **gerenciar** e **armazenar dados** de uma forma que **permite acesso e modificação eficientes**.
 
- - **Data Structures:**
-   - **Primitive Data Structures:**
-   - **Non-Primitive Data Structures:**
-     - **Linear:**
-       - **Static:**
-         - [Arrays, Vectors, Strings](modules/data-structures/linear/static/arrays-vectors-strings)
-       - **Dynamic:**
-         - [Linked Lists](modules/data-structures/linear/dynamic/linked-lists)
-         - [Stacks (LIFO: Last-In, First-Out)](modules/data-structures/linear/dynamic/stacks)
-         - Queues (FIFO: First In, First Out)
-     - **Non-Linear:**
-       - Trees
-       - Graphs
+ - [Arrays, Vectors, Strings](modules/data-structures/arrays-vectors-strings)
+ - [Linked Lists](modules/data-structures/linked-lists)
+ - [Stacks (LIFO: Last-In, First-Out)](modules/data-structures/stacks)
+ - [Queues (FIFO: First In, First Out)](modules/data-structures/queues)
+ - Hashing
+ - Trees
+ - Graphs
 
 
 
