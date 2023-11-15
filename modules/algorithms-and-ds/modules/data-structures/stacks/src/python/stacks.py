@@ -108,7 +108,7 @@ class StackUsingLinkedList(Node):
         return reverse
 
 
-class StackUsingPythonBuildIn:
+class StackUsingPythonBuiltIn:
     def __init__(self):
         self.stack = []
 

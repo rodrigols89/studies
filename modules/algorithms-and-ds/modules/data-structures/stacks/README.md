@@ -4,9 +4,10 @@
 
  - **Basics:**
    - [Intro to Stacks](#intro-to-stacks)
+ - **Classes Implementations:**
    - [Stack class using Array (fixed size) approach](#stack-class-using-array)
    - [Stack class using Singly Linked List (dynamic size) approach](#stack-class-using-linked-list)
-   - [Stack class using Python Build-in functions (append/pop)](#stack-class-using-python-build-in-functions)
+   - [Stack class using Python Built-in functions (append/pop)](#stack-class-using-python-build-in-functions)
  - **Reverse:**
    - [Intro to Reverse Stack problems (e.g. Undo/Redo Operations)](#reverse-stack-theory)
    - [Reversing a Word/Phrase](#reversing-word-phrase)
@@ -105,6 +106,47 @@ We have two approaches to implementing Stacks:
    - **Disadvantages:**
      - Requires extra memory due to the involvement of pointers.
      - Random accessing is not possible in stack.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Classes Implementations ) --->
 
 ---
 
@@ -777,7 +819,7 @@ TOP/HEAD->ITEM: 50
 
 <div id="stack-class-using-python-build-in-functions"></div>
 
-## Stack class using Python Build-in functions (append/pop)
+## Stack class using Python Built-in functions (append/pop)
 
 In Python, we can abuse of the **"object orientation"**, **"lists"**, and the **"Built-in Functions"** to create Stacks just by using the **append()** and **pop()** functions to implement the necessary mechanisms in a Stack.
 
@@ -795,7 +837,7 @@ Let's start by implementing the class and your constructor:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
-class StackUsingPythonBuildIn:
+class StackUsingPythonBuiltIn:
     def __init__(self):
         self.stack = []
 ```
@@ -811,7 +853,7 @@ def isEmpty(self):
     return self.stack == []
 ```
 
-Now, let's see how implement the **push()** method using the **append()** *Build-In* function:
+Now, let's see how implement the **push()** method using the **append()** *Built-In* function:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
@@ -827,10 +869,10 @@ Now, let's test in the practice:
 
 **Python:**
 ```python
-from stacks import StackUsingPythonBuildIn
+from stacks import StackUsingPythonBuiltIn
 
 if __name__ == "__main__":
-    myStack = StackUsingPythonBuildIn()
+    myStack = StackUsingPythonBuiltIn()
     print(myStack.stack)  # The Stack is empty = [].
 
     myStack.push(10)  # 10(top)
@@ -859,7 +901,7 @@ if __name__ == "__main__":
 [10, 20, 30, 40, 50]
 ```
 
-Now, let's see how implement the **pop()** method using the **pop()** Build-In function:
+Now, let's see how implement the **pop()** method using the **pop()** Built-In function:
 
 **Python:** [stacks.py](src/python/stacks.py)
 ```python
@@ -874,11 +916,11 @@ Now, let's test in the practice:
 
 **Python:**
 ```python
-from stacks import StackUsingPythonBuildIn
+from stacks import StackUsingPythonBuiltIn
 
 if __name__ == "__main__":
 
-    myStack = StackUsingPythonBuildIn()
+    myStack = StackUsingPythonBuiltIn()
 
     myStack.push(10)  # 10(top)
     myStack.push(20)  # 10->20(top)
@@ -957,11 +999,11 @@ Now, let's test in the practice:
 
 **Python:**
 ```python
-from stacks import StackUsingPythonBuildIn
+from stacks import StackUsingPythonBuiltIn
 
 if __name__ == "__main__":
 
-    myStack = StackUsingPythonBuildIn()
+    myStack = StackUsingPythonBuiltIn()
 
     peek = myStack.peek()
     print("TOP:", peek)
@@ -1116,7 +1158,7 @@ class StackUsingLinkedList(Node):
 
 
 
-class StackUsingPythonBuildIn:
+class StackUsingPythonBuiltIn:
 
     def reverser_word_phrase(self, string):
         for letter in string:
@@ -1137,7 +1179,7 @@ if __name__ == "__main__":
 
     stack_one = StackUsingArray(100)
     stack_two = StackUsingLinkedList()
-    stack_three = StackUsingPythonBuildIn()
+    stack_three = StackUsingPythonBuiltIn()
 
     string = input("Word/Phrase to reverse: ")
     print("Passed Word/Phrase:", string)
@@ -1151,7 +1193,7 @@ if __name__ == "__main__":
     print("Reversed Word/Phrase:", reversed_string)
 
 
-    print("\nReversing Word/Phrase using StackUsingPythonBuildIn() class:")
+    print("\nReversing Word/Phrase using StackUsingPythonBuiltIn() class:")
     reversed_string = stack_three.reverser_word_phrase(string)
     print("Reversed Word/Phrase:", reversed_string)
 ```
@@ -1167,7 +1209,7 @@ Reversed Word/Phrase: rodrigo leite da silva
 Reversing Word/Phrase using StackUsingLinkedList() class:
 Reversed Word/Phrase: rodrigo leite da silva
 
-Reversing Word/Phrase using StackUsingPythonBuildIn() class:
+Reversing Word/Phrase using StackUsingPythonBuiltIn() class:
 Reversed Word/Phrase: rodrigo leite da silva
 ```
 
