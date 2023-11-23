@@ -11,7 +11,7 @@
          - [Preorder Traversal (current-left-right)](#preorder-traversal)
          - [Inorder Traversal (left-current-right)](#inorder-traversal)
          - [Postorder Traversal (left-right-current)](#postorder-traversal)
-       - [Breadth-First Search (BFS)](#bfs)
+       - Breadth-First Search (BFS):
          - Level Order Traversal
      - Inserting
      - Searching
@@ -30,9 +30,6 @@
 
 
 
-   - [**Level Order Traversal or Breadth First Search (BFS)**](#)
-   - [**Boundary Traversal**](#boundary-traversal)
-   - [**Diagonal Traversal**](#diagonal-traversal)
 
 
 
@@ -90,40 +87,6 @@ In such a picture of a tree:
 Many terms are used to describe particular aspects of trees. For example, see the image below:
 
 ![img](images/trees-02.png)  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -301,17 +264,13 @@ if __name__ == "__main__":
  - **Boundary Traversal**
  - **Diagonal Traversal**
 
-> **NOTE:**  
-> To remember the **Depth First Search (DFS)** approaches see that:
-> - **Preorder -** The *current (root)* is the *first*.
-> - **Inorder -** The *current (root)* is the *second*.
-> - **Postorder -** The *current (root)* is the *third*.
-> - **NOTE:** The "left" is always the first node visited before the "right" node.
+**NOTE:**  
+To remember the **Depth First Search (DFS)** approaches see that:
 
-
-
-
-
+ - **Preorder -** The *current (root)* is the *first*.
+ - **Inorder -** The *current (root)* is the *second*.
+ - **Postorder -** The *current (root)* is the *third*.
+ - **NOTE:** The "left" is always the first node visited before the "right" node.
 
 ---
 
@@ -321,7 +280,7 @@ if __name__ == "__main__":
 
 > **Depth-First Search (DFS)** is an algorithm used for *searching* or *traversing* **Tree** or **Graph** data structures.
 
-Has two approaches to implementing the **Depth First Search (DFS)** Algorithm:
+We have two approaches to implementing the **Depth First Search (DFS)** Algorithm:
 
  - **Recursive Implementation:**
    - The recursive approach does not explicitly rely (depende) on a stack for tree traversal since (pois) *the stack is implicitly managed by the programming language's* **call stack**.
@@ -332,34 +291,6 @@ Has two approaches to implementing the **Depth First Search (DFS)** Algorithm:
    - The use of the *stack* in the iterative approach allows for a non-recursive tree traversal and is particularly useful in situations where recursion can lead (levar) to a *stack overflow* in **very large** or **deep trees**.
    - Additionally, the iterative approach can be more efficient in terms of resource consumption compared to the recursive approach in certain cases.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="preorder-traversal"></div>
@@ -368,53 +299,69 @@ Has two approaches to implementing the **Depth First Search (DFS)** Algorithm:
 
 > This technique follows the **'CURRENT->LEFT->RIGHT'** policy.
 
- - It means that, *first current (root) node* is visited.
- - After that the *left subtree* is traversed recursively.
- - And finally, *right subtree* is recursively traversed.
+ - It means that, *first root (current) node* is visited.
+ - After that, the *left subtree* is traversed recursively.
+ - Finally, *right subtree* is recursively traversed.
 
-> **NOTE:**  
-> - As the *root node* is traversed **before (or pre)** the left and right subtree, it is called **preorder traversal**.
-> - So, in a **preorder traversal**, each *node* is visited before both of its *subtrees*.
-
-Until all nodes of the tree are not visited:
-
- - **Step 1 -** Visit the *curret (root) node*.
- - **Step 2 -** Traverse the *left subtree* recursively.
- - **Step 3 -** Traverse the *right subtree* recursively.
-
-Now, let's see the example of the **preorder traversal** technique:
-
-![img](images/preorder-traversal-01.png)  
-
-Now, start applying the **preorder traversal** on the above tree:
-
- - First, we traverse the *root node A*.
- - After that, move to its left *subtree*, which will also be *traversed in preorder*.
- - And finally, the *right subtree C* is *traversed in preorder*.
-
-```md
-A->B->D->E->C->F->G
-```
-
-Now, imagine we have the following tree:
+To understand more easily, imagine we have the following *Tree*:
 
 ![img](images/tree-example-01.png)  
 
-The visual **preorder traversal** of the above tree is:
+**NOTE:**  
+If you pay attention you can see that the Tree has another subtrees:
+
+![img](images/tree-example-02.png)  
+
+> **NOTE:**  
+> All subtree (and all the Tree) follow the **Preorder** policy - **'CURRENT->LEFT->RIGHT'**.
+
+Until all nodes of the *Tree* are not visited:
+
+ - **Step 1 -** Visit the root (current) node.
+ - **Step 2 -** Traverse the left subtree recursively.
+ - **Step 3 -** Traverse the right subtree recursively.
 
 ![img](images/visual-preorder-01.gif)
+
+> **NOTE:**  
+> See that here we start from the root and next follow the **'CURRENT->LEFT->RIGHT'** policy.
 
 Now, let's see how to implement the **preorder** method using **Recursive approach** to do this:
 
 [trees.py](src/python/trees.py)
 ```python
+def preorder(self):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    result = []
+    self._preorder_recursive(self.root, result)
+    return result
 
+def _preorder_recursive(self, current_node, result):
+    if current_node:
+        result.append(current_node.key)
+        self._preorder_recursive(current_node.leftChild, result)
+        self._preorder_recursive(current_node.rightChild, result)
 ```
 
 See that:
 
- - x
- - x
+ - We have two functions `preorder()` and `_preorder_recursive()`:
+ - `preorder():`
+   - First this function checks if the Tree is empty.
+   - If the Tree is not empty, then:
+     - Create an empty list.
+     - Next, call the `_preorder_recursive()` function and pass as argument the Tree root and the empty list.
+     - Finally, return the recursion result as a list.
+ - `_preorder_recursive():`
+   - First, the `_preorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
+   - If the current_node is not empty (None):
+     - Append (add at the end of the list) the value of the current_node to the list (result).
+     - Call recursively the `_preorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
+       - That's, append (add at the end of the list) the current value/key and move to the left subtree recursively.
+     - Call recursively the `_preorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
+       - That's, append (add at the end of the list) the current value/key and move to the right subtree recursively.
 
 Now, let's test in the practice:
 
@@ -445,41 +392,12 @@ if __name__ == "__main__":
     bst.insert(50, approach="iterative")
 
     print("Preorder:", bst.preorder())
-    print("Inorder:", bst.inorder())
-    print("Postorder:", bst.postorder())
 ```
 
 **OUTPUT:**
 ```bash
 Preorder: [25, 20, 10, 5, 1, 8, 12, 15, 22, 36, 30, 28, 30, 36, 36, 40, 48, 50]
-Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
-Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
@@ -487,148 +405,71 @@ Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 
 ## Inorder Traversal (left-current-right)
 
-> This technique follows the **'LEFT->ROOT->RIGHT'** policy.
+> This technique follows the **'LEFT->CURRENT->RIGHT'** policy.
 
  - It means that first *left subtree is visited*.
- - After, the *root node is traversed*.
- - And finally, the *right subtree is traversed*.
+ - After, the *root (current) node is traversed*.
+ - Finally, the *right subtree is traversed*.
 
-> **NOTE:**  
-> As the **current (root) node** is traversed between the *left* and *right subtree*, it is named **inorder traversal**.
-
-Until all nodes of the tree are not visited:
-
-  - **Step 1 -** Traverse the *left subtree* recursively.
-  - **Step 2 -** Visit the *root node*.
-  - **Step 3 -** Traverse the *right subtree* recursively.
-
-Now, let's see the example of the **Inorder traversal** technique:
-
-![img](images/inorder-traversal-01.png)  
-
-Now, start applying the **inorder traversal** on the above tree:
-
- - First, we traverse the *left subtree B* that will be traversed in inorder.
- - After that, we will traverse the *root node A*.
- - And finally, the *right subtree C* is traversed in inorder.
-
-```md
-D->B->E->A->F->C->G
-```
-
-Now, imagine we have the following tree:
+To understand more easily, imagine we have the following *Tree*:
 
 ![img](images/tree-example-01.png)  
 
-The visual **inorder traversal** of the above tree is:
+**NOTE:**  
+If you pay attention you can see that the Tree has another subtrees:
+
+![img](images/tree-example-02.png)  
+
+> **NOTE:**  
+> All subtrees (and all the Tree) follow the **Inorder** policy - **'LEFT->CURRENT->RIGHT'**.
+
+Until all nodes of the *Tree* are not visited:
+
+  - **Step 1 -** Traverse the *left subtree* recursively.
+  - **Step 2 -** Visit the *root (current) node*.
+  - **Step 3 -** Traverse the *right subtree* recursively.
 
 ![img](images/visual-inorder-01.gif)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="postorder-traversal"></div>
-
-## Postorder Traversal (left-right-current)
-
-> This technique follows the **'LEFT->RIGHT->ROOT'** policy.
-
- - It means that the first *left subtree* of the *root node is traversed*.
- - After that recursively traverses the *right subtree*.
- - And finally, the *root node* is traversed.
-
 > **NOTE:**  
-> As the root node is traversed **after (or post)** the *left* and *right subtree*, it is called **postorder traversal**.
+> See that here we start from the last left subtree (two sides) following the **'LEFT->CURRENT->RIGHT'** policy.
 
-Until all nodes of the tree are not visited:
-
- - **Step 1 -** Traverse the *left subtree* recursively.
- - **Step 2 -** Traverse the *right subtree* recursively.
- - **Step 3 -** Visit the *root node*.
-
-Now, let's see the example of the **postorder traversal** technique:
-
-![img](images/postorder-traversal-01.png)  
-
-Now, start applying the **postorder traversal** on the above tree:
-
- - First, we traverse the *left subtree B* that will be *traversed in postorder*.
- - After that, we will traverse the *right subtree C in postorder*.
- - And finally, the *root node* of the above tree, i.e., A, is traversed.
-
-```md
-D->E->B->F->G->C->A
-```
-
-Now, imagine we have the following tree:
-
-![img](images/tree-example-01.png)  
-
-The visual **postorder traversal** of the above tree is:
-
-![img](images/visual-postorder-01.gif)
-
-Now, let's see how to implement the **postorder** method using **Recursive approach** to do this:
+Now, let's see how to implement the **inorder** method using **Recursive approach** to do this:
 
 [trees.py](src/python/trees.py)
 ```python
+def inorder(self):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    result = []
+    self._inorder_recursive(self.root, result)
+    return result
 
+def _inorder_recursive(self, current_node, result):
+    if current_node:
+        self._inorder_recursive(current_node.leftChild, result)
+        result.append(current_node.key)
+        self._inorder_recursive(current_node.rightChild, result)
 ```
 
 See that:
 
- - x
- - x
+ - We have two functions `inorder()` and `_inorder_recursive()`:
+ - `inorder():`
+   - First this function checks if the Tree is empty.
+   - If the Tree is not empty, then:
+     - Create an empty list.
+     - Next, call the `_inorder_recursive()` function and pass as argument the Tree root and the empty list.
+     - Finally, return the recursion result as a list.
+ - `_inorder_recursive():`
+   - First, the `_inorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
+   - If the current_node is not empty (None):
+     - Call recursively the `_inorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
+       - That's, move to the left subtree recursively.
+     - Append (add at the end of the list) the value of the current_node to the list (result).
+     - Call recursively the `_inorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
+       - That's, append (add at the end of the list) the current value/key and move to the right subtree recursively.
 
 Now, let's test in the practice:
 
@@ -658,243 +499,122 @@ if __name__ == "__main__":
     bst.insert(36, approach="iterative")
     bst.insert(50, approach="iterative")
 
-    print("Preorder:", bst.preorder())
     print("Inorder:", bst.inorder())
+```
+
+**OUTPUT:**
+```bash
+Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
+```
+
+---
+
+<div id="postorder-traversal"></div>
+
+## Postorder Traversal (left-right-current)
+
+> This technique follows the **'LEFT->RIGHT->CURRENT'** policy.
+
+ - It means that the first *left subtree* of the *root node is traversed*.
+ - After that, recursively traverses the *right subtree*.
+ - Finally, the *root node* is traversed.
+
+To understand more easily, imagine we have the following *Tree*:
+
+![img](images/tree-example-01.png)  
+
+**NOTE:**  
+If you pay attention you can see that the Tree has another subtrees:
+
+![img](images/tree-example-02.png)  
+
+> **NOTE:**  
+> All subtrees (and all the Tree) follow the **Postorder** policy - **'LEFT->RIGHT->CURRENT'**.
+
+Until all nodes of the *Tree* are not visited:
+
+ - **Step 1 -** Traverse the *left subtree* recursively.
+ - **Step 2 -** Traverse the *right subtree* recursively.
+ - **Step 3 -** Visit the *root node*.
+
+![img](images/visual-postorder-01.gif)
+
+> **NOTE:**  
+> - See that here we start from the last left Node of the Tree, then follow the **'LEFT->RIGHT->CURRENT'** policy.
+> - Start from the last left Node of the Tree because is the last left Node of all the Tree and all the Tree follow the **'LEFT->RIGHT->CURRENT'** policy.
+
+Now, let's see how to implement the **postorder** method using **Recursive approach** to do this:
+
+[trees.py](src/python/trees.py)
+```python
+def postorder(self):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    result = []
+    self._postorder_recursive(self.root, result)
+    return result
+
+def _postorder_recursive(self, current_node, result):
+    if current_node:
+        self._postorder_recursive(current_node.leftChild, result)
+        self._postorder_recursive(current_node.rightChild, result)
+        result.append(current_node.key)
+```
+
+See that:
+
+ - We have two functions `postorder()` and `_postorder_recursive()`:
+ - `postorder():`
+   - First this function checks if the Tree is empty.
+   - If the Tree is not empty, then:
+     - Create an empty list.
+     - Next, call the `_postorder_recursive()` function and pass as argument the Tree root and the empty list.
+     - Finally, return the recursion result as a list.
+ - `_postorder_recursive():`
+   - First, the `_postorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
+   - If the current_node is not empty (None):
+     - Call recursively the `_postorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
+       - That's, move to the left subtree recursively.
+     - Call recursively the `_postorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
+       - That's, move to the right subtree recursively.
+     - Append (add at the end of the list) the value of the current_node to the list (result).
+
+Now, let's test in the practice:
+
+```python
+from trees import BinarySearchTree
+
+if __name__ == "__main__":
+
+    bst = BinarySearchTree()
+
+    bst.insert(25, approach="iterative")
+    bst.insert(20, approach="iterative")
+    bst.insert(36, approach="iterative")
+    bst.insert(10, approach="iterative")
+    bst.insert(30, approach="iterative")
+    bst.insert(40, approach="iterative")
+    bst.insert(22, approach="iterative")
+    bst.insert(28, approach="iterative")
+    bst.insert(5, approach="iterative")
+    bst.insert(1, approach="iterative")
+    bst.insert(8, approach="iterative")
+    bst.insert(12, approach="iterative")
+    bst.insert(30, approach="iterative")
+    bst.insert(15, approach="iterative")
+    bst.insert(36, approach="iterative")
+    bst.insert(48, approach="iterative")
+    bst.insert(36, approach="iterative")
+    bst.insert(50, approach="iterative")
+
     print("Postorder:", bst.postorder())
 ```
 
 **OUTPUT:**
 ```bash
-Preorder: [25, 20, 10, 5, 1, 8, 12, 15, 22, 36, 30, 28, 30, 36, 36, 40, 48, 50]
-Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
 Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="bfs"></div>
-
-## Level Order Traversal or Breadth First Search (BFS)
-
-> **Level Order Traversal or Breadth First Search (BFS)** is when you inspect every node on a level starting at the top of the tree and then move to the *next level*.
-
-For example, see the image below to understand more easily:
-
-![img](images/bfs-01.gif)  
-
-**NOTE:**  
-The **Level Order Traversal or Breadth First Search (BFS)** use the **Queue (First In First Out - FIFO)** approach to store and manage the Nodes:
-
-![img](images/bfs-02.gif)  
-
----
-
-<div id="boundary-traversal"></div>
-
-## Boundary Traversal
-
-> A **Boundary Traversal** uses an **Anti-Clockwise** direction to traverse or search Trees or Graphs.
-
-For example, see the image below to understand more easily:
-
-![img](images/boundary-traversal-01.png)  
-
-Following the **"Boundary Traversal"** approach:
-
- - First, we need to visit the *"root node"*.
- - Next, we visit the *"Left Boundary Nodes"*.
- - Next, we visit the *"Leaf Nodes"*.
- - And finally, we visit the *"Right Boundary Nodes"*.
-
-Following this order, we have the following output (result):
-
-![img](images/boundary-traversal-02.png)  
-
-```md
-1->2->4->8->12->13->10->6->14->11->7->3
-```
-
-> **And the internal *9* and *5* nodes?**
-
- - In the **Boundary Traversal** algorithm, the internal nodes on the right side are omitted because the traversal aims (visa) to visit only the nodes that lie (que estão) on the outer boundary (limites externos) of a binary tree, including:
-   - The *root node*.
-   - *Left boundary nodes*.
-   - And *right boundary nodes*.
- - In the typical implementation of this algorithm, the internal nodes on the right side are omitted because the traversal focuses on the outer boundary (limites externos) of the tree:
-   - This means that only the nodes that are closest (próximos) to the edge (borda) of the tree are considered, while the internal nodes are ignored.
-
-See the other **Boundary Traversal** images (examples) below:
-
-![img](images/boundary-traversal-03.png)  
-![img](images/boundary-traversal-04.jpg)  
-![img](images/boundary-traversal-05.jpg)  
-
-> **NOTE:**  
-> Remember that **Boundary Traversal** uses an **Anti-Clockwise** direction.
-
----
-
-<div id="diagonal-traversal"></div>
-
-## Diagonal Traversal
-
-To understand **Diagonal Traversal** first see the image below:
-
-![img](images/diagonal-traversal-01.png)  
-
-To *traverse (or search)* using the **Diagonal Traversal** approach we:
-
- - The first *node* to visit is the *root node*.
- - From the *root node* go to the *right node* following the slope (-1):
-   - root and *root->right* values will be prioritized over all *root->left* values.
- - Follow the same process to the other lines.
-
-The output (traversal and search) to the tree shown is:
-
-```
-8->10->14->3->6->7->13->1->4
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1132,10 +852,10 @@ def _insert_iterative(self, current_node, key):
 See that:
 
  - **Again we have two function:**
-   - **inser():** To check if the *Binary Search Tree* is empty and select the appropriate approach (recursive or iterative).
-   - **_insert_iterative():** To insert a new value (key) into the Tree with existing values.
- - **_insert_iterative():**
-   - Inside the **"_insert_iterative()" function** we have a `loop "while" (infinite loop)` to through (percorrer) the Tree:
+   - `inser():` To check if the *Binary Search Tree* is empty and select the appropriate approach (recursive or iterative).
+   - `_insert_iterative():` To insert a new value (key) into the Tree with existing values.
+ - `_insert_iterative():`
+   - Inside the `_insert_iterative() function` we have a `loop "while" (infinite loop)` to through (percorrer) the Tree:
      - Inside the `"while" loop`:
        - `"if key <= current_node.key"`:
          - If the *"key"* `is less or equal` to *"the key of the current_node"*, we move to the left subtree.
@@ -1185,99 +905,6 @@ if __name__ == "__main__":
 ```bash
 [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
