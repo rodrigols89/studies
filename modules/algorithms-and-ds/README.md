@@ -111,7 +111,7 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
  - [Stacks (LIFO: Last-In, First-Out)](modules/data-structures/stacks)
  - [Queues (FIFO: First In, First Out)](modules/data-structures/queues)
  - [Hashing](modules/data-structures/hashing)
- - Trees
+ - [Trees](modules/data-structures/trees)
  - Graphs
 
 
