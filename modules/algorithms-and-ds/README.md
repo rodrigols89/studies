@@ -32,7 +32,7 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
  - [Queues (FIFO: First In, First Out)](modules/data-structures/queues)
  - [Hashing](modules/data-structures/hashing)
  - [Trees](modules/data-structures/trees)
- - Graphs
+ - [Graphs](modules/data-structures/graphs)
 
 ---
 
