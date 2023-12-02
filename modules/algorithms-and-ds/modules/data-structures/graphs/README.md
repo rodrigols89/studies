@@ -9,7 +9,6 @@
      - [Adjacency Matrix for Undirected Graphs](#adjacency-matrix-for-undirected-graphs)
      - [Adjacency List for Undirected Graphs](#adjacency-list-for-undirected-graphs)
    - **[Directed Graphs (Asymmetry or Unidirectional)](#directed-graphs)**
-   - **[Graph representation using Python dictionary](#graph-using-python-dictionary)**
  - **Tips & Tricks:**
    - [Add and Remove problem (Index out of range)](#add-remove-problem-01)
    - [Add and Remove problem (Add the same edge twice)](#add-remove-problem-02)
@@ -837,93 +836,6 @@ For example:
 
 
 
-<!--- ( Representation of Graphs/Graph representation using Python dictionary ) --->
-
----
-
-<div id="graph-using-python-dictionary"></div>
-
-## Graph representation using Python dictionary
-
-
-
-Let's see how it works in practice:
-
-[graphs.py](src/python/graphs.py)
-```python
-
-```
-
-**OUTPUT:**
-```bash
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( Tips & Tricks ) --->
 
 ---
@@ -1044,6 +956,7 @@ add_edge(4, 3)
 
 ## REFERENCES
 
+ - [Python Graphs (Using dictionaries)](https://www.tutorialspoint.com/python_data_structure/python_graphs.htm)
  - [Graph Data Stucture](https://www.programiz.com/dsa/graph)
  - [Introduction to Graphs – Data Structure and Algorithm Tutorials](https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/)
  - [Types of Graphs with Examples](https://www.geeksforgeeks.org/graph-types-and-applications/)
@@ -1053,7 +966,6 @@ add_edge(4, 3)
  - [Problem Solving with Algorithms and Data Structures using Python](https://runestone.academy/ns/books/published/pythonds/index.html)
  - [What is Undirected Graph? | Undirected Graph meaning](https://www.geeksforgeeks.org/what-is-unidrected-graph-undirected-graph-meaning/)
  - [What is Directed Graph? | Directed Graph meaning](https://www.geeksforgeeks.org/what-is-directed-graph-directed-graph-meaning/)
- - [Python - Graphs](https://www.tutorialspoint.com/python_data_structure/python_graphs.htm)
  - [Kruskal’s Minimum Spanning Tree (MST) Algorithm](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)
  - [Prim’s Algorithm for Minimum Spanning Tree (MST)](https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/)
  - [How to find Shortest Paths from Source to all Vertices using Dijkstra’s Algorithm](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/)
