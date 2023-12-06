@@ -64,7 +64,7 @@ Perhaps (Talvez) the **"Logarithm of Exponential"** is the most commonly used:
 $\log_{b} (b^x) = x$
 
 **NOTE:**  
-If you pay attention you can see that the **logarithm "$\log_{b}$"** and the exponentiation have the same base **$"(b^x)"$**.
+If you pay attention you can see that the logarithm $\log_{b}$ and the exponentiation have the same base $(b^x)$.
 
 > **Ok, but how is this related (relacionado) to algorithm analysis?**
 
