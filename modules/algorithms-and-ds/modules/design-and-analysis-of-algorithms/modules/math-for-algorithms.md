@@ -107,6 +107,63 @@ If you pay attention you can see that the **logarithm "$\log_{b}$"** and the exp
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( References ) -->
 
 ---
