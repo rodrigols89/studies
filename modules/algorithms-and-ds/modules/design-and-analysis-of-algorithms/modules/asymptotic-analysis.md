@@ -8,6 +8,15 @@
    - [Big(O), Worst-Case](#big-o-notation)
    - [Omega(Ω), Best Case](#omega-notation)
    - [Theta(Θ), Average Case](#theta-notation)
+ - **Asymptotic Classes:**
+   - **[Constant, O(1)](#intro-to-constant-approach)**
+   - **[Logarithmic, O(log n)](#intro-to-logarithmic-approach)**
+   - **[Linear, O(n)](#intro-to-linear-approach)**
+   - **[Loglinear, O(n log n)](#intro-to-loglinear-approach)**
+   - **[Quadratic, O(n^2)](#intro-to-quadratic-approach)**
+   - **[Polynomial, O(n^k)](#intro-to-polynomial-approach)**
+   - **[Exponential, O(a^n) or O(b^n)](#intro-to-exponential-approach)**
+   - **[Fatorial, O(n!)](#into-to-fatorial-approach)**
  - [**References**](#ref)
 
 
@@ -167,6 +176,7 @@ For example, let's see other functions (algorithms) and their Asymptotic Analysi
 
 
 
+
 <!--- ( Types of Asymptotic Notations ) -->
 
 ---
@@ -256,6 +266,167 @@ For example, in the *Linear Search* algorithm problem, the best case occurs when
 
 
 
+<!--- ( Asymptotic Classes ) -->
+
+---
+
+<div id="intro-to-constant-approach"></div>
+
+## Constant, O(1)
+
+> An algorithm is considered constant, denoted as **O(1)**, if its execution time remains the same, regardless (independentemente) of the size of the input data.
+
+ - This means that the execution time is not dependent on the size of the input data.
+ - In other words, no matter how much data you feed the algorithm, it will always take the same amount of time to complete its operation.
+ - *Time complexity:* The time complexity of a constant algorithm is always **O(1)**, which means the execution time is independent of the input size.
+ - *Memory complexity:* The memory complexity of a constant algorithm is also usually **O(1)**, as it only needs to store a fixed amount of data.
+
+For example:
+
+![img](images/asymptotic-classes-01.png)
+
+---
+
+<div id="intro-to-logarithmic-approach"></div>
+
+## Logarithmic, O(log n)
+
+> The best of all worlds for algorithms. This class is typical of algorithms that can solve problems by *turning them into smaller problems at each step of the solution*.
+
+Functions whose growth (cujo crescimento) is related to the logarithm of the input variable. For example:
+
+![img](images/asymptotic-classes-02.png)
+
+> **NOTE:**  
+> In the example above:
+> *"n"* is the input size.
+> *"x"* is how many times multiplied by *2*.
+
+---
+
+<div id="intro-to-linear-approach"></div>
+
+## Linear, O(n)
+
+> Very efficient algorithm. The linear class occurs in algorithms that need to process *"n"* input elements and do small computations on those elements.
+
+For example:
+
+![img](images/asymptotic-classes-03.png)
+
+---
+
+<div id="intro-to-loglinear-approach"></div>
+
+## Loglinear, O(n log n)
+
+> Slightly less efficient than linear ones. This is a typical asymptotic class of algorithms that implement the **“Divide and Conquer”** paradigm.
+
+Functions whose growth (cujo crescimento) is the ***product of a linear function and a logarithm***. This is often the case for many efficient sorting algorithms, such as *Merge Sort* and *Heap Sort*.
+
+For examples:
+
+![img](images/asymptotic-classes-04.png)
+
+---
+
+<div id="intro-to-quadratic-approach"></div>
+
+## Quadratic, O(n^2)
+
+> Quadratic order polynomials. This class occurs a lot in algorithms that process information in pairs. Usually in nested loops (one loop inside the other).
+
+![img](images/asymptotic-classes-05.png)
+
+---
+
+<div id="intro-to-polynomial-approach"></div>
+
+## Polynomial, O(n^k)
+
+> They are more efficient than exponentials, but are **only suitable for solving small problems**. When the value of n grows a lot, the algorithm becomes very inefficient.
+
+Functions whose growth (cujo crescimento) is a power of the input variable, where **"k" is a positive constant**.
+
+For example:
+
+![img](images/asymptotic-classes-06.png)
+
+> **NOTE:**  
+> See that the **exponent** is **always a positive constant**.
+
+---
+
+<div id="intro-to-exponential-approach"></div>
+
+## Exponential, O(a^n) or O(b^n)
+
+More efficient than factorial, but still **far from being an efficient algorithm (longe de ser um algoritmo eficiente)**. It also occurs in algorithms that use *Brute Force* to solve problems.
+
+> **Exponential O(a^n) or O(b^n), where "a" and "b" are *constants*.**
+
+Functions whose growth (cujo crescimento) is an exponential function of the input variable.
+
+For example:
+
+![img](images/asymptotic-classes-07.png)
+
+> **NOTE:**
+> See that difference of polynomial class here the base is always constant and the **exponent is always a positive variable (n)**.
+
+---
+
+<div id="intro-to-fatorial-approach"></div>
+
+## Fatorial, O(n!)
+
+> The worst class of algorithm. It usually occurs in some algorithms that use *Brute Force* technique to solve problems.
+
+Functions whose growth (cujo crescimento) is related to the factorial of the input variable.
+
+For example:
+
+![img](images/asymptotic-classes-08.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( References ) -->
 
 ---
@@ -268,6 +439,8 @@ For example, in the *Linear Search* algorithm problem, the best case occurs when
  - [How to Analyse Loops for Complexity Analysis of Algorithms](https://www.geeksforgeeks.org/analysis-of-algorithms-set-4-analysis-of-loops/)
  - [Worst, Average and Best Case Analysis of Algorithms](https://www.geeksforgeeks.org/worst-average-and-best-case-analysis-of-algorithms/)
  - [Time Complexity Analysis](https://log2base2.com/courses/time-complexity-analysis)
+ - [Asymptotic classes](https://algol.dev/en/asymptotic-classes/)
+ - [ChatGPT](https://chat.openai.com/)
 
 ---
 
