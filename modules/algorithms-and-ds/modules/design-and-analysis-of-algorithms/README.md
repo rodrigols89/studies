@@ -2,11 +2,22 @@
 
 ## Contents
 
- - [Asymptotic Analysis (+Example)](#intro-to-aa)
- - **Types of Asymptotic Notations:**
-   - [Big(O), Worst-Case](#big-o-notation)
-   - [Omega(Ω), Best Case](#omega-notation)
-   - [Theta(Θ), Average Case](#theta-notation)
+ - **Asymptotic Analysis:**
+   - [Intro to Asymptotic Analysis (+Example)](#intro-to-aa)
+   - **Types of Asymptotic Notations:**
+     - [Big(O), Worst-Case](#big-o-notation)
+     - [Omega(Ω), Best Case](#omega-notation)
+     - [Theta(Θ), Average Case](#theta-notation)
+   - **Asymptotic Classes:**
+     - [Constant, O(1)](#intro-to-constant-approach)
+     - [Logarithmic, O(log n)](#intro-to-logarithmic-approach)
+     - [Linear, O(n)](#intro-to-linear-approach)
+     - [Loglinear, O(n log n)](#intro-to-loglinear-approach)
+     - [Polynomial, O(n<sup>k</sup>), e.g. O(n<sup>2</sup>), O(n<sup>3</sup>)](#intro-to-polynomial-approach)
+     - [Exponential, O(a<sup>n</sup>) or O(b<sup>n</sup>)](#intro-to-exponential-approach)
+     - [Fatorial, O(n!)](#intro-to-fatorial-approach)
+ - **Step Count Method (or Frequency Count)**
+   - [Intro to Step Count Method](#intro-to-step-count-method)
  - **Math for Algorithms:**
    - **Logarithms:**
      - [Intro to Logarithms](#intro-to-log)
@@ -51,13 +62,73 @@
 
 
 
-<!--- ( Asymptotic Analysis (+Example) ) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Asymptotic Analysis ) -->
 
 ---
 
 <div id="intro-to-aa"></div>
 
-## Asymptotic Analysis (+Example)
+## Intro to Asymptotic Analysis (+Example)
 
 > **Given two algorithms "g" and "h" for the same task, how do we find out which one is better?**
 
@@ -130,47 +201,6 @@ For example, let's see other functions (algorithms) and their Asymptotic Analysi
 > **NOTE:**  
 > Note that the focus is always the largest term of the function.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Types of Asymptotic Notations ) -->
-
 ---
 
 <div id="big-o-notation"></div>
@@ -218,6 +248,291 @@ For example, in the *Linear Search* algorithm problem, the best case occurs when
  - In **Theta(Θ)**, we take all possible inputs and calculate the computing time (tempo de computação) for all of the inputs.
 
 ![img](images/average-case-01.png)
+
+---
+
+<div id="intro-to-constant-approach"></div>
+
+## Constant, O(1)
+
+> An algorithm is considered constant, denoted as **O(1)**, if its execution time remains the same, regardless (independentemente) of the size of the input data.
+
+ - This means that the execution time is not dependent on the size of the input data.
+ - In other words, no matter how much data you feed the algorithm, it will always take the same amount of time to complete its operation.
+ - *Time complexity:* The time complexity of a constant algorithm is always **O(1)**, which means the execution time is independent of the input size.
+ - *Memory complexity:* The memory complexity of a constant algorithm is also usually **O(1)**, as it only needs to store a fixed amount of data.
+
+For example:
+
+![img](images/asymptotic-classes-01.png)
+
+---
+
+<div id="intro-to-logarithmic-approach"></div>
+
+## Logarithmic, O(log n)
+
+> The best of all worlds for algorithms. This class is typical of algorithms that can solve problems by *turning them into smaller problems at each step of the solution*.
+
+Functions whose growth (cujo crescimento) is related to the logarithm of the input variable. For example:
+
+![img](images/asymptotic-classes-02.png)
+
+> **NOTE:**  
+> In the example above:
+> *"n"* is the input size.
+> *"x"* is how many times multiplied by *2*.
+
+---
+
+<div id="intro-to-linear-approach"></div>
+
+## Linear, O(n)
+
+> Very efficient algorithm. The linear class occurs in algorithms that need to process *"n"* input elements and do small computations on those elements.
+
+For example:
+
+![img](images/asymptotic-classes-03.png)
+
+---
+
+<div id="intro-to-loglinear-approach"></div>
+
+## Loglinear, O(n log n)
+
+> Slightly less efficient than linear ones. This is a typical asymptotic class of algorithms that implement the **“Divide and Conquer”** paradigm.
+
+Functions whose growth (cujo crescimento) is the ***product of a linear function and a logarithm***. This is often the case for many efficient sorting algorithms, such as *Merge Sort* and *Heap Sort*.
+
+For examples:
+
+![img](images/asymptotic-classes-04.png)
+
+---
+
+<div id="intro-to-polynomial-approach"></div>
+
+## Polynomial, O(n<sup>k</sup>), e.g. O(n<sup>2</sup>), O(n<sup>3</sup>)
+
+> They are more efficient than exponentials, but are **only suitable for solving small problems**. When the value of n grows a lot, the algorithm becomes very inefficient.
+
+Functions whose growth (cujo crescimento) is a power of the input variable, where **"k" is a positive constant**.
+
+For example:
+
+![img](images/asymptotic-classes-06.png)
+
+> **NOTE:**  
+> See that the **exponent** is **always a positive constant**.
+
+---
+
+<div id="intro-to-exponential-approach"></div>
+
+## Exponential, O(a<sup>n</sup>) or O(b<sup>n</sup>)
+
+More efficient than factorial, but still **far from being an efficient algorithm (longe de ser um algoritmo eficiente)**. It also occurs in algorithms that use *Brute Force* to solve problems.
+
+> **Exponential O(a^n) or O(b^n), where "a" and "b" are *constants*.**
+
+Functions whose growth (cujo crescimento) is an exponential function of the input variable.
+
+For example:
+
+![img](images/asymptotic-classes-07.png)
+
+> **NOTE:**
+> See that difference of polynomial class here the base is always constant and the **exponent is always a positive variable (n)**.
+
+---
+
+<div id="intro-to-fatorial-approach"></div>
+
+## Fatorial, O(n!)
+
+> The worst class of algorithm. It usually occurs in some algorithms that use *Brute Force* technique to solve problems.
+
+Functions whose growth (cujo crescimento) is related to the factorial of the input variable. For example:
+
+![img](images/asymptotic-classes-08.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Step Count Method (or Frequency Count) ) -->
+
+---
+
+<div id="intro-to-step-count-method"></div>
+
+## Intro to Step Count Method
+
+> The **"Step Count Method (also called as Frequency Count method)"** count the number of times each instruction is executed. Based on that we will calculate the **Time Complexity** of an Algorithm.
+
+For example:
+
+**Example-01:**  
+![img](images/step-count-method-01.png)  
+
+**Example-02:**  
+![img](images/step-count-method-02.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -274,12 +589,19 @@ For example, in the *Linear Search* algorithm problem, the best case occurs when
 
 > Technically speaking (tecnicamente falando), `log functions are the inverses of exponential functions`.
 
-For example, see the image below to understand more easily:
+For example, see the example below to understand more easily:
 
-![img](images/log-gif-01.gif)
+$$\log_{2} (n) = y  \Leftrightarrow 2^y = n$$
+
+For example:
+
+If $log_{2} (8)$ = 3, it means that $2^3 = 8$
+If $log_{2} (16)$ = 4, it means that $2^4 = 16$
 
 > **NOTE:**  
-> We read the formula above as **"Log of x in base b", log<sub>b</sub>(x)**.
+> We read the logarithm formula **"log<sub>2</sub>(n)"** as **"Log of 'n' in base 2"**.
+
+$$\log_{2} (n) = y$$
 
 
 
@@ -320,7 +642,65 @@ For example, see the image below to understand more easily:
 
 
 
-<!--- ( References ) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -328,34 +708,18 @@ For example, see the image below to understand more easily:
 
 ## References
 
- - **Asymptotic Analysis and Notations (Based on input size):**
+ - **General:**
+   - [ChatGPT](https://chat.openai.com/)
+ - **Asymptotic Analysis:**
    - [[ED] Aula 101 - Análise de Algoritmos - Comportamento Assintótico](https://www.youtube.com/watch?v=SClFMUpBiaw&list=PL8iN9FQ7_jt6buW7SBD3yzjIp8NnJYrZl&index=3)
    - [How to Analyse Loops for Complexity Analysis of Algorithms](https://www.geeksforgeeks.org/analysis-of-algorithms-set-4-analysis-of-loops/)
    - [Worst, Average and Best Case Analysis of Algorithms](https://www.geeksforgeeks.org/worst-average-and-best-case-analysis-of-algorithms/)
    - [Time Complexity Analysis](https://log2base2.com/courses/time-complexity-analysis)
+   - [Asymptotic classes](https://algol.dev/en/asymptotic-classes/)
+ - **Step Count Method (or Frequency Count):**
+   - [VTU IN POCKETS - MADE BY ENGINEERS FOR ENGINEERS](https://vtu-is-site.web.app/notes/is_not/4sem/daa/DAA-Module-1.pdf)
  - **Math for Algorithms:**
    - ["The Relationship" for Logarithms](https://www.purplemath.com/modules/logs.htm)
-   - [Logarithms](https://www.interviewcake.com/article/java/logarithms)
-   - [Intro to Maths for CS: Logarithms](https://www.cs.bham.ac.uk/~jdk/Modules/LecSlides/logs.pdf)
-   - [Logarithmic Time Complexity](https://www.baeldung.com/cs/logarithmic-time-complexity)
-   - [Logarithms and Exponents in Complexity Analysis](https://towardsdatascience.com/logarithms-exponents-in-complexity-analysis-b8071979e847)
-   - [7.14. Search Tree Analysis](https://runestone.academy/ns/books/published/pythonds/Trees/SearchTreeAnalysis.html)
-   - [Analysis of Recursion in Programming](https://afteracademy.com/blog/analysis-of-recursion-in-programming/)
-   - [Deeply Understanding Logarithms In Time Complexities & Their Role In Computer Science](https://www.youtube.com/watch?v=M4ubFru2O80)
-   - [O(log n) – Logarithmic time complexity explained](https://www.youtube.com/shorts/IvkgJR_5PkQ)
-   - [Big O Notation Series #4: The Secret to Understanding O (log n)!](https://www.youtube.com/watch?v=wjDY5RbILno)
-   - [Big O Notation Series #5: O (n log n) explained for beginners](https://www.youtube.com/watch?v=K3NluEdHkao)
-   - [Big O Notation Series #9: Understanding Merge Sort](https://www.youtube.com/watch?v=HrCPqJHQSxY)
-   - [Big O Notation Series #10: Log n Complexity Explained With An Iterative Function [Logarithmic time]](https://www.youtube.com/watch?v=SfygqfMVSgw)
-   - [Big O Notation Series (Coding): Merge Sort Made Easy](https://www.youtube.com/watch?v=PRoqMgTcVGs&list=PL7g1jYj15RUPVZDU9C276SZvlJjf4hzqV&index=13)
-   - [Big O Notation Series (Coding): O(log n) Time Complexity Analysis (Recursive Binary Search)](https://www.youtube.com/watch?v=0js3mqa9ChA&list=PL7g1jYj15RUPVZDU9C276SZvlJjf4hzqV&index=15)
-   - [Big O Notation Series (Coding): Hands On With O(n) and O(1) Time Complexity Analysis](https://www.youtube.com/watch?v=H03eIiYMc6w)
-   - [Big O Notation Series #2: Visualizing Big O of N Squared](https://www.youtube.com/watch?v=0eCT74f5hGA)
-   - [Big O Notation Series #3: Visualizing O of N Cubed](https://www.youtube.com/watch?v=IBddtmZBSEA)
-   - [Big O Notation Series #7: Time Complexity Visualization of Recursive Fibonacci](https://www.youtube.com/watch?v=AQp1OG7aSwg)
-   - [Big O Notation Series #6: Big O of N Factorial](https://www.youtube.com/watch?v=vbh8t-ok_4E)
-   - [Logarithms in Time Complexity Data Structure Video-9](https://www.youtube.com/watch?v=FDgjwbAu3Ig)
-   - [Big O Notation Series #8: Space Complexity and Big O Gotchas](https://www.youtube.com/watch?v=rHM3zWgnPVA&list=PL7g1jYj15RUPVZDU9C276SZvlJjf4hzqV&index=10)
 
 ---
 
