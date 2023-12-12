@@ -2,27 +2,11 @@
 
 ## Contents
 
- - **Basics:**
-   - [Constructor](#constructor)
-   - [Array class (complete code)](src/python/Array.py)
- - **Length or Size:**
-   - [Checking how many elements have the array](#checking-how-many-elements-have-the-array)
- - **Insertion:**
-   - [Insert a new element at end](#insert-at-end)
- - **Traversal:**
-   - [Traversing arrays from the beginning](#traversing-arrays-from-beginning)
- - **Deletion:**
-   - [Deleting an element by value](#deleting-by-value)
- - **Sorting:**
- - **Search:**
- - **Operations by Index:**
- - **Reverse:**
- - **Split:**
- - **Clone or Copy:**
- - **Intersection and Union:**
- - **Detect Loops:**
- - **Concatenation:**
- - **Merge:**
+ - **StaticArray class:**
+   - [Constructor | O(1)](#static-array-class-constructor)
+   - [Traversing (from the beginning) | O(n)](#static-array-class-traversing)
+   - [Set element by index | O(1)](#static-array-class-set-element-by-index)
+   - [Get element by index | O(1)](#static-array-class-get-element-by-index)
  - **Tips & Tricks:**
    - [The duplicates items issue](#the-duplicates-issue)
  - [REFERENCES](#ref)
@@ -66,31 +50,99 @@
 
 
 
-<!--- ( Basics ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( StaticArray class ) --->
 
 ---
 
-<div id="constructor"></div>
+<div id="static-array-class-constructor"></div>
 
-## Constructor
+## Constructor | O(1)
 
 A constructor for an **Array class** is very simple. For example, see the code below:
 
 **Python** [Array.py](src/python/Array.py)
 ```python
-class Array:
+class StaticArray:
     def __init__(self, size):
-        self.size = size
-        self.__arr = [None] * size
-        self.nItems = 0
+        self.size = size            # 1
+        self.arr = [None] * size    # 1
+        self.nItems = 0             # 1
 ```
 
-See that:
+The **Time** and **Space Complexity** of the **"constructor"** is:
+
+|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
+|----------------------|----------------------------|----------------------------|----------------------------|
+| **Time Complexity**  | *O(1), Constant Time.* The constructor initializes attributes, and each operation is performed in constant time regardless of the size of the array.       | *Ω(1), Constant Time.* Similarly, the best case is constant time as the operations in the constructor are unaffected by the size of the array.       | *Θ(1), Constant Time.* The average case time complexity is constant because, on average, the constructor performs a fixed number of constant time operations.       |
+| **Space Complexity** | *O(n), Linear Space.* The space complexity is linear because the constructor creates an array (self.arr) of size "n", where "n" is the specified size of the array.        | *Ω(n), Linear Space.* Similar to the worst case, the best case space complexity is linear because it depends on the size of the array.        | *Θ(n), Linear Space.* The average case space complexity is linear, assuming constant space is used for other attributes.        |
+
+**Code explanation:**
 
  - **The constructor receives an initial "size":**
    - How Arrays are *fixed size* Data Structures your constructor receives a value (int value) to init your size.
    - The "size" value will be saved to be used later for the instance.
- - **We create an empty list "__arr" to store the new elements:**
+ - **We create an empty list "arr" to store the new elements:**
    - This empty list initially will be None.
    - This empty list also will be multiplied by the initial size. This is because the Array is (need be) fixed size.
  - **Finally, we have "nItems" variable initialized as zero (0) to count how many elements has the Array.**
@@ -114,854 +166,341 @@ Looking at the examples above we can note that:
 
 > **Okay, but how does it work on Python?**
 
-**Python** [test_constructor.py](src/python/test_constructor.py)
 ```python
-import Array as arr
+from Array import StaticArray
 
 if __name__ == "__main__":
-    myArray = arr.Array(size=10)
-    myArray.traverse()  # Array with size=10 and None values.
-    print("Number of elements:", myArray.__len__(), "\n")
+
+    myArray = StaticArray(size=5)
+    print(f"Array: {myArray.arr}")
+    print(f"Number of Items: {myArray.nItems}")
 ```
 
 **OUTPUT:**
 ```bash
-Array: [None, None, None, None, None, None, None, None, None, None]
-Number of elements: 0
+Array: [None, None, None, None, None]
+Number of Items: 0
 ```
 
 See that:
 
- - We have an array with the "size=10" filled as "None."
+ - We have an array with the "size=5" filled as "None."
  - And the "nItems" counter is 0, that's, the Array is empty.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
-<!--- ( Length or Size ) --->
+<div id="static-array-class-traversing"></div>
 
-<div id="checking-how-many-elements-have-the-array"></div>
+## Traversing (from the beginning) | O(n)
 
-## Checking how many elements have the array
-
-To check how many elements have the array we just need to return the value of the "nItems" variable. For example, see the code below:
-
-**Python** [Array.py](src/python/Array.py)
-```python
-def __len__(self):
-    return self.nItems
-```
-
- - See that to check the Array size we need only return the value of the "nItems" variable.
- - "nItems" is a counter variable that counts *"+1"* or *"-1"* when we *add* or *remove* an element.
-
-Let's see how it works in practice:
-
-**Python** [test_len.py](src/python/test_len.py)
-```python
-import Array as arr
-
-if __name__ == "__main__":
-
-    # Array with size=10 and None values.
-    myArray = arr.Array(size=10)
-
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(10)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(20)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(30)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(40)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(50)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(60)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(70)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(80)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(90)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(99)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-```
-
-**OUTPUT:**
-```bash
-Array: [None, None, None, None, None, None, None, None, None, None]
-Number of elements: 0 
-
-Array: [10, None, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Number of elements: 1 
-
-Array: [10, 20, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Number of elements: 2 
-
-Array: [10, 20, 30, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Number of elements: 3 
-
-Array: [10, 20, 30, 40, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Number of elements: 4 
-
-Array: [10, 20, 30, 40, 50, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Number of elements: 5
-
-Array: [10, 20, 30, 40, 50, 60, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Number of elements: 6
-
-Array: [10, 20, 30, 40, 50, 60, 70, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Number of elements: 7
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Number of elements: 8
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Number of elements: 9
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, 99]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Index: 9, Item: 99
-Number of elements: 10
-```
-
-> **NOTE:**  
-> - If you pay attention the indexes after inserting the first element are different of the number of elements (nItems).
-> - This is because the indexes are references to the "Array (__arr)" and "nItems" is counter to how many elements have the array.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<!--- ( Insertion ) --->
-
-<div id="insert-at-end"></div>
-
-## Insert a new element at end
-
-A common approach to insert in Arrays is **"insert at the end"**. For example, imagine we have an Array with the size=5:
-
-![img](images/insert-at-end-01.gif)  
-
-See that:
-
- - How "nItems" variable always has the index of the last empty block we can always insert at index = "nItems".
- - However, we can see that when our Array is full the variable "nItems" has an invalid value:
-   - Knowing this, we need to check if the "nItems" variable has an invalid value before inserting a new value.
-   - Here we can use the "size" instance variable to check:
-     - `if self.nItems >= self.size`
-
-Let's, see the code to do all this:
-
-**Python** [Array.py](src/python/Array.py)
-```python
-def insert_at_end(self, item):
-    if self.nItems >= self.size:
-        print("Array is full!")
-        return None  # Stop the function, Array is full.
-    self.__arr[self.nItems] = item
-    self.nItems += 1
-```
-
-> **NOTE:**
-> See that we always need to increment "nItems" variable after inserting a new value to ensure we have the index of the last empty block in the "nItems" variable.
-
-Let's see how it works in practice:
-
-**Python** [test_insert_at_end.py](src/python/test_insert_at_end.py)
-```python
-import Array as arr
-
-if __name__ == "__main__":
-
-    # Array with size=10 and None values.
-    myArray = arr.Array(size=10)
-
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(10)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(20)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(30)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(40)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(50)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(60)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(70)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(80)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(90)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(99)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-```
-
-**OUTPUT:**
-```bash
-Array: [None, None, None, None, None, None, None, None, None, None]
-Number of elements: 0 
-
-Array: [10, None, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Number of elements: 1 
-
-Array: [10, 20, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Number of elements: 2 
-
-Array: [10, 20, 30, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Number of elements: 3 
-
-Array: [10, 20, 30, 40, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Number of elements: 4 
-
-Array: [10, 20, 30, 40, 50, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Number of elements: 5 
-
-Array: [10, 20, 30, 40, 50, 60, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Number of elements: 6 
-
-Array: [10, 20, 30, 40, 50, 60, 70, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Number of elements: 7
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Number of elements: 8
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Number of elements: 9
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, 99]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Index: 9, Item: 99
-Number of elements: 10
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<!--- ( Traversal ) --->
-
-<div id="traversing-arrays-from-beginning"></div>
-
-## Traversing arrays from the beginning
-
-> Traversing an array is very easy. You just need to traverse all elements in the **"nItems"** variable.
-
-The code to do all this is:
+> Traversing an array is very easy. You just need to traverse all elements in the **"self.arr"** variable.
 
 **Python** [Array.py](src/python/Array.py)
 ```python
 def traverse(self):
-    print("Array:", self.__arr)  # Prin all Array elements.
-    for current_index in range(self.nItems):
-        # Print current element and index.
-        print(f"Index: {current_index}, Item: {self.__arr[current_index]}")
+    for index, _ in enumerate(self.arr):                   # n
+        print(f"Index: {index}, Item: {self.arr[index]}")  # 1
 ```
+
+The **Time** and **Space Complexity** of the **"traverse"** function is:
+
+|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
+|----------------------|----------------------------|----------------------------|----------------------------|
+| **Time Complexity**  | *O(n), Linear Time*. The method iterates through each element in the array (self.arr) once, resulting in a time complexity linearly proportional to the number of items in the array.         | *Ω(n), Linear Time.* The best case occurs when the array is non-empty, and the method iterates through each element once. This results in a linear time complexity.         | *Θ(n), Linear Time.* The average case time complexity is linear because, on average, the method traverses through approximately half of the array.         |
+| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios      |
 
 Let's see how it works in practice:
 
-**Python** [test_traverse.py](src/python/test_traverse.py)
 ```python
-import Array as arr
+from Array import StaticArray
 
 if __name__ == "__main__":
 
-    # Array with size=10 and None values.
-    myArray = arr.Array(size=10)
+    myArray = StaticArray(size=5)
+    myArray.traverse()
+
+    myArray.arr[0] = 10
+    myArray.arr[1] = 20
+    myArray.arr[2] = 30
+    myArray.arr[3] = 40
+    myArray.arr[4] = 50
 
     myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(10)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(20)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(30)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(40)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(50)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(60)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(70)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(80)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(90)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
-
-    myArray.insert_at_end(99)
-    myArray.traverse()
-    print("Number of elements:", myArray.__len__(), "\n")
 ```
 
 **OUTPUT:**
 ```bash
-Array: [None, None, None, None, None, None, None, None, None, None]
-Number of elements: 0 
+Index: 0, Item: None
+Index: 1, Item: None
+Index: 2, Item: None
+Index: 3, Item: None
+Index: 4, Item: None
 
-Array: [10, None, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Number of elements: 1 
-
-Array: [10, 20, None, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Number of elements: 2 
-
-Array: [10, 20, 30, None, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Number of elements: 3 
-
-Array: [10, 20, 30, 40, None, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Number of elements: 4 
-
-Array: [10, 20, 30, 40, 50, None, None, None, None, None]
 Index: 0, Item: 10
 Index: 1, Item: 20
 Index: 2, Item: 30
 Index: 3, Item: 40
 Index: 4, Item: 50
-Number of elements: 5 
-
-Array: [10, 20, 30, 40, 50, 60, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Number of elements: 6 
-
-Array: [10, 20, 30, 40, 50, 60, 70, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Number of elements: 7
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Number of elements: 8
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Number of elements: 9
-
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, 99]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Index: 9, Item: 99
-Number of elements: 10
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
-<!--- ( Deletion ) --->
+<div id="static-array-class-set-element-by-index"></div>
 
-<div id="deleting-by-value"></div>
+## Set element by index | O(1)
 
-## Deleting an element by value
-
-To understand how to delete an element by value see the examples below. For example, imagine we need to delete the value "25" from the following array:
-
-![img](images/delete-by-value-01.gif)  
-
-See that we need to iterable by all elements until "nItems" variable. For example, let's, see a not full Array:
-
-![img](images/delete-by-value-02.gif)  
-
-Now, let's see an example where we have the value to delete in the array. For example, item=50:
-
-![img](images/delete-by-value-03.gif)  
-
-See that:
-
- - First we find the element, item=50.
- - Moves the next elements to the left blocks:
-   - Here we rewrite the elements from the right of the deleted value to the left.
- - Finally, decrements the "nItems" variable.
-
-Now let's see the code to do all this:
-
-**Python** [Array.py](src/python/Array.py)
+[Array.py](src/python/Array.py)
 ```python
-def delete(self, item):
-    for current_item in range(self.nItems):
-        if self.__arr[current_item] == item:
-            # Here we need to decrement nItems (self.nItems-1)
-            # to avoid index error in fully arrays.
-            for moved_item in range(current_item, self.nItems-1):
-                self.__arr[moved_item] = self.__arr[moved_item + 1]
-            self.nItems -= 1  # One fewer in array now.
-            return True  # Return success flag.
-    return False  # Made it here, so couldn't find the item.
+def set_element_by_index(self, index, element):
+    if not (0 <= index < len(self.arr)):  # 1
+        raise IndexError                  # 1
+    self.arr[index] = element             # 1
+    self.nItems += 1                      # 1
 ```
+
+The **Time** and **Space Complexity** of the **"set_element_by_index"** function is:
+
+|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
+|----------------------|----------------------------|----------------------------|----------------------------|
+| **Time Complexity**  | *O(1), Constant Time.* The method performs a fixed number of operations regardless of the size of the array. It has constant time complexity in the worst case.       | *Ω(1), Constant Time.* Similarly, the best case time complexity is constant because it performs a fixed number of operations.       | *Θ(1), Constant Time.* The average case time complexity is constant, as it assumes random input scenarios where the method still performs a constant number of operations.       |
+| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios.      |
+
+**Code explanation:**
+
+ - **To understand the code `"if not (0 <= index < len(self.arr))"`, let's see the some examples below:**
+   - **But first, we need to know that Python expressions are read from left to right *(left->right)*.**
+   - **Imagine we pass the index=0 and the array size is 5:**
+     - `(0 <= 0 < 5)`, we read as:
+       - `0 <= 0:` Zero is less or equal to zero? **True**
+       - AND
+       - `0 < 5:` Zero is less than five? **True**
+       - **True AND True = True**
+       - **NOTE:** Remember we use the **"not"** statement to invert the result. That's, if we pass by indexing test (if) the **"not"** statement does the if *False* and continues the function flow.
+   - **Imagine we pass the index=5 and the array size is 5:**
+     - `(0 <= 5 < 5)`, we read as:
+       - `0 <= 5:` Zero is less or equal to five? **True**
+       - AND
+       - `5 < 5:` Five is less than five? **False**
+       - **True AND False = False**
+       - **NOTE:** Remember we use the **"not"** statement to invert the result. That's, now our test (if) is True and we raise an exception.
+ - **`self.arr[index] = element`**
+   - Here we assign the element to the passed index.
+ - **`self.nItems += 1`**
+   - Finally, we increment the number of elements in the array.
 
 Let's see how it works in practice:
 
-**Python** [test_delete-v1.py](src/python/test_delete-v1.py)
 ```python
-import Array as arr
+from Array import StaticArray
 
 if __name__ == "__main__":
 
-    # Array with size=10 and None values.
-    myArray = arr.Array(size=10)
+    myArray = StaticArray(size=5)
 
-    myArray.insert_at_end(10)
-    myArray.insert_at_end(20)
-    myArray.insert_at_end(30)
-    myArray.insert_at_end(40)
-    myArray.insert_at_end(50)
-    myArray.insert_at_end(60)
-    myArray.insert_at_end(70)
-    myArray.insert_at_end(80)
-    myArray.insert_at_end(90)
-    myArray.insert_at_end(99)
-
-    print("Before delete element '50':")
+    myArray.set_element_by_index(index=0, element=1)
     myArray.traverse()
+    print("")
 
-    myArray.delete(50)
-    print("\nAfter delete element '50':")
+    myArray.set_element_by_index(index=1, element=2)
     myArray.traverse()
+    print("")
+
+    myArray.set_element_by_index(index=2, element=3)
+    myArray.traverse()
+    print("")
+
+    myArray.set_element_by_index(index=3, element=4)
+    myArray.traverse()
+    print("")
+
+    myArray.set_element_by_index(index=4, element=5)
+    myArray.traverse()
+    print("")
+
+    myArray.set_element_by_index(index=5, element=5)  # ERROR!
 ```
 
 **OUTPUT:**
 ```bash
-Before delete element '50':
-Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, 99]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
-Index: 5, Item: 60
-Index: 6, Item: 70
-Index: 7, Item: 80
-Index: 8, Item: 90
-Index: 9, Item: 99
+Index: 0, Item: 1
+Index: 1, Item: None
+Index: 2, Item: None
+Index: 3, Item: None
+Index: 4, Item: None
 
-After delete element '50':
-Array: [10, 20, 30, 40, 60, 70, 80, 90, 99, 99]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 60
-Index: 5, Item: 70
-Index: 6, Item: 80
-Index: 7, Item: 90
-Index: 8, Item: 99
+Index: 0, Item: 1
+Index: 1, Item: 2
+Index: 2, Item: None
+Index: 3, Item: None
+Index: 4, Item: None
+
+Index: 0, Item: 1
+Index: 1, Item: 2
+Index: 2, Item: 3
+Index: 3, Item: None
+Index: 4, Item: None
+
+Index: 0, Item: 1
+Index: 1, Item: 2
+Index: 2, Item: 3
+Index: 3, Item: 4
+Index: 4, Item: None
+
+Index: 0, Item: 1
+Index: 1, Item: 2
+Index: 2, Item: 3
+Index: 3, Item: 4
+Index: 4, Item: 5
+
+Traceback (most recent call last):
+  File test.py", line 27, in <module>
+    myArray.set_element_by_index(index=5, element=5)  # ERROR!
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ....
+   set_element_by_index
+    raise IndexError
+IndexError
 ```
 
-See that:
+---
 
- - We remove the element "50" by rewriting the elements right to the left.
- - The index=9 is not more present in the "nItems" counter variable:
-   - This is because we decrement the variable "nItems" by 1.
- - However, we can see that the value “99” **is still (ainda está)** in the array:
-   - We simply don't point to it with the "nItems" counter variable.
+<div id="static-array-class-get-element-by-index"></div>
 
-Now, let's see an example with an array not full:
+## Get element by index | O(1)
 
-**Python** [test_delete-v2.py](src/python/test_delete-v2.py)
+[Array.py](src/python/Array.py)
 ```python
-import Array as arr
+def get_element_by_index(self, index):
+    if not (0 <= index < len(self.arr)):  # 1
+        raise IndexError                  # 1
+    return self.arr[index]                # 1
+```
+
+The **Time** and **Space Complexity** of the **"get_element_by_index"** function is:
+
+|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
+|----------------------|----------------------------|----------------------------|----------------------------|
+| **Time Complexity**  | *O(1), Constant Time.* The method performs a fixed number of operations regardless of the size of the array. It has constant time complexity in the worst case.       | *Ω(1), Constant Time.* Similarly, the best case time complexity is constant because it performs a fixed number of operations.       | *Θ(1), Constant Time.* The average case time complexity is constant, as it assumes random input scenarios where the method still performs a constant number of operations.       |
+| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios.      |
+
+**Code explanation:**
+
+ - **To understand the code `"if not (0 <= index < len(self.arr))"`, let's see the some examples below:**
+   - **But first, we need to know that Python expressions are read from left to right *(left->right)*.**
+   - **Imagine we pass the index=0 and the array size is 5:**
+     - `(0 <= 0 < 5)`, we read as:
+       - `0 <= 0:` Zero is less or equal to zero? **True**
+       - AND
+       - `0 < 5:` Zero is less than five? **True**
+       - **True AND True = True**
+       - **NOTE:** Remember we use the **"not"** statement to invert the result. That's, if we pass by indexing test (if) the **"not"** statement does the if *False* and continues the function flow.
+   - **Imagine we pass the index=5 and the array size is 5:**
+     - `(0 <= 5 < 5)`, we read as:
+       - `0 <= 5:` Zero is less or equal to five? **True**
+       - AND
+       - `5 < 5:` Five is less than five? **False**
+       - **True AND False = False**
+       - **NOTE:** Remember we use the **"not"** statement to invert the result. That's, now our test (if) is True and we raise an exception.
+ - **`return self.arr[index]`**
+   - Finally, we return the element from the passed index.
+
+
+
+Let's see how it works in practice:
+
+```python
+from Array import StaticArray
 
 if __name__ == "__main__":
 
-    # Array with size=10 and None values.
-    myArray = arr.Array(size=10)
+    myArray = StaticArray(size=5)
 
-    myArray.insert_at_end(10)
-    myArray.insert_at_end(20)
-    myArray.insert_at_end(30)
-    myArray.insert_at_end(40)
-    myArray.insert_at_end(50)
 
-    print("Before delete element '50':")
-    myArray.traverse()
+    myArray.set_element_by_index(index=0, element=1)
+    myArray.set_element_by_index(index=1, element=2)
+    myArray.set_element_by_index(index=2, element=3)
+    myArray.set_element_by_index(index=3, element=4)
+    myArray.set_element_by_index(index=4, element=5)
 
-    myArray.delete(50)
-    print("\nAfter delete element '50':")
-    myArray.traverse()
+    result_one = myArray.get_element_by_index(index=3)
+    print(result_one)
+
+    result_error = myArray.get_element_by_index(index=5)  # ERROR!
+    print(result_error)
 ```
 
-**OUPUT:**
+**OUTPUT:**
 ```bash
-Array: [10, 20, 30, 40, 50, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
-Index: 4, Item: 50
+4
 
-After delete element '50':
-Array: [10, 20, 30, 40, 50, None, None, None, None, None]
-Index: 0, Item: 10
-Index: 1, Item: 20
-Index: 2, Item: 30
-Index: 3, Item: 40
+Traceback (most recent call last):
+  File
+    result_error = myArray.get_element_by_index(index=5)  # ERROR!
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File
+    raise IndexError
+IndexError
 ```
 
-> **NOTE:**  
-> - See that again we don't remove the element from the array.
-> - We just ignore it with the "nItems" counter variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1087,6 +626,66 @@ The table below shows the **average (here the focus is the average)** number of 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERENCES ) --->
 
 ---
@@ -1095,6 +694,7 @@ The table below shows the **average (here the focus is the average)** number of 
 
 ## REFERENCES
 
+ - [Introduction To Algorithms (6.006 | Spring 2020 | Undergraduate)](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
  - [Data Structures & Algorithms in Python](https://learning.oreilly.com/library/view/data-structures/9780134855912/)
 
 ---
