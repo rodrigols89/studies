@@ -16,9 +16,11 @@
      - [Polynomial, O(n<sup>k</sup>), e.g. O(n<sup>2</sup>), O(n<sup>3</sup>)](#intro-to-polynomial-approach)
      - [Exponential, O(a<sup>n</sup>) or O(b<sup>n</sup>)](#intro-to-exponential-approach)
      - [Fatorial, O(n!)](#intro-to-fatorial-approach)
- - **Step Count Method (or Frequency Count)**
+ - **Step Count Method (or Frequency Count):**
    - [Intro to Step Count Method](#intro-to-step-count-method)
  - **Math for Algorithms:**
+   - **Arithmetic Series:**
+     - [Sum of the first "n" natural numbers](#sum-of-the-first-n-natural-numbers)
    - **Logarithms:**
      - [Intro to Logarithms](#intro-to-log)
  - [**References**](#ref)
@@ -574,6 +576,33 @@ For example:
 
 
 <!--- ( Math for Algorithms ) -->
+
+---
+
+<div id="sum-of-the-first-n-natural-numbers"></div>
+
+## Sum of the first "n" natural numbers
+
+Imagine we need to **sum the first "n" natural numbers**. For example:
+
+$$ S_{n} = 1 + 2 + 3 +… + n $$
+
+The formula to do this is:
+
+$$ S_{n} = \frac{n(n+1)}{2} $$
+
+For example:
+
+$$ S_{5} = 1 + 2 + 3 + 4 + 5 = 15 $$
+
+$$ S_{5} = \frac{5(5+1)}{2} = \frac{5(6)}{2} = \frac{30}{2} = 15  $$
+
+> **NOTE:**  
+> Remember that in math first, we solve the `parentheses ()`. e.g. `(n+1)`.
+
+However, we can also use the distributive property:
+
+$$ S_{5} = \frac{5(5+1)}{2} = \frac{25 + 5}{2} = \frac{30}{2} = 15  $$
 
 ---
 
