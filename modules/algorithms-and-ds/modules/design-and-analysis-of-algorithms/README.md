@@ -23,6 +23,7 @@
      - [Sum of the first "n" natural numbers](#sum-of-the-first-n-natural-numbers)
    - **Logarithms:**
      - [Intro to Logarithms](#intro-to-log)
+     - [How Logarithms are used in Analysis of Algorithms](#logarithms-in-aoa)
  - [**References**](#ref)
 
 
@@ -894,33 +895,76 @@ However, we can also use the distributive property:
 
 > Technically speaking (tecnicamente falando), `log functions are the inverses of exponential functions`.
 
-For example, see the example below to understand more easily:
+For example, see the examples below to understand more easily:
 
 ![img](images/logarithms-01.png)  
 
-For example:
+Let's, see other examples:
 
 ![img](images/logarithms-02.png)  
 
 > **NOTE:**  
-> We read the logarithm formula **"log<sub>2</sub>(n)"** as **"Log of 'n' in base 2"**.
+> We read the logarithm formula **"log<sub>2</sub>(n)"** as **"Log of 'n' to base 2"**.
 
 ![img](images/logarithms-03.png)  
 
+---
 
+<div id="logarithms-in-aoa"></div>
 
+## How Logarithms are used in Analysis of Algorithms
 
+To understand how logarithms are used in Analysis of Algorithms, let's see two common questions.
 
+ - **How many times must we double 1 before we get to n?**
+   - The phrase above can be expressed as the following sequence:
+     - 1, 2, 4, 8, 16, ..., n, or:
+       - We start with the initial value 1.
+       - We double the initial value: (1 x 2 = 2)
+       - We double the current value: (2 x 2 = 4)
+       - We double the current value: (4 x 2 = 8)
+       - We double the current value: (8 x 2 = 16)
+       - We double the current value: (16 x 2 = 32)
+       - **NOTE:** See that to **"double 1"** we **use the previous result (current) times 2**.
+   - That's, what is the exponent to which we raise 2 to get n?
+     - $2^y = n \Leftrightarrow \log_2(n) = y$
+   - In other words, it's asking for the *logarithm of n to base 2*, $\log_{2}(n)$.
+   - It's like counting the "doublings" it takes to get from *"1"* to *"n"*. For example:
+     - If *"n"* is *8*, then $log_{2}(8)$ is *"3"*, because 2 raised to the power of 3 (2 * 2 * 2) is equals to 8.
+ - **How many times must we divide "n" in half in order to get back down to 1?**
+   - For example, if **n = 32**, the answer is $\log_{2}(32) = 5 \Leftrightarrow 2^5 = 32$. This means we need to divide 32 in half 5 times to get to 1:
+     - We start with the initial value 32.
+     - We divide the initial value in half: (32 / 2 = 16).
+     - We divide the current value in half: (16 / 2 = 8).
+     - We divide the current value in half: (8 / 2 = 4).
+     - We divide the current value in half: (4 / 2 = 2).
+     - We divide the current value in half: (2 / 2 = 1).
 
+**You can see, these are the same questions. We're just going in different directions!**
 
+ - From *"1"* to *"n"* by multiplying by *"2"*.
+ - From *"n"* to *"1"* by dividing by *"2"*.
 
+> **Ok, but how does it work on Analysis of Algorithms?**
 
+For example, imagine we have the following Binary Tree:
 
+![img](images/log-binary-tree-01.png)  
 
+The tree above is special because each "level" or "tier" of the tree is full. There aren't any gaps. We call such a tree **"perfect"**.
 
+**NOTE:**  
+If we count the number of nodes on each level, we can notice that it successively doubles *as we go (medida que avançamos)*:
 
+![img](images/log-binary-tree-02.png)  
 
+Another thing we need to pay attention to is that the number of nodes on each level is $\log_{2}(n) = y \Leftrightarrow 2^y = n$:
 
+![img](images/node-numbers-on-each-level-01.png)
+
+Knowing that we can say the total number of nodes in a perfect binary tree is:
+
+![img](images/node-numbers-on-each-level-02.png)
 
 
 
@@ -1014,6 +1058,7 @@ For example:
 ## References
 
  - **General:**
+   - [Google Bard](https://bard.google.com/)
    - [ChatGPT](https://chat.openai.com/)
  - **Asymptotic Analysis:**
    - [[ED] Aula 101 - Análise de Algoritmos - Comportamento Assintótico](https://www.youtube.com/watch?v=SClFMUpBiaw&list=PL8iN9FQ7_jt6buW7SBD3yzjIp8NnJYrZl&index=3)
@@ -1026,6 +1071,7 @@ For example:
    - [VTU IN POCKETS - MADE BY ENGINEERS FOR ENGINEERS](https://vtu-is-site.web.app/notes/is_not/4sem/daa/DAA-Module-1.pdf)
  - **Math for Algorithms:**
    - ["The Relationship" for Logarithms](https://www.purplemath.com/modules/logs.htm)
+   - [Logarithms](https://www.interviewcake.com/article/python3/logarithms)
 
 ---
 
