@@ -863,24 +863,22 @@ For example:
 
 Imagine we need to **sum the first "n" natural numbers**. For example:
 
-$$ S_{n} = 1 + 2 + 3 +… + n $$
+![img](images/sum-of-n-natural-numbers-01.png)  
 
 The formula to do this is:
 
-$$ S_{n} = \frac{n(n+1)}{2} $$
+![img](images/sum-of-n-natural-numbers-02.png)  
 
 For example:
 
-$$ S_{5} = 1 + 2 + 3 + 4 + 5 = 15 $$
-
-$$ S_{5} = \frac{5(5+1)}{2} = \frac{5(6)}{2} = \frac{30}{2} = 15  $$
+![img](images/sum-of-n-natural-numbers-03.png)  
 
 > **NOTE:**  
 > Remember that in math first, we solve the `parentheses ()`. e.g. `(n+1)`.
 
 However, we can also use the distributive property:
 
-$$ S_{5} = \frac{5(5+1)}{2} = \frac{25 + 5}{2} = \frac{30}{2} = 15  $$
+![img](images/sum-of-n-natural-numbers-04.png)  
 
 ---
 
@@ -898,17 +896,17 @@ $$ S_{5} = \frac{5(5+1)}{2} = \frac{25 + 5}{2} = \frac{30}{2} = 15  $$
 
 For example, see the example below to understand more easily:
 
-$$\log_{2} (n) = y  \Leftrightarrow 2^y = n$$
+![img](images/logarithms-01.png)  
 
 For example:
 
-If $log_{2} (8)$ = 3, it means that $2^3 = 8$
-If $log_{2} (16)$ = 4, it means that $2^4 = 16$
+![img](images/logarithms-02.png)  
 
 > **NOTE:**  
 > We read the logarithm formula **"log<sub>2</sub>(n)"** as **"Log of 'n' in base 2"**.
 
-$$\log_{2} (n) = y$$
+![img](images/logarithms-03.png)  
+
 
 
 
