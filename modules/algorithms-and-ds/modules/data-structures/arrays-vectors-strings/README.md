@@ -110,7 +110,6 @@
 
 
 
-
 <!--- ( StaticArray class ) --->
 
 ---
@@ -125,10 +124,18 @@ A constructor for an **Array class** is very simple. For example, see the code b
 ```python
 class StaticArray:
     def __init__(self, size):
-        self.size = size            # 1
-        self.arr = [None] * size    # 1
-        self.nItems = 0             # 1
+        self.size = size          # O(1)
+        self.nItems = 0           # O(1)
+        self.arr = [None] * size  # O(1)
 ```
+
+$$f(n) = O(1) + O(1) + O(1) = O(1)$$
+
+### Complexity Explanation
+
+ - The line `self.arr = [None] * size` has a constant time complexity O(1):
+   - This is because you are creating a list with a fixed size determined by the value of the variable "size". Regardless of how large "size" is, the time required to execute this line of code will remain constant because it does not depend on the specific size of the list but rather on the fixed number of operations needed to initialize it.
+   - **NOTE:** One way to think about this is that the line simply allocates an array of size "size" and initializes each element to the value None. This is a process that always takes the same amount of time, regardless of the size of the array.
 
 The **Time** and **Space Complexity** of the **"constructor"** is:
 
@@ -137,15 +144,15 @@ The **Time** and **Space Complexity** of the **"constructor"** is:
 | **Time Complexity**  | *O(1), Constant Time.* The constructor initializes attributes, and each operation is performed in constant time regardless of the size of the array.       | *Ω(1), Constant Time.* Similarly, the best case is constant time as the operations in the constructor are unaffected by the size of the array.       | *Θ(1), Constant Time.* The average case time complexity is constant because, on average, the constructor performs a fixed number of constant time operations.       |
 | **Space Complexity** | *O(n), Linear Space.* The space complexity is linear because the constructor creates an array (self.arr) of size "n", where "n" is the specified size of the array.        | *Ω(n), Linear Space.* Similar to the worst case, the best case space complexity is linear because it depends on the size of the array.        | *Θ(n), Linear Space.* The average case space complexity is linear, assuming constant space is used for other attributes.        |
 
-**Code explanation:**
+### Code explanation
 
  - **The constructor receives an initial "size":**
    - How Arrays are *fixed size* Data Structures your constructor receives a value (int value) to init your size.
    - The "size" value will be saved to be used later for the instance.
- - **We create an empty list "arr" to store the new elements:**
+ - **We have "nItems" variable initialized as zero (0) to count how many elements has the Array.**
+ - **Finally, we create an empty list "arr" to store the new elements:**
    - This empty list initially will be None.
    - This empty list also will be multiplied by the initial size. This is because the Array is (need be) fixed size.
- - **Finally, we have "nItems" variable initialized as zero (0) to count how many elements has the Array.**
 
 For example, see the images below:
 
@@ -198,9 +205,17 @@ See that:
 **Python** [Array.py](src/python/Array.py)
 ```python
 def traverse(self):
-    for index, _ in enumerate(self.arr):                   # n
-        print(f"Index: {index}, Item: {self.arr[index]}")  # 1
+    for index, _ in enumerate(self.arr):                   # O(n)
+        print(f"Index: {index}, Item: {self.arr[index]}")  # O(1)
 ```
+
+$$f(n) = O(n) + O(1) = O(n)$$
+
+### Complexity Explanation
+
+ - The "for" loop iterates **"n"** times, so its complexity is **O(n)**.
+ - Inside the loop, the print operation has **constant O(1)** complexity.
+ - Since the loop repeats **"n"** times, the total cost becomes: $n \times O(1) = O(n)$.
 
 The **Time** and **Space Complexity** of the **"traverse"** function is:
 
@@ -252,11 +267,17 @@ Index: 4, Item: 50
 [Array.py](src/python/Array.py)
 ```python
 def set_element_by_index(self, index, element):
-    if not (0 <= index < len(self.arr)):  # 1
-        raise IndexError                  # 1
-    self.arr[index] = element             # 1
-    self.nItems += 1                      # 1
+    if not (0 <= index < len(self.arr)):  # O(1)
+        raise IndexError                  # O(1)
+    self.arr[index] = element             # O(1)
+    self.nItems += 1                      # O(1)
 ```
+
+$$f(n) = O(1) + O(1) + O(1) + O(1) = O(1)$$
+
+### Complexity Explanation
+
+ - The overall time complexity of the code is O(1), as all operations within the code block have constant time complexity.
 
 The **Time** and **Space Complexity** of the **"set_element_by_index"** function is:
 
@@ -265,7 +286,7 @@ The **Time** and **Space Complexity** of the **"set_element_by_index"** function
 | **Time Complexity**  | *O(1), Constant Time.* The method performs a fixed number of operations regardless of the size of the array. It has constant time complexity in the worst case.       | *Ω(1), Constant Time.* Similarly, the best case time complexity is constant because it performs a fixed number of operations.       | *Θ(1), Constant Time.* The average case time complexity is constant, as it assumes random input scenarios where the method still performs a constant number of operations.       |
 | **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios.      |
 
-**Code explanation:**
+### Code explanation
 
  - **To understand the code `"if not (0 <= index < len(self.arr))"`, let's see the some examples below:**
    - **But first, we need to know that Python expressions are read from left to right *(left->right)*.**
@@ -371,10 +392,16 @@ IndexError
 [Array.py](src/python/Array.py)
 ```python
 def get_element_by_index(self, index):
-    if not (0 <= index < len(self.arr)):  # 1
-        raise IndexError                  # 1
-    return self.arr[index]                # 1
+    if not (0 <= index < len(self.arr)):  # O(1)
+        raise IndexError                  # O(1)
+    return self.arr[index]                # O(1)
 ```
+
+$$f(n) = O(1) + O(1) + O(1) = O(1)$$
+
+### Complexity Explanation
+
+ - The overall time complexity of the code is O(1), as all operations within the code block have constant time complexity.
 
 The **Time** and **Space Complexity** of the **"get_element_by_index"** function is:
 
@@ -574,19 +601,6 @@ When you design a data storage structure, you need to decide whether items with 
 > **NOTE:**
 > You need to worry about duplicate items to **Insertion**, **Deletion**, **Traversal**, and **Search**.
 
-The table below shows the **average (here the focus is the average)** number of comparisons and moves for the four operations.
-
-|               | **No Duplicates**          | **Duplicates OK**                  |
-|---------------|----------------------------|------------------------------------|
-| **Insertion** | <sup>N</sup>/<sub>2</sub> comparisons            | N comparisons                      |
-| **Deletion**  | No comparisons, one move   | No comparisons, one move           |
-| **Traversal** | <sup>N</sup>/<sub>2</sub> comparisons, <sup>N</sup>/<sub>2</sub> moves | N comparisons, more than <sup>N</sup>/<sub>2</sub> moves |
-| **Search**    | N processing steps         | N processing steps                 |
-
- - First where no duplicates are allowed and then where they are allowed.
- - **N** is the number of items in the array.
- - Inserting a new item counts as one move.
-
 
 
 
@@ -694,6 +708,9 @@ The table below shows the **average (here the focus is the average)** number of 
 
 ## REFERENCES
 
+ - **General:**
+   - [ChatGPT](https://chat.openai.com/)
+   - [Bard](https://bard.google.com/)
  - [Introduction To Algorithms (6.006 | Spring 2020 | Undergraduate)](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
  - [Data Structures & Algorithms in Python](https://learning.oreilly.com/library/view/data-structures/9780134855912/)
 
