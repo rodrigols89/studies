@@ -1,10 +1,10 @@
 ##########################################################################
 # Rodrigo Leite da Silva - drigols                                       #
-# Last update: 23/11/2023                                                #
+# Last update: 21/12/2023                                                #
 ##########################################################################
 
 
-def sumElementsRecursive(myList: list[int]) -> int:
+def sumElementsRecursive(myList):
     if len(myList) == 1:  # Base case.
         return myList[0]
     else:
@@ -15,5 +15,5 @@ def sumElementsRecursive(myList: list[int]) -> int:
 
 
 if __name__ == "__main__":
-    myList: list[int] = [1, 3, 5, 7, 9]
+    myList = [1, 3, 5, 7, 9]
     print("The sum of all element is:", sumElementsRecursive(myList))
