@@ -1,14 +1,14 @@
 ##########################################################################
 # Rodrigo Leite da Silva - drigols                                       #
-# Last update: 12/12/2023                                                #
+# Last update: 21/12/2023                                                #
 ##########################################################################
 
 
 class StaticArray:
     def __init__(self, size):
         self.size = size
-        self.arr = [None] * size
         self.nItems = 0
+        self.arr = [None] * size
 
     def traverse(self):
         for index, _ in enumerate(self.arr):
