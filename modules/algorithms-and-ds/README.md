@@ -3,26 +3,16 @@
 ## Contents
 
  - [Design and Analysis of Algorithms](modules/design-and-analysis-of-algorithms)
+ - [Data Structures Implementations](#data-structures)
  - [Algorithms Implementations](#algorithms-implementations)
- - [Data Structures](#data-structures)
 
-<!--- ( Algorithms Implementations ) --->
-
----
-
-<div id="ds"></div>
-
-## Algorithms Implementations
-
- - [Recursion](modules/algorithms-implementations/recursion)
-
-<!--- ( Data Structures ) --->
+<!--- ( Data Structures Implementations ) --->
 
 ---
 
 <div id="ds"></div>
 
-## Data Structures
+## Data Structures Implementations
 
 Data Structure is a *format* to **organize**, **processing**, **retrieving**, **manage** and **store data** in a way that **allows efficient access and modification.**
 
@@ -33,6 +23,16 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
  - [Hashing](modules/data-structures/hashing)
  - [Trees](modules/data-structures/trees)
  - [Graphs](modules/data-structures/graphs)
+
+<!--- ( Algorithms Implementations ) --->
+
+---
+
+<div id="ds"></div>
+
+## Algorithms Implementations
+
+ - [Recursion](modules/algorithms-implementations/recursion)
 
 ---
 
