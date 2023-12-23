@@ -133,16 +133,12 @@ $$f(n) = O(1) + O(1) + O(1) = O(1)$$
 
 ### Complexity Explanation
 
- - The line `self.arr = [None] * size` has a constant time complexity O(1):
-   - This is because you are creating a list with a fixed size determined by the value of the variable "size". Regardless of how large "size" is, the time required to execute this line of code will remain constant because it does not depend on the specific size of the list but rather on the fixed number of operations needed to initialize it.
-   - **NOTE:** One way to think about this is that the line simply allocates an array of size "size" and initializes each element to the value None. This is a process that always takes the same amount of time, regardless of the size of the array.
-
-The **Time** and **Space Complexity** of the **"constructor"** is:
-
-|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
-|----------------------|----------------------------|----------------------------|----------------------------|
-| **Time Complexity**  | *O(1), Constant Time.* The constructor initializes attributes, and each operation is performed in constant time regardless of the size of the array.       | *Ω(1), Constant Time.* Similarly, the best case is constant time as the operations in the constructor are unaffected by the size of the array.       | *Θ(1), Constant Time.* The average case time complexity is constant because, on average, the constructor performs a fixed number of constant time operations.       |
-| **Space Complexity** | *O(n), Linear Space.* The space complexity is linear because the constructor creates an array (self.arr) of size "n", where "n" is the specified size of the array.        | *Ω(n), Linear Space.* Similar to the worst case, the best case space complexity is linear because it depends on the size of the array.        | *Θ(n), Linear Space.* The average case space complexity is linear, assuming constant space is used for other attributes.        |
+ - **Time Complexity: O(1)**
+   - The line `self.arr = [None] * size` has a constant time complexity O(1):
+     - This is because you are creating a list with a fixed size determined by the value of the variable "size". Regardless of how large "size" is, the time required to execute this line of code will remain constant because it does not depend on the specific size of the list but rather on the fixed number of operations needed to initialize it.
+     - **NOTE:** One way to think about this is that the line simply allocates an array of size "size" and initializes each element to the value None. This is a process that always takes the same amount of time, regardless of the size of the array.
+ - **Space Complexity: O(n)**
+   - The *Space Complexity* of this code is **O(n)**, where **"n"** is the *"size"* of the array. This is because the *"arr"* variable is initialized as an array of size elements, which requires **O(n)** space.
 
 ### Code explanation
 
@@ -213,16 +209,13 @@ $$f(n) = O(n) + O(1) = O(n)$$
 
 ### Complexity Explanation
 
- - The "for" loop iterates **"n"** times, so its complexity is **O(n)**.
- - Inside the loop, the print operation has **constant O(1)** complexity.
- - Since the loop repeats **"n"** times, the total cost becomes: $n \times O(1) = O(n)$.
-
-The **Time** and **Space Complexity** of the **"traverse"** function is:
-
-|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
-|----------------------|----------------------------|----------------------------|----------------------------|
-| **Time Complexity**  | *O(n), Linear Time*. The method iterates through each element in the array (self.arr) once, resulting in a time complexity linearly proportional to the number of items in the array.         | *Ω(n), Linear Time.* The best case occurs when the array is non-empty, and the method iterates through each element once. This results in a linear time complexity.         | *Θ(n), Linear Time.* The average case time complexity is linear because, on average, the method traverses through approximately half of the array.         |
-| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios      |
+ - **Time Complexity: O(n)**
+   - The "for" loop iterates **"n"** times, so its complexity is **O(n)**.
+   - Inside the loop, the print operation has **constant O(1)** complexity.
+   - Since the loop repeats **"n"** times, the total cost becomes: $n \times O(1) = O(n)$.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* is **O(1)** because it only uses a constant amount of additional space to store the index and item variables.
+   - Also the "for" loop does not create any additional data structures.
 
 Let's see how it works in practice:
 
@@ -277,14 +270,10 @@ $$f(n) = O(1) + O(1) + O(1) + O(1) = O(1)$$
 
 ### Complexity Explanation
 
- - The overall time complexity of the code is O(1), as all operations within the code block have constant time complexity.
-
-The **Time** and **Space Complexity** of the **"set_element_by_index"** function is:
-
-|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
-|----------------------|----------------------------|----------------------------|----------------------------|
-| **Time Complexity**  | *O(1), Constant Time.* The method performs a fixed number of operations regardless of the size of the array. It has constant time complexity in the worst case.       | *Ω(1), Constant Time.* Similarly, the best case time complexity is constant because it performs a fixed number of operations.       | *Θ(1), Constant Time.* The average case time complexity is constant, as it assumes random input scenarios where the method still performs a constant number of operations.       |
-| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios.      |
+ - **Time Complexity: O(1)**
+   - The overall *Time Complexity* of the code is **O(1)**, as all operations within the code block have constant time complexity.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* of this function is also **O(1)** because it does not use any additional space that grows with the input size.
 
 ### Code explanation
 
@@ -401,16 +390,12 @@ $$f(n) = O(1) + O(1) + O(1) = O(1)$$
 
 ### Complexity Explanation
 
- - The overall time complexity of the code is O(1), as all operations within the code block have constant time complexity.
+ - **Time Complexity: O(1)**
+   - The overall *Time Complexity* of the code is **O(1)**, as all operations within the code block have constant time complexity.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* of this function is also **O(1)** because it does not use any additional space that grows with the input size.
 
-The **Time** and **Space Complexity** of the **"get_element_by_index"** function is:
-
-|                      | Big(O), Worst-Case         | Omega(Ω), Best Case        | Theta(Θ), Average Case     |
-|----------------------|----------------------------|----------------------------|----------------------------|
-| **Time Complexity**  | *O(1), Constant Time.* The method performs a fixed number of operations regardless of the size of the array. It has constant time complexity in the worst case.       | *Ω(1), Constant Time.* Similarly, the best case time complexity is constant because it performs a fixed number of operations.       | *Θ(1), Constant Time.* The average case time complexity is constant, as it assumes random input scenarios where the method still performs a constant number of operations.       |
-| **Space Complexity** | *O(1), Constant Space.* The space complexity is constant because the method only uses a constant amount of extra space for local variables, regardless of the size of the array.      | *Ω(1), Constant Space.* Similar to the worst case, the best case space complexity is constant because it does not depend on the size of the array.      | *Θ(1), Constant Space.* The average case space complexity is constant, assuming constant space is used for local variables in all scenarios.      |
-
-**Code explanation:**
+### Code explanation
 
  - **To understand the code `"if not (0 <= index < len(self.arr))"`, let's see the some examples below:**
    - **But first, we need to know that Python expressions are read from left to right *(left->right)*.**
@@ -709,6 +694,8 @@ When you design a data storage structure, you need to decide whether items with 
 ## REFERENCES
 
  - **General:**
+   - [Runtime Calculator](https://www.timecomplexity.ai/)
+   - [Big O Calc](https://www.bigocalc.com/)
    - [ChatGPT](https://chat.openai.com/)
    - [Bard](https://bard.google.com/)
  - [Introduction To Algorithms (6.006 | Spring 2020 | Undergraduate)](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)

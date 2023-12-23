@@ -1,6 +1,6 @@
 ##########################################################################
 # Rodrigo Leite da Silva - drigols                                       #
-# Last update: 09/11/2023                                                #
+# Last update: 23/12/2023                                                #
 ##########################################################################
 
 
@@ -13,11 +13,12 @@ class Node:
 class SinglyLinkedList(Node):
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def push(self, data):
         new_node = Node(data)
-        new_node.next = self.head  # Do "new_node" point to old head.
-        self.head = new_node  # Set head as "new_node".
+        new_node.next = self.head
+        self.head = new_node
 
     def append(self, data):
         new_node = Node(data)
@@ -25,13 +26,21 @@ class SinglyLinkedList(Node):
             self.head = new_node
             return
         else:
-            # Loop until the last Node (old last Node)
-            # and save in the temp_node.
             temp_node = self.head
             while temp_node.next is not None:
                 temp_node = temp_node.next
-            # Do old last Node point to new last Node.
             temp_node.next = new_node
+
+    def append_constant(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            # If the list is empty, the "head" and "tail"
+            # are set as the same Node (reference).
+            self.head = new_node
+            self.tail = self.head
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
 
     def print_list_from_head(self):
         if self.head is None:
