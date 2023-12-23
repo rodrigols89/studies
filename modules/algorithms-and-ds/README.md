@@ -3,14 +3,14 @@
 ## Contents
 
  - [Design and Analysis of Algorithms](modules/design-and-analysis-of-algorithms)
- - [Data Structures Implementations](#data-structures)
+ - [Data Structures Implementations](#ds-implementations)
  - [Algorithms Implementations](#algorithms-implementations)
 
 <!--- ( Data Structures Implementations ) --->
 
 ---
 
-<div id="ds"></div>
+<div id="ds-implementations"></div>
 
 ## Data Structures Implementations
 
