@@ -129,7 +129,7 @@ class StaticArray:
         self.arr = [None] * size  # O(1)
 ```
 
-$$f(n) = O(1) + O(1) + O(1) = O(1)$$
+$f(n) = O(1) + O(1) + O(1) = O(1)$
 
 ### Complexity Explanation
 
@@ -205,7 +205,7 @@ def traverse(self):
         print(f"Index: {index}, Item: {self.arr[index]}")  # O(1)
 ```
 
-$$f(n) = O(n) + O(1) = O(n)$$
+$f(n) = O(n) + O(1) = O(n)$
 
 ### Complexity Explanation
 
@@ -266,7 +266,7 @@ def set_element_by_index(self, index, element):
     self.nItems += 1                      # O(1)
 ```
 
-$$f(n) = O(1) + O(1) + O(1) + O(1) = O(1)$$
+$f(n) = O(1) + O(1) + O(1) + O(1) = O(1)$
 
 ### Complexity Explanation
 
@@ -386,7 +386,7 @@ def get_element_by_index(self, index):
     return self.arr[index]                # O(1)
 ```
 
-$$f(n) = O(1) + O(1) + O(1) = O(1)$$
+$f(n) = O(1) + O(1) + O(1) = O(1)$
 
 ### Complexity Explanation
 
