@@ -287,7 +287,6 @@ def push(self, data):
 ```
 
 $f(n) = O(1) + O(1) + O(1)$
-$f(n) = O(1)$
 
 ### Complexity Explanation
 
@@ -382,8 +381,6 @@ def append(self, data):
 ```
 
 $f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
-$f(n) = O(n)$
-
 
 ### Complexity Explanation
 
@@ -512,7 +509,6 @@ def append_constant(self, data):
 ```
 
 $f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
 
 ### Complexity Explanation
 
@@ -618,7 +614,6 @@ def print_list_from_head(self):
 ```
 
 $f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
-$f(n) = O(n)$
 
 ### Complexity Explanation
 
