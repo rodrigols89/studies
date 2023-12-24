@@ -304,8 +304,8 @@ def __init__(self, size):
     self.top = -1             # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -398,8 +398,8 @@ def push(self, item):
     self.arr[self.top] = item        # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -501,8 +501,8 @@ def pop(self):
     return popped_item                # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -639,8 +639,8 @@ def peek(self):                       # O(1)
     return self.arr[self.top]         # O(1)
 ```
 
-$f(n) = O(1) + O(1) = O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) = O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -741,8 +741,8 @@ def traverse(self):
         print(f"Index: {current_index}, Item: {self.arr[current_index]}")  # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1024,8 +1024,8 @@ def push(self, item):
         self.size += 1            # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1140,8 +1140,8 @@ def pop(self):
         return popped_item            # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1256,8 +1256,8 @@ def peek(self):
         return self.top.item          # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1344,8 +1344,8 @@ def traverse(self):
     print("")                         # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1) + O(1)$
-$f(n) = O(n)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1) + O(1)$$
+$$f(n) = O(n)$$
 
 ### Complexity Explanation
 
@@ -1523,7 +1523,7 @@ def push(self, item):
     self.stack.append(item)  # O(1)
 ```
 
-$f(n) = O(1)$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1608,8 +1608,8 @@ def pop(self):
     return self.stack.pop()           # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1711,8 +1711,8 @@ def peek(self):
     return self.stack[-1]             # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -1816,8 +1816,8 @@ def traverse(self):
     print("")                                              # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
-$f(n) = O(n)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$$
+$$f(n) = O(n)$$
 
 ### Complexity Explanation
 

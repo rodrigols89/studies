@@ -286,8 +286,8 @@ def push(self, data):
     self.head = new_node       # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -381,8 +381,8 @@ def append(self, data):
         temp_node.next = new_node          # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
-$f(n) = O(n)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$$
+$$f(n) = O(n)$$
 
 
 ### Complexity Explanation
@@ -511,8 +511,8 @@ def append_constant(self, data):
         self.tail = new_node       # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
-$f(n) = O(1)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$$
+$$f(n) = O(1)$$
 
 ### Complexity Explanation
 
@@ -617,8 +617,8 @@ def print_list_from_head(self):
             current_node = current_node.next  # O(1)
 ```
 
-$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
-$f(n) = O(n)$
+$$f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$$
+$$f(n) = O(n)$$
 
 ### Complexity Explanation
 
