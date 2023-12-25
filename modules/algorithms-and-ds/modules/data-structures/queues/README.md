@@ -2,21 +2,80 @@
 
 ## Contents
 
- - **Basics:**
-   - **Simple Queue:**
-     - [Intro to Queue](#intro-to-queues)
-   - **Circular Queue:**
-     - [Intro to Circular Queue](#intro-to-circular-queue)
-   - **Priority Queue:**
-   - **Deque (Double-Ended Queue):**
-     - [Intro to Deque (Double Ended Queue)](#intro-to-deque)
- - **Classes Implementations:**
-   - **Simple Queue:**
-     - [Queue class using Python Built-in Functions (insert/pop)](#queue-class-using-python-builtin-functions)
-   - **Circular Queue:**
-   - **Priority Queue:**
-   - **Deque (Double-Ended Queue):**
+ - **Simple Queue:**
+   - [Intro to Simple Queue](#intro-to-simples-queues)
+   - **Static:**
+   - **Dynamic:**
+ - **Circular Queue:**
+   - [Intro to Circular Queue](#intro-to-circular-queue)
+ - **Priority Queue:**
+   - [Intro to Priority Queue](#intro-to-priority-queue)
+ - **Deque (Double-Ended Queue):**
+   - [Intro to Deque (Double Ended Queue)](#intro-to-deque)
+ - **Queues using Builtin Functions:**
+   - [Queue class using Python Built-in Functions (insert/pop)](#queue-class-using-python-builtin-functions)
  - [REFERENCES](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,18 +117,23 @@
 
 ---
 
-<!--- ( Basics/Simple Queue ) --->
+<!--- ( Simple Queue ) --->
 
-<div id="intro-to-queues"></div>
+<div id="intro-to-simples-queues"></div>
 
-## Intro to Queue
+## Intro to Simple Queue
 
-A **Queue** is an ordered collection of items where:
+> A simple Queue is a queue that has just one place to **add (rear)** and one place to **remove (front)**.
 
- - The addition of new items *happens at one end (ocorre em uma extremidade)*, called the **“rear (traseira)”**;
- - And the removal of existing items occurs at the *other end*, commonly called the **“front (frente)”**.
+ - **Add (rear):**
+   - The **addition of new items** *happens at one end (ocorre em uma extremidade)*, called the **“rear (traseira)”**;
+ - **Remove (front):**
+   - The **removal of existing items** occurs at the *other end*, commonly called the **“front (frente)”**.
 
-This make sense because the queue follows the **FIFO (First In, First Out / It is also known as first-come first-served)** principle. For example, see the example below:
+**NOTE:**  
+This make sense because a Queue follows the **FIFO (First In, First Out / It is also known as first-come first-served)** principle.
+
+For example, see the example below:
 
 ![img](images/queue-01.png)  
 
@@ -86,7 +150,7 @@ The **queue** *Abstract Data Type (ADT)* is defined by the following structure a
  - **size():**
    - Returns the number of items in the queue. It needs no parameters and returns an integer.
 
-Let's see some **Deque** *Abstract Data Type (ADT)* examples:
+For example:
 
 | Queue Operation  | Queue Contents     | Return Value |
 |------------------|--------------------|--------------|
@@ -140,7 +204,67 @@ Let's see some **Deque** *Abstract Data Type (ADT)* examples:
 
 
 
-<!--- ( Basics/Circular Queue ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Circular Queue ) --->
 
 ---
 
@@ -152,13 +276,6 @@ Let's see some **Deque** *Abstract Data Type (ADT)* examples:
 
 To solve that we can make the **front** and **rear** pointers *wrap around* to the beginning of the array. The result is a **Circular Queue (sometimes called a ring buffer)**.
 
-For example, see the image below:
-
-![img](images/circular-queue-01.jpg)  
-
-Let's see a visual approach to understand more easily:
-
-![img](images/circular-queue-gif-01.gif)
 
 
 
@@ -199,7 +316,266 @@ Let's see a visual approach to understand more easily:
 
 
 
-<!--- ( Basics/Deque (Double-Ended Queue) ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Priority Queue ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Deque (Double-Ended Queue) ) --->
 
 ---
 
@@ -290,7 +666,67 @@ The **Deque** *Abstract Data Type (ADT)* is defined by the following structure a
 
 
 
-<!--- ( Classes Implementations ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Queues using Builtin Functions ) --->
 
 ---
 
@@ -404,6 +840,66 @@ The Queue is empty? False
 Queue size: 4
 Queue: [30, 'C', 10, 'B']
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
