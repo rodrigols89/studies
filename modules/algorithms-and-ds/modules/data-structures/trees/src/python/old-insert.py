@@ -1,31 +1,6 @@
-##########################################################################
-# Rodrigo Leite da Silva - drigols                                       #
-# Last update: 26/12/2023                                                #
-##########################################################################
-
-
-class Node:
-    def __init__(self, key):
-        self.leftChild = None
-        self.rightChild = None
-        self.key = key
-
-
-class BinarySearchTree(Node):
-    def __init__(self):
-        self.root = None
-        self.size = 0
-
-    def isEmpty(self):
-        return self.root is None
-
-    def __len__(self):
-        return self.size
-
     def insert(self, key, approach="recursive"):
         if self.isEmpty():
             self.root = Node(key)
-            self.size += 1
         else:
             if approach == "recursive":
                 self._insert_recursive(self.root, key)
@@ -33,7 +8,6 @@ class BinarySearchTree(Node):
                 self._insert_iterative(self.root, key)
             else:
                 print("Invalid approach. Please use 'recursive' or 'iterative'.")
-            self.size += 1
 
     def _insert_recursive(self, current_node, key):
         if key <= current_node.key:
@@ -62,35 +36,49 @@ class BinarySearchTree(Node):
                 else:
                     current_node = current_node.rightChild
 
+""" 
+See that:
+
+ - We have two methods `"insert() public"` and `"_insert_recursive() private"`:
+ - `insert():`
+   - This method first checks if the *Binary Search Tree* is empty:
+     - If the Tree is empty, it creates a new Node (value/key) as root.
+   - If it's not empty, it calls the private method `"_insert_recursive()"`:
+     - That's, we need to insert a new value (key) into the Tree with existing values.
+ - `_insert_recursive() - This is the real method to insert a new value into the not empty Tree:`
+   - This method receives the following arguments:
+     - **current_node:** The first time, the "current_node" will be the "root" and loop Node by Node when necessary.
+     - **key:** The "key" is the value to be inserted at the new Node.
+   - Inside of the `_insert_recursive()` method the first thing to check is the side to move, left or right:
+     - `"if key <= current_node.key"`:
+       - If the *"key"* `is less or equal` to *"the key of the current_node"*, we move to the left subtree.
+       - **NOTE:** This approach allows the insertion of *duplicate values*. If you don't wish allow change `"<="` to `"<"`.
+     - `"elif key >= current_node.key"`:
+       - If the *"key"* `is greater or equal` to *"the key of the current_node"*, we move to the right subtree.
+       - **NOTE:** This approach allows the insertion of *duplicate values*. If you don't wish allow change `">="` to `">"`.
+   - Next, we need to check if the *"current_node.left/right"* are empty (`"if current_node.leftChild is None" | "if current_node.rightChild is None"`):
+     - If the *"current_node.left/right"* `is empty (None)`, then we must insert the new Node (value/key) here.
+     - If the *"current_node.left/right"* `is not empty`, then we need to move recursively to the next Node (left or right):
+       - `"self._insert_recursive(current_node.leftChild, key)"`
+       - `"self._insert_recursive(current_node.rightChild, key)"`
+       - **NOTE:** See that here we pass the *"current_node.left/right"* to the `_insert_recursive()` method, not the *root* Node.
+       - **Base case (condiction to stop the recursion):**
+         - The new Node (value/key) was created.
+         - When the new Node (value/key) is created we don't call the `_insert_recursive()` method again recursively.
+"""
 
 
+##### Traverse ##################
 
-
-
-
-
-
-
-
-
-
-
-    # Veja que o método traverse pega o resultado de cada função
-    # e retorna. Ou sejam ele não envia para o usuário a função e sim
-    # o resultado da função.
     def traverse(self, approach="inorder"):
         if approach == "preorder":
-            result = self.preorder()
-            return result
+            self.preorder()
         elif approach == "inorder":
-            result = self.inorder()
-            return result
+            self.inorder()
         elif approach == "postorder":
-            result = self.postorder()
-            return result
+            self.postorder()
         else:
             print("Invalid approach. Please use 'preorder', 'inorder', or 'postorder'.")
-            return
 
     def preorder(self):
         if self.isEmpty():
