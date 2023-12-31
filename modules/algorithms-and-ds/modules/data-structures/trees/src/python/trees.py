@@ -1,6 +1,6 @@
 ##########################################################################
 # Rodrigo Leite da Silva - drigols                                       #
-# Last update: 26/12/2023                                                #
+# Last update: 31/12/2023                                                #
 ##########################################################################
 
 
@@ -62,43 +62,26 @@ class BinarySearchTree(Node):
                 else:
                     current_node = current_node.rightChild
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # Veja que o método traverse pega o resultado de cada função
-    # e retorna. Ou sejam ele não envia para o usuário a função e sim
-    # o resultado da função.
     def traverse(self, approach="inorder"):
-        if approach == "preorder":
-            result = self.preorder()
-            return result
-        elif approach == "inorder":
-            result = self.inorder()
-            return result
-        elif approach == "postorder":
-            result = self.postorder()
-            return result
-        else:
-            print("Invalid approach. Please use 'preorder', 'inorder', or 'postorder'.")
-            return
-
-    def preorder(self):
         if self.isEmpty():
             print("Tree is empty.")
             return
-        result = []
-        self._preorder_recursive(self.root, result)
-        return result
+        else:
+            result = []
+            if approach == "preorder":
+                self._preorder_recursive(self.root, result)
+                return result
+            elif approach == "inorder":
+                self._inorder_recursive(self.root, result)
+                return result
+            elif approach == "postorder":
+                self._postorder_recursive(self.root, result)
+                return result
+            else:
+                print(
+                    "Invalid approach. Please use 'preorder', 'inorder', or 'postorder'."
+                )
+                return
 
     def _preorder_recursive(self, current_node, result):
         if current_node:
@@ -106,27 +89,11 @@ class BinarySearchTree(Node):
             self._preorder_recursive(current_node.leftChild, result)
             self._preorder_recursive(current_node.rightChild, result)
 
-    def inorder(self):
-        if self.isEmpty():
-            print("Tree is empty.")
-            return
-        result = []
-        self._inorder_recursive(self.root, result)
-        return result
-
     def _inorder_recursive(self, current_node, result):
         if current_node:
             self._inorder_recursive(current_node.leftChild, result)
             result.append(current_node.key)
             self._inorder_recursive(current_node.rightChild, result)
-
-    def postorder(self):
-        if self.isEmpty():
-            print("Tree is empty.")
-            return
-        result = []
-        self._postorder_recursive(self.root, result)
-        return result
 
     def _postorder_recursive(self, current_node, result):
         if current_node:

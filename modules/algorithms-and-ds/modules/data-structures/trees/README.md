@@ -18,13 +18,21 @@
    - **Special Types of Trees:**
      - [Binary Search Tree](#intro-to-binary-search-tree)
        - [Useful methods len(), isEmpty() | O(1)](#bst-useful-methods)
-       - [Inserting in a Binary Search Tree (Recursive Approach)](#insert-bst-recursive-approach)
-       - [Inserting in a Binary Search Tree (Iterative Approach)](#insert-bst-iterative-approach)
+       - [Inserting in a Binary Search Tree | O(log n), O(n)](#insert-bst-recursive-iterative-approach)
      - AVL Tree
      - Red Black Tree
      - B Tree
      - B+ Tree
      - Segment Tree
+ - [**Tree Traversal Techniques:**](#ttt)
+   - [**Depth First Search (DFS):**](#depth-first-search)
+     - [Preorder Traversal | O(n)](#preorder-traversal)
+     - [Inorder Traversal | O(n)](#inorder-traversal)
+     - [Postorder Traversal | O(n)](#postorder-traversal)
+   - **Breadth-First Search (BFS):**
+     - Level Order Traversal
+ - **Tips & Tricks:**
+   - [Recursive vs. Iterative approach in Trees](#recursive-vs-iterative)
  - [**REFERENCES**](#ref)
 
 
@@ -680,7 +688,7 @@ To understand more easily, see the **Binary Tree** below:
 
 
 
-<!--- ( Types of Trees/BSpecial Types of Trees ) --->
+<!--- ( Types of Trees/Special Types of Trees ) --->
 
 ---
 
@@ -733,7 +741,7 @@ def __len__(self):
     return self.size  # O(1)
 ```
 
-### Complexity Explanation
+#### Complexity Explanation
 
  - **Time Complexity: O(1)**
    - The *Time Complexity* of both methods is **O(1)** because they both have constant time complexity. This is because they both only involve simple operations such as checking if a variable is None or returning a variable, which can be done in constant time.
@@ -762,15 +770,15 @@ Binary Search Tree size: 0
 
 ---
 
-<div id="insert-bst-recursive-approach"></div>
+<div id="insert-bst-recursive-iterative-approach"></div>
 
-## Inserting in a Binary Search Tree (Recursive Approach)
+## Inserting in a Binary Search Tree | O(log n), O(n)
 
-> A **new key** is always inserted at the *leaf (folha)* by maintaining the *property* of the Binary Search Tree.
+> A **new key** is always inserted at the *leaf (folha)* of the Binary by maintaining the *property* of the *Binary Search Tree*.
 
 ![img](images/inserting-bst.gif)  
 
-Before creating a method to insert a new Node using a *recursive approach*, first let's create the useful method **insert()**:
+Before creating methods to *insert* a new Node first, let's create the useful method **insert()**:
 
 **Python:** [trees.py](src/python/trees.py)
 ```python
@@ -789,7 +797,7 @@ def insert(self, key, approach="recursive"):
 ```
 
  - **Time and Space Complexity:**
-   - **NOTE:** For now, don't let's pay attention to Complexities. Just the method goals.
+   - Here, the focus is method goals, not Complexities.
  - **Code Explanation:**
    - `if self.isEmpty():`
      - The focus here is to check if the Binary Search Tree is empty. If is empty, we just create a new Node and set it as the *"BST"* root.
@@ -803,7 +811,10 @@ def insert(self, key, approach="recursive"):
          - That is, the *recursive* or *iterative* methods *do not need to worry about (não precisam se preocupar)* where to start to pass Node by Node because we've already given them the starting point (self.root).
          - **NOTE:** If we hadn't passed the root/head of the tree here, anyone calling this method would have to pass the starting point. E.g. `insert(root, data)`.
      - `self.size += 1`
-       - As the "_insert_recursive" and "_insert_iterative" methods will iterate Node by Node in a *recursive* or loop way we cannot increment the number of Nodes in the Tree from them. It is interesting to increase this at the end of the else() block.
+       - As the "_insert_recursive" and "_insert_iterative" methods will iterate Node by Node in a *recursive* or *loop* way we cannot increment the number of Nodes in the Tree from them. It is interesting to increase this at the end of the else() block.
+   - **NOTE:** Finally, pay attention that this method just calls the methods *"_insert_recursive"* or *"_insert_iterative"* and does not return nothing.
+
+### Recurvive Approach
 
 Now, let's see how to insert a new node (data/key) in the ***Binary Search Tree*** using a *recursive approach*
 
@@ -824,34 +835,19 @@ def _insert_recursive(self, current_node, key):
 
 $f(n) = O(1) + O(1) + O(1) + O(h) + O(1) + O(1) + O(1) + O(h)$$
 
-### Complexity Explanation
+#### Complexity Explanation
 
-The time complexity of this recursive insertion function is O(log n) in the average case and O(n) in the worst case, where n is the number of nodes in the tree. This is because in a balanced binary search tree, the height of the tree is logarithmic in the number of nodes, so the function will make approximately log n recursive calls. However, in the worst case where the tree is completely unbalanced, the height of the tree is equal to the number of nodes, resulting in O(n) time complexity.
+ - **Time Complexity:**
+   - **Degenerate (or pathological) Binary Search Tree: O(n)**
+     - The *Time Complexity* if the *BST* is degenerate is **O(n)** in the *Worst Case* scenario, where **"n"** is the total number of nodes in the tree. This happens when the tree degenerates into a linear list, meaning each node has only one child (all to the left or all to the right), and the insertion occurs at the end of the list.
+   - **Balanced Binary Search Tree: O(log n)**
+     - However, if the tree is *balanced*, the *Time Complexity* will be **O(log n)**, where *"log n"* is the logarithm base 2 of the total number of nodes in the tree.
+     - This is because in balanced trees, such as balanced binary search trees (e.g., an AVL tree), the depth of the tree is limited by the logarithm of the number of nodes in the tree.
+ - **Space Complexity: O(h)**
+   - The *Space Complexity* of this method is **O(h)** as well, due to the recursive calls. Each recursive call adds a new frame to the call stack, and the maximum depth of the call stack is equal to the height of the tree.
 
-The space complexity of this function is O(log n) in the average case and O(n) in the worst case. This is because the function uses the call stack to store the recursive calls, and the maximum depth of the call stack is equal to the height of the tree. In a balanced binary search tree, the height is logarithmic in the number of nodes, so the space complexity is O(log n). However, in the worst case where the tree is completely unbalanced, the height is equal to the number of nodes, resulting in O(n) space complexity.
+#### Code Explanation
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-See that:
-
- - We have two methods `"insert() public"` and `"_insert_recursive() private"`:
- - `insert():`
-   - This method first checks if the *Binary Search Tree* is empty:
-     - If the Tree is empty, it creates a new Node (value/key) as root.
-   - If it's not empty, it calls the private method `"_insert_recursive()"`:
-     - That's, we need to insert a new value (key) into the Tree with existing values.
  - `_insert_recursive() - This is the real method to insert a new value into the not empty Tree:`
    - This method receives the following arguments:
      - **current_node:** The first time, the "current_node" will be the "root" and loop Node by Node when necessary.
@@ -878,75 +874,197 @@ Now, let's test in the practice:
 ```python
 from trees import BinarySearchTree
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     bst = BinarySearchTree()
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
 
     bst.insert(25, approach="recursive")
-    bst.insert(20, approach="recursive")
-    bst.insert(36, approach="recursive")
-    bst.insert(10, approach="recursive")
-    bst.insert(30, approach="recursive")
-    bst.insert(40, approach="recursive")
-    bst.insert(22, approach="recursive")
-    bst.insert(28, approach="recursive")
-    bst.insert(5, approach="recursive")
-    bst.insert(1, approach="recursive")
-    bst.insert(8, approach="recursive")
-    bst.insert(12, approach="recursive")
-    bst.insert(30, approach="recursive")
-    bst.insert(15, approach="recursive")
-    bst.insert(36, approach="recursive")
-    bst.insert(48, approach="recursive")
-    bst.insert(36, approach="recursive")
-    bst.insert(50, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
 
-    result = bst.inorder()
-    print(result)
+    bst.insert(20, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(10, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(30, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(40, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(22, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(28, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(5, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(1, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(8, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(12, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(30, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(15, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(48, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(50, approach="recursive")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    preorder_result = bst.traverse(approach="preorder")
+    print(f"Preorder: {preorder_result}")
+
+    inorder_result = bst.traverse()  # default approach is "inorder".
+    print(f"Inorder: {inorder_result}")
+
+    postorder_result = bst.traverse(approach="postorder")
+    print(f"Postorder: {postorder_result}")
 ```
 
 **OUTPUT:**
 ```bash
-[1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
+The Binary Search Tree is empty? True
+Binary Search Tree size: 0
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 1
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 2
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 3
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 4
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 5
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 6
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 7
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 8
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 9
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 10
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 11
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 12
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 13
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 14
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 15
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 16
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 17
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 18
+
+Preorder: [25, 20, 10, 5, 1, 8, 12, 15, 22, 36, 30, 28, 30, 36, 36, 40, 48, 50]
+Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
+Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ```
 
----
+### Iterative Approach
 
-<div id="insert-bst-iterative-approach"></div>
-
-## Inserting in a Binary Search Tree (Iterative Approach)
-
-> A **new key** is always inserted at the *leaf (folha)* by maintaining the *property* of the Binary Search Tree.
-
-![img](images/inserting-bst.gif)  
-
-For example, let's see how to insert a new node (data/key) in the ***Binary Search Tree*** using a *Iterative Approach*:
+Now, let's see how to insert a new node (data/key) in the ***Binary Search Tree*** using a *Iterative Approach*:
 
 [trees.py](src/python/trees.py)
 ```python
 def _insert_iterative(self, current_node, key):
-    while True:
-        if key <= current_node.key:
-            if current_node.leftChild is None:
-                current_node.leftChild = Node(key)
-                break
+    while True:                                         # O(h)
+        if key <= current_node.key:                     # O(1)
+            if current_node.leftChild is None:          # O(1)
+                current_node.leftChild = Node(key)      # O(1)
+                break                                   # O(1)
             else:
-                current_node = current_node.leftChild
-        elif key >= current_node.key:
-            if current_node.rightChild is None:
-                current_node.rightChild = Node(key)
-                break
+                current_node = current_node.leftChild   # O(1)
+        elif key >= current_node.key:                   # O(1)
+            if current_node.rightChild is None:         # O(1)
+                current_node.rightChild = Node(key)     # O(1)
+                break                                   # O(1)
             else:
-                current_node = current_node.rightChild
+                current_node = current_node.rightChild  # O(1)
 ```
 
-See that:
+$f(n) = O(h) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1) + O(1)$
 
- - **Again we have two function:**
-   - `inser():` To check if the *Binary Search Tree* is empty and select the appropriate approach (recursive or iterative).
-   - `_insert_iterative():` To insert a new value (key) into the Tree with existing values.
+#### Complexity Explanation
+
+ - **Time Complexity:**
+   - **Degenerate (or pathological) Binary Search Tree: O(n)**
+     - The *Time Complexity* if the *BST* is degenerate is **O(n)** in the *Worst Case* scenario, where **"n"** is the total number of nodes in the tree. This happens when the tree degenerates into a linear list, meaning each node has only one child (all to the left or all to the right), and the insertion occurs at the end of the list.
+   - **Balanced Binary Search Tree: O(log n)**
+     - However, if the tree is *balanced*, the *Time Complexity* will be **O(log n)**, where *"log n"* is the logarithm base 2 of the total number of nodes in the tree.
+     - This is because in balanced trees, such as balanced binary search trees (e.g., an AVL tree), the depth of the tree is limited by the logarithm of the number of nodes in the tree.
+ - **Space Complexity: O(h)**
+   - The *Space Complexity* of this function is **O(1)** because we are not using any additional data structures that grow with the input size. We are only using a constant amount of space to store the current_node and key variables.
+
+#### Code Explanation
+
  - `_insert_iterative():`
-   - Inside the `_insert_iterative() function` we have a `loop "while" (infinite loop)` to through (percorrer) the Tree:
+   - Inside the `_insert_iterative() method` we have a `loop "while" (infinite loop)` to through (percorrer) the Tree:
      - Inside the `"while" loop`:
        - `"if key <= current_node.key"`:
          - If the *"key"* `is less or equal` to *"the key of the current_node"*, we move to the left subtree.
@@ -965,36 +1083,156 @@ Now, let's test in the practice:
 ```python
 from trees import BinarySearchTree
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     bst = BinarySearchTree()
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
 
     bst.insert(25, approach="iterative")
-    bst.insert(20, approach="iterative")
-    bst.insert(36, approach="iterative")
-    bst.insert(10, approach="iterative")
-    bst.insert(30, approach="iterative")
-    bst.insert(40, approach="iterative")
-    bst.insert(22, approach="iterative")
-    bst.insert(28, approach="iterative")
-    bst.insert(5, approach="iterative")
-    bst.insert(1, approach="iterative")
-    bst.insert(8, approach="iterative")
-    bst.insert(12, approach="iterative")
-    bst.insert(30, approach="iterative")
-    bst.insert(15, approach="iterative")
-    bst.insert(36, approach="iterative")
-    bst.insert(48, approach="iterative")
-    bst.insert(36, approach="iterative")
-    bst.insert(50, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
 
-    result = bst.inorder()
-    print(result)
+    bst.insert(20, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(10, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(30, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(40, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(22, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(28, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(5, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(1, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(8, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(12, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(30, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(15, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(48, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(36, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    bst.insert(50, approach="iterative")
+    print(f"The Binary Search Tree is empty? {bst.isEmpty()}")
+    print(f"Binary Search Tree size: {bst.__len__()}\n")
+
+    preorder_result = bst.traverse(approach="preorder")
+    print(f"Preorder: {preorder_result}")
+
+    inorder_result = bst.traverse()  # default approach is "inorder".
+    print(f"Inorder: {inorder_result}")
+
+    postorder_result = bst.traverse(approach="postorder")
+    print(f"Postorder: {postorder_result}")
 ```
 
 **OUTPUT:**
 ```bash
-[1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
+The Binary Search Tree is empty? True
+Binary Search Tree size: 0
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 1
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 2
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 3
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 4
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 5
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 6
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 7
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 8
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 9
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 10
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 11
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 12
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 13
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 14
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 15
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 16
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 17
+
+The Binary Search Tree is empty? False
+Binary Search Tree size: 18
+
+Preorder: [25, 20, 10, 5, 1, 8, 12, 15, 22, 36, 30, 28, 30, 36, 36, 40, 48, 50]
+Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
+Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ```
 
 
@@ -1096,30 +1334,7 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Binary Tree/Basic operations on Binary Tree/Traversing ) --->
+<!--- ( Tree Traversal Techniques ) --->
 
 ---
 
@@ -1144,7 +1359,6 @@ To remember the **Depth First Search (DFS)** approaches see that:
  - **Preorder -** The *current (root)* is the *first*.
  - **Inorder -** The *current (root)* is the *second*.
  - **Postorder -** The *current (root)* is the *third*.
- - **NOTE:** The "left" is always the first node visited before the "right" node.
 
 ---
 
@@ -1169,7 +1383,7 @@ We have two approaches to implementing the **Depth First Search (DFS)** Algorith
 
 <div id="preorder-traversal"></div>
 
-## Preorder Traversal (current-left-right)
+## Preorder Traversal | O(n)
 
 > This technique follows the **'CURRENT->LEFT->RIGHT'** policy.
 
@@ -1182,7 +1396,7 @@ To understand more easily, imagine we have the following *Tree*:
 ![img](images/tree-example-01.png)  
 
 **NOTE:**  
-If you pay attention you can see that the Tree has another subtrees:
+If you pay attention you can see that the *Tree* has another subtrees:
 
 ![img](images/tree-example-02.png)  
 
@@ -1200,42 +1414,75 @@ Until all nodes of the *Tree* are not visited:
 > **NOTE:**  
 > See that here we start from the root and next follow the **'CURRENT->LEFT->RIGHT'** policy.
 
+Before creating methods to *traverse* a *Tree* first, let's create the useful method **traverse()**:
+
+**Python:** [trees.py](src/python/trees.py)
+```python
+def traverse(self, approach="inorder"):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    else:
+        result = []
+        if approach == "preorder":
+            self._preorder_recursive(self.root, result)
+            return result
+        elif approach == "inorder":
+            self._inorder_recursive(self.root, result)
+            return result
+        elif approach == "postorder":
+            self._postorder_recursive(self.root, result)
+            return result
+        else:
+            print(
+                "Invalid approach. Please use 'preorder', 'inorder', or 'postorder'."
+            )
+            return
+```
+
+ - **Time and Space Complexity:**
+   - Here, the focus is method goals, not Complexities.
+ - **Code Explanation:**
+   - First, the method check if the *Tree* is empty.
+   - Next, if the list is not empty (else block) we create an empty list `"result = []"`:
+     - It is interesting to create the list before selecting the approach to avoid repeating the same code.
+   - Next, we need to select the method *(preorder, inorder, or postorder)* to be used.
+   - The selected method will append() the Node values following your approach.
+   - Finally, we return the "result" variable (list).
+
+### Recurvive Approach
+
 Now, let's see how to implement the **preorder** method using **Recursive approach** to do this:
 
 [trees.py](src/python/trees.py)
 ```python
-def preorder(self):
-    if self.isEmpty():
-        print("Tree is empty.")
-        return
-    result = []
-    self._preorder_recursive(self.root, result)
-    return result
-
 def _preorder_recursive(self, current_node, result):
-    if current_node:
-        result.append(current_node.key)
-        self._preorder_recursive(current_node.leftChild, result)
-        self._preorder_recursive(current_node.rightChild, result)
+    if current_node:                                               # O(1)
+        result.append(current_node.key)                            # O(1)
+        self._preorder_recursive(current_node.leftChild, result)   # O(n)
+        self._preorder_recursive(current_node.rightChild, result)  # O(n)
 ```
 
-See that:
+$f(n) = O(1) + O(1) + O(n) + O(n)$
 
- - We have two methods `preorder()` and `_preorder_recursive()`:
- - `preorder():`
-   - First this function checks if the Tree is empty.
-   - If the Tree is not empty, then:
-     - Create an empty list.
-     - Next, call the `_preorder_recursive()` function and pass as argument the Tree root and the empty list.
-     - Finally, return the recursion result as a list.
- - `_preorder_recursive():`
-   - First, the `_preorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
-   - If the current_node is not empty (None):
-     - Append (add at the end of the list) the value of the current_node to the list (result).
-     - Call recursively the `_preorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
-       - That's, append (add at the end of the list) the current value/key and move to the left subtree recursively.
-     - Call recursively the `_preorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
-       - That's, append (add at the end of the list) the current value/key and move to the right subtree recursively.
+#### Complexity Explanation
+
+ - **Time Complexity: O(n)**
+   - The *Time Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function visits each node exactly once.
+ - **Space Complexity: O(n)**
+   - The *Space Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function uses recursion, and each recursive call adds a new frame to the call stack. In the worst case, the call stack can have a depth of **"n"**, resulting in **O(n)** *Space complexity*.
+
+#### Code Explanation
+
+ - `if current_node:`
+   - Checks if *current_node* is not *None* (empty). If it's not empty, it means there's a node to process.
+ - If the current_node is not empty (None) we follow the preorder policy: **'CURRENT->LEFT->RIGHT'**:
+   - `result.append(current_node.key)`
+     - Appends the key of the *current_node* to the *"result"* list, storing it in the preorder sequence.
+   - `self._preorder_recursive(current_node.leftChild, result)`
+     - Recursively calls `_preorder_recursive` on the *leftChild* of the *current_node*, traversing the *left subtree* first.
+   - `self._preorder_recursive(current_node.rightChild, result)`
+     - Recursively calls `_preorder_recursive` on the *rightChild* of the *current_node*, traversing the *right subtree* after the left subtree.
 
 Now, let's test in the practice:
 
@@ -1243,7 +1490,6 @@ Now, let's test in the practice:
 from trees import BinarySearchTree
 
 if __name__ == "__main__":
-
     bst = BinarySearchTree()
 
     bst.insert(25, approach="iterative")
@@ -1265,7 +1511,8 @@ if __name__ == "__main__":
     bst.insert(36, approach="iterative")
     bst.insert(50, approach="iterative")
 
-    print("Preorder:", bst.preorder())
+    preorder_result = bst.traverse(approach="preorder")
+    print(f"Preorder: {preorder_result}")
 ```
 
 **OUTPUT:**
@@ -1277,7 +1524,7 @@ Preorder: [25, 20, 10, 5, 1, 8, 12, 15, 22, 36, 30, 28, 30, 36, 36, 40, 48, 50]
 
 <div id="inorder-traversal"></div>
 
-## Inorder Traversal (left-current-right)
+## Inorder Traversal | O(n)
 
 > This technique follows the **'LEFT->CURRENT->RIGHT'** policy.
 
@@ -1308,42 +1555,75 @@ Until all nodes of the *Tree* are not visited:
 > **NOTE:**  
 > See that here we start from the last left subtree (two sides) following the **'LEFT->CURRENT->RIGHT'** policy.
 
+Before creating methods to *traverse* a *Tree* first, let's create the useful method **traverse()**:
+
+**Python:** [trees.py](src/python/trees.py)
+```python
+def traverse(self, approach="inorder"):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    else:
+        result = []
+        if approach == "preorder":
+            self._preorder_recursive(self.root, result)
+            return result
+        elif approach == "inorder":
+            self._inorder_recursive(self.root, result)
+            return result
+        elif approach == "postorder":
+            self._postorder_recursive(self.root, result)
+            return result
+        else:
+            print(
+                "Invalid approach. Please use 'preorder', 'inorder', or 'postorder'."
+            )
+            return
+```
+
+ - **Time and Space Complexity:**
+   - Here, the focus is method goals, not Complexities.
+ - **Code Explanation:**
+   - First, the method check if the *Tree* is empty.
+   - Next, if the list is not empty (else block) we create an empty list `"result = []"`:
+     - It is interesting to create the list before selecting the approach to avoid repeating the same code.
+   - Next, we need to select the method *(preorder, inorder, or postorder)* to be used.
+   - The selected method will append() the Node values following your approach.
+   - Finally, we return the "result" variable (list).
+
+### Recurvive Approach
+
 Now, let's see how to implement the **inorder** method using **Recursive approach** to do this:
 
 [trees.py](src/python/trees.py)
 ```python
-def inorder(self):
-    if self.isEmpty():
-        print("Tree is empty.")
-        return
-    result = []
-    self._inorder_recursive(self.root, result)
-    return result
-
 def _inorder_recursive(self, current_node, result):
-    if current_node:
-        self._inorder_recursive(current_node.leftChild, result)
-        result.append(current_node.key)
-        self._inorder_recursive(current_node.rightChild, result)
+    if current_node:                                              # O(1)
+        self._inorder_recursive(current_node.leftChild, result)   # O(n)
+        result.append(current_node.key)                           # O(1)
+        self._inorder_recursive(current_node.rightChild, result)  # O(n)
 ```
 
-See that:
+$f(n) = O(1) + O(n) + O(1) + O(n)$
 
- - We have two methods `inorder()` and `_inorder_recursive()`:
- - `inorder():`
-   - First this function checks if the Tree is empty.
-   - If the Tree is not empty, then:
-     - Create an empty list.
-     - Next, call the `_inorder_recursive()` function and pass as argument the Tree root and the empty list.
-     - Finally, return the recursion result as a list.
- - `_inorder_recursive():`
-   - First, the `_inorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
-   - If the current_node is not empty (None):
-     - Call recursively the `_inorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
-       - That's, move to the left subtree recursively.
-     - Append (add at the end of the list) the value of the current_node to the list (result).
-     - Call recursively the `_inorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
-       - That's, append (add at the end of the list) the current value/key and move to the right subtree recursively.
+#### Complexity Explanation
+
+ - **Time Complexity: O(n)**
+   - The *Time Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function visits each node exactly once in an inorder traversal.
+ - **Space Complexity: O(n)**
+   - The *Space Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function uses recursion, and each recursive call adds a new frame to the call stack. In the worst case, the call stack can have a depth of **"n"**, resulting in **O(n)** space complexity.
+
+#### Code Explanation
+
+ - `if current_node:`
+   - Checks if *current_node* is not *None* (empty). If it's not empty, it means there's a node to process.
+ - If the current_node is not empty (None) we follow the inorder policy: **'LEFT->CURRENT->RIGHT'**:
+   - `self._inorder_recursive(current_node.leftChild, result)`
+     - Recursively calls `_inorder_recursive` on the *leftChild* of the *current_node*, traversing the left subtree first. This ensures the *inorder* traversal pattern.
+   - `result.append(current_node.key)`
+     - Appends the key of the *current_node* to the result list, storing it in the *inorder* sequence.
+   - `self._inorder_recursive(current_node.rightChild, result)`
+     - Recursively calls `_inorder_recursive` on the *rightChild* of the *current_node*, traversing the right subtree after the left subtree and the current node, following the *inorder* pattern.
 
 Now, let's test in the practice:
 
@@ -1351,7 +1631,6 @@ Now, let's test in the practice:
 from trees import BinarySearchTree
 
 if __name__ == "__main__":
-
     bst = BinarySearchTree()
 
     bst.insert(25, approach="iterative")
@@ -1373,7 +1652,8 @@ if __name__ == "__main__":
     bst.insert(36, approach="iterative")
     bst.insert(50, approach="iterative")
 
-    print("Inorder:", bst.inorder())
+    inorder_result = bst.traverse()  # Default approach is "inorder".
+    print(f"Inorder: {inorder_result}")
 ```
 
 **OUTPUT:**
@@ -1385,7 +1665,7 @@ Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
 
 <div id="postorder-traversal"></div>
 
-## Postorder Traversal (left-right-current)
+## Postorder Traversal | O(n)
 
 > This technique follows the **'LEFT->RIGHT->CURRENT'** policy.
 
@@ -1417,42 +1697,75 @@ Until all nodes of the *Tree* are not visited:
 > - See that here we start from the last left Node of the Tree, then follow the **'LEFT->RIGHT->CURRENT'** policy.
 > - Start from the last left Node of the Tree because is the last left Node of all the Tree and all the Tree follow the **'LEFT->RIGHT->CURRENT'** policy.
 
+Before creating methods to *traverse* a *Tree* first, let's create the useful method **traverse()**:
+
+**Python:** [trees.py](src/python/trees.py)
+```python
+def traverse(self, approach="inorder"):
+    if self.isEmpty():
+        print("Tree is empty.")
+        return
+    else:
+        result = []
+        if approach == "preorder":
+            self._preorder_recursive(self.root, result)
+            return result
+        elif approach == "inorder":
+            self._inorder_recursive(self.root, result)
+            return result
+        elif approach == "postorder":
+            self._postorder_recursive(self.root, result)
+            return result
+        else:
+            print(
+                "Invalid approach. Please use 'preorder', 'inorder', or 'postorder'."
+            )
+            return
+```
+
+ - **Time and Space Complexity:**
+   - Here, the focus is method goals, not Complexities.
+ - **Code Explanation:**
+   - First, the method check if the *Tree* is empty.
+   - Next, if the list is not empty (else block) we create an empty list `"result = []"`:
+     - It is interesting to create the list before selecting the approach to avoid repeating the same code.
+   - Next, we need to select the method *(preorder, inorder, or postorder)* to be used.
+   - The selected method will append() the Node values following your approach.
+   - Finally, we return the "result" variable (list).
+
+### Recurvive Approach
+
 Now, let's see how to implement the **postorder** method using **Recursive approach** to do this:
 
 [trees.py](src/python/trees.py)
 ```python
-def postorder(self):
-    if self.isEmpty():
-        print("Tree is empty.")
-        return
-    result = []
-    self._postorder_recursive(self.root, result)
-    return result
-
 def _postorder_recursive(self, current_node, result):
-    if current_node:
-        self._postorder_recursive(current_node.leftChild, result)
-        self._postorder_recursive(current_node.rightChild, result)
-        result.append(current_node.key)
+    if current_node:                                                # O(1)
+        self._postorder_recursive(current_node.leftChild, result)   # O(n)
+        self._postorder_recursive(current_node.rightChild, result)  # O(n)
+        result.append(current_node.key)                             # O(1)
 ```
 
-See that:
+$f(n) = O(1) + O(n) + O(n) + O(1)$
 
- - We have two methods `postorder()` and `_postorder_recursive()`:
- - `postorder():`
-   - First this function checks if the Tree is empty.
-   - If the Tree is not empty, then:
-     - Create an empty list.
-     - Next, call the `_postorder_recursive()` function and pass as argument the Tree root and the empty list.
-     - Finally, return the recursion result as a list.
- - `_postorder_recursive():`
-   - First, the `_postorder_recursive()` function checks if the current_node is empty (We could ignore this check because we passed the root Node as the argument that was checked in the preorder() function):
-   - If the current_node is not empty (None):
-     - Call recursively the `_postorder_recursive()` function and pass as argument the left Node (current_node.leftChild) and the list (result):
-       - That's, move to the left subtree recursively.
-     - Call recursively the `_postorder_recursive()` function and pass as argument the right Node (current_node.rightChild) and the list (result):
-       - That's, move to the right subtree recursively.
-     - Append (add at the end of the list) the value of the current_node to the list (result).
+#### Complexity Explanation
+
+ - **Time Complexity: O(n)**
+   - The *Time Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function visits each node exactly once in a *postorder* traversal.
+ - **Space Complexity: O(n)**
+   - The *Space Complexity* of this function is **O(n)**, where **"n"** is the number of nodes in the tree. This is because the function uses recursion to traverse the tree, and each recursive call adds a new frame to the call stack. In the worst case, the call stack can have a depth of **"n"**, resulting in **O(n)** *Space Complexity*.
+
+#### Code Explanation
+
+ - `if current_node:`
+   - Checks if *current_node* is not *None* (empty). If it's not empty, it means there's a node to process.
+ - If the current_node is not empty (None) we follow the postorder policy: **'LEFT->RIGHT->CURRENT'**:
+   - `self._postorder_recursive(current_node.leftChild, result)`
+     - Recursively calls `_postorder_recursive` on the *leftChild* of the *current_node*, traversing the left subtree first, following the *postorder* pattern.
+   - `self._postorder_recursive(current_node.rightChild, result)`
+     - Recursively calls `_postorder_recursive` on the *rightChild* of the *current_node*, traversing the right subtree before the current node, adhering to the *postorder* pattern.
+   - `result.append(current_node.key)`
+     - Appends the key of the current_node to the result list, storing it in the postorder sequence, after both subtrees have been processed.
 
 Now, let's test in the practice:
 
@@ -1460,7 +1773,6 @@ Now, let's test in the practice:
 from trees import BinarySearchTree
 
 if __name__ == "__main__":
-
     bst = BinarySearchTree()
 
     bst.insert(25, approach="iterative")
@@ -1482,13 +1794,167 @@ if __name__ == "__main__":
     bst.insert(36, approach="iterative")
     bst.insert(50, approach="iterative")
 
-    print("Postorder:", bst.postorder())
+    postorder_result = bst.traverse(approach="postorder")
+    print(f"Postorder: {postorder_result}")
 ```
 
 **OUTPUT:**
 ```bash
 Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Tips & Tricks ) --->
+
+---
+
+<div id="recursive-vs-iterative"></div>
+
+## Recursive vs. Iterative approach in Trees
+
+### Recursive approach
+
+ - **Advantages:**
+   - **Clarity and Readability:**
+     - Recursive solutions are often more concise and easier to read. The function closely mirrors the natural structure of a binary search tree insertion, making it more intuitive for someone reading the code to understand.
+ - **Disadvantages:**
+   - **Stack Usage:**
+     - Recursive functions use the call stack, and in the case of deep or unbalanced trees, there is a risk of a stack overflow. However, for typical binary search tree use cases, this may not be a significant concern.
+     - *Potential for stack overflow:* Extremely deep trees or large datasets could exhaust the call stack, leading to errors.
+
+### Iterative approach
+
+ - **Advantages:**
+   - **Space Efficiency:**
+     - Iterative solutions typically use less memory compared to recursive solutions because they do not rely on the call stack. This can be advantageous in situations where memory usage is a critical concern.
+   - **No risk of Stack Overflow:**
+     - Eliminates the possibility of stack overflow errors, making it suitable for large trees or constrained memory.
+   - **Tail Call Optimization:**
+     - Some programming languages optimize tail-recursive calls, but this is not universally supported. In such languages, the iterative approach may be more memory-efficient.
+ - **Disadvantages:**
+   - **Code Complexity:**
+     - Iterative solutions, especially for tree-related operations, can sometimes be more verbose and less intuitive than their recursive counterparts. The use of a loop and explicit stack management may make the code harder to understand for some programmers.
+   - **Requires explicit stack management:**
+     - If needed, managing the stack manually can add complexity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1597,13 +2063,3 @@ Postorder: [1, 8, 5, 15, 12, 10, 22, 20, 30, 28, 36, 36, 30, 50, 48, 40, 36, 25]
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-
-
-     - [Tree Traversal Techniques:](#ttt)
-       - [Depth First Search (DFS):](#depth-first-search)
-         - [Preorder Traversal (current-left-right)](#preorder-traversal)
-         - [Inorder Traversal (left-current-right)](#inorder-traversal)
-         - [Postorder Traversal (left-right-current)](#postorder-traversal)
-       - Breadth-First Search (BFS):
-         - Level Order Traversal
