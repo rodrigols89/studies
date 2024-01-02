@@ -5,24 +5,134 @@
  - **Useful commands:**
    - [`git checkout <branch-name>` and `git checkout -b <new-branch>`](#checkout-b)
    - [git commit -a -m 'commit message'](#add-plus-commit)
- - **Tips & Tricks:**
-   - [Semantic Commit Messages](#semantic-commit-messages)
+ - [Semantic Commit Messages](#semantic-commit-messages)
+ - **Tags & Releases:**
+   - [Choosing project version](#project-version)
+   - **Tags:**
+     - [Intro to Tags](#intro-to-tags)
+     - [Create Tags](#create-tags)
+     - [Looking for the git tags (git tag)](#looking-tags)
+     - [Checking information about specific tags (git show `<tag>`)](#git-show-tag)
+     - [Publishing a tag](#push-tag)
+     - [LLVM (Tags)](https://github.com/llvm/llvm-project/tags)
+   - **Releases:**
+     - [Selenium (Releases)](https://github.com/SeleniumHQ/selenium/releases)
+     - [TensorFlow (Releases)](https://github.com/tensorflow/tensorflow/releases)
  - **Settings:**
    - [Configurando sua identidade (Username + Email)](#identity)
    - [Verificando suas configurações (git config --list)](#check)
-   - **Configurando uma chave GPG para assinar commits:**(#sign-commits)
-     - [Teoria Inicial](#gpg-theory)
-     - [Listando chaves GPG](#listing-gpg-keys)
-     - [Criando um par de chave GPG](#create-gpg-key)
-     - [Ativando assinatura de commits no cliente Git (git config --global commit.gpgsign true)](#active-sign-gitclient)
-     - [Adicionando o ID da chave GPG ao cliente Git](#add-gpg-key-to-gitclient)
-     - [Adicionando sua chave no GitHub](#add-key-to-github)
-     - [Salvando seu par de chaves](#save-gpg-keys)
-     - [Adicionando seu par de chaves a um computador novo](#add-key-newpc)
-     - [Assinando commits (git commit -S)](#git-commit-s)
-     - [Verificando se o commit foi assinato (--show-signature)](#show-signature)
-     - [Signing merges (git merge -S branch-name)](#git-merge-s)
+ - **Configuring a GPG key to sign commits::**
+   - [Teoria Inicial](#gpg-theory)
+   - [Listando chaves GPG](#listing-gpg-keys)
+   - [Criando um par de chave GPG](#create-gpg-key)
+   - [Ativando assinatura de commits no cliente Git (git config --global commit.gpgsign true)](#active-sign-gitclient)
+   - [Adicionando o ID da chave GPG ao cliente Git](#add-gpg-key-to-gitclient)
+   - [Adicionando sua chave no GitHub](#add-key-to-github)
+   - [Salvando seu par de chaves](#save-gpg-keys)
+   - [Adicionando seu par de chaves a um computador novo](#add-key-newpc)
+   - [Assinando commits (git commit -S)](#git-commit-s)
+   - [Verificando se o commit foi assinato (--show-signature)](#show-signature)
+   - [Signing merges (git merge -S branch-name)](#git-merge-s)
  - [**References**](#references)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Useful commands ) -->
 
@@ -104,7 +214,68 @@ git commit -a -m 'commit message'
 
 
 
-<!--- ( Tips & Tricks ) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Semantic Commit Messages ) -->
 
 ---
 
@@ -290,6 +461,344 @@ git commit -a -m 'commit message'
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Tags & Releases ) -->
+
+---
+
+<div id="project-version"></div>
+
+## Choosing project version
+
+To choose the project version we need to pay attention to some things. For example, see the code version below:
+
+[pyproject.toml](../pyproject.toml)
+```python
+version = "0.1.0"
+```
+
+That means:
+
+```python
+Major - 0
+Minor - 1
+Patch - 0
+```
+
+> All Software starts from version `"0.0.0"`:
+
+ - Always you have a *stable version* we increment a **"minor"** in the software:
+   - Then we continue to increment the patch until stays in another stable version.
+
+For example:
+
+```bash
+Major - 0
+Minor - 1
+Patch - 0 > 1 > 2 > 3 > ... > Until another software stable version
+
+Major - 0
+Minor - 2
+Patch - 0 > 1 > 2 > 3 > ... > Until another software stable 
+
+Major - 0
+Minor - 3
+Patch - 0 > 1 > 2 > 3 > ... > Until another software stable 
+```
+
+> And the **"Major"** when it goes up?
+
+**NOTE:**  
+When we have an **"incompatible version"** we go up the "major".
+
+Then, we continue the process, however, always we add a new feature we increment the **"minor"**:
+
+```python
+Major - 1
+Minor - 0 > new feature (1) > new feature (2) > new feature (n)
+Patch - 0
+```
+
+> And the **"Patch"** when it goes up?
+
+**NOTE:**  
+The **"Patch"** go up always we `solve a "bug"`. For example:
+
+```python
+Major - 1
+Minor - 2
+Patch - 0 > Bug solved (1) > Bug solved (2) > Bug solved (n)
+```
+
+ - **In short:**
+   - **Always we add a `new feature`:**
+     - We increment a `"minor"`.
+   - **Always we that `solve a bug`:**
+     - We increment a `"patch"`.
+   - **Always that something `breaks the software`:**
+     - We increment a `"major"`.
+     - For example, change the CLI command.
+
+For our project let's start with version `"0.1.0"`, that's the first stable version of our project.
+
+---
+
+<div id="intro-to-tags"></div>
+
+## Intro to Tags
+
+Tags are **labels** to **mark a commit point that represents some significant change** in the code. In other words, it is a version (or release) of the project.
+
+### When to create a Tag?
+
+ - When you want to create a *release* point for a *stable version* of your code.
+ - When you want to create a historical point that you can refer to reuse in the future.
+
+Git supports two types of tags, **Annotated** and **Lightweight**:
+
+ - **Annotated:**
+   - A *"Annotated Tag"* stores details about the repository state *at that moment (naquele momento)*.
+   - *Lightweight tags* are simply pointers to commits, without any additional information. They are useful for marking specific commits for internal or temporary purposes.
+   - **NOTE:** "Lightweight Tags" is the default. If you do not specify the `-a` (or `--annotate`) option when creating a tag, Git will create "Lightweight Tags".
+ - **Lightweight:**
+   - A *"Lightweight Tag"* store the checksum of the commit in which they were generated.
+
+---
+
+<div id="create-tags"></div>
+
+## Create Tags
+
+### Annotated Tag
+
+To create an **Annotated Tag** we use the command `git tag` with the following parameters:
+
+ - `-a` or `--annotate`
+   - It says the tag is "Annotated".
+ - `-m`
+   - Add a message to the tag.
+
+For example:
+
+```bash
+git tag -a (or --annotate) <name> -m <message>
+
+Example:
+git tag -a v1.0 -m “Sum functionality”
+```
+
+### Lightweight Tag
+
+To create a **Lightweight Tag** we use the command `git tag` without the `-a` or `--annotate` parameters:
+
+For example:
+
+```bash
+git tag <name> -m <message>
+
+Example:
+git tag v1.0 -m “Sum functionality”
+```
+
+---
+
+<div id="looking-tags"></div>
+
+## Looking for the git tags (git tag)
+
+To looking for a git tags we can the the command **"git tag"**:
+
+```bash
+git tag
+```
+
+---
+
+<div id="git-show-tag"></div>
+
+## Checking information about specific tags (git show `<tag>`)
+
+**Example:**
+```bash
+git show v1.0
+```
+
+---
+
+<div id="push-tag"></div>
+
+## Publishing a tag
+
+To publish a tag to a remote (or specific remote) you can use the following syntax:
+
+```bash
+git push <remote-name> <tag-name>
+```
+
+For example:
+
+```bash
+git push origin v1.0
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Settings ) -->
 
 ---
@@ -372,7 +881,87 @@ drigols.creative@gmail.com
 
 
 
-<!--- ( Configurando uma chave GPG para assinar commits ) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Configuring a GPG key to sign commits ) -->
 
 ---
 
@@ -854,6 +1443,86 @@ git merge -S branch-name
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( References ) -->
 
 ---
@@ -862,11 +1531,18 @@ git merge -S branch-name
 
 ## References
 
+ - **General:**
+   - [ChatGPT](https://chat.openai.com/)
+   - [Bard](https://bard.google.com/chat)
+ - **Tags & Releases**
+   - [Semantic Versioning](https://semver.org/)
+   - **Tags:**
+     - [Git: criando tags](https://medium.com/rafaeltardivo/git-criando-tags-7c34ee6786be)
+     - [Git Tags](https://www.javatpoint.com/git-tags)
  - [CS Visualized: Useful Git Commands](https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1)
  - [[Git] Os Três Tipos de Reset](https://medium.com/@andgomes/os-tr%C3%AAs-tipos-de-reset-aa220658d9b2)
  - [Using GPG keys on GitHub: Creating and updating expired keys](https://inspirezone.tech/using-gpg-keys-on-github/)
  - [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
- - [ChatGPT](https://chat.openai.com/)
 
 ---
 
