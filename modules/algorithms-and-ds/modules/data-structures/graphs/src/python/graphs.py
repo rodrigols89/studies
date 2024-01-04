@@ -5,17 +5,12 @@
 
 
 class AdjacencyMatrix:
-    def __init__(self, num_of_vertices):
-        self.num_of_vertices = num_of_vertices
-        self.adj_matrix = [
-            [0 for column in range(num_of_vertices)] for row in range(num_of_vertices)
-        ]
-
-    def __len__(self):
-        return self.num_of_vertices
+    def __init__(self, n):
+        self.n = n
+        self.matrix = [[0 for _ in range(n)] for _ in range(n)]
 
     def print_adjacency_matrix(self):
-        for row in self.adj_matrix:
+        for row in self.matrix:
             print(row)
 
     def add_edge(self, source, destination):

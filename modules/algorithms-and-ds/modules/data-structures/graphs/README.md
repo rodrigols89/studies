@@ -4,15 +4,70 @@
 
  - **Basics:**
    - [Intro to Graphs (Vertex/Node, Edge, Weight, Adjacency, Path, Cycle)](#intro-to-graphs)
- - **Representation of Graphs:**
-   - **[Undirected Graphs (Symmetry or Bidirectional)](#undirected-graphs)**
-     - [Adjacency Matrix for Undirected Graphs](#adjacency-matrix-for-undirected-graphs)
-     - [Adjacency List for Undirected Graphs](#adjacency-list-for-undirected-graphs)
-   - **[Directed Graphs (Asymmetry or Unidirectional)](#directed-graphs)**
+   - [Undirected & Directed Graphs](#undirected-directed)
+ - [Adjacency Matrix class | O(n<sup>2</sup>)](#adjacency-matrix-class)
+   - [Continue... | O(n) or O(n<sup>2</sup>)?](#continue)
  - **Tips & Tricks:**
    - [Add and Remove problem (Index out of range)](#add-remove-problem-01)
    - [Add and Remove problem (Add the same edge twice)](#add-remove-problem-02)
  - [REFERENCES](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,76 +169,163 @@ See the graph for our example below:
    - **NOTE:** A *Directed Graph* with no cycles is called a *Directed Acyclic Graph* or a *DAG*:
      - We will see that we can solve several important problems if the problem can be represented as a DAG.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Representation of Graphs/Undirected Graphs ) --->
-
 ---
 
-<div id="undirected-graphs"></div>
+<div id="undirected-directed"></div>
 
-## Undirected Graphs (Symmetry or Bidirectional)
+## Undirected & Directed Graphs
 
-An ***Undirected Graph*** is a *graph* where the *edges* do not have a specific direction and it is `bidirectional` in nature it does not have a parent-child relation concept as there is no particular direction.
+### Undirected Graphs (Symmetry or Bidirectional)
+
+An ***"Undirected Graph"*** is a *graph* where the *edges* do not have a specific direction and it is `bidirectional` in nature it does not have a parent-child relation concept as there is no particular direction.
 
 For example:
 
 ![img](images/graphs-01.png)  
 
-### Undirected Graph is Symmetry
+#### Undirected Graph is Symmetry
 
  - *Symmetry* is present in the undirected graph as each edge is `bidirectional`, so it’s not like anyone’s the boss.
  - The graph is connected, so you can always find a way to get to any node you want to, and the degree of each vertex tells you how popular that node is in the graph.
 
-### Algorithms for Undirected Graphs
+#### Algorithms for Undirected Graphs
 
  - **Depth-First Search (DFS).**
  - **Breadth-First Search (BFS).**
 
+### Directed Graphs (Asymmetry or Unidirectional)
+
+A **Directed Graph** is a *graph* that is `unidirectional` in this the edges have a specific direction and the edges have directions specified with them also a directed graph can contain cycles.
+
+For example:
+
+![img](images/directed-graph-01.png)
+
+#### Directed Graphs is Asymmetry
+
+*Asymmetry* is present in the Directed Graph as the edges are all one-way, so it’s not like everyone is on equal footing and the graph might not be connected, which means there might be some nodes that are totally out of the loop.
+
+#### Algorithms for Directed Graphs
+
+ - **Topological Sort.**
+ - **Dijkstra’s Algorithm.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
-<div id="adjacency-matrix-for-undirected-graphs"></div>
+<div id="adjacency-matrix-class"></div>
 
-## Adjacency Matrix for Undirected Graphs
+## Adjacency Matrix class | O(n<sup>2</sup>)
 
-An ***Adjacency Matrix*** is one of the most popular ways to represent a graph because it's the easiest one to understand and implement and works reasonably well for many applications.
+An ***Adjacency Matrix*** is one of the most popular ways to represent a graph because it's the easiest one to understand, implement and works reasonably well for many applications.
 
  - It uses an **"nxn matrix"** to represent a graph *(where "n" is the number of vertices in the graph)*.
    - In other words, the number of rows and columns is equal to the number of vertices in the graph.
@@ -192,50 +334,36 @@ To understand more easily, see the **Undirected Graph** and your **Adjacency Mat
 
 ![img](images/ad-mat-01.png)  
 
-Now, let's see how to implement an **Adjacency Matrix** starting with the *constructor*:
+Now, let's see how to implement an **Adjacency Matrix class** starting with the *constructor*:
 
 [graphs.py](src/python/graphs.py)
 ```python
 class AdjacencyMatrix:
-    def __init__(self, num_of_vertices):
-        self.num_of_vertices = num_of_vertices
-        self.adj_matrix = [
-            [0 for column in range(num_of_vertices)] for row in range(num_of_vertices)
-        ]
+    def __init__(self, n):
+        self.n = n                                               # O(1)
+        self.matrix = [[0 for _ in range(n)] for _ in range(n)]  # O(n^2)
 ```
 
-Looking at the class *constructor* above we can see that:
+$f(n) = O(1) + O(n^2)$
 
- - **We have "num_of_vertices" instance variable:**
+#### Complexity Explanation
+
+ - **Time Complexity: O(n<sup>2</sup>)**
+   - The *Time Complexity* of the `__init__` method is **O(n<sup>2</sup>)** because it initializes a *2D matrix* of size *n x n*, which requires iterating over **"n"** rows and **"n"** columns.
+ - **Space Complexity: O(n<sup>2</sup>)**
+   - The *Space Complexity* of the `__init__` method is also **O(n<sup>2</sup>)** because it creates a *2D matrix* of size *n x n*, which requires **n<sup>2</sup>** memory space.
+
+#### Code Explanation
+
+ - **We have "n" instance variable:**
    - That's, the number of vertices on the Graph.
- - **Next, we create a matrix of size equal to the number of vertices passed to the constructor:**
-   - `[0 for column in range(num_of_vertices)]`
-     - If you pay attention, here we have a list `"[]"` and the list comprehension to fills the list `"0 for column in range(num_of_nodes)"`
-       - `g1 = AdjacencyMatrix(1) = [[0]]`
-       - `g1 = AdjacencyMatrix(2) = [[0, 0]]`
-       - `g1 = AdjacencyMatrix(3) = [[0, 0, 0]]`
-       - `g1 = AdjacencyMatrix(4) = [[0, 0, 0, 0]]`
-       - `g1 = AdjacencyMatrix(5) = [[0, 0, 0, 0, 0]]`
-       - **NOTE:** The focus here is to fill the list *(columns of the matrix)* with zeros.
-   - `for row in range(num_of_vertices)`
-     - Here the focus is to add the number of lists (rows) to the matrix:
-       - `g1 = AdjacencyMatrix(1) = [[0]]`
-       - `g1 = AdjacencyMatrix(2) = [[0, 0], [0, 0]]`
-       - `g1 = AdjacencyMatrix(3) = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]`
+ - **Next, we create a matrix of size equal to the number of vertices "n" passed to the constructor:**
+   - `self.matrix = [[0 for _ in range(n)] for _ in range(n)]`
+     - Creates a *2D list (matrix)* with *"n rows"* and *"n columns"*, filled with *0s*:
+       - Each row and column represents a vertex (node) in the graph.
+       - The value at `matrix[i][j]` will indicate whether there's an edge between node `i` and vertex (node) `j`.
 
-
-**NOTE:**  
-To understand more easily this part `"for row in range(num_of_vertices)"`, see the example below:
-
-```python
-g1 = AdjacencyMatrix(3) = [
-  [0, 0, 0],
-  [0, 0, 0],
-  [0, 0, 0]
-]
-```
-
-Let's see how it works in practice:
+Now, let's test in the practice:
 
 ```python
 from graphs import AdjacencyMatrix
@@ -243,19 +371,19 @@ from graphs import AdjacencyMatrix
 if __name__ == "__main__":
 
     g1 = AdjacencyMatrix(1)
-    print(g1.adj_matrix)
+    print(g1.matrix)
 
     g2 = AdjacencyMatrix(2)
-    print(g2.adj_matrix)
+    print(g2.matrix)
 
     g3 = AdjacencyMatrix(3)
-    print(g3.adj_matrix)
+    print(g3.matrix)
 
     g4 = AdjacencyMatrix(4)
-    print(g4.adj_matrix)
+    print(g4.matrix)
 
     g5 = AdjacencyMatrix(5)
-    print(g5.adj_matrix)
+    print(g5.matrix)
 ```
 
 **OUTPUT:**
@@ -267,22 +395,38 @@ if __name__ == "__main__":
 [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 ```
 
-Now, let's implement the useful method `"__len__()"` to check the size of the *Adjacency Matrix* (that's, how many vertices are there in the Graph):
+---
 
-[graphs.py](src/python/graphs.py)
-```python
-def __len__(self):
-    return self.num_of_vertices
-```
+<div id="continue"></div>
 
-Another useful method is a method to print (show) the **Adjacency Matrix**:
+## Continue... | O(n) or O(n<sup>2</sup>)?
+
+
+Continue....  
+https://www.codingninjas.com/studio/library/time-space-complexity-of-graph-algo-1
 
 [graphs.py](src/python/graphs.py)
 ```python
 def print_adjacency_matrix(self):
-    for row in self.adj_matrix:
-        print(row)
+    for row in self.matrix:  # O(n)
+        print(row)           # O(n)
 ```
+
+$f(n) = O(n) * O(n) = O(n^2)$
+
+#### Complexity Explanation
+
+ - Time Complexity: O(n<sup>2</sup>)
+   - The *Time Complexity* of this function is **O(n<sup>2</sup>)**, where **"n"** is the number of vertices in the graph. This is because the function visits each element in the matrix exactly once.
+ - Space Complexity: O(1)
+   - The *Space Complexity* of this function is **O(1)**, because it doesn't use any additional space.
+
+
+
+
+
+
+
 
 Let's see how it works in practice:
 
@@ -747,55 +891,6 @@ Adjacency List for vertex 4: 0 -> 2 -> 3 -> None
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Representation of Graphs/Directed Graphs ) --->
-
----
-
-<div id="directed-graphs"></div>
-
-## Directed Graphs (Asymmetry or Unidirectional)
-
-A **Directed Graph** is a *graph* that is `unidirectional` in this the edges have a specific direction and the edges have directions specified with them also a directed graph can contain cycles.
-
-For example:
-
-![img](images/directed-graph-01.png)
-
-### Directed Graphs is Asymmetry
-
-*Asymmetry* is present in the Directed Graph as the edges are all one-way, so it’s not like everyone is on equal footing and the graph might not be connected, which means there might be some nodes that are totally out of the loop.
-
-### Algorithms for Directed Graphs
-
- - **Topological Sort.**
- - **Dijkstra’s Algorithm.**
 
 
 
