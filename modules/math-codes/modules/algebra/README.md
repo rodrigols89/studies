@@ -198,6 +198,8 @@ EX: 40% de 120? 4x12= 48
  - **Algebraic Expressions:**
    - [How to Use Operator Precedence in Algebra](https://www.intmath.com/blog/mathematics/how-to-use-operator-precedence-in-algebra-12416)
    - [Expression example](https://www.instagram.com/p/Cw6GF4kLrz9/)
+ - **Percents:**
+   - [Percent example](https://www.instagram.com/p/Cw0qpWVPA46/)
 
 ---
 
