@@ -4,7 +4,7 @@
 
 # Contents
 
- - [Algebra](#algebra)
+ - [Algebra](modules/algebra)
  - [Geometry](#geometry)
  - [Trigonometry](modules/trigonometry)
  - [Statistics and Probability](#statistics-probability)
@@ -16,18 +16,6 @@
  - [Tips and Tricks](#tips-tricks)
  - [Useful Libraries](#useful-libraries)
  - [Project Settings](#settings)
-
----
-
-<div id="algebra"></div>
-
-## Algebra
-
-   - [Introdução às equações](modules/algebra/intro-to-equations)
-   - [Equações Lineares](modules/algebra/linear-equations)
-   - [Sistemas de Equações](modules/algebra/systems-of-equations)
-   - [Potenciação, Radicais e Logaritmos](modules/algebra/exponentials-radicals-and-logarithms)
-   - [Funções](modules/algebra/functions)
 
 ---
 
