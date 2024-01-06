@@ -4,6 +4,8 @@
 
  - **Algebraic Expressions:**
    - [Operator Precedence AKA Order of Operations](#operator-precedence)
+ - **Percents:**
+   - [Intro to Percents](#intro-to-percents)
  - [**REFERENCES**](#ref)
 
 
@@ -137,6 +139,36 @@ For example:
 
 $8 \div 2 \cdot 4$
 $4 \cdot 4 = 16$
+
+
+
+
+
+
+
+
+
+<!--- ( Percents ) --->
+
+---
+
+<div id="intro-to-percents"></div>
+
+## Intro to Percents
+
+x
+
+```
+É só multiplicar galera.
+3 (30%) x9 (90) = 27
+E assim pra qualquer tipo de cálculo de %.
+EX: 40% de 120? 4x12= 48
+```
+
+
+
+
+
 
 
 
