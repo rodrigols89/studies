@@ -1,7 +1,5 @@
 # C++
 
-![logo](res/cpp-logo.svg)
-
 ## Contents
 
   - **Variables (+Storage types) & Primitive Data types:**
@@ -22,9 +20,10 @@
  - **Tools:**
    - [Visual Studio/+VSCode](modules/tools/visual-studio)
  - **Tips & Tricks:**
-   - [Compilation & Debugging](modules/compilation-and-debugging)
    - [Modularization in C++](modules/tips-and-tricks/modularization)
    - [Overflow & Underflow](modules/tips-and-tricks/overflow-underflow)
+   - [Compilation](modules/compilation)
+   - [Debugging](modules/debugging)
 
 ---
 
