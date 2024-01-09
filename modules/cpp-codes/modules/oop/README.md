@@ -45,7 +45,47 @@
      - [Virtual Function](#virtual-function)
        - [Override Identifier](#override-identifier)
        - [Virtual Function Demonstration (Animal example)](#vfd)
+ - **Examples & Commented codes**
  - [**REFERENCES**](#references)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Classes ) --->
 
@@ -328,7 +368,7 @@ int main()
 {
     Circle obj;
 
-    // Accessing public dat amember outside the class.
+    // Accessing public data member outside the class.
     obj.radius = 5.5;
 
     std::cout << "Radius is: " << obj.radius << "\n";
@@ -677,9 +717,9 @@ Age: 84
 
 The **protected access modifier is similar to the private access modifier** in the sense that it can’t be accessed outside of its class unless (a menos) with the help of a friend class.
 
-> **The difference is that the class members declared as Protected can be accessed by any subclass (derived class)**
+> **The difference is that the class members declared as Protected can be accessed by any subclass (derived class).**
 
-**NOTE:**
+**NOTE:**  
 This access through inheritance can alter the access modifier of the elements of the base class in the derived class ***depending on the mode of Inheritance***.
 
 For example, see the code below:
@@ -745,6 +785,7 @@ g++ child.cpp  drive_protected.cpp -o test.out && ./test.out
 ```cpp
 id_protected is: 81
 ```
+
 
 
 
@@ -894,7 +935,9 @@ R$1.12104e-44 8h = R$1.4013e-45/h
 ```
 
 **What?**  
-Well, the problem is that we don't initialize the attribute before play the game. That's, **we have trash in the memory**:
+Well, the problem is that we don't initialize the attribute before play the game.
+
+> That's, **"we have trash in the memory"**.
 
 ![img](images/game-trashinthememory.png)  
 
@@ -1150,7 +1193,7 @@ See that now we have default parameters for our constructor.
 
 ## Intro to Destructor
 
- - **Destructor** is a **special member function (method)** that has the same class name, however, preceded by **"~"**.
+> **Destructor** is a **special member function (method)** that has the same class name, however, preceded by **"~"**.
 
 For example, see below the **Destructor** for the Game class:
 
@@ -1393,6 +1436,7 @@ void process(Game * pJ)
     delete pJ;  // The Destructor is called here.
 }​
 ```
+
 
 
 
@@ -2141,6 +2185,7 @@ Hybrid Constructor
 
 **NOTE:**  
 After updating the code, we can see that the *hybrid object* only contains one *Car class* copy.
+
 
 
 
@@ -3018,8 +3063,6 @@ int main()
 }
 ```
 
-```
-
 **COMPILATION AND RUN:**
 ```cpp
 g++ animal.cpp dog.cpp cat.cpp print.cpp driver_virtual_function.cpp -o test.out && ./test.out
@@ -3081,6 +3124,7 @@ Animal *cat_obj = new Cat();
  - When **print_type(animal_obj)** is called, the pointer points to an **Animal object**. So, the virtual function in *Animal* class is executed inside (dentro) of **print()**.
  - When **print_type(dog_obj)** is called, the pointer points to a **Dog object**. So, the virtual function is overridden and the function of *Dog* is executed inside (dentro) of **print()**.
  - When **print_type(cat_obj)** is called, the pointer points to a **Cat object**. So, the virtual function is overridden and the function of *Cat* is executed inside (dentro) of **print()**.
+
 
 
 
