@@ -7,16 +7,11 @@
    - [Compiling (-S)](#intro-to-compiling)
    - [Assembling (-c)](#intro-to-assembling)
    - [Linking (-o)](#intro-to-linking)
+     - [Static Library (Compile Time)](#intro-to-static-libraries)
+     - [Dynamic Library (Runtime)](#intro-to-dynamic-libraries)
  - **Tools:**
-   - **GNU Compiler Collection (GCC/G++):**
    - **GNU Make:**
       - [Makefile (targets:prerequisites/command(s), variables, and wildcard functions)](#intro-to-makefile)
-   - **CMake:**
-     - [Intro to CMake](#intro-to-cmake)
-     - **CMakeLists.txt:**
-       - [cmake_minimum_required()](#cmake-minimum-required)
-       - [project()](#project)
-       - [add_executable()](#add-executable)
  - [**References**](#ref)
 
 
@@ -292,6 +287,8 @@ To do an executable:
 The linker will arrange the piece of object code. For example, he add pieces containing the instructions for library functions.
 
 ![img](images/linker-01.png)  
+![img](images/linker-02.png)  
+
 
 To translate the object code to executable, we can use the **"g++"** with the **"-o"** flag:
 
@@ -331,136 +328,424 @@ g++ objectcode.o -o printy.out
 Result: 25
 ```
 
+---
 
+<div id="intro-to-static-libraries"></div>
 
+## Static Library (Compile Time)
 
+A **"Static Library"** or **"statically-linked library"** or **"archives"** is a collection of object files that are `linked into the program during the linking phase` of compilation *(4th and last phase compilation process)*.
 
+For example, see the image below to understand more easily:
 
+![img](images/static-library-01.png)  
 
+**NOTE:**  
+See that a Static Library has **".a"** extension.
 
+> **Ok, but how to create a Static Library and how to use them?**
 
+First, we need to specify to the compiler that we want to compile all files `(*.c/cpp)` into object files `(*.o)` **without linking** with the command below:
 
-
-
-
-
-
-
-
-
-
-
-[](src/)
-```cpp
-
+```bash
+g++ -Wall -pedantic -Werror -Wextra -std=c++20 -c *.cpp
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Flag description:
+
+ - `g++`
+   - The compiler used.
+ - `-Wall -pedantic -Werror -Wextra`
+   - Generate better code.
+ - `-std=c++20`
+   - Determine the language standard.
+ - `-c`
+   - *Compile* and *Assemble* **without link**.
+ - `*.cpp`
+   - Select all the files with `.cpp` extension in the same folder.
+
+For example, imagine we have the following codes:
+
+[sum_library.h](src/static-library-ex01/sum_library.h)
+```cpp
+#ifndef SUM_LIBRARY_H
+#define SUM_LIBRARY_H
+
+class SumLibrary
+{
+public:
+    static int sum(int a, int b);
+};
+
+#endif
+```
+
+[sum_library.cpp](src/static-library-ex01/sum_library.cpp)
+```cpp
+#include "sum_library.h"
+
+int SumLibrary::sum(int a, int b)
+{
+    return a + b;
+}
+```
+
+Ok, we have a static library to work with, now let's translate it to object code:
+
+```bash
+g++ -Wall -pedantic -Werror -Wextra -std=c++20 -c *.cpp
+```
+
+Now, let's check:
+
+**INTPUT:**
+```bash
+ls
+```
+
+**OUTPUT:**
+```bash
+sum_library.cpp  sum_library.h  sum_library.o
+```
+
+Now, let's create the **Static Library (".a")** using the **"ar (archive program)"** command:
+
+```bash
+ar -rc libsum.a *.o
+```
+
+Flag description:
+
+ - `ar`
+   - Archive program.
+ - `-rc`
+   - “r” insert the files into archive but if any file previously existing are deleted before and then added;
+   - “c” create the archive if it did not already exist.
+ - `libsum`
+   - “lib” + name of the library.
+ - `.a`
+   - Extension of a library.
+ - `*.o`
+   - Puts copies of the object files in the library.
+
+To check how many *object files (.o)* the Static Library has, we can use the following command:
+
+**INPUT:**
+```bash
+ar -t libsum.a
+```
+
+**OUTPUT:**
+```bash
+sum_library.o
+```
+
+Now, we need to *index the library*. This index is later used by the compiler to speed up symbol_lookup inside the library:
+
+```bash
+ranlib libsum.a
+```
+
+**ranlib:**  
+The command *"ranlib"* that generate an index to an archive.
+
+**NOTE:**  
+Ok, now the library is created and to use it in a program we need only add the library in the *link stage.*
+
+For example, imagine we have the following **main.cpp** that use our Static Library:
+
+[main.cpp](src/static-library-ex01/main.cpp)
+```cpp
+#include <iostream>
+#include "sum_library.h"
+
+int main()
+{
+    int result = MyLibrary::sum(3, 4);
+    std::cout << "The sum is: " << result << std::endl;
+
+    return 0;
+}
+```
+
+Now, let's create an executable that use our Static Library:
+
+```bash
+g++ main.cpp -L. -lsum -o sumProgram.out
+```
+
+Flag description:
+
+ - `gcc`
+   - The compiler.
+ - `main.c`
+   - Source code whose the function *sum()* is used.
+ - `-L.`
+   - Tells the linker to use the library in the given directory, the **“.”** means the current directory.
+ - `-l`
+   - Specify the library.
+ - `sum`
+   - The name of the library omitted the **“lib”** prefix and the **“.a”** extension.
+ - `-o`
+   - Rename the program.
+ - `sumProgram.out`
+   - Name of the executable.
+
+Now, let's run the program (executable):
+
+**INPUT:**
+```bash
+./sumProgram.out 
+```
+
+**OUTPUT:**
+```bash
+The sum is: 7
+```
+
+### Advantages & Disadvantages
+
+ - **Advantage:**
+   - **Speed:** Static libraries are linked into the executable file at *compile time*, which can improve performance by eliminating the need to load and unload the library at runtime.
+   - **Security:** Static libraries are more secure than dynamic libraries, as they cannot be modified without recompiling the application.
+   - **Stability:** Static libraries are more stable than dynamic libraries, as they are not affected by changes to the library itself or to other applications that use the library.
+   - **Static Dependency Resolution:** All dependencies are resolved during *compile-time*, avoiding potential conflicts or errors during runtime.
+   - **Deployment Ease:** Application deployment is straightforward since the executable contains all necessary dependencies, eliminating the need for additional libraries on the target system.
+   - **Precise Version Control:** Developers have precise control over the version of the library used, reducing the risk of incompatibilities.
+ - **Disadvantage:**
+   - **Complexity:** Static libraries can make it more difficult to debug and troubleshoot applications, as the library code is embedded in the executable file.
+   - **Size:** Static libraries can increase the size of the executable file, which can make it more difficult to distribute and deploy the application.
+   - **Portability:** Static libraries can reduce the portability of applications, as they are not portable across different platforms.
+   - **More Challenging Updates:** Updating the library requires recompilation and redistribution of the entire application, which can be more time-consuming and complex.
+   - **Longer Compilation Times:** Compilation times can be longer, especially in large projects, due to the inclusion of library code directly into the executable.
+   - **Higher Memory Usage:** If multiple applications use the same static library, memory overhead may be higher as each application has its copy of the library.
 
 ---
 
-<div id="install-dependencies"></div>
+<div id="intro-to-dynamic-libraries"></div>
 
-## Install project dependencies in a specific project vs. Operational system
+## Dynamic Library (Runtime)
 
-There, two common approaches to install dependencies for a project:
+> A **Dynamic Library** or **Shared Library** is a collection of `object file` witch are launched only `during program execution (Runtime)`.
 
- - Install on the project.
- - Install on the Operating System.
+ - A link is created between shared library and executable file. It means that a shared library can be used by any program that needs it.
+ - If the library code is updated, it’s not necessary to recompile. It’s location doesn’t move. This method permit to make a green code using less memory.
 
-For example, imagine we need the install *SDL library* on our project:
+For example, see the image below to understand more easily:
 
- - **Installing SDL in the Specific Project:**
-   - In this approach, you include SDL header files and libraries directly in your project.
-   - This means that SDL dependencies are controlled by your project and do not affect other projects or systems.
-   - This approach is common in smaller projects and when you want to ensure that your code is portable across different systems without relying on global system settings.
-   - **Pros:**
-     - Avoids conflicts with different versions of the SDL in different projects.
-     - Facilitates code portability between different systems.
-     - Allows you to use a specific version of SDL for the project.
-   - **Cons:**
-     - Can increase the project's size as library files and headers are included directly.
-     - May require more effort to set up libraries and paths correctly for the project.
- - **Installing SDL on the Operating System:**
-   - In this approach, you install SDL globally on the operating system.
-   - This means that other projects can also leverage the same SDL installation without the need to replicate library files and headers in each individual project.
-   - This approach is often used in larger projects or when you want to take advantage of optimization and updates provided by the operating system.
-   - **Pros:**
-     - Avoids duplication of library files and headers across different projects.
-     - Can leverage optimizations and updates from the operating system.
-     - Configuration can be simpler for projects as you don't need to point to specific include and library paths.
-   - **Cons:**
-     - Can create dependencies between projects and the global SDL of the system.
-     - Can cause issues if there are version conflicts of SDL between projects.
-     - May not be as portable, as projects need to rely on the global SDL installation.
+![img](images/static-x-dynamic.png)  
 
----
+> **Ok, but how to create a Dynamic Library (Shared Library) and how to use them?**
+
+First, we need to specify to the compiler that we want to compile all files `(*.c/cpp)` into object files `(*.o)` **without linking** with the command below:
+
+```bash
+g++ -Wall -pedantic -Werror -Wextra -std=c++20 -fPIC -c *.cpp
+```
+
+Flag description:
+
+ - `g++`
+   - The compiler used.
+ - `-Wall -pedantic -Werror -Wextra`
+   - Generate better code.
+ - `-std=c++20`
+   - Determine the language standard.
+ - `fPIC`
+   - Position Independent Code, makes addresses in machine code.
+ - `-c`
+   - *Compile* and *Assemble* **without link**.
+ - `*.cpp`
+   - Select all the files with `.cpp` extension in the same folder.
+
+For example, imagine we have the following codes:
+
+[sum_library.h](src/static-library-ex01/sum_library.h)
+```cpp
+#ifndef SUM_LIBRARY_H
+#define SUM_LIBRARY_H
+
+class SumLibrary
+{
+public:
+    static int sum(int a, int b);
+};
+
+#endif
+```
+
+[sum_library.cpp](src/static-library-ex01/sum_library.cpp)
+```cpp
+#include "sum_library.h"
+
+int SumLibrary::sum(int a, int b)
+{
+    return a + b;
+}
+```
+
+Ok, we have a **Dynamic Library (Shared Library)** to work with, now let's translate it to object code:
+
+```bash
+g++ -Wall -pedantic -Werror -Wextra -std=c++20 -fPIC -c *.cpp
+```
+
+Now, let's check:
+
+**INTPUT:**
+```bash
+ls
+```
+
+**OUTPUT:**
+```bash
+sum_library.cpp  sum_library.h  sum_library.o
+```
+
+Now, let's create the **Dynamic Library (Shared Library)** using the **"g++"** with the **"-shared"** flag:
+
+```bash
+g++ -shared -o libsum.so *.o
+```
+
+Flag description:
+
+ - `g++`
+   - The compiler.
+ - `-shared`
+   - Produce a shared object which can then be linked with other objects to form an executable.
+ - `-o`
+   - Rename the program.
+ - `libsum`
+   - “lib” + name of the library.
+ - `.so`
+   - Extension of a Dynamic Library.
+ - `*.o`
+   - Puts copies of the object files in the library.
+
+To check how many *object files (.so)* the **Dynamic Library (Shared Library)** has, we can use the following command:
+
+**INPUT:**
+```bash
+nm -D libsum.so
+```
+
+**OUTPUT:**
+```bash
+                 w __cxa_finalize@GLIBC_2.2.5
+                 w __gmon_start__
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+00000000000010fa T _ZN10SumLibrary3sumEii
+```
+
+**NOTE:**  
+Ok, now the library is created and to use it in a program we need only add the library in the *link stage.*
+
+For example, imagine we have the following **main.cpp** that use our **Dynamic Library (Shared Library)**:
+
+[main.cpp](src/static-library-ex01/main.cpp)
+```cpp
+#include <iostream>
+#include "sum_library.h"
+
+int main()
+{
+    int result = MyLibrary::sum(3, 4);
+    std::cout << "The sum is: " << result << std::endl;
+
+    return 0;
+}
+```
+
+Different of the *Static Library*, the **Dynamic Library (Shared Library)** first, need to add the location of the Dynamic Library into the environment variable:
+
+```bash
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+```
+
+ - `export`
+   - Set export attribute for sheel variables.
+ - `LD_LIBRARY_PATH`
+   - The name of environment variable.
+ - `.:`
+   - The current directory.
+ - `::`
+   - The separator
+ - `$LD_LIBRARY_PATH`
+   - The exit status of the command.
+
+Finally, let's compile the **main.cpp** file with the **Dynamic Library (Shared Library)**:
+
+```bash
+g++ main.cpp -L. -lsum -o sumProgram.out
+```
+
+Flag description:
+
+ - `gcc`
+   - The compiler.
+ - `main.c`
+   - Source code whose the function *sum()* is used.
+ - `-L.`
+   - Tells the linker to use the library in the given directory, the **“.”** means the current directory.
+ - `-l`
+   - Specify the library.
+ - `sum`
+   - The name of the library omitted the **“lib”** prefix and the **“.a”** extension.
+ - `-o`
+   - Rename the program.
+ - `sumProgram.out`
+   - Name of the executable.
+
+Now, let's use the **"ldd"** command to check the dependencies of the **Dynamic Library (Shared Library)**:
+
+> **NOTE:**  
+> **ldd (List Dynamic Dependencies)** is a Unix utility that prints the shared libraries required by each program or shared library specified on the command line. 
+
+**INPUT:**
+```bash
+ldd sumProgram.out
+```
+
+**OUTPUT:**
+```bash
+linux-vdso.so.1 (0x00007ffd52cc1000)
+libsum.so => ./libsum.so (0x00007fdc0bc68000)
+libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fdc0ba00000)
+libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fdc0b919000)
+libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fdc0bc35000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fdc0b600000)
+/lib64/ld-linux-x86-64.so.2 (0x00007fdc0bc6f000)
+```
+
+Now, let's run the program (executable):
+
+**INPUT:**
+```bash
+./sumProgram.out 
+```
+
+**OUTPUT:**
+```bash
+The sum is: 7
+```
+
+### Advantages & Disadvantages
+
+ - **Advantage:**
+   - **Smaller Executable Size:** Dynamic libraries are separate from the executable, resulting in smaller executable sizes, especially when multiple applications share the same library.
+   - **Portability:** Dynamic libraries are portable across different platforms, as they are not embedded in the executable file.
+   - **Complexity:** Dynamic libraries can make it easier to debug and troubleshoot applications, as the library code is not embedded in the executable file.
+   - **Easier Updates:** Updating the library is simpler as it can be replaced *without recompiling* the entire application. This facilitates patching and version upgrades.
+   - **Memory Efficiency:** Dynamic libraries can be shared among multiple processes, reducing memory usage as the library is loaded into memory only once.
+   - **Run-Time Linking:** *Dynamic linking* allows resolving library dependencies at *runtime*, providing flexibility and the ability to load libraries on demand.
+   - **Dynamic Loading and Unloading:** Dynamic libraries can be loaded and unloaded at runtime, enabling features like plugin systems and dynamic extensions.
+ - **Disadvantage:**
+   - **Dependency Management:** Dependency on external libraries introduces the need to manage and distribute additional library files along with the application.
+   - **Deployment Complexity:** Deploying applications using dynamic libraries can be more complex as users need to ensure that the required libraries are available on their systems.
+   - **Potential Version Conflicts:** Version conflicts may arise if multiple applications require different versions of the same dynamic library, leading to compatibility issues.
+   - **Stability:** Dynamic libraries can be less stable than static libraries, as they are affected by changes to the library itself or to other applications that use the library.
 
 
 
@@ -493,36 +778,74 @@ For example, imagine we need the install *SDL library* on our project:
 
 
 
-<div id="static-library"></div>
-
-## Static library
-
- - The library code is directly copied into the executable during the compilation process.
- - Makes the executable larger as the library code is included in it.
- - Doesn't require external libraries during execution, as all the necessary code is embedded in the executable.
- - Changes in the library require recompilation of the entire program.
-
-For example, let's make a **Static Library** that uses an *external library (SDL)*. But, first, let's consider some things:
 
 
 
 
 
-[]()
 
 
 
----
 
-<div id="dynamic-library"></div>
 
-## Dynamic library
 
- - The library code is kept separately in dynamic files (DLLs in Windows or shared objects in Linux).
- - The executable contains references to functions and resources in the library.
- - Makes the executable smaller since it doesn't embed the library code.
- - Requires the presence of external libraries during execution, which can be slightly more complicated.
- - Changes in the library usually don't require recompilation of the program unless the library's interface changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1073,10 +1396,64 @@ add_executable(studies tutorial.cxx)
 
 ## References
 
- - [Aula 01 - Ambiente Linux | Histórico | Terminal | Shell | g++ | gdb | make | cmake | Compiladores](https://www.youtube.com/watch?v=JJmf1wlNGeQ&t=1s)
- - [Advanced C and C++ Compiling](https://www.oreilly.com/library/view/advanced-c-and/9781430266679/)
- - [Introdução ao Makefile](https://embarcados.com.br/introducao-ao-makefile/)
+ - **Compilation Process:**
+   - [The compilation process in C](https://medium.com/@elodieriou/the-compilation-process-in-c-b4325a4dd953)
+   - [The Static libraries in C](https://medium.com/@elodieriou/the-static-libraries-in-c-d310dd7086d3)
+   - [The Dynamic libraries in C](https://medium.com/@elodieriou/the-dynamic-libraries-in-c-d5cd1a78b937)
+ - **GNU Make:**
+   - [Introdução ao Makefile](https://embarcados.com.br/introducao-ao-makefile/)
 
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
+
+---
+
+<div id="install-dependencies"></div>
+
+## Install project dependencies in a specific project vs. Operational system
+
+There, two common approaches to install dependencies for a project:
+
+ - Install on the project.
+ - Install on the Operating System.
+
+For example, imagine we need the install *SDL library* on our project:
+
+ - **Installing SDL in the Specific Project:**
+   - In this approach, you include SDL header files and libraries directly in your project.
+   - This means that SDL dependencies are controlled by your project and do not affect other projects or systems.
+   - This approach is common in smaller projects and when you want to ensure that your code is portable across different systems without relying on global system settings.
+   - **Pros:**
+     - Avoids conflicts with different versions of the SDL in different projects.
+     - Facilitates code portability between different systems.
+     - Allows you to use a specific version of SDL for the project.
+   - **Cons:**
+     - Can increase the project's size as library files and headers are included directly.
+     - May require more effort to set up libraries and paths correctly for the project.
+ - **Installing SDL on the Operating System:**
+   - In this approach, you install SDL globally on the operating system.
+   - This means that other projects can also leverage the same SDL installation without the need to replicate library files and headers in each individual project.
+   - This approach is often used in larger projects or when you want to take advantage of optimization and updates provided by the operating system.
+   - **Pros:**
+     - Avoids duplication of library files and headers across different projects.
+     - Can leverage optimizations and updates from the operating system.
+     - Configuration can be simpler for projects as you don't need to point to specific include and library paths.
+   - **Cons:**
+     - Can create dependencies between projects and the global SDL of the system.
+     - Can cause issues if there are version conflicts of SDL between projects.
+     - May not be as portable, as projects need to rely on the global SDL installation.
+
+---
+
+
+[](src/static-library-ex01/)
+```cpp
+
+```
+
+
+
+```bash
+
+```
