@@ -127,8 +127,6 @@
 
 ## Project Structure
 
-Here is an overview of the *Project Structure*:
-
  - **lib:**
    - Any libs that get compiled by the project, *third party (terceiros)* or any needed in development.
  - **src:**
@@ -1565,7 +1563,9 @@ add_executable(studies tutorial.cxx)
 
  - **Project Structure:**
    - [A Simple C++ Project Structure](https://hiltmon.com/blog/2013/07/03/a-simple-c-plus-plus-project-structure/)
-   - [What is a general C++ project structure like?](https://www.linkedin.com/pulse/what-general-c-project-structure-like-herbert-elwood-gilliland-iii/)
+   - []()
+   - []()
+   - []()
  - **Compilation Process:**
    - [The compilation process in C](https://medium.com/@elodieriou/the-compilation-process-in-c-b4325a4dd953)
    - [The Static libraries in C](https://medium.com/@elodieriou/the-static-libraries-in-c-d310dd7086d3)
@@ -1584,18 +1584,4 @@ make
 
 6. Instalar (opcional):
 Se desejar, você pode instalar a biblioteca compilada no sistema. Isso geralmente não é necessário, a menos que você queira compartilhar a biblioteca com outros projetos ou torná-la global no sistema.
-
 sudo make install
-
-Calculator
- - lib
- - include
-   - sum.h
-   - sub.h
-   - mult.h
-   - div.h
- - src
-   - sum.cpp
-   - sub.cpp
-   - mult.cpp
-   - div.cpp
