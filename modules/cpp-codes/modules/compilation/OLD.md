@@ -1585,3 +1585,75 @@ make
 6. Instalar (opcional):
 Se desejar, você pode instalar a biblioteca compilada no sistema. Isso geralmente não é necessário, a menos que você queira compartilhar a biblioteca com outros projetos ou torná-la global no sistema.
 sudo make install
+
+
+
+---
+
+Another way to **preprocess** the project is using a **Makefile**:
+
+```makefile
+# Directories
+SRC_DIR := src
+INCLUDE_DIR := include
+BUILD_DIR := build
+
+# Compiler and flags
+CC := g++
+CPPFLAGS := -I$(INCLUDE_DIR)
+
+# Source files
+SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)
+
+# Preprocessed files
+PREPROCESSED_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%_preprocessed.cpp,$(SRC_FILES))
+
+# Default target
+all: $(PREPROCESSED_FILES)
+
+# Rule to create the build directory
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+# Rule to preprocess source files
+$(BUILD_DIR)/%_preprocessed.cpp: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
+	$(CC) -E $(CPPFLAGS) $< -o $@
+
+# Phony target to clean generated files
+clean:
+	rm -rfv $(BUILD_DIR)
+
+# Phony target to clean and rebuild
+rebuild: clean all
+
+# Ignore built-in rules and variables
+.SUFFIXES:
+
+.PHONY: all clean rebuild
+```
+
+Let's explain the `not implicit` **"Makefile"** commands:
+
+ - **Variables Definition & Assignment Operator:**
+   - The `SRC_DIR`, `INCLUDE_DIR`, and `BUILD_DIR` are variables used to store directory paths.
+   - The `:= ` is the assignment operator.
+ - `SRC_FILES := $(wildcard $(SRC_DIR)/*.cpp)`
+   - `$() syntax:`
+     - In Makefiles, this syntax is used to refer to the value of a variable or the result of a function.
+   - `wildcard function:` The wildcard function is used to find files that *match* a specified pattern.
+   - It returns a space-separated list of file names:
+     - In this case, it looks for all files with a `.cpp` extension in the `$(SRC_DIR)` directory.
+   - **NOTE:** So, the line is essentially saying: `"Assign to the variable "SRC_FILES" the list of all ".cpp" files in the "$(SRC_DIR)" directory."`
+ - `PREPROCESSED_FILES := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%_preprocessed.cpp,$(SRC_FILES))`
+   - `patsubst function`
+     - The **"patsubst function"** is used to perform pattern-based substitutions on a list of words. It replaces occurrences of a pattern with another pattern:
+       - In this case, it's used to replace each `.cpp` file in the `$(SRC_DIR)` directory with a corresponding `_preprocessed.cpp` file in the `$(BUILD_DIR)` directory.
+   - x
+   - x
+   - x
+   - x
+   - x
+   - x
+   - x
+   - x
+   - x

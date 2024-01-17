@@ -127,8 +127,6 @@
 
 ## Project Structure
 
-Here is an overview of the *Project Structure*:
-
  - **lib:**
    - Any libs that get compiled by the project, *third party (terceiros)* or any needed in development.
  - **src:**
@@ -241,7 +239,9 @@ Here is an overview of the *Project Structure*:
 
 ## Pre-processing (-E)
 
-In the **Pre-processing** stage of compiling a C++ program, several tasks are performed. For example:
+In the **Pre-processing** stage of compiling a C++ program, several tasks are performed.
+
+For example:
 
  - **Header inclusion:**
    - The contents of header files (specified using `#include` directives) are copied into the source code.
@@ -266,89 +266,48 @@ In the **Pre-processing** stage of compiling a C++ program, several tasks are pe
 
 ![img](images/preprocessor-01.png)  
 
-Now, let's see how to apply preprocessor stage manually using **g++**. For example, imagine we have the following codes:
+For example, imagine we have the [Calculator](Calculator/) project:
 
-[preprocessing.cpp](src/preprocessing.cpp)
-```cpp
-#include <iostream>        // Header inclusion
-#include "external_code.h" // File inclusion
-
-// Macro definition
-#define SQUARE(x) ((x) * (x))
-
-// Conditional compilation
-#ifdef DEBUG
-#define LOG(message) std::cout << "Debug: " << message << std::endl;
-#else
-#define LOG(message)
-#endif
-
-// Assertion
-#define CHECK_CONDITION(condition)                                 \
-    if (!(condition))                                              \
-    {                                                              \
-        std::cerr << "Assertion failed: " #condition << std::endl; \
-        exit(EXIT_FAILURE);                                        \
-    }
-
-int main()
-{
-    // Macro expansion
-    int result = SQUARE(5);
-
-    // Conditional compilation
-    LOG("This is a debug message.");
-
-    // Tokenization
-    int i = 10;
-    int j = i + 20;
-
-    // Line continuation
-    int sum = i +
-              j;
-
-    // Character set conversion
-    char specialChar = '\x41';
-
-    // Assertion handling
-    CHECK_CONDITION(i < 100);
-
-    std::cout << "Result: " << result << std::endl;
-
-    return 0;
-}
+**Project Structure:**
+```md
+Calculator/
+  include/
+    - div.h
+    - mult.h
+    - sub.h
+    - sum.h
+  src/
+    - div.cpp
+    - mult.cpp
+    - sub.cpp
+    - sum.cpp
 ```
 
-[external_code.h](src/external_code.h)
-```cpp
-#ifndef EXTERNAL_CODE_H
-#define EXTERNAL_CODE_H
-
-#include <iostream>
-
-void externalFunction();
-
-#endif // EXTERNAL_CODE_H
-```
-
-[external_code.cpp](src/external_code.cpp)
-```cpp
-#include "external_code.h"
-
-void externalFunction()
-{
-    std::cout << "This is a function from external_code.h" << std::endl;
-}
-```
-
-To preprocess the code above, we can use the **"g++"** with the **"-E"** flag:
+To preprocess the project above, let's use the **"g++"** compiler on the project root folder (`./`) with the following command:
 
 ```bash
-g++ -E main.cpp -o processed.i
+mkdir -p build && \
+g++ -E -I./include src/div.cpp -o build/div_preprocessed.i && \
+g++ -E -I./include src/mult.cpp -o build/mult_preprocessed.i && \
+g++ -E -I./include src/sub.cpp -o build/sub_preprocessed.i && \
+g++ -E -I./include src/sum.cpp -o build/sum_preprocessed.i
 ```
 
+ - `mkdir -p`
+   - The **"mkdir"** command is used to create directories (folders) in a filesystem.
+   - The `-p` option (flag) stands for "parents" and is used to create parent directories as needed:
+     - It ensures that if the specified directory path doesn't exist, it and all its necessary parent directories are created.
+ - `-E`
+   - The `-E` option (flag) instructs the compiler to stop after the preprocessing stage.
+   - Instead of generating compiled code, it outputs the preprocessed code to the standard output (stdout) or a specified file.
+ - `-I./include`
+   - The `-I` option (flag) is used with the *gcc/g++* compiler to specify the directories where it should look for header files.
+   - When you include header files in your source code using `#include`, the compiler needs to know where to find those files. The `-I` option (flag) allows you to provide one or more directory paths where the compiler should search for included headers.
+ - `-o`
+   - The `-o` option (flag) is used with the *gcc/g++* compiler to specify the output file name.
+
 **NOTE:**  
-We can also use the **"-o"** flag to save the preprocessed code in a file.
+See that in the **"buil/"** directory we have the **".i"** files with the preprocessed code.
 
 ---
 
