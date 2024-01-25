@@ -4,15 +4,81 @@
 
  - **Basics:**
    - [Intro to Graphs (Vertex/Node, Edge, Weight, Adjacency, Path, Cycle)](#intro-to-graphs)
- - **Representation of Graphs:**
-   - **[Undirected Graphs (Symmetry or Bidirectional)](#undirected-graphs)**
-     - [Adjacency Matrix for Undirected Graphs](#adjacency-matrix-for-undirected-graphs)
-     - [Adjacency List for Undirected Graphs](#adjacency-list-for-undirected-graphs)
-   - **[Directed Graphs (Asymmetry or Unidirectional)](#directed-graphs)**
+ - [**Undirected Graphs**](#undirected-graph)
+   - [Adjacency Matrix for Undirected Graphs](#adj-matrix-for-ug)
+     - [Adjacency Matrix class using Array (n x n) for Undirected Graph | O(n<sup>2</sup>)](#amcuafug)
+       - [Print an Adjacency Matrix for an Undirected Graph | O(n<sup>2</sup>)](#amcuafug-print)
+       - [Add an edge on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-addedge)
+       - [Add "edge weights" on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-addweights)
+       - [Remove an Edge on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-remove)
+   - [Adjacency List for Undirected Graphs](#adj-list-for-ug)
+     - [Adjacency List class using Array (n) for an Undirected Graph | (n) or O(V)](#alcuafaug)
+       - [Add a Vertex on the Adjacency List for an Undirected Graph | O(1)](#alcuafaug-addvertex)
+ - [**Directed Graphs**](#directed-graph)
  - **Tips & Tricks:**
    - [Add and Remove problem (Index out of range)](#add-remove-problem-01)
    - [Add and Remove problem (Add the same edge twice)](#add-remove-problem-02)
  - [REFERENCES](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -67,9 +133,9 @@
  - The edges are lines or arcs that connect any two vertices (nodes) in the graph.
 
 **NOTE:**  
-More formally a Graph is composed of **"a set of vertices (V)"** and **"a set of edges (E)"**. The graph is denoted by **"G(V, E)"**.
+More formally a *Graph* is composed of **"a set of vertices (V)"** and **"a set of edges (E)"**.
 
-For example:
+A Graph is denoted by **"G(V, E)"**. For example:
 
 ```bash
 V = {0, 1, 2, 3}  # Set of vertices.
@@ -89,7 +155,7 @@ Looking at the example above we have more two concepts of graphs:
    - **NOTE:** Looking at our visual example Vertices 2 and 3 are not adjacent because there is no edge between them.
  - **Path:**
    - A sequence of edges that allows you to go from vertex A to vertex B is called a path.
-   - **NOTE:** Looking at our visual example *0-1*, *1-2* and *0-2* are paths from *vertex 0* to *vertex 2*.
+   - **NOTE:** Looking at our visual example *0-1* and *1-2* is a paths from *vertex 0* to *vertex 2*.
 
 ### Graphs with "weights"
 
@@ -111,8 +177,8 @@ See the graph for our example below:
    - A *Cycle* in a graph is a path that starts and ends at the same vertex:
      - For example, in our example above the path **(V5, V2, V3, V5)** is a cycle.
    - **NOTE:** A graph with no cycles is called an **"Acyclic Graph"**.
-   - **NOTE:** A *Directed Graph* with no cycles is called a *Directed Acyclic Graph* or a *DAG*:
-     - We will see that we can solve several important problems if the problem can be represented as a DAG.
+   - **NOTE:** A *Directed Graph* with no cycles is called a **Directed Acyclic Graph** or a **DAG**:
+     - We will see that we can solve several important problems if the problem can be represented as a **DAG**.
 
 
 
@@ -153,37 +219,97 @@ See the graph for our example below:
 
 
 
-<!--- ( Representation of Graphs/Undirected Graphs ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Undirected Graphs ) --->
 
 ---
 
-<div id="undirected-graphs"></div>
+<div id="undirected-graph"></div>
 
-## Undirected Graphs (Symmetry or Bidirectional)
+## Undirected Graphs
 
-An ***Undirected Graph*** is a *graph* where the *edges* do not have a specific direction and it is `bidirectional` in nature it does not have a parent-child relation concept as there is no particular direction.
+An ***"Undirected Graphs (Symmetry or Bidirectional)"*** is a *graph* where the *edges* do not have a specific direction and it is `bidirectional` in nature it does not have a parent-child relation concept as there is no particular direction.
 
 For example:
 
 ![img](images/graphs-01.png)  
 
-### Undirected Graph is Symmetry
+#### Undirected Graph is Symmetry
 
  - *Symmetry* is present in the undirected graph as each edge is `bidirectional`, so it’s not like anyone’s the boss.
  - The graph is connected, so you can always find a way to get to any node you want to, and the degree of each vertex tells you how popular that node is in the graph.
 
-### Algorithms for Undirected Graphs
+#### Algorithms for Undirected Graphs
 
  - **Depth-First Search (DFS).**
  - **Breadth-First Search (BFS).**
 
 ---
 
-<div id="adjacency-matrix-for-undirected-graphs"></div>
+<div id="adj-matrix-for-ug"></div>
 
 ## Adjacency Matrix for Undirected Graphs
 
-An ***Adjacency Matrix*** is one of the most popular ways to represent a graph because it's the easiest one to understand and implement and works reasonably well for many applications.
+An ***Adjacency Matrix*** is one of the most popular ways to represent a graph because it's the easiest one to understand, implement and works reasonably well for many applications.
 
  - It uses an **"nxn matrix"** to represent a graph *(where "n" is the number of vertices in the graph)*.
    - In other words, the number of rows and columns is equal to the number of vertices in the graph.
@@ -192,50 +318,42 @@ To understand more easily, see the **Undirected Graph** and your **Adjacency Mat
 
 ![img](images/ad-mat-01.png)  
 
-Now, let's see how to implement an **Adjacency Matrix** starting with the *constructor*:
+---
+
+<div id="amcuafug"></div>
+
+## Adjacency Matrix class using Array (n x n) for Undirected Graph | O(n<sup>2</sup>)
+
+Now, let's see how to implement an **Adjacency Matrix class** using Array (n x n) starting with the *constructor*:
 
 [graphs.py](src/python/graphs.py)
 ```python
 class AdjacencyMatrix:
-    def __init__(self, num_of_vertices):
-        self.num_of_vertices = num_of_vertices
-        self.adj_matrix = [
-            [0 for column in range(num_of_vertices)] for row in range(num_of_vertices)
-        ]
+    def __init__(self, n):
+        self.n = n                                               # O(1)
+        self.matrix = [[0 for _ in range(n)] for _ in range(n)]  # O(n^2)
 ```
 
-Looking at the class *constructor* above we can see that:
+$f(n) = O(1) + O(n^2)$
 
- - **We have "num_of_vertices" instance variable:**
+#### Complexity Explanation
+
+ - **Time Complexity: O(n<sup>2</sup>)**
+   - The *Time Complexity* of the `__init__` method is **O(n<sup>2</sup>)** because it initializes a *2D matrix* of size *n x n*, which requires iterating over **"n"** rows and **"n"** columns.
+ - **Space Complexity: O(n<sup>2</sup>)**
+   - The *Space Complexity* of the `__init__` method is also **O(n<sup>2</sup>)** because it creates a *2D matrix* of size *n x n*, which requires **n<sup>2</sup>** memory space.
+
+#### Code Explanation
+
+ - **We have "n" instance variable:**
    - That's, the number of vertices on the Graph.
- - **Next, we create a matrix of size equal to the number of vertices passed to the constructor:**
-   - `[0 for column in range(num_of_vertices)]`
-     - If you pay attention, here we have a list `"[]"` and the list comprehension to fills the list `"0 for column in range(num_of_nodes)"`
-       - `g1 = AdjacencyMatrix(1) = [[0]]`
-       - `g1 = AdjacencyMatrix(2) = [[0, 0]]`
-       - `g1 = AdjacencyMatrix(3) = [[0, 0, 0]]`
-       - `g1 = AdjacencyMatrix(4) = [[0, 0, 0, 0]]`
-       - `g1 = AdjacencyMatrix(5) = [[0, 0, 0, 0, 0]]`
-       - **NOTE:** The focus here is to fill the list *(columns of the matrix)* with zeros.
-   - `for row in range(num_of_vertices)`
-     - Here the focus is to add the number of lists (rows) to the matrix:
-       - `g1 = AdjacencyMatrix(1) = [[0]]`
-       - `g1 = AdjacencyMatrix(2) = [[0, 0], [0, 0]]`
-       - `g1 = AdjacencyMatrix(3) = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]`
+ - **Next, we create a matrix of size equal to the number of vertices "n" passed to the constructor:**
+   - `self.matrix = [[0 for _ in range(n)] for _ in range(n)]`
+     - Creates a *2D list (matrix)* with *"n rows"* and *"n columns"*, filled with *0s*:
+       - Each row and column represents a vertex (node) in the graph.
+       - The value at `matrix[i][j]` will indicate whether there's an edge between node `i` and vertex (node) `j`.
 
-
-**NOTE:**  
-To understand more easily this part `"for row in range(num_of_vertices)"`, see the example below:
-
-```python
-g1 = AdjacencyMatrix(3) = [
-  [0, 0, 0],
-  [0, 0, 0],
-  [0, 0, 0]
-]
-```
-
-Let's see how it works in practice:
+Now, let's test in the practice:
 
 ```python
 from graphs import AdjacencyMatrix
@@ -243,19 +361,19 @@ from graphs import AdjacencyMatrix
 if __name__ == "__main__":
 
     g1 = AdjacencyMatrix(1)
-    print(g1.adj_matrix)
+    print(g1.matrix)
 
     g2 = AdjacencyMatrix(2)
-    print(g2.adj_matrix)
+    print(g2.matrix)
 
     g3 = AdjacencyMatrix(3)
-    print(g3.adj_matrix)
+    print(g3.matrix)
 
     g4 = AdjacencyMatrix(4)
-    print(g4.adj_matrix)
+    print(g4.matrix)
 
     g5 = AdjacencyMatrix(5)
-    print(g5.adj_matrix)
+    print(g5.matrix)
 ```
 
 **OUTPUT:**
@@ -267,22 +385,36 @@ if __name__ == "__main__":
 [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 ```
 
-Now, let's implement the useful method `"__len__()"` to check the size of the *Adjacency Matrix* (that's, how many vertices are there in the Graph):
+---
 
-[graphs.py](src/python/graphs.py)
-```python
-def __len__(self):
-    return self.num_of_vertices
-```
+<div id="amcuafug-print"></div>
 
-Another useful method is a method to print (show) the **Adjacency Matrix**:
+## Print an Adjacency Matrix for an Undirected Graph | O(n<sup>2</sup>)
 
 [graphs.py](src/python/graphs.py)
 ```python
 def print_adjacency_matrix(self):
-    for row in self.adj_matrix:
-        print(row)
+    for row in self.matrix:  # O(n)
+        print(row)           # O(n)
 ```
+
+$f(n) = O(n) * O(n) = O(n^2)$
+
+#### Complexity Explanation
+
+ - **Time Complexity: O(n<sup>2</sup>)**
+   - The *Time Complexity* of this function is **O(n<sup>2</sup>)**, where **"n"** is the number of vertices in the graph. This is because the function visits each element in the matrix exactly once.
+   - The nested nature of these operations (looping over rows and printing elements within each row) results in a quadratic time complexity of **O(n<sup>2</sup>)** in the **Worst Case**.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* of this function is **O(1)**, because it doesn't use any additional space.
+
+#### Code Explanation
+
+ - `for row in self.matrix:`
+   - Iterates through each row of the matrix attribute (which stores the adjacency information) using a for loop.
+ - `print(row)`
+   - Prints the current row to the console, displaying the connections from that node to other nodes.
+   - Each value in the row indicates the presence or absence of an edge to a corresponding node.
 
 Let's see how it works in practice:
 
@@ -303,16 +435,31 @@ if __name__ == "__main__":
 [0, 0, 0, 0]
 ```
 
+---
+
+<div id="amcuafug-addedge"></div>
+
+## Add an edge on the Adjacency Matrix for an Undirected Graph | O(1)
+
 Ok, now let's see how to add an edge between two vertices (source->destination) on the **Adjacency Matrix** to an **Undirected Graph:**
 
 [graphs.py](src/python/graphs.py)
 ```python
 def add_edge(self, source, destination):
-    self.adj_matrix[source][destination] = 1
-    self.adj_matrix[destination][source] = 1
+    self.adj_matrix[source][destination] = 1  # O(1)
+    self.adj_matrix[destination][source] = 1  # O(1)
 ```
 
-See how easy it was:
+$f(n) = O(1) + O(1) = O(1)$
+
+#### Complexity Explanation
+
+ - **Time Complexity: O(1)**
+   - The *Time Complexity* of this function is **O(1)** because it performs a constant number of operations regardless of the size of the input. It simply assigns values to two elements in the Adjacency Matrix.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* is also **O(1)** because it does not use any additional space that grows with the size of the input. It only modifies the existing adjacency matrix.
+
+#### Code Explanation
 
  - **source:**
    - The *"source"* is the exit *point (vertex)*.
@@ -353,6 +500,12 @@ if __name__ == "__main__":
 
 ![img](images/ad-mat-01.png)  
 
+---
+
+<div id="amcuafug-addweights"></div>
+
+## Add "edge weights" on the Adjacency Matrix for an Undirected Graph | O(1)
+
 We can also design an **Adjacency Matrix** to represent the *weight of the Graph*. For example:
 
 ![img](images/ad-mat-02.png)  
@@ -362,13 +515,23 @@ Now, let's implement a method to insert an Edge on the **Adjacency Matrix** base
 [graphs.py](src/python/graphs.py)
 ```python
 def add_edge_based_weight(self, source, destination, weight):
-    self.adj_matrix[source][destination] = weight
-    self.adj_matrix[destination][source] = weight
+    self.adj_matrix[source][destination] = weight  # O(1)
+    self.adj_matrix[destination][source] = weight  # O(1)
 ```
 
-> **NOTE:**  
-> See that like the old approach, we also use the **"source"** and **"destination"** to locate the `intersection` on the Matrix between the two vertices. However, here we assign the **"weight"** on the Matrix, not one (1).
+$f(n) = O(1) + O(1) = O(1)$
 
+#### Complexity Explanation
+
+ - **Time Complexity: O(1)**
+   - The *Time Complexity* of this function is **O(1)** because it performs a constant number of operations regardless of the size of the adjacency matrix. It simply assigns the weight to the corresponding positions in the matrix.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* is also **O(1)** because it does not use any additional space that grows with the input size. It only modifies the existing adjacency matrix.
+
+#### Code Explanation
+
+**NOTE:**  
+See that like the old approach, we also use the **"source"** and **"destination"** to locate the `intersection` on the Matrix between the two vertices. However, here we assign the **"weight"** on the Matrix, not one (1).
 
 Let's see how it works in practice:
 
@@ -403,19 +566,34 @@ if __name__ == "__main__":
 
 ![img](images/ad-mat-02.png)  
 
-Finally, let's see how to *remove* an edge between two vertices (source->destination) on the **Adjacency Matrix** for an **Undirected Graph**:
+---
+
+<div id="amcuafug-remove"></div>
+
+## Remove an Edge on the Adjacency Matrix for an Undirected Graph | O(1)
+
+Now, let's see how to *remove* an edge between two vertices (source->destination) on the **Adjacency Matrix** for an **Undirected Graph**:
 
 [graphs.py](src/python/graphs.py)
 ```python
 def remove_edge(self, source, destination):
-    if self.adj_matrix[source][destination] == 0:
-        print(f"No Edge from {source} to {destination}")
-        return
-    self.adj_matrix[source][destination] = 0
-    self.adj_matrix[destination][source] = 0
+    if self.adj_matrix[source][destination] == 0:         # O(1)
+        print(f"No Edge from {source} to {destination}")  # O(1)
+        return                                            # O(1)
+    self.adj_matrix[source][destination] = 0              # O(1)
+    self.adj_matrix[destination][source] = 0              # O(1)
 ```
 
-See that:
+$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) = O(1)$
+
+#### Complexity Explanation
+
+ - **Time Complexity: O(1)**
+   - The Time Complexity of this function is **O(1)** because it only performs a constant number of operations regardless of the size of the adjacency matrix.
+ - **Space Complexity: O(1)**
+   - The **Space Complexity** is also **O(1)** because it does not use any additional data structures that grow with the input size.
+
+#### Code Explanation
 
  - **First we need to check if the Edge exists or not:**
    - `if self.adjMatrix[source][destination] == 0:`
@@ -443,8 +621,8 @@ if __name__ == "__main__":
     graph.print_adjacency_matrix()
 
     print("")
-    graph.remove_edge(1, 3)
-    graph.remove_edge(0, 1)
+    graph.remove_edge(1, 3)  # No Edge from 1 to 3.
+    graph.remove_edge(0, 1)  # Remove edge from 0 to 1.
     graph.print_adjacency_matrix()
 ```
 
@@ -462,9 +640,11 @@ No Edge from 1 to 3
 [1, 0, 1, 0]
 ```
 
+![img](images/ad-mat-01.png)  
+
 ---
 
-<div id="adjacency-list-for-undirected-graphs"></div>
+<div id="adj-list-for-ug"></div>
 
 ## Adjacency List for Undirected Graphs
 
@@ -473,29 +653,45 @@ No Edge from 1 to 3
  - It allows you to store only edges that are present in a graph:
    - Which is the opposite of an *Adjacency Matrix*, which explicitly stores all possible edges (both existent and non-existent).
 
-For example, see an **Undirected Graphs** and your **Adjacency List** below:
+To implement an *Adjacency List*, first, let's implement the **Node class to represent each Vertex of the Graph**:
 
 ![img](images/ad-list-01.png)  
 
-Now, let's see how to implement an **Adjacency List** starting by implementing the **Node class**:
+See that:
+
+ - **We have an Array of Linked Lists:**
+   - *Each index* in the array *represents a Vertex*:
+     - `| 0 | 1 | 2 | 3 | 4 |`
+   - Each index (vertex) has a linked list where each node contains the vertex to which the current index (vertex) is connected.
+
+---
+
+<div id="alcuafaug"></div>
+
+## Adjacency List class using Array (n) for an Undirected Graph | O(n) or O(V)
+
+To implement an *Adjacency List*, let's first implement the **"AdjNode"** class to represent our Linked List of connected Vertices to the current index (Vertex) on the Array:
 
 [graphs.py](src/python/graphs.py)
 ```python
-class AdjacencyList(AdjNode):
-    def __init__(self, num_vertices):
-        self.num_vertices = num_vertices
-        self.edges_list = [None] * self.num_vertices
++-------------------+------+
+| Vertex (e.g. "A") | next ---> None
++-------------------+------+
+
+class AdjNode:
+    def __init__(self, vertex, next=None):
+        self.vertex = vertex  # O(1)
+        self.next = next      # O(1)
 ```
 
-See that:
+$f(n) = O(1) + O(1) = O(1)$
 
- - We have **"a specially designed Node"** class **"to represent each edge of the Graph"**:
-   - **NOTE:** That is, each Node instance represents an "edge" between two vertices (or a loop for the same vertex) and your *weight*.
-   - **destination:**
-     - The *"destination"* instance variable is the *Vertex* that is connected to the current (source) Vertex.
-     - That's, the *Vertex* we point to go (current->destination).
-   - **next:**
-     - Finally, we have the "next" instance variable that is used to point (reference) the next edge (Node).
+#### Complexity Explanation
+
+ - **Time Complexity: O(1)**
+   - The *Time Complexity* of this function is **O(1)** because it only performs a constant number of operations regardless of the size of the adjacency list.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* is also **O(1)** because it does not use any additional data structures that grow with the input size.
 
 Ok, now let's see how to implement the **Adjacency List** class *constructor*:
 
@@ -503,16 +699,25 @@ Ok, now let's see how to implement the **Adjacency List** class *constructor*:
 ```python
 class AdjacencyList(AdjNode):
     def __init__(self, num_vertices):
-        self.num_vertices = num_vertices
-        self.edges_list = [None] * self.num_vertices
+        self.num_vertices = num_vertices              # O(1)
+        self.edges_list = [None] * self.num_vertices  # O(n) or O(V)
 ```
 
-See that:
+$f(n) = O(1) + O(n) = O(n)$
 
- - The class **AdjacencyList** *inherits* from the **AdjNode** class.
+#### Complexity Explanation
+
+ - **Time & Space Complexity: O(n) or O(V)**
+   - The *Time & Space Complexity* of the AdjacencyList class in the *Worst Case* is **O(n) or O(V)**, where **"n (or V)"** is the *number of vertices in the Graph*.
+
+### Code Explanation
+
+ - The **AdjacencyList** class *inherits* from the **AdjNode** class.
  - The constructor receives the number of vertices as instance variable.
  - Next, we create a list of size equal to the number of vertices passed to the constructor:
    - That's, we have a fixed number of vertices in the Graph.
+   - Each space in the list represents a Vertex (node) in the Graph. For example:
+     - `| 0 | 1 | 2 | 3 | 4 |`
 
 Let's see how it works in practice:
 
@@ -535,267 +740,232 @@ if __name__ == "__main__":
 ```
 
 > **NOTE:**  
-> See that we have a list of "None" to store the edges of the Graph.
-
-Knowing that:
-
- - We have an **AdjNode** class to **represent each edge of the Graph**:
-   - Saving your *"destination"* and *"next->AdjNode"*.
- - We have an **AdjacencyList** class that contains a `list (self.edges_list)` to store the edges of the Graph.
-
-> **Now, how to add the edges (AdjNode instances) to the Graph (AdjacencyList)?**
-
-To do this let's implement the **add_edge()** method on the **AdjacencyList class**:
-
-[graphs.py](src/python/graphs.py)
-```python
-def add_edge(self, source, destination):
-    new_node = AdjNode(destination)
-    new_node.next = self.edges_list[source]
-    self.edges_list[source] = new_node
-
-    new_node = AdjNode(source)
-    new_node.next = self.edges_list[destination]
-    self.edges_list[destination] = new_node
-```
-
-Here, let's explain statement by statement:
-
-**STETAMENT-01:**  
-```python
-node = AdjNode(destination)
-
-      +---+
-      | 2 | --> NULL
-      +---+
-       / \
-        |
-    Destination
-```
-
-The code above just makes a Node that saves the destination vertex.
-
-**STETAMENT-02:**  
-```python
-# Driver code example 01.
-graph = AdjacencyList(4)
-print(graph.edges_list)
-
-graph.add_edge(1, 2)
-
-# Add_edge() method.
-node.next = self.edges_list[source]
-
-                      0     1     2     3
-     self.edges_list[None, None, None, None]
-                           / \
-      +---+                 |
-      | 2 |------(next)-----|
-      +---+
-       / \
-        |
-    Destination
-```
-
- - Looking at the example above we can see that the code `"node.next = self.edges_list[source]"` sets the "next" of the new_node to the space reserved for the source of the vertex in the list.
- - **NOTE:** As each edge has a reserved space in the list, our “next” always points to that space in the list.
-
-**STETAMENT-03:**  
-```python
-# Driver code example 01.
-graph = AdjacencyList(4)
-print(graph.edges_list)
-
-graph.add_edge(1, 2)
-
-# Add_edge() method.
-self.edges_list[source] = new_node
-
-                 0     1     2     3
-                      +---+ 
-self.edges_list[None, | 2 |, None, None]
-                      +---+
-```
-
-> **NOTE:**  
-> - As each edge has a reserved space in the list, our "new_node" always is added at the end of this space.
-> - **NOTE:** Knowing this, if we pay attention we can see that the order in which we add new edges changes the result when printing (showing) the edges.
-
-Finally, how an Undirected Graph is bidirectional we need to do the same process in the reverse order:
-
-**LAST STETAMENTS (REVERSE ORDER):** 
-```python
-new_node = AdjNode(source)
-new_node.next = self.edges_list[destination]
-self.edges_list[destination] = new_node
-```
-
-> **Ok, but how can I see the AdjacencyList?**
-
-To do this let's implement the **print_adjacency_list()** method on the **AdjacencyList class**:
-
-[graphs.py](src/python/graphs.py)
-```python
-def print_adjacency_list(self):
-    for list_index in range(self.num_vertices):
-        current = self.edges_list[list_index]
-        print(f"Adjacency List for vertex {list_index}: ", end="")
-        while current:
-            print(f"{current.destination} -> ", end="")
-            current = current.next
-        print("None")
-```
-
-See that:
-
- - **We use the control instance variable "self.num_vertices" to iterate through the list of vertices:**
-   - The *range()* function is used to transforme the number to indexing (0 to n).
- - **Internally we pass the list "self.edges_list[i]" to "current" variable:**
-   - This is important to not modify the original list.
-   - And iterate through the list by *"list_index"*.
- - **More internally, we use the "current" variable to iterate through the list of edges (nodes):**
-   - The *while* loop is used to iterate through the list of edges (nodes).
-   - We jump to the next edge (node) by *"current = current.next"*.
-
-Let's see how it works in practice:
-
-[graphs.py](src/python/graphs.py)
-```python
-from graphs import AdjacencyList
-
-if __name__ == "__main__":
-
-    graph = AdjacencyList(5)
-
-    graph.add_edge(4, 4)
-
-    graph.add_edge(3, 1)
-
-    graph.add_edge(2, 3)
-
-    graph.add_edge(4, 2)
-
-    graph.add_edge(0, 4)
-    graph.add_edge(0, 3)
-    graph.add_edge(0, 2)
-    graph.add_edge(0, 1)
-
-    graph.print_adjacency_list()
-```
-
-**OUTPUT:**
-```bash
-Adjacency List for vertex 0: 1 -> 2 -> 3 -> 4 -> None
-Adjacency List for vertex 1: 0 -> 3 -> None
-Adjacency List for vertex 2: 0 -> 4 -> 3 -> None
-Adjacency List for vertex 3: 0 -> 2 -> 1 -> None
-Adjacency List for vertex 4: 0 -> 2 -> 4 -> 4 -> None
-```
-
-![img](images/ad-list-01.png)  
-
-> **What?**  
-> Why the result is different from the image?
-
-**NOTE:**  
-This is because the order we add the edges changes the result when printing (showing) the edges.
-
-For example, let's change the order we add the edges to see the result:
-
-```python
-from graphs import AdjacencyList
-
-if __name__ == "__main__":
-
-    graph = AdjacencyList(5)
-
-    graph.add_edge(3, 4)
-
-    graph.add_edge(2, 4)
-    graph.add_edge(2, 3)
-
-    graph.add_edge(3, 1)
-
-    graph.add_edge(0, 4)
-    graph.add_edge(0, 3)
-    graph.add_edge(0, 2)
-    graph.add_edge(0, 1)
-
-    graph.print_adjacency_list()
-```
-
-**OUTPUT:**
-```bash
-Adjacency List for vertex 0: 1 -> 2 -> 3 -> 4 -> None
-Adjacency List for vertex 1: 0 -> 3 -> None
-Adjacency List for vertex 2: 0 -> 3 -> 4 -> None
-Adjacency List for vertex 3: 0 -> 1 -> 2 -> 4 -> None
-Adjacency List for vertex 4: 0 -> 2 -> 3 -> None
-```
-
-![img](images/ad-list-01.png)  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Representation of Graphs/Directed Graphs ) --->
+> See that we have a list (or Array) to represent each Vertex of the Graph.
 
 ---
 
-<div id="directed-graphs"></div>
+<div id="alcuafaug-addvertex"></div>
 
-## Directed Graphs (Asymmetry or Unidirectional)
+## Add a Vertex on the Adjacency List for an Undirected Graph | O(1)
 
-A **Directed Graph** is a *graph* that is `unidirectional` in this the edges have a specific direction and the edges have directions specified with them also a directed graph can contain cycles.
+Now, let's see how to add a Vertex on the **Adjacency List**.
+
+[graphs.py](src/python/graphs.py)
+```python
+def add_vertex(self, source, destination):
+    new_node = AdjNode(destination)               # O(1)
+    new_node.next = self.edges_list[source]       # O(1)
+    self.edges_list[source] = new_node            # O(1)
+
+    new_node = AdjNode(source)                    # O(1)
+    new_node.next = self.edges_list[destination]  # O(1)
+    self.edges_list[destination] = new_node       # O(1)
+```
+
+$f(n) = O(1) + O(1) + O(1) + O(1) + O(1) + O(1) = O(1)$
+
+#### Complexity Explanation
+
+ - **Time Complexity: O(1)**
+   - The *Time Complexity* of this function is **O(1)** because it performs a constant number of operations regardless of the size of the graph.
+   - It simply creates a *"new_node"* and updates the adjacency list for both the *"source"* and *"destination"* vertices.
+ - **Space Complexity: O(1)**
+   - The *Space Complexity* of this function is also **O(1)** because it does not use any additional space that grows with the size of the graph.
+   - It only creates a *"new_node"* and updates the adjacency list, which are constant space operations.
+
+#### Code Explanation
+
+ - `new_node = AdjNode(destination)`
+   - Creates a new node for the adjacency list, presumably using a custom *"AdjNode"* class to represent a node in the Linked List.
+   - Stores the destination vertex in this node.
+ - `new_node.next = self.edges_list[source]`
+   - Links the *"next"* pointer of the *"new_node"* to the existing head of the adjacency list for the source vertex, inserting it at the front.
+ - `self.edges_list[source] = new_node`
+   - Updates the head of the adjacency list for the *"source vertex"* to be the newly added node, completing the insertion.
+ - `(Repeat for the inverse direction):`
+   - This ensures that the graph is undirected, with edges going both ways.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Directed Graphs ) --->
+
+---
+
+<div id="directed-graph"></div>
+
+### Directed Graphs
+
+A **"Directed Graphs (Asymmetry or Unidirectional)"** is a *graph* that is `unidirectional` in this the edges have a specific direction and the edges have directions specified with them also a directed graph can contain cycles.
 
 For example:
 
 ![img](images/directed-graph-01.png)
 
-### Directed Graphs is Asymmetry
+#### Directed Graphs is Asymmetry
 
 *Asymmetry* is present in the Directed Graph as the edges are all one-way, so it’s not like everyone is on equal footing and the graph might not be connected, which means there might be some nodes that are totally out of the loop.
 
-### Algorithms for Directed Graphs
+#### Algorithms for Directed Graphs
 
  - **Topological Sort.**
  - **Dijkstra’s Algorithm.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -908,6 +1078,66 @@ add_edge(4, 3)
 
 > **NOTE:**  
 > To solve this problem of adding an edge more than once, first we count how many edges there are in the Graph and then add them one by one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
