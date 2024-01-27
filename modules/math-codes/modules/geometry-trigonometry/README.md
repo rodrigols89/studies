@@ -1,4 +1,4 @@
-# Trigonometry
+# Geometry & Trigonometry
 
 ## Contents
 
