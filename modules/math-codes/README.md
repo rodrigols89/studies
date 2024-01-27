@@ -4,8 +4,6 @@
 
 # Contents
 
- - [Algebra](modules/algebra)
- - [Geometry & Trigonometry](modules/geometry-trigonometry/)
  - [Settings](#settings)
 
 
