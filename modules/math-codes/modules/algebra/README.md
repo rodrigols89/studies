@@ -137,8 +137,13 @@ If the algebraic expression contains the same order of priority, the expression 
 
 For example:
 
-$8 \div 2 \cdot 4$
+$8 \div 2 \cdot 4$  
 $4 \cdot 4 = 16$
+
+or
+
+8 ÷ 2 ⋅ 4  
+4 ⋅ 4 = 16
 
 
 
