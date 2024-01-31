@@ -14,6 +14,13 @@
      - [Static method](#static-method)
  - **Encapsulation:**
    - [Access Modifiers in Python](#access-modifiers-python)
+ - **Inheritance:**
+   - [Single inheritance](#s-inheritance)
+   - [Multiple Inheritance](#mt-inheritance)
+   - [Multilevel inheritance](#mtl-inheritance)
+   - [Hierarchical Inheritance](#h-inheritance)
+   - [Hybrid Inheritance](#hybrid-inheritance)
+   - [super() function](#super-function)
  - [References](#ref)
 
 
@@ -375,6 +382,293 @@ For example:
 <!--- ( Inheritance ) --->
 
 ---
+
+<div id="s-inheritance"></div>
+
+## Single inheritance
+
+> In **Single Inheritance**, a child class inherits from a single-parent class.
+
+![img](images/python_single_inheritance.webp)  
+
+For example:
+
+[single-inheritance.py](src/single-inheritance.py)
+```python
+# Base class.
+class Vehicle:
+    def Vehicle_info(self):
+        print("Inside Vehicle class")
+
+
+# Child class.
+class Car(Vehicle):
+    def car_info(self):
+        print("Inside Car class")
+
+
+if __name__ == "__main__":
+
+    # Create object of Car.
+    car = Car()
+
+    # Access Vehicle's info using car object
+    car.Vehicle_info()
+    car.car_info()
+```
+
+**OUTPUT:**
+```bash
+Inside Vehicle class
+Inside Car class
+```
+
+**NOTE:**  
+See that we are using the **Vehicle_info()** method of the parent class *Vehicle* from the (a partir) child class *Car*.
+
+---
+
+<div id="mt-inheritance"></div>
+
+## Multiple Inheritance
+
+> In multiple inheritance, one child class can inherit from multiple parent classes.
+
+![img](images/python_multiple_inheritance.webp)  
+
+For example:
+
+[multiple-inheritance.py](src/multiple-inheritance.py)
+```python
+# Parent class 1.
+class Person:
+    def person_info(self, name, age):
+        print("Inside Person class")
+        print("Name:", name, "Age:", age)
+
+
+# Parent class 2.
+class Company:
+    def company_info(self, company_name, location):
+        print("Inside Company class")
+        print("Name:", company_name, "location:", location)
+
+
+# Child class.
+class Employee(Person, Company):
+    def Employee_info(self, salary, skill):
+        print("Inside Employee class")
+        print("Salary:", salary, "Skill:", skill)
+
+if __name__ == "__main__":
+
+    # Create object of Employee.
+    emp = Employee()
+
+    # Access data.
+    emp.person_info("Jessa", 28)
+    emp.company_info("Google", "Atlanta")
+    emp.Employee_info(12000, "Machine Learning")
+```
+
+**OUTPUT:**
+```bash
+Name: Jessa Age: 28
+Inside Company class
+Name: Google location: Atlanta
+Inside Employee class
+Salary: 12000 Skill: Machine Learning
+```
+
+**NOTE:**  
+In the above example, we created two parent classes **Person** and **Company** respectively. Then we create one child called **Employee** which inherit from **Person** and **Company** classes.
+
+---
+
+<div id="mtl-inheritance"></div>
+
+## Multilevel inheritance
+
+> In multilevel inheritance, a class inherits from a child class or derived class.
+
+![img](images/python_multilevel_inheritance.webp)  
+
+For example:
+
+[multilevel-inheritance.py](src/multilevel-inheritance.py)
+```python
+# Base class.
+class Vehicle:
+    def Vehicle_info(self):
+        print("Inside Vehicle class")
+
+
+# Child class 1.
+class Car(Vehicle):
+    def car_info(self):
+        print("Inside Car class")
+
+
+# Child class 2.
+class SportsCar(Car):
+    def sports_car_info(self):
+        print("Inside SportsCar class")
+
+if __name__ == "__main__":
+
+    # Create object of SportsCar.
+    s_car = SportsCar()
+
+    # Access Vehicle's and Car info using SportsCar object.
+    s_car.Vehicle_info()
+    s_car.car_info()
+    s_car.sports_car_info()
+```
+
+**OUTPUT:**
+```bash
+Inside Vehicle class
+Inside Car class
+Inside SportsCar class
+```
+
+---
+
+<div id="h-inheritance"></div>
+
+## Hierarchical Inheritance
+
+> In Hierarchical inheritance, more than one child class is derived from a single parent class.
+
+![img](images/python_hierarchical_inheritance.webp)  
+
+For example:
+
+[hierarchical-inheritance.py](src/hierarchical-inheritance.py)
+```python
+class Vehicle:
+    def info(self):
+        print("This is Vehicle")
+
+
+class Car(Vehicle):
+    def car_info(self, name):
+        print("Car name is:", name)
+
+
+class Truck(Vehicle):
+    def truck_info(self, name):
+        print("Truck name is:", name)
+
+if __name__ == "__main__":
+
+    obj1 = Car()
+    obj1.info()
+    obj1.car_info("BMW")
+
+    obj2 = Truck()
+    obj2.info()
+    obj2.truck_info("Ford")
+```
+
+**OUTPUT:**
+```bash
+This is Vehicle
+Car name is: BMW
+This is Vehicle
+Truck name is: Ford
+```
+
+---
+
+<div id="hybrid-inheritance"></div>
+
+### Hybrid Inheritance
+
+> When inheritance is consists of multiple types or a combination of different inheritance is called hybrid inheritance.
+
+![img](images/python_hybrid_inheritance.webp)  
+
+For example
+
+[hybrid-inheritance.py](src/hybrid-inheritance.py)
+```python
+class Vehicle:
+    def vehicle_info(self):
+        print("Inside Vehicle class")
+
+
+class Car(Vehicle):
+    def car_info(self):
+        print("Inside Car class")
+
+
+class Truck(Vehicle):
+    def truck_info(self):
+        print("Inside Truck class")
+
+
+# Sports Car can inherits properties of Vehicle and Car.
+class SportsCar(Car, Vehicle):
+    def sports_car_info(self):
+        print("Inside SportsCar class")
+
+if __name__ == "__main__":
+
+    s_car = SportsCar()
+
+    s_car.vehicle_info()
+    s_car.car_info()
+    s_car.sports_car_info()
+```
+
+**OUTPUT:**
+```bash
+Inside Vehicle class
+Inside Car class
+Inside SportsCar class
+```
+
+---
+
+<div id="super-function"></div>
+
+## super() function
+
+> In child class, we can refer to parent class by using the **super() function**.
+
+The **super() function** returns a temporary object of the parent class that allows us to call a parent class method inside a child class method.
+
+For example:
+
+[super-function.py](src/super-function.py)
+```python
+class Company:
+    def company_name(self):
+        return "Google"
+
+
+class Employee(Company):
+    def info(self):
+        # Calling the superclass method using super() function.
+        c_name = super().company_name()
+        print("Jessa works at", c_name)
+
+
+if __name__ == "__main__":
+    emp = Employee()
+    emp.info()
+```
+
+**OUTPUT:**
+```bash
+Jessa works at Google
+```
+
+**NOTE:**  
+
+ - In the above example, we create a parent class **Company** and child class **Employee**.
+ - In **Employee** class, we call the parent class method by using a **super() function**.
 
 
 

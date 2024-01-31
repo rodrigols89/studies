@@ -4,6 +4,8 @@
 
  - [Errors and Exceptions](modules/errors-and-exceptions)
  - [Object-Oriented Programming (OOP)](modules/oop)
+ - **Web Development:**
+   - [Django](modules/django)
  - **APIs:**
    - [Requests: HTTP for Humans](modules/requests)
    - [FastAPI](modules/fastapi)
