@@ -1,9 +1,8 @@
 # Math
 
-![title](res/math-logo.gif)
+## Contents
 
-# Contents
-
+ - [Algebra](modules/algebra)
  - [Settings](#settings)
 
 
