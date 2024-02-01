@@ -285,7 +285,7 @@ So, **75%** really means $\frac{75}{100}$.
 
 For example:
 
-$0.125 \times 100\ = 12.5\%$  
+$0.125 \times 100\ = 12.5\% $  
 
 **NOTE:**  
 Another easy way to multiply by 100 is to move the decimal point 2 places to the right. For example:
@@ -323,7 +323,7 @@ NOTE: See that here we had to adds a zero and not remove it.
 
 For example, let's convert **75%** to decimal:
 
-$75\% = \frac{75}{100} = 0.75$  
+$75% = \frac{75}{100} = 0.75$  
 
 **NOTE:**  
 Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
