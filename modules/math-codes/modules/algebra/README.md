@@ -5,6 +5,9 @@
  - **Algebraic Expressions:**
    - [Operator Precedence AKA Order of Operations](#operator-precedence)
  - [**Percents:**](#percents)
+   - [Decimals to Percents (Move the decimal point 2 places to the right / →)](#decimals-to-percents)
+   - [Percents to Decimals (Move the decimal point 2 places to the left / ←)](#percents-to-decimals)
+   - [Percentage Difference (MathIsFun Link)](https://www.mathsisfun.com/percentage-difference.html)
    - **Tips & Tricks:**
      - [Percentages calculus are Symmetry (or Bidirectional)](#percentages-calculus-symmetry)
      - [Percent vs Percentage](#percent-vs-percentage)
@@ -272,32 +275,77 @@ Because **"Percent"** means **"per 100"** think:
 **NOTE:**  
 So, **75%** really means $\frac{75}{100}$.
 
+---
 
+<div id="decimals-to-percents"></div>
 
+## Decimals to Percents (Move the decimal point 2 places to the right / →)
 
+> To convert from decimal to percentage, we need to **"multiply the decimal number by 100** and **add the “%” sign**.
 
+For example:
 
+$0.125 \times 100\ = 12.5\%$  
 
+**NOTE:**  
+Another easy way to multiply by 100 is to move the decimal point 2 places to the right. For example:
 
+![img](images/decimal-to-percent-01.png)  
+**Move the decimal point 2 places to the right (and add the "%" sign!)**
 
+**Example-01: Convert 0.35 to percent**  
+```md
+0.35 → 3.5 (zero here is removed) → 35.
+Answer 0.35 = 35%
+```
 
+**Example: Convert 0.985 to percent**  
+```md
+0.985 → 9.85 (zero here is removed) → 98.5
+Answer 0.985 = 98.5%
+```
 
+**Example: Convert 1.2 to percent**
+```md
+1.2 → 12. → 120.
+Answer 1.2 = 120%
 
+NOTE: See that here we had to adds a zero and not remove it.
+```
 
+---
 
+<div id="percents-to-decimals"></div>
 
+## Percents to Decimals (Move the decimal point 2 places to the left / ←)
 
+> To convert from percentage to decimal, we need to **divide the percentage (%) by 100** and **remove the “%” sign**.
 
+For example, let's convert **75%** to decimal:
 
+$75\% = \frac{75}{100} = 0.75$  
 
+**NOTE:**  
+Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
 
+![img](images/percent-to-decimal-01.png)  
+**Move the decimal point 2 places to the left, and remove the *"%"* sign.**  
 
+**Example-01: Convert 8.5% to decimal**  
+```md
+8.5 → 0.85 → 0.085
+```
 
+**NOTE:**  
+Note how we inserted an extra **"0"** as needed. So, the answer is **8.5% = 0.085**.
 
+**Example-02: Convert 250% to decimal**  
+```md
+Move the decimal point two places to the left:
+250. → 25. (zero here is removed, that's, not use 25.0) → 2.5
+```
 
-
-
-
+So, the answer is **250% = 2.5**.
 
 ---
 
@@ -394,6 +442,67 @@ So, **"5%"** of those apples are bad.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERENCES ) --->
 
 ---
@@ -408,15 +517,9 @@ So, **"5%"** of those apples are bad.
  - **Percents:**
    - [Percent example](https://www.instagram.com/p/Cw0qpWVPA46/)
    - [Percents (%)](https://www.mathsisfun.com/percentage.html)
+   - [Convert Percents to Decimals](https://www.mathsisfun.com/converting-percents-decimals.html)
+   - [Convert Decimals to Percents](https://www.mathsisfun.com/converting-decimals-percents.html)
 
 ---
 
 Ro**drigo** **L**eite da **S**ilva - **drigols**
-
-
-```
-É só multiplicar galera.
-3(30%) x 9(90) = 27
-E assim pra qualquer tipo de cálculo de %.
-EX: 40% de 120? 4x12= 48
-```
