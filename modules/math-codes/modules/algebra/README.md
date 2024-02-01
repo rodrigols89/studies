@@ -285,7 +285,7 @@ So, **75%** really means $\frac{75}{100}$.
 
 For example:
 
-$0.125 \times 100\ = 12.5\% $  
+![img](images/percents-latex-01.png)  
 
 **NOTE:**  
 Another easy way to multiply by 100 is to move the decimal point 2 places to the right. For example:
@@ -323,7 +323,7 @@ NOTE: See that here we had to adds a zero and not remove it.
 
 For example, let's convert **75%** to decimal:
 
-$75% = \frac{75}{100} = 0.75$  
+![img](images/percents-latex-02.png)  
 
 **NOTE:**  
 Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
@@ -388,23 +388,27 @@ Imagine we have 200 apples...
 
 > ***15%* of *200* apples are bad. How many apples are bad?**
 
-$15\% = \frac{15}{100}$  
-$= \ \frac{15}{100} \times 200 = 15 \times \frac{200}{100}$  
-$= 15 \times 2$  
-$= 30$  
+![img](images/percents-latex-03.png)  
 
 **NOTE:**  
 So, 30 apples are bad.
 
 > **Now imagine if only *10* of the *200* apples are bad, what percent is that?**
 
-$As \ a \ fraction, \frac{10}{200} = 0.05$  
-$As \ a \ percentage \ it \ is: \frac{10}{200} \times 100 = 5\%$  
+![img](images/percents-latex-04.png)  
 
 **NOTE:**  
 So, **"5%"** of those apples are bad.
 
+<!---
+$15\% = \frac{15}{100}$  
+$= \ \frac{15}{100} \times 200 = 15 \times \frac{200}{100}$  
+$= 15 \times 2$  
+$= 30$  
 
+$As \ a \ fraction, \frac{10}{200} = 0.05$  
+$As \ a \ percentage \ it \ is: \frac{10}{200} \times 100 = 5\%$ 
+--->
 
 
 
