@@ -3,6 +3,7 @@
 ## Contents
 
  - [Algebra](modules/algebra)
+ - [Statistics, Probability and Financial Math](modules/stats-prob-fm)
  - [Settings](#settings)
 
 
