@@ -62,13 +62,11 @@
 
 ---
 
- - **Artificial Intelligence & Data Science:**
-   - [Artificial Intelligence](modules/ai-codes)
+ - [Artificial Intelligence](modules/ai-codes)
 
 ---
 
- - **Mathematics:**
-   - [Math](modules/math-codes)
+ - [Math](modules/math-codes)
 
 ---
 
