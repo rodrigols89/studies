@@ -877,7 +877,7 @@ Some **"Events"** examples can be:
 
 > The **complement of an event** is **"the set of sample points that do *not* result in the event"**.
 
-![img](images/complement-of-an-event.png)  
+![img](images/complement-of-an-event-01.png)  
 
 For example, consider rolling two dice simultaneously:
 
