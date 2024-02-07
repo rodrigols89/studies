@@ -6,14 +6,11 @@
 
 ## Contents
 
-<div id=""></div>
-
- - [**Machine Learning**](#ml)
- - [**Neural Nets & Deep Learning**](#ann-dp)
- - [**Recommender System**](#recommender-system)
- - [**Deep/+Reinforcement Learning**](#drl)
- - [**Computer Vision**](#cv)
- - [**Useful Libraries**](#useful-libraries)
+ - [Machine Learning](#ml)
+ - [Recommender System](#recommender-system)
+ - [Artificial Neural Networks & Deep Learning](modules/ann-dp)
+ - [Deep/+Reinforcement Learning](#drl)
+ - [Useful Libraries](#useful-libraries)
  - **Tips & Tricks:**
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
    - [Data Preprocessing](#dt-ppc)
@@ -21,7 +18,6 @@
    - [Hyperparameter Tuning](modules/hyperparameter-tuning)
    - [Cross-Validation](modules/cross-validation)
    - [Evaluation Metrics](#evaluation-metrics)
- - [**Project Settings**](#settings)
 
 ---
 
@@ -29,10 +25,10 @@
 
 ## Machine Learning
 
- - __Machine Learning:__
-   - __Classical Learning:__
-     - __Supervised Learning:__
-       - __[Regression:](modules/regression)__
+ - **Machine Learning:**
+   - **Classical Learning:**
+     - **Supervised Learning:**
+       - **[Regression:](modules/regression)**
          - Linear Regression
            - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
            - [Regressão Linear (SSE, OLS, GD)](modules/linear-regression/linear-regression-sse-ols-gd.md)
@@ -41,7 +37,7 @@
            - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
          - Elastic Net
            - [Introdução ao Algoritmo Elastic Net](modules/elastic-net/intro-to-elastic-net.md)
-       - __Classification:__
+       - **Classification:**
          - Logistic Regression
            - [Introdução à Regressão Logística](modules/logistic-regression/intro-to-lr.md)
            - [Regressão Logística com Scikit-Learn](modules/logistic-regression/lr-w-sklearn.md)
@@ -54,45 +50,24 @@
          - K-Nearest Neighbors (KNN)
            - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](modules/knn/intro-to-knn.md)
            - [KNN com Scikit-Learn](modules/knn/knn-w-sklearn.md)
-     - [__Unsupervised Learning:__](modules/concepts/unsupervised-learning.md)
-       - __Clustering:__
+     - [**Unsupervised Learning:**](modules/concepts/unsupervised-learning.md)
+       - **Clustering:**
          - Fuzzy C-Means
          - Mean-Shift
          - K-Means
          - DBSCAN
          - Agglomerative
-       - __Dimension Reduction (Generalization):__
+       - **Dimension Reduction (Generalization):**
          - t-SNE
          - Principal Component Analysis - (PCA)
          - LSA
          - SVD
          - LDA
-     - __Pattern Search:__
+     - **Pattern Search:**
        - Euclat
        - Apriori
        - FP-Growth
      - **[Ensemble Methods](modules/ensemble-methods/ensemble-methods.md)**
-
----
-
-<div id="ann-dp"></div>
-
-## Neural Networks & Deep Learning
-
- - __Neural Networks & Deep Learning:__
-   - __Neural Networks:__
-     - [Introdução às Redes Neurais Artificiais (RNA)](modules/neural-networks/intro-to-ann.md)
-     - [Funções de Ativação](modules/neural-networks/activation-functions.md)
-     - [Redes Neurais com Keras](modules/neural-networks/ann-with-keras.md)
-   - __Deep Learning:__
-     - __Convolutional Neural Networks (CNN):__
-   - __Recurrent Neural Netowkrs (RNN):__
-     - LSM
-     - LSTM
-     - GRU
-   - __Autoencoders:__
-     - seq2seq
-   - __Generative Adversarial Networks (GAN):__
 
 ---
 
@@ -240,37 +215,6 @@
      - Gini Coefficient
      - Cross-Entropy Loss (Binary Classification)
      - Hinge Loss(Binary Classification)
-
----
-
-<div id="settings"></div>
-
-## Project Settings
-
-To use the project codes just install [requirements.txt](requirements.txt) *(Python>=3.7 is requirement for TensorFlow 2.0)*:
-
-**CREATE VIRTUAL ENVIRONMENT:**  
-```python
-# Venv approach.
-python -m venv ai-environment
-```
-
-**ACTIVATE THE VIRTUAL ENVIRONMENT:**  
-```python
-source ai-environment/bin/activate
-```
-
-**UPDATE PIP:**
-```
-python -m pip install --upgrade pip
-```
-
-**INSTALL PYTHON DEPENDENCIES:**  
-```python
-pip install -U -v --require-virtualenv -r requirements.txt
-```
-
-**Now, Be Happy!!!** 😬
 
 ---
 
