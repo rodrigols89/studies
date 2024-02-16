@@ -56,11 +56,21 @@
      - [Mutually Exclusive Events (Events that can't occur together)](#mutually-exclusive-events)
  - **Financial Math:**
    - [**Percents:**](#percents)
+   - [Finding the percentage of a part $(\frac{part}{whole} \times 100)$](#percentage-part)
+
+
+
+
+
+
+
+
+
+
      - [Decimals to Percents (Move the decimal point 2 places to the right / →)](#decimals-to-percents)
      - [Percents to Decimals (Move the decimal point 2 places to the left / ←)](#percents-to-decimals)
      - **Percents - Tips & Tricks:**
        - [Percentages calculus are Symmetry (or Bidirectional)](#percentages-calculus-symmetry)
-       - [Percent vs Percentage](#percent-vs-percentage)
      - **Percentages Questions:**
        - [Apples percentage question](#apple-question)
  - [**Settings**](#settings)
@@ -1247,10 +1257,64 @@ To understand more easily, let's take a look at the examples below:
 
 Because **"Percent"** means **"per 100"** think:
 
-> **"this should be divided by 100"**
+> **"This should be divided by 100"**
 
 **NOTE:**  
 So, **75%** really means $\frac{75}{100}$.
+
+---
+
+<div id="percentage-part"></div>
+
+## Finding the percentage of a part $(\frac{part}{whole} \times 100)$
+
+To determine the percentage of a number, we need to:
+
+ - Divide the *"given value (part)"*;
+ - By the *"total value (whole)"*;
+ - And then *"multiply the resultant by 100"*.
+
+![img](images/percent-formula-00.png)  
+
+For example, imagine we have *200 apples* and *10* of them are bad...
+
+> **What is the percentage those 10 apples represent?**
+
+Using our formula we have:
+
+![img](images/percent-formula-01.png)  
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+Imagine we have 200 apples...
+
+> ***15%* of *200* apples are bad. How many apples are bad?**
+
+![img](images/percents-latex-03.png)  
+
+**NOTE:**  
+So, 30 apples are bad.
+
+
+![img](images/percents-latex-04.png)  
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -1337,23 +1401,8 @@ This little rule can make some percentage calculations easier:
 For example:
 
  - **8% of 50** is the same as **50% of 8**:
-   - And **50%** of **8** is **4**.
- - So, **8% of 50** is also **4**.
-
----
-
-<div id="percent-vs-percentage"></div>
-
-## Percent vs Percentage
-
-In the Dictionary says:
-
- - *"Percentage"* is the *"result obtained by multiplying a quantity by a percent"*.
- - So 10 percent of 50 apples is 5 apples:
-   - The 5 apples is the percentage.
-
-**NOTE:**  
-But in practice people use both words the same way.
+   - If **50%** of **8** is **4**.
+   - So, **8% of 50** is also **4**.
 
 ---
 
@@ -1361,31 +1410,6 @@ But in practice people use both words the same way.
 
 ## Apples percentage question
 
-Imagine we have 200 apples...
-
-> ***15%* of *200* apples are bad. How many apples are bad?**
-
-![img](images/percents-latex-03.png)  
-
-**NOTE:**  
-So, 30 apples are bad.
-
-> **Now imagine if only *10* of the *200* apples are bad, what percent is that?**
-
-![img](images/percents-latex-04.png)  
-
-**NOTE:**  
-So, **"5%"** of those apples are bad.
-
-<!---
-$15\% = \frac{15}{100}$  
-$= \ \frac{15}{100} \times 200 = 15 \times \frac{200}{100}$  
-$= 15 \times 2$  
-$= 30$  
-
-$As \ a \ fraction, \frac{10}{200} = 0.05$  
-$As \ a \ percentage \ it \ is: \frac{10}{200} \times 100 = 5\%$ 
---->
 
 
 
