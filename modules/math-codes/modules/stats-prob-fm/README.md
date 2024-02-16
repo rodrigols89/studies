@@ -56,7 +56,7 @@
      - [Mutually Exclusive Events (Events that can't occur together)](#mutually-exclusive-events)
  - **Financial Math:**
    - [**Percents:**](#percents)
-   - [Finding the percentage of a part $(\frac{part}{whole} \times 100)$](#percentage-part)
+   - [Finding the percentage of a part (number) → (part/whole) x 100](#percentage-part)
 
 
 
@@ -1266,7 +1266,7 @@ So, **75%** really means $\frac{75}{100}$.
 
 <div id="percentage-part"></div>
 
-## Finding the percentage of a part $(\frac{part}{whole} \times 100)$
+## Finding the percentage of a part (number) → (part/whole) x 100
 
 To determine the percentage of a number, we need to:
 
