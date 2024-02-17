@@ -1232,7 +1232,7 @@ To determine the percentage of a number, we need to:
  - By the *"total value (whole)"*;
  - And then *"multiply the resultant by 100"*.
 
-![img](images/financial-math/percent-formula-00.png)  
+![img](images/financial-math/percent-formula.png)  
 
 For example, imagine we have *200 apples* and *10* of them are bad...
 
