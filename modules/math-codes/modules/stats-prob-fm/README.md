@@ -56,13 +56,13 @@
      - [Mutually Exclusive Events (Events that can't occur together)](#mutually-exclusive-events)
  - **Financial Math:**
    - [**Percents:**](#percents)
-     - [Decimals to Percents (Move the decimal point 2 places to the right / →)](#decimals-to-percents)
-     - [Percents to Decimals (Move the decimal point 2 places to the left / ←)](#percents-to-decimals)
+     - [Finding the percentage of a part → part/whole x 100](#percentage-part)
+     - [Finding the part of a percentage → (percentage/100) x whole](#finding-the-part)
+     - [Percentage Difference (How much percent is the difference between two quantities/values)](#percentage-difference)
      - **Percents - Tips & Tricks:**
        - [Percentages calculus are Symmetry (or Bidirectional)](#percentages-calculus-symmetry)
-       - [Percent vs Percentage](#percent-vs-percentage)
-     - **Percentages Questions:**
-       - [Apples percentage question](#apple-question)
+       - [Decimals to Percents (Move the decimal point 2 places to the right / →)](#decimals-to-percents)
+       - [Percents to Decimals (Move the decimal point 2 places to the left / ←)](#percents-to-decimals)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
 
@@ -597,11 +597,6 @@ For example, see the **"histogram"** below for our **"CH"** Quantitative Variabl
 
 
 
-
-
-
-
-
 <!--- ( Statistics/Statistics - Tips & Tricks ) --->
 
 ---
@@ -761,11 +756,6 @@ In *mathematics* we say that a **Phenomenon is Non-Deterministic (Random)** when
 
 
 
-
-
-
-
-
 <!--- ( Probability/Sample Space (Ω) ) --->
 
 ---
@@ -799,14 +789,8 @@ We can also represent it as tuples:
 
 ![img](images/dice-table-02.png)
 
-
 **NOTE:**  
 See that we have 36 (6x6=36) possible outcomes (results).
-
-
-
-
-
 
 
 
@@ -835,11 +819,6 @@ For example:
 
 > **NOTE:**  
 > For example, when analyzing a *chart* with all  experiment samples *(sample space Ω)*, a *sample point (ω)* could be *"a single point on the chart"*.
-
-
-
-
-
 
 
 
@@ -877,7 +856,7 @@ Some **"Events"** examples can be:
 
 > The **complement of an event** is **"the set of sample points that do *not* result in the event"**.
 
-![img](images/complement-of-an-event.png)  
+![img](images/complement-of-an-event-01.png)  
 
 For example, consider rolling two dice simultaneously:
 
@@ -960,6 +939,10 @@ Are **Events** that have **null Intersection**, that is:
 **NOTE:**  
 That is, they are part of the sample space, but do not belong to Event A.
 
+
+
+
+
 <!--- ( Probability/Operations with Events/Questions ) --->
 
 ---
@@ -990,11 +973,6 @@ Now we have to solve the following **"Events operations"**:
    - **B<sup>c</sup> =** {ω : ω > 3}
    - **C<sup>c</sup> =** {1, 3, 5}
    - **D<sup>c</sup> =** Knowing that D = {2, 3, 5}, then D<sup>c</sup> = {1, 4, 6}
-
-
-
-
-
 
 
 
@@ -1053,11 +1031,6 @@ Probability \ of \ an \ "Event" = \frac{P(A)}{P(\Omega)} = \frac{Number \ of \ "
 
 
 
-
-
-
-
-
 <!--- ( Probability/Bias ) --->
 
 ---
@@ -1088,11 +1061,6 @@ Then we can write these probabilities like this:
  - **P(A) =** *0.6*
  - **P(B) =** *0.3*
  - **P(C) =** *0.1*
-
-
-
-
-
 
 
 
@@ -1247,12 +1215,79 @@ To understand more easily, let's take a look at the examples below:
 
 Because **"Percent"** means **"per 100"** think:
 
-> **"this should be divided by 100"**
+> **"This should be divided by 100"**
 
 **NOTE:**  
 So, **75%** really means $\frac{75}{100}$.
 
 ---
+
+<div id="percentage-part"></div>
+
+## Finding the percentage of a part → part/whole x 100
+
+To determine the percentage of a number, we need to:
+
+ - Divide the *"given value (part)"*;
+ - By the *"total value (whole)"*;
+ - And then *"multiply the resultant by 100"*.
+
+![img](images/percent-formula-00.png)  
+
+For example, imagine we have *200 apples* and *10* of them are bad...
+
+> **What is the percentage those 10 apples represent?**
+
+Using our formula we have:
+
+![img](images/percent-formula-01.png)  
+
+---
+
+<div id="finding-the-part"></div>
+
+## Finding the part of a percentage → (percentage/100) x whole
+
+To find out the part of a percentage we use the following formula:
+
+![img](images/percent-formula-02.png)  
+
+> **NOTE:**  
+> - See that first, we need to *divide the percentage by 100*. This is because we first need to *convert the percentage to decimal*.
+> - That's, we can also use the ["Percents to Decimals"](#percents-to-decimals) tip to *first convert to decimal* and then divide by *whole*.
+
+For example, imagine we have 200 apples...
+
+> ***15%* of *200* apples are bad. How many apples are bad?**
+
+Using our formula we have:
+
+![img](images/percent-formula-03.png)
+
+> **So, "30" apples are bad!**
+
+
+
+
+
+<!--- ( Financial Math/Percents/Tips and Tricks ) --->
+
+---
+
+<div id="percentages-calculus-symmetry"></div>
+
+## Percentages calculus are Symmetry (or Bidirectional)
+
+This little rule can make some percentage calculations easier:
+
+**x% of y = y% of x**
+
+For example:
+
+ - **8% of 50** is the same as **50% of 8**:
+   - If **50%** of **8** is **4**.
+   - So, **8% of 50** is also **4**.
+
 
 <div id="decimals-to-percents"></div>
 
@@ -1323,69 +1358,6 @@ Move the decimal point two places to the left:
 ```
 
 So, the answer is **250% = 2.5**.
-
----
-
-<div id="percentages-calculus-symmetry"></div>
-
-## Percentages calculus are Symmetry (or Bidirectional)
-
-This little rule can make some percentage calculations easier:
-
-**x% of y = y% of x**
-
-For example:
-
- - **8% of 50** is the same as **50% of 8**:
-   - And **50%** of **8** is **4**.
- - So, **8% of 50** is also **4**.
-
----
-
-<div id="percent-vs-percentage"></div>
-
-## Percent vs Percentage
-
-In the Dictionary says:
-
- - *"Percentage"* is the *"result obtained by multiplying a quantity by a percent"*.
- - So 10 percent of 50 apples is 5 apples:
-   - The 5 apples is the percentage.
-
-**NOTE:**  
-But in practice people use both words the same way.
-
----
-
-<div id="apple-question"></div>
-
-## Apples percentage question
-
-Imagine we have 200 apples...
-
-> ***15%* of *200* apples are bad. How many apples are bad?**
-
-![img](images/percents-latex-03.png)  
-
-**NOTE:**  
-So, 30 apples are bad.
-
-> **Now imagine if only *10* of the *200* apples are bad, what percent is that?**
-
-![img](images/percents-latex-04.png)  
-
-**NOTE:**  
-So, **"5%"** of those apples are bad.
-
-<!---
-$15\% = \frac{15}{100}$  
-$= \ \frac{15}{100} \times 200 = 15 \times \frac{200}{100}$  
-$= 15 \times 2$  
-$= 30$  
-
-$As \ a \ fraction, \frac{10}{200} = 0.05$  
-$As \ a \ percentage \ it \ is: \frac{10}{200} \times 100 = 5\%$ 
---->
 
 
 
@@ -1525,101 +1497,6 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( REFERENCES ) --->
 
 ---
@@ -1644,6 +1521,8 @@ pip install -U -v --require-virtualenv -r requirements.txt
      - [Percents (%)](https://www.mathsisfun.com/percentage.html)
      - [Convert Percents to Decimals](https://www.mathsisfun.com/converting-percents-decimals.html)
      - [Convert Decimals to Percents](https://www.mathsisfun.com/converting-decimals-percents.html)
+     - [Percentage](https://byjus.com/maths/percentage/)
+     - [Percentage Difference Calculator](https://www.justcalculateit.com/percentage-difference-calculator/)
 
 ---
 
