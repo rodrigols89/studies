@@ -175,7 +175,7 @@
 
 To start with **Descriptive Statistics**, let's get started with the follow problem. Imagine we have some **x<sub>n</sub>** and **y<sub>n</sub>** variables:
 
-![img](images/sd-01.png)  
+![img](images/statistics/sd-01.png)  
 
 **NOTE:**  
 Looking at the data above, it's hard to understand the patterns and the relationship between these variables.
@@ -185,7 +185,7 @@ Looking at the data above, it's hard to understand the patterns and the relation
 
 For example, see the visual approach below:
 
-![img](images/sd-02.png)  
+![img](images/statistics/sd-02.png)  
 
 > **NOTE:**  
 > See that easier to find patterns and relationships between variables visually.
@@ -198,7 +198,7 @@ For example, see the visual approach below:
 
 The **Descriptive Statistics** focus specifically on **step 2 (data understanding)** and **step 3 (data preparation)** in **CRISP-DM methodology**:
 
-![img](images/sd-03.png)  
+![img](images/statistics/sd-03.png)  
 
 ---
 
@@ -230,8 +230,8 @@ The **Descriptive Statistics** focus specifically on **step 2 (data understandin
 
 You can see some **nominal data** in the images below:
 
-![img](images/nominal-01.png)  
-![img](images/nominal-02.jpg)  
+![img](images/statistics/nominal-01.png)  
+![img](images/statistics/nominal-02.jpg)  
 
 **NOTE:**  
 See we have categorical groups, however, this group doesn't *inherent order*, *ranking* or *sequence*. 
@@ -245,8 +245,8 @@ See we have categorical groups, however, this group doesn't *inherent order*, *r
 
 ### Ordinal data (Indicate some kind of "inherent order" or "hierarchy")
 
-![img](images/ordinal-data-01.jpg)  
-![img](images/ordinal-data-02.jpg)  
+![img](images/statistics/ordinal-data-01.jpg)  
+![img](images/statistics/ordinal-data-02.jpg)  
 
 ---
 
@@ -277,7 +277,7 @@ Now let's turn our attention to features that indicate some kind of:
 
 ## Continuous data (We measure instead of counting)
 
-![img](images/continuous-data-01.png)  
+![img](images/statistics/continuous-data-01.png)  
 
 **NOTE:**  
 We also say that **Continuous data** are:
@@ -300,7 +300,7 @@ See we have **infinite** values from **an interval**.
 
 ## Discrete data (It's something we count instead of measuring)
 
-![img](images/discrete-data-01.png)  
+![img](images/statistics/discrete-data-01.png)  
 
 **NOTE:**  
 We also say that **Discrete data** are:
@@ -335,7 +335,7 @@ Twenty students were asked how many hours they worked per day. Their responses, 
 
 The **Frequency Table** for our example is:
 
-![img](images/intro-to-frequency-01.png)  
+![img](images/statistics/intro-to-frequency-01.png)  
 
  - A **frequency** is the *number of times* a *value of the data occurs*.
  - The **sum of the values in the "frequency" column**, 20, **represents the total number of students included in the sample**:
@@ -353,7 +353,7 @@ For example, to our student table to find the **relative frequencies**:
  - Divide each frequency;
  - By the total number of students in the sample, in this case, 20.
 
-![img](images/relative-frequency-01.png)  
+![img](images/statistics/relative-frequency-01.png)  
 
 **NOTE:**  
 
@@ -370,7 +370,7 @@ For example, to our student table to find the **relative frequencies**:
 
 To find the **cumulative relative frequencies**, add all the previous relative frequencies to the relative frequency for the current row, as shown in table below:
 
-![img](images/cumulative-relative-frequencies-01.png)  
+![img](images/statistics/cumulative-relative-frequencies-01.png)  
 
 ---
 
@@ -380,11 +380,11 @@ To find the **cumulative relative frequencies**, add all the previous relative f
 
 To understand how create a **frequency table** for categorical variables imagine we have the following data to analyze:
 
-![img](images/frequency-table-01.png)  
+![img](images/statistics/frequency-table-01.png)  
 
 To understand how to create a frequency table first, let's sorting **"Area"** variable:
 
-![img](images/frequency-table-02.png)
+![img](images/statistics/frequency-table-02.png)
 
 See that the categorical variable **"Area"** has some categories:
 
@@ -403,7 +403,7 @@ There are two approach to create a frequency table:
 
 For example, see the frequency table below, referent to our **Area variable**:
 
-![img](images/frequency-table-03.png)  
+![img](images/statistics/frequency-table-03.png)  
 
 Remember that to obtain the Relative Frequency we:
 
@@ -418,7 +418,7 @@ Remember that to obtain the Relative Frequency we:
 
 To calculate **absolute** and **relative frequency table** we can use the following formulas: 
 
-![img](images/frequency-table-04.png)
+![img](images/statistics/frequency-table-04.png)
 
 ---
 
@@ -428,14 +428,14 @@ To calculate **absolute** and **relative frequency table** we can use the follow
 
 See that relative frequency never pass from **1.0** (that's 100% data).
 
-![img](images/frequency-table-05.png)  
+![img](images/statistics/frequency-table-05.png)  
 
 > **NOTE:**  
 > The **range of relative frequency** is always from **0.00 (0% data)** to **1.00 (100% data)**.
 
 For example, to see which percent represent each category take relative frequency and multiply per 100 (100%):
 
-![img](images/frequency-table-06.png)  
+![img](images/statistics/frequency-table-06.png)  
 
 > **NOTE:**  
 > See that **"Eng" category** represents **30%** of the data.
@@ -450,7 +450,7 @@ For example, to see which percent represent each category take relative frequenc
 
 For example, see the **Bar graph** below representing our categorical variable **Area**:
 
-![img](images/frequency-table-07.png)  
+![img](images/statistics/frequency-table-07.png)  
 
  - **The axis-x:**
    - Represent the category.
@@ -460,7 +460,7 @@ For example, see the **Bar graph** below representing our categorical variable *
 
 We also can represent graph bar for categorical variables horizontal:
 
-![img](images/frequency-table-08.png)  
+![img](images/statistics/frequency-table-08.png)  
 
 This approach is advised when:
 
@@ -478,11 +478,11 @@ That's because when each of the above cases happens the variable names overlap.
 
 Sometimes we need to compare the relationship between categorical variables. For example, imagine we need to compare the relationship between **"Area"** and **"Email"** variables:
 
-![img](images/frequency-table-10.png)  
+![img](images/statistics/frequency-table-10.png)  
 
 To create a *Frequency Table* for the **“Area”** and **“Email”** variables, we need to see the combinations between these variables:
 
-![img](images/frequency-table-12.png)  
+![img](images/statistics/frequency-table-12.png)  
 
 See that:
 
@@ -493,7 +493,7 @@ See that:
 **NOTE:**  
 If you pay attention, you can see that the table has the sum of frequencies on the sides:
 
-![img](images/frequency-table-13.png)  
+![img](images/statistics/frequency-table-13.png)  
 
 See that:
 
@@ -503,14 +503,14 @@ See that:
 **NOTE:**  
 You can also see this representation as an **"Adjacency Matrix"**:
 
-![img](images/frequency-table-14.png)
+![img](images/statistics/frequency-table-14.png)
 
 > Ok, but how do I convert this **Absolute Frequency Table** to a **Relative Frequency Table**?
 
 **NOTE:**
 Easy, just divide each combination between **"Area"** and **"Email"** variables by *total of frequencies*:
 
-![img](images/frequency-table-15.png)  
+![img](images/statistics/frequency-table-15.png)  
 
 ---
 
@@ -520,7 +520,7 @@ Easy, just divide each combination between **"Area"** and **"Email"** variables 
 
 A common approach to compare categorical variables is to use a **Bar Chart**:
 
-![img](images/frequency-table-17.png)  
+![img](images/statistics/frequency-table-17.png)  
 
 ---
 
@@ -534,7 +534,7 @@ A common approach to compare categorical variables is to use a **Bar Chart**:
 
 Knowing this, we need to group values into classes to create a Frequency Table. For example, see the image below:
 
-![img](images/quantitative-01.png)  
+![img](images/statistics/quantitative-01.png)  
 
  - See that we have many groups of classes separated by range.
  - Each **y<sub>n<sub>** range represents a group of class:
@@ -542,13 +542,13 @@ Knowing this, we need to group values into classes to create a Frequency Table. 
 
 For example, let's go count how many values appear in each  class group **y<sub>n<sub>**:
 
-![img](images/quantitative-02.png)  
+![img](images/statistics/quantitative-02.png)  
 
 > **This groups range is what we know as "class amplitude (or Class Range/Interval)".**
 
 Now, imagine we have the follow table to create a frequency table:
 
-![img](images/quantitative-03.png)  
+![img](images/statistics/quantitative-03.png)  
 
 > **NOTE:**  
 > The quantitative variable **CH** represent the **workload (carga horária)**.
@@ -582,7 +582,7 @@ Now, some information:
 
 For example, see the **"histogram"** below for our **"CH"** Quantitative Variable:
 
-![img](images/quantitative-04.png)  
+![img](images/statistics/quantitative-04.png)  
 
  - See that different from **"Bar Chart"** the **Histogram** has not interval between the bars.
  - That makes sense because quantitative variables have not an interval:
@@ -591,7 +591,7 @@ For example, see the **"histogram"** below for our **"CH"** Quantitative Variabl
 > **NOTE:**  
 > However, depend you problem, you can also  make a **"Histogram"** by the interval:
 
-![img](images/quantitative-05.png)
+![img](images/statistics/quantitative-05.png)
 
 
 
@@ -614,7 +614,7 @@ Briefly (resumidamente):
 
 See the image below to understand more easily:
 
-![img](images/population-vs-sample.png)  
+![img](images/statistics/population-vs-sample.png)  
 
 
 
@@ -783,11 +783,11 @@ Examples of **"Sample Spaces"** are:
 
 Now, imagine we *rolling two dice simultaneously*, the **Sample Space (Ω)** will be:
 
-![img](images/dice-table-01.png)  
+![img](images/probability/dice-table-01.png)  
 
 We can also represent it as tuples:
 
-![img](images/dice-table-02.png)
+![img](images/probability/dice-table-02.png)
 
 **NOTE:**  
 See that we have 36 (6x6=36) possible outcomes (results).
@@ -856,11 +856,11 @@ Some **"Events"** examples can be:
 
 > The **complement of an event** is **"the set of sample points that do *not* result in the event"**.
 
-![img](images/complement-of-an-event-01.png)  
+![img](images/probability/complement-of-an-event-01.png)  
 
 For example, consider rolling two dice simultaneously:
 
-![img](images/complement-of-an-event-02.png)
+![img](images/probability/complement-of-an-event-02.png)
 
 ---
 
@@ -870,7 +870,7 @@ For example, consider rolling two dice simultaneously:
 
 > It is the set without elements, denoted by **0 (zero)**.
 
-![img](images/empty-set-01.jpg)
+![img](images/probability/empty-set-01.jpg)
 
 ---
 
@@ -882,8 +882,8 @@ For example, consider rolling two dice simultaneously:
 
 We call the *Union* of event **A** with event **B** by **AUB**:
 
-![img](images/union-01.png)  
-![img](images/union-02.png)  
+![img](images/probability/union-01.png)  
+![img](images/probability/union-02.png)  
 
 **NOTE:**  
 See that by definition a **sample point (ω)** can:
@@ -900,8 +900,8 @@ See that by definition a **sample point (ω)** can:
 
 > It is the Event composed of the sample points common to the Events that compose it.
 
-![img](images/intersection-00.png)
-![img](images/intersection-01.png)
+![img](images/probability/intersection-00.png)
+![img](images/probability/intersection-01.png)
 
 **NOTE:**  
 See that different of the Union, the intersection is composed of all common sample points in all Events.
@@ -917,8 +917,8 @@ See that different of the Union, the intersection is composed of all common samp
 
 Are **Events** that have **null Intersection**, that is:
 
-![img](images/disjoint-sets-00.png)
-![img](images/disjoint-sets-01.jpg)
+![img](images/probability/disjoint-sets-00.png)
+![img](images/probability/disjoint-sets-01.jpg)
 
  - In logic and probability theory, two events (or propositions) are **mutually exclusive** or **disjoint** if they cannot both occur at the same time:
    - A clear example is the set of outcomes of a single coin toss, which can result in either heads or tails, but not both.
@@ -934,7 +934,7 @@ Are **Events** that have **null Intersection**, that is:
  - Belongs (pertencem) to sample space.
  - But does not belong (pertencem) to set A (Event A).
 
-![img](images/complement-set-00.jpg) 
+![img](images/probability/complement-set-00.jpg) 
 
 **NOTE:**  
 That is, they are part of the sample space, but do not belong to Event A.
@@ -1020,7 +1020,7 @@ Knowing this, the *Probability* is a value between **"0"** and **"1"** that indi
 
 In general terms, it's calculated like this:
 
-![img](images/probability-01.png)  
+![img](images/probability/probability-01.png)  
 <!--- 
 \mathbf{
 Probability \ of \ an \ "Event" = \frac{P(A)}{P(\Omega)} = \frac{Number \ of \ "Sample \ Points" \ that \ produce \ the \ "Event"}{TOTAL \ numbers \ of \ "Sample Points (\omega)" \ in \ the \ "Sample \ Space \ (\Omega)"}
@@ -1203,15 +1203,15 @@ Then we can write these probabilities like this:
 
 For example, one percent (1%) means 1 per 100:
 
-![img](images/1-per-100.png)  
+![img](images/financial-math/1-per-100.png)  
 
 To understand more easily, let's take a look at the examples below:
 
 **50% means 50 per 100:**
-![img](images/50-per-100.png)  
+![img](images/financial-math/50-per-100.png)  
 
 **25% means 25 per 100:**
-![img](images/25-per-100.png)
+![img](images/financial-math/25-per-100.png)
 
 Because **"Percent"** means **"per 100"** think:
 
@@ -1232,7 +1232,7 @@ To determine the percentage of a number, we need to:
  - By the *"total value (whole)"*;
  - And then *"multiply the resultant by 100"*.
 
-![img](images/percent-formula-00.png)  
+![img](images/financial-math/percent-formula-00.png)  
 
 For example, imagine we have *200 apples* and *10* of them are bad...
 
@@ -1240,7 +1240,7 @@ For example, imagine we have *200 apples* and *10* of them are bad...
 
 Using our formula we have:
 
-![img](images/percent-formula-01.png)  
+![img](images/financial-math/percent-formula-01.png)  
 
 ---
 
@@ -1250,7 +1250,7 @@ Using our formula we have:
 
 To find out the part of a percentage we use the following formula:
 
-![img](images/percent-formula-02.png)  
+![img](images/financial-math/percent-formula-02.png)  
 
 > **NOTE:**  
 > - See that first, we need to *divide the percentage by 100*. This is because we first need to *convert the percentage to decimal*.
@@ -1262,7 +1262,7 @@ For example, imagine we have 200 apples...
 
 Using our formula we have:
 
-![img](images/percent-formula-03.png)
+![img](images/financial-math/percent-formula-03.png)
 
 > **So, "30" apples are bad!**
 
@@ -1297,12 +1297,12 @@ For example:
 
 For example:
 
-![img](images/percents-latex-01.png)  
+![img](images/financial-math/percents-latex-01.png)  
 
 **NOTE:**  
 Another easy way to multiply by 100 is to move the decimal point 2 places to the right. For example:
 
-![img](images/decimal-to-percent-01.png)  
+![img](images/financial-math/decimal-to-percent-01.png)  
 **Move the decimal point 2 places to the right (and add the "%" sign!)**
 
 **Example-01: Convert 0.35 to percent**  
@@ -1335,12 +1335,12 @@ NOTE: See that here we had to adds a zero and not remove it.
 
 For example, let's convert **75%** to decimal:
 
-![img](images/percents-latex-02.png)  
+![img](images/financial-math/percents-latex-02.png)  
 
 **NOTE:**  
 Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
 
-![img](images/percent-to-decimal-01.png)  
+![img](images/financial-math/percent-to-decimal-01.png)  
 **Move the decimal point 2 places to the left, and remove the *"%"* sign.**  
 
 **Example-01: Convert 8.5% to decimal**  
