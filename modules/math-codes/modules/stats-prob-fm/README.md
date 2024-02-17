@@ -1,4 +1,4 @@
-# Statistics, Probability and Financial Math
+# Statistics, Probability, and Financial Math
 
 ## Contents
 
