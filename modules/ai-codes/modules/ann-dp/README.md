@@ -6,7 +6,7 @@
    - [The First Artificial Neuron (Perceptron)](#perceptron)
    - [How do Artificial Neural Networks learn? (Hypothetical example)](#how-do-learn)
    - [Dense Neural Networks](#intro-to-dnn)
-   - **Activation Functions:**
+   - [**Activation Functions:**](#activation-functions)
      - [Sigmoid Function](#sigmoid-function)
  - **Fundamentals of Deep Learning:**
    - **Convolutional Neural Networks (CNN):**
@@ -17,6 +17,14 @@
    - **Autoencoders:**
      - seq2seq
    - **Generative Adversarial Networks (GAN):**
+ - **Useful Libraries:**
+   - **TensorFlow:**
+     - [Why is TensorFlow called "TensorFlow"? (+TensorFlow Components)](#why-called-tf)
+     - **TensorFlow Functions and Methods:**
+       - [Constants](#tf-const)
+       - [Variables](#tf-vars)
+     - **TensorBoard:**
+       - [Launching TensorBoard](#launching-tf-board)
  - [**Settings**](#settings)
  - [**References**](#ref)
 
@@ -219,12 +227,43 @@ Returning to our example of identifying numbers with an **Artificial Neural Netw
 
 
 
-
-
-
-
-
 <!--- ( Fundamentals of Neural Networks/Activation Functions ) --->
+
+---
+
+<div id="activation-functions"></div>
+
+## Activation Functions
+
+When we're using an **Artificial Neural Network** to learn something, it's common to apply a **"Non-Linear Activation Function"**.
+
+> **But what does this kind of function do?**
+
+The purpose of **Activation Functions** is to introduce **"nonlinearities"** into an *Artificial Neural Network* (within the context of Neural Networks, of course).
+
+Let's look at the example below to make it clearer:
+
+![img](images/activation-function-001.png)
+
+**NOTE:**  
+Now suppose I ask you to separate these red points from the green ones using a Linear Function, could you do that? **NO!**
+
+You might achieve something similar to this, but it wouldn't solve the problem:
+
+![img](images/activation-function-002.png)
+
+ - In other words, no matter how many *Linear Functions* you use, it will always generate a line.
+ - On the other hand, with **Non-Linear Functions**, you can solve the problem of separating the red points from the green ones.
+
+Something like this:
+
+![img](images/activation-function-003.png)
+
+That's:
+
+ - *Activation Functions* are a crucial component of *Artificial Neural Networks* **used to introduce nonlinearity into the outputs of network layers**:
+   - They are applied to the linear combination of inputs to a layer to produce the output of that layer.
+ - Without *Activation Functions*, *Artificial Neural Networks* would be limited to performing linear calculations, which would make them incapable of handling (lidar) most real-world problems.
 
 ---
 
@@ -398,6 +437,304 @@ This interval between the point **"-5"** and **"5"** is what we know as the **"T
 
 
 
+<!--- (  Useful Libraries/TensorFlow ) --->
+
+---
+
+<div id="why-called-tf"></div>
+
+## Why is TensorFlow called "TensorFlow"? (+TensorFlow Components)
+
+> *TensorFlow* is called **'TensorFlow'** because it *handles (lida)* the flow (node/mathematical operation) of **"Tensors"**, which are data structures that you can think of as multi-dimensional arrays.
+
+### But what is a "Tensor"?
+
+> A **"Tensor"** is an **"n-dimensional "vector" or "matrix"** that can contain all data types.
+
+ - All *"tensor"* values carry the same type of data with a known (conhecida), or partially known (conhecida), form.
+ - The dimensionality of the matrix is defined by the *"shape"* of the input data.
+
+Let's, see some **"Tensors"** examples:
+
+![img](images/tensors-01.png)  
+
+Now imagine, we have a **4×4 matrix** with values from **1** to **16**:
+
+![img](images/tensors-02.png)  
+
+In **"TensorFlow"**, we can represent the *"tensor"* above as:
+
+```bash
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
+# or
+
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+]
+```
+
+Now, let's see a **3-dimensional (shape 3x3x3)** *"tensor"*:
+
+![img](images/tensors-03.jpg)  
+
+In **"TensorFlow"**, we can represent the *"tensor"* above as:
+
+```python
+[
+  [[01, 02, 03], [04, 05, 06], [07, 08, 09]],
+  [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+  [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+]
+
+# or
+
+[
+  [
+    [01, 02, 03],
+    [04, 05, 06],
+    [07, 08, 09]
+  ],
+  [
+    [10, 11, 12],
+    [13, 14, 15],
+    [16, 17, 18]
+  ],
+  [
+    [19, 20, 21],
+    [22, 23, 24],
+    [25, 26, 27]
+  ]
+]
+```
+
+> **NOTE:**  
+> We can think of each block as a *sheet of paper (page)*, one after the other. In other words, each *sheet of paper (page)* is a depth (profundidade).
+
+See other examples of **"tensors"** and their dimensions below:
+
+![img](images/3d-tensors.png)  
+
+A **"Tensor"** have properties:
+
+ - **Rank:**
+   - Rank is used to identify the number of dimensions of a tensor.
+   - It is known (conhecido) as the order of a tensor.
+ - **Shape:**
+   - It is the number of rows and columns the tensor has.
+ - **Type:**
+   - It is the data type assigned to the tensors.
+
+Ok, now we know what a **“Tensor”** is. Let's go back to TensorFlow components.
+
+ - A tensor may be derived from the *"input data"* or the *"outcome of a process"*.
+ - All functions or methods are carried out (realizados) in a *"graph"* defined by using the TensorFlow library.
+
+### But what is a Graph? (In TensorFlow context)
+
+> A **"graph"** is a sequence of functions that are *carried out consecutively (executadas consecutivamente)*.
+
+ - Each operation represented in a *"graph"* is known (conhecida) as an **"op node (vertex)"**, and these nodes are related to each other.
+ - The **"edges"** connected to the nodes in the graph describe the operations to be performed.
+
+> Briefly, a **graph** help us to collect and describe the sequence of computations that you want your model to perform. 
+
+Let's, see some **"Graphs"** examples:
+
+![img](images/tf-graph-01.png)  
+![img](images/tf-graph-02.png)  
+![img](images/tf-graph-03.jpg)  
+
+---
+
+<div id="tf-vars"></div>
+
+## Variables
+
+ - In **TensorFlow**, *"variables"* are *"tensor"* objects that hold values that can be modified during the execution of the program.
+ - A variable can be created with **"tf.Variable()"** function.
+ - When you want to *train* a model, you have to use variables to *"hold"* and *"update parameters"*.
+ - A variable in TensorFlow is the recommended way to represent a shared, persistent state, that your program manipulates.
+
+Let’s see an example for a basic *linear model*:
+
+$y= wx + b$
+
+![img](images/tf-graph-04.jpg)
+
+[tf_var-v1.py](src/tf_var-v1.py)
+```python
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+w = tf.Variable([0.3], tf.float32)
+b = tf.Variable([-0.3], tf.float32)
+x = np.arange(1, 5)
+
+y = w * x + b
+
+print(y)
+
+plt.plot(x, y)
+plt.savefig("../images/tf-var-01.png", format="png")
+plt.show()
+```
+
+**OUTPUT:**
+```bash
+tf.Tensor([0.    0.3    0.6    0.90000004], shape=(4,), dtype=float32)
+```
+
+![img](images/tf-var-01.png)  
+
+---
+
+<div id="tf-const"></div>
+
+## Constants
+
+ - As constants in any source code, are the actual values that are fixed, the TensorFlow constants are the same.
+ - The values assigned to a TensorFlow constant cannot be changed in the future.
+
+> **NOTE:**  
+> We use TensorFlow constants, where we need non-changing value, such as datasets in our Machine Learning.
+
+For example, see the *"Tensors"* below, created with the **"tensorflow.constant()"** function:
+
+[tf_const-v1.py](src/tf_const-v1.py)
+```python
+import tensorflow as tf
+
+a = tf.constant(3.0)
+b = tf.constant(5.0)
+
+c = a * b
+
+print(c)
+```
+
+**OUTPUT:**
+```bash
+tf.Tensor(15.0, shape=(), dtype=float32)
+```
+
+![img](images/tf-graph-00.png)  
+
+---
+
+<div id="launching-tf-board"></div>
+
+## Launching TensorBoard
+
+To launch **"TensorBoard"**, we should open our terminal or command prompt and run:
+
+```bash
+tensorboard --logdir=<directory_name>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Settings ) --->
 
 ---
@@ -405,11 +742,6 @@ This interval between the point **"-5"** and **"5"** is what we know as the **"T
 <div id="settings"></div>
 
 ## Settings
-
-**CHANGE DIRECTORY:**  
-```bash
-cd src/
-```
 
 **CREATE VIRTUAL ENVIRONMENT:**  
 ```bash
@@ -442,101 +774,6 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( References ) --->
 
 ---
@@ -545,8 +782,25 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ## References
 
- - [Cursos de Machine Learning com Python - Didática Tech](https://didatica.tech/combo-modulos-i-ii-iii-e-iv/)
- - [Aprenda a função Sigmóide (machine learning)](https://www.youtube.com/watch?v=DlBhJdHQElI&t=22s)
+ - **Fundamentals of Artificial Neural Networks (+Introduction):**
+   - **Activation Functions:**
+     - [Aprenda a função Sigmóide (machine learning)](https://www.youtube.com/watch?v=DlBhJdHQElI&t=22s)
+ - **Fundamentals of Deep Learning:**
+   - **Convolutional Neural Networks (CNN):**
+   - **Recurrent Neural Netowkrs (RNN):**
+     - LSM
+     - LSTM
+     - GRU
+   - **Autoencoders:**
+     - seq2seq
+   - **Generative Adversarial Networks (GAN):**
+ - **Useful Libraries:**
+   - **TensorFlow:**
+     - [What is Tensorflow?](https://intellipaat.com/blog/what-is-tensorflow/)
+     - [TF 2.0 An Introduction to TensorFlow 2.0](https://datahacker.rs/tensorflow-constants-and-variables/)
+     - [Tensorboard Tutorial](https://zito-relova.medium.com/tensorboard-tutorial-5d482d270f08)
+ - **General:**
+   - [Cursos de Machine Learning com Python - Didática Tech](https://didatica.tech/combo-modulos-i-ii-iii-e-iv/)
 
 ---
 
