@@ -1,9 +1,12 @@
-# Algebra
+# Algebraic Expressions
 
 ## Contents
 
- - **Algebraic Expressions:**
-   - [Operator Precedence AKA Order of Operations](#operator-precedence)
+ - [Operator Precedence AKA Order of Operations](#operator-precedence)
+ - Operations with algebraic expressions
+ - Simplifying algebraic expressions
+ - Factoring algebraic expressions
+ - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
 
 
@@ -233,6 +236,44 @@ $4 \cdot 4 = 16$
 
 
 
+<!--- ( Settings ) --->
+
+---
+
+<div id="settings"></div>
+
+## Settings
+
+**CREATE VIRTUAL ENVIRONMENT:**  
+```bash
+python -m venv math-environment
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
+```bash
+source math-environment/bin/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
+```bash
+source math-environment/Scripts/activate
+```
+
+**UPDATE PIP:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+**Now, Be Happy!!!** 😬
+
+
+
+
 
 <!--- ( REFERENCES ) --->
 
@@ -242,9 +283,8 @@ $4 \cdot 4 = 16$
 
 ## REFERENCES
 
- - **Algebraic Expressions:**
-   - [How to Use Operator Precedence in Algebra](https://www.intmath.com/blog/mathematics/how-to-use-operator-precedence-in-algebra-12416)
-   - [Expression example](https://www.instagram.com/p/Cw6GF4kLrz9/)
+ - [How to Use Operator Precedence in Algebra](https://www.intmath.com/blog/mathematics/how-to-use-operator-precedence-in-algebra-12416)
+ - [Expression example](https://www.instagram.com/p/Cw6GF4kLrz9/)
 
 ---
 
