@@ -6,6 +6,10 @@
    - [**Noise Removal with sub() method (Regular Expression)**](#noise-removal-sub-method)
      - [Removing whitespace with the sub() method](#sub-remove-whitespace)
      - [Remove punctuation with the sub() method](#sub-remove-punctuation)
+ - [**Tokenization**](#intro-to-tokenization)
+   - **Tokenization with the NLTK library:**
+     - [Tokenization text by words](#tokenization-by-words-nltk)
+     - [Tokezination text by sentences](#tokenization-by-sentences-nltk)
  - Bag of words
  - n-grams
  - CountVectorizer
@@ -14,6 +18,100 @@
  - topic extraction
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -138,6 +236,157 @@ Noise Removal: Hello How are you Im fine Thanks for asking
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Tokenization ) --->
+
+---
+
+<div id="intro-to-tokenization"></div>
+
+## Tokenization
+
+> In natural language processing, **"Tokenization"** is the text preprocessing task that divides the text into smaller components of text (*known as tokens*).
+
+For many **Natural Language Processing (NLP)** tasks, we need to access each word in a string. However to access each word, we first have to divide the text into smaller components. The method for breaking the text into smaller components is called **Tokenization**, and the individual components are called **tokens**.
+
+Some common operations that require **tokenization** include:
+
+- Discovering how many words or phrases appear in the text;
+- Determining how many times a specific word or phrase exists;
+- Counting which terms are likely to co-occur...
+
+> **NOTE:**  
+> While **tokens** are typically individual words or terms, they can also be phrases or pieces of text of other sizes.
+
+---
+
+<div id="tokenization-by-words-nltk"></div>
+
+## Tokenization text by words
+
+To **tokenize** individual words, we can use the **word_tokenize()** function from the **NLTK (Natural Language Toolkit)** library.
+
+The function takes a string and returns a list of words. See a simple example below:
+
+[nltk_word_tokenize.py](src/tokenization/nltk_word_tokenize.py)
+```python
+import nltk
+nltk.download('punkt')
+
+from nltk.tokenize import word_tokenize
+
+text = "Life is short, so live it! This text has 29 characters, including spaces and punctuation. It consists of one sentence with proper punctuation and a comma."
+
+tokenized_by_word = word_tokenize(text)
+print(tokenized_by_word)
+```
+
+**OUTPUT:**
+```bash
+['Life', 'is', 'short', ',', 'so', 'live', 'it', '!', 'This', 'text', 'has', '29', 'characters', ',', 'including', 'spaces', 'and', 'punctuation', '.', 'It', 'consists', 'of', 'one', 'sentence', 'with', 'proper', 'punctuation', 'and', 'a', 'comma', '.']
+```
+
+> **NOTE:**  
+> See that we **tokenized** the text **by words**.
+
+---
+
+<div id="tokenization-by-sentences-nltk"></div>
+
+## Tokezination text by sentences
+
+> If I want to apply sentence **Tokenization**, for example, separating by **"commas"** or **"punctuations"**?
+
+Simple, for that you just need to use the **sent_tokenize()** method from the **nltk.tokenize** class:
+
+[nltk_sent_tokenize.py](src/tokenization/nltk_sent_tokenize.py)
+```python
+from nltk.tokenize import sent_tokenize
+
+text = "So, during test time, any word that is not present in the vocabulary will be mapped to a UNK token. This is how we can tackle the problem of OOV in word tokenizers."
+
+tokenized_by_sentence = sent_tokenize(text)
+print(tokenized_by_sentence)
+```
+
+**OUTPUT:**
+```bash
+['So, during test time, any word that is not present in the vocabulary will be mapped to a UNK token.', 'This is how we can tackle the problem of OOV in word tokenizers.']
+```
 
 
 
