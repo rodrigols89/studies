@@ -136,12 +136,6 @@
    - [Missing Data](modules/preprocessing/missing-data.md)
    - [Correlation between two numerical variables](modules/preprocessing/correlation.md)
    - [Data Normalization](modules/preprocessing/data-normalization.md)
-   - Text Preprocessing:
-     - [Noise Removal (remoção de ruído)](modules/preprocessing/noise-removal.ipynb)
-     - [Tokenization (tokenização)](modules/preprocessing/tokenization.ipynb)
-     - [Stopword Removal (Remoção de palavras irrelevantes)](modules/preprocessing/stopword-removal.ipynb)
-     - [Stemming](modules/preprocessing/stemming.ipynb)
-     - [Lemmatization & Part-of-Speech Tagging](modules/preprocessing/lemmatization-post.ipynb)
 
 ---
 
@@ -179,13 +173,7 @@
      - Sum, subtraction, mean, min, max, product, quotient of group of features
    - **Aggregating Transaction Data:**
      - Same as above but in same feature over time window
-   - **Extracting features from text:**
-     - Bag of words
-     - n-grams
-     - [CountVectorizer](modules/feature-engineering/extracting-features-from-text/countvectorizer.ipynb)
-     - [TF-IDF](modules/feature-engineering/extracting-features-from-text/tf-idf.ipynb)
-     - word2vec
-     - topic extraction
+   - [Extracting features from Text](modules/feature-engineering/extracting-features-from-text)
    - **Extracting features from images:**
      - Coming soon...
 
