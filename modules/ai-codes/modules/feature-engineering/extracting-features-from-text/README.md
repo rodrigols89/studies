@@ -6,14 +6,14 @@
    - [**Noise Removal with sub() method (Regular Expression)**](#noise-removal-sub-method)
      - [Removing whitespace with the sub() method](#sub-remove-whitespace)
      - [Remove punctuation with the sub() method](#sub-remove-punctuation)
+ - [**Stopword Removal**](#stopword-removal)
+   - [**Stopword Removal with NLTK library**](#stopword-removal-nltk)
  - [**Tokenization**](#intro-to-tokenization)
    - **Tokenization with the NLTK library:**
      - [Tokenization text by words](#tokenization-by-words-nltk)
      - [Tokezination text by sentences](#tokenization-by-sentences-nltk)
  - Bag of words
  - n-grams
- - CountVectorizer
- - TF-IDF
  - word2vec
  - topic extraction
  - [**Settings**](#settings)
@@ -247,16 +247,72 @@ Noise Removal: Hello How are you Im fine Thanks for asking
 
 
 
+<!--- ( Stopword Removal ) ---->
 
+---
 
+<div id="stopword-removal"></div>
 
+## Stopword Removal
 
+> In **Natural Language Processing (NLP)**, *"removing irrelevant words (Stopwords Removal)"* is the process of removing words from a string that do not provide any information about the tone of a statement.
 
+**Irrelevant words (Stopwords)** are words that we remove during preprocessing when we don't care about the structure of the sentences. They are usually the most common words in a language and do not provide any information about the tone of a statement.
 
+They include words like:
 
+- **“a”;**
+- **“an”;**
+- **“the”...**
 
+---
 
+<div id="stopword-removal-nltk"></div>
 
+## Stopword Removal with NLTK library
+
+> The **NLTK** library provides a *built-in library* of **"stopwords"**.
+
+See the code below:
+
+[nltk_stopwords.py](src/stopword-removal/nltk_stopwords.py)
+```python
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
+# Download and load stopwords.
+import nltk
+nltk.download("punkt")
+nltk.download("stopwords")
+stop_words = set(stopwords.words("english"))
+
+# Sentence to apply Stopword removal.
+nbc_statement = (
+    "NBC was founded in 1926 making it the oldest major broadcast network in the USA"
+)
+word_tokens = word_tokenize(nbc_statement)  # Tokenize nbc_statement
+
+statement_no_stop = [
+    word for word in word_tokens if word.lower() not in stop_words
+]  # Apply list comprehension
+
+print(statement_no_stop)
+```
+
+**OUTPUT:**
+```bash
+['NBC', 'founded', '1926', 'making', 'oldest', 'major', 'broadcast', 'network', 'USA']
+```
+
+Note that to remove the **irrelevant words (Stopwords)**, several processes were done before that, which were:
+
+- **Downloading the Stopwords**
+- **Converting the Stopwords into a set**
+  - Note that we are using Stopwords from the English language.
+- **Tokenizing the text by words:**
+  - Note that we are not considering semicolons (which are also not in the text).
+  - And we are not tokenizing by sentences but by words.
+- **Applying a list comprehension that returns only the words that are not in the Stopword set.**
 
 
 
