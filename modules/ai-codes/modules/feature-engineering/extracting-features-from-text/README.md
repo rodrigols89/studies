@@ -10,6 +10,9 @@
    - [**Stopword Removal with NLTK library**](#stopword-removal-nltk)
  - [**Stemming**](#stemming)
    - [**Stemming with NLTK library**](#stemming-nltk)
+ - [**Lemmatization:**](#lemmatization)
+   - [**Lemmatization with NLTK library**](#lemmatization-nltk)
+ - [**Part-of-Speech Tagging:**](#part-of-speech-tagging)
  - [**Tokenization**](#intro-to-tokenization)
    - **Tokenization with the NLTK library:**
      - [Tokenization text by words](#tokenization-by-words-nltk)
@@ -624,6 +627,90 @@ The fact that these words have been reduced is useful for many language processi
 
 
 
+<!---- ( Lemmatization ) --->
+
+---
+
+<div id="lemmatization"></div>
+
+## Lemmatization
+
+> In **Natural Language Processing (NLP)**, **"lemmatization"** is the preprocessing normalization task concerned with bringing words to their root forms.
+
+**NOTE:**  
+This is a more complicated process than stemming because it requires the method to know the grammatical class of each word. Since lemmatization requires the grammatical class, it is a less efficient approach than stemming.
+
+---
+
+<div id="lemmatization-nltk"></div>
+
+## Lemmatization with NLTK library
+
+With the **NLTK** library, it's very easy to apply the concept of **Lemmatization**. See the code below:
+
+[nltk_lemmatization.py](src/lemmatization/nltk_lemmatization.py)
+```python
+import nltk
+nltk.download("wordnet")
+
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+tokenized = ["NBC", "was", "founded", "in", "1926"]
+
+# Apply Lemmatization.
+lemmatized = [lemmatizer.lemmatize(token) for token in tokenized]
+print(lemmatized)
+```
+
+**OUTPUT:**
+```bash
+['NBC', 'wa', 'founded', 'in', '1926']
+```
+
+The result of **Lemmatization**, saved in the variable *lemmatized*, contains **'wa'**, while the rest of the words remain the same. It's not very useful.
+
+**NOTE:**  
+This happened because the **lemmatize** instance of the **WordNetLemmatizer** class treats each word as a noun.
+
+> To take advantage of the power of lemmatization, we need to tag each word in our text with the most likely grammatical class.
+
+Let's see another example:
+
+[nltk_lemmatization-02.py](src/lemmatization/nltk_lemmatization-02.py)
+```python
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+
+populated_island = "Indonesia was founded in 1945. It contains the most populated island in the world, Java, with over 140 million people."
+
+tokenized_string = word_tokenize(populated_island)
+lemmatized_words = [lemmatizer.lemmatize(token) for token in tokenized_string]
+
+try:
+    print(f"A lemmatizer exists: {lemmatizer}")
+except:
+    print("Expected a variable called `lemmatizer`")
+try:
+    print(f"Words Tokenized: {tokenized_string}")
+except:
+    print("Expected a variable called `tokenized_string`")
+try:
+    print(f"Lemmatized Words: {lemmatized_words}")
+except:
+    print("Expected a variable called `lemmatized_words`")
+```
+
+**OUTPUT:**
+```bash
+Words Tokenized: ['Indonesia', 'was', 'founded', 'in', '1945', '.', 'It', 'contains', 'the', 'most', 'populated', 'island', 'in', 'the', 'world', ',', 'Java', ',', 'with', 'over', '140', 'million', 'people', '.']
+Lemmatized Words: ['Indonesia', 'wa', 'founded', 'in', '1945', '.', 'It', 'contains', 'the', 'most', 'populated', 'island', 'in', 'the', 'world', ',', 'Java', ',', 'with', 'over', '140', 'million', 'people', '.']
+```
+
+**NOTE:**  
+Notice that out of all these words, only **"was"** was lemmatized to **"wa"**. As we already know, this is happening because we need to tag each word in our text with the most likely grammatical class.
 
 
 
@@ -637,6 +724,72 @@ The fact that these words have been reduced is useful for many language processi
 
 
 
+
+
+
+
+
+
+
+
+<!--- ( Part-of-Speech Tagging ) --->
+
+---
+
+<div id="part-of-speech-tagging"></div>
+
+## Part-of-Speech Tagging
+
+> In **Natural Language Processing (NLP)**, **"Part-of-Speech Tagging"** is the process of assigning a grammatical class to each word in a string. Using the grammatical class can improve the results of **Lemmatization**.
+
+To improve the performance of lemmatization, we need to find the grammatical class for each word in our string. This can be a somewhat complex task (but not so much).
+
+See the code snippets below that apply this concept in practice:
+
+[nltk_part-of-speech-tagging.py](src/part-of-speech-tagging/nltk_part-of-speech-tagging.py)
+```python
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from collections import Counter
+
+
+def get_part_of_speech(word):
+
+    probable_part_of_speech = wordnet.synsets(word)
+    pos_counts = Counter()
+
+    pos_counts["n"] = len(
+        [item for item in probable_part_of_speech if item.pos() == "n"]
+    )
+    pos_counts["v"] = len(
+        [item for item in probable_part_of_speech if item.pos() == "v"]
+    )
+    pos_counts["a"] = len(
+        [item for item in probable_part_of_speech if item.pos() == "a"]
+    )
+    pos_counts["r"] = len(
+        [item for item in probable_part_of_speech if item.pos() == "r"]
+    )
+
+    most_likely_part_of_speech = pos_counts.most_common(1)[0][0]
+    return most_likely_part_of_speech
+
+
+if __name__ == "__main__":
+
+    lemmatizer = WordNetLemmatizer()  # Instance.
+
+    tokenized = ["How", "old", "is", "the", "country", "Indonesia"]
+    lemmatized = [
+        lemmatizer.lemmatize(token, get_part_of_speech(token)) for token in tokenized
+    ]
+    print(lemmatized)
+```
+
+***OUTPUT:**
+```bash
+['How', 'old', 'be', 'the', 'country', 'Indonesia']
+```
 
 
 
