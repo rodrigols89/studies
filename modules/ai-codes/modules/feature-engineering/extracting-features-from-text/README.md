@@ -8,6 +8,8 @@
      - [Remove punctuation with the sub() method](#sub-remove-punctuation)
  - [**Stopword Removal**](#stopword-removal)
    - [**Stopword Removal with NLTK library**](#stopword-removal-nltk)
+ - [**Stemming**](#stemming)
+   - [**Stemming with NLTK library**](#stemming-nltk)
  - [**Tokenization**](#intro-to-tokenization)
    - **Tokenization with the NLTK library:**
      - [Tokenization text by words](#tokenization-by-words-nltk)
@@ -247,6 +249,63 @@ Noise Removal: Hello How are you Im fine Thanks for asking
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Stopword Removal ) ---->
 
 ---
@@ -313,6 +372,311 @@ Note that to remove the **irrelevant words (Stopwords)**, several processes were
   - Note that we are not considering semicolons (which are also not in the text).
   - And we are not tokenizing by sentences but by words.
 - **Applying a list comprehension that returns only the words that are not in the Stopword set.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---- ( Stemming ) --->
+
+---
+
+<div id="stemming"></div>
+
+## Stemming
+
+> In **Natural Language Processing (NLP)**, **Stemming** is the preprocessing normalization task concerned with the direct removal of word *affixes* (prefixes and suffixes).
+
+For example, **Stemming** would change the word **“going”** to **“go”**. This is a common method used by search engines to improve the match between user input and website accesses.
+
+---
+
+<div id="stemming-nltk"></div>
+
+## Stemming with NLTK library
+
+> The **NLTK** library has a *built-in Stemming* called **PorterStemmer**.
+
+In practice, we can apply the concept of **Stemming** more or less like this, with the NLTK library and **PorterStemmer**:
+
+[nltk_stemming.py](src/stemming/nltk_stemming.py)
+```python
+from nltk.stem import PorterStemmer
+
+stemmer = PorterStemmer()
+
+tokenized = [
+    "NBC",
+    "was",
+    "founded",
+    "in",
+    "1926",
+    ".",
+    "This",
+    "makes",
+    "NBC",
+    "the",
+    "oldest",
+    "major",
+    "broadcast",
+    "network",
+    ".",
+]
+
+stemmed = [stemmer.stem(token) for token in tokenized]
+print(stemmed)
+```
+
+**OUTPUT:**
+```bash
+'nbc', 'wa', 'found', 'in', '1926', '.', 'thi', 'make', 'nbc', 'the', 'oldest', 'major', 'broadcast', 'network', '.']
+```
+
+**NOTE:**  
+Oops, but which words were applied **Stemming**?
+
+- First, I don't know if you noticed, but all letters were converted to lowercase.
+- was > wa
+- founded > found
+- this > thi
+- makes > make
+
+**NOTE:**  
+The fact that these words have been reduced is useful for many language processing applications. However, you need to be careful when defining the stemming of strings because words can often be converted into something unrecognizable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
