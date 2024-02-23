@@ -24,6 +24,8 @@ The examples used here will use the [**"Job Salary Prediction (Train_rev1.zip)"*
    - **Tokenization with the NLTK library:**
      - [Tokenization text by words](#tokenization-by-words-nltk)
      - [Tokezination text by sentences](#tokenization-by-sentences-nltk)
+ - [**CountVectorizer**](#countvectorizer)
+   - [**CountVectorizer with Scikit-learn library**](#countvectorizer-sklearn)
  - Bag of words
  - n-grams
  - word2vec
@@ -1584,6 +1586,395 @@ print(tokenized_by_sentence)
 ```bash
 ['So, during test time, any word that is not present in the vocabulary will be mapped to a UNK token.', 'This is how we can tackle the problem of OOV in word tokenizers.']
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( CountVectorizer ) --->
+
+---
+
+<div id="countvectorizer"></div>
+
+## CountVectorizer
+
+> The **"CountVectorizer"** is used to transform words into numerical vectors. **What?**
+
+I don't know if you know, but Machine Learning models mostly learn from numerical data. For example, to learn patterns in an image, Machine Learning models use the pixels of the image, which can be represented by a numerical vector.
+
+**NOTE:**  
+But how to transform texts into numbers? One approach (which is the one CountVectorizer uses) is to count how many times each word appears in a text.
+
+For example, imagine that we have the following text:
+
+```python
+doc = ["One Cent, Two Cents, Old Cent, New Cent: All About Money"]
+```
+
+The **"CountVectorizer"** method would convert it as follows:
+
+![img](images/cv-01.png)  
+
+**NOTE:**  
+Notice that initially we had words; Then these words were numerized (you can see in the columns); And finally, we counted how many times each word appeared.
+
+> This format used to store this representation is the same as a **"Sparse Matrix"**.
+
+---
+
+<div id="countvectorizer-sklearn"></div>
+
+## CountVectorizer with Scikit-learn library
+
+For our initial problem, let's imagine that we have the following texts:
+
+[text_countvectorizer-01.py](src/countvectorizer/text_countvectorizer-01.py)
+```python
+import pandas as pd
+
+pd.options.display.max_colwidth = 200
+
+cat_in_the_hat_docs = [
+    "One Cent, Two Cents, Old Cent, New Cent: All About Money (Cat in the Hat's Learning Library)",
+    "Inside Your Outside: All About the Human Body (Cat in the Hat's Learning Library)",
+    "Oh, The Things You Can Do That Are Good for You: All About Staying Healthy (Cat in the Hat's Learning Library)",
+    "On Beyond Bugs: All About Insects (Cat in the Hat's Learning Library)",
+    "There's No Place Like Space: All About Our Solar System (Cat in the Hat's Learning Library)",
+]
+
+df = pd.DataFrame(cat_in_the_hat_docs, columns=["Text"])
+print(df.head())
+```
+
+**OUTPUT:**
+```bash
+                                                                                                             Text
+0                    One Cent, Two Cents, Old Cent, New Cent: All About Money (Cat in the Hat's Learning Library)
+1                               Inside Your Outside: All About the Human Body (Cat in the Hat's Learning Library)
+2  Oh, The Things You Can Do That Are Good for You: All About Staying Healthy (Cat in the Hat's Learning Library)
+3                                           On Beyond Bugs: All About Insects (Cat in the Hat's Learning Library)
+4                     There's No Place Like Space: All About Our Solar System (Cat in the Hat's Learning Library)
+```
+
+As we know, the result of text preprocessing done with **"CountVectorizer"** is a **"Sparse Matrix"**. Now we will learn the basic concepts of how to interpret this Matrix.
+
+Let's start by applying **CountVectorizer** to our text samples:
+
+[text_countvectorizer-01.py](src/countvectorizer/text_countvectorizer-01.py)
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+import pandas as pd
+
+pd.options.display.max_colwidth = 200
+
+cat_in_the_hat_docs = [
+  "One Cent, Two Cents, Old Cent, New Cent: All About Money (Cat in the Hat's Learning Library)",
+  "Inside Your Outside: All About the Human Body (Cat in the Hat's Learning Library)",
+  "Oh, The Things You Can Do That Are Good for You: All About Staying Healthy (Cat in the Hat's Learning Library)",
+  "On Beyond Bugs: All About Insects (Cat in the Hat's Learning Library)",
+  "There's No Place Like Space: All About Our Solar System (Cat in the Hat's Learning Library)" 
+]
+
+df = pd.DataFrame(cat_in_the_hat_docs, columns=["Text"])
+
+vectorizer = CountVectorizer() # Instance.
+df_vectorized = vectorizer.fit_transform(df['Text'])
+
+print("Sparse Matrix type:", type(df_vectorized))
+print("Shape:", df_vectorized.shape)
+```
+
+**OUTPUT:**
+```bash
+Sparse Matrix type: <class 'scipy.sparse._csr.csr_matrix'>
+Shape: (5, 43)
+```
+
+> **NOTE:**  
+> The first thing you need to keep in mind now is that we no longer have a Pandas DataFrame. We now have a **Sparse Matrix** *(created with SciPy/Process done internally by Scikit-Learn)*.
+
+Interpreting the output above, we have:
+
+ - **5x43:**
+   - 5 samples;
+   - 43 unique words (each will be a column in our sparse matrix).
+ - **75 stored elements:**
+   -We have 43 unique words, where each will be a column of the **Sparse Matrix**, but in total we have 75 words (elements) among all samples (5).
+
+**NOTE:**  
+Is there a way to see this matrix in a **Sparse Matrix** format? Of course!
+
+```python
+print("Sparse Matrix:", df_vectorized)
+```
+
+**OUTPUT:**
+```bash
+Sparse Matrix:   (0, 28)        1
+  (0, 8)        3
+  (0, 40)       1
+  (0, 9)        1
+  (0, 26)       1
+  (0, 23)       1
+  (0, 1)        1
+  (0, 0)        1
+  (0, 22)       1
+  (0, 7)        1
+  (0, 16)       1
+  (0, 37)       1
+  (0, 13)       1
+  (0, 19)       1
+  (0, 20)       1
+  (1, 1)        1
+  (1, 0)        1
+  (1, 7)        1
+  (1, 16)       1
+  (1, 37)       2
+  (1, 13)       1
+  (1, 19)       1
+  (1, 20)       1
+  (1, 18)       1
+  (1, 42)       1
+  :     :
+  (3, 16)       1
+  (3, 37)       1
+  (3, 13)       1
+  (3, 19)       1
+  (3, 20)       1
+  (3, 27)       1
+  (3, 3)        1
+  (3, 5)        1
+  (3, 17)       1
+  (4, 1)        1
+  (4, 0)        1
+  (4, 7)        1
+  (4, 16)       1
+  (4, 37)       1
+  (4, 13)       1
+  (4, 19)       1
+  (4, 20)       1
+  (4, 38)       1
+  (4, 24)       1
+  (4, 31)       1
+  (4, 21)       1
+  (4, 33)       1
+  (4, 29)       1
+  (4, 32)       1
+  (4, 35)       1
+```
+
+Interpreting the output above, we have:
+
+- **We have a tuple (Row, Column):**
+  - This tuple basically represents a mapping to our **Sparse Matrix**.
+- **We have the value corresponding to this mapping.**
+
+**NOTE:**  
+Okay, but what about the 43 unique words (each in a column in our sparse matrix)? For this, we will use the **get_feature_names_out()** method of the **CountVectorizer** object instance:
+
+```python
+print("Unique words: ", vectorizer.get_feature_names_out())
+```
+
+**OUTPUT:**
+```bash
+Unique words: ['about' 'all' 'are' 'beyond' 'body' 'bugs' 'can' 'cat' 'cent' 'cents'
+ 'do' 'for' 'good' 'hat' 'healthy' 'human' 'in' 'insects' 'inside'
+ 'learning' 'library' 'like' 'money' 'new' 'no' 'oh' 'old' 'on' 'one'
+ 'our' 'outside' 'place' 'solar' 'space' 'staying' 'system' 'that' 'the'
+ 'there' 'things' 'two' 'you' 'your']
+```
+
+> **NOTE:**  
+> The first observation here is that by default, the **CountVectorizer** object applies preprocessing transforming all words to *"lowercase"*.
+
+Notice that we have as output a list with all features (which were previously words in a text and now unique features) that were mapped to our **"Sparse Matrix"**.
+
+**Interpreting one of the mappings of the Sparse Matrix:**
+
+ - If you look at the example **(0, 8) 3** we have that:
+   - In row zero (first sample);
+   - Column 8 (it will be 9 since we start from zero);
+   - We have an element appearing 3 times.
+
+> **But what element (feature) is this?**
+
+**NOTE:**  
+Remember that we have the **get_feature_names_out()** method that returns a list with each word as a feature? So, if you look for the eighth (8) element (starting from zero, of course), you will find the element **"cent"**. That is, in the first sample, the element (word) **"cent"** appears 3 times.
+
+> Okay, but how do I view this **"Sparse Matrix"** as a **"Dense Matrix"**?
+
+It's simple, for that we can use 2 methods:
+
+ - toarray()
+ - todense()
+
+```python
+print("Dense Matrix:\n", df_vectorized.toarray())
+```
+
+**OUTPUT:**
+```bash
+Dense Matrix:
+array([[1, 1, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0,
+        1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+       [1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1],
+       [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0,
+        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 1, 0, 2, 0],
+       [1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0,
+        0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+       [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1,
+        0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0]])
+```
+
+```python
+print("Dense Matrix:\n", df_vectorized.todense())
+```
+
+**OUTPUT:**
+```bash
+Dense Matrix:
+matrix([[1, 1, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+         0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,
+         0],
+        [1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1,
+         0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+         1],
+        [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1,
+         0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 1, 0, 2,
+         0],
+        [1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
+         0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+         0],
+        [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+         1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0,
+         0]])
+```
+
+**NOTE:**  
+If you pay close attention, you'll see that our *Matrix* is in the format of a list of lists. What does that mean? I'll refactor it to make it clearer for you...
+
+**OUTPUT:**
+```bash
+[
+  [1, 1, 0, 0, 0, 0, 0, 1, 3, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+   0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,0],
+    
+  [1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1,
+   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0,1],
+    
+  [1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1,
+   0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, 1, 0, 2,0],
+    
+  [1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1,
+   0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,0],
+    
+  [1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+   1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0,0]
+]
+```
+
+Notice that we have:
+
+ - A list (matrix);
+ - With 5 lists inside (our 5 vectorized samples).
 
 
 
