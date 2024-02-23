@@ -7,7 +7,6 @@
  - **Web Development:**
    - [Django](modules/django)
  - **APIs:**
-   - [Requests: HTTP for Humans](modules/requests)
    - [FastAPI](modules/fastapi)
  - **Testing:**
    - [PyTest](modules/pytest)
