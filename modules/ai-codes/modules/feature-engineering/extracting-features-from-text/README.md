@@ -1,13 +1,20 @@
+**NOTE:**  
+The examples used here will use the [**"Job Salary Prediction (Train_rev1.zip)"**](https://www.kaggle.com/competitions/job-salary-prediction/data?select=Train_rev1.zip) dataset. So you need to first download the dataset and place it in the [/src](src/) folder.
+
 # Extracting features from Text
 
 ## Contents
 
+ - [**Lower Casing**](#lower-casing)
+ - [**Numbers Removal**](#number-removal)
  - [**Noise Removal**](#noise-removal)
    - [**Noise Removal with sub() method (Regular Expression)**](#noise-removal-sub-method)
      - [Removing whitespace with the sub() method](#sub-remove-whitespace)
      - [Remove punctuation with the sub() method](#sub-remove-punctuation)
  - [**Stopword Removal**](#stopword-removal)
    - [**Stopword Removal with NLTK library**](#stopword-removal-nltk)
+ - [**Most frequent word removal**](#most-frequent-word-removal)
+ - [**Rare words removal**](#rare-words-removal)
  - [**Stemming**](#stemming)
    - [**Stemming with NLTK library**](#stemming-nltk)
  - [**Lemmatization:**](#lemmatization)
@@ -23,6 +30,273 @@
  - topic extraction
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Lower Casing ) --->
+
+---
+
+<div id="lower-casing"></div>
+
+## Lower Casing
+
+> **Lower casing**, *"also known as converting text to lowercase"*, is a common preprocessing step in *Natural Language Processing (NLP)* and *Text Analysis*.
+
+This process involves transforming all letters in a piece of text to their lowercase form. While seemingly straightforward, lower casing has both advantages and disadvantages that need to be carefully considered in various NLP tasks.
+
+ - **Advantages:**
+   - **Normalization:** Lower casing helps in achieving text normalization by ensuring uniformity in text data. It eliminates variations due to capitalization, making it easier to compare and analyze text.
+   - **Simplifies Comparison:** Lower casing makes text comparison case-insensitive, which can be crucial for tasks like string matching, searching, and clustering.
+   - **Improved Tokenization:** Lower casing can simplify the tokenization process by reducing the number of unique tokens, which can lead to more efficient and accurate NLP models.
+   - **Enhanced Generalization:** Lower casing allows models to generalize better across different text sources by treating words with the same spelling but different capitalizations as identical.
+ - **Disadvantages:**
+   - **Loss of Information:** Lower casing can lead to loss of information, especially in cases where capitalization carries semantic meaning, such as proper nouns or emphasis.
+   - **Ambiguity:** Lower casing may introduce ambiguity in cases where words with different meanings are spelled the same but differ in capitalization (e.g., "polish" vs. "Polish").
+   - **Preservation of Acronyms:** Lower casing may alter the representation of acronyms and abbreviations, potentially affecting the interpretation of the text.
+
+For example, let's see and example of the **"lower casing"** process:
+
+[lower-casing.py](src/lower-casing/lower-casing.py)
+```python
+import pandas as pd
+
+# Settings.
+pd.set_option("display.max_colwidth", None)
+full_df = pd.read_csv("../Train_rev1.csv")
+
+# Get only "df_FullDescription" column/feature.
+df_FullDescription = full_df[["FullDescription"]]
+df_FullDescription = df_FullDescription.astype({'FullDescription': 'string'}).head(3)  # Get only 3 rows.
+
+# Add new column "processed_FullDescription" to the DataFrame.
+df_FullDescription["processed_FullDescription"] = df_FullDescription["FullDescription"].str.lower()
+print(df_FullDescription.head())
+```
+
+**OUTPUT:**
+![img](images/lower-casing-01.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Numbers Removal ) --->
+
+---
+
+<div id="numbers-removal"></div>
+
+## Numbers Removal
+
+> **Numbers removal** is a preprocessing technique commonly used in *Natural Language Processing (NLP*) and *Text Analysis* to eliminate numerical digits from text data.
+
+This process involves stripping all numeric characters from a piece of text, leaving only alphabetic and punctuation symbols. While numbers removal can be beneficial in certain contexts, it also comes with its own set of advantages and disadvantages that need to be carefully considered in various NLP tasks.
+
+ - **Advantages:**
+   - **Improved Text Clarity:** By removing numbers from text, readability and interpretability can be enhanced, particularly in cases where numbers are extraneous or irrelevant to the analysis.
+   - **Reduced Dimensionality:** Eliminating numerical digits reduces the dimensionality of the text data, which can lead to more efficient and streamlined text processing, especially in tasks like tokenization and feature extraction.
+   - **Focus on Textual Context:** Removing numbers allows NLP models to focus more on the textual context and linguistic patterns present in the data, rather than being influenced by numerical values.
+   - **Enhanced Generalization:** Text without numerical digits may generalize better across different text sources and domains, making NLP models more robust and adaptable.
+ - **Disadvantages:**
+   - **Loss of Numerical Information:** Removing numbers may result in the loss of valuable numerical information embedded in the text, such as quantitative data, measurements, or codes.
+   - **Altered Semantic Meaning:** In some cases, numbers contribute to the semantic meaning of the text, such as in references to dates, times, quantities, or rankings. Removing numbers can distort or obscure this meaning.
+   - **Impact on Certain Tasks:** Tasks that specifically involve numerical analysis or require the retention of numerical information (e.g., sentiment analysis of numerical ratings) may be adversely affected by numbers removal.
+
+**Contextual Considerations:**  
+The decision to remove numbers should be context-dependent, considering the specific requirements and goals of the NLP task. In certain domains or text genres, numerical information may be integral to the analysis and should be preserved.
 
 
 
@@ -309,6 +583,13 @@ Noise Removal: Hello How are you Im fine Thanks for asking
 
 
 
+
+
+
+
+
+
+
 <!--- ( Stopword Removal ) ---->
 
 ---
@@ -390,6 +671,235 @@ Note that to remove the **irrelevant words (Stopwords)**, several processes were
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Most frequent word removal ) ---->
+
+---
+
+<div id="most-frequent-word-removal"></div>
+
+## Most frequent word removal
+
+> **"Most frequent word removal"** is a preprocessing technique commonly employed in **Natural Language Processing (NLP)** and **Text Analysis** to eliminate high-frequency words from text data.
+
+This process involves identifying and excluding words that occur with the highest frequency in a corpus or document collection. While removing frequent words can be beneficial in certain contexts, it also presents its own set of advantages and disadvantages that require careful consideration in various NLP tasks.
+
+ - **Advantages:**
+   - **Noise Reduction:** By eliminating the most frequent words, which often include common stop words and other non-informative terms, the overall noise level in the text data can be reduced. This can lead to a cleaner and more focused representation of the underlying content.
+   - **Enhanced Discriminative Power:** Removing highly frequent words can highlight the importance of less common terms that may carry more discriminative power for certain NLP tasks, such as sentiment analysis, topic modeling, or document classification.
+   - **Improved Generalization:** By excluding frequently occurring words that may be specific to the training data but not necessarily relevant to the broader context, models can generalize better across different text sources and domains.
+   - **Reduced Dimensionality:** The removal of high-frequency words can decrease the dimensionality of the feature space, making subsequent text processing tasks, such as vectorization or classification, more computationally efficient and less prone to overfitting.
+ - **Disadvantages:**
+   - **Loss of Contextual Information:** Removing frequent words may result in the loss of important contextual information and nuances present in the text. Some common words, such as pronouns or prepositions, contribute significantly to the syntactic and semantic structure of language.
+   - **Potential Bias:** The removal of high-frequency words may introduce bias into the analysis, particularly if the selected stop word list or criteria for identifying frequent words are not carefully chosen or tailored to the specific task or domain.
+   - **Impact on Interpretability:** Excluding frequent words can make the interpretation of results more challenging, as certain common terms that provide context or domain-specific information may be omitted from the analysis.
+   - **Dependence on Corpus Characteristics:** The effectiveness of most frequent word removal depends on the characteristics of the corpus being analyzed. In some cases, the most frequent words may indeed carry significant meaning or serve as key identifiers of the text's topic or genre.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Rare words removal ) ---->
+
+---
+
+<div id="rare-words-removal"></div>
+
+## Rare words removal
+
+> **"Rare words removal"** is a preprocessing technique commonly utilized in *Natural Language Processing (NLP)* and *Text Analysis* to exclude infrequent words from textual data.
+
+This process involves identifying and filtering out words that occur with low frequency in a corpus or collection of documents. While removing rare words can be advantageous in certain scenarios, it also presents its own set of benefits and drawbacks that necessitate careful consideration in various NLP tasks.
+
+ - **Advantages:**
+   - **Noise Reduction:** By eliminating rare words, which often include misspellings, typographical errors, or obscure terms, the overall noise level in the text data can be reduced. This leads to a cleaner and more focused representation of the underlying content.
+   - **Improved Model Performance:** Excluding rare words can prevent overfitting in NLP models, particularly those based on statistical or machine learning approaches. Focusing on more frequent and meaningful terms can enhance the model's ability to generalize and make accurate predictions.
+   - **Enhanced Interpretability:** Removing rare words simplifies the vocabulary used in analysis, making the results more interpretable and comprehensible to users. It helps in focusing attention on the most salient aspects of the text data.
+   - **Computational Efficiency:** Reducing the number of rare words in the dataset can lead to computational efficiency gains during text processing tasks such as tokenization, vectorization, and model training. This is particularly beneficial when dealing with large-scale text datasets.
+ - **Disadvantages:**
+   - **Loss of Information:** Removing rare words may result in the loss of valuable information, particularly in specialized domains or when analyzing niche topics. Rare words can sometimes carry crucial insights or domain-specific knowledge that is pertinent to the analysis.
+   - **Underrepresentation of Minority Classes:** In tasks such as sentiment analysis, document classification, or entity recognition, rare words may be associated with minority classes or specific categories of interest. Removing these words can lead to underrepresentation or bias against these classes.
+   - **Decreased Generalization:** Over-filtering rare words can limit the generalization capability of NLP models, especially when dealing with diverse or evolving text data. Rare words may contain emerging trends, new terminology, or domain-specific jargon that are relevant for analysis.
+   - **Dependence on Corpus Size:** The effectiveness of rare words removal depends on the size and composition of the corpus being analyzed. In smaller datasets, the removal of rare words may significantly reduce the available vocabulary, potentially impacting the quality of analysis.
 
 
 
@@ -627,6 +1137,35 @@ The fact that these words have been reduced is useful for many language processi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!---- ( Lemmatization ) --->
 
 ---
@@ -732,6 +1271,85 @@ Notice that out of all these words, only **"was"** was lemmatized to **"wa"**. A
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Part-of-Speech Tagging ) --->
 
 ---
@@ -790,6 +1408,12 @@ if __name__ == "__main__":
 ```bash
 ['How', 'old', 'be', 'the', 'country', 'Indonesia']
 ```
+
+
+
+
+
+
 
 
 
@@ -1011,6 +1635,55 @@ print(tokenized_by_sentence)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Settings ) --->
 
 ---
@@ -1058,8 +1731,10 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ## REFERENCES
 
- - **Noise Removal:**
+ - **General:**
    - [CodeAcademy - Text Preprocessing](https://www.codecademy.com/learn/text-preprocessing)
+   - [ChatGPT](https://chat.openai.com/)
+   - [Gemini](https://gemini.google.com/app)
 
 ---
 
