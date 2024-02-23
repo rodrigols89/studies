@@ -28,7 +28,7 @@
 > Algebra is the branch of mathematics that uses **"symbols"** and **"letters"** to represent numbers and unknown quantities, **"called variables"**. It deals with equations, algebraic expressions, and relationships between quantities, allowing for the generalization of mathematical patterns and the solution of complex problems. Algebra studies abstract structures and the properties of operations on these structures.
 
  - [Algebraic Expressions](modules/algebra/algebraic-expressions)
-
+ - [Set Theory](modules/algebra/set-theory)
 
 ---
 
