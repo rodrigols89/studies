@@ -2090,7 +2090,7 @@ Notice that we have:
 
 ## Term Frequency (TF)
 
-> The main goal of **'Term Frequency (TF)'** is to inform the frequency with which a term occurs in a sample (document) *relative to the total number of terms in the document*.
+> The main goal of **'Term Frequency (TF)'** is to inform the frequency with which a term occurs in a sample (document) *relative to the total number of terms in the sample (document).*.
 
 The formula to calculate **Term Frequency (TF)** is as follows:
 
@@ -2285,7 +2285,7 @@ print(tf_values)
 
  - First, the **"dense_matrix.astype(float)"**:
    - Has how many time each word appears in each sample.
-   - We need convert to **"float"** because we can't do calculations with the **"int"** type.
+   - We need convert to **"float"** because we can't apply division with the **"int"** type.
    - **NOTE:** Here we just need divide the current word by the total number of words in the current sample.
 
 Okay, as we have:
@@ -2295,7 +2295,7 @@ Okay, as we have:
    - **And the total of words in each sample::**
      - `total_words_per_sample = dense_matrix.sum(axis=1)`
 
-Now, let's calculate the TF for each word in each sample:
+Now, let's calculate the **TF** for each word in each sample:
 
 [tf-idf-ex-01.py](src/tf-idf/tf-idf-ex-01.py)
 ```python
