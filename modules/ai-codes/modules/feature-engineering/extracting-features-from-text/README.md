@@ -26,11 +26,11 @@ The examples used here will use the [**"Job Salary Prediction (Train_rev1.zip)"*
      - [Tokezination text by sentences](#tokenization-by-sentences-nltk)
  - [**CountVectorizer**](#countvectorizer)
    - [**CountVectorizer with Scikit-learn library**](#countvectorizer-sklearn)
- - **TF-IDF**
+ - [**Intro to TF-IDF**](#intro-to-tf-idf)
    - [Term Frequency (TF)](#intro-to-tf)
    - [Document Frequency (DF)](#intro-to-df)
    - [Inverse Document Frequency (IDF)](#intro-to-idf)
-   - [TF-IDF](#intro-to-tf-idf)
+   - [TF-IDF](#tf-idf-hands-on)
    - **TF-IDF with Scikit-learn:**
      - [TF-IDF with TfidfVectorizer class](#tf-idf-with-tfidfvectorizer)
  - Bag of words
@@ -2086,6 +2086,19 @@ Notice that we have:
 
 ---
 
+<div id="intro-to-tf-idf"></div>
+
+## TF-IDF
+
+> `TF-IDF` **penalizes terms that are very common** in a *document* or in the *entire corpus*, giving them a lower weight.
+
+That's:
+
+ - **The higher the TF-IDF score, the more important or relevant the term is.**
+ - **As a term becomes less relevant, its TF-IDF score will approach 0.**
+
+---
+
 <div id="intro-to-tf"></div>
 
 ## Term Frequency (TF)
@@ -2529,7 +2542,7 @@ See that:
 
 ---
 
-<div id="intro-to-tf-idf"></div>
+<div id="tf-idf-hands-on"></div>
 
 ## TF-IDF
 
