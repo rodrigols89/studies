@@ -124,15 +124,15 @@
 
 For example, one percent (1%) means 1 per 100:
 
-![img](images/financial-math/1-per-100.png)  
+![img](images/1-per-100.png)  
 
 To understand more easily, let's take a look at the examples below:
 
 **50% means 50 per 100:**
-![img](images/financial-math/50-per-100.png)  
+![img](images/50-per-100.png)  
 
 **25% means 25 per 100:**
-![img](images/financial-math/25-per-100.png)
+![img](images/25-per-100.png)
 
 Because **"Percent"** means **"per 100"** think:
 
@@ -153,7 +153,7 @@ To determine the percentage of a number, we need to:
  - By the *"total value (whole)"*;
  - And then *"multiply the resultant by 100"*.
 
-![img](images/financial-math/percent-formula.png)  
+![img](images/percent-formula.png)  
 
 For example, imagine we have *200 apples* and *10* of them are bad...
 
@@ -161,7 +161,7 @@ For example, imagine we have *200 apples* and *10* of them are bad...
 
 Using our formula we have:
 
-![img](images/financial-math/percent-formula-01.png)  
+![img](images/percent-formula-01.png)  
 
 ---
 
@@ -171,7 +171,7 @@ Using our formula we have:
 
 To find out the part of a percentage we use the following formula:
 
-![img](images/financial-math/percent-formula-02.png)  
+![img](images/percent-formula-02.png)  
 
 > **NOTE:**  
 > - See that first, we need to *divide the percentage by 100*. This is because we first need to *convert the percentage to decimal*.
@@ -183,7 +183,7 @@ For example, imagine we have 200 apples...
 
 Using our formula we have:
 
-![img](images/financial-math/percent-formula-03.png)
+![img](images/percent-formula-03.png)
 
 > **So, "30" apples are bad!**
 
@@ -218,12 +218,12 @@ For example:
 
 For example:
 
-![img](images/financial-math/percents-latex-01.png)  
+![img](images/percents-latex-01.png)  
 
 **NOTE:**  
 Another easy way to multiply by 100 is to move the decimal point 2 places to the right. For example:
 
-![img](images/financial-math/decimal-to-percent-01.png)  
+![img](images/decimal-to-percent-01.png)  
 **Move the decimal point 2 places to the right (and add the "%" sign!)**
 
 **Example-01: Convert 0.35 to percent**  
@@ -256,12 +256,12 @@ NOTE: See that here we had to adds a zero and not remove it.
 
 For example, let's convert **75%** to decimal:
 
-![img](images/financial-math/percents-latex-02.png)  
+![img](images/percents-latex-02.png)  
 
 **NOTE:**  
 Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
 
-![img](images/financial-math/percent-to-decimal-01.png)  
+![img](images/percent-to-decimal-01.png)  
 **Move the decimal point 2 places to the left, and remove the *"%"* sign.**  
 
 **Example-01: Convert 8.5% to decimal**  
