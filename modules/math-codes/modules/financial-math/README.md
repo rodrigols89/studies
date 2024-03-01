@@ -3,13 +3,14 @@
 ## Contents
 
  - [**Percents:**](#percents)
-   - [Finding the percentage of a part → part/whole x 100](#percentage-part)
-   - [Finding the part of a percentage → (percentage/100) x whole](#finding-the-part)
-   - [Percentage Difference (How much percent is the difference between two quantities/values)](#percentage-difference)
+   - [Percentage = part/whole x 100](#percentage-part)
+   - [Part = (percentage/100) x whole](#finding-the-part)
+   - [Whole = part / (percentage / 100)](#finding-the-whole)
+   - **Percentage Conversions:**
+     - [Percents to Decimals (Divide by 100 or Move two places to the left "←")](#percents-to-decimals)
+     - [Decimals to Percents (Multiply by 100 or Move two places to the right "→")](#decimals-to-percents)
    - **Percents - Tips & Tricks:**
-     - [Percentages calculus are Symmetry (or Bidirectional)](#percentages-calculus-symmetry)
-     - [Decimals to Percents (Move the decimal point 2 places to the right / →)](#decimals-to-percents)
-     - [Percents to Decimals (Move the decimal point 2 places to the left / ←)](#percents-to-decimals)
+     - [Percentages calculus are symmetry (or bidirectional)](#percentages-calculus-symmetry)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
 
@@ -112,7 +113,7 @@
 
 
 
-<!--- ( Financial Math/Percents ) --->
+<!--- ( Percents ) --->
 
 ---
 
@@ -145,7 +146,7 @@ So, **75%** really means $\frac{75}{100}$.
 
 <div id="percentage-part"></div>
 
-## Finding the percentage of a part → part/whole x 100
+## Percentage = part/whole x 100
 
 To determine the percentage of a number, we need to:
 
@@ -167,7 +168,7 @@ Using our formula we have:
 
 <div id="finding-the-part"></div>
 
-## Finding the part of a percentage → (percentage/100) x whole
+## Part = (percentage/100) x whole
 
 To find out the part of a percentage we use the following formula:
 
@@ -187,32 +188,75 @@ Using our formula we have:
 
 > **So, "30" apples are bad!**
 
-
-
-
-
-<!--- ( Financial Math/Percents/Tips and Tricks ) --->
-
 ---
 
-<div id="percentages-calculus-symmetry"></div>
+<div id="finding-the-whole"></div>
 
-## Percentages calculus are Symmetry (or Bidirectional)
+## Whole = part / (percentage / 100)
 
-This little rule can make some percentage calculations easier:
+To find the whole of a percentage of a part we use the following formula:
 
-**x% of y = y% of x**
+![img](images/percent-formula-04.png)
 
 For example:
 
- - **8% of 50** is the same as **50% of 8**:
-   - If **50%** of **8** is **4**.
-   - So, **8% of 50** is also **4**.
+> If I have 30 apples that represent 15% of the whole, how many apples do I have?
 
+![img](images/percent-formula-05.png)
+
+> **So, the whole is 200 apples.**
+
+
+
+
+
+
+
+
+
+
+<!--- ( Percents/Percentage Conversions ) --->
+
+---
+
+
+<div id="percents-to-decimals"></div>
+
+## Percents to Decimals (Divide by 100 or Move two places to the left "←")
+
+> To convert from percentage to decimal, we need to **divide the percentage (%) by 100** and **remove the “%” sign**.
+
+For example, let's convert **75%** to decimal:
+
+![img](images/percents-latex-02.png)  
+
+**NOTE:**  
+Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
+
+![img](images/percent-to-decimal-01.png)  
+**Move the decimal point 2 places to the left, and remove the *"%"* sign.**  
+
+**Example-01: Convert 8.5% to decimal**  
+```md
+8.5 → 0.85 → 0.085
+```
+
+**NOTE:**  
+Note how we inserted an extra **"0"** as needed. So, the answer is **8.5% = 0.085**.
+
+**Example-02: Convert 250% to decimal**  
+```md
+Move the decimal point two places to the left:
+250. → 25. (zero here is removed, that's, not use 25.0) → 2.5
+```
+
+So, the answer is **250% = 2.5**.
+
+---
 
 <div id="decimals-to-percents"></div>
 
-## Decimals to Percents (Move the decimal point 2 places to the right / →)
+## Decimals to Percents (Multiply by 100 or Move two places to the right "→")
 
 > To convert from decimal to percentage, we need to **"multiply the decimal number by 100** and **add the “%” sign**.
 
@@ -246,40 +290,32 @@ Answer 1.2 = 120%
 NOTE: See that here we had to adds a zero and not remove it.
 ```
 
+
+
+
+
+
+
+
+
+
+<!--- ( Percents/Tips and Tricks ) --->
+
 ---
 
-<div id="percents-to-decimals"></div>
+<div id="percentages-calculus-symmetry"></div>
 
-## Percents to Decimals (Move the decimal point 2 places to the left / ←)
+## Percentages calculus are symmetry (or bidirectional)
 
-> To convert from percentage to decimal, we need to **divide the percentage (%) by 100** and **remove the “%” sign**.
+This little rule can make some percentage calculations easier:
 
-For example, let's convert **75%** to decimal:
+**x% of y = y% of x**
 
-![img](images/percents-latex-02.png)  
+For example:
 
-**NOTE:**  
-Another easy way to divide by 100 is to move the decimal point 2 places to the left. For example:
-
-![img](images/percent-to-decimal-01.png)  
-**Move the decimal point 2 places to the left, and remove the *"%"* sign.**  
-
-**Example-01: Convert 8.5% to decimal**  
-```md
-8.5 → 0.85 → 0.085
-```
-
-**NOTE:**  
-Note how we inserted an extra **"0"** as needed. So, the answer is **8.5% = 0.085**.
-
-**Example-02: Convert 250% to decimal**  
-```md
-Move the decimal point two places to the left:
-250. → 25. (zero here is removed, that's, not use 25.0) → 2.5
-```
-
-So, the answer is **250% = 2.5**.
-
+ - **8% of 50** is the same as **50% of 8**:
+   - If **50%** of **8** is **4**.
+   - So, **8% of 50** is also **4**.
 
 
 
@@ -426,7 +462,7 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ## REFERENCES
 
- - **Percents:**
+ - **Percentage:**
    - [Percent example](https://www.instagram.com/p/Cw0qpWVPA46/)
    - [Percents (%)](https://www.mathsisfun.com/percentage.html)
    - [Convert Percents to Decimals](https://www.mathsisfun.com/converting-percents-decimals.html)
