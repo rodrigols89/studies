@@ -1,13 +1,253 @@
-# Coefficient of Determination (R-square / R² / Adjusted R²)
+# Evaluation Metrics for Regression Problems
 
 ## Contents
 
- - [[TSS] - Total Sum of Squares (Total variance of our dataset)](#tss)
- - [[RSS] - Residual Sum of Squares (How much of the variation was explained)](#rss)
- - [Coefficient of Determination R²](#r-square)
- - [Interpreting Coefficient of Determination R²](#interpreting-r2)
- - **Examples:**
-   - [R² with scikit-learn](#r2-sklearn)
+ - [**Mean Absolute Error (MAE)**](#intro-to-mae)
+ - **Mean Squared Error (MSE)**
+ - **Root Mean Squared Error (RMSE)**
+ - **Root Mean Squared Logarithmic Error (RMSLE)**
+ - [**Coefficient of Determination (R-square / R² / Adjusted R²)**](modules/evaluation-metrics/r2.md)
+   - [[TSS] - Total Sum of Squares (Total variance of our dataset)](#tss)
+   - [[RSS] - Residual Sum of Squares (How much of the variation was explained)](#rss)
+   - [Coefficient of Determination R²](#r-square)
+   - [Interpreting Coefficient of Determination R²](#interpreting-r2)
+   - **Examples:**
+     - [R² with scikit-learn](#r2-sklearn)
+ - **Mean Percentage Error (MPE)**
+ - **Mean Absolute Percentage Error (MAPE)**
+ - [**Settings**](#settings)
+ - [**REFERENCES**](#ref)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Mean Absolute Error (MAE) -->>
+
+---
+
+<div id='intro-to-mae'></div>
+
+## Mean Absolute Error (MAE)
+
+To calculate the **"MAE"**:
+
+ - We take the absolute difference between each **predicted value** and **its corresponding actual value**;
+ - Sum up all these absolute differences;
+ - Then divide by the total number of data points.
+ - **NOTE:** This gives you the average magnitude of errors in the predictions.
+
+
+
+Mathematically, the **Evaluation Metrics "Mean Absolute Error (MAE)"**  can be expressed as:
+
+![img](images/mae-01.png)  
+<!-- 
+\text{MAE}\left(y, \hat{y}\right) = \frac{1}{n_{\text{samples}}} \sum_{i=0}^{n_{\text{samples}} - 1} \left| y_i - \hat{y}_i \right|
+-->
+
+Where:
+
+ - **"n"** is the number of data points.
+ - **"y<sub>i</sub>"** is the actual value of the target variable for the *ith* data point.
+ - **"ŷ<sub>i</sub>"** is the predicted value of the target variable for the *ith* data point.
+ - `| * |` denotes the absolute value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Coefficient of Determination (R-square / R² / Adjusted R²) -->
 
 ---
 
@@ -191,7 +431,159 @@ Coefficient of Determination R²: 0.8998468700339362
 **NOTE:**  
 Great, we got our **R²** which was **0.91**, meaning we **explained 91%** of our dataset.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Settings ) --->
+
 ---
 
-**REFERENCES:**  
-[Didatica Tech - MÓDULO - I](https://didatica.tech/)  
+<div id="settings"></div>
+
+## Settings
+
+**CREATE VIRTUAL ENVIRONMENT:**  
+```bash
+python -m venv ai-environment
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
+```bash
+source ai-environment/bin/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
+```bash
+source ai-environment/Scripts/activate
+```
+
+**UPDATE PIP:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+**Now, Be Happy!!!** 😬
+
+
+
+
+
+<!--- ( REFERENCES ) --->
+
+---
+
+<div id="ref"></div>
+
+## REFERENCES
+
+ - **General:**
+   - [Didatica Tech](https://didatica.tech/)
+   - [ChatGPT](https://chat.openai.com/)
+   - [Gemini](https://gemini.google.com/app)
+ - **Mean Absolute Error (MAE):**
+   - [3.3.4.2. Mean absolute error](https://scikit-learn.org/stable/modules/model_evaluation.html#mean-absolute-error)
+
+---
+
+Ro**drigo** **L**eite da **S**ilva - **drigols**
