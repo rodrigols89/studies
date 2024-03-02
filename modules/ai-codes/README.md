@@ -181,28 +181,20 @@
 
 <div id="evaluation-metrics"></div>
 
- - **[Evaluation Metrics:](modules/evaluation-metrics/evaluation-metrics.md)**
-   - **Regression Problems:**
-     - Mean absolute error (MAE)
-     - Mean squared error (MSE)
-     - Root mean squared error (RMSE)
-     - Root mean squared logarithmic error (RMSLE)
-     - [Coefficient of Determination (R-square / R² / Adjusted R²)](modules/evaluation-metrics/r2.md)
-     - Mean percentage error (MPE)
-     - Mean absolute percentage error (MAPE)
-   - **Classification Problems:**
-     - Accuracy
-     - Precision
-     - Recall
-     - F1 score (F1)
-     - Area under the ROC curve or AUC
-     - Log loss
-     - Precision at k (P@k)
-     - Average precision at k (AP@k)
-     - Mean average precision at k (MAP@k)
-     - Gini Coefficient
-     - Cross-Entropy Loss (Binary Classification)
-     - Hinge Loss(Binary Classification)
+## Evaluation Metrics
+
+> **Evaluation Metrics** are used to measure quality to our (your) *Statistics* or *Artificial Intelligence* **models**.
+
+**Why is this useful?**  
+It is very important to use multiple **Evaluation Metrics** to evaluate your *model*.
+
+ - This is because a *model* can perform well using one **Evaluation Metric**;
+ - But perform poorly using another **Evaluation Metric**.
+
+> Using **Evaluation Metrics** is critical to ensuring that your model is operating correctly and optimally.
+
+ - [Evaluation Metrics for Regression Problems](modules/evaluation-metrics/ev-for-regression-problems)
+ - [Evaluation Metrics for Classification Problems](modules/evaluation-metrics/ev-for-classification-problems)
 
 ---
 
