@@ -8,6 +8,7 @@
    - [Dense Neural Networks](#intro-to-dnn)
    - [**Activation Functions:**](#activation-functions)
      - [Sigmoid Function](#sigmoid-function)
+     - [ReLU (Rectified Linear Unit)](#relu)
  - **Fundamentals of Deep Learning:**
    - **Convolutional Neural Networks (CNN):**
    - **Recurrent Neural Netowkrs (RNN):**
@@ -141,7 +142,7 @@ Take a look at this image to get a better visual understanding:
 
 ![image](images/ann01.png)
 
-As we know, the human brain has **billions** of neurons and synapses (which connect neurons). Knowing this, we can try to create **Artificial Neurons** following this logic, but using mathematical models.
+As we know, the human brain has **billions** of *neurons* and *synapses (which connect neurons)*. Knowing this, we can try to create **Artificial Neurons** following this logic, but using mathematical models.
 
 ---
 
@@ -168,7 +169,7 @@ The idea of the **[Perceptron](https://en.wikipedia.org/wiki/Perceptron)** was a
 
 To understand how **Artificial Neural Networks** learn, let's consider the following problem:
 
-> **How to create an *Artificial neural network* to identify numbers in an image?**
+> **How to create an *Artificial Neural Network* to identify numbers in an image?**
 
 For example, we want to identify the number **4**... But how to identify numbers in an image? Well, images on a computer are composed of various pixels.
 
@@ -222,6 +223,11 @@ Returning to our example of identifying numbers with an **Artificial Neural Netw
 
 **Densely our Artificial Neural Network would look like this:**  
 ![image](images/neural-net02.png)  
+
+
+
+
+
 
 
 
@@ -338,13 +344,73 @@ Another interesting thing to note is that if you pay attention to our graph, thi
 **NOTE:**  
 This interval between the point **"-5"** and **"5"** is what we know as the **"TRANSITION POINT"**.
 
+Now, let's see some **Sigmoid Function** tips:
 
+ - **Advantage:**
+   - **Easy to understand and implement:**
+     - The *sigmoid function* is a relatively simple mathematical function, making it easy to understand and implement in code.
+     - This can be beneficial for beginners learning about neural networks.
+   - **Output Range:**
+     - The *sigmoid function* outputs values in the **range (0, 1)**, which is useful for tasks where you need to `predict probabilities` or `binary classification`.
+     - The output can be interpreted as the probability of a particular class being present.
+   - **Smoothness (Suavidade):**
+     - The *sigmoid function* is smooth (suave) and continuously differentiable, which makes it suitable for gradient-based optimization methods like `Gradient Descent`.
+     - **NOTE:** This smoothness aids (auxilia) in stable `convergence` during training.
+ - **Disadvantage:**
+   - **Vanishing Gradient Problem:**
+     - The *sigmoid function* saturates when the input is very large or very small, leading to `vanishing gradients` during backpropagation.
+     - This makes training deep networks with many layers using the sigmoid function difficult because the gradients become extremely small, causing slow convergence or convergence to poor local minima.
+   - **Output Bias:**
+     - The output of the *sigmoid function* is not centered around zero.
+     - This can lead to issues like `vanishing gradients` or `slow convergence`, especially in deep networks where *weight* updates are relatively small.
+ - **When to USE the sigmoid function:**
+   - **As the output layer activation function in binary classification problems:**
+     - Since the sigmoid function outputs a value between 0 and 1, it can be interpreted as a probability. This makes it suitable for tasks like predicting whether an email is spam or not spam, or whether an image contains a cat or not.
+   - **As an activation function in hidden layers when dealing with data between 0 and 1:**
+     - If your data is naturally scaled between 0 and 1, the sigmoid function can work well in hidden layers. However, it's important to be aware of the `vanishing gradient` problem, especially in deep networks.
+ - **When NOT TO USE the sigmoid function:**
+   - **In deep neural networks:**
+     - Due to the `vanishing gradient` problem, sigmoid functions are generally not recommended as activation functions in deep neural networks.
+     - Avoid using the *sigmoid function* as an activation function in hidden layers of deep neural networks, especially when dealing with deep architectures or problems with a `large number of classes`.
+     - **NOTE:** Other activation functions, such as `ReLU (Rectified Linear Unit)` or `tanh (hyperbolic tangent)`, are better suited for these cases.
+   - **In regression problems:**
+     - Sigmoid functions are not ideal for regression problems where the output can take any real value.
+     - **NOTE:** In these cases, *linear activation functions* are typically preferred.
 
+---
 
+<div id="relu"></div>
 
+## ReLU (Rectified Linear Unit)
 
+The **ReLU (Rectified Linear Unit) Activation Function** have as output a value between **"0"** and the **"maximum input value"**.
 
+For example, see the image below to understand more easily:
 
+![img](images/relu-01.png)  
+
+See that:
+
+ - **The ReLu receives as input "x".**
+ - **Return:**
+   - **"0" if "x" is less than "0":**
+     - This is because.. What's the maximum value between "-x" and "0"? It's "0".
+     - Then, we return "0" if "x" is less than "0".
+   - **"maximum input value" if "x" is greater than "0":**
+     - Here the output will be the input itself (própria entrada).
+
+Now, let's see some **ReLU Function** tips:
+
+ - **Advantage:**
+   - **Solves Vanishing Gradient problem:**
+     - Unlike *sigmoid* and *tanh functions*, *ReLU* has a constant gradient of 1 for positive inputs. This helps avoid the `Vanishing Gradient` problem, which can hinder training in deep neural networks.
+   - **Computationally efficient:**
+     - ReLU involves a simple comparison operation (max(0, x)), making it significantly faster to compute compared to *sigmoid* and *tanh functions*, which require more complex calculations.
+ - **Disadvantage:**
+   - **Dying ReLU Problem:**
+     - A common issue with ReLU is the **"dying ReLU"** problem, where some neurons effectively become inactive during training because they always output zero.
+     - This typically happens when the input to a neuron is consistently negative, causing the neuron to never activate (the gradient becomes zero).
+     - **NOTE:** Once a neuron is "dead," it will never recover since the gradient for negative inputs remains zero.
 
 
 
