@@ -5,27 +5,19 @@
  - **Prerequisites:**
    - **Angles:**
      - [Rays and Angles](#rays-and-angles)
-     - [Angles and Greek Letters](#angles-greek-letters)
      - [Angle: Initial and Terminal sides](#angle-initial-terminal-sides)
      - [Measure of Angles](#measure-of-angles)
+     - [Angles and Greek Letters](#angles-greek-letters)
    - **Circles:**
-     - [Measurement of a Circle](#circle-measurement)
-     - [Pi (π) = Circumference/Diameter](#phi-calc)
-     - [Circumference = Pi (π) x Diameter](#circumference-calc)
-     - [Diameter = Circumference / Pi (π)](#diameter-calc)
-     - [Radius = Diameter / 2](#radius-calc)
-     - [Radian = Arc that has the same length as the radius](#radian)
-   - [**Unit Circle:**](#Unit-Circle)
-
-
-
-
+     - [Components of a Circle](#circle-components)
+     - [Unit Circle](#Unit-Circle)
+     - [Radius and Radian as a measure](#radius-and-radians)
+     - [Degrees to Radians](#degrees-to-radians)
  - [**Sine**](#intro-to-sine)
  - [**Cosine**](#intro-to-cosine)
  - [**Tangent**](#intro-to-tangent)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
-
 
 
 
@@ -157,7 +149,7 @@ See that a ***"Ray"*** has:
 
 For example, see the **"Angle"** below:
 
-![img](images/rays-angles-01.jpeg)  
+![img](images/ray-02.jpeg)  
 
 See that:
 
@@ -168,20 +160,6 @@ See that:
    - And the two rays are the sides of the angle.
  - **The angle to our image is formed:**
    - From $\overrightarrow{ED}$ and $\overrightarrow{EF}$
-
----
-
-<div id="angles-greek-letters"></div>
-
-## Angles and Greek Letters
-
-> **Greek letters** are often (frequentemente) used as variables for the measure of an angle.
-
-For example, see the common Greek letters used to measure angles:
-
-| θ     | φ or ϕ | α     | β    | γ     |
-|-------|--------|-------|------|-------|
-| Theta | Phi    | Alpha | Beta | Gamma |
 
 ---
 
@@ -227,7 +205,7 @@ For example:
 
 For example, see the images below to understand more easily:
 
-![img](images/angle-02.png)  
+![img](images/measure-of-angles-01.png)  
 
 To place the terminal side of the angle, we must calculate the fraction of a full rotation the angle represents. We do that by dividing the angle measure in degrees by **"360°"**.
 
@@ -239,7 +217,43 @@ For example:
 
 See the image below to understand more easily:
 
-![img](images/angle-03.jpeg)  
+![img](images/measure-of-angles-02.png)  
+
+It's common to learn that angles can be measured in degrees:
+
+![img](images/measure-of-angles-03.png)  
+
+> **NOTE:**  
+> Looking at the image above, pay attention that the focus is on the **“angles”** and **"not the number of radius"**.
+
+See the image again to understand the focus more easily:
+
+![img](images/measure-of-angles-04.png)  
+
+See that:
+
+ - **We have many Angles in degree.**
+ - **The blue Circle is the ["Unit Circle"](#Unit-Circle):**
+   - Has a *"radius of 1"*.
+   - Is centered at the *"origin (0, 0)"*.
+
+For example, let's see some of these angles above separated:
+
+![img](images/measure-of-angles-05.png)  
+
+---
+
+<div id="angles-greek-letters"></div>
+
+## Angles and Greek Letters
+
+> **Greek letters** are often (frequentemente) used as variables for the measure of an angle.
+
+For example, see the common Greek letters used to measure angles:
+
+| θ     | φ or ϕ | α     | β    | γ     |
+|-------|--------|-------|------|-------|
+| Theta | Phi    | Alpha | Beta | Gamma |
 
 
 
@@ -254,126 +268,45 @@ See the image below to understand more easily:
 
 ---
 
-<div id="circle-measurement"></div>
+<div id="circle-components"></div>
 
-## Measurement of a Circle
+## Components of a Circle
 
-To measure a **Circle** we have four important concepts:
+To work with a **Circle** we have some important components:
 
-![img](images/circle-01.png)  
+![img](images/circle-components-01.png)  
 
- - **Center of the circle:**
+ - **Center of the circle (Central Vertex):**
    - The center is the fixed point inside the circle that is the same distance away from all points on the circle's edge (circumference). 
  - **Circumference:**
    - The circumference is the total length around (bounded) the edge of the circle.
  - **Radius:**
    - The radius is any line segment that connects the center of the circle to a point on the edge (circumference). All **radii (radii = plural of radius, it's the plural form of radius, indicating there are more than one of these lines)** of a circle have the same length.
  - **Diameter:**
-   - The diameter is a straight line that passes through the center of the circle and touches opposite ends of the circle's edge. **Its length is equal to twice the radius**.
+   - The diameter is a straight line that passes through the center of the circle (0, 0) and touches opposite ends of the circle's edge. **Its length is equal to twice the radius**.
 
----
+**NOTE:**  
+Now let's look at some components of a circle that may look the same but are different:
 
-<div id="phi-calc"></div>
+ - **Radius (Raio):**
+   - A **Radius (Raio)** is a line segment that starts from the *center of the circle (0, 0)* and ends on a point on the circle's edge (circumference).
+   - It's typically denoted by the letter **"r"** in mathematical formulas.
+ - **Ray (Também é "raio" em inglês):**
+   - A **Ray (Também é "raio" em inglês)** is a part of a line that starts at the *center of the circle (0, 0)* and *"extends infinitely"* outward in one direction. 
+ - **Arc:**
+   - Part of the *circumference* of a *circle*.
 
-## Pi (π) = Circumference/Diameter
-
-> Independently, the length of the *"circumference"* or *"diameter"* of a circle, **if we divide the circumference by the diameter the result is always Pi (π)**.
-
-![img](images/pi-gif-01.gif)  
-
-> **NOTE:**  
-> This is interesting to know because we will always have a *constant (pi π)* that can be used to discover other values from it.
-
----
-
-<div id="circumference-calc"></div>
-
-## Circumference = Pi (π) x Diameter
-
-To find the circumference of a circle, we need to know the **"Pi (π)"** and the **"Diameter"**.
-
-The formula is:
-
-![img](images/circumference-calc-01.png)  
-
-> **For example, imagine you walk around a circle which has a diameter of 100 m, how far have you walked?**
-
-![img](images/circumference-calc-02.png)  
-
----
-
-<div id="diameter-calc"></div>
-
-## Diameter = Circumference / Pi (π)
-
-To find the diameter of a circle is very simple. For example, see the formula below:
-
-![img](images/diamter-calc-01.png)  
-
-> **For example, imagine you measured 94 mm around the *outside of a pipe (parte externa de um tubo)*... what is its diameter?**
-
-![img](images/diamter-calc-02.png)  
-
----
-
-<div id="radius-calc"></div>
-
-## Radius = Diameter / 2
-
-> A **Radius** is **half of the diameter**.
-
-![img](images/radius-01.png)  
-
-> **NOTE:**  
-> Knowing that we can say that the *"radius"* is the *"diameter divided by two"*.
-
-A Circle can have an uncountable number of Radius. For example:
-
-![img](images/radius-03.png)
-
-Looking at the first Circle, we see that we have many Radii with different spaces between them, but they all have the same length.
-
----
-
-<div id="radian"></div>
-
-## Radian = Arc that has the same length as the radius
-
-> A **Radian** is an Arc that has the same length as the radius.
-
-![img](images/radian-gif-01.gif)
-
----
-
-<div id="area-calc"></div>
-
-## Area = π x r^2
-
-> The area of a shape refers to how much space it occupies.
-
- - When **"estimating"** the **area of a circle** we use the formula: `A = 3r²`.
-   - Where `r` is the radius.
- - When **"calculating"** the **area of a circle** we use the formula: `A = πr²`.
-   - Where `r` is the radius.
-
-![img](images/area.gif)  
-
-
-
-
-
-
-
-
-
-
-<!--- ( Prerequisites/Unit Circle ) -->
+![img](images/circle-components-02.png)
 
 ---
 
 <div id="Unit-Circle"></div>
 
 ## Unit Circle
+
+When we study Angles, it is common to draw a circle between the rays to find the Angle.
+
+> This circle is known as the **"Unit Circle"**.
 
  - A **"Unit Circle"** is a circle *"on the Cartesian Plane"* that *"has a radius of 1 unit"*.
  - And is *centered* at the *origin (0, 0)*.
@@ -385,7 +318,167 @@ See that our circle:
  - Has a *"radius of 1"*.
  - Is centered at the *"origin (0, 0)"*.
 
+**NOTE:**  
+Pay attention that, the focus here is the *"circle"*, not the arcs (or rays) length. That's the circle with a radius of 1.
+
 ---
+
+<div id="radius-and-radians"></div>
+
+## Radius and Radian as a measure
+
+> A **Radius** is **half a diameter**.
+
+![img](images/radius-01.png)  
+
+> **NOTE:**  
+> Knowing that we can say that the *"radius"* is the *"diameter divided by two"*.
+
+A Circle can have an uncountable number of Radius. For example:
+
+![img](images/radius-02.png)
+
+Looking at the first Circle, we see that we have many Radii with different spaces between them, but they all have the same length.
+
+### Radian
+
+I like to say (but not formally) that:
+
+> A **"Radian"** is an **"Angle"** in which the *Arc* has the same length as the *Radius*.
+
+![img](images/radian-01.gif)  
+
+> **What would happen if we were to rotate around the circle continuing to add radians?**
+
+![img](images/radian-02.png)  
+
+See that:
+
+ - **We have 6 radians.**
+   - And a little bit more.
+ - **These 6 radians can be used to measure angles:**
+   - That is, now we use *"radians"* instead of *"degrees"* to measure angles.
+
+---
+
+<div id="degrees-to-radians"></div>
+
+## Degrees to Radians
+
+Before learning to convert degrees into radians, let's recall some Geometry concepts. But first, let's make some aliases for some concepts:
+
+ - **C =** Circumference.
+ - **π =** Pi = 3.14159...
+ - **r =** Radius = Diameter / 2.
+ - **D =** Diameter = 2 * r.
+
+Now, the question is:
+
+> **How to find the circumference of a circle?**
+
+ - **If you know the *"diameter (D)"* of the circle, you can use the formula:**
+   - `C = π*D` → `C = πD`
+ - **If you know the *"radius (r)"* of the circle, you can use the formula:**
+   - `C = 2*π*r` → `C = 2πr`
+
+Recall from geometry that:
+
+> The **"arc length of a complete rotation (or 360 degrees)"** is the **"circumference"**, where the formula is equal to: `C = 2πr`.
+
+ - **"2π"** is approximately 6.28, so the *circumference* is a little more than 6 radius lengths.
+ - Or, in **"terms of radian measure"**, a complete rotation (360 degrees) is **2π radians (or 2πr)**.
+
+For example, let's compare a complete circle rotation in degrees and radians:
+
+![img](images/degrees-to-radians-01.png)
+
+Now, think with me... If the complete circle rotation in degrees and radians are: 360° (or 360 degrees) and 2π, then:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -630,7 +723,7 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ---
 
-<div id="references"></div>
+<div id="ref"></div>
 
 ## REFERENCES
 
@@ -668,3 +761,48 @@ For example, see the **Right-Angled Triangle** below:
    - **Opposite:** opposite to the angle **θ**.
    - **Adjacent:** adjacent (next to) the angle **θ**.
    - **Hypotenuse:** The longest side is the *Hypotenuse*.
+
+---
+
+We have already learned that 1 radian is equal to the angle made by the arc of a circle whose length is the same as the radius of the circle.
+
+For example:
+
+![img](images/radian-gif-01.gif)  
+
+Thus, the angle subtended by an arc in radians of a circle is defined as the ratio (razão) of the arc length to the radius of the circle:
+
+![img](images/radian-formula-01.png)  
+
+ - If we consider the **"arc"** to be the total circumference of the circle, then **arc length = 2πr**.
+ - Also, we know that the angle subtended at the center of the circle by its circumference is **360°**.
+
+Thus, the formula of radians is **2π = 360°**.
+
+![img](images/radian-formula-02.png)  
+
+---
+
+
+<div id="degrees-to-radians"></div>
+
+## Degrees to Radians
+
+Before learning how to convert degrees into radians, what would happen if we were to rotate around the circle continuing to add **radius lengths**?
+
+For example:
+
+![img](images/rotation-6-radius.png)  
+
+> **NOTE:**  
+> Note that it takes a little more than 6 of them to complete the rotation.
+
+Recall from geometry that the **"arc length of a complete rotation (or 360 degrees)"** is the **"circumference"**, where the formula **"2π (where pi = circumference / diameter)"** *times (x)* **"the length of the radius"**.
+
+ - **2π** is approximately **6.28**, so the *circumference* is a little more than 6 radius lengths.
+ - Or, in terms of radian measure, a complete rotation (360 degrees) is **2π radians**.
+
+That's:
+
+$360 \ degrees = 2π \ radians$
+
