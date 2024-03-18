@@ -15,7 +15,7 @@
      - [Radius and Radian as a measure](#radius-and-radians)
      - [Degrees to Radians](#degrees-to-radians)
      - [Radians to Degrees](#radians-to-degrees)
-     - [Degrees and Radians Circle/Table](circle-table.md)
+     - [Degrees and Radians Circle/Table](readmes/circle-table.md)
    - **Triangles:**
      - [Right-Angled Triangles](#right-angled-triangles)
    - [**Pythagorean Theorem**](#pythagorean-theorem)
@@ -24,9 +24,10 @@
      - **Pythagorean Theorem (Q&A):**
        - [What is the diagonal distance across a square of size 1?](#pt-qa01)
  - [**Trigonometry:**](#intro-to-trigonometry)
-   - [**Sine**](#intro-to-sine)
-   - [**Cosine**](#intro-to-cosine)
-   - [**Tangent**](#intro-to-tangent)
+   - [**Sine(θ) | SOH**](#intro-to-sine)
+   - [**Cosine(θ) | CAH**](#intro-to-cosine)
+   - [**Tangent(θ) | TOA**](#intro-to-tangent)
+   - [Sine, Cosine, and Tangent Table: 0 to 360 degrees](readmes/sine-cosine-tangent-table.md)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
 
