@@ -482,7 +482,7 @@
 
 ## REFERENCES
 
- - [**Sine, Cosine, and Tangent Table: 0 to 360 degrees**](https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1011&context=mathclass)
+ - [ChatGPT](https://chat.openai.com/chat)
 
 ---
 
