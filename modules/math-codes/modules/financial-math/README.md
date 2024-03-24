@@ -11,15 +11,11 @@
      - [Decimals to Percents (Multiply by 100 or Move two places to the right "→")](#decimals-to-percents)
    - **Percents - Tips & Tricks:**
      - [Percentages calculus are symmetry (or bidirectional)](#percentages-calculus-symmetry)
+ - [**Proportions (+Cross-Multiplication Approach):**](#proportions)
+   - [Direct Proportion](#direct-proportion)
+   - [Inverse Proportion](#inverse-proportion)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
-
-
-
-
-
-
-
 
 
 
@@ -367,12 +363,101 @@ For example:
 
 
 
+<!--- ( Proportions ) --->
 
+---
 
+<div id="proportions"></div>
 
+## Proportions (+Cross-Multiplication Approach)
 
+> A **proportion** can be used to *solve problems involving ratios*.
 
+For example, imagine that **10 hours** is equal to **600 minutes**:
 
+> **How many minutes are there in 50 hours?**
+
+![img](images/proportions-01.png)  
+
+**To solve a proportion like this, we will use a procedure called "Cross-Multiplication":**
+
+ - **First**, this process involves multiplying the two extremes.
+
+![img](images/proportions-02.png)  
+
+**After Cross Multiplication:**  
+![img](images/proportions-03.png)  
+
+> **NOTE:**  
+> See that we have an *equality (igualdade)*.
+
+Knowing we have an equality, we can apply some equation techniques to solve this problem:
+
+![img](images/proportions-04.png)  
+
+Now, we know that:
+
+ - If **10 hours** is equal to **600 minutes**.
+ - Then **50 hours** is equal to **3.000 minutes**.
+
+---
+
+<div id="direct-proportion"></div>
+
+## Direct Proportion
+
+The **"Direct Proportion"** describes the *"relationship between two quantities"*, which:
+
+> **The increases in one quantity, there is an increase in the other quantity also (O aumento em uma quantidade, há um aumento na outra quantidade também.).**
+
+For example:
+
+ - **Distance and Time (Constant Speed):**
+   - If you travel at a constant speed, the distance you cover is directly proportional to the time you spend traveling.
+   - **NOTE:** The faster you go (higher speed), the greater the distance covered in a set time.
+ - **Recipe and Ingredients:**
+   - When following a recipe, the amount of each ingredient is directly proportional to the number of people you're cooking for.
+   - **NOTE:** Doubling the recipe means doubling all ingredients.
+ - **Price and Quantity (Fixed Price per Unit):**
+   - When buying an item with a fixed price per unit (e.g., apples at $1 each), the total price is directly proportional to the quantity you buy.
+   - **NOTE:** The more you buy, the higher the total price.
+
+> **NOTE:**  
+> Similarly, if one quantity decreases, the other quantity also decreases.
+
+**NOTE:**  
+To solve a **"Direct Proportion"** we can use the **"Cross-Multiplication"** technique *seen (vista/passado)* in [Proportions (+Cross-Multiplication Approach)](#proportions).
+
+---
+
+<div id="inverse-proportion"></div>
+
+## Inverse Proportion
+
+The **"Inverse Proportion"** describes the *"relationship between two quantities"*, where:
+
+> **In *"which an increase in one quantity leads to a decrease in the other quantity" (Em “que um aumento em uma quantidade leva a uma diminuição na outra quantidade”)*.**
+
+For example:
+
+ - **Supply and Demand (Price Fluctuations):**
+   - In economics, the availability of a good (supply) is inversely proportional to its price.
+   - **NOTE:** When there's a high supply of a good, the price tends to decrease.
+ - **Loan (emprestimo) Term and Monthly Payment (Fixed Loan Amount):**
+   - For a fixed loan (emprestimo) amount, the monthly payment is inversely proportional to the loan term.
+   - **NOTE:** A shorter loan (emprestimo) term requires higher monthly payments to settle the debt faster.
+ - **Strength of WiFi Signal and Distance from Router:**
+   - The strength of a WiFi signal is inversely proportional to the distance from the router.
+   - **NOTE:** The farther you are from the router, the weaker the signal strength.
+
+For example, if **"y"** is inversely proporttional to **"x"**, we can write this relationship as $y ∝ \frac{1}{x}$.
+
+> **NOTE:**  
+> The symbol **"∝"** is the *"proportionality symbol"* and it *"represents a proportional relationship between two variables"*.
+
+As $y \times x = k$, where "k" is the constant of proportionality, we can deduce the inverse proportion formula:
+
+![img](images/proportions-05.png)  
 
 
 
@@ -469,6 +554,9 @@ pip install -U -v --require-virtualenv -r requirements.txt
    - [Convert Decimals to Percents](https://www.mathsisfun.com/converting-decimals-percents.html)
    - [Percentage](https://byjus.com/maths/percentage/)
    - [Percentage Difference Calculator](https://www.justcalculateit.com/percentage-difference-calculator/)
+ - **Proportions:**
+   - [Proportions and Ratios (freemathhelp)](https://www.freemathhelp.com/proportions/)
+   - [Ratios and Proportion (byjus)](https://byjus.com/maths/ratios-and-proportion/#Direct%20Proportion)
 
 ---
 
