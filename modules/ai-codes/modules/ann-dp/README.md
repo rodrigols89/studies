@@ -15,9 +15,10 @@
      - [Early Stopping](#early-stopping)
  - **Artificial Neural Networks Architectures:**
    - **Convolutional Neural Networks (CNN):**
-   - **Recurrent Neural Netowkrs (RNN):**
+   - [**Recurrent Neural Netowkrs (RNN):**](#intro-to-rnn)
+     - [Unrolling RNN](#unrolling-rnn)
+     - [Long Short-Term Memory (LSTM)](#intro-to-lstm)
      - LSM
-     - LSTM
      - GRU
    - **Autoencoders:**
      - seq2seq
@@ -579,6 +580,208 @@ Here, the focus is the middle point where we need to stop the training before **
 
 > **NOTE:**  
 > Each point in the plot above is an iteration (epoch) of our ANN.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- (  Artificial Neural Networks Architectures ) --->
+
+---
+
+<div id="intro-to-rnn"></div>
+
+## Recurrent Neural Netowkrs (RNN)
+
+To understand the **Recurrent Neural Network (RNN)** architecture, let's imagine we have the following **ANN**:
+
+![img](images/rnn-01.png)  
+
+See that like a normal **ANN** we have:
+
+ - **The *input (X<sub>t</sub>)* layer.**
+ - **The *hidden (h<sub>t</sub>)* layer.**
+ - **The *output (O<sub>t</sub>)* layer.**
+
+> **And the neurons below the hidden layer that receive values from hidden layer and passing values to them?**
+
+Well...
+
+ - To each epoch, these neurons will save the current **"Hidden Layer (h<sub>t</sub>)"** state to use on the next epoch.
+ - That's, after the first epoch, the **"Hidden Layer (h<sub>t</sub>)"** will receive:
+   - The **inputs (X<sub>t</sub>) layer**.
+   - And the saved neurons below the hidden layer.
+
+> **NOTE:**  
+> You can call the *neurons (layer)* below as **"Memory (M<sub>t</sub>)"**.
+
+The **"Memory (M<sub>t</sub>)"** always has the previous **"Hidden Layer (h<sub>t - 1</sub>)"** state:
+
+![img](images/rnn-02.png)  
+
+---
+
+<div id="unrolling-rnn"></div>
+
+## Unrolling RNN
+
+> The **"Unrolling RNN"** is used to analyze mathematically our **"RNN"** in each **epoch (Moment in time)"**.
+
+For example, see the image below:
+
+![img](images/unrolling-rnn-01.png)  
+
+See that we have:
+
+ - *State<sub>t</sub>* to each epoch:
+   - Previous.
+   - Current.
+   - Next.
+ - The **"W"** are the *"weights"* of each neuron.
+
+Let's, see another example:
+
+![img](images/unrolling-rnn-02.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
