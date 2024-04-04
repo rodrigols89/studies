@@ -2,18 +2,23 @@
 
 ## Contents
 
- - [**Fundamentals of Artificial Neural Networks (+Introduction):**](#intro-to-nn)
+ - [**Fundamentals of Artificial Neural Networks:**](#intro-to-nn)
    - [The First Artificial Neuron (Perceptron)](#perceptron)
    - [How do Artificial Neural Networks learn? (Hypothetical example)](#how-do-learn)
    - [Dense Neural Networks](#intro-to-dnn)
    - [**Activation Functions:**](#activation-functions)
      - [Sigmoid Function](#sigmoid-function)
      - [ReLU (Rectified Linear Unit)](#relu)
- - **Fundamentals of Deep Learning:**
+   - [**Overfitting & Underfitting in ANN:**](#overfitting-underfitting-ann)
+   - [**Regularization**](#regularization)
+     - [Dropout](#dropout)
+     - [Early Stopping](#early-stopping)
+ - **Artificial Neural Networks Architectures:**
    - **Convolutional Neural Networks (CNN):**
-   - **Recurrent Neural Netowkrs (RNN):**
+   - [**Recurrent Neural Netowkrs (RNN):**](#intro-to-rnn)
+     - [Unrolling RNN](#unrolling-rnn)
+     - [Long Short-Term Memory (LSTM)](#intro-to-lstm)
      - LSM
-     - LSTM
      - GRU
    - **Autoencoders:**
      - seq2seq
@@ -134,7 +139,7 @@
 
 <div id="intro-to-nn"></div>
 
-## Fundamentals of Artificial Neural Networks (+Introduction):
+## Fundamentals of Artificial Neural Networks
 
 > To begin with **Artificial Neural Networks**, it's essential to understand the inspiration behind them. In fact, ANNs are based on the same logic as human neurons.
 
@@ -160,6 +165,60 @@ The first **Artificial Neuron** created was the **[Perceptron](https://en.wikipe
 
 **NOTE:**  
 The idea of the **[Perceptron](https://en.wikipedia.org/wiki/Perceptron)** was a single *neuron* that received **x<sub>i</sub>** inputs; Multiplied these inputs by their respective weights; Then passed through a *Non-Linear Activation Function* and received an *output*.
+
+---
+
+<div id=""></div>
+
+## Artificial Neural Networks Components
+
+To understand the basics of ANNs, let's take a look at the following components:
+
+![img](images/ann-components-01.png)
+
+Looking at the image above, we can see our ANNs have the following components:
+
+ - **Inputs:**
+   - The *"inputs"* are the **x<sub>i</sub>** values.
+ - **Weights:**
+   - The *"weights"* are the **w<sub>i</sub>** values.
+   - Like a graph, the *"weights"* are related to the *"inputs"*.
+ - **Sum:**
+   - The *"sum"* is the **x<sub>i</sub>** multiplied by the **w<sub>i</sub>**.
+ - **Activation Function:**
+   - The "activation function (f<sub>i</sub>)" applies *nonlinearity* to the *"sum"*.
+ - **Output:**
+   - The *"output"* is the predicted **ŷ** value.
+
+Mathematically the formula is:
+
+![img](images/ann-components-02.png)  
+
+Where:
+
+ - **ŷ:**
+   - The predicted value.
+   - Passed by the *"Activation Function"*.
+ - **g():**
+   - The *Activation Function*.
+ - **w<sub>0</sub>:**
+   - The *Bias*.
+ - **X<sup>T</sup>:**
+   - The *vector of inputs*.
+   - E.g: *x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>i</sub>*.
+   - The exponential *"T"* means *transpose the matrix*.
+ - **W:**
+   - The *vector of weights*.
+   - E.g: *w<sub>1</sub>, w<sub>2</sub>, ..., w<sub>i</sub>*.
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -198,6 +257,15 @@ In the **Artificial Neural Network** (abstraction) above, we have:
 **NOTE:**  
 In this example, we made the connection only from all inputs to the first neuron *(representing the number zero)*, but in a **Dense Neural Network**, the neurons from the layer above connect to all their *predecessors*.
 
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="intro-to-dnn"></div>
@@ -207,7 +275,7 @@ In this example, we made the connection only from all inputs to the first neuron
 > **What is a Dense Neural Network?**
 
  - The name suggests that the **"layers"** are fully connected (dense) by neurons in a network layer.
- - Each *neuron* in a **"layer"** receives input from all neurons present in the previous layer - hence they are densely connected.
+ - Each *neuron* in the current **"layer"** `receives output from all neurons present in the previous layer` - hence they are densely connected.
 
 **NOTE:**  
 In other words, *the dense layer is a fully connected layer*, meaning all neurons in one layer are connected to those in the next layer.
@@ -411,6 +479,272 @@ Now, let's see some **ReLU Function** tips:
      - A common issue with ReLU is the **"dying ReLU"** problem, where some neurons effectively become inactive during training because they always output zero.
      - This typically happens when the input to a neuron is consistently negative, causing the neuron to never activate (the gradient becomes zero).
      - **NOTE:** Once a neuron is "dead," it will never recover since the gradient for negative inputs remains zero.
+
+
+
+
+
+
+
+
+
+
+<!--- (  Overfitting & Underfitting ) --->
+
+---
+
+<div id="overfitting-underfitting-ann"></div>
+
+## Overfitting & Underfitting in ANN
+
+When we optimize an **ANN (A.I model)** using **Stochastic Gradient Descent** we have a challenge:
+
+ - Extract patterns from *training data*.
+ - And expect them to *generalize to testing data* (i.e., the unseen data).
+
+For example, imagine we need to draw a line to find patterns in our data. Something like this:
+
+![img](images/overfitting-underfitting-01.png)  
+
+Looking at the image above we have the following scenarios:
+
+ - **Overfitting:**
+   - Overfitting occurs when the *ANN* exceptionally fits well on the training data but poorly (mal) on unseen (não visto) data (validation or test data).
+   - **NOTE:** It is as if the ANN *"decorates"* the training data and does not generalize to unseen (não visto) data.
+ - **Underfitting:**
+   - Here, as the data are not linear (the neural network output are not linear because of activation functions) the ANN does not well fit the data.
+   - **NOTE:** In this case, the *ANN* `fails to capture the patterns` in the training data and performs poorly not only on the training data but also on unseen (não visto) data.
+ - **Ideal fit:**
+   - Here, the *ANN* is well fit to the data:
+
+
+
+
+
+
+
+
+
+
+<!--- (  Regularization ) --->
+
+---
+
+<div id="regularization"></div>
+
+## Regularization
+
+Regularization is a Technique that constrains our optimization problem to discourage complex models.
+
+> **Why do we need it?**  
+> Improve generalization of our model on unseen (não visto) data (Melhorar a generalização do nosso modelo em dados não vistos).
+
+---
+
+<div id="dropout"></div>
+
+## Dropout
+
+To understand the **Dropout** technique, imagine we have the following *ANN*:
+
+![img](images/dropout-01.png)
+
+During the training, the **Dropout** technique **randomly set some activations to "0"**:
+
+ - Typically "drop" 50% of activations in the layer.
+ - Forces network to not rely (depender) on any I node.
+
+For example, our ANN now looks like this:
+
+![img](images/dropout-02.png)  
+
+> **NOTE:**  
+> - Now, to each iteration (epoch), our *ANN* will randomly learn with different neurons.
+> - This because, to each iteration (epoch), our *ANN* will randomly set some activations to "0".
+
+---
+
+<div id="early-stopping"></div>
+
+## Early Stopping
+
+We know that **Overfitting** occurs when the *ANN* represent basically the training data more than the testing data.
+
+For example, we can plot performance of our *ANN* on both the cases: **"Training"** and **"Testing data"**:
+
+![img](images/early-stopping-01.png)  
+
+Here, the focus is the middle point where we need to stop the training before **overfitting** and **underfitting**:
+
+![img](images/early-stopping-02.png)  
+
+> **NOTE:**  
+> Each point in the plot above is an iteration (epoch) of our ANN.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- (  Artificial Neural Networks Architectures ) --->
+
+---
+
+<div id="intro-to-rnn"></div>
+
+## Recurrent Neural Netowkrs (RNN)
+
+To understand the **Recurrent Neural Network (RNN)** architecture, let's imagine we have the following **ANN**:
+
+![img](images/rnn-01.png)  
+
+See that like a normal **ANN** we have:
+
+ - **The *input (X<sub>t</sub>)* layer.**
+ - **The *hidden (h<sub>t</sub>)* layer.**
+ - **The *output (O<sub>t</sub>)* layer.**
+
+> **And the neurons below the hidden layer that receive values from hidden layer and passing values to them?**
+
+Well...
+
+ - To each epoch, these neurons will save the current **"Hidden Layer (h<sub>t</sub>)"** state to use on the next epoch.
+ - That's, after the first epoch, the **"Hidden Layer (h<sub>t</sub>)"** will receive:
+   - The **inputs (X<sub>t</sub>) layer**.
+   - And the saved neurons below the hidden layer.
+
+> **NOTE:**  
+> You can call the *neurons (layer)* below as **"Memory (M<sub>t</sub>)"**.
+
+The **"Memory (M<sub>t</sub>)"** always has the previous **"Hidden Layer (h<sub>t - 1</sub>)"** state:
+
+![img](images/rnn-02.png)  
+
+---
+
+<div id="unrolling-rnn"></div>
+
+## Unrolling RNN
+
+> The **"Unrolling RNN"** is used to analyze mathematically our **"RNN"** in each **epoch (Moment in time)"**.
+
+For example, see the image below:
+
+![img](images/unrolling-rnn-01.png)  
+
+See that we have:
+
+ - *State<sub>t</sub>* to each epoch:
+   - Previous.
+   - Current.
+   - Next.
+ - The **"W"** are the *"weights"* of each neuron.
+
+Let's, see another example:
+
+![img](images/unrolling-rnn-02.png)  
+
+
+
+
+
+
+
+
 
 
 
