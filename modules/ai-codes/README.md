@@ -9,7 +9,7 @@
  - [Machine Learning](#ml)
  - [Recommender System](#recommender-system)
  - [Artificial Neural Networks & Deep Learning](modules/ann-dp)
- - [Deep/+Reinforcement Learning](#drl)
+ - [Reinforcement Learning](modules/rl/)
  - [Useful Libraries](#useful-libraries)
  - **Tips & Tricks:**
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
@@ -79,26 +79,6 @@
  - [Método Cosine Distance/ Similarity (Teoria)](modules/recommender-system/cosine-distance-similarity.md)
  - [Método Matrix Factorization/ SVD++ (Teoria)](modules/recommender-system/matrix-factorization-svd.md)
  - [Sistema de Recomendação com a biblioteca Surprise](modules/recommender-system/surpriselib.ipynb)
-
----
-
-<div id="drl"></div>
-
-## Deep/+Reinforcement Learning
-
- - [Introdução ao Reinforcement Learning (Aprendizado por Reforço)](modules/rl/intro-to-rl.md)
- - [O que são Ações, Estados e Recompensas](modules/rl/actions-states-rewards.md)
- - [K-Armed Bandit Problem](modules/rl/k-armed-bandit-problem.md)
- - [Exploitation vs Exploration](modules/rl/exploitation-vs-exploration.md)
-
----
-
-<div id="cv"></div>
-
-## Computer Vision
-
- - **x:**
-   - [x](#)
 
 ---
 
