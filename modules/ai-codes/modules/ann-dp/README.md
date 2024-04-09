@@ -9,19 +9,28 @@
    - [**Activation Functions:**](#activation-functions)
      - [Sigmoid Function](#sigmoid-function)
      - [ReLU (Rectified Linear Unit)](#relu)
-   - [**Overfitting & Underfitting in ANN:**](#overfitting-underfitting-ann)
+   - [**Overfitting & Underfitting in ANN**](#overfitting-underfitting-ann)
    - [**Regularization**](#regularization)
      - [Dropout](#dropout)
      - [Early Stopping](#early-stopping)
- - **Artificial Neural Networks Architectures:**
-   - **Convolutional Neural Networks (CNN):**
-   - [**Recurrent Neural Netowkrs (RNN):**](#intro-to-rnn)
+ - [**Deep Computer Vision**](#intro-to-dcv)
+   - [Convolutional Neural Networks (CNN)](#intro-to-cnn)
+     - [Filter](#intro-cnn-filter)
+     - [Stride](#intro-cnn-stride)
+     - [Feature Maps](#intro-feature-maps)
+     - [Pooling Layer (Max Pooling)](#intro-pooling)
+     - [Padding](#intro-to-padding)
+     - [Multi-Layers: Feature Maps and Pooling](#multilayer-fm-and-pool)
+     - [Math for CNN components](#math-for-cnn-components)
+ - **Deep Sequence Modeling**
+   - [Recurrent Neural Netowkrs (RNN)](#intro-to-rnn)
      - [Unrolling RNN](#unrolling-rnn)
-     - [Long Short-Term Memory (LSTM)](#intro-to-lstm)
-     - LSM
-     - GRU
+     - Long Short-Term Memory (LSTM)
+     - Liquid State Machine (LSM)
+     - Gated Recurrent Unit (GRU)
    - **Autoencoders:**
      - seq2seq
+ - **Deep Generative Modeling:**
    - **Generative Adversarial Networks (GAN):**
  - **Useful Libraries:**
    - **TensorFlow:**
@@ -680,7 +689,443 @@ Here, the focus is the middle point where we need to stop the training before **
 
 
 
-<!--- (  Artificial Neural Networks Architectures ) --->
+<!--- ( Deep Computer Vision ) --->
+
+---
+
+<div id="intro-to-dcv"></div>
+
+## Deep Computer Vision
+
+To start with **Deep Computer Vision**, let's get started with the following question:
+
+> **What do computers "see"?**
+
+To understand what computers "see", let's imagine we have the Abraham Lincoln image:
+
+![img](images/dcv-01.png)  
+
+ - Computers don't see the image above like we do.
+ - **NOTE:** Computers see the pixels in the image above in the format of a matrix.
+
+For example:
+
+![img](images/dcv-02.png)  
+
+Now, imagine we have many pictures from United State of American Presidents and need to predict the President by the past image:
+
+![img](images/dcv-03.png)  
+
+ - From the pixels in the past image compared to other images, the image is most likely to be of the Lincoln President 0.8 (80%).
+ - In other words, the model receives an input image (pixels) and produces the probability that it is one of the already known images.
+
+
+
+
+
+
+
+
+
+
+<!--- (  Convolutional Neural Networks ) --->>
+
+---
+
+<div id="intro-to-cnn"></div>
+
+## Convolutional Neural Networks (CNN)
+
+To understand the **"Convolutional Neural Network (CNN)"** architecture, let's imagine our **ANN** learned to identify cats from the following image:
+
+![img](images/cnn-01.png)  
+
+Now, imagine we past the following cat image to our ANN predict:
+
+![img](images/cnn-02.png)  
+
+Now, the question is:
+
+> **A Fully Connected Neural Network can solve this problem? That's, predicts this is a cat?**
+
+**NOT!**  
+As our ANN (model) learned from a different image, it cannot predict whether (se) it is a cat or not because the previous (image used to learning) image has different pixels.
+
+> **Ok, but how solve that?**
+> Using *"Convolutional Neural Network (CNN)" Architecture.*
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-cnn-filter"></div>
+
+### Filter
+
+> The **"Convolutional Neural Network (CNN)"** architecture is used to solve this type of problem.
+
+For example, we have an image we have the following pixels 28x28:
+
+![img](images/filter-01.png)  
+
+The **CNN** architecture has a concept known as **"Filter"** that will scan this input matrix (pixels) *selecting some parts of the image at a time (por vez)*.
+
+For example, imagine a **5x5 "Filter"**:
+
+![img](images/filter-02.png)  
+
+ - You can think of these 5x5 as neurons, that's, 25 neurons:
+   - These neurons also have Weights and Bias and pass by the Activation Function.
+ - See that, different from a Fully Connected Neural Network (That selects all the pixels), here we select only some parts of the image at a time.
+ - You can also see that this generates an output neuron.
+
+> **And the rest of the image?**
+
+Well, we follow the same process moving the filter 5x5 to the right or down in the image (pixels). For example:
+
+![img](images/filter-03.png)  
+
+> **NOTE:**  
+> The **"Filter"** always uses the same *"Weights"* and *"Bias"* each time it is run on the image, regardless of whether (se) the pixels are different.
+
+Now, let's see a visual approach:
+
+![img](images/filter-04.gif)  
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-cnn-stride"></div>
+
+## Stride
+
+> We call how far the **"Filter"** moves from one position to the next position by **“Stride”**.
+
+For example, the image below show **Stride = 1**:
+
+![img](images/stride-01.png)  
+
+Now, let's see the **Stride = 2**:
+
+![img](images/stride-02.png)  
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-feature-maps"></div>
+
+## Feature Maps
+
+Well, when our ANN (model) is well-trained (bem treinada), each *"Weight"* and *"Bias"* will have a specific value.
+
+> **That's, the *"Filter"* now has a *"Feature (or Characteristic)"*.**
+
+ - In other words, the “Filter” will always activate when it finds a Feature (or Characteristic) in the image.
+ - These Features (or Characteristics) can be:
+   - A border.
+   - A face.
+   - A Curve...
+
+Knowing that we can have many *"Features (or Characteristics)"* in the same image. For example:
+
+![img](images/feature-maps-01.png)
+
+> See that for the same image our *"Filter"* **found 3 Features (or Characteristics)**.
+
+ - We call these Features (or Characteristics) **"Feature Maps"**.
+ - Each Feature Map will have a specific *Weight* and *Bias*:
+   - All 5x5 (depends on the "Filter" size).
+ - **NOTE:** Pay attention now we have a `3-dimensional structure`.
+
+**NOTE:**  
+See that unlike a **Dense Neural Network**, where all neurons are placed one below the other, here we are taking into account the spatial structure (Width and Height):
+
+![img](images/feature-maps-02.png)  
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-pooling"></div>
+
+## Pooling Layer (Max Pooling)
+
+> The **Pooling Layer (Max Pooling)** is a technique used to `minimize (or reduce the Matrix dimensionality)` the **"Feature Maps"**.
+
+For example, we have the following **"Feature Maps"**:
+
+![img](images/pooling-01.png)  
+
+We can use the same **"Filter"** logic to `minimize (or reduce the Matrix dimensionality)` the **"Feature Maps"** getting only activated neurons to each *Feature (or Characteristic)*.
+
+For example:
+
+![img](images/pooling-02.png)  
+
+ - The *Pooling* gets only the max value of the 2x2 (or defined size) selected neurons and saves this value:
+   - In other words, **"Max Pooling"**.
+ - This process continue until we reduce the Matrix (Feature/Characteristic) dimensionality.
+
+Let's see another example:
+
+![img](images/pooling-03.png)
+
+> **NOTE:**  
+> See that the *Max Pooling* always saves the max value by *Filter*.
+
+Now, let's see a visual approach:
+
+![img](images/pooling-04.gif)  
+
+Another approach is to use the **"Average Pooling"** technique:
+
+![img](images/pooling-05.png)
+
+> **NOTE:**  
+> Using this approach, we lose some image information. But, we **focus** on the **crucial information (feature/characteristic)**.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-padding"></div>
+
+## Padding
+
+To understand the **"Padding"** technique, let's imagine we have the following image to works with:
+
+![img](images/padding-01.png)  
+
+> The **"Padding"** technique **adds extra pixels (filled with 0s)** to the edge (border) of the image.
+
+For example:
+
+![img](images/padding-02.png)  
+
+> **But what is the advantage of this approach?**
+
+ - Every time we use the **Filter** to scan the image, the size of the image will go smaller and smaller.
+ - We don’t want that, because we wanna preserve the original size of the image to extract some low level features.
+ - **NOTE:** Therefore, we will add some extra pixels outside the image!
+
+> **NOTE:**  
+> However, this "Padding" feature uses more computational resources as it increases the dimensionality of the Matrix. In other words, you will have to think about whether (se) it is really necessary to pay this cost to benefit from "Padding".
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="multilayer-fm-and-pool"></div>
+
+## Multi-Layers: Feature Maps and Pooling
+
+We can also have multi-layers by reducing the dimensionality gradually. For example:
+
+![img](images/multilayer-fm-p-01.png)  
+
+See that:
+
+ - **We have the input.**
+ - **Two layers:**
+   - **Layer 1:**
+     - *Feature Maps:* 3x24x24
+     - *Pooling:* 3x12x12
+   - **Layer 2:**
+     - *Feature Maps:* 3x8x8
+     - *Pooling:* 3x4x4
+ - **The output from Feature + Pooling forms a Dense Layer.**
+ - **Finally, the Dense Layer is connected to the Output Layer.**
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="math-for-cnn-components"></div>
+
+## Math for CNN components
+
+> **Here, let's look at some Math used on *"CNN"*.**
+
+### Calculating the "Feature Maps" and "Pooling" dimensionality
+
+> **How do we calculate the dimensionality of the *"Feature Maps"* and *"Pooling"*?**
+
+Well, for this we will consider the following **CNN**:
+
+![img](images/math-for-cnn-components-01.png)  
+
+The important components to consider here are:
+
+ - **Input dimensionality:**
+   - 28x28 = 28
+ - **The Applied Filter:**
+   - 5x5 (or 2x2)
+ - **Stride:**
+   - 1 (or 2)
+ - **Padding:**
+   - 0 (our case)
+
+The formula is:
+
+![img](images/math-for-cnn-components-02.png)  
+<!---
+\mathbf{FeatureMap/Pooling = (\frac{input\_dim \ + \ (2 \times padding) \ - \ filter\_size}{stride}) + 1}
+--->
+
+For example, let's check step-by-step:
+
+![img](images/math-for-cnn-components-03.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- (  Deep Sequence Modeling ) --->
 
 ---
 
@@ -1182,25 +1627,20 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ## References
 
- - **Fundamentals of Artificial Neural Networks (+Introduction):**
-   - **Activation Functions:**
-     - [Aprenda a função Sigmóide (machine learning)](https://www.youtube.com/watch?v=DlBhJdHQElI&t=22s)
- - **Fundamentals of Deep Learning:**
-   - **Convolutional Neural Networks (CNN):**
-   - **Recurrent Neural Netowkrs (RNN):**
-     - LSM
-     - LSTM
-     - GRU
-   - **Autoencoders:**
-     - seq2seq
-   - **Generative Adversarial Networks (GAN):**
+ - **General:**
+   - [Cursos de Machine Learning com Python - Didática Tech](https://didatica.tech/combo-modulos-i-ii-iii-e-iv/)
+   - [MIT Deep Learning 6.S191](http://introtodeeplearning.com/)
+ - **Activation Functions:**
+   - [Aprenda a função Sigmóide (machine learning)](https://www.youtube.com/watch?v=DlBhJdHQElI&t=22s)
+ - **Convolutional Neural Networks (CNN):**
+   - [A Comprehensive Guide to Convolutional Neural Networks — the ELI5 way](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)
+   - [What is “stride” in Convolutional Neural Network?](https://medium.com/machine-learning-algorithms/what-is-stride-in-convolutional-neural-network-e3b4ae9baedb)
+   - [What is “padding” in Convolutional Neural Network?](https://medium.com/machine-learning-algorithms/what-is-padding-in-convolutional-neural-network-c120077469cc)
  - **Useful Libraries:**
    - **TensorFlow:**
      - [What is Tensorflow?](https://intellipaat.com/blog/what-is-tensorflow/)
      - [TF 2.0 An Introduction to TensorFlow 2.0](https://datahacker.rs/tensorflow-constants-and-variables/)
      - [Tensorboard Tutorial](https://zito-relova.medium.com/tensorboard-tutorial-5d482d270f08)
- - **General:**
-   - [Cursos de Machine Learning com Python - Didática Tech](https://didatica.tech/combo-modulos-i-ii-iii-e-iv/)
 
 ---
 
