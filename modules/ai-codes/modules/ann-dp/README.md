@@ -369,7 +369,7 @@ Now let's take a look at the aspects of this **"Sigmoid Function"**:
 
 Now, let's test the **Sigmoid Function** for some **x<sub>i</sub>** input values to understand how it works:
 
-[sigmoide.py](src/sigmoide.py)
+[sigmoide.py](src/activation-functions/sigmoide.py)
 ```python
 from matplotlib import pyplot as plt
 from math import e
@@ -1410,7 +1410,7 @@ $y= wx + b$
 
 ![img](images/tf-graph-04.jpg)
 
-[tf_var-v1.py](src/tf_var-v1.py)
+[tf_var-v1.py](src/tensorflow/tf_var-v1.py)
 ```python
 import numpy as np
 import tensorflow as tf
@@ -1450,7 +1450,7 @@ tf.Tensor([0.    0.3    0.6    0.90000004], shape=(4,), dtype=float32)
 
 For example, see the *"Tensors"* below, created with the **"tensorflow.constant()"** function:
 
-[tf_const-v1.py](src/tf_const-v1.py)
+[tf_const-v1.py](src/tensorflow/tf_const-v1.py)
 ```python
 import tensorflow as tf
 
