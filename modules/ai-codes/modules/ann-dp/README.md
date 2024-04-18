@@ -36,20 +36,13 @@
  - **Useful Libraries:**
    - **Keras:**
      - **Keras Concepts:**
-       - [`Sequential.add()`](#sequential-add)
-       - [`Sequential.compile()`](#sequential-compile)
-       - [`Sequential.fit()`](#sequential-fit)
-
-
-
-
-
-
-
-       - [`keras.layers`](#keras-layers)
-         - [`from keras.layers import Dense`](#keras-layers-dense)
+       - [Sequential.add()](#sequential-add)
+       - [Sequential.compile()](#sequential-compile)
+       - [Sequential.fit()](#sequential-fit)
+       - [keras.layers](#keras-layers)
+         - [from keras.layers import Dense](#keras-layers-dense)
      - **Keras Useful Functions/Methods:**
-       - [`from keras.utils import to_categorical`](#keras-to-categorical)
+       - [from keras.utils import to_categorical](#keras-to-categorical)
    - **TensorFlow:**
      - **TensorFlow Concepts:**
        - [Why is TensorFlow called "TensorFlow"? (+TensorFlow Components)](#why-called-tf)

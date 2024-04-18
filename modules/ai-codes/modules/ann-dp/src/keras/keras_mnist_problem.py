@@ -7,13 +7,6 @@ from keras.utils import to_categorical
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-# print("Independent Variables:\n", x_train)
-# print("\nDependent Variables:\n", y_train)
-# print("\nClasses/Categories number:\n", y.value_counts())
-
-
-
-
 """
 The "X" independents variables are Matrices of pixels 28x28.
 28 = height (Altura).
@@ -35,20 +28,16 @@ Apply One-Hot Encoding to the dependent (y target) variable.
 """
 y_train = to_categorical(y_train)
 y_test = to_categorical(y_test)
-
-print("------------------------------")
-print("|0, 1, 2, 3, 4, 5, 6, 7, 8, 9|")
-print("------------------------------")
-for i in range(50):
-    print(y_train[i])
-
-
+# print("------------------------------")
+# print("|0, 1, 2, 3, 4, 5, 6, 7, 8, 9|")
+# print("------------------------------")
+# for i in range(50):
+#    print(y_train[i])
 
 
 """
 Reshape the independent (x) variables.
 
-NOTE:
 This is because the Conv2D layer expects:
  - The input (x): Independent Variables.
  - The image dimensions:
@@ -56,7 +45,6 @@ This is because the Conv2D layer expects:
    - width = 28.
    - Color pattern (channels) = 1 (Gray Scale).
 
-NOTE:
 That is, we just add a new dimension to the Matrix
 with the value of 1.
 """
