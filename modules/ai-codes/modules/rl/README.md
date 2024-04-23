@@ -2,16 +2,19 @@
 
 ## Contents
 
- - **Fundaments of Reinforcement Learning:**
-   - [Intro to Reinforcement Learning](#intro-to-rl)
-   - [The RL components & Process](#rl-components-process)
-     - [States](#states)
-     - [Actions](#actions)
-     - [Rewards](#rewards)
-   - [Observations/States Space](#observations-states-space)
-   - [Action Space (Discrete vs. Continuous)](#action-space)
-   - [Type of tasks (Episodic Task vs. Continuing Tasks)](#types-of-tasks)
-   - [Exploitation/Exploration trade-off](#exploitation-exploration-trade-off)
+ - [Intro to Reinforcement Learning](#intro-to-rl)
+ - [Observations/States Space](#observations-states-space)
+ - [Action Space (Discrete vs. Continuous)](#action-space)
+ - [Type of tasks (Episodic Task vs. Continuing Tasks)](#types-of-tasks)
+ - [Exploitation/Exploration trade-off](#exploitation-exploration-trade-off)
+ - [The RL Components & Process](#rl-components-process)
+   - [States](#states)
+   - [Actions](#actions)
+   - [Rewards](#rewards)
+     - [Rewards and the discounting](#rewards-discounting)
+ - [Policy (π)](#intro-to-policy)
+   - [Policy-Based Methods](#policy-based-methods)
+   - [Value-Based Methods](#value-based-methods)
  - [**Settings**](#settings)
  - [**References**](#ref)
 
@@ -45,76 +48,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Fundaments of Reinforcement Learning ) --->
+<!--- ( Intro to Reinforcement Learning ) --->
 
 ---
 
@@ -159,11 +93,265 @@ So, **he presses to the right again** and touches an enemy, he just died **"-1" 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Observations/States Space ) --->
+
+---
+
+<div id="observations-states-space"></div>
+
+## Observations/States Space
+
+> *"Observations/States"* are the **information our agent gets from the environment**.
+
+ - In the case of a video game, it can be a frame (a screenshot).
+ - In the case of the trading agent, it can be the value of a certain stock, etc.
+
+Briefly, we can think of as:
+
+![img](images/observations-states-space-01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Action Space (Discrete vs. Continuous) ) --->
+
+---
+
+<div id="action-space"></div>
+
+## Action Space (Discrete vs. Continuous)
+
+> The **Action Space** is the *set* of **all possible *actions* in an environment (You can think as "Universal Set (U)" or Probability "Sample Space (Ω)")**.
+
+> **NOTE:**  
+> The **Actions** can come from a *"discrete"* or *"continuous space"*:
+
+### Discrete Space
+
+> In the case of a **Discrete Space**, the number of possible actions is **finito**.
+
+For example, in *Super Mario Bros*, we have only 4 possible actions:
+
+ - Left.
+ - Right.
+ - Up (jumping).
+ - Down (crouching).
+
+![img](images/action-space-01.png)
+
+**NOTE:**  
+Again, in Super Mario Bros, we have a finite set of actions since we have only 4 directions.
+
+### Continuous Space
+
+> In the case of a **Continuous Space**, the number of possible actions is **infinito**.
+
+For example, in a *Self Driving Car agent* has an infinite number of possible actions since it can turn left 20°, 21,1°, 21,2°, honk, turn right 20°…
+
+![img](images/action-space-02.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Types of Tasks ) --->
+
+---
+
+<div id="types-of-tasks"></div>
+
+## Type of tasks (Episodic Task vs. Continuing Tasks)
+
+> A *Task* is an **instance** of a *Reinforcement Learning problem*.
+
+We can have two types of tasks:
+
+ - **Episodic Task.**
+ - **Continuous Task.**
+
+Briefly, we can think of as:
+
+![img](images/types-of-tasks-01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Exploitation/Exploration trade-off ) --->
+
+---
+
+<div id="exploitation-exploration-trade-off"></div>
+
+## The Exploitation/Exploration trade-off
+
+### Exploitation
+
+> **The technique of "Exploitation" always tries the Action that it already knows has worked the most (or better).**
+
+In summary, suppose a child is crying, the technique of **Exploitation** will always look for an Action that it has already tried and seen that it worked.
+
+![img](images/exploitation-exploration-01.jpg)
+
+Now let's analyze the following situation:
+
+- **1st -** Suppose we were using a technique **(Action)** where the child only stopped crying after 5 minutes of rocking her;
+- **2nd -** We discovered another technique **(Action)** where the child stopped crying instantly - For example, calling the mother.
+
+It's obvious that the second option now gives a better **reward**. Therefore, the **Exploitation** technique will use the second option as the standard.
+
+**NOTE:**  
+The problem is that this approach will not lead us to an **optimal point**. This is because it always picks the best **Action** it already knows and ignores others that could yield better results **(For example, breastfeeding the child)**.
+
+### Exploration
+
+On the other hand, **Exploration** does the *exploration*. That is, it explores all possible **Actions**, calculating the average and percentage of all of them until finding the one that gives the best **reward**.
+
+> **NOTE:**  
+> The problem with **Exploration** is that depending on the problem, this can cost a lot of time and computational resources.
+
+### Exploitation vs. Exploration
+
+Well, the ideal is that when applying these concepts in practice, we carefully consider how much we will allocate for **Exploitation** and how much we will allocate for **Exploration**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( RL Components & Process ) --->
+
 ---
 
 <div id="rl-components-process"></div>
 
-## The RL components & Process
+## The RL Components & Process
 
 The crucial components of **Reinforcement Learning** are:
 
@@ -255,83 +443,82 @@ Look at the scenario below:
 
 ![img](images/rewards-01.gif)
 
-**In this above scenario, was the *reward* *positive* or *negative*?**
-Positive (+1) because we moving the red piece (Action) to capture the white piece (the opponent).
+> **In this above scenario, was the *reward* *positive* or *negative*?**
+
+ - **It depends:**
+   - If you were a *white piece* that moved and was captured - The rewards were negative (-1).
+   - Now if you were the *red piece* moving to capture the opponent - The reward was positive (+1).
 
 > **NOTE:**  
 > Another observation here is that an agent can take an **action** that returns *zero*. That is, no pieces were lost on either side.
 
-Now think as if you were a **Data Scientist**, how could you *accumulate* these **rewards** mathematically?
+Now think as if you were a **Data Scientist**, how could you *"accumulate"* these **rewards** mathematically?
 
 > **With a *Cost Function*.**
 
-
-
-
-
-
-
-
-
-
 ---
 
-<div id="observations-states-space"></div>
+<div id="rewards-discounting"></div>
 
-## Observations/States Space
+## Rewards and the discounting
 
-> *"Observations/States"* are the **information our agent gets from the environment**.
+> The *"reward"* is fundamental in Reinforcement Learning because it’s **the only feedback** for the agent (positive or negative).
 
- - In the case of a video game, it can be a frame (a screenshot).
- - In the case of the trading agent, it can be the value of a certain stock, etc.
+The *"reward"* is necessary to tell the system (agent) which *state-action pairs* are **"good"**, and which are **"bad"**.
 
-Briefly, we can think of as:
+For example, the cumulative reward at each time **step t** can be written as:
 
-![img](images/observations-states-space-01.png)
+![img](images/rewards-discounting-01.png)  
 
+Let's break it down the formula above:
 
-
-
-
-
-
-
-
-
----
-
-<div id="action-space"></div>
-
-## Action Space (Discrete vs. Continuous)
-
-> The **Action Space** is the *set* of **all possible *actions* in an environment (You can think as "Universal Set (U)" or Probability "Sample Space (Ω)")**.
-
-> **NOTE:**  
-> The **Actions** can come from a *"discrete"* or *"continuous space"*:
-
-### Discrete Space
-
-> In the case of a **Discrete Space**, the number of possible actions is **finito**.
-
-For example, in *Super Mario Bros*, we have only 4 possible actions:
-
- - Left.
- - Right.
- - Up (jumping).
- - Down (crouching).
-
-![img](images/action-space-01.png)
+ - Trajectory:
+   - In the context of Reinforcement Learning, a *"trajectory"* refers to the sequence of states, actions, and rewards experienced by an agent as it interacts with the environment over a certain period of time.
+ - $R(\tau)$
+   - This represents the cumulative reward for a **"trajectory 𝜏"**, which is the sum of rewards received along that trajectory.
+ - $r_{t+1} + r_{t+2} + r_{t+3} + r_{t+4}$
+   - These terms represent the rewards received at specific time steps within the trajectory. For example:
+     - $r_{t+1}$ represents the reward received at time step $t+1$ in the trajectory.
+     - $r_{t+2}$ represents the reward received at time step $t+2$ in the trajectory.
 
 **NOTE:**  
-Again, in Super Mario Bros, we have a finite set of actions since we have only 4 directions.
+However, in reality, we can’t just add them like that (No entanto, na realidade, não podemos simplesmente adicioná-los assim).
 
-### Continuous Space
+> **Why?**
+> - **EN:** The *rewards* that arrive early (at the start of the game) are more likely to happen as they are more predictable than long-term future rewards.
+> - **PT:** As recompensas que chegam mais cedo (no início do jogo) têm maior probabilidade de acontecer, pois são mais previsíveis do que as recompensas futuras a longo prazo.
 
-> In the case of a **Continuous Space**, the number of possible actions is **infinito**.
+For example, let’s imagine:
 
-For example, in a *Self Driving Car agent* has an infinite number of possible actions since it can turn left 20°, 21,1°, 21,2°, honk, turn right 20°…
+ - Our agent is a *tiny mouse (pequeno rato)* that can move one tile at each time step.
+ - And your opponent is the *cat* (that can move too).
+ - **NOTE:** The *mouse’s goal* is to *eat the maximum amount of cheese before being eaten by the cat*.
 
-![img](images/action-space-02.png)
+![img](images/rewards-discounting-02.png)  
+
+ - As we can see in the diagram:
+   - it’s more probable to eat the cheese near us.
+   - Than the cheese close to the cat (the closer we are to the cat, the more dangerous it is).
+ - Consequently:
+   - **EN:** The reward near the cat, even if it is bigger (more cheese), will be more *"discounted"* since we’re not really sure we’ll be able to eat it.
+   - **PT:** A recompensa perto do gato, mesmo que seja maior (mais queijo), terá mais *"desconto"* já que não temos certeza se conseguiremos comê-lo.
+
+To discount the rewards, we proceed like this:
+
+ - **We define a discount rate called gamma (γ):**
+   - It must be between **0** and **1**.
+   - Most of the time between **0.95** and **0.99**.
+   - The larger the *gamma (γ)*, the smaller the discount:
+     - This means our agent cares more about the long-term reward (Isso significa que nosso agente se preocupa mais com a recompensa de longo prazo).
+   - On the other hand, the smaller the *gamma (γ)*, the bigger the discount:
+     - This means our agent cares more about the short term reward (Isso significa que nosso agente se preocupa mais com a recompensa de curto prazo).
+ - **Then, each reward will be discounted by gamma (γ) to the exponent of the time step:**
+   - **EN:**  As the time step increases, the cat gets closer to us, so the future reward is less likely to happen.
+   - **PT:** À medida que o intervalo de tempo aumenta, o gato se aproxima de nós, então é menos provável que a recompensa futura aconteça.
+
+Our discounted expected cumulative reward is:
+
+![img](images/rewards-discounting-03.png)
 
 
 
@@ -341,67 +528,166 @@ For example, in a *Self Driving Car agent* has an infinite number of possible ac
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Policy ) --->
 
 ---
 
-<div id="types-of-tasks"></div>
+<div id="intro-to-policy"></div>
 
-## Type of tasks (Episodic Task vs. Continuing Tasks)
+## Policy (π)
 
-> A *Task* is an **instance** of a *Reinforcement Learning problem*.
+> The **"Policy π"** is the *brain of our Agent*, it’s the function that tells us what action to take given the state we are in - So it defines the agent’s behavior *at a given time*.
 
-We can have two types of tasks:
+![img](images/policy-01.png)
 
- - **Episodic Task.**
- - **Continuous Task.**
+ - This Policy is the function we want to learn, our goal is to find the *"optimal policy `π*`"*.
+ - The *"policy that maximizes expected return"* when the agent acts according to it - **We find this `π*` through training**.
 
-Briefly, we can think of as:
+There are two approaches to train our agent to find this optimal `policy π*`:
 
-![img](images/types-of-tasks-01.png)
-
-
-
-
-
-
-
-
-
+ - **Directly:**
+   - Directly, by teaching the agent to learn which action to take, given the current state: *"Policy-Based Methods"*.
+ - **Indirectly:**
+   - Indirectly, teach the agent to learn which state is more valuable and then take the action that leads to the more valuable states: *"Value-Based Methods"*.
 
 ---
 
-<div id="exploitation-exploration-trade-off"></div>
+<div id="policy-based-methods"></div>
 
-## The Exploitation/Exploration trade-off
+## Policy-Based Methods
 
-### Exploitation
+> In **Policy-Based methods**, we learn a *"policy function directly"*.
 
-> **The technique of "Exploitation" always tries the Action that it already knows has worked the most (or better).**
+ - This function will define a mapping from each state to the best corresponding action.
+ - Alternatively, it could define a probability distribution over the set of possible actions at that state.
 
-In summary, suppose a child is crying, the technique of **Exploitation** will always look for an Action that it has already tried and seen that it worked.
+For example, see the image below:
 
-![img](images/exploitation-exploration-01.jpg)
-
-Now let's analyze the following situation:
-
-- **1st -** Suppose we were using a technique **(Action)** where the child only stopped crying after 5 minutes of rocking her;
-- **2nd -** We discovered another technique **(Action)** where the child stopped crying instantly - For example, calling the mother.
-
-It's obvious that the second option now gives a better **reward**. Therefore, the **Exploitation** technique will use the second option as the standard.
-
-**NOTE:**  
-The problem is that this approach will not lead us to an **optimal point**. This is because it always picks the best **Action** it already knows and ignores others that could yield better results **(For example, breastfeeding the child)**.
-
-### Exploration
-
-On the other hand, **Exploration** does the *exploration*. That is, it explores all possible **Actions**, calculating the average and percentage of all of them until finding the one that gives the best **reward**.
+![img](images/policy-based-methods-01.png)  
 
 > **NOTE:**  
-> The problem with **Exploration** is that depending on the problem, this can cost a lot of time and computational resources.
+> As we can see here, the *"policy (deterministic)"* **directly indicates the action to take for each step**.
 
-### Exploitation vs. Exploration
+For this type we have to types of policies:
 
-Well, the ideal is that when applying these concepts in practice, we carefully consider how much we will allocate for **Exploitation** and how much we will allocate for **Exploration**.
+ - **Deterministic:**
+   - A *policy* at a given state will always return the same action.
+ - **Stochastic:**
+   - Outputs a probability distribution over actions.
+
+For example, see the diagram below to understand more easily:
+
+![img](images/policy-based-methods-02.png)  
+
+See that:
+
+ - **The Determinist approach:**
+   - Always returns the same action.
+ - **The Stochastic approach:**
+   - Return probability of each action.
+
+---
+
+<div id="value-based-methods"></div>
+
+## Value-based methods
+
+> Comming soon...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
