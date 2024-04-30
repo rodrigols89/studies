@@ -15,6 +15,7 @@
  - [Policy (π)](#intro-to-policy)
    - [Policy-Based Methods](#policy-based-methods)
    - [Value-Based Methods](#value-based-methods)
+   - [Policy vs. Value](#policy-vs-value)
  - [**Settings**](#settings)
  - [**References**](#ref)
 
@@ -614,11 +615,28 @@ See that:
 
 ## Value-based methods
 
-> Comming soon...
+> In *"value-based methods"*, **we learn a value function** that **maps a state to the expected value of being at that state (mapeia um estado para o valor esperado de estar nesse estado)**. 
 
+In the **"value-based methods"** we:
 
+![img](images/value-based-methods-01.png)  
 
+---
 
+<div id="policy-vs-value"></div>
+
+## Policy vs. Value
+
+> Here, let's recall and see the difference between **Policy-Based Methods** and **Value-Based Methods**.
+
+First, let's see the main idea of each approach:
+
+![img](images/policy-based-x-value-based-01.png)  
+
+ - **Policy-Based Methods:**
+   - In *"policy-based training"*, the optimal policy (denoted `π*`) is found by training the policy *"directly"*.
+ - **Value-Based Methods:**
+   - In *"value-based training"*, finding an optimal value function (denoted `Q*` or `V*`) leads (leva) to having an optimal policy.
 
 
 
