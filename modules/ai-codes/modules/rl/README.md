@@ -11,7 +11,9 @@
    - [States](#states)
    - [Actions](#actions)
    - [Rewards](#rewards)
-     - [Rewards and the discounting](#rewards-discounting)
+     - [Expected Return](#expected-return)
+     - [Discounted Return (Discount Factor | 𝛾)](#discount-factor)
+ - [Markov Decision Process (MDP)](#intro-to-mdp)
  - [Policy (π)](#intro-to-policy)
    - [Policy-Based Methods](#policy-based-methods)
    - [Value-Based Methods](#value-based-methods)
@@ -438,7 +440,9 @@ That's easy to understand because with each **action**, we will have a new *spec
 
 ## Rewards
 
-> So, following our line of thought in a chess game, the **rewards** will be the **feedback** we will have **after each action**.
+> The *"reward"* is fundamental in Reinforcement Learning because it’s **the only feedback** for the agent (positive or negative).
+
+So, following our line of thought in a chess game, the **rewards** will be the **feedback** we will have **after each action**.
 
 Look at the scenario below:
 
@@ -459,21 +463,24 @@ Now think as if you were a **Data Scientist**, how could you *"accumulate"* thes
 
 ---
 
-<div id="rewards-discounting"></div>
+<div id="expected-return"></div>
 
-## Rewards and the discounting
+## Expected Return
 
-> The *"reward"* is fundamental in Reinforcement Learning because it’s **the only feedback** for the agent (positive or negative).
+The goal of the agent is to maximize the cumulative rewards, we need to represent this cumulative reward in a formal way to use it in the calculations. We can call it as **"Expected Return"** and can be represented as:
 
-The *"reward"* is necessary to tell the system (agent) which *state-action pairs* are **"good"**, and which are **"bad"**.
+![img](images/expected-return-01.png)  
 
-For example, the cumulative reward at each time **step t** can be written as:
+> **NOTE:**  
+> Where **"T"** is the final time step.
 
-![img](images/rewards-discounting-01.png)  
+Now let's look at the same formula from another perspective:
+
+![img](images/expected-return-02.png)  
 
 Let's break it down the formula above:
 
- - Trajectory:
+ - Trajectory
    - In the context of Reinforcement Learning, a *"trajectory"* refers to the sequence of states, actions, and rewards experienced by an agent as it interacts with the environment over a certain period of time.
  - $R(\tau)$
    - This represents the cumulative reward for a **"trajectory 𝜏"**, which is the sum of rewards received along that trajectory.
@@ -482,12 +489,44 @@ Let's break it down the formula above:
      - $r_{t+1}$ represents the reward received at time step $t+1$ in the trajectory.
      - $r_{t+2}$ represents the reward received at time step $t+2$ in the trajectory.
 
-**NOTE:**  
-However, in reality, we can’t just add them like that (No entanto, na realidade, não podemos simplesmente adicioná-los assim).
+---
 
-> **Why?**
-> - **EN:** The *rewards* that arrive early (at the start of the game) are more likely to happen as they are more predictable than long-term future rewards.
-> - **PT:** As recompensas que chegam mais cedo (no início do jogo) têm maior probabilidade de acontecer, pois são mais previsíveis do que as recompensas futuras a longo prazo.
+<div id="discount-factor"></div>
+
+## Discounted Return (Discount Factor | 𝛾)
+
+The **Discounted Return (Discount Factor | 𝛾)** (prounced “gamma”) determines how much a future reward should be discounted compared to a current reward.
+
+> **NOTE:**  
+> On the other hand, **Discounted Return (Discount Factor | 𝛾)** forces the agent to focus on immediate rewards instead of future rewards.
+
+```md
+OK, but why do future rewards need to be discounted compared to current rewards?
+```
+
+To understand first, let's recall the **"Expected Return"** formulas:
+
+**Example-01:**  
+![img](images/expected-return-01.png)  
+
+**Example-02:**  
+![img](images/expected-return-02.png)  
+
+ - The equations (are the same) above works for **"Episodic Tasks"**.
+ - For **"Continuing Tasks"**, we need to update this equation:
+   - As we don’t have a limit of time step **"T"** in **continuing tasks**.
+   - **Discounted Return (Discount Factor | 𝛾)** is introduced here which **forces the agent to focus on immediate rewards instead of future rewards**.
+   - **NOTE:** The value of **"𝛾"** remains between **"0"** and **"1"**.
+
+Adding the **Discounted Return (Discount Factor | 𝛾)** we have the following formula:
+
+**Example-01:**  
+![img](images/discounted-return-01.png)  
+
+Now let's look at the same formula from other perspectives:
+
+**Example-02:**  
+![img](images/discounted-return-02.png)  
 
 For example, let’s imagine:
 
@@ -495,7 +534,7 @@ For example, let’s imagine:
  - And your opponent is the *cat* (that can move too).
  - **NOTE:** The *mouse’s goal* is to *eat the maximum amount of cheese before being eaten by the cat*.
 
-![img](images/rewards-discounting-02.png)  
+![img](images/discounted-return-03.png)  
 
  - As we can see in the diagram:
    - it’s more probable to eat the cheese near us.
@@ -504,22 +543,88 @@ For example, let’s imagine:
    - **EN:** The reward near the cat, even if it is bigger (more cheese), will be more *"discounted"* since we’re not really sure we’ll be able to eat it.
    - **PT:** A recompensa perto do gato, mesmo que seja maior (mais queijo), terá mais *"desconto"* já que não temos certeza se conseguiremos comê-lo.
 
+### Gamma (𝛾)
+
 To discount the rewards, we proceed like this:
 
- - **We define a discount rate called gamma (γ):**
+ - **We define a discount rate called gamma (𝛾):**
    - It must be between **0** and **1**.
    - Most of the time between **0.95** and **0.99**.
-   - The larger the *gamma (γ)*, the smaller the discount:
+   - The larger the *gamma (𝛾)*, the smaller the discount:
      - This means our agent cares more about the long-term reward (Isso significa que nosso agente se preocupa mais com a recompensa de longo prazo).
-   - On the other hand, the smaller the *gamma (γ)*, the bigger the discount:
+   - On the other hand, the smaller the *gamma (𝛾)*, the bigger the discount:
      - This means our agent cares more about the short term reward (Isso significa que nosso agente se preocupa mais com a recompensa de curto prazo).
- - **Then, each reward will be discounted by gamma (γ) to the exponent of the time step:**
+ - **Then, each reward will be discounted by gamma (𝛾) to the exponent of the time step:**
    - **EN:**  As the time step increases, the cat gets closer to us, so the future reward is less likely to happen.
    - **PT:** À medida que o intervalo de tempo aumenta, o gato se aproxima de nós, então é menos provável que a recompensa futura aconteça.
 
-Our discounted expected cumulative reward is:
+Summary:
 
-![img](images/rewards-discounting-03.png)
+ - **EN:** The *rewards* that arrive early (at the start of the game) are more likely to happen as they are more predictable than long-term future rewards.
+ - **PT:** As recompensas que chegam mais cedo (no início do jogo) têm maior probabilidade de acontecer, pois são mais previsíveis do que as recompensas futuras a longo prazo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( MDP ) --->
+
+---
+
+<div id="intro-to-mdp"></div>
+
+## Markov Decision Process (MDP)
+
+> The **Markov Decision Process** is a state in which the current state contains enough (suficiente) information to allow us to plan the future without depending on previous states.
+
+For example, imagine that we receove a game Super Mario World in a specific state:
+
+![img](images/mdp-01.png)  
+
+**NOTE:**  
+From this state (frame) the agent must be able to know where to go, without depending on previous states. In other words, planning the future without depending on previous states.
+
+The **Markov Decision Process** is the following:
+
+![img](images/mdp-02.png)  
+
+For example, we can think of the **"Agente"** as a *"brain"* and the **"Environment"** as the *"world"*:
+
+![img](images/mdp-03.png)  
+
+The most common formulation of MDPs is a **Discounted-Reward Markov Decision Process**:
+
+![img](images/mdp-04.png)  
+
+Where:
+
+![img](images/mdp-05.png)  
 
 
 
@@ -856,6 +961,12 @@ pip install -U -v --require-virtualenv -r requirements.txt
  - **General:**
    - [Deep Reinforcement Learning Course](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
    - [Didatica Tech](https://didatica.tech/)
+ - **Discounted Return (Discount Factor | 𝛾):**
+   - [Reinforcement Learning - Developing Intelligent Agents](https://deeplizard.com/learn/video/a-SnJtmBtyA)
+ - **Markov Decision Processes:**
+   - [Markov Decision Processes](https://gibberblot.github.io/rl-notes/single-agent/MDPs.html)
+ - **Bellman Equation:**
+   - [Bellman Optimality Equation in Reinforcement Learning](https://www.analyticsvidhya.com/blog/2021/02/understanding-the-bellman-optimality-equation-in-reinforcement-learning/)
 
 ---
 
