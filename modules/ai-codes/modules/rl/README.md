@@ -21,9 +21,6 @@
  - [Q-Learning](#intro-to-q-learning)
    - [Q-Learning Algorithm](#q-learning-algorithm)
    - [Q-Learning and Bellman Equation](#ql-and-be)
-
-
-
  - [**Settings**](#settings)
  - [**References**](#ref)
 
