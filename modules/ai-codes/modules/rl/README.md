@@ -18,6 +18,12 @@
    - [Policy-Based Methods](#policy-based-methods)
    - [Value-Based Methods](#value-based-methods)
    - [Policy vs. Value](#policy-vs-value)
+ - [Q-Learning](#intro-to-q-learning)
+   - [Q-Learning Algorithm](#q-learning-algorithm)
+   - [Q-Learning and Bellman Equation](#ql-and-be)
+
+
+
  - [**Settings**](#settings)
  - [**References**](#ref)
 
@@ -793,93 +799,120 @@ First, let's see the main idea of each approach:
 
 
 
+<!--- ( Q-Learning ) --->
 
+---
 
+<div id="intro-to-q-learning"></div>
 
+## Q-Learning
 
+> The first thing we need to know is that the **“Q-Learning”** algorithm is based on the **“Value-Based methods”**.
 
+To understand the **"Q-Learning"** algorithm first, let's imagine you’re a **"Knight"** and you need to save the **"Princess"** trapped in the castle:
 
+![img](images/intro-to-q-learning-01.png)  
 
+The Game following the rules below:
 
+ - You can move one tile at a time.
+ - The enemy can’t:
+   - But land on the same tile as the enemy, and you will die.
+ - Your goal is to go the castle by the fastest route possible (Seu objetivo é chegar ao castelo pelo caminho mais rápido possível).
+ - **NOTE:** This can be evaluated using a “points scoring” system:
+   - You lose **"-1"** at each step (losing points at each step helps our agent to be fast).
+   - If you touch an enemy, you lose **"-100"** points, and the episode ends.
+   - If you are in the castle you win, you get **"+100"** points.
 
+The question is:
 
+> **How do you create an Agent that will be able to do that?**
 
+One strategy is:
 
+ - The Agent tries to go to each tile, and then colors each tile:
+   - Green for "safe".
+   - Red if "not safe".
 
+![img](images/intro-to-q-learning-02.png)  
 
+> **NOTE:**  
+> Then, we can tell our Agent to take only green tiles.
 
+However, using this approach we have a problem:
 
+ - We don’t know *"the best tile to take"* when green tiles are adjacent each other.
+ - So our Agent can fall (cair) into an infinite loop by trying to find the castle.
 
+### Q-Table
 
+To solve the problem our Agente doesn't know *"the best tile to take"*, we can create a table where we’ll calculate the maximum expected future reward, for each Action at each State.
 
+For example, see the **"Q-Table"** below:
 
+![img](images/intro-to-q-learning-03.png)  
 
+Each State (tile) allows four possible actions:
 
+ - Moving:
+   - Left.
+   - Right.
+   - Up.
+   - Down.
 
+> **NOTE:**  
+> See that the corners are zero (0), that is, we can't move to the corners.
 
+In terms of computation, we can transform this grid into a table:
 
+ - The **columns** will be the *four* actions *(left, right, up, down)*.
+ - The **rows** will be the States.
+ - The **value** of each cell will be the **maximum expected future reward** for that given state and action.
 
+![img](images/intro-to-q-learning-04.png)  
 
+> Think of this **"Q-table"** as a game **“Cheat Sheet (Folha de Dicas)”**.
 
+Thanks to that, we know for each state (each line in the Q-table) what’s the best action to take, by finding the highest score in that line.
 
+---
 
+<div id="q-learning-algorithm"></div>
 
+## Q-Learning Algorithm
 
 
+> **OK, but how do we calculate the values for each element of the Q-Table?**
 
+To learn each value of this **Q-Table**, we’ll use the **Q-Learning algorithm**:
 
+**Q-learning Algorithm: learning the Action Value Function:**  
+![img](images/q-learning-algorithm-01.png)  
 
+The **Action Value Function (or “Q-function”)** takes two inputs:
 
+ - “state” and “action”.
+ - It returns the **Expected Future Reward** of that action at that state.
 
+---
 
+<div id="ql-and-be"></div>
 
+## Q-Learning and Bellman Equation
 
+The **"Q-Table"** will give us a better and better approximation by iteratively updating **Q(s, a)** using the **"Bellman Equation"**.
 
+For example, see the process below:
 
+![img](images/ql-and-be-01.png)  
 
+In the first step, we have to initialize the **Q-Table**:
 
+ - We build a **Q-table**, with **"m"** *cols (m= number of actions)*.
+ - And **"n"** *rows (n = number of states)*.
+ - Finally, we initialize the values as **0**.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img](images/ql-and-be-02.png)  
 
 
 
@@ -960,6 +993,7 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
  - **General:**
    - [Deep Reinforcement Learning Course](https://huggingface.co/learn/deep-rl-course/unit0/introduction)
+   - [Introduction to Reinforcement Learning](https://gibberblot.github.io/rl-notes/index.html)
    - [Didatica Tech](https://didatica.tech/)
  - **Discounted Return (Discount Factor | 𝛾):**
    - [Reinforcement Learning - Developing Intelligent Agents](https://deeplizard.com/learn/video/a-SnJtmBtyA)
@@ -967,6 +1001,9 @@ pip install -U -v --require-virtualenv -r requirements.txt
    - [Markov Decision Processes](https://gibberblot.github.io/rl-notes/single-agent/MDPs.html)
  - **Bellman Equation:**
    - [Bellman Optimality Equation in Reinforcement Learning](https://www.analyticsvidhya.com/blog/2021/02/understanding-the-bellman-optimality-equation-in-reinforcement-learning/)
+ - **Q-Learning:**
+   - [Diving deeper into Reinforcement Learning with Q-Learning](https://medium.com/free-code-camp/diving-deeper-into-reinforcement-learning-with-q-learning-c18d0db58efe)
+
 
 ---
 
