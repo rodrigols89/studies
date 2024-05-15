@@ -29,12 +29,14 @@
    - **Frequency Distribution for Quantitative Variables:**
      - [Frequency Table for Quantitative Variables](#ft-for-qv)
      - [Creating a "histogram" for Quantitative Variables](#histogram-for-qv)
- - [**Measures of Position/Location:**](#measures-of-position-location)
+ - [**Measures of the Center of the Data:**](#motcotd)
    - [Mean](#intro-to-mean)
      - [Alumni (ex-alunos) problem](#alumni-mean-problem)
      - [Data distribution (variability) problem on the mean](#ddbotm)
    - [Median](#intro-to-median)
-
+   - [Mode](#intro-to-mode)
+   - [Mean vs. Median](#mean-vs-median)
+ - [**Measures of the Location of the Data**](#motlotd)
 
 
  - [**Settings**](#settings)
@@ -878,17 +880,14 @@ For example, see the **"histogram"** below for our **"CH"** Quantitative Variabl
 
 ---
 
-<div id="measures-of-position-location"></div>
+<div id="motcotd"></div>
 
-## Measures of Position/Location
+## Measures of the Center of the Data
 
-> The **Measures of Position (also called Measures of Location)** present *"centrality measurements"* or describe *"positioning"* characteristics of a variable.
+**The "center" of a data set is also a way of describing location:**  
+The two most widely used measures of the "center" of the data are the **mean (average)**, **median**, and the **mode**.
 
-The most common **Measures of Position/Location** are:
-
- - **Mean.**
- - **Median.**
- - **Mode.**
+![img](images/statistics/motcotd-01.png)
 
 ---
 
@@ -1048,22 +1047,59 @@ Using the **"Median"** formula we have:
 > **NOTE:**  
 > So, the **"Median"** salary is **"54.000"**.
 
+**NOTE:**  
+In terms of computation, we have to keep in mind that using the Median will have a higher computational cost since we need to sort the data first.
 
+---
 
+<div id="intro-to-mode"></div>
 
+## Mode
 
+> The **"Mode"** is the measurement that occurs most frequently in a data set.
 
+For example, imagine we have the following samples:
 
+```python
+C = (4, 5, 4, 6, 5, 8, 4, 10, 12, 4)
+```
 
+In this example, the mode is 4, as it is the measurement that occurs most frequently.
 
+For example, imagine we decide to conduct a study on the comparative salaries of individuals who graduated from the same school. You might record the results like this:
 
+| Name     | Salary      |
+|----------|-------------|
+| Dan      | 50.000      |
+| Joann    | 54.000      |
+| Pedro    | 50.000      |
+| Rosie    | 189.000     |
+| Ethan    | 55.000      |
+| Vicky    | 40.000      |
+| Frederic | 59.000      |
 
+**Now suppose I want to know what the most frequent salary is?**  
+In other words, which salary appears most in our data set.
 
+| Salary      |
+|-------------|
+| 40,000      |
+|***>50,000***|
+|***>50,000***|
+| 54,000      |
+| 55,000      |
+| 59,000      |
+| 189,000     |
 
+The **"Mode"** is therefore (portanto) **50.000**.
 
+---
 
+<div id="mean-vs-median"></div>
 
+## Mean vs. Median
 
+x
 
 
 
@@ -1138,8 +1174,15 @@ Using the **"Median"** formula we have:
 
 
 
+<!--- ( Measures of the Location of the Data ) --->
 
+---
 
+<div id="motlotd"></div>
+
+## Measures of the Location of the Data
+
+x
 
 
 
