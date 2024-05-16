@@ -1,4 +1,4 @@
-# Computer Architecture and Organization
+# Computer Organization and Architecture
 
 ## Contents
 
