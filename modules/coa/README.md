@@ -2,6 +2,9 @@
 
 ## Contents
 
+ - **Data Representation in Computer Systems:**
+   - **Information Measurements (Units of Information):**
+     - [Bits](#intro-to-bits)
  - **Processors:**
    - [**Registers:**](#intro-to-registers)
    - **Processors Architectures (Describes the characteristics of an *"processor line"*):**
@@ -9,6 +12,101 @@
        - [x86 and Von Neumann Architecture (+Von Neumann bottleneck)](#x86-vna)
      - [AMD64](#intro-amd64)
      - [ARM](#intro-arm)
+
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Data Representation in Computer Systems/Information Measurements (Units of Information) ) --->
+
+<div id="intro-to-bits"></div>
+
+## Bit (Binary Digit | 0 or 1)
+
+> The most basic unit of information in a digital computer is called a **"bit"**, which is a contraction of **"Binary Digit"**.
+
+In the concrete sense, a **"bit"** is nothing more than a state of **“on”** or **“off” (or “high” and “low”)** within a computer circuit. In 1964, the designers of the IBM System/360 mainframe
+
+![img](images/bit-01.png)  
+
+
+| Unit of measurement | Abbreviation | Conversion               |
+| ------------------- | ------------ | ------------------------ |
+| **Bit**             | b            | 1 bit                    |
+| **Nibble**          | -            | 4 bits (or half a Byte)  |
+| **Byte**            | B            | 8 bits                   |
+| **Kilobyte**        | KB           | 1024 bytes               |
+| **Megabyte**        | MB           | 1024 kilobytes           |
+| **Gigabyte**        | GB           | 1024 megabytes           |
+| **Terabyte**        | TB           | 1024 gigabytes           |
+| **Petabyte**        | PB           | 1024 terabytes           |
+
+
+
+---
+
+<div id="intro-to-word"></div>
+
+## Word
+
+> The **Word (The maximum number of bits a computer can process at one time)** size refers to the maximum number of bits a CPU can process at a time. Most CPUs use a much bigger word size than 8 bits.
+
+ - *32-bit/64-bit* CPUs can handle *32 bits/64 bits* of information at one time.
+ - Modern PCs have a *64-bit* processor.
+ - A *64-bit CPU* can handle numbers larger than 18 quintillion (as 264 = 18,446,744,073,709,551,615).
+
 
 
 
