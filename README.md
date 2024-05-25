@@ -38,7 +38,7 @@
 ---
 
  - **Computer Science Fundamentals:**
-   - [Linux from Theory to Practice](modules/linux-from-theory-to-practice)
+   - [Computer Organization and Architecture](modules/coa)
 
 ---
 
