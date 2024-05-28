@@ -2,15 +2,14 @@
 
 ## Contents
 
- - **Data Representation in Computer Systems:**
-   - **Information Measurements (Units of Information):**
-     - [Bit (Binary Digit | 0 or 1)](#intro-to-bits)
-     - [NibbleNibble (or half a Byte)](#intro-to-nibble)
-     - [Byte (B | 8 bits)](#intro-to-byte)
-     - [Relationship between Units of Measure](#units-relationship)
-     - [Word (The maximum number of bits a computer can process at one time)](#intro-to-word)
-   - **Number Systems:**
-     - [x](#)
+ - **Information Measurements (Units of Information):**
+   - [Bit (Binary Digit | 0 or 1)](#intro-to-bits)
+   - [NibbleNibble (or half a Byte)](#intro-to-nibble)
+   - [Byte (B | 8 bits)](#intro-to-byte)
+   - [Relationship between Units of Measure](#units-relationship)
+   - [Word (The maximum number of bits a computer can process at one time)](#intro-to-word)
+ - **Number Systems:**
+   - [Decimal System](#intro-to-decimal-system)
  - **Processors:**
    - [**Registers:**](#intro-to-registers)
    - **Processors Architectures (Describes the characteristics of an *"processor line"*):**
@@ -223,11 +222,125 @@ In terms of the relationship between each **Unit of Measurement**, from the Byte
 
 
 
-<!--- ( Data Representation in Computer Systems/Number Systems ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Number Systems ) --->
 
 ---
 
-x
+<div id="intro-to-decimal-system"></div>
+
+## Decimal System
+
+ - In elementary school, you learned to count and do arithmetic in decimal.
+ - Just as you (probably) have ten fingers, there are ten decimal digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+ - Decimal digits are joined together to form longer decimal numbers.
+
+In the decimal system, each digit of a number is:
+
+ - The current number multiplied by 10 raised (elevado) to the power of its position, counting from right to left starting at 0:
+   - For example: The number 123 in the decimal system is `1 * 10^2`, `2 * 10^1`, `3 * 10^0`.
+   - **NOTE:** See we always start from the last index (the rightmost digit) to the first index (the leftmost digit).
+   - **NOTE:** Also the last index (the rightmost digit) is always 0.
+
+For example, the number 83 can be broken down as follows:
+- The rightmost digit (3) is in the 0th position, so it's \(3 \times 10^0\).
+- The next digit to the left (8) is in the 1st position, so it's \(8 \times 10^1\).
+
+Adding these together gives:
+\[ 83 = (8 \times 10^1) + (3 \times 10^0) \]
+\[ 83 = (8 \times 10) + 3 \]
+
+### Generalized Formula:
+For a number \(d_n d_{n-1} \ldots d_1 d_0\) in the decimal system, where \(d_i\) represents the digit at the \(i\)-th position from the right (with \(d_0\) being the rightmost digit), the value of the number can be calculated using the formula:
+
+\[ \text{Value} = d_n \times 10^n + d_{n-1} \times 10^{n-1} + \ldots + d_1 \times 10^1 + d_0 \times 10^0 \]
+
+This formula sums up the contributions of each digit, considering its positional value.
+
+### Example:
+Consider the number 3457:
+- \(7\) is in the 0th position: \(7 \times 10^0\)
+- \(5\) is in the 1st position: \(5 \times 10^1\)
+- \(4\) is in the 2nd position: \(4 \times 10^2\)
+- \(3\) is in the 3rd position: \(3 \times 10^3\)
+
+The value of the number is calculated as:
+\[ 3457 = (3 \times 10^3) + (4 \times 10^2) + (5 \times 10^1) + (7 \times 10^0) \]
+\[ 3457 = 3000 + 400 + 50 + 7 \]
+\[ 3457 = 3457 \]
+
+Thus, the formula accurately represents how numbers are computed in the decimal system.
+
+
+
+
+
+
+
+
+
+
+> **NOTE:**
+> Each column of a decimal number has ten times the weight of the previous column.
+
+See the example below to understand more easily:
+
+````
+
+````
+
+From right to left, the column weights are 1, 10, 100,
+1000, and so on. Decimal numbers are referred to as base 10. The base
+is indicated by a subscript after the number to prevent confusion when
+working in more than one base. For example, Figure 1.4 shows how the
+
+decimal number 974210 is written as the sum of each of its digits multi-
+plied by the weight of the corresponding column.
+
+An N-digit decimal number represents one of 10N possibilities: 0, 1,
+2, 3, ..., 10N − 1. This is called the range of the number. For example, a
+three-digit decimal number represents one of 1000 possibilities in the
+range of 0 to 999.
 
 
 
@@ -458,14 +571,11 @@ However, if you paid attention to Von Neumann's model, you will see that it is o
 ## REFERENCES
 
  - **General:**
-   - [Essentials of Computer Organization and Architecture 5th Edition](https://www.amazon.com/Essentials-Computer-Organization-Architecture-Linda/dp/1284123030)
-   - [Computer Organization and Architecture 10th Edition](https://www.amazon.com/Computer-Organization-Architecture-William-Stallings/dp/0134101618/ref=sr_1_5?crid=159ZGFFY9W79O&dib=eyJ2IjoiMSJ9.-gLvUjsvx_FMtVBDJRlsbmfUC6L0fwnyYIK2tkn9eoj8cVsHGren_s8Y4IB4qFyIjGaluBiMek3nZKzORMLyGa9ojw6SDgJRRE9Z8kMR6hFORJZEKdd4-o6SNkVDlBjAkWsBd_Zqfam89HVIqrX5LDx6NjJsACsnEwutLoCjLFg1PAqGbDRHIVn_YMOtA0yAHiuv1OTxHS53FIKPK27AbJgetn-zrl6XGxm8QXXUC64.1O_iSMXKBYemO51IIaKeWya3gpq_G6CP2Lsw5Ql8vA0&dib_tag=se&keywords=computer+organization+and+architecture+designing+for+performance&qid=1716672729&s=books&sprefix=computer+organization+and+architecture+design%2Cstripbooks-intl-ship%2C487&sr=1-5)
    - [Digital Design and Computer Architecture: ARM Edition 1st Edition](https://www.amazon.com/Digital-Design-Computer-Architecture-ARM/dp/0128000562/ref=sr_1_3?crid=2XB9F8DPHHQZ4&dib=eyJ2IjoiMSJ9.uLIfKDCaVyJLxhneF59w3X-WXI7-z5mAEBwSbVWC61NbjIy0scpcZl5IH5gK6QHAZJ7EHaFtic9UffrfLsJIysxT7y3klNAy02RZ-XoZAInLaB0s9BnFRV1vOqllTxEp_yzmxUxElBjp-SIJwHJ3pXqiuaCS4-DayLFi_T2U9o2z9-QssFxMDOKkEOxnbORtVJ5J3zUdN6ysUp71dZ5UAD_KWbrqrOhivOfVp3JScHA.S1Jt0SJFnaZMaMu0iNANPFgy2ES_b1JGIkQa43uA26E&dib_tag=se&keywords=digital+design+and+computer+architecture&qid=1716672780&s=books&sprefix=Digital+Design+and+%2Cstripbooks-intl-ship%2C210&sr=1-3)
- - **Data Representation in Computer Systems:**
-   - **Information Measurements (Units of Information):**
-     - [Units of Data Storage](https://www.studysmarter.co.uk/explanations/computer-science/computer-organisation-and-architecture/units-of-data-storage/)
-     - [Difference between Bit, Nibble, and Byte](https://www.dataunitconverter.com/blog/bit-nibble-byte)
-     - [How many bits are there in a nibble?](https://answers.mindstick.com/qa/51929/how-many-bits-are-there-in-a-nibble)
+ - **Information Measurements (Units of Information):**
+   - [Units of Data Storage](https://www.studysmarter.co.uk/explanations/computer-science/computer-organisation-and-architecture/units-of-data-storage/)
+   - [Difference between Bit, Nibble, and Byte](https://www.dataunitconverter.com/blog/bit-nibble-byte)
+   - [How many bits are there in a nibble?](https://answers.mindstick.com/qa/51929/how-many-bits-are-there-in-a-nibble)
 
 ---
 
