@@ -6,6 +6,7 @@
    - [Motivation to use Descriptive Statistics](#motivation)
    - [Relationship between CRISP-DM methodology and Descriptive Statistics](#crips-dm-rel)
    - [Some types of observations in a Descriptive Analysis](#observations-types)
+ - [**Population vs. Sample**](#pop-vs-sample)
  - **Types of Variables in Statistics:**
    - [**Qualitative Data (Aka, categorical)**](#qualitative-data)
      - [Nominal data (Are names for some characteristic groups)](#nominal-data)
@@ -37,59 +38,13 @@
    - [Mode](#intro-to-mode)
    - [Mean vs. Median](#mean-vs-median)
  - [**Measures of the Location of the Data**](#motlotd)
-
-
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
 
 
@@ -238,6 +193,27 @@ The **Descriptive Statistics** focus specifically on **step 2 (data understandin
 
 
 
+
+
+
+<!--- ( Population vs. Sample ) --->
+
+<div id="pop-vs-sample"></div>
+
+## Population vs. Sample
+
+> Before starting with *Sampling Methods*, let's learn what's difference between **Population** and **Sample** in statistics.
+
+Briefly (resumidamente):
+
+ - **Population:**
+   - A **population** is a set of sample units *(e.g. people, objects, transactions or events)* that we are interested in studying.
+ - **Sample:**
+   - A sample is a subset of the sample units of a population.  
+
+See the image below to understand more easily:
+
+![img](images/statistics/population-vs-sample-01.png)  
 
 
 
@@ -406,54 +382,6 @@ For example:
 
 > **NOTE:**  
 > See we have some ranges like **day**, **match**, **flight** and **dozen** and our discrete variables are in this ranges.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -874,8 +802,6 @@ For example, see the **"histogram"** below for our **"CH"** Quantitative Variabl
 
 
 
-
-
 <!--- ( Measures of Position/Location ) --->
 
 ---
@@ -1099,30 +1025,141 @@ The **"Mode"** is therefore (portanto) **50.000**.
 
 ## Mean vs. Median
 
-x
+Let's compare the **Mean** and **Median** methods and analyze some cases.
+
+> Suppose we are calculating the average number of hours certain people sleep per week.
+
+Let's say one of our samples (person) had the following hours slept per week:
+
+| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|--------|--------|---------|-----------|----------|--------|----------|
+|   9    |    7   |    8    |     6     |    12    |    12  |    15    |  
+
+The mean calculation for this example would look something like this:
+
+![image](images/statistics/mean-vs-median-01.png)  
+
+> **NOTE:**  
+> The interesting thing about working with the *"Mean"* method is that it considers all values **(unlike the median, which ignores data after the midpoint)**.
+
+**But does this have a significant impact?**  
+Of course, let's demonstrate this now. Suppose you have 2 samples from 2 people with their respective hours slept per week *(We'll provide the data already sorted because to work with the median, we must first sort the data)*:
+
+**PERSON "A":**  
+| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|--------|--------|---------|-----------|----------|--------|----------|
+|   6    |    6   |    7    | **>>8**   |    8     |    8   |    9     |
 
 
+**PERSON "B":**  
+| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |
+|--------|--------|---------|-----------|----------|--------|----------|
+|   6    |    7   |    8    | **>>8**   |   *12*   |   *12* |   *15*   |
+
+Notice that the *"Median"* value for both samples from persons **"A"** and **"B"** is **8**. But there's another detail we can't overlook in these two samples:
+
+> In the second sample **(Person B)**, if you pay attention, the values after the median are much higher than those in the first sample **(Person A)**. In other words, the second person slept significantly more.
+
+> **And what does this mean?**
+
+ - **1st -** It means the data **is not well distributed**;
+ - **2nd -** In this case, it would be better to apply the *Mean* - **Since it considers ALL sample values**.
+
+> **But when we have a lot of data to work with, it might be hard to see this difference, right?**  
+> Not really, because we have **graphs (plots)** that give us a *visual abstraction*.
+
+Let's create a plot in Python to visualize these two samples **A** and **B**:
+
+[mean_vs_median_graph.py](src/mean_vs_median_graph.py)
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
 
 
+def create_df(**df):
+    my_df = {}
+
+    my_df = pd.DataFrame(df)
+    return my_df
 
 
+if __name__ == "__main__":
 
+    sleep_search = {"A": [6, 6, 7, 8, 8, 8, 9], "B": [6, 7, 8, 8, 12, 12, 15]}
 
+    my_df = create_df(**sleep_search)
+    print(my_df)
 
+    plt.plot(my_df, marker="o")
+    plt.title("A vs B")
+    plt.xlabel("Days of the week - x")
+    plt.ylabel("Sleeped hours - y")
+    plt.legend(["A", "B"])
+    plt.savefig("../images/statistics/mean-vs-median.png", format="png")
+    plt.show()
+```
 
+**OUTPUT:**
+```bash
+   A   B
+0  6   6
+1  6   7
+2  7   8
+3  8   8
+4  8  12
+5  8  12
+6  9  15
+```
 
+![img](images/statistics/mean-vs-median.png)  
 
+Notice how the medians of the two samples match, but after the median, the data diverges significantly - **This is because the second person slept much more**.
 
+> **So, is the *"mean"* always better than the *"median"*?**  
+> No. Suppose we have a relatively distributed data set, meaning:
 
+ - The **lower values** will always pull to the **left**.
+ - And the **higher values** will always pull to the **right**.
+ - And the median will be the central values.
 
+When we work with this distributed set, the median tends to ignore **very skewed data points (Outliers)** - **This tends to be an advantage over the Mean because it considers all data in the sample**.
 
+> **NOTE:**  
+> Remember, this applies to a *well-distributed sample* with *SOME outliers*.
 
+It's something like this:
 
+![image](images/statistics/mean-vs-median-02.png)
 
+In short:
 
+ - **The Mean:**
+   - **Advantages:**
+     - **Considers All Values:** The interesting thing about working with the **"Mean"** method is that it considers all values.
+     - **Sensitivity to Changes:** Small changes in the data affect the mean, which can be useful for detecting variations in the data.
+   - **Disadvantages:**
+     - **Sensitivity to Extreme Values (Outliers):** The mean can be significantly affected by very high or very low values, which can distort the central representation of the data.
+     - **Not Representative in Asymmetric Distributions:** In *asymmetric distributions (Left and right sides are not mirror images (mean ≠ median))*, the mean may not adequately reflect the center of the distribution.
+   - **Use the Mean When:**
+     - The data is *symmetric (Left and right sides are mirror images (mean = median))* and does not have significant outliers.
+     - It is necessary to use statistical techniques that depend on the mean.
+     - You want a measure that considers all values in the dataset.
+ - **The Median:**
+   - **Advantages:**
+     - **Robustness to Outliers:** The median is not affected by extreme values. It is simply the central value of the dataset, making it a more robust measure in the presence of outliers.
+     - **Representative in Asymmetric Distributions:** In *asymmetric (Left and right sides are not mirror images (mean ≠ median))* or non-normal distributions, the median can provide a more accurate representation of the "center" of the data.
+   - **Disadvantages:**
+     - **Does Not Consider All Values:** The median ignores the magnitude of values and only concerns itself with the position of values, which can result in the loss of important information.
+     - **Less Suitable for Statistical Calculations:** The median is not used in many advanced statistical calculations, which often require the mean.
+     - The **"median"** can deceive (enganar) when comparing two datasets because it ignores the distribution after the middle. For example:
+       - `"A": [6, 6, 7, 8, 8, 8, 9], Median=8.`
+       - `"B": [6, 7, 8, 8, 12, 12, 15], Median=8.`
+   - **Use the Median When:**
+     - The data has outliers or extreme values that can distort the mean.
+     - The distribution of the data is *asymmetric (Left and right sides are not mirror images (mean ≠ median))*.
+     - You need a robust measure that is not affected by outliers.
 
-
-
+![image](images/statistics/mean-vs-median-03.png)  
 
 
 
