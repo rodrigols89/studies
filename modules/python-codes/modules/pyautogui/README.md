@@ -2,25 +2,81 @@
 
 ## Contents
 
- - **Concepts:**
-   - **Mouse Control:**
-     - [Get the current Mouse position (x, y)](#current-position)
-     - [Check if the position exists](#check-position-exists)
-     - [Moving the mouse](#moving-the-mouse)
-     - [Clicking with the mouse](#clicking-w-mouse)
-   - **Keyboard Control:**
-     - [pyautogui.KEYBOARD_KEYS](#keyboard-keys)
-     - [Writing texts with "pyautogui.write" function](#intro-to-write)
-   - **Screenshot Functions:**
-     - [Locating an image (object) on the screen and clicking on it](#laiotsacoi)
- - **Examples:**
+ - **Mouse Control:**
+   - [Get the current Mouse position (x, y)](#current-position)
+   - [Check if the position exists](#check-position-exists)
+   - [Moving the mouse](#moving-the-mouse)
+   - [Clicking with the mouse](#clicking-w-mouse)
+ - **Keyboard Control:**
+   - [pyautogui.KEYBOARD_KEYS](#keyboard-keys)
+   - [Writing texts with "pyautogui.write" function](#intro-to-write)
+ - **Screenshot Functions:**
+   - [Locating an image (object) on the screen and clicking on it](#laiotsacoi)
+ - **Code Snippets:**
    - [[Hotkeys] - CTRL + a, CTRL + c, and CTRL + v](#ctrls-ex01)
    - [Apply opacity on a specific Window](#apply-opacity)
-   - [Tibia Auto-Looting](src/tibia)
- - [Settings](#settings)
- - [References](#ref)
+   - [Tibia Auto-Looting (Sources)](src/tibia)
+   - [Take and save screenshots](#takesave-ss)
+ - [**Settings**](#settings)
+ - [**References**](#ref)
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
-<!--- ( Concepts/Mouse Control Functions ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Mouse Control Functions ) --->
 
 ---
 
@@ -52,7 +108,7 @@ See that:
 
 To get the current Mouse position with PyAutoGUI we use the **pyautogui.position()** function:
 
-[position-v1.py](src/position-v1.py)
+[position-v1.py](src/mouse-control/position-v1.py)
 ```python
 import pyautogui
 
@@ -78,7 +134,7 @@ See that the return was:
 
 We can also get these coordinates separately:
 
-[position-v2.py](src/position-v2.py)
+[position-v2.py](src/mouse-control/position-v2.py)
 ```python
 import pyautogui
 
@@ -111,7 +167,7 @@ x type:  <class 'int'>
 
 Knowing that we can create a loop to stay printing the current Mouse position while the program is running:
 
-[position-v3.py](src/position-v3.py)
+[position-v3.py](src/mouse-control/position-v3.py)
 ```python
 import pyautogui
 
@@ -129,7 +185,7 @@ The code above will generate many prints printing the current mouse coordinates.
 **NOTE:**  
 However, has another approach to don't stay printing many times:
 
-[position-v4.py](src/position-v4.py)
+[position-v4.py](src/mouse-control/position-v4.py)
 ```python
 import pyautogui
 
@@ -146,7 +202,7 @@ except KeyboardInterrupt:
 
 However, we have a most interesting approach using **"pyautogui.displayMousePosition()"**, that do it automatically:
 
-[displayMousePosition.py](src/displayMousePosition.py)
+[displayMousePosition.py](src/mouse-control/displayMousePosition.py)
 ```python
 import pyautogui
 
@@ -166,7 +222,7 @@ The return is:
 
 Sometimes we don't know the size of the screen. To check if the position exists on the screen we can use the **pyautogui.onScreen()** function:
 
-[onScreen.py](src/onScreen.py)
+[onScreen.py](src/mouse-control/onScreen.py)
 ```python
 import pyautogui
 
@@ -205,7 +261,7 @@ False
  
 For example:
 
-[moveTo-v1.py](src/moveTo-v1.py)
+[moveTo-v1.py](src/mouse-control/moveTo-v1.py)
 ```python
 import pyautogui
 
@@ -219,7 +275,7 @@ Normally the mouse cursor will instantly move to the new coordinates. If you wan
 
 For example:
 
-[moveTo-v2.py](src/moveTo-v2.py)
+[moveTo-v2.py](src/mouse-control/moveTo-v2.py)
 ```python
 import pyautogui
 
@@ -231,7 +287,7 @@ pyautogui.moveTo(600, None, 2)  # moves the mouse to X = 600, Y = 500 over 2 sec
 **NOTE:**  
 If you want to move the mouse cursor over a **few pixels** relative to its current position, use the **move()** function. This function has similar parameters as moveTo(). For example:
 
-[move.py](src/move.py)
+[move.py](src/mouse-control/move.py)
 ```python
 import pyautogui
 
@@ -241,7 +297,7 @@ pyautogui.move(-30, 0, 2)      # move  the mouse left 30 pixels over 2 seconds.
 pyautogui.move(-30, None, 2)   # move  the mouse left 30 pixels over 2 seconds.
 ```
 
---
+---
 
 <div id="clicking-w-mouse"></div>
 
@@ -251,7 +307,7 @@ Sometimes we need to click on something with the mouse. To do it we can use the 
 
 For example:
 
-[click-v1.py](src/click-v1.py)
+[click-v1.py](src/mouse-control/click-v1.py)
 ```python
 import pyautogui
 
@@ -264,7 +320,7 @@ pyautogui.click()         # Click the mouse wit the burron "left".
 **NOTE:**  
 However the **pyautogui.click()** function can also receives **x** and **y** as argument:
 
-[click-v2.py](src/click-v2.py)
+[click-v2.py](src/mouse-control/click-v2.py)
 ```python
 import pyautogui
 
@@ -274,7 +330,7 @@ pyautogui.click(x=60, y=20)  # Click the mouse wit the burron "left".
 **NOTE:**  
 You can also specify another mouse button to click: `LEFT`, `MIDDLE`, `RIGHT`, `PRIMARY`, or `SECONDARY`.
 
-[click-v3.py](src/click-v3.py)
+[click-v3.py](src/mouse-control/click-v3.py)
 ```python
 import pyautogui
 
@@ -285,7 +341,7 @@ pyautogui.click(x=60, y=20, button="right")  # Click the mouse wit the burron "r
 
 Sometimes we will need to click the same button (or something) several times. For this we use the **"click"** attribute:
 
-[click-v4.py](src/click-v4.py)
+[click-v4.py](src/mouse-control/click-v4.py)
 ```python
 import pyautogui
 
@@ -334,7 +390,20 @@ pyautogui.click(x=60, y=20, clicks=5, interval=1)
 
 
 
-<!--- ( Concepts/Keyboard Control Functions ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Keyboard Control Functions ) --->
 
 ---
 
@@ -344,7 +413,7 @@ pyautogui.click(x=60, y=20, clicks=5, interval=1)
 
 Some functions we will learn can receive a keyboard key as an argument to do something. Knowing that let's use the **"pyautogui.KEYBOARD KEYS"** that return the list of keyboard keys:
 
-[keyboard_keys.py](src/keyboard_keys.py)
+[keyboard_keys.py](src/keyboard-control/keyboard_keys.py)
 ```python
 import pyautogui
 
@@ -380,7 +449,7 @@ python keyboard_keys.py
 
 For example:
 
-[write-v1.py](src/write-v1.py)
+[write-v1.py](src/keyboard-control/write-v1.py)
 ```python
 from time import sleep
 import pyautogui
@@ -402,7 +471,7 @@ Hello World!
 > **NOTE:**  
 > The first letter will always be written automatically. However, we can use the "interval" argument to make an interval (in seconds) to write another letter.
 
-[write-v2.py](src/write-v2.py)
+[write-v2.py](src/keyboard-control/write-v2.py)
 ```python
 from time import sleep
 import pyautogui
@@ -460,7 +529,20 @@ Hello World!
 
 
 
-<!--- ( Concepts/Screenshot Functions ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Screenshot Functions ) --->
 
 ---
 
@@ -489,7 +571,6 @@ try:
         print(dota2Object)
 except KeyboardInterrupt:
     print("")
-
 ```
 
 **OUTPUT:**
@@ -593,7 +674,7 @@ while dota2Object == None:
 **NOTE:**  
 To solve that we need to check if the **"dota2Object"** variable is not None, before call the **"pyautogui.center()"** function:
 
-[open_dota2.py](src/open_dota2.py)
+[open_dota2.py](src/screenshot-functions/open_dota2.py)
 ```python
 import pyautogui
 
@@ -661,7 +742,20 @@ Image found on the screen: Box(left=17, top=112, width=60, height=71)
 
 
 
-<!--- ( Examples ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Code Snippets ) --->
 
 ---
 
@@ -671,7 +765,7 @@ Image found on the screen: Box(left=17, top=112, width=60, height=71)
 
 In this example, let's see how to automatically **select all the text (CTRL + A)**, do **CTRL + c**, and **CTRL + v**:
 
-[ctrls-v1.cpy](src/ctrls-v1.cpy)
+[ctrls-v1.cpy](src/code-snippets/ctr/ctrls-v1.cpy)
 ```python
 from time import sleep
 import pyautogui
@@ -759,7 +853,7 @@ Handle: 1312996
 
 Now, let's see a complete code to apply opacity on a Tibia window:
 
-[apply_opacity_on_tibia.py](src/tibia/apply_opacity_on_tibia.py)
+[apply_opacity_on_tibia.py](src/code-snippets/tibia/apply_opacity_on_tibia.py)
 ```python
 import ctypes
 import pygetwindow
@@ -788,6 +882,65 @@ if target_window is not None:
 else:
     print("Window don't found.")
 ```
+
+---
+
+<div id="takesave-ss"></div>
+
+## Take and save screenshots
+
+Here, let's see a script to *print* and *save* a **"screenshot"**:
+
+[script.py](src/code-snippets/screenshots/script.py)
+```python
+import pyautogui
+import keyboard
+import time
+import os
+
+
+def take_screenshot(count):
+    # Define the path to save the screenshot
+    screenshot_name = f"source-folders-here/{count:03}.png"
+
+    # Create directories if they don't exist
+    os.makedirs(os.path.dirname(screenshot_name), exist_ok=True)
+
+    # Save the screenshot
+    pyautogui.screenshot().save(screenshot_name)
+    print(f"Screenshot saved as {screenshot_name}")
+
+
+def main():
+    count = 1
+    while True:
+        if keyboard.is_pressed("esc"):
+            print("'ESC' pressed...")
+            take_screenshot(count)
+            count += 1
+            time.sleep(1)  # Small pause to avoid multiple captures at once
+        elif keyboard.is_pressed("F1"):
+            print("'F1' pressed...")
+            print("Exiting the program.")
+            break
+
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -838,12 +991,17 @@ else:
 
 **CREATE VIRTUAL ENVIRONMENT:**  
 ```bash
-python -m venv environment
+python -m venv pyautogui-environment
 ```
 
-**ACTIVATE THE VIRTUAL ENVIRONMENT (Windows):**  
+**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
 ```bash
-source environment/Scripts/activate
+source pyautogui-environment/Scripts/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
+```bash
+source pyautogui-environment/bin/activate
 ```
 
 **UPDATE PIP:**
@@ -856,40 +1014,7 @@ python -m pip install --upgrade pip
 pip install -U -v --require-virtualenv -r requirements.txt
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Now, Be Happy!!!** 😬
 
 
 
