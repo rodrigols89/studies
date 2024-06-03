@@ -1,30 +1,27 @@
-# Probability
 
-## Contents
+ - **Probability:**
+   - **Phenomenon types in Probability:**
+     - [Deterministic Phenomenon](#deterministicf)
+     - [Random Phenomenon (Non-Deterministic)](#randomf)
+   - [Sample Space (Ω)](#sample-space)
+   - [Sample Points (ω)](#sample-point)
+   - [Events (A, B, C, ...., Z)](#events)
+     - [Complement of an Event](#complement-of-an-event)
+     - **Operations with Events:**
+       - [Empty Set](#empty-set)
+       - [Union](#union-set)
+       - [Intersection](#intersection-set)
+       - [Disjoint (Mutually Exclusive)](#disjoint)
+       - [Complement of a Sets](#complement-set)
+       - **Practice Problems on Operations with Events:**
+         - [Roll a die](#oweq-toss-a-dice)
+   - [Probability Axioms (definition)](#probability-axioms)
+   - [Bias](#intro-to-bias)
+   - **Conditional Probability and Dependence (Types of Events):**
+     - [Independent Events (Events that are not affected by other events)](#independent-events)
+     - [Dependent Events (Events that are conditional on other events)](#dependent-events)
+     - [Mutually Exclusive Events (Events that can't occur together)](#mutually-exclusive-events)
 
- - **Phenomenon types in Probability:**
-   - [Deterministic Phenomenon](#deterministicf)
-   - [Random Phenomenon (Non-Deterministic)](#randomf)
- - [Sample Space (Ω)](#sample-space)
- - [Sample Points (ω)](#sample-point)
- - [Events (A, B, C, ...., Z)](#events)
-   - [Complement of an Event](#complement-of-an-event)
-   - **Operations with Events:**
-     - [Empty Set](#empty-set)
-     - [Union](#union-set)
-     - [Intersection](#intersection-set)
-     - [Disjoint (Mutually Exclusive)](#disjoint)
-     - [Complement of a Sets](#complement-set)
-     - **Practice Problems on Operations with Events:**
-       - [Roll a die](#oweq-toss-a-dice)
- - [Probability Axioms (definition)](#probability-axioms)
- - [Bias](#intro-to-bias)
- - **Conditional Probability and Dependence (Types of Events):**
-   - [Independent Events (Events that are not affected by other events)](#independent-events)
-   - [Dependent Events (Events that are conditional on other events)](#dependent-events)
-   - [Mutually Exclusive Events (Events that can't occur together)](#mutually-exclusive-events)
- - [**Settings**](#settings)
- - [**REFERENCES**](#ref)
 
 
 

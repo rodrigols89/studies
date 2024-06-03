@@ -9,7 +9,7 @@
  - [Linear Algebra](modules/linear-algebra)
  - [Calculus](modules/calculus)
  - [Financial Math](modules/financial-math)
- - [Statistics & Probability](#stats-prop)
+ - [Statistics & Probability](modules/stats-prop)
 
 ---
 
