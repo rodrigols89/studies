@@ -133,4 +133,22 @@ It is divided into two main branches:
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+
+## Contents
+
+ - [Coming soon...](#)
+ - [**REFERENCES**](#ref)
+
+<!--- ( REFERENCES ) --->
+
+---
+
+<div id="ref"></div>
+
+## REFERENCES
+
+ - [Coming soon...](#)
+
+---
+
+**Rodrigo** **L**eite da **S**ilva
