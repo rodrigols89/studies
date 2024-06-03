@@ -39,14 +39,13 @@
      - [Mode](#intro-to-mode)
      - [Mean vs. Median](#mean-vs-median)
    - [**Measures of the Location of the Data**](#motlotd)
-
  - **Probability:**
    - **Phenomenon types in Probability:**
      - [Deterministic Phenomenon](#deterministicf)
      - [Random Phenomenon (Non-Deterministic)](#randomf)
-   - [Sample Space (Ω)](#sample-space)
-   - [Sample Points (ω)](#sample-point)
-   - [Events (A, B, C, ...., Z)](#events)
+   - [**Sample Space (Ω)**](#sample-space)
+   - [**Sample Points (ω)**](#sample-point)
+   - [**Events (A, B, C, ...., Z**)](#events)
      - [Complement of an Event](#complement-of-an-event)
      - **Operations with Events:**
        - [Empty Set](#empty-set)
@@ -56,8 +55,8 @@
        - [Complement of a Sets](#complement-set)
        - **Practice Problems on Operations with Events:**
          - [Roll a die](#oweq-toss-a-dice)
-   - [Probability Axioms (definition)](#probability-axioms)
-   - [Bias](#intro-to-bias)
+   - [**Probability Axioms (definition)**](#probability-axioms)
+   - [**Bias**](#intro-to-bias)
    - **Conditional Probability and Dependence (Types of Events):**
      - [Independent Events (Events that are not affected by other events)](#independent-events)
      - [Dependent Events (Events that are conditional on other events)](#dependent-events)
