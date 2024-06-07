@@ -901,7 +901,7 @@ import os
 
 def take_screenshot(count):
     # Define the path to save the screenshot
-    screenshot_name = f"source-folders-here/{count:03}.png"
+    screenshot_name = f"source-here/{count:03}.png"
 
     # Create directories if they don't exist
     os.makedirs(os.path.dirname(screenshot_name), exist_ok=True)
@@ -914,6 +914,7 @@ def take_screenshot(count):
 def main():
     count = 1
     while True:
+        print("Program running...", end="\r")
         if keyboard.is_pressed("esc"):
             print("'ESC' pressed...")
             take_screenshot(count)
@@ -922,6 +923,11 @@ def main():
         elif keyboard.is_pressed("F1"):
             print("'F1' pressed...")
             print("Exiting the program.")
+            # Clean the CLI.
+            if os.name == "nt":  # Windows
+                os.system("cls")
+            else:  # Unix (Linux and macOS)
+                os.system("clear")
             break
 
 
