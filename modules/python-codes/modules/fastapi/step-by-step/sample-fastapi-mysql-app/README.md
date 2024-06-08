@@ -1,3 +1,4 @@
+
 # Project Structure | Models | Endpoints | Routes
 
 ## Contents
@@ -10,7 +11,7 @@
  - [Creating request schema](#request-schema)
  - [Creating response model](#response-model)
  - [Creating Database connection and session](#connect-db)
- - [Implement main.py](#main)
+ - [Implement `main.py`](#main)
  - **Creating API Endpoints:**
    - [Creating "product" endpoint](#product-endpoint)
  - [Old approahch...](#continue)
@@ -21,21 +22,36 @@
 
 ## Create a docker compose
 
-For this example, the first thing we'll need is create a docker compose:
+For this example, the first thing we'll need is to create a docker compose:
 
 [docker-compose.yml](docker-compose.yml)
-```python
+```yml
 version: '3.9'
 services:
-  db:
-    container_name: mysql
+  mysql:
+    container_name: mysql-container
     image: mysql:latest
     environment:
       MYSQL_HOST: localhost
-      MYSQL_DATABASE: my_test_db
       MYSQL_ROOT_PASSWORD: toor
     ports:
-      - "3306:3306"
+      - "3310:3306"
+  postgres:
+    container_name: postgres-container
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: postgresdb
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+  pgadmin-data:
 ```
 
 Now just run:
@@ -51,11 +67,11 @@ sudo docker compose up -d
 
 ## Create "product" table
 
-Now, let's create a product table:
+Now, let's create the product table:
 
 **CONSOLE:**
 ```python
-sudo docker exec -it mysql bash
+sudo docker exec -it mysql-container bash
 ```
 
 **CONSOLE:**
@@ -600,4 +616,4 @@ Now just run **python main.py** to test.
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+**Rodrigo** **L**eite da **S**ilva
