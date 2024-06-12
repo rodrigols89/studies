@@ -1,13 +1,17 @@
 # Java
 
-![title](res/java-logo.gif)
+## Contents
 
-## Conteúdo
+ - [Object-Oriented Programming (OOP)](modules/oop)
+ - **Web Development:**
+ - **APIs:**
+ - **Testing:**
+ - **Databases:**
+ - **Automation, Web scraping, Bots:**
+ - **Command-Line Interface (CLI):**
+ - **Tools:**
+ - [**Settings:**](modules/settings)
 
- - [Orientação a Objetos Básica](modules/basic-oop.md)
- - [Modificadores de Acesso & Atributos de Classe](modules/access-modifiers-and-class-attributes.md)
- - [Herança, Reescrita & Polimorfismo](modules/inheritance-rewriting-and-polymorphism.md)
- - [Classes Abstratas](modules/abstract-class.md)
- - [Interfaces](modules/interfaces.md)
+---
 
-**Rodrigo Leite -** *Software Engineer*
+Ro**drigo** **L**eite da **S**ilva - **drigols**
