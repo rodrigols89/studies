@@ -8,7 +8,6 @@
  - [**Constructors**](#intro-to-constructors)
  - **Getters and Setters:**
    - [Encapsulation problem and get/set solution](#encapsulation-problem)
- - **Inheritance:**
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
