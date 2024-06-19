@@ -2,7 +2,7 @@
 
 ## Contents
 
- - [Object-Oriented Programming (OOP)](modules/oop)
+ - [**Object-Oriented Programming (OOP)**](modules/oop)
  - **Web Development:**
  - **APIs:**
  - **Testing:**
