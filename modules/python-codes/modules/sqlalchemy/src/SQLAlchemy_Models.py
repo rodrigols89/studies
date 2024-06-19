@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Float, Integer, VARCHAR
-from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 
 
@@ -39,21 +38,3 @@ class StudentModel(Base):
     id = Column(Integer, primary_key=True)
     name = Column(VARCHAR(50), nullable=False)
     lastname = Column(VARCHAR(50), nullable=False)
-
-
-if __name__ == "__main__":
-    
-    # Database settings
-    username = "root"
-    password = "toor"
-    database = "mysql-db"
-    host="localhost"
-    port="3310"
-
-    # Make an Engine.    
-    engine = create_engine(
-        f"mysql+pymysql://{username}:{password}@{host}:{port}/{database}",
-        echo=True,
-    )
-
-    Base.metadata.create_all(engine)
