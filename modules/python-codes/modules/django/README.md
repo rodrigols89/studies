@@ -21,16 +21,18 @@
    - [**View:**](#intro-to-views)
  - **Project & App Settings:**
    - [How add an App to the Project](#how-add-an-app-to-the-project)
+   - [Creating React and Django Projects](#react-django-projects)
  - **Commands:**
    - `django-admin startproject <ProjectName>`
+   - `django-admin startapp <AppName>`
    - `python manage.py runserver (You can specify a port number here)`
-   - `python manage.py startapp <AppName>`
  - **Code Snippet:**
    - **Model:**
    - **Template:**
    - **View:**
    - **Tests:**
    - **Database:**
+   - **API:**
  - [**Settings**](#settings)
  - [**References**](#ref)
 <!--- 
@@ -140,9 +142,68 @@ The difference between **a project** and **an app** is:
 
 ## Django Structure
 
-The basic structure of **Django** is:
+After you create a Django project you will have the following structure:
 
-![img](images/django-structure-01.jpg)
+```bash
+django-admin startproject <ProjectName>
+```
+
+```bash
+├─── .<ProjectName>
+│    ├── <ProjectName>
+│    |      ├── __init__.py
+│    |      ├── asgi.py
+│    |      ├── settings.py
+│    |      ├── urls.py
+│    |      ├── wsgi.py
+│    ├── manage.py
+│    ├── <AppName>
+│    |      ├── /migrations
+│    |      |      ├── __init__.py
+│    |      ├── __init__.py
+│    |      ├── admin.py
+│    |      ├── apps.py
+│    |      ├── models.py
+│    |      ├── tests.py
+│    |      ├── views.py
+```
+
+Where:
+
+ - `.<ProjectName>` Root folder.
+   - `<ProjectName>` Project setting files.
+     - `__init__.py`
+     - `asgi.py` ASGI server settings.
+     - `settings.py` All settings for the project:
+       - Define templates sources.
+       - Apps installed.
+       - Project secret key.
+     - `urls.py` Project URLs:
+       - www.example.com/blog
+       - www.example.com/admin
+     - `wsgi.py` WSGI server settings.
+   - `manage.py` File to manage the project.
+     - `python manage.py runserver`.
+   - `<AppName>` Project apps (E.g. /site, /store, etc).
+     - `/migrations` Manage changes to the Database.
+       - `__init__.py`
+     - `/templates` Project/App frontend files.
+       - `__init__.py`
+       - HTML, CSS, and JavaScript files.
+     - `__init__.py`
+     - `admin.py`
+     - `apps.py`
+     - `models.py` Here you will create things that you will store in your Database:
+       - For example, database tables.
+     - `tests.py`
+     - `views.py` Represents your App's logic:
+       - When the use click on the `/blog` URL what happens?
+       - When the user clicks on the `/admin` URL what happens?
+       - Link the views to the templates.
+
+
+
+
 
 
 
@@ -818,13 +879,13 @@ Now, let's add the new app to the project:
 # ...
 
 INSTALLED_APPS = [
-    "blog.apps.BlogConfig", # <--- App added here.
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "blog.apps.BlogConfig", # <--- App added here.
 ]
 
 # ...
@@ -841,7 +902,20 @@ class BlogConfig(AppConfig):
     name = 'blog'
 ```
 
+---
 
+<div id="react-django-projects"></div>
+
+## Creating React and Django Projects
+
+A common approach to create Django and React Project is:
+
+ - Create a project with django-admin (This will be the Root/Backend of the project):
+   - django-admin startproject `<project_name>`
+ - Initialize `pyproject.toml` inside the root:
+   - poetry init
+ - Create the frontend with create-react-app:
+   - npx create-react-app frontend
 
 
 
@@ -944,8 +1018,11 @@ pip install -U -v --require-virtualenv -r requirements.txt
    - [Python Documentation](https://docs.djangoproject.com/)
    - [Google Gemini](https://gemini.google.com/app)
    - [ChatGPT](https://chatgpt.com/)
+   - [Estrutura Básica de um Projeto em Django](https://www.youtube.com/watch?v=4u0aI-90KnU)
  - **Tutorials:**
+   - [How To Build a To-Do application Using Django and React](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react)
    - [Build a Blog From Scratch With Django](https://realpython.com/build-a-blog-from-scratch-django/)
+   - [Dev Fullstack Cloud](https://www.youtube.com/playlist?list=PLsA_kcShOU63R5AWqD4Apn78ePPbpncv4)
 
 ---
 
