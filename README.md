@@ -57,16 +57,18 @@
 
 ---
 
- - **Information Security (+Ethical Hacking):**
-   - [x](#)
+ - **Information Security & Cyber Security:**
+   - [Information Security Fundamentals](modules/security-fundamentals)
 
 ---
 
- - [Artificial Intelligence](modules/ai-codes)
+ - **Artificial Intelligence:**
+   - [Artificial Intelligence (Theory and Practice)](modules/ai-codes)
 
 ---
 
- - [Math](modules/math-codes)
+ - **Mathematics:**
+   - [Math (Theory and Practice)](modules/math-codes)
 
 ---
 
