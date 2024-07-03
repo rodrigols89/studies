@@ -251,7 +251,7 @@ For example:
 
 Like "Morphological Analysis" here we also have subclass.
 
-![img](images/tokenizer-04.png)  
+![img](images/tokenizer-04-v2.png)  
 
 > **Okay, but how do I know what tokens Python has?**
 
