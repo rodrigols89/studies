@@ -1,4 +1,4 @@
-# Python Internals
+# Python Internals (Theory and Practice)
 
 ## Contents
 
@@ -517,7 +517,7 @@ Yes, the **Lexical Analysis (Parser)** checks the rule `+*` on the [Grammar/pyth
 
 
 
-<!--- ( PPP/Abstract Syntax Tree/AST ) --->>
+<!--- ( PPP/Abstract Syntax Tree/AST ) --->
 
 ---
 
