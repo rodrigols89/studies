@@ -5,11 +5,12 @@
  - **Concepts:**
    - [Intermediate Language (IL) vs. Machine Language (Assembly)](#il-ml)
  - [**Python Precompilation Process:**](#ppp)
-     - [Tokenizer/Lexing (Tokenizes the program statements)](#intro-to-tokenizer)
-     - [Parser (Analyzes the tokens and makes sense of operations)](#intro-to-parser)
+     - [**Tokenizer (Tokenizes the program statements)**](#intro-to-tokenizer)
+       - [`python -m tokenize <module.py>`](#mtokenize)
+     - [**Parser (Analyzes the tokens and makes sense of operations)**](#intro-to-parser)
        - [Lexical Analysis](#intro-to-lexical-analysis)
-       - [SyntaxError (Syntax Error)](#syntaxerror)
-     - [Abstract Syntax Tree/AST ()](#intro-to-ast)
+       - [Understanding the SyntaxError](#syntaxerror)
+     - [**Abstract Syntax Tree/AST ()**](#intro-to-ast)
        - [`python -m ast <module.py>`](#mast)
  - [**Python Compilation Process:**](#pcp)
    - [Bytecode == Intermediate Language (IL)](#bytecode-equal-il)
@@ -103,7 +104,7 @@ See our **file.xx** passes by a *compiler* → next is generated a Machine Langu
 > **NOTE:**  
 > This is the traditional compilation, but how Python compiler works?
 
-To understand how Python is interpreted, let's see another image (abstraction) below:
+To understand how Python is interpreted, let's see another abstraction below:
 
 ![img](images/il-vs-ml-02.png)  
 
@@ -112,13 +113,12 @@ To understand how Python is interpreted, let's see another image (abstraction) b
 
 > **Ok, but if the Python compiler doesn't compiler for a specific architecture where does he send the Intermediate Language (IL)?**
 
-To understand this, let's see another abstraction (image):
+To understand this, let's see another abstraction:
 
 ![img](images/il-vs-ml-03.png)  
 
 Looking at the image above we can see that:
 
- - We have a compiled language (Python for us).
  - The compiler translates our code to an *Intermediate Language (IL)*.
  - This *Intermediate Language (IL)* is sended to a **Virtual Machine**.
  - The **Virtual Machine** communicates with the **computer (CPU)** and repeats this process until it finishes the tasks.
@@ -193,6 +193,10 @@ Knowing this, we can say that:
 
 The **Python Precompilation Process** has three steps before sending an *Intermediate Language (IL)* to the **Virtual Machine**:
 
+ - Tokenizer.
+ - Parser.
+ - Abstract Syntax Tree (AST).
+
 ![img](images/ppp-01.png)  
 
 
@@ -204,25 +208,23 @@ The **Python Precompilation Process** has three steps before sending an *Interme
 
 
 
-<!--- ( PPP/Tokenizer/Lexing ) --->
+<!--- ( PPP/Tokenizer ) --->
 
 ---
 
 <div id="intro-to-tokenizer"></div>
 
-## Tokenizer/Lexing (Tokenizes the program statements)
+## Tokenizer (Tokenizes the program statements)
 
-The first step before sending an *Intermediate Language (IL)* to the **Virtual Machine** is the ***Tokenizer***.
+> The first step before sending an *Intermediate Language (IL)* to the *Virtual Machine* is the ***"Tokenizer"***.
 
-> In Computer Science, **Lexical Analysis**, **Lexing** or **tokenization** is the process of converting a sequence of characters into a sequence of **lexical tokens**.
+For example, see the **tokenizations** below:
 
-For example, see the **Lexing (or tokenizations)** below:
-
-![img](images/tokenizer-lexing-01.jpeg)  
+![img](images/tokenizer-01.jpeg)  
 
 ---
 
-![img](images/tokenizer-lexing-02.png)  
+![img](images/tokenizer-02.png)  
 
 See that:
 
@@ -235,22 +237,21 @@ See that:
 
  - **Do you remember in the high school the "Morphological Analysis"?**
    - That's, we get each word in the sentence and find your grammatical class.
- - **The Lexical Analysis do the same thing:**
+ - **The Lexical Analysis (applied on the Parse stage) do the same thing:**
    - Take each tokenized word (or statement) and place it in the appropriate context.
 
-**NOTE:**  
-However, here the focus is not "Morphological Analysis" or "Words", but **Python statements**, **inputs**, **expressions**, etc.
+> **NOTE:**  
+> However, here the focus is not "Morphological Analysis" or "Words", but **Python statements**, **inputs**, **expressions**, etc.
 
 For example:
 
-![img](images/tokenizer-lexing-03.png)  
+![img](images/tokenizer-03.png)  
 
-If you pay attention you can see that the **"+"** is an operator. But, which operator?
+> If you pay attention you can see that the **"+"** is an operator. But, which operator?
 
-> **NOTE:**  
-> Like "Morphological Analysis" here we also have subclass.
+Like "Morphological Analysis" here we also have subclass.
 
-![img](images/tokenizer-lexing-04.png)  
+![img](images/tokenizer-04.png)  
 
 > **Okay, but how do I know what tokens Python has?**
 
@@ -333,14 +334,24 @@ ERRORTOKEN
 ENCODING
 ```
 
+---
+
+<div id="mtokenize"></div>
+
+## `python -m tokenize <module>`
+
+To see the tokens of a program, we need to run the following command:
+
+```bash
+python -m tokenize <module.py>
+```
+
 For example, imagine we have the following program:
 
 [tokenize-ex01.py](src/tokenize-ex01.py)
 ```python
 1 + 2
 ```
-
-To see all tokens to the program above we can run:
 
 **INTPUT:**
 ```bash
@@ -392,7 +403,7 @@ python -m tokenize -e tokenize-ex01.py
 ```
 
 > **NOTE:**  
-See that now the **"+"** operator shows its subclass **"PLUS"** and not just **"OP"**.
+> See that now the **"+"** operator shows its subclass **"PLUS"** and not just **"OP"**.
 
 
 
@@ -403,7 +414,7 @@ See that now the **"+"** operator shows its subclass **"PLUS"** and not just **"
 
 
 
-<!--- ( PPP/Parser ) --->>
+<!--- ( PPP/Parser ) --->
 
 ---
 
@@ -432,19 +443,19 @@ The process of **analyzing the tokens** and **making sense of operations** is ca
 
 See that:
 
- - First, we take the tokens:
-   - Generated by the **"Tokenizer/Lexing"** stage.
- - Next, the **Parser** stage will check the language Grammar:
+ - **First, we take the tokens:**
+   - Generated by the **"Tokenizer"** stage.
+ - **Next, the *Parser* stage will check the language Grammar:**
    - This step is known as the **"Lexical Analysis"**.
- - Finally, the **Parser** generates the **"Abstract Syntax Tree/AST"**.
+ - **Finally, the *Parser* generates the *"Abstract Syntax Tree (AST)"*.**
 
 ---
 
 <div id="syntaxerror"></div>
 
-## SyntaxError (Syntax Error)
+## Understanding the SyntaxError
 
-To understand the SyntaxError imagine we have the following program:
+To understand the **"SyntaxError"** imagine we have the following program:
 
 [syntax_error.py](src/syntax_error.py)
 ```python
@@ -472,11 +483,11 @@ python -m tokenize -e syntax_error.py
 **NOTE:**  
 See that the `*` and `+` are considered operators (plus and star respectively).
 
-> **Now... What happens if we try to generate an Abstract Syntax Tree (AST) of this program?**
+> **Now... What happens if we try to run this program?**
 
 **INPUT:**
 ```bash
-python -m ast syntax_error.py
+python -m syntax_error.py
 ```
 
 **OUTPUT:**
@@ -492,10 +503,10 @@ Do you remember **"Lexical Analysis"** in the *Parser* stage?
 
 ![img](images/lexical-analysis-01.png)  
 
-Yes, the **Lexical Analysis (Parser)** checks the rule `+*` on the [Grammar/python.gram](https://github.com/python/cpython/blob/main/Grammar/python.gram) and sees that the rule doesn't exist.
+Yes, the **Lexical Analysis (Parser)** checks the rule `+*` on the [Grammar/python.gram](https://github.com/python/cpython/blob/main/Grammar/python.gram) and sees that **the rule doesn't exist**.
 
 > **NOTE:**  
-> Whenever (sempre) a rule is not in the grammar it will generate a *"SyntaxError"*.
+> Whenever (sempre) a rule is not in the grammar it will generate a **"SyntaxError"**.
 
 
 
@@ -522,7 +533,7 @@ Yes, the **Lexical Analysis (Parser)** checks the rule `+*` on the [Grammar/pyth
 
 ## `python -m ast <module.py>`
 
-To check the **"Abstract Syntax Tree (AST)"** of our program we can run the following command:
+To check the **"Abstract Syntax Tree (AST)"** of our program we need to run the following command:
 
 **INPUT:**
 ```bash
@@ -608,7 +619,7 @@ The **Abstract Syntax Tree (AST)** of the example above will look like this:
 
 ## Python Compilation Process
 
-After Python goes through the *Precompilation stages (Tokenizer/Lexing, Parser, AST)* we start the **Compilation** process:
+After Python goes through the *Precompilation stages (Tokenizer, Parser, AST)* we start the **Compilation** process:
 
 ![img](images/pcp-01.png)
 
@@ -616,13 +627,15 @@ Python compilation looks something like this:
 
 ![img](images/pcp-02.png)  
 
- - First, we take the *Abstract Syntax Tree (AST)*.
- - Next, the compiler run Operation codes (written in .c) on the *Abstract Syntax Tree (AST)*.
+See that:
+
+ - First, we take the *Abstract Syntax Tree (AST)* stage result.
+ - Next, the compiler run **Operation codes (written in .c)** on the *Abstract Syntax Tree (AST)*.
  - Finally is generates **"Bytecode"**:
    - The generated *Bytecode* are files with the `.pyc` extension.
 
 **NOTE:**  
-We can see the *operations codes (written in .c)* on the [CPython Repository](https://github.com/python/cpython) by clicking on the [Python/compile.c](https://github.com/python/cpython/blob/main/Python/compile.c).
+We can see the **Operation codes (written in .c)** on the [CPython Repository](https://github.com/python/cpython) by clicking on the [Python/compile.c](https://github.com/python/cpython/blob/main/Python/compile.c).
 
 ---
 
@@ -638,7 +651,7 @@ I don't know if you remember, but **Bytecode** and **Intermediate Language (IL)*
 
 <div id="mcompileall"></div>
 
-## `python -m compileall <module.py> (Compiles the code`
+## `python -m compileall <module.py> (Compiles the code)`
 
 To compiler a Python module manually we can run the following command:
 
@@ -664,8 +677,8 @@ After the *Compilation process*, we have a crazy code to be interpreted:
 
 ![img](images/m-compileall-01.png)  
 
-> **NOTE:**  
-> The **Virtual Machine** can't interpret this code. To solve that we first need to **disassemble** it.
+**The *Virtual Machine* can't interpret this code!**  
+To solve that we first need to *"disassemble"* it (the Virtual Machine does it automatically).
 
 For example:
 
@@ -681,8 +694,8 @@ a + b
 python -m dis disassemble.py
 ```
 
-> **NOTE:**
-> **"dis"** is abbreviation of **"disassemble"**.
+> **NOTE:**  
+> **"dis"** is the abbreviation of **"disassemble"**.
 
 **OUTPUT:**
 ```bash
@@ -701,8 +714,8 @@ python -m dis disassemble.py
              20 RETURN_CONST             2 (None)
 ```
 
-> **NOTE:**  
-> This is what the **Virtual Machine** *"understands"* and will *"interpret"*.
+**NOTE:**  
+This is what the **Virtual Machine** *"understands"* and will *"interpret"*.
 
 
 
