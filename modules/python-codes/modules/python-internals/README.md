@@ -17,6 +17,43 @@
    - [`python -m compileall <module.py> (Compiles the code)`](#mcompileall)
    - [`python -m dis <module.py> (Generates IL)`](#mdis)
  - [**Python Virtual Machine:**](#pvm)
+ - [**CPython**:](#cpython)
+   - [/.azure-pipelines](#cpython-azurepipelines)
+   - [/.devcontainer](#cpython-devcontainer)
+   - [/.github](#cpython-github)
+   - [/Android](#cpython-android)
+   - [/Doc](#cpython-doc)
+   - [/Grammar](#cpython-grammar)
+   - [/Include](#cpython-include)
+   - [/InternalDocs](#cpython-internaldocs)
+   - [/Lib](#cpython-lib)
+   - [/Mac](#cpython-mac)
+   - [/Misc](#cpython-misc)
+   - [/Modules](#cpython-modules)
+   - [/Objects](#cpython-objects)
+   - [/PC](#cpython-pc)
+   - [/PCBuild](#cpython-pcbuild)
+   - [/Parser](#cpython-parser)
+   - [/Programs](#cpython-programs)
+   - [/Python](#cpython-python)
+   - [/Tools](#cpython-tools)
+   - [/iOS](#cpython-ios)
+   - [.coveragerc](#cpython-coveragerc)
+   - [.editorconfig](#cpython-editorconfig)
+   - [.gitattributes](#cpython-gitattributes)
+   - [.gitignore](#cpython-gitignore)
+   - [.mailmap](#cpython-mailmap)
+   - [.pre-commit-config.yaml](#cpython-precommitconfigyaml)
+   - [.readthedocs.yml](#cpython-readthedocsyml)
+   - [LICENSE](#cpython-license)
+   - [Makefile.pre.in](#cpython-makefileprein)
+   - [aclocal.m4](#cpython-aclocalm4)
+   - [config.guess](#cpython-configguess)
+   - [config.sub](#cpython-configsub)
+   - [configure](#cpython-configure)
+   - [configure.ac](#cpython-configureac)
+   - [install-sh](#cpython-installsh)
+   - [pyconfig.h.in](#cpython-pyconfighin)
  - [**Settings**](#settings)
  - [**REFERENCES**](#ref)
 <!--- 
@@ -805,6 +842,783 @@ x
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython ) --->
+
+---
+
+<div id="cpython"></div>
+
+## CPython
+
+> [CPython](https://github.com/python/cpython) is one of the many **Python runtimes**, maintained and written by different teams of developers.
+
+ - [CPython](https://github.com/python/cpython) is the “official” or reference implementation of Python:
+   - Some other runtimes you may have heard are [PyPy](https://github.com/pypy/pypy), [Cython](https://github.com/cython/cython), and [Jython](https://github.com/jython/jython).
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.azure-pipelines ) --->
+
+---
+
+<div id="cpython-azurepipelines"></div>
+
+## /.azure-pipelines
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.devcontainer ) --->
+
+---
+
+<div id="cpython-devcontainer"></div>
+
+## /.devcontainer
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.github ) --->
+
+---
+
+<div id="cpython-github"></div>
+
+## /.github
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Android ) --->
+
+---
+
+<div id="cpython-android"></div>
+
+## /Android
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Doc ) --->
+
+---
+
+<div id="cpython-doc"></div>
+
+## /Doc
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Grammar ) --->
+
+---
+
+<div id="cpython-grammar"></div>
+
+## /Grammar
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Include ) --->
+
+---
+
+<div id="cpython-include"></div>
+
+## /Include
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/InternalDocs ) --->
+
+---
+
+<div id="cpython-internaldocs"></div>
+
+## /InternalDocs
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Lib ) --->
+
+---
+
+<div id="cpython-lib"></div>
+
+## /Lib
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Mac ) --->
+
+---
+
+<div id="cpython-mac"></div>
+
+## /Mac
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Misc ) --->
+
+---
+
+<div id="cpython-misc"></div>
+
+## /Misc
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Modules ) --->
+
+---
+
+<div id="cpython-modules"></div>
+
+## /Modules
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Objects ) --->
+
+---
+
+<div id="cpython-objects"></div>
+
+## /Objects
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/PC ) --->
+
+---
+
+<div id="cpython-pc"></div>
+
+## /PC
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/PCBuild ) --->
+
+---
+
+<div id="cpython-pcbuild"></div>
+
+## /PCBuild
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Parser ) --->
+
+---
+
+<div id="cpython-parser"></div>
+
+## /Parser
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Programs ) --->
+
+---
+
+<div id="cpython-programs"></div>
+
+## /Programs
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Python ) --->
+
+---
+
+<div id="cpython-python"></div>
+
+## /Python
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Tools ) --->
+
+---
+
+<div id="cpython-tools"></div>
+
+## /Tools
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/iOS ) --->
+
+---
+
+<div id="cpython-ios"></div>
+
+## /iOS
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.coveragerc ) --->
+
+---
+
+<div id="cpython-coveragerc"></div>
+
+## .coveragerc
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.editorconfig ) --->
+
+---
+
+<div id="cpython-editorconfig"></div>
+
+## .editorconfig
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.gitattributes ) --->
+
+---
+
+<div id="cpython-gitattributes"></div>
+
+## .gitattributes
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/.gitignore ) --->
+
+---
+
+<div id="cpython-gitignore"></div>
+
+## .gitignore
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/mailmap ) --->
+
+---
+
+<div id="cpython-mailmap"></div>
+
+## .mailmap
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/pre-commit-config.yaml ) --->
+
+---
+
+<div id="cpython-precommitconfigyaml"></div>
+
+## .pre-commit-config.yaml
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/readthedocs.yml ) --->
+
+---
+
+<div id="cpython-readthedocsyml"></div>
+
+## .readthedocs.yml
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/LICENSE ) --->
+
+---
+
+<div id="cpython-license"></div>
+
+## LICENSE
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/Makefile.pre.in ) --->
+
+---
+
+<div id="cpython-makefileprein"></div>
+
+## Makefile.pre.in
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/aclocal.m4 ) --->
+
+---
+
+<div id="cpython-aclocalm4"></div>
+
+## aclocal.m4
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/config.guess ) --->
+
+---
+
+<div id="cpython-configguess"></div>
+
+## config.guess
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/config.sub ) --->
+
+---
+
+<div id="cpython-configsub"></div>
+
+## config.sub
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+<!-- ( CPython/configure ) -->
+
+---
+
+<div id="cpython-configure"></div>
+
+## configure
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/configure.ac ) --->
+
+---
+
+<div id="cpython-configureac"></div>
+
+## configure.ac
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/install-sh ) --->
+
+---
+
+<div id="cpython-installsh"></div>
+
+## install-sh
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+<!--- ( CPython/pyconfig.h.in ) --->
+
+---
+
+<div id="cpython-pyconfighin"></div>
+
+## pyconfig.h.in
+
+> Coming soon...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Settings ) --->
 
 ---
@@ -852,7 +1666,11 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 ## REFERENCES
 
- - [Como o interpretador do Python funciona? | Live de Python #218](https://www.youtube.com/watch?v=pxfZTAJDipY)
+ - **Books:**
+   - [CPython Internals: Your Guide to the Python 3 Interpreter](https://www.amazon.com/CPython-Internals-Guide-Python-Interpreter/dp/1775093344)
+   - [Inside The Python Virtual Machine](https://leanpub.com/insidethepythonvirtualmachine)
+ - **Videos:**
+   - [Como o interpretador do Python funciona? | Live de Python #218](https://www.youtube.com/watch?v=pxfZTAJDipY)
 
 ---
 
