@@ -34,8 +34,10 @@
    - [/PC](#cpython-pc)
    - [/PCBuild](#cpython-pcbuild)
    - [/Parser](#cpython-parser)
-   - [/Programs](#cpython-programs)
-   - [/Python](#cpython-python)
+   - **/Programs (Source code for the python executable and other binaries):**
+     - [`python.c (Python interpreter entry point)`](#programs-python)
+   - **/Python (The CPython interpreter source code):**
+     - [`pyarena.c (Memory Management)`](#python-pyarena)
    - [/Tools](#cpython-tools)
    - [/iOS](#cpython-ios)
    - [.coveragerc](#cpython-coveragerc)
@@ -54,13 +56,20 @@
    - [configure.ac](#cpython-configureac)
    - [install-sh](#cpython-installsh)
    - [pyconfig.h.in](#cpython-pyconfighin)
- - [**Settings**](#settings)
+ - **Settings:**
+   - [Creating venv environment](#venv-environment)
+   - [Install Python From Source](#python-from-source)
+   - [Contributing to CPython](#contributing)
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
 - Different topic = "50" Whitespace character.
 --->
+
+
+
+
 
 
 
@@ -999,7 +1008,7 @@ x
 
 ## /Doc
 
-> Coming soon...
+> This directory contains the **reStructuredText (reST)** sources to the Python documentation. 
 
 
 
@@ -1018,7 +1027,7 @@ x
 
 ## /Grammar
 
-> Coming soon...
+> The computer-readable language definition.
 
 
 
@@ -1037,7 +1046,7 @@ x
 
 ## /Include
 
-> Coming soon...
+> The C header files.
 
 
 
@@ -1075,7 +1084,7 @@ x
 
 ## /Lib
 
-> Coming soon...
+> Standard library modules *written in Python*.
 
 
 
@@ -1094,7 +1103,7 @@ x
 
 ## /Mac
 
-> Coming soon...
+> **macOS** support files.
 
 
 
@@ -1113,7 +1122,7 @@ x
 
 ## /Misc
 
-> Coming soon...
+> Miscellaneous files.
 
 
 
@@ -1132,7 +1141,9 @@ x
 
 ## /Modules
 
-> Coming soon...
+> Standard Library **"Modules"** written in *C*.
+
+Source files for standard library extension modules, and former extension modules that are now builtin modules.
 
 
 
@@ -1151,7 +1162,7 @@ x
 
 ## /Objects
 
-> Coming soon...
+> Core types and the object model.
 
 
 
@@ -1169,7 +1180,7 @@ x
 
 ## /PC
 
-> Coming soon...
+> Windows build support files.
 
 
 
@@ -1187,7 +1198,7 @@ x
 
 ## /PCBuild
 
-> Coming soon...
+> Windows build support files for older Windows versions.
 
 
 
@@ -1205,7 +1216,7 @@ x
 
 ## /Parser
 
-> Coming soon...
+> The Python **"Parser"** source code.
 
 
 
@@ -1219,11 +1230,13 @@ x
 
 ---
 
-<div id="cpython-programs"></div>
+<div id="programs-python"></div>
 
-## /Programs
+## `python.c (Python interpreter entry point)`
 
-> Coming soon...
+ - When you type **"python"** into the terminal, you are running the Python binary, which has been compiled from source files like [CPython/Programs/python.c](https://github.com/python/cpython/blob/main/Programs/python.c).
+ - **NOTE:** So, although you are not directly calling [python.c](https://github.com/python/cpython/blob/main/Programs/python.c), **you are using the result of compiling that file**.
+
 
 
 
@@ -1237,14 +1250,19 @@ x
 
 ---
 
-<div id="cpython-python"></div>
+<div id="python-pyarena"></div>
 
-## /Python
+## `pyarena.c (Memory Management)`
 
-> Coming soon...
+> The **"PyArena"** is one of CPython’s Memory Management Structures.
 
+ - The code is within [Python/pyarena.c](https://github.com/python/cpython/blob/main/Python/pyarena.c) and contains a *wrapper* around C’s *Memory Allocation* and *Deallocation* functions:
+   - In a traditionally written C program, the developer should allocate memory for data structures before writing into that data.
 
+Python takes that responsibility away from the programmer and uses two algorithms:
 
+ - A Reference Counter.
+ - A Garbage Collector.
 
 
 
@@ -1259,7 +1277,7 @@ x
 
 ## /Tools
 
-> Coming soon...
+> Standalone tools useful for building or extending Python.
 
 
 
@@ -1615,17 +1633,13 @@ x
 
 
 
-
-
-
-
 <!--- ( Settings ) --->
 
 ---
 
-<div id="settings"></div>
+<div id="venv-environment"></div>
 
-## Settings
+## Creating venv environment
 
 **CREATE VIRTUAL ENVIRONMENT:**  
 ```bash
@@ -1654,6 +1668,197 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 **Now, Be Happy!!!** 😬
 
+---
+
+<div id="python-from-source"></div>
+
+## Install Python From Source
+
+To install Python from source, first we need some requirements (like C Compiler):
+
+For Debian, Ubuntu, or other apt-based systems:
+
+```bash
+sudo apt install build-essential
+```
+
+```bash
+sudo apt install libssl-dev zlib1g-dev libncurses5-dev \
+  libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev \
+  libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev libffi-dev \
+  tk-dev \
+  uuid-dev
+```
+
+
+Now, let's clone the repository:
+
+```bash
+git clone https://github.com/python/cpython
+```
+
+Enter the CPython directory:
+
+```bash
+cd cpython
+```
+
+Checkout to the specific branch:
+
+```bash
+git branch -a
+```
+
+```bash
+* main
+  remotes/origin/3.10
+  remotes/origin/3.11
+  remotes/origin/3.12
+  remotes/origin/3.13
+  remotes/origin/3.8
+  remotes/origin/3.9
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+```
+
+For example, let's checkout to the **"3.13 branch"**:
+
+```bash
+git checkout 3.13
+```
+
+Now let's prepare the system for compilation, configuring options and checking dependencies:
+
+```bash
+./configure --with-pydebug
+```
+
+ - `./configure`
+   - This script is used to prepare the build environment, checking dependencies and configuring specific build options. It is the first step in the building process for many software packages that use the autotools build system.
+ - `--with-pydebug`
+   - This is an argument passed to the configure script that specifies that the Python build should include debug symbols and other settings that make debugging the Python interpreter easier.
+   - This includes, for example, additional error checks, extra assertions, memory allocation tracking, among others.
+
+To compile the CPython code run the following command:
+
+```bash
+make -j
+```
+
+ - `make`
+   - Invokes the *make* utility, which reads the *Makefile* to determine how to build the project.
+ - `-j`
+   - Specifies that *make* should run multiple jobs in parallel.
+   - **NOTE:** When a number is not provided (e.g. -j2), make will attempt to run as many jobs in parallel as possible, depending on the resources available on the system.
+
+**OUTPUT:**
+```bash
+Checked 112 modules (33 built-in, 78 shared, 1 n/a on linux-x86_64, 0 disabled, 0 missing, 0 failed on import)
+```
+
+This indicates that during compilation, 112 modules were checked:
+
+ - 33 modules are integrated (built-in).
+ - 78 modules are shared.
+ - 1 module does not apply (n/a) to the linux-x86_64 platform.
+ - No modules were disabled.
+ - No modules are missing.
+ - No module failed on import.
+
+Now, let's run the tests:
+
+```bash
+./python -m test -j3
+```
+
+ - The command `./python -m test -j3` is used to run the Python test suite.
+ - The suite tests are located in the `Lib/test` directory within the Python source code. This directory contains a series of test files that are used to verify the *integrity* and *functionality* of the Python implementation.
+
+Finally, let's install the compiled Python on the system:
+
+```bash
+sudo make altinstall
+```
+
+---
+
+<div id="contributing"></div>
+
+## Contributing to CPython
+
+**Step-01:**  
+To contribute to [CPython](https://github.com/python/cpython), you must first do the ["Install Python From Source"](#python-from-source) process.
+
+**Step-02:**  
+Next, we must create a new branch from the branch we want to work in. For example, let's create a new branch from the `3.13` branch:
+
+```bash
+git checkout -b fix-issue-12345 3.13
+```
+
+ - `fix-issue-12345`
+   - The `name` of the *new branch*.
+   - `fix-issue` means fixing an issue.
+   - `12345` is the issue number.
+ - `3.13`
+   - The `branch` we want to work in.
+   - It could be main or anything else (Poderia ser a main ou qualquer outra).
+
+**Step-03:**  
+Now, we can do some **changes** or **implementations**.
+
+**Step-04:**  
+After *changes* or *implementations*, we need to run the **"tests"** and the **"patchcheck"**:
+
+```bash
+./python -m test -j3
+```
+
+```bash
+make patchcheck
+```
+
+**Step-05:**  
+Now, we need to **commit** the changes.
+
+```bash
+git add .
+```
+
+```bash
+git commit -S -m "fix issue 12345"
+```
+
+**Step-06:**  
+Now, we need to merge the changes to the `3.13` branch:
+
+```bash
+git checkout 3.13
+```
+
+```bash
+git -S merge fix-issue-12345
+```
+
+**Step-07:**  
+Before pushing, we need to check if new changes are in the `3.13` branch:
+
+```bash
+git remote update origin --prune
+```
+
+```bash
+git pull origin 3.13
+```
+
+**Step-08:**
+Now, we need to run the **"tests"** and the **"patchcheck"** again.
+
+> Comming soon...  
+> - Quais partes acima precisam de recompilação?
+> - Quais partes acima precisam de test novamente?
+
+
 
 
 
@@ -1671,6 +1876,8 @@ pip install -U -v --require-virtualenv -r requirements.txt
    - [Inside The Python Virtual Machine](https://leanpub.com/insidethepythonvirtualmachine)
  - **Videos:**
    - [Como o interpretador do Python funciona? | Live de Python #218](https://www.youtube.com/watch?v=pxfZTAJDipY)
+ - **Tutorials:**
+   - [Your Guide to the CPython Source Code](https://realpython.com/cpython-source-code-guide/)
 
 ---
 
