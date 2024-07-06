@@ -58,7 +58,8 @@
 ---
 
  - **Information Security & Cyber Security:**
-   - [Information Security Fundamentals](modules/security-fundamentals)
+   - [Information Security Fundamentals](modules/security/fundamentals)
+   - [Penetration Testing (Tips & Tricks)](modules/security/pentest-tips)
 
 ---
 
