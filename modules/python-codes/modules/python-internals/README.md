@@ -9,7 +9,7 @@
        - [`python -m tokenize <module.py>`](#mtokenize)
      - [**Parser (Analyzes the tokens and makes sense of operations)**](#intro-to-parser)
        - [Lexical Analysis](#intro-to-lexical-analysis)
-       - [Understanding the SyntaxError](#syntaxerror)
+       - [Understanding the "SyntaxError"](#syntaxerror)
      - [**Abstract Syntax Tree/AST ()**](#intro-to-ast)
        - [`python -m ast <module.py>`](#mast)
  - [**Python Compilation Process:**](#pcp)
@@ -17,45 +17,33 @@
    - [`python -m compileall <module.py> (Compiles the code)`](#mcompileall)
    - [`python -m dis <module.py> (Generates IL)`](#mdis)
  - [**Python Virtual Machine:**](#pvm)
- - [**CPython**:](#cpython)
-   - [/.azure-pipelines](#cpython-azurepipelines)
-   - [/.devcontainer](#cpython-devcontainer)
-   - [/.github](#cpython-github)
-   - [/Android](#cpython-android)
-   - [/Doc](#cpython-doc)
-   - [/Grammar](#cpython-grammar)
-   - [/Include](#cpython-include)
-   - [/InternalDocs](#cpython-internaldocs)
-   - [/Lib](#cpython-lib)
-   - [/Mac](#cpython-mac)
-   - [/Misc](#cpython-misc)
-   - [/Modules](#cpython-modules)
-   - [/Objects](#cpython-objects)
-   - [/PC](#cpython-pc)
-   - [/PCBuild](#cpython-pcbuild)
-   - [/Parser](#cpython-parser)
+ - [**CPython:**](#cpython)
+   - [Directory structure](https://devguide.python.org/getting-started/setup-building/#directory-structure)
    - **/Programs (Source code for the python executable and other binaries):**
      - [`python.c (Python interpreter entry point)`](#programs-python)
    - **/Python (The CPython interpreter source code):**
      - [`pyarena.c (Memory Management)`](#python-pyarena)
-   - [/Tools](#cpython-tools)
-   - [/iOS](#cpython-ios)
-   - [.coveragerc](#cpython-coveragerc)
-   - [.editorconfig](#cpython-editorconfig)
-   - [.gitattributes](#cpython-gitattributes)
-   - [.gitignore](#cpython-gitignore)
-   - [.mailmap](#cpython-mailmap)
-   - [.pre-commit-config.yaml](#cpython-precommitconfigyaml)
-   - [.readthedocs.yml](#cpython-readthedocsyml)
-   - [LICENSE](#cpython-license)
-   - [Makefile.pre.in](#cpython-makefileprein)
-   - [aclocal.m4](#cpython-aclocalm4)
-   - [config.guess](#cpython-configguess)
-   - [config.sub](#cpython-configsub)
-   - [configure](#cpython-configure)
-   - [configure.ac](#cpython-configureac)
-   - [install-sh](#cpython-installsh)
-   - [pyconfig.h.in](#cpython-pyconfighin)
+ - [**Python Enhancement Proposals (PEPs):**](https://github.com/python/peps)
+   - [**PEP 8 – Style Guide for Python Code:**](https://peps.python.org/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds)
+     - [Indentation](#pep08-indentation)
+     - [Tabs or Spaces?](#pep08-tabs-or-spaces)
+     - [Maximum Line Length](#pep08-maximum-line-length)
+     - [Should a Line Break Before or After a Binary Operator?](#pep08-line-break-before-or-after-binary-operator)
+     - [Blank Lines](#pep08-blank-lines)
+     - [Package and Module Names](#pep8-package-and-module-names)
+     - [Class Names](#pep8-class-names)
+     - [Function and Variable Names](#pep8-function-and-variable-names)
+     - [Constants](#pep8-constants)
+ - **Python Developer’s Guide References (Links):**
+   - **x:**
+     - x
+   - **x:**
+     - x
+   - **Contributing - Tips and Tricks:**
+     - [P.R Lifecycle (Making good PRs/Commits, Reviewing)](https://devguide.python.org/getting-started/pull-request-lifecycle/)
+     - [Setup and building (Add/Configure upstream)](https://devguide.python.org/getting-started/setup-building/)
+   - **Issues:**
+     - [Easy](https://github.com/python/cpython/issues?q=is%3Aissue+is%3Aopen+label%3Aeasy)
  - **Settings:**
    - [Creating venv environment](#venv-environment)
    - [Install Python From Source](#python-from-source)
@@ -165,9 +153,9 @@ To understand this, let's see another abstraction:
 
 Looking at the image above we can see that:
 
- - The compiler translates our code to an *Intermediate Language (IL)*.
- - This *Intermediate Language (IL)* is sended to a **Virtual Machine**.
- - The **Virtual Machine** communicates with the **computer (CPU)** and repeats this process until it finishes the tasks.
+ - **1st -** The compiler translates our code to an *Intermediate Language (IL)*.
+ - **2nd -** This *Intermediate Language (IL)* is sended to a **Virtual Machine**.
+ - **3rd -** The **Virtual Machine** communicates with the **computer (CPU)** and repeats this process until it finishes the tasks.
 
 > **NOTE:**  
 > See that here the Python compiler doesn't have a backend step to generate a *Machine Language*. **The *Virtual Machine* that communicates with the *computer (CPU)***.
@@ -268,10 +256,6 @@ For example, see the **tokenizations** below:
 
 ![img](images/tokenizer-01.jpeg)  
 
----
-
-![img](images/tokenizer-02.png)  
-
 See that:
 
  - **We have a Input (text):**
@@ -295,7 +279,7 @@ For example:
 
 > If you pay attention you can see that the **"+"** is an operator. But, which operator?
 
-Like "Morphological Analysis" here we also have subclass.
+Like **"Morphological Analysis"** here we also have **"subclass"**:
 
 ![img](images/tokenizer-04-v2.png)  
 
@@ -499,7 +483,7 @@ See that:
 
 <div id="syntaxerror"></div>
 
-## Understanding the SyntaxError
+## Understanding the "SyntaxError"
 
 To understand the **"SyntaxError"** imagine we have the following program:
 
@@ -527,7 +511,7 @@ python -m tokenize -e syntax_error.py
 ```
 
 **NOTE:**  
-See that the `*` and `+` are considered operators (plus and star respectively).
+See that the `*` and `+` are considered operators (*"PLUS"* and *"STAR"* respectively).
 
 > **Now... What happens if we try to run this program?**
 
@@ -924,308 +908,6 @@ x
 
 
 
-
-<!--- ( CPython/.azure-pipelines ) --->
-
----
-
-<div id="cpython-azurepipelines"></div>
-
-## /.azure-pipelines
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/.devcontainer ) --->
-
----
-
-<div id="cpython-devcontainer"></div>
-
-## /.devcontainer
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/.github ) --->
-
----
-
-<div id="cpython-github"></div>
-
-## /.github
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Android ) --->
-
----
-
-<div id="cpython-android"></div>
-
-## /Android
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Doc ) --->
-
----
-
-<div id="cpython-doc"></div>
-
-## /Doc
-
-> This directory contains the **reStructuredText (reST)** sources to the Python documentation. 
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Grammar ) --->
-
----
-
-<div id="cpython-grammar"></div>
-
-## /Grammar
-
-> The computer-readable language definition.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Include ) --->
-
----
-
-<div id="cpython-include"></div>
-
-## /Include
-
-> The C header files.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/InternalDocs ) --->
-
----
-
-<div id="cpython-internaldocs"></div>
-
-## /InternalDocs
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Lib ) --->
-
----
-
-<div id="cpython-lib"></div>
-
-## /Lib
-
-> Standard library modules *written in Python*.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Mac ) --->
-
----
-
-<div id="cpython-mac"></div>
-
-## /Mac
-
-> **macOS** support files.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Misc ) --->
-
----
-
-<div id="cpython-misc"></div>
-
-## /Misc
-
-> Miscellaneous files.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Modules ) --->
-
----
-
-<div id="cpython-modules"></div>
-
-## /Modules
-
-> Standard Library **"Modules"** written in *C*.
-
-Source files for standard library extension modules, and former extension modules that are now builtin modules.
-
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Objects ) --->
-
----
-
-<div id="cpython-objects"></div>
-
-## /Objects
-
-> Core types and the object model.
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/PC ) --->
-
----
-
-<div id="cpython-pc"></div>
-
-## /PC
-
-> Windows build support files.
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/PCBuild ) --->
-
----
-
-<div id="cpython-pcbuild"></div>
-
-## /PCBuild
-
-> Windows build support files for older Windows versions.
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Parser ) --->
-
----
-
-<div id="cpython-parser"></div>
-
-## /Parser
-
-> The Python **"Parser"** source code.
-
-
-
-
-
-
-
-
-
 <!--- ( CPython/Programs ) --->
 
 ---
@@ -1234,8 +916,8 @@ Source files for standard library extension modules, and former extension module
 
 ## `python.c (Python interpreter entry point)`
 
- - When you type **"python"** into the terminal, you are running the Python binary, which has been compiled from source files like [CPython/Programs/python.c](https://github.com/python/cpython/blob/main/Programs/python.c).
- - **NOTE:** So, although you are not directly calling [python.c](https://github.com/python/cpython/blob/main/Programs/python.c), **you are using the result of compiling that file**.
+ - When you type **"python"** into the terminal, you run the Python binary, compiled from source files like [CPython/Programs/python.c](https://github.com/python/cpython/blob/main/Programs/python.c).
+ - **NOTE:** So, although you are not directly calling [CPython/Programs/python.c](https://github.com/python/cpython/blob/main/Programs/python.c), you are using the result of compiling that file.
 
 
 
@@ -1269,322 +951,411 @@ Python takes that responsibility away from the programmer and uses two algorithm
 
 
 
-<!--- ( CPython/Tools ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( PEP 8 – Style Guide for Python Code ) --->
 
 ---
 
-<div id="cpython-tools"></div>
+<div id="pep08-indentation"></div>
 
-## /Tools
+## Indentation
 
-> Standalone tools useful for building or extending Python.
+Use **"4 spaces"** per *indentation* level:
 
+```python
+# Correct:
 
+# Aligned with opening delimiter.
+foo = long_function_name(var_one, var_two,
+                         var_three, var_four)
 
+# Add 4 spaces (an extra level of indentation) to distinguish arguments from the rest.
+def long_function_name(
+        var_one, var_two, var_three,
+        var_four):
+    print(var_one)
 
+# Hanging indents should add a level.
+foo = long_function_name(
+    var_one, var_two,
+    var_three, var_four)
+```
 
+```python
+# Wrong:
 
+# Arguments on first line forbidden when not using vertical alignment.
+foo = long_function_name(var_one, var_two,
+    var_three, var_four)
 
-
-
-<!--- ( CPython/iOS ) --->
-
----
-
-<div id="cpython-ios"></div>
-
-## /iOS
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/.coveragerc ) --->
-
----
-
-<div id="cpython-coveragerc"></div>
-
-## .coveragerc
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/.editorconfig ) --->
+# Further indentation required as indentation is not distinguishable.
+def long_function_name(
+    var_one, var_two, var_three,
+    var_four):
+    print(var_one)
+```
 
 ---
 
-<div id="cpython-editorconfig"></div>
+<div id="pep08-tabs-or-spaces"></div>
 
-## .editorconfig
+## Tabs or Spaces?
 
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/.gitattributes ) --->
+> **Spaces are the preferred indentation method.**
 
 ---
 
-<div id="cpython-gitattributes"></div>
+<div id="pep08-maximum-line-length"></div>
 
-## .gitattributes
+### Maximum Line Length
 
-> Coming soon...
+ - Limit all lines to a maximum of 79 characters.
+ - **NOTE:** When you write *explanatory* **"docstrings"** and **"comments"**, **"limiting lines to 72 characters"**:
+   - This ensures that notes are easily visible and readable (legíveis).
 
+**NOTE:**  
+The preferred way of wrapping long lines is by using Python’s implied line continuation inside *parentheses*, *brackets* and *braces*.
 
+For example:
 
+**Function Calls with Many Arguments:**
+```python
+# Instead of using backslashes:
+result = my_function(first_argument, second_argument, third_argument, 
+                     fourth_argument, fifth_argument)
 
+# Use parentheses:
+result = my_function(
+    first_argument,
+    second_argument,
+    third_argument,
+    fourth_argument,
+    fifth_argument
+)
+```
 
+**Long Lists, Dictionaries, and Sets:**
+```python
+# Long list using backslashes:
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, \
+           13, 14, 15, 16, 17, 18, 19, 20]
 
+# Long list using brackets:
+my_list = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+]
+```
 
+**Long Logical Expressions:**
+```python
+# Using backslashes:
+if (condition1 and condition2 and condition3 and condition4 and \
+    condition5 and condition6):
+    perform_action()
 
-
-<!--- ( CPython/.gitignore ) --->
-
----
-
-<div id="cpython-gitignore"></div>
-
-## .gitignore
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/mailmap ) --->
-
----
-
-<div id="cpython-mailmap"></div>
-
-## .mailmap
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/pre-commit-config.yaml ) --->
-
----
-
-<div id="cpython-precommitconfigyaml"></div>
-
-## .pre-commit-config.yaml
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/readthedocs.yml ) --->
+# Using parentheses:
+if (condition1 and condition2 and condition3 and condition4 and
+    condition5 and condition6):
+    perform_action()
+```
 
 ---
 
-<div id="cpython-readthedocsyml"></div>
+<div id="pep08-line-break-before-or-after-binary-operator"></div>
 
-## .readthedocs.yml
+## Should a Line Break Before or After a Binary Operator?
 
-> Coming soon...
+```python
+# Wrong:
+# operators sit far away from their operands
+income = (gross_wages +
+          taxable_interest +
+          (dividends - qualified_dividends) -
+          ira_deduction -
+          student_loan_interest)
+```
 
-
-
-
-
-
-
-
-
-<!--- ( CPython/LICENSE ) --->
-
----
-
-<div id="cpython-license"></div>
-
-## LICENSE
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/Makefile.pre.in ) --->
+```python
+# Correct:
+# easy to match operators with operands
+income = (gross_wages
+          + taxable_interest
+          + (dividends - qualified_dividends)
+          - ira_deduction
+          - student_loan_interest)
+```
 
 ---
 
-<div id="cpython-makefileprein"></div>
+<div id="pep08-blank-lines"></div>
 
-## Makefile.pre.in
+## Blank Lines
 
-> Coming soon...
+**Top-Level function and class definitions:**  
+Surrounding top-level function and class definitions with two blank lines helps visually separate different parts of the code, making it easier to navigate.
 
-
-
-
-
-
-
-
-
-<!--- ( CPython/aclocal.m4 ) --->
-
----
-
-<div id="cpython-aclocalm4"></div>
-
-## aclocal.m4
-
-> Coming soon...
+```python
+# Top-level function definition
+def my_function1():
+    pass
 
 
+# Another top-level function definition
+def my_function2():
+    pass
 
 
+# Top-level class definition
+class MyClass:
+    pass
+```
+
+**Methods inside a class:**  
+Surrounding method definitions inside a class with a single blank line helps visually separate the methods, improving readability.
+
+```python
+class MyClass:
+    def method1(self):
+        pass
+
+    def method2(self):
+        pass
+```
+
+**Blank lines to separate related functions:**  
+Using blank lines to separate groups of related functions can improve code organization. However, this should be done sparingly.
+
+```python
+def related_function1():
+    pass
+
+def related_function2():
+    pass
 
 
+def another_function():
+    pass
+```
 
+**Blank lines in functions to indicate logical sections:**  
+Within functions, using blank lines to indicate logical sections can help make the code more comprehensible.
 
+```python
+def calculate_total(prices):
+    total = 0.0
 
-<!--- ( CPython/config.guess ) --->
+    # Calculate the total of the prices.
+    for price in prices:
+        total += price
 
----
-
-<div id="cpython-configguess"></div>
-
-## config.guess
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/config.sub ) --->
-
----
-
-<div id="cpython-configsub"></div>
-
-## config.sub
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-
-<!-- ( CPython/configure ) -->
+    # Return the calculated total.
+    return total
+```
 
 ---
 
-<div id="cpython-configure"></div>
+<div id="pep8-package-and-module-names"></div>
 
-## configure
+## Package and Module Names
 
-> Coming soon...
+**Naming modules with Short, all-lowercase names:**  
+Choosing short, all-lowercase names for modules makes importing and using them easier, avoiding confusion and typographical errors.
 
+```python
+# Appropriate module name.
+import utilities
 
+# Inappropriate module name.
+import GeneralUtilities
+```
 
+**Using underscores to improve readability of modules:**
+When a module has a compound name, using underscores can improve readability.
 
+```python
+# Module name with underscore for readability
+import data_processing
 
+# Module name without underscore, less readable
+import dataprocessing
+```
 
+**Naming packages with short, all-Lowercase names:**
+Keeping package names short and lowercase, without underscores, helps maintain a clean and navigable project structure.
 
+```python
+# Appropriate package structure
+my_project/
+    setup.py
+    my_module/
+        __init__.py
+        processing.py
 
-
-<!--- ( CPython/configure.ac ) --->
-
----
-
-<div id="cpython-configureac"></div>
-
-## configure.ac
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/install-sh ) --->
-
----
-
-<div id="cpython-installsh"></div>
-
-## install-sh
-
-> Coming soon...
-
-
-
-
-
-
-
-
-
-<!--- ( CPython/pyconfig.h.in ) --->
+# Inappropriate package structure
+MyProject/
+    setup.py
+    MyModule/
+        __init__.py
+        DataProcessing.py
+```
 
 ---
 
-<div id="cpython-pyconfighin"></div>
+<div id="pep8-class-names"></div>
 
-## pyconfig.h.in
+## Class names
 
-> Coming soon...
+**Using the CapWords convention for class names:**  
+Using the CapWords (or PascalCase) convention for naming classes makes it easier to identify classes in the code and follows common practice in the Python community.
+
+```python
+# Class name using CapWords
+class MyExampleClass:
+    pass
+
+# Inappropriate class name
+class my_example_class:
+    pass
+```
+
+**Using function naming convention for callable interfaces:**
+In cases where the interface of a class is documented and used primarily as a callable, the function naming convention can be used.
+
+```python
+# Class used as a callable with function name
+class process_data:
+    def __call__(self, data):
+        pass
+
+# Using the class as a callable
+processor = process_data()
+processor(data)
+```
+
+**Builtin Exceptions and Constants:**
+For builtin exceptions and constants, the CapWords convention is also used, distinguishing them from other keywords and builtin functions.
+
+```python
+# Exception name using CapWords
+class MyException(Exception):
+    pass
+
+# Builtin constant name using CapWords
+MAX_SIZE = 100
+```
+
+---
+
+<div id="pep8-function-and-variable-names"></div>
+
+## Function and Variable Names
+
+**Naming functions with lowercase letters and underscores:**  
+Functions should be named using lowercase letters and underscores to separate words, which improves readability.
+
+```python
+# Appropriate function name
+def calculate_total():
+    pass
+
+# Inappropriate function name
+def CalculateTotal():
+    pass
+```
+
+**Naming variables with the same convention as functions:**  
+Variables should follow the same naming convention as functions, using lowercase letters and underscores to separate words.
+
+```python
+# Appropriate variable name
+total_items = 10
+
+# Inappropriate variable name
+TotalItems = 10
+```
+
+---
+
+<div id="pep8-constants"></div>
+
+## Constants
+
+**Defining constants at the module level:**  
+Constants are usually defined at the module level, where they are visible and accessible throughout the module.
+
+```python
+# Defining constants at the module level
+MAX_OVERFLOW = 100
+TOTAL_USERS = 500
+```
+
+**Using all capital letters with underscores to separate words:**
+Writing constants in all capital letters with underscores separating words helps to distinguish them from regular variables.
+
+```python
+# Well-defined constants
+MAX_TIME = 3600
+ATTEMPT_LIMIT = 5
+```
+
+**Defining constants for global settings:**  
+Constants are often used to define global settings that should not be changed during the program execution.
+
+```python
+# Global settings using constants
+BUFFER_SIZE = 1024
+SERVER_PORT = 8080
+```
+
+
+
+
 
 
 
@@ -1786,28 +1557,115 @@ sudo make altinstall
 
 ## Contributing to CPython
 
-**Step-01:**  
-To contribute to [CPython](https://github.com/python/cpython), you must first do the ["Install Python From Source"](#python-from-source) process.
+**STEP-x:** Fork the project.  
+To contribute to [CPython](https://github.com/python/cpython)the first step is to Fork the repository.
 
-**Step-02:**  
+**STEP-x:** Clone the forked repository.  
+Now, we need clone the forked repository on our local machine:
+
+```bash
+git clone https://github.com/your-username/cpython
+```
+
+**STEP-x:** Add a remote.  
+Now, we need to define a new remote pointing to the original project:
+
+```bash
+git remote add upstream https://github.com/python/cpython
+```
+
+ - **Now you have two remotes for this project:**
+ - **origin:**
+   - The *"origin"* that points to your fork of the project on GitHub:
+     - You have *"read"* and *"write"* access to this remote.
+ - **upstream:**
+   - The *"upstream"* that points to the main repository of the project on GitHub:
+     - You only have *"read"* access to this remote.
+
+**NOTE:**  
+You can view these remotes with the command **git remote -v**:
+
+```bash
+git remote -v
+```
+
+**OUTPUT:**  
+```bash
+origin  https://github.com/rodrigols89/cpython (fetch)
+origin  https://github.com/rodrigols89/cpython (push)
+upstream        https://github.com/python/cpython (fetch)
+upstream        https://github.com/python/cpython (push)
+```
+
+**STEP-x:** Install Python.  
+Now, we need to install Python on our local machine. You can follow the ["Install Python From Source"](#python-from-source) process.
+
+
+**STEP-x:** Get updates.  
+Before working in the project, we need to get updates from the **upstream repository (Main repository)** to **origin repository (Your fork)**.
+
+```bash
+git remote update origin upstream --prune
+```
+
+ - `git remote update`
+   - Updates all the configured remote repositories in your local repository.
+   - It fetches all the changes from the remotes but does not merge them into your local branches.
+ - `origin upstream`
+   - Specifies the remotes to be updated.
+   - In this case, it updates both the **"origin"** and **"upstream"** remotes.
+ - `--prune`
+   - Removes any local references to remote branches that have been deleted on the remote server.
+   - This helps keep your local repository clean and in sync with the remote repositories.
+
+```bash
+git checkout <branch> # where <branch> is the branch you want to get updates.
+git pull upstream <branch>
+git push origin <branch>
+```
+
+ - `git checkout <branch>`
+   - We ensured that we were on the `<branch>` we want to work in.
+ - `git pull upstream <branch>`
+   - The command **"git pull upstream"** fetches the data from the *upstream remote (Main repository)*.
+ - `git push origin <branch>`
+   - The command **"git push origin"** sends the data fetched from the original project (upstream) to my GitHub (origin).
+
+**STEP-x:** Create a new branch.  
 Next, we must create a new branch from the branch we want to work in. For example, let's create a new branch from the `3.13` branch:
 
 ```bash
 git checkout -b fix-issue-12345 3.13
 ```
 
- - `fix-issue-12345`
-   - The `name` of the *new branch*.
+ - `fix-issue-12345` The `name` of the *new branch*.
    - `fix-issue` means fixing an issue.
    - `12345` is the issue number.
  - `3.13`
    - The `branch` we want to work in.
    - It could be main or anything else (Poderia ser a main ou qualquer outra).
 
-**Step-03:**  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**STEP-x:**
 Now, we can do some **changes** or **implementations**.
 
-**Step-04:**  
+**STEP-x:**
 After *changes* or *implementations*, we need to run the **"tests"** and the **"patchcheck"**:
 
 ```bash
@@ -1818,7 +1676,7 @@ After *changes* or *implementations*, we need to run the **"tests"** and the **"
 make patchcheck
 ```
 
-**Step-05:**  
+**STEP-x:**
 Now, we need to **commit** the changes.
 
 ```bash
@@ -1829,7 +1687,7 @@ git add .
 git commit -S -m "fix issue 12345"
 ```
 
-**Step-06:**  
+**STEP-x:**
 Now, we need to merge the changes to the `3.13` branch:
 
 ```bash
@@ -1840,7 +1698,7 @@ git checkout 3.13
 git -S merge fix-issue-12345
 ```
 
-**Step-07:**  
+**STEP-x:**
 Before pushing, we need to check if new changes are in the `3.13` branch:
 
 ```bash
@@ -1851,7 +1709,7 @@ git remote update origin --prune
 git pull origin 3.13
 ```
 
-**Step-08:**
+**STEP-x:**
 Now, we need to run the **"tests"** and the **"patchcheck"** again.
 
 > Comming soon...  
