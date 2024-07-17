@@ -2,6 +2,7 @@
 
 ## Contents
 
+ - [Python Internals (Theory and Practice)](modules/python-internals)
  - [Errors and Exceptions](modules/errors-and-exceptions)
  - [Object-Oriented Programming (OOP)](modules/oop)
  - **Web Development:**
