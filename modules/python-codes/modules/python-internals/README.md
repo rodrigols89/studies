@@ -17,7 +17,7 @@
    - [`python -m compileall <module.py> (Compiles the code)`](#mcompileall)
    - [`python -m dis <module.py> (Generates IL)`](#mdis)
  - [**Python Virtual Machine:**](#pvm)
- - [**CPython:**](#cpython)
+ - [**CPython Runtime Project:**](#cpython)
    - [Directory structure](https://devguide.python.org/getting-started/setup-building/#directory-structure)
    - **/Programs (Source code for the python executable and other binaries):**
      - [`python.c (Python interpreter entry point)`](#programs-python)
@@ -35,15 +35,25 @@
      - [Function and Variable Names](#pep8-function-and-variable-names)
      - [Constants](#pep8-constants)
  - **Python Developer’s Guide References (Links):**
-   - **x:**
-     - x
-   - **x:**
-     - x
    - **Contributing - Tips and Tricks:**
-     - [P.R Lifecycle (Making good PRs/Commits, Reviewing)](https://devguide.python.org/getting-started/pull-request-lifecycle/)
      - [Setup and building (Add/Configure upstream)](https://devguide.python.org/getting-started/setup-building/)
+     - [P.R Lifecycle (Making good PRs/Commits, Reviewing)](https://devguide.python.org/getting-started/pull-request-lifecycle/)
+     - [Issue tracker (How to create an "Issue")](https://devguide.python.org/triage/issue-tracker/)
+     - [GitHub labels (CPython Labels)](https://devguide.python.org/triage/labels/)
    - **Issues:**
      - [Easy](https://github.com/python/cpython/issues?q=is%3Aissue+is%3Aopen+label%3Aeasy)
+     - [Docs](https://github.com/python/cpython/labels/docs)
+   - **Core Developers:**
+     - [How to become a core developer](https://devguide.python.org/core-developers/become-core-developer/)
+     - [Experts index (Maintainers)](https://devguide.python.org/core-developers/experts/)
+     - [CODEOWNERS (P.R Reviewers)](https://github.com/python/cpython/blob/main/.github/CODEOWNERS)
+   - **Documentation:**
+     - [Python Brazilian Portuguese Documentation](https://docs.python.org/pt-br)
+     - [Python Official Documentation](https://docs.python.org)
+     - [Building the documentation](https://devguide.python.org/documentation/start-documenting/#building-the-)
+     - [reStructuredText markup](https://devguide.python.org/documentation/markup/)
+   - [**Status of Python versions (Releases, Supported/Unsupported versions, Status key)**](https://devguide.python.org/versions/)
+     - [Python Development Cycle](https://devguide.python.org/developer-workflow/development-cycle/)
  - **Settings:**
    - [Creating venv environment](#venv-environment)
    - [Install Python From Source](#python-from-source)
@@ -886,7 +896,7 @@ x
 
 
 
-<!--- ( CPython ) --->
+<!--- ( CPython Runtime Project ) --->
 
 ---
 
@@ -1215,7 +1225,7 @@ import utilities
 import GeneralUtilities
 ```
 
-**Using underscores to improve readability of modules:**
+**Using underscores to improve readability of modules:**  
 When a module has a compound name, using underscores can improve readability.
 
 ```python
@@ -1226,7 +1236,7 @@ import data_processing
 import dataprocessing
 ```
 
-**Naming packages with short, all-Lowercase names:**
+**Naming packages with short, all-Lowercase names:**  
 Keeping package names short and lowercase, without underscores, helps maintain a clean and navigable project structure.
 
 ```python
@@ -1264,7 +1274,7 @@ class my_example_class:
     pass
 ```
 
-**Using function naming convention for callable interfaces:**
+**Using function naming convention for callable interfaces:**  
 In cases where the interface of a class is documented and used primarily as a callable, the function naming convention can be used.
 
 ```python
@@ -1278,7 +1288,7 @@ processor = process_data()
 processor(data)
 ```
 
-**Builtin Exceptions and Constants:**
+**Builtin Exceptions and Constants:**  
 For builtin exceptions and constants, the CapWords convention is also used, distinguishing them from other keywords and builtin functions.
 
 ```python
