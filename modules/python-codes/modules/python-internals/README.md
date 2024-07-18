@@ -34,9 +34,10 @@
      - [Class Names](#pep8-class-names)
      - [Function and Variable Names](#pep8-function-and-variable-names)
      - [Constants](#pep8-constants)
- - **Python Developer’s Guide References (Links):**
+ - **Python Developer’s Guide References:**
    - **Contributing - Tips and Tricks:**
      - [Setup and building (Add/Configure upstream | Link)](https://devguide.python.org/getting-started/setup-building/)
+     - [Python Development Cycle (Link)](https://devguide.python.org/developer-workflow/development-cycle/)
      - [P.R Lifecycle (Making good PRs/Commits, Reviewing | Link)](https://devguide.python.org/getting-started/pull-request-lifecycle/)
      - [Issue tracker (How to create an "Issue" | Link)](https://devguide.python.org/triage/issue-tracker/)
      - [GitHub labels (CPython Labels | Link)](https://devguide.python.org/triage/labels/)
@@ -53,11 +54,10 @@
      - [Building the documentation (Link)](https://devguide.python.org/documentation/start-documenting/#building-the-)
      - [reStructuredText markup (Link)](https://devguide.python.org/documentation/markup/)
    - [**Status of Python versions (Releases, Supported/Unsupported versions, Status key | Link)**](https://devguide.python.org/versions/)
-     - [Python Development Cycle (Link)](https://devguide.python.org/developer-workflow/development-cycle/)
  - **Settings:**
    - [Creating venv environment](#venv-environment)
    - [Install Python From Source](#python-from-source)
-   - [Contributing to CPython](#contributing)
+   - [Contribute Process](#contribute-process)
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
@@ -1561,11 +1561,20 @@ Finally, let's install the compiled Python on the system:
 sudo make altinstall
 ```
 
+
+
+
+
+
+
+
+
+
 ---
 
-<div id="contributing"></div>
+<div id="contribute-process"></div>
 
-## Contributing to CPython
+## Contribute Process
 
 **STEP-x:** Fork the project.  
 To contribute to [CPython](https://github.com/python/cpython)the first step is to Fork the repository.
@@ -1592,8 +1601,8 @@ git remote add upstream https://github.com/python/cpython
    - The *"upstream"* that points to the main repository of the project on GitHub:
      - You only have *"read"* access to this remote.
 
-**NOTE:**  
-You can view these remotes with the command **git remote -v**:
+> **NOTE:**  
+> You can view these remotes with the command **git remote -v**:
 
 ```bash
 git remote -v
@@ -1655,27 +1664,10 @@ git checkout -b fix-issue-12345 3.13
    - The `branch` we want to work in.
    - It could be main or anything else (Poderia ser a main ou qualquer outra).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**STEP-x:**
+**STEP-x:** Make changes/implementations.  
 Now, we can do some **changes** or **implementations**.
 
-**STEP-x:**
+**STEP-x:** Run the tests and the patchcheck.  
 After *changes* or *implementations*, we need to run the **"tests"** and the **"patchcheck"**:
 
 ```bash
@@ -1686,7 +1678,7 @@ After *changes* or *implementations*, we need to run the **"tests"** and the **"
 make patchcheck
 ```
 
-**STEP-x:**
+**STEP-x:** Commit changes.  
 Now, we need to **commit** the changes.
 
 ```bash
@@ -1697,7 +1689,7 @@ git add .
 git commit -S -m "fix issue 12345"
 ```
 
-**STEP-x:**
+**STEP-x:** Merge changes.  
 Now, we need to merge the changes to the `3.13` branch:
 
 ```bash
@@ -1708,23 +1700,76 @@ git checkout 3.13
 git -S merge fix-issue-12345
 ```
 
-**STEP-x:**
-Before pushing, we need to check if new changes are in the `3.13` branch:
+**STEP-x:** "Get updates" and "tests/patchcheck" (again).  
+Before doing a P.R we need to check for **updates** and run the **"tests"** and the **"patchcheck"** again.
+
+**STEP-x:** Push changes.  
+Now, we need to **push** the changes to our local repository.
 
 ```bash
-git remote update origin --prune
+git push origin 3.13
 ```
+
+**STEP-x:** Create Pull Request.  
+To create a P.R, we need to follow the following syntax:
 
 ```bash
-git pull origin 3.13
+gh-NNNN
 ```
 
-**STEP-x:**
-Now, we need to run the **"tests"** and the **"patchcheck"** again.
+> **NOTE:**  
+> If you are fixing *"issue"* number *"12345"*, you should include **gh-12345** in the pull request description.
 
-> Comming soon...  
-> - Quais partes acima precisam de recompilação?
-> - Quais partes acima precisam de test novamente?
+**EXAMPLE:**
+```bash
+gh-12345: Fix some bug in spam module
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
