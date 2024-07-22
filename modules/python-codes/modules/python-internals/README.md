@@ -48,16 +48,17 @@
      - [How to become a core developer (Link)](https://devguide.python.org/core-developers/become-core-developer/)
      - [Experts index (Maintainers | Link)](https://devguide.python.org/core-developers/experts/)
      - [CODEOWNERS (P.R Reviewers | Link)](https://github.com/python/cpython/blob/main/.github/CODEOWNERS)
+ - **Settings:**
+   - [Creating venv environment](#venv-environment)
+   - [Install Python From Source](#python-from-source)
+   - [Contribute Process](#contribute-process)
+ - **Useful Links:**
+   - [**Status of Python versions (Releases, Supported/Unsupported versions, Status key | Link)**](https://devguide.python.org/versions/)
    - **Documentation:**
      - [Python Brazilian Portuguese Documentation (Link)](https://docs.python.org/pt-br)
      - [Python Official Documentation (Link)](https://docs.python.org)
      - [Building the documentation (Link)](https://devguide.python.org/documentation/start-documenting/#building-the-)
      - [reStructuredText markup (Link)](https://devguide.python.org/documentation/markup/)
-   - [**Status of Python versions (Releases, Supported/Unsupported versions, Status key | Link)**](https://devguide.python.org/versions/)
- - **Settings:**
-   - [Creating venv environment](#venv-environment)
-   - [Install Python From Source](#python-from-source)
-   - [Contribute Process](#contribute-process)
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
