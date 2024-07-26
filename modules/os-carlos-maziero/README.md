@@ -9,6 +9,8 @@
    - [Objetivos de um SO](#so-goal)
    - [Gerência de recursos](#res-management)
  - **Estrutura de um SO:**
+   - [Elementos de um SO](#os-elements)
+ - **O conceito de Tarefa:**
  - [**REFERENCES**](#references)
 <!--- 
 [WHITESPACE RULES]
@@ -176,11 +178,109 @@ Ao desenvolver um Sistema Operacional, algumas funcionalidades que ajudam a ger�
 
 <!--- ( Estrutura de um SO ) --->
 
+---
+
+<div id="os-elements"></div>
+
+## Elementos de um Sistema Operacional
+
+ - **Núcleo (Core):**
+   - É o coração do Sistema Operacional, responsável pela gerência dos recursos do hardware usados pelas aplicações.
+   - Ele também implementa as principais abstrações utilizadas pelos aplicativos e programas utilitários.
+ - **Código de inicialização (boot code):**
+   - A inicialização do hardware requer uma série de tarefas complexas, como reconhecer os dispositivos instalados, testá-los e configurá-los adequadamente para seu uso posterior.
+   - Outra tarefa importante é carregar o núcleo do sistema operacional em memória e iniciar sua execução.
+ - **Drivers:**
+   - Módulos de código específicos para acessar os dispositivos físicos.
+   - Existe um driver para cada tipo de dispositivo, como discos rígidos SATA, portas USB, placas gráfica, etc.
+   - Muitas vezes o driver é construído pelo próprio fabricante do hardware e fornecido em forma compilada (em linguagem de máquina) para ser acoplado ao restante do sistema operacional.
+ - **Programas utilitários:**
+   - São programas que facilitam o uso do Sistema Computacional, fornecendo funcionalidades complementares ao núcleo, como formatação de discos e mídias, configuração de dispositivos, manipulação de arquivos (mover, copiar, apagar), interpretador de comandos, terminal, interface gráfica, gerência de janelas, etc.
+
+![img](images/so-elements.png)  
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( O conceito de Tarefa ) --->
+
+---
+
+<div id=""></div>
+
+## x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
 
 
 
