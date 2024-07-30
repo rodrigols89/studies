@@ -1,32 +1,37 @@
 > **NOTE:**  
-> All notes here are in Portuguese (Brazil).
+> All notes here are in Portuguese (Brazilian).
 
-# Sistemas Operacionais: Conceitos e Mecanismos (Portuguese Brazil)
+# Sistemas Operacionais: Conceitos e Mecanismos (Portuguese Brazilian notes)
 
 ## Contents
 
- - **Conceitos Básicos**
-   - [Objetivos de um SO](#so-goal)
-   - [Gerência de recursos](#res-management)
- - **Estrutura de um SO:**
-   - [Elementos de um SO](#os-elements)
- - **O conceito de Tarefa:**
-   - [Exemplos de Tarefas (Simultâneas)](#tasks-examples)
-   - [Programa vs. Tarefa](#program-vs-task)
-   - [Ciclo de vida das tarefas](#tasks-lifecycle)
- - **Implementação de Tarefas:**
-   - [Contexto, Descritor de Contexto](#intro-to-contexts)
-   - [Troca de Contexto](#context-switching)
-   - [Despachante (Dispatcher) e Escalonador (Scheduler)](#dispatcher-vs-scheduler)
-   - [**Processos:**](#intro-to-processes)
-     - [Estados de um Processo](#process-states)
-     - [Chamadas de Sistema (+Parent & Child Processes)](#sys-calls)
-   - [**Threads (Tarefas dentro de um Processo):**](#intro-to-threads)
-   - [Uso de Processos versus Threads para criação de tarefas](#processes-versus-threads)
+ - **Teoria:**
+   - **Conceitos Básicos**
+     - [Objetivos de um SO](#so-goal)
+     - [Gerência de recursos](#res-management)
+   - **Estrutura de um SO:**
+     - [Elementos de um SO](#os-elements)
+   - **O conceito de Tarefa:**
+     - [Exemplos de Tarefas (Simultâneas)](#tasks-examples)
+     - [Programa vs. Tarefa](#program-vs-task)
+     - [Ciclo de vida das tarefas](#tasks-lifecycle)
+   - **Implementação de Tarefas:**
+     - [Contexto, Descritor de Contexto](#intro-to-contexts)
+     - [Troca de Contexto](#context-switching)
+     - [Despachante (Dispatcher) e Escalonador (Scheduler)](#dispatcher-vs-scheduler)
+     - [**Processos:**](#intro-to-processes)
+       - [Estados de um Processo](#process-states)
+       - [Chamadas de Sistema (+Parent & Child Processes)](#sys-calls)
+     - [**Threads (Tarefas dentro de um Processo):**](#intro-to-threads)
+     - [Uso de Processos versus Threads para criação de tarefas](#processes-versus-threads)
+ - **Implementação:**
+   - [Biblioteca de Filas](#queues-library)
+ - **Settings**
+   - [Zig Settings](#zig-settings)
  - [**REFERENCES**](#references)
 <!--- 
 [WHITESPACE RULES]
-- Same topic = "5" Whitespace character.
+- Same topic = "10" Whitespace character.
 - Different topic = "50" Whitespace character.
 --->
 
@@ -81,7 +86,7 @@
 
 
 
-<!--- ( Conceitos Básicos ) --->
+<!--- ( Teoria/Conceitos Básicos ) --->
 
 ---
 
@@ -94,10 +99,6 @@
 Por exemplo, veja a imagem abaixo:
 
 ![img](images/so-goal-01.png)  
-
-
-
-
 
 ---
 
@@ -140,49 +141,6 @@ Ao desenvolver um Sistema Operacional, algumas funcionalidades que ajudam a ger�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( Estrutura de um SO ) --->
 
 ---
@@ -215,48 +173,7 @@ Ao desenvolver um Sistema Operacional, algumas funcionalidades que ajudam a ger�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( O conceito de Tarefa ) --->
+<!--- ( Teoria/O conceito de Tarefa ) --->
 
 ---
 
@@ -273,10 +190,6 @@ Em um sistema de computação, é frequente a necessidade de executar várias ta
  - **Navegador Web:**
    - Um navegador Web precisa buscar os elementos da página a exibir, analisar e renderizar o código HTML e os gráficos recebidos, animar os elementos da interface e responder aos comandos do usuário.
 
-
-
-
-
 ---
 
 <div id="program-vs-task"></div>
@@ -287,10 +200,6 @@ Em um sistema de computação, é frequente a necessidade de executar várias ta
    - um *Programa* é um conjunto de uma ou mais sequências de instruções escritas para resolver um problema específico, constituindo assim uma aplicação ou utilitário.
  - **Tarefa:**
    - Já uma tarefa é a execução *sequencial*, *"por um processador"*, da s*"equência de instruções definidas em um programa"* para realizar seu objetivo.
-
-
-
-
 
 ---
 
@@ -324,48 +233,7 @@ Para entender o ciclo de vida de uma tarefa, veja o diagrama abaixo:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Implementação de Tarefas ) --->
+<!--- ( Teoria/Implementação de Tarefas ) --->
 
 ---
 
@@ -423,10 +291,6 @@ struct ContextDescriptor {
 };
 ```
 
-
-
-
-
 ---
 
 <div id="context-switching"></div>
@@ -464,10 +328,6 @@ A troca de contexto é crucial para permitir multitarefa e garantir que todos os
  - **Implemente Compartilhamento de Tempo:**
    - Vários usuários ou processos podem compartilhar os mesmos recursos da CPU, dando a ilusão de paralelismo.
 
-
-
-
-
 ---
 
 <div id="dispatcher-vs-scheduler"></div>
@@ -486,10 +346,6 @@ Em outras palavras:
 
  - O *Escalonador (Scheduler)* faz a decisão de seleção.
  - E o *Despachante (Dispatcher)* realiza essa decisão.
-
-
-
-
 
 ---
 
@@ -520,10 +376,6 @@ Por exemplo, veja a abstração de um processo abaixo:
 
 ![img](images/process-01.png)
 
-
-
-
-
 ---
 
 <div id="process-states"></div>
@@ -542,10 +394,6 @@ Um processo pode estar em um dos seguintes estados durante sua execução:
    - O processo está esperando por algum evento, como a conclusão de uma operação de E/S.
  - **Terminado (Terminated):**
    - O processo completou sua execução ou foi interrompido.
-
-
-
-
 
 ---
 
@@ -585,10 +433,6 @@ Por exemplo, veja a abstração de processo Pai (parent) e Filho (child) abaixo:
  - Já na segunda etapa, o *processo Filho (Child)* usa a **Chamada de Sistema execve()** para carregar um novo código binário em sua memória.
  - Essa chamada substitui o código do processo que a invoca pelo código executável contido em um arquivo informado como parâmetro.
 
-
-
-
-
 ---
 
 <div id="intro-to-threads"></div>
@@ -614,10 +458,6 @@ Outro exemplo é un *servidor (de arquivos, bancos de dados, etc.)* que deve ger
 > **"Uma linha de execução (ou tarefa específica) dentro de um processo."**
 
 Um processo pode conter várias *"Threads"*, cada uma das quais pode ser executada de forma independente, mas compartilham o mesmo espaço de endereçamento e recursos do processo pai.
-
-
-
-
 
 ---
 
@@ -709,6 +549,256 @@ Para finalizar vamos ver algumas considerações finais:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Implementação/Biblioteca de Filas ) --->
+
+---
+
+<div id="queues-library"></div>
+
+## Biblioteca de filas (Warm-Up)
+
+O **Sistema Operacional** gerencia muitas filas de *"processos prontos"*, *"suspensos"*, *"dormindo"*, *"esperando em semáforos"*, etc.
+
+A estrutura de dados mais adequada para implementar essas filas é uma **Lista Circular Duplamente Encadeada (Circular Doubly Linked List)**, como indicada na figura abaixo:
+
+![img](images/queues-library-01.png)  
+
+Vamos ver alguns exemplos do que a nossa Fila (Queue) deve ser capaz de realizar:
+
+**EXAMPLE-01:**  
+Uma fila com um único elemento, uma fila vazia e um elemento isolado (elemento fora de uma fila):
+
+![img](images/queues-library-02.png)  
+
+**EXAMPLE-02:**  
+Inserção de um elemento em uma fila vazia:
+
+![img](images/queues-library-03.png)  
+
+Observe que:
+
+ - O elemento a inserir deve estar isolado, ou seja, não deve pertencer a nenhuma outra fila;
+ - O elemento a inserir já existe, ou seja, não há necessidade de alocar memória para ele (malloc).
+
+**EXAMPLE-03:**  
+Inserção de um elemento no fim de uma fila não-vazia:
+
+![img](images/queues-library-04.png)  
+
+**EXAMPLE-04:**  
+Remoção de um elemento da fila, indicado pelo ponteiro aux. Observe que a remoção apenas retira o elemento da fila, sem o destruir, alterar seu conteúdo ou liberar sua memória.
+
+![img](images/queues-library-05.png)  
+
+### Interface
+
+A Interface (declaração) da nossa **Queue** vai ser a seguinte:
+
+[queue.h](COS/src/queue.h)
+```c
+#ifndef __QUEUE__
+#define __QUEUE__
+
+#ifndef NULL
+#define NULL ((void *)0)
+#endif
+
+//------------------------------------------------------------------------------
+// Generic Queue structure, without defined content.
+typedef struct queue_t
+{
+   struct queue_t *prev; // Points to the "previous" element in the queue.
+   struct queue_t *next; // Points to the "next" element in the queue.
+} queue_t;
+
+//------------------------------------------------------------------------------
+// Inserts an element at the end of the queue.
+// Conditions to verify, generating error messages:
+// - The queue must exist.
+// - The element must exist.
+// - The element must not be in another queue.
+// Return: 0 if success, <0 if an error occurred.
+int queue_append(queue_t **queue, queue_t *elem);
+
+//------------------------------------------------------------------------------
+// Removes the indicated element from the Queue, without destroying it.
+// Conditions to verify, generating error messages:
+// - The queue must exist.
+// - The queue must not be empty.
+// - The element must exist.
+// - The element must belong to the indicated queue.
+// Return: 0 if success, <0 if an error occurred.
+int queue_remove(queue_t **queue, queue_t *elem);
+
+//------------------------------------------------------------------------------
+// Counts the number of elements in the queue.
+// Return: number of elements in the queue.
+int queue_size(queue_t *queue);
+
+//------------------------------------------------------------------------------
+// Traverses the Queue and prints its content on the screen.
+// The printing of each element is done by an external function,
+// defined by the program that uses the library.
+//
+// void print_elem (void *ptr) ; // "ptr" points to the element to print.
+void queue_print(char *name, queue_t *queue, void print_elem(void *));
+
+#endif // __QUEUE__
+```
+
+Vamos analisar algumas partes importantes da **Interface** da nossa **Queue** acima:
+
+ - `typedef struct queue_t`
+   - Primeiro, nós temos uma estrutura generica:
+     - Isso porque inicialmente ela não tem nenhum tipo de dado relacionado a ela.
+     - Apenas, dois ponteiros um para o elemento anterior e um para o elemento posterior, que são as extremidades da Fila (Queue).
+ - `queue_t **queue`
+   - Veja que as funções **queue_append()** e **queue_remove()** ???
+
+### Definição
+
+> Agora vamos ver como definir (implementar) as funções da nossa **Fila (Queue)**.
+
+Para começar vamos implementar a função `queue_append()`:
+
+**C Language Version:**
+[queue.c](COS/src/queue.c)
+```c
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Settings ) --->
+
+---
+
+<div id="zig-settings"></div>
+
+## Zig Settings
+
+**Para criar um projeto de executável:**
+```bash
+zig init
+```
+
+**Para criar um projeto de biblioteca:**
+```bash
+zig init-lib
+```
+
+**VSCode Settings:**
+
+First, find the **zig binary** in your PATH:
+
+```bash
+whereis zig
+```
+
+Now, open the VSCode and add the **zig binary** to your **PATH**:
+
+ - File:
+   - Preferences:
+     - Settings:
+       - **NOTE:** Find by the `Zig Path` field on the bar:
+         - Add the Zig Binary to your PATH.
+
+> **NOTE:**  
+> Now reopen the VSCode.
+
+**Compile and Build (On the build):**
+```bash
+zig build
+```
+
+**Run:**
+```bash
+./zig-out/bin/zig
+```
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERENCES ) --->
 
 ---
@@ -720,7 +810,6 @@ Para finalizar vamos ver algumas considerações finais:
  - [Waine - Dev do Desempenho](https://www.youtube.com/@waine_jr/videos)
  - [Sistemas Operacionais: Conceitos e Mecanismos](https://www.researchgate.net/publication/343921399_Sistemas_Operacionais_Conceitos_e_Mecanismos)
  - [PingPongOS](https://wiki.inf.ufpr.br/maziero/doku.php?id=so:pingpongos)
-
 
 ---
 
