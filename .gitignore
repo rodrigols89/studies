@@ -1635,3 +1635,7 @@ dkms.conf
 *.dis
 # C/C++ binary extension file
 *.bin
+
+# Zig Lang
+zig-out
+.zig-cache
