@@ -38,7 +38,6 @@
 ---
 
  - **Computer Science Fundamentals:**
-   - [Sistemas Operacionais: Conceitos e Mecanismos (Portuguese Brazilian notes)](modules/os-carlos-maziero)
    - [Computer Organization and Architecture](modules/coa)
 
 ---
