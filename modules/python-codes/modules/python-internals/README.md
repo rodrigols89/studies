@@ -2,6 +2,22 @@
 
 ## Contents
 
+ - **Requirements:**
+   - [**Regular Expressions (Abbreviated as "Regex"):**](#intro-to-regex)
+     - [Finding a Word/Text + Understanding slicing (start:end)](#regex-start-end)
+     - **Metacharacters:**
+       - [`^`](#regex-metacharacters-circumflexaccent)
+       - [`$`](#regex-metacharacters-dollarsign)
+       - [`\t`](#regex-metacharacters-tab)
+       - [`\n`](#regex-metacharacters-newline)
+       - [`\r`](#regex-metacharacters-carriagereturn)
+       - [`\s and \S`](#regex-metacharacters-checkspaces)
+       - [`\d and \D`](#regex-metacharacters-checkdigits)
+       - [`\w and \W`](#regex-metacharacters-checkcharacters)
+     - **Useful Methods:**
+       - **Python:**
+         - [`re.search(regex, string) + Match.attributes`](#re-search)
+   - [**Extended Backus–Naur Form (EBNF):**](#intro-to-ebnf)
  - **Concepts:**
    - [Intermediate Language (IL) vs. Machine Language (Assembly)](#il-ml)
  - [**Python Precompilation Process:**](#ppp)
@@ -34,6 +50,7 @@
      - [Class Names](#pep8-class-names)
      - [Function and Variable Names](#pep8-function-and-variable-names)
      - [Constants](#pep8-constants)
+ - [**The Python Language Reference (Portuguese Brazilian notes):**](#tplr)
  - **Python Developer’s Guide References:**
    - **Contributing - Tips and Tricks:**
      - [Setup and building (Add/Configure upstream | Link)](https://devguide.python.org/getting-started/setup-building/)
@@ -69,6 +86,754 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Requirements/Regular Expressions ) --->
+
+---
+
+<div id="intro-to-regex"></div>
+
+## Regular Expressions (Abbreviated as "Regex")
+
+ - Regular Expressions was initially a term borrowed from **"Automata Theory"** in theoretical computer science. Broadly, it refers to patterns to which a substring needs to be matched.
+ - Many *"programming languages"*, *"text processing tools"*, *"data validation tools"* and *"search engines"* make extensive use of them.
+
+The key idea is that a regular expression is a pattern which matches a set of target strings. For example:
+
+```bash
+\w+@\w+\.(com|org|net|in)
+```
+
+The Regex above matches a most email addresses that end with a `.com`, `.net`, `.org` or a `.in`.
+
+---
+
+<div id="regex-start-end"></div>
+
+## Finding a Word/Text + Understanding slicing (start:end)
+
+> We can use the **Regex** to find a word/text in a string.
+
+For example, let's use the **re.search()** function to find the first ocorrence of the word **"dri"** in the string **"Rodrigo Leite da Silva"**:
+
+```python
+import re
+
+regex = r"dri"
+string = "Rodrigo Leite da Silva"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: dri
+Start: 2
+End: 5
+Span: (2, 5)
+```
+
+Now, let's see an abstraction to the string **"Rodrigo Leite da Silva"** on the memory:
+
+```bash
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+| R | o | d | r | i | g | o |   | L | e | i | t | e |   | d | a |   | S | i | l | v | a |
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+  0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21
+          |           |
+          |           |
+        +---+---+---+---+
+        | d | r | i | g |
+        +---+---+---+---+ 
+```
+
+> **What?**
+> Why the return was **"dri"** and not **"drig"** as shown in the memory abstraction above?
+
+**NOTE:**  
+This is because we must treat the **"start()"** and **"end()"** of the Match object as columns. For example, see the other abstraction below of text in columns rather (em vez de) than in memory:
+
+```bash
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+| R | o | d | r | i | g | o |   | L | e | i | t | e |   | d | a |   | S | i | l | v | a |
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22
+        |           |
+        |           |
+        +---+---+---+
+        | d | r | i |
+        +---+---+---+
+```
+
+Great, now we understand how to:
+
+ - `re.search(regex, string)`
+   - How to use the **re.search()** method to find the first occurrence of a word/text in a string.
+ - `match.start() and match.end()`
+   - How the **"start()"** and **"end()"** methods work:
+     - By columns, not indices.
+
+> **But what are the coordinate points of the *start() *and *end()* methods for since they cannot be treated as indexes in memory?**
+
+### Slicing
+
+> We can use these coordinate points to slice the string.
+
+For example:
+
+```python
+import re
+
+regex = r"dri"
+string = "Rodrigo Leite da Silva"
+
+match = re.search(regex, string)
+start = match.start()
+end = match.end()
+print("Sliced ​​string:", string[start:end])
+```
+
+**OUTPUT:**
+```bash
+Sliced ​​string: dri
+```
+
+This is equivalent to:
+
+```python
+import re
+
+regex = r"dri"
+string = "Rodrigo Leite da Silva"
+print(string[2:5])
+```
+
+**OUTPUT:**
+```bash
+dri
+```
+
+---
+
+<div id="regex-metacharacters-circumflexaccent"></div>
+
+## `^`
+
+| Metacharacter | Meaning                                         |
+|---------------|-------------------------------------------------|
+| `^`           | Used to test (match) if the beginning of the string starts with the selected string/word. |
+
+**EXAMPLE:**
+```python
+import re
+
+regex = r"^Hello"
+string = "Hello, world!"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: Hello
+Start: 0
+End: 5
+Span: (0, 5)
+```
+
+See that:
+
+ - We use the **Metacharacter** `^` to test (match) if the beginning of the string starts with the selected string/word.
+ - **NOTE:** The *Regex* is **"case-sensitive"**.
+
+---
+
+<div id="regex-metacharacters-dollarsign"></div>
+
+## `$`
+
+| Metacharacter | Meaning                                         |
+|---------------|-------------------------------------------------|
+| `$`           | Used to test (match) if the end of the string ends with the selected string/word. |
+
+**EXAMPLE:**
+```python
+import re
+
+regex = r"!$"
+string = "Hello, world!"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: !
+Start: 12
+End: 13
+Span: (12, 13)
+```
+
+See that:
+
+ - The **Metacharacter** `$` is used at the end of the selected string/word to test (match).
+
+---
+
+<div id="regex-metacharacters-tab"></div>
+
+## `\t`
+
+**EXAMPLE:**
+| Metacharacter | Meaning                                                     |
+|---------------|-------------------------------------------------------------|
+| `\t`          |	Used to test (match) if the selected string/word has a tab. |
+
+```python
+import re
+
+regex = r"\t"
+string = "1... \t2... \t3..."
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: 
+Start: 5
+End: 6
+Span: (5, 6)
+```
+
+See that:
+
+ - **First:**
+   - The **match.group()** function doesn't display anything because the `\t` character is a tab character (a special whitespace character) that is not visible as text when printed.
+ - **Continuing...**
+   - Regardless of the location of the tab in the text, Regex will tell you whether (tem/exist) or not there is a tab.
+   - **NOTE:** Another observation is that this approach only catches the first occurrence of the Regular Expression.
+
+---
+
+<div id="regex-metacharacters-newline"></div>
+
+## `\n`
+
+| Metacharacter | Meaning                                                         |
+|---------------|-----------------------------------------------------------------|
+| `\n`          |	Used to test (match) if the selected string/word has a newline. |
+
+**EXAMPLE:**
+```python
+import re
+
+regex = r"\n"
+string = "1... \n2... \n3..."
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: 
+
+Start: 5
+End: 6
+Span: (5, 6)
+```
+
+ - `Match found:`
+   - The match.group() returns the found character, which is `\n`.
+   - However, `\n` is a control character that does not appear visually in the output as text; it simply causes the cursor to move to the next line:
+     - **NOTE:** So it appears that nothing is displayed after "Match found:", but it is actually the newline character.
+
+---
+
+<div id="regex-metacharacters-carriagereturn"></div>
+
+## `\r`
+
+**NOTE:**  
+Before we see how `Carriage Return \r` works in *Regex*, let's understand what it is.
+
+ - **1st:**
+   - The `Carriage Return \r` moves the cursor to the beginning of the line.
+ - **2nd:**
+   - Now, the subsequent characters **"overwrite"** the first characters of the original string. 
+
+For example:
+
+```bash
+# Original String.
+"Hello, World\r..."
+
+# Move the cursor to the beginning of the line.
+"Hello, World ..."
+             ^
+             | Cursor here...
+
+# The subsequent characters "overwrite" the first characters of the original string.
+"Hello, World ..."
+"...lo, World ..." # The subsequent characters were "overwritten".
+```
+
+| Metacharacter | Meaning                                                                 |
+|---------------|-------------------------------------------------------------------------|
+| `\r`          |	Used to test (match) if the selected string/word has a carriage return. |
+
+**EXAMPLE:**
+```python
+import re
+
+regex = r"\r"
+string = "Hello... World\r..."
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: 
+Start: 14
+End: 15
+Span: (14, 15)
+```
+
+See that:
+
+ - Again, the `Carriage Return \r` is a special character that is not visible as text.
+
+---
+
+<div id="regex-metacharacters-checkspaces"></div>
+
+## `\s and \S`
+
+| Metacharacter | Meaning                                                     |
+|---------------|-------------------------------------------------------------|
+| `\s`          | Used to test (match) if the selected string/word has space. |
+| `\S`          | Used to test (match) the first **"character (any character) that is not whitespace"**. This includes letters, numbers, symbols, etc. |
+
+**EXAMPLE "\s":**
+```python
+import re
+
+regex = r"\s"
+string = "Hello, World..."
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found:  
+Start: 6
+End: 7
+Span: (6, 7)
+```
+
+**EXAMPLE "\S":** 
+```python
+import re
+
+regex = r"\S"
+string = "     Hello, World..."
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: H
+Start: 5
+End: 6
+Span: (5, 6)
+```
+
+See that here:
+
+ - `Match found: H`
+   - The first match found is **"H"**, which is **the first character in the string that is not a whitespace character**.
+   - **NOTE:** Note that before the **"H"** there were 5 whitespace characters, but the `\S` only considers the first occurrence of a character that **IS NOT A WHITESPACE**.
+
+---
+
+<div id="regex-metacharacters-checkdigits"></div>
+
+## `\d and \D`
+
+| Metacharacter | Meaning                                                                       |
+|---------------|-------------------------------------------------------------------------------|
+| `\d`          |	Used to test (match) *the first digit occurrence on a selected string*.         |
+| `\D`          |	Used to test (match) *the first **non-digit** occurrence on a selected string*. |
+
+**EXAMPLE "\d":**
+```python
+import re
+
+regex = r"\d"
+string = "Nine - 9"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: 9
+Start: 7
+End: 8
+Span: (7, 8)
+```
+
+**EXAMPLE "\D":**
+```python
+import re
+
+regex = r"\D"
+string = "Nine - 9"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: N
+Start: 0
+End: 1
+Span: (0, 1)
+```
+
+---
+
+<div id="regex-metacharacters-checkcharacters"></div>
+
+## `\w and \W`
+
+| Metacharacter | Meaning                                                                                  |
+|---------------|------------------------------------------------------------------------------------------|
+| `\w`          |	Used to test (match) *the first word character occurrence on selected string*.           |
+| `\W`          |	Used to test (match) *the first **non-word character** occurrence on a selected string*. |
+
+**EXAMPLE "\w":**
+```python
+import re
+
+regex = r"\w"
+string = "Nine - 9"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found: N
+Start: 0
+End: 1
+Span: (0, 1)
+```
+
+**EXAMPLE "\W":**
+```python
+import re
+
+regex = r"\W"
+string = "Nine - 9"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found!")
+```
+
+**OUTPUT:**
+```bash
+Match found:  
+Start: 4
+End: 5
+Span: (4, 5)
+```
+
+> **NOTE:**  
+> In the above example with `\W` the first occurrence that was not a *Word Character* was a *"whitespace"*.
+
+---
+
+<div id="re-search"></div>
+
+## `re.search(regex, string) + Match.attributes`
+
+ - The **re.search()** function of the **"re"** module in Python is used to *search for a match of a pattern (regular expression) in a string*.
+ - **Return:**
+   - If a match is found, **re.search()** returns a match object, which contains information about the match (such as the position and the matched text).
+   - If no match is found, it returns `None`.
+
+For example:
+
+```python
+import re
+
+regex = r"^Hello"
+string = "Hello, world!"
+
+match = re.search(regex, string)
+print(match)
+```
+
+**OUTPUT:**
+```bash
+<match object; span=(0, 5), match='Hello'>
+```
+
+Where:
+
+ - `<re.Match object>`
+   - Indicates that the returned object is a *Match object*.
+ - `span=(0, 5)`
+   - Shows the range (start and end position) of the match in the original string.
+   - In this case, the match starts at index 0 and ends at index 5 (non-inclusive), indicating that the word *"Hello"* was found from the beginning of the string.
+ - `match='Hello'`
+   - Displays the text of the *match found* was *"Hello"*.
+
+### Match.attributes
+
+Also access *attributes* of a *Match object* returned by the **re.search()** function:
+
+ - **match.group():**
+   - Returns the string matching the found pattern.
+ - **match.start():**
+   - Returns the starting index of the match.
+ - **match.end():**
+   - Returns the ending index of the match.
+ - **match.span():**
+   - Returns a tuple containing the starting and ending indices of the match.
+
+Let's look at another example:
+
+```python
+import re
+
+regex = r"^Hello"
+string = "Hello, world!"
+
+match = re.search(regex, string)
+
+if match:
+    print("Match found:", match.group())
+    print("Start:", match.start())
+    print("End:", match.end())
+    print("Span:", match.span())
+else:
+    print("No match found")
+```
+
+**OUTPUT:**
+```bash
+Match found: Hello
+Start: 0
+End: 5
+Span: (0, 5)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Requirements/Extended Backus–Naur Form ) --->
+
+---
+
+<div id="intro-to-ebnf"></div>
+
+## Extended Backus–Naur Form (EBNF)
 
 
 
@@ -175,6 +940,10 @@ Knowing this, we can say that:
 
  - Traditional compilers compile the code for **Real Machines (or CPU architecture)**.
  - The Python compiler compiles the code for a **Virtual Machine**.
+
+
+
+
 
 
 
@@ -810,93 +1579,6 @@ This is what the **Virtual Machine** *"understands"* and will *"interpret"*.
 
 
 
-<!--- ( PVM = Python Virtual Machine ) --->
-
----
-
-<div id="pvm"></div>
-
-## Python Virtual Machine
-
-x
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( CPython Runtime Project ) --->
 
 ---
@@ -956,6 +1638,7 @@ Python takes that responsibility away from the programmer and uses two algorithm
 
  - A Reference Counter.
  - A Garbage Collector.
+
 
 
 
@@ -1415,6 +2098,69 @@ SERVER_PORT = 8080
 
 
 
+<!--- ( The Python Language Reference (Portuguese Brazilian notes) ) --->
+
+---
+
+<div id="tplr"></div>
+
+## The Python Language Reference (Portuguese Brazilian notes)
+
+ - Este manual de referência descreve a **"Sintaxe"** e a **“Semântica Central”** da linguagem.
+ - É *conciso (reduzido ao essencial; em poucas palavras (diz-se de escritos, ideias, discurso etc.); preciso, sucinto, resumido)*, mas tenta ser exato e completo.
+ - Ele abrange tópicos como análise léxica, modelo de dados, modelo de execução, sistema de importação, expressões, instruções simples e compostas, entre outros aspectos fundamentais da linguagem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Settings ) --->
 
 ---
@@ -1792,6 +2538,12 @@ gh-12345: Fix some bug in spam module
    - [Como o interpretador do Python funciona? | Live de Python #218](https://www.youtube.com/watch?v=pxfZTAJDipY)
  - **Tutorials:**
    - [Your Guide to the CPython Source Code](https://realpython.com/cpython-source-code-guide/)
+ - **Requirements:**
+   - **Regular Expressions (Abbreviated as "Regex"):**
+     - [Regular Expressions (Brilliant)](https://brilliant.org/wiki/regular-expressions/)
+   - **Extended Backus–Naur form (EBNF):**
+     - [Extended Backus–Naur form (Wikipedia)](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form)
+     - [Extended Backus–Naur Form (EBNF)](https://plantuml.com/ebnf#:~:text=Extended%20Backus%E2%80%93Naur%20Form%20(EBNF)%20is%20a%20type%20of,of%20the%20Algol%20programming%20language.)
 
 ---
 
