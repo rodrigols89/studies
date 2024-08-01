@@ -2,13 +2,18 @@
 
 ## Contents
 
- - **Basics:**
-   - [Intro to Hashing and Why do we need Hashing?](#intro-to-hashing)
-   - [Components of Hashing](#components-of-hashing)
-   - [How does Hashing work?](#hashing-work)
-   - [Hashing collision problem](#collision-problem)
- - **Tips & Tricks:**
- - [REFERENCES](#ref)
+ - **Fundamentals:**
+   - [Variable-Size Data vs. Fixed-Size Data (Difference in Memory)](#vsd-vs-fsd)
+   - [Hashing Mapping "Variable-Size Data" to "Fixed-Size Data"](#hashing-mapping)
+   - [Reasons to use Hashing](#hashing-reasons)
+   - [Hashing Components](#hashing-components)
+ - [**Hashing Collision:**](#collision-problem)
+ - [**REFERENCES**](#ref)
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
 
 
@@ -49,17 +54,57 @@
 
 
 
-<!--- ( Basics ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Fundamentals ) --->
 
 ---
 
-<div id="intro-to-hashing"></div>
+<div id="vsd-vs-fsd"></div>
 
-## Intro to Hashing and Why do we need Hashing?
+## Variable-Size Data vs. Fixed-Size Data (Difference in Memory)
 
-Hashing is the process of `mapping` **variable-sized data** to **fixed-size data** using a function called a *hash function*. 
+Before learning about *Hashing*, let us first understand what are **"Variable-Size Data"** and **"Fixed Size-Data"**:
 
-> **What's "mapping variable-sized data to fixed-size data"?**
+ - **Variable-Size Data:**
+   - Data whose size can vary.
+   - They do not have a fixed size and can increase or decrease as needed.
+   - **E.g. List:**
+     - `variable_data = [1, 2, 3, 4, 5]`
+     - `variable_data.append(6) # Increase the size of the list.`
+ - **Fixed-Size Data:**
+   - Data whose size is constant and does not change.
+   - **NOTE:** The amount of space allocated for it is fixed.
+   - **E.g:**
+     - `fixed_data = 42 # The value of the integer can change, but the size in memory is fixed`
+
+> **The difference here is in memory allocation:**
+> *Variable-Size Data* occupies more memory than *Fixed-Size Data*.
+
+---
+
+<div id="hashing-mapping"></div>
+
+## Hashing Mapping "Variable-Size Data" to "Fixed-Size Data"
+
+> **Hashing** is the process of mapping *Variable-sized data* to *Fixed-size data* using a function called a **"Hash Function"**.
+
+A hash function:
+
+ - Takes a *Variable-sized input (or "key")*;
+ - And converts it to a *Fixed-size output (or "hash value")*:
+   - Which is usually a number.
+   - **NOTE:** *This "hash value" is used to "efficiently identify" data in structures such as Hash Tables.*
 
 For example, consider a **set of strings as variable-sized data**:
 
@@ -70,9 +115,10 @@ String 3: "orange"
 ```
 
 > **NOTE:**  
-> Each string can have a different length. That's, variable size.
+> Each string can have a different length. That is, it is a **"variable size"**.
 
-Now, let's say we want to map these strings to fixed-size hash codes. A simple hash function might assign a numerical value to each character and sum them up:
+**Now, let's say we want to map these strings to "fixed-size" hash codes:**  
+A simple hash function might (pode) assign a numerical value to each character and sum them up:
 
 ```python
 Hash("apple")   = 1 + 16 + 16 + 12 + 5   = 50
@@ -80,42 +126,51 @@ Hash("banana")  = 2 + 1 + 14 + 1 + 14 + 1  = 33
 Hash("orange")  = 15 + 18 + 1 + 14 + 7 + 5 = 60
 ```
 
-**NOTE:**  
-Here, the **variable-sized strings "apple," "banana," and "orange"** are `mapped` to **fixed-size hash codes 50, 33, and 60**, respectively. 
+See that:
 
-> **Ok, but why do we need Hashing?**  
-> The main ***Hashing*** focus is to **store** and **search** data fast.
-
-For example, Array Data Structure:
-
- - Storing data in Array takes **O(1)** time.
- - Searching in it takes at least **O(log n)** time.
-
-**NOTE:**  
-This time appears to be small, but for a large data set, it can cause a lot of problems and this, in turn, makes the Array data structure inefficient. 
-
-**Solution:**  
-To solve that are looking for a data structure that can store the data and search in it in *constant time*, i.e. in *O(1) time*.
-
-> This is how ***Hashing*** Data Structure came into play.
-
- - A ***Hash Table*** is a Data Structure that offers very fast *insertion* and *searching*.
- - No matter how many data items there are, *insertion* and *searching* (and sometimes deletion) can take close to *constant time*: **O(1)** in Big O notation.
- - Our main objective here is to search or update the values stored in the table quickly in **O(1)** time and we are not concerned about the ordering of strings in the table.
+ - **Each character is mapped to a number:**
+    - This is just an example. These numbers can be mapped to different numbers.
+ - **Next, all the mapped numbers from each string are added together generating a *Fixed-Size data*.**
 
 ---
 
-<div id="components-of-hashing"></div>
+<div id="hashing-reasons"></div>
 
-## Components of Hashing
+## Reasons to use Hashing
+
+> **Ok, but why do we need Hashing?**  
+> The main ***Hashing*** focus is to **store** and **search** data fast (efficiently).
+
+### Array Store and Search problem
+
+ - Storing data in Array takes **O(1)** time.
+ - Searching data in array it takes at least **O(log n)** time.
+
+**NOTE:**  
+This time appears to be small, but for a large data set, it can cause a lot of problems and this, in turn, makes the Array data structure *inefficient*. 
+
+**SOLUTION:**  
+To solve that are looking for a data structure that can store the data and search in it in *constant time*, i.e. in *O(1) time*.
+
+> **This is how the *"Hashing"* Data Structure *came into play (entrou em ação)*.**
+
+ - A ***Hash Table*** is a Data Structure that offers very fast *insertion* and *searching*.
+ - No matter (não importa) how many data items there are, *insertion* and *searching* (and sometimes deletion) can take close to *constant time*: **O(1)** in Big O notation.
+ - **NOTE:** Our main objective here is to search or update the values stored in the table quickly in **O(1)** time and we are not concerned about the ordering of strings in the table.
+
+---
+
+<div id="hashing-components"></div>
+
+## Hashing Components
 
 There are majorly components of hashing:
 
  - **Key:**
-   - In the context of hashing, a ***"key"*** refers to the input data provided to the *hash function* to generate a *hash value*.
+   - In the context of hashing, a ***"key"*** refers to the input data provided to the *hash function* to generate a *"Hash Value"*.
  - **Hash Function:**
-   - A ***hash function*** is nothing but a *mathematical algorithm* which helps generate a new value for a given input.
-   - The ***Hash Function*** takes an *input (or "key")* and returns a *hash value*, which is typically an *integer*.
+   - A ***Hash Function*** is nothing but a *mathematical algorithm* which helps generate a new value for a given input.
+   - The ***Hash Function*** takes an *input (or "key")* and returns a *Hash Value*, which is typically an *integer*.
  - **Hash Table:**
    - ***Hash Table*** is a *container* to store the *key-value* pairs.
 
@@ -174,9 +229,70 @@ To understand more easily, see the image below:
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Hashing Collision ) --->
+
 <div id="collision-problem"></div>
 
-## Hashing collision problem
+## Hashing Collision
+
+```bash
+“ab”  = 3 mod 7 = 3 (hash value)
+“cd”  = 7 mod 7 = 0 (hash value)
+“efg” = 18 mod 7 = 4 (hash value)
+```
+
+![img](images/hash-table-01.png)  
 
 If we consider the above example, the ***Hash Function*** we used is the sum of the letters, but if we examined the *Hash Function* closely then the problem can be easily visualized that for different strings same hash value is begin generated by the *Hash Function*. 
 
@@ -195,7 +311,7 @@ For example:
 ```
 
 > **NOTE:**  
-> This is known as ***collision*** and it creates problem in *searching*, *insertion*, *deletion*, and *updating* of value. 
+> This is known as ***"collision"*** and it creates problem in *searching*, *insertion*, *deletion*, and *updating* of value. 
 
 See another example below:
 
