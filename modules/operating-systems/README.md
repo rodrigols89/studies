@@ -5,17 +5,19 @@
 
 ## Contents
 
- - **Teoria:**
-   - **Conceitos Básicos**
+ - **Implementation:**
+   - [Biblioteca de Filas](#queues-library)
+ - **Theory:**
+   - **O.S Fundamentals**
      - [Objetivos de um SO](#so-goal)
      - [Gerência de recursos](#res-management)
-   - **Estrutura de um SO:**
+   - **O.S Structure:**
      - [Elementos de um SO](#os-elements)
-   - **O conceito de Tarefa:**
+   - **Task Concepts:**
      - [Exemplos de Tarefas (Simultâneas)](#tasks-examples)
      - [Programa vs. Tarefa](#program-vs-task)
      - [Ciclo de vida das tarefas](#tasks-lifecycle)
-   - **Implementação de Tarefas:**
+   - **Task Implementation:**
      - [Contexto, Descritor de Contexto](#intro-to-contexts)
      - [Troca de Contexto](#context-switching)
      - [Despachante (Dispatcher) e Escalonador (Scheduler)](#dispatcher-vs-scheduler)
@@ -24,8 +26,6 @@
        - [Chamadas de Sistema (+Parent & Child Processes)](#sys-calls)
      - [**Threads (Tarefas dentro de um Processo):**](#intro-to-threads)
      - [Uso de Processos versus Threads para criação de tarefas](#processes-versus-threads)
- - **Implementação:**
-   - [Biblioteca de Filas](#queues-library)
  - **Settings**
    - [Zig Settings](#zig-settings)
  - **Languages Tips & Tricks:**
@@ -87,7 +87,176 @@
 
 
 
-<!--- ( Teoria/Conceitos Básicos ) --->
+<!--- ( Implementation/Biblioteca de Filas ) --->
+
+---
+
+<div id="queues-library"></div>
+
+## Biblioteca de filas (Warm-Up)
+
+O **Sistema Operacional** gerencia muitas filas de *"processos prontos"*, *"suspensos"*, *"dormindo"*, *"esperando em semáforos"*, etc.
+
+A estrutura de dados mais adequada para implementar essas filas é uma **Lista Circular Duplamente Encadeada (Circular Doubly Linked List)**, como indicada na figura abaixo:
+
+![img](images/queues-library-01.png)  
+
+Vamos ver alguns exemplos do que a nossa Fila (Queue) deve ser capaz de realizar:
+
+**EXAMPLE-01:**  
+Uma fila com um único elemento, uma fila vazia e um elemento isolado (elemento fora de uma fila):
+
+![img](images/queues-library-02.png)  
+
+**EXAMPLE-02:**  
+Inserção de um elemento em uma fila vazia:
+
+![img](images/queues-library-03.png)  
+
+Observe que:
+
+ - O elemento a inserir deve estar isolado, ou seja, não deve pertencer a nenhuma outra fila;
+ - O elemento a inserir já existe, ou seja, não há necessidade de alocar memória para ele (malloc).
+
+**EXAMPLE-03:**  
+Inserção de um elemento no fim de uma fila não-vazia:
+
+![img](images/queues-library-04.png)  
+
+**EXAMPLE-04:**  
+Remoção de um elemento da fila, indicado pelo ponteiro aux. Observe que a remoção apenas retira o elemento da fila, sem o destruir, alterar seu conteúdo ou liberar sua memória.
+
+![img](images/queues-library-05.png)  
+
+### Interface
+
+A Interface (declaração) da nossa **Queue** vai ser a seguinte:
+
+[queue.h](COS/src/queue.h)
+```c
+#ifndef __QUEUE__
+#define __QUEUE__
+
+#ifndef NULL
+#define NULL ((void *)0)
+#endif
+
+//------------------------------------------------------------------------------
+// Generic Queue structure, without defined content.
+typedef struct queue_t
+{
+   struct queue_t *prev; // Points to the "previous" element in the queue.
+   struct queue_t *next; // Points to the "next" element in the queue.
+} queue_t;
+
+//------------------------------------------------------------------------------
+// Inserts an element at the end of the queue.
+// Conditions to verify, generating error messages:
+// - The queue must exist.
+// - The element must exist.
+// - The element must not be in another queue.
+// Return: 0 if success, <0 if an error occurred.
+int queue_append(queue_t **queue, queue_t *elem);
+
+//------------------------------------------------------------------------------
+// Removes the indicated element from the Queue, without destroying it.
+// Conditions to verify, generating error messages:
+// - The queue must exist.
+// - The queue must not be empty.
+// - The element must exist.
+// - The element must belong to the indicated queue.
+// Return: 0 if success, <0 if an error occurred.
+int queue_remove(queue_t **queue, queue_t *elem);
+
+//------------------------------------------------------------------------------
+// Counts the number of elements in the queue.
+// Return: number of elements in the queue.
+int queue_size(queue_t *queue);
+
+//------------------------------------------------------------------------------
+// Traverses the Queue and prints its content on the screen.
+// The printing of each element is done by an external function,
+// defined by the program that uses the library.
+//
+// void print_elem (void *ptr) ; // "ptr" points to the element to print.
+void queue_print(char *name, queue_t *queue, void print_elem(void *));
+
+#endif // __QUEUE__
+```
+
+Vamos analisar algumas partes importantes da **Interface** da nossa **Queue** acima:
+
+ - `typedef struct queue_t`
+   - Primeiro, nós temos uma estrutura generica:
+     - Isso porque inicialmente ela não tem nenhum tipo de dado relacionado a ela.
+     - Apenas, dois ponteiros um para o elemento anterior e um para o elemento posterior, que são as extremidades da Fila (Queue).
+ - `queue_t **queue`
+   - Veja que as funções **queue_append()** e **queue_remove()** ???
+
+### Definição
+
+> Agora vamos ver como definir (implementar) as funções da nossa **Fila (Queue)**.
+
+Para começar vamos implementar a função `queue_append()`:
+
+**C Language Version:**
+[queue.c](COS/src/queue.c)
+```c
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Theory/O.S Fundamentals ) --->
 
 ---
 
@@ -142,7 +311,7 @@ Ao desenvolver um Sistema Operacional, algumas funcionalidades que ajudam a ger�
 
 
 
-<!--- ( Teoria/Estrutura de um SO ) --->
+<!--- ( Theory/O.S Structure ) --->
 
 ---
 
@@ -174,7 +343,7 @@ Ao desenvolver um Sistema Operacional, algumas funcionalidades que ajudam a ger�
 
 
 
-<!--- ( Teoria/O conceito de Tarefa ) --->
+<!--- ( Theory/Task Concepts ) --->
 
 ---
 
@@ -233,8 +402,7 @@ Para entender o ciclo de vida de uma tarefa, veja o diagrama abaixo:
 
 
 
-
-<!--- ( Teoria/Implementação de Tarefas ) --->
+<!--- ( Theory/Task Implementation ) --->
 
 ---
 
@@ -519,175 +687,6 @@ Para finalizar vamos ver algumas considerações finais:
    - Processos são mais adequados para aplicações que exigem isolamento e segurança elevados, como servidores de múltiplas instâncias independentes.
  - **Um Processo com várias Threads, uma Thread para cada tarefa:**
    - Threads são ideais para aplicações que requerem alta eficiência e compartilhamento de recursos, como programas gráficos intensivos ou servidores web multithread.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Implementação/Biblioteca de Filas ) --->
-
----
-
-<div id="queues-library"></div>
-
-## Biblioteca de filas (Warm-Up)
-
-O **Sistema Operacional** gerencia muitas filas de *"processos prontos"*, *"suspensos"*, *"dormindo"*, *"esperando em semáforos"*, etc.
-
-A estrutura de dados mais adequada para implementar essas filas é uma **Lista Circular Duplamente Encadeada (Circular Doubly Linked List)**, como indicada na figura abaixo:
-
-![img](images/queues-library-01.png)  
-
-Vamos ver alguns exemplos do que a nossa Fila (Queue) deve ser capaz de realizar:
-
-**EXAMPLE-01:**  
-Uma fila com um único elemento, uma fila vazia e um elemento isolado (elemento fora de uma fila):
-
-![img](images/queues-library-02.png)  
-
-**EXAMPLE-02:**  
-Inserção de um elemento em uma fila vazia:
-
-![img](images/queues-library-03.png)  
-
-Observe que:
-
- - O elemento a inserir deve estar isolado, ou seja, não deve pertencer a nenhuma outra fila;
- - O elemento a inserir já existe, ou seja, não há necessidade de alocar memória para ele (malloc).
-
-**EXAMPLE-03:**  
-Inserção de um elemento no fim de uma fila não-vazia:
-
-![img](images/queues-library-04.png)  
-
-**EXAMPLE-04:**  
-Remoção de um elemento da fila, indicado pelo ponteiro aux. Observe que a remoção apenas retira o elemento da fila, sem o destruir, alterar seu conteúdo ou liberar sua memória.
-
-![img](images/queues-library-05.png)  
-
-### Interface
-
-A Interface (declaração) da nossa **Queue** vai ser a seguinte:
-
-[queue.h](COS/src/queue.h)
-```c
-#ifndef __QUEUE__
-#define __QUEUE__
-
-#ifndef NULL
-#define NULL ((void *)0)
-#endif
-
-//------------------------------------------------------------------------------
-// Generic Queue structure, without defined content.
-typedef struct queue_t
-{
-   struct queue_t *prev; // Points to the "previous" element in the queue.
-   struct queue_t *next; // Points to the "next" element in the queue.
-} queue_t;
-
-//------------------------------------------------------------------------------
-// Inserts an element at the end of the queue.
-// Conditions to verify, generating error messages:
-// - The queue must exist.
-// - The element must exist.
-// - The element must not be in another queue.
-// Return: 0 if success, <0 if an error occurred.
-int queue_append(queue_t **queue, queue_t *elem);
-
-//------------------------------------------------------------------------------
-// Removes the indicated element from the Queue, without destroying it.
-// Conditions to verify, generating error messages:
-// - The queue must exist.
-// - The queue must not be empty.
-// - The element must exist.
-// - The element must belong to the indicated queue.
-// Return: 0 if success, <0 if an error occurred.
-int queue_remove(queue_t **queue, queue_t *elem);
-
-//------------------------------------------------------------------------------
-// Counts the number of elements in the queue.
-// Return: number of elements in the queue.
-int queue_size(queue_t *queue);
-
-//------------------------------------------------------------------------------
-// Traverses the Queue and prints its content on the screen.
-// The printing of each element is done by an external function,
-// defined by the program that uses the library.
-//
-// void print_elem (void *ptr) ; // "ptr" points to the element to print.
-void queue_print(char *name, queue_t *queue, void print_elem(void *));
-
-#endif // __QUEUE__
-```
-
-Vamos analisar algumas partes importantes da **Interface** da nossa **Queue** acima:
-
- - `typedef struct queue_t`
-   - Primeiro, nós temos uma estrutura generica:
-     - Isso porque inicialmente ela não tem nenhum tipo de dado relacionado a ela.
-     - Apenas, dois ponteiros um para o elemento anterior e um para o elemento posterior, que são as extremidades da Fila (Queue).
- - `queue_t **queue`
-   - Veja que as funções **queue_append()** e **queue_remove()** ???
-
-### Definição
-
-> Agora vamos ver como definir (implementar) as funções da nossa **Fila (Queue)**.
-
-Para começar vamos implementar a função `queue_append()`:
-
-**C Language Version:**
-[queue.c](COS/src/queue.c)
-```c
-
-```
 
 
 
