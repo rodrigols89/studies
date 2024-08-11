@@ -9,16 +9,15 @@
  - **Django Admin:**
    - `python manage.py createsuperuser` (http://localhost:8000/admin)
    - [Add your models to the Django Admin](#add-your-models-to-the-django-admin)
- - [**Migrations:**](#intro-to-migrations)
-   - [`python manage.py makemigrations <app_name>`](#intro-to-makemigrations)
-   - [`python manage.py migrate <app_name>`](#intro-to-migrate)
-   - [Specifying the database](#specifying-the-database)
- - **Model-Template-View (MTV):**
+ - **Migrations (Allows Django to "Manage" and "Version Control" database schemas):**
+   - [Specifying the Databases](#specifying-the-databases)
+   - [`python manage.py migrate (Send migrations to the database)`](#migrate)
+   - [`python manage.py makemigrations (Create/Version the changes in the model using migrations files)`](#makemigrations)
+ - **Model-View-Template (MVT):**
    - [**Model:**](#intro-to-models)
-     - [Creating Models for an App](#creating-models)
-   - [**Template:**](#intro-to-templates)
-     - [Creating Templates for your App](#creating-templates-for-your-app)
+     - [Separating models by files](#separating-models-by-files)
    - [**View:**](#intro-to-views)
+   - [**Template:**](#intro-to-templates)
  - **Project & App Settings:**
    - [How add an App to the Project](#how-add-an-app-to-the-project)
    - [Creating React and Django Projects](#react-django-projects)
@@ -33,11 +32,13 @@
    - **Tests:**
    - **Database:**
    - **API:**
+ - **Projects:**
+   - [Pythonando (PSW 11)](projects/psw11)
  - [**Settings**](#settings)
  - [**References**](#ref)
-<!--- 
+<!---
 [WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
+- Same topic = "5" Whitespace character.
 - Different topic = "50" Whitespace character.
 --->
 
@@ -120,6 +121,10 @@ For example, see the examples below to understand more easily:
    - It also communicates with the model to retrieve data.
    - **When to use:** Views are used to present the user interface and handle user input. They interact with the model to fetch and display data, and they also capture user actions and pass them to the controller for further processing.
 
+
+
+
+
 ---
 
 <div id="project-x-app"></div>
@@ -135,6 +140,10 @@ The difference between **a project** and **an app** is:
    - A database of public records;
    - A small poll app...
    - `An app can be in multiple projects.`
+
+
+
+
 
 ---
 
@@ -252,11 +261,6 @@ Where:
 
 
 
-
-
-
-
-
 <!--- ( Django Admin ) --->
 
 ---
@@ -265,12 +269,37 @@ Where:
 
 ## Add your models to the Django Admin
 
-> For your models to appear in the Django Admin, you must first add them to the `your-app/admin.py` file:
-
-But, first let's create classes to represent your models:
+For your models to appear in the Django Admin, first imagine we have the following models (classes):
 
 ```python
-# blog/admin.py
+# your-app/models.py
+
+from django.db import models
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField("Category", related_name="posts")
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length=60)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey("Post", on_delete=models.CASCADE)
+```
+
+Now, for your models to appear in the Django Admin, we need to add them to the `admin.py` file:
+
+```python
+# your-app/admin.py
 
 from django.contrib import admin
 from blog.models import Category, Comment, Post
@@ -288,17 +317,39 @@ class CommentAdmin(admin.ModelAdmin):
     pass
 ```
 
-Now, let's link these classes with our models and **"register"** them:
+Now, let's register a `user` to login on the Django Admin:
+
+```bash
+python manage.py makemigrations <app_name>
+```
+
+```bash
+python manage.py migrate <app_name>
+```
+
+```bash
+python manage.py migrate
+```
+
+```bash
+python manage.py createsuperuser
+```
+
+> **NOTE:**
+> If we look better, we don't have our models in the Django Admin.
+
+To solva that we need to register our models in the `admin.py` file:
 
 ```python
+# your-app/admin.py
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
 ```
 
- - Now, if you open the admin page, you should see your models listed.
+ - Now, if you reload the Django Admin page, you should see your models listed.
  - If you click on *Posts*, you can add new posts for the blog manually.
-
 
 
 
@@ -355,149 +406,9 @@ admin.site.register(Comment, CommentAdmin)
 
 ---
 
-<div id="intro-to-migrations"></div>
+<div id="specifying-the-databases"></div>
 
-## Migrations
-
-> Migrations in Django are a way to **"manage"** and **"version control"** database schema changes over time.
-
- - **They allow you to evolve your database schema such as:**
-   - Creating.
-   - Modifying.
-   - Deleting tables and columns.
- - **Objectives of Migrations:**
-   - **Track Changes to Models:** Migrations record changes made to Django models, enabling these changes to be applied to the database.
-   - **Version Control for the Database:** Similar to code version control, migrations allow you to have a history of database changes and the ability to roll forward and backward through these changes.
-   - **Automate Database Changes:** Instead of writing SQL scripts manually, migrations let you define changes in Python models, and Django automatically generates and applies the necessary SQL statements.
- - **How Migrations Work:**
-   - **Creating Migrations:** When you make changes to your models, you use the `makemigrations` command to create migration files that describe those changes.
-   - **Applying Migrations:** The `migrate` command is used to apply these changes to the database, synchronizing the database schema with your model definitions.
-
-Some useful migrations commands are:
-
-```bash
-# "makemigrations": Creates migration files based on the changes to your models.
-python manage.py makemigrations
-
-
-
-# "migrate": Applies pending migrations to the database.
-python manage.py migrate
-
-
-
-# "showmigrations": Displays all available migrations and their status (applied or not).
-python manage.py showmigrations
-
-
-
-# sqlmigrate: Shows the SQL that will be executed for a specific migration.
-python manage.py sqlmigrate app_name migration_number
-```
-
----
-
-<div id="intro-to-makemigrations"></div>
-
-## `python manage.py makemigrations <app_name>`
-
-The **"makemigrations"** creates migration files based on the changes in your models.
-
-**USE CASE:**  
-
- - Use this command after making changes to your models. It creates migration files that describe the changes.
- - The makemigrations command analyzes whether changes have been made to the models and, if so, creates new migrations (Migrations) to change the structure of your database, reflecting the changes made.
-
-```bash
-python manage.py makemigrations blog
-
-
-Migrations for 'blog':
-  blog/migrations/0001_initial.py
-    - Create model Category
-    - Create model Post
-    - Create model Comment
-```
-
-If you look in the *"migrations"* folder in the *"blog app"*, you'll see that the migration has been created.
-
-**0001_initial.py**  
-```bash
-# Generated by Django 5.0.1 on 2024-06-02 04:06
-
-import django.db.models.deletion
-from django.db import migrations, models
-
-
-class Migration(migrations.Migration):
-
-    initial = True
-
-    dependencies = [
-    ]
-
-    operations = [
-        migrations.CreateModel(
-            name='Category',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=30)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Post',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('body', models.TextField()),
-                ('created_date', models.DateTimeField(auto_now_add=True)),
-                ('last_modified', models.DateTimeField(auto_now=True)),
-                ('categories', models.ManyToManyField(related_name='posts', to='blog.category')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Comment',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author', models.CharField(max_length=60)),
-                ('body', models.TextField()),
-                ('created_date', models.DateTimeField(auto_now_add=True)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.post')),
-            ],
-        ),
-    ]
-```
-
-**0001_initial.py:**  
-This file contains the instructions that Django should perform on the database.
-
----
-
-<div id="intro-to-migrate"></div>
-
-## `python manage.py migrate <app_name>`
-
-> The **"migrate"** command applies the changes in the migration files (created with the makemigrations command) to the database.
-
-**USE CASE:**
-
- - Use this command to apply the migrations to your database, updating its schema to match your models.
-
-```bash
-python manage.py migrate blog
-
-
-Operations to perform:
-  Apply all migrations: blog
-Running migrations:
-  Applying blog.0001_initial... OK
-```
-
----
-
-<div id="specifying-the-database"></div>
-
-## Specifying the database
+## Specifying the Databases
 
 To specify the database we need to open the `settings.py` file in the project folder and find the **"DATABASES key"**:
 
@@ -560,6 +471,112 @@ python manage.py migrate --database=postgresql_db
 
 
 
+---
+
+<div id="migrate"></div>
+
+## `python manage.py migrate (Send migrations to the database)`
+
+```bash
+python manage.py migrate
+```
+
+> The command above is used to *"send migrations to the database"*.
+
+For example:
+
+ - The command `migrate` prepares the Django Database:
+   - Commonly used to initialize the database.
+ - When we *create/modify a model*, we need to run the `migrate` command to send the changes to the database.
+
+
+
+
+
+---
+
+<div id="makemigrations"></div>
+
+## `python manage.py makemigrations (Create/Version the changes in the model using migrations files)`
+
+To understand the command `makemigrations`, let's imagine we have an App `employees_management` with the following models.
+
+```python
+# employees_management/models.py
+
+from django.db import models
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=250)
+```
+
+> **NOTE:**  
+> Before run the `makemigrations` command, we need to:
+> - Add the App to the `INSTALLED_APPS` list in `settings.py` file.
+> - Run the command `python manage.py migrate`.
+
+```bash
+python manage.py makemigrations
+```
+
+**OUTPUT:**  
+```bash
+ employee_management/migrations/0001_initial.py
+    + Create model Employee
+```
+
+See that:
+
+ - The django created a folder `/migrations`.
+ - With the file `0001_initial.py`:
+   - Represents the first migration or model version.
+   - If we change the model, we need to run the `makemigrations` command again:
+     - **NOTE:** In other words, as we improve our models (a medida que nós vamos incrementando nossos modelos), we will run the `makemigrations` command and version the changes in the model.
+
+```python
+# migrations/0001_initial.py
+
+# Generated by Django 5.1 on 2024-08-11 04:30
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Employee',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=250)),
+            ],
+        ),
+    ]
+```
+
+ - `Generated by Django 5.1 on 2024-08-11 04:30`
+   - Date and hour of the migration.
+ - `initial = True`
+   - Says that this is the first migration.
+ - `dependencies = []`
+   - Dependencies for this migration.
+ - `migrations.CreateModel()`
+   - Class to create a model's table.
+ - `name='Employee'`
+   - Name of the model (table).
+ - `fields=[id, name]`
+   - Fields of the model (table).
+   - **NOTE:** Since I didn't define a *"Primary Key"*, django automatically created the `id` field to be the *primary key*.
+
+Briefly:
+
+> The command `makemigrations` create/version the changes in the model using the migrations files.
 
 
 
@@ -608,7 +625,11 @@ python manage.py migrate --database=postgresql_db
 
 
 
-<!--- ( Model-Template-View (MTV)/Model ) --->
+
+
+
+
+<!--- ( Model-View-Template (MVT)/Model ) --->
 
 ---
 
@@ -616,9 +637,10 @@ python manage.py migrate --database=postgresql_db
 
 ## Model
 
+> Everything related to Databases.
+
  - **Definition:**
    - Models are Python classes that define the structure of your database.
-   - They represent the data and the logic (methods) for accessing and manipulating that data.
  - **Purpose:**
    - Define database schema.
    - Define relationships between different data entities.
@@ -645,132 +667,88 @@ In this example:
 
 ---
 
-<div id="creating-models"></div>
+<div id="separating-models-by-files"></div>
 
-## Creating Models for an App
+## Separating models by files
 
-> To create models in an app, we need to add them to the `models.py` file.
+ - It is common at the beginning of our application to create our models in the `models.py` file.
+ - However, as our application scales, we will have many models in the same file.
+ - So, the interesting thing here would be to divide our models by files:
+   - **NOTE:** This ensures/helps the modularization of the system.
 
-For example, imagine we need to map tables to the following classes:
-
- - Post
- - Category
- - Comment
+For example, imagine we have the following models:
 
 ```python
-# blog/models.py
+# employees_management/models.py
 
 from django.db import models
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=30)
+class Employee(models.Model):
+    name = models.CharField(max_length=250)
 
 
-class Post(models.Model):
-    title = models.CharField(max_length=255)
-    body = models.TextField()
-    # "auto_now_add=True", Automatically set the
-    # field to now when the object is first created.
-    created_date = models.DateTimeField(auto_now_add=True)
-    # "auto_now=True", Automatically set the field
-    # to now every time the object is saved.
-    last_modified = models.DateTimeField(auto_now=True)
-    categories = models.ManyToManyField("Category", related_name="posts")
-
-
-class Comment(models.Model):
-    author = models.CharField(max_length=60)
-    body = models.TextField()
-    # "auto_now_add=True", Automatically set the
-    # field to now when the object is first created.
-    created_date = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey("Post", on_delete=models.CASCADE)
+class Department(models.Model):
+    name = models.CharField(max_length=250)
 ```
 
-
-
-
-
-
-
-
-
-
-<!--- ( Model-Template-View (MTV)/Template ) --->
-
----
-
-<div id="intro-to-templates"></div>
-
-## Template
-
-> **Templates** are HTML files with the capability of rendering dynamic content sent over from your Django *views*.
-
- - **Definition:**
-   - Templates are files that define the structure and layout of your website's pages.
-   - They contain HTML and Django template language to dynamically generate content.
- - **Purpose:**
-   - Separate the presentation layer from the business logic.
-   - Define how data should be displayed to the user.
-   - Allow reuse of HTML structures.
-
-**EXAMPLE:**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ author.name }}</title>
-</head>
-<body>
-    <h1>{{ author.name }}</h1>
-    <p>Born: {{ author.birth_date }}</p>
-    <p>Email: {{ author.email }}</p>
-</body>
-</html>
-```
-
-In this example:
-
- - `{{ author.name }}`, `{{ author.birth_date }}`, and `{{ author.email }}` are template tags that will be replaced with the actual data passed from the view.
-
----
-
-<div id="creating-templates-for-your-app"></div>
-
-## Creating Templates for your App
-
-To create Templates for our app, we need to manually add them to the `templates` directory at the same App level (directory).
-
-For example, first, let's create the `template` folder at the same App level (directory):
+To separate them first, let's create the following structure: 
 
 ```bash
-mkdir templates && cd templates
+├── <employees_management>
+|      ├── /models
+|      |      ├── __init__.py
+|      |      ├── employee.py
+|      |      ├── department.py
 ```
 
-Now, let's create some templates:
+```python
+# employees_management/models/employee.py
+
+from django.db import models
+
+
+class Employee(models.Model):
+    name = models.CharField(max_length=250)
+```
+
+```python
+# employees_management/models/department.py
+
+from django.db import models
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=250)
+```
+
+**NOTE:**  
+
+ - **EN -** Now we need to import the modules `(employee.py and department.py)` in the `__init__.py` file so that Django can work with these models that are in separate files.
+ - **PT -** Agora nós precisamos importar os módulos `(employee.py e department.py)` no arquivo `__init__.py `para o django conseguir trabalhar com esses models que estão em arquivos separados.
+
+```python
+# employees_management/models/__init__.py
+
+from .employee import Employee
+from .department import Department
+```
+
+Finally, run the Django migration commands:
 
 ```bash
-touch index.html
+python manage.py makemigrations
 ```
 
-Now, let's code the `index.html` template to show user posts:
-
-**index.html**
-```html
-Coming soon...
+```bash
+python manage.py migrate
 ```
 
 
 
 
 
-
-
-
-
-
-<!--- ( Model-Template-View (MTV)/View ) --->
+<!--- ( Model-View-Template (MVT)/View ) --->
 
 ---
 
@@ -778,31 +756,22 @@ Coming soon...
 
 ## View
 
-> A **View** in Django is a collection of *functions* or *classes* inside the `views.py` file in an app’s directory. Each function or class handles the logic that gets processed each time your user visits a different URL.
+ - Views are where the logic of our Application is located.
+ - For example, these are the Python functions that will receive a *"request"* and return a *"response"*.
 
- - **Definition:**
-   - Views are Python functions or classes that handle requests and return responses.
-   - They connect the model and the template, processing data and determining which template to render.
- - **Purpose:**
-   - Handle user requests and return appropriate responses.
-   - Fetch data from the database using models.
-   - Render templates with the fetched data.
 
-**EXAMPLE:**
-```python
-from django.shortcuts import render
-from .models import Author
 
-def author_detail(request, author_id):
-    author = Author.objects.get(pk=author_id)
-    return render(request, 'author_detail.html', {'author': author})
-```
 
-In this example:
 
- - `author_detail` is a view function that retrieves an Author object based on `author_id`.
- - It then renders the `author_detail.html` template, passing the author object as context.
+<!--- ( Model-View-Template (MVT)/Template ) --->
 
+---
+
+<div id="intro-to-templates"></div>
+
+## Template
+
+> Templates are our HTML files that will be displayed to the user.
 
 
 
@@ -902,6 +871,10 @@ class BlogConfig(AppConfig):
     name = 'blog'
 ```
 
+
+
+
+
 ---
 
 <div id="react-django-projects"></div>
@@ -916,6 +889,7 @@ A common approach to create Django and React Project is:
    - poetry init
  - Create the frontend with create-react-app:
    - npx create-react-app frontend
+
 
 
 
@@ -999,6 +973,17 @@ python -m pip install --upgrade pip
 ```bash
 pip install -U -v --require-virtualenv -r requirements.txt
 ```
+
+**VSCode - Tip:**  
+If your VSCode doesn't recognize your Python interpreter you can add it manually:
+
+ - View:
+   - Comand Palette:
+     - Python: Select Interpreter:
+       - Enter interpreter path...
+         - Find...
+           - Select your "environment":
+             - environment/bin/your-python-interpreter-version.
 
 **Now, Be Happy!!!** 😬
 
