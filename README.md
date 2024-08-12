@@ -47,6 +47,7 @@
 
 ## Software Engineering
 
+ - [Requirements Gathering (Coleta/Levantamento de Requisitos)](modules/requirements-gathering)
  - [Agile Methodologies](modules/agile-methodologies)
 
 ---
