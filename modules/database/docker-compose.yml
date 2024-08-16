@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres:latest
+    environment:
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+  pgadmin-data:
