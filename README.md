@@ -56,7 +56,7 @@
 
 ## Database
 
- - [Database (Theory and Practice)](modules/database-theory-and-practice)
+ - [Database (Theory and Practice)](modules/database)
 
 ---
 
