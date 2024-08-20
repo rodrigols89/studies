@@ -11,7 +11,7 @@
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
+- Same topic = "5" Whitespace character.
 - Different topic = "50" Whitespace character.
 --->
 
@@ -91,6 +91,10 @@ Before learning about *Hashing*, let us first understand what are **"Variable-Si
 > **The difference here is in memory allocation:**
 > *Variable-Size Data* occupies more memory than *Fixed-Size Data*.
 
+
+
+
+
 ---
 
 <div id="hashing-mapping"></div>
@@ -132,6 +136,10 @@ See that:
     - This is just an example. These numbers can be mapped to different numbers.
  - **Next, all the mapped numbers from each string are added together generating a *Fixed-Size data*.**
 
+
+
+
+
 ---
 
 <div id="hashing-reasons"></div>
@@ -158,6 +166,10 @@ To solve that are looking for a data structure that can store the data and searc
  - No matter (não importa) how many data items there are, *insertion* and *searching* (and sometimes deletion) can take close to *constant time*: **O(1)** in Big O notation.
  - **NOTE:** Our main objective here is to search or update the values stored in the table quickly in **O(1)** time and we are not concerned about the ordering of strings in the table.
 
+
+
+
+
 ---
 
 <div id="hashing-components"></div>
@@ -173,6 +185,10 @@ There are majorly components of hashing:
    - The ***Hash Function*** takes an *input (or "key")* and returns a *Hash Value*, which is typically an *integer*.
  - **Hash Table:**
    - ***Hash Table*** is a *container* to store the *key-value* pairs.
+
+
+
+
 
 ---
 
@@ -227,7 +243,6 @@ To understand more easily, see the image below:
  - The above technique enables us to calculate the location of a given string by using a simple *Hash Function* and rapidly find the value that is stored in that location.
  - Therefore the idea of hashing seems like a great way to store (key, value) pairs of the data in a table.
 
----
 
 
 
@@ -356,6 +371,19 @@ See another example below:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERENCES ) --->
 
 ---
@@ -370,6 +398,7 @@ See another example below:
  - [Hash Tables, Hashing and Collision Handling](https://medium.com/codex/hash-tables-hashing-and-collision-handling-8e4629506572)
  - [Hashing Vs Hashtable](https://www.youtube.com/watch?app=desktop&v=92aV0eJEVug)
  - [What is the difference between Hashing and Hash Tables?](https://www.geeksforgeeks.org/what-is-the-difference-between-hashing-and-hash-tables/)
+ - [Guide to Hash Tables in Python](https://stackabuse.com/hash-tables-in-python/)
 
 ---
 
