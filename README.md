@@ -47,6 +47,7 @@
 
 ## Software Engineering
 
+ - [Requirements Gathering (Coleta/Levantamento de Requisitos)](modules/requirements-gathering)
  - [Agile Methodologies](modules/agile-methodologies)
 
 ---
@@ -55,7 +56,7 @@
 
 ## Database
 
- - [Database (Theory and Practice)](modules/database-theory-and-practice)
+ - [Database (Theory and Practice)](modules/database)
 
 ---
 
