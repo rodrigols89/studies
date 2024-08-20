@@ -2,6 +2,11 @@
 
 ## Contents
 
+   - **Database Components:**
+     - [Entity (Table)](#introtoentity)
+       - [Table naming (Singular vs. Plural)](#table-naming)
+     - [Attributes](#introtoattributes)
+     - [Record/Row (Registro)](#introtorecord)
  - **PostgreSQL:**
    - [**PostgreSQL Settings**](#postgresql-settings)
    - **Useful Commands:**
@@ -49,6 +54,157 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Database Components/Entity ) --->
+
+---
+
+<div id="introtoentity"></div>
+
+## Entity (Table)
+
+A *database* **Entity** can be anything that exists in the real world such as:
+
+ - A person;
+ - A book;
+ - A product;
+ - A company;
+ - A event....
+
+> **NOTE:**  
+> **Entities** are represented by `tables` in a Database.
+
+For example:
+
+![img](images/entity-01.png)  
+
+---
+
+<div id="table-naming"></div>
+
+## Table naming (Singular vs. Plural)
+
+Narayana “Vyas” Kondreddi (long-time DBA and SQL Engineer) wrote back in 2001:
+
+**Tables represent the instances of an entity:**  
+ - For example, you store all your **customer** information in a table:
+   - Here, **‘customer’** is an entity;
+   - And all the **rows in the customers** table **represent the instances** of the entity **‘customer’**.
+
+**Answer:**  
+ - So, why not name your table using the entity it represents, ‘Customer’. Since the table is storing `‘multiple instances’` of customers, make your table name a plural word.
+ - It feels logical, and somewhat *“natural”*. You store several customers inside a table (those `“multiple instances”`), so the table should naturally be names ***customers***.
+
+It also makes sense when writing an SQL statement. When you want to go through all your customers, you:
+
+```sql
+SELECT * FROM customers
+```
+
+**NOTE:**  
+When using plural name, one can consider a table like a crate (caixa) containing several items. A crate (caixa) of apples should be labelled Apples, whether it contains one or a hundred apples.
+
+### My personal analysis
+
+My personal analysis is the following... Imagine you have the entity **Users**:
+
+> **NOTE:**  
+> **Users table** can have on or many registers.
+
+If I use the following select query:
+
+```sql
+SELECT id, name
+FROM users;
+```
+
+**NOTE:**  
+Even though the "Users" table has a single record. This entity (Users) represents a set of users that can have multiple rows.
+
+
+
+
+
+
+
+
+
+
+<!--- ( Database Components/Attributes ) --->
+
+---
+
+<div id="introtoattributes"></div>
+
+## Attributes
+
+ - In the real world, almost everything has certain characteristics.
+ - In databases, the characteristics are represented by attributes.
+
+For example, a `person entity` may have attributes such as:
+
+ - name;
+ - surname;
+ - age;
+ - contact information;
+ - address...
+
+For example:
+
+![img](images/attributes-01.png)  
+
+
+
+
+
+
+
+
+
+
+<!--- ( Database Components/Record ) --->
+
+---
+
+<div id="introtorecord"></div>
+
+## Record/Row (Registro)
+
+> A **Record** is a group of data saved in a table.
+
+It is a set of fields, like an employee’s job record as shown below:
+
+![img](images/record-01.png)
+
+Let's see a more complete example:
+
+![img](images/db-components.png)  
 
 
 
@@ -128,16 +284,6 @@ psql -h localhost -U postgres
 ```bash
 exit
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -235,16 +381,6 @@ To list all tables in a database, we can use the `\dt (display tables)` or `\dt+
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!--- ( PostgreSQL/CRUD/CREATE ) --->
 
 ---
@@ -297,28 +433,8 @@ CREATE TABLE
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!--- ( PostgreSQL/CRUD/READ ) --->
 <!--- ( PostgreSQL/CRUD/UPDATE ) --->
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -449,60 +565,6 @@ DROP TABLE
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( REFERENCES ) --->
 
 ---
@@ -514,32 +576,8 @@ DROP TABLE
  - **General:**
    - [Google Gemini](https://gemini.google.com/app)
    - [ChatGPT](https://chatgpt.com/)
- - **PostgreSQL:**
-   - **FUNDAMENTALS:**
-     - [PostgreSQL Data Types](https://www.w3resource.com/PostgreSQL/data-types.php)
-     - [PostgreSQL CONSTRAINTS](https://www.w3resource.com/PostgreSQL/constraint.php)
-   - **CREATE:**
-     - [PostgreSQL Create Database](https://www.javatpoint.com/postgresql-create-database)
-     - [PostgreSQL Create Table](https://www.javatpoint.com/postgresql-create-table)
-   - **READ:**
-     - [How to List Databases Using the psql command line tool](https://www.beekeeperstudio.io/blog/how-to-list-databases-in-postgres#:~:text=To%20list%20all%20databases%20in,each%20database%20on%20the%20server.)
-     - [PostgreSQL WHERE](https://www.w3resource.com/PostgreSQL/where.php)
-     - [PostgreSQL GROUP BY](https://www.w3resource.com/PostgreSQL/postgresql-group-by.php)
-     - [PostgreSQL HAVING](https://www.w3resource.com/PostgreSQL/postgresql-having.php)
-     - [PostgreSQL JOIN](https://www.w3resource.com/PostgreSQL/postgresql-join.php)
-     - [PostgreSQL CROSS JOIN](https://www.w3resource.com/PostgreSQL/postgresql-cross-join.php)
-     - [PostgreSQL INNER JOIN](https://www.w3resource.com/PostgreSQL/postgresql-inner-join.php)
-     - [PostgreSQL LEFT JOIN or LEFT OUTER JOIN](https://www.w3resource.com/PostgreSQL/postgresql-left-join.php)
-     - [PostgreSQL RIGHT JOIN or RIGHT OUTER JOIN](https://www.w3resource.com/PostgreSQL/postgresql-right-join.php)
-     - [PostgreSQL FULL OUTER JOIN](https://www.w3resource.com/PostgreSQL/postgresql-full-outer-join.php)
-   - **UPDATE:**
-   - **DELETE:**
-     - [PostgreSQL Delete/Drop Database](https://www.javatpoint.com/postgresql-drop-database)
-     - [PostgreSQL Drop/Delete Table](https://www.javatpoint.com/postgresql-drop-table)
-   - **Settings:**
-     - [Setting up PgAdmin Docker Connection: 3 Critical Steps](https://hevodata.com/learn/pgadmin-docker/)
-     - [Connect to PostgreSQL Database on Linux, Windows](https://www.w3resource.com/PostgreSQL/connect-to-postgresql-database.php)
-     - [Install PostgreSQL on Linux and Windows](https://www.w3resource.com/PostgreSQL/install-postgresql-on-linux-and-windows.php)
+ - **Database Components:**
+   - [The table naming dilemma: singular vs. plural](https://medium.com/@fbnlsr/the-table-naming-dilemma-singular-vs-plural-dc260d90aaff)
 
 ---
 

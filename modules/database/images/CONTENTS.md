@@ -3,11 +3,6 @@
 ## Contents
 
  - **Database Fundamentals:**
-   - **Database Components:**
-     - Tables
-     - Records
-     - Fields (Columns)
-     - Data Types
  - **Database Models:**
    - **Hierarchical Model**
    - **Network Model**
