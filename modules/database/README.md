@@ -2,11 +2,11 @@
 
 ## Contents
 
-   - **Database Components:**
-     - [Entity (Table)](#introtoentity)
-       - [Table naming (Singular vs. Plural)](#table-naming)
-     - [Attributes](#introtoattributes)
-     - [Record/Row (Registro)](#introtorecord)
+ - **Database Components:**
+   - [Entity (Table)](#introtoentity)
+     - [Table naming (Singular vs. Plural)](#table-naming)
+   - [Attributes](#introtoattributes)
+   - [Record/Row (Registro)](#introtorecord)
  - **PostgreSQL:**
    - [**PostgreSQL Settings**](#postgresql-settings)
    - **Useful Commands:**
@@ -22,6 +22,14 @@
      - **DELETE:**
        - [`DROP DATABASE`](#drop-database)
        - [`DROP TABLE`](#drop-table)
+ - **Interview (Q&A):**
+   - **Select:**
+     - [Recyclable and Low Fat Products (LeetCode 1757)](#leetcode-1757)
+   - **Join:**
+   - **Aggregation Functions:**
+   - **Sorting and Grouping:**
+   - **Subqueries:**
+   - **Advanced String Functions / Regex / Clauses:**
  - [**Database (Old Studies)**](https://github.com/rodrigols89/studies/tree/old-studies/modules/old-studies/database-theory-and-practice)
  - [**REFERENCES**](#ref)
 <!--- 
@@ -513,6 +521,178 @@ DROP TABLE IF EXISTS public."student";
 ```bash
 DROP TABLE
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Interview (Q&A)/Select ) --->
+
+---
+
+<div id="leetcode-1757"></div>
+
+## Recyclable and Low Fat Products (LeetCode 1757)
+
+Imagine we have the following table:
+
+```sql
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| product_id  | int     |
+| low_fats    | enum    |
+| recyclable  | enum    |
++-------------+---------+
+```
+
+Where:
+
+ - The `product_id` is the *primary key (column with unique values)* for this table.
+ - The `low_fats` is an *ENUM (category)* of type ('Y', 'N') Where:
+   - `Y` means this product is low fat.
+   - `N` means it is not.
+ - The `recyclable` is an *ENUM (category)* of types ('Y', 'N') where:
+   - `Y` means this product is recyclable.
+   - `N` means it is not recyclable.
+
+**QUESTIONS:**  
+Write a solution to find the ids of products that are both *"low fat"* and *"recyclable"*.
+
+**EXAMPLE:**
+```sql
+Input: Products table
++-------------+----------+------------+
+| product_id  | low_fats | recyclable |
++-------------+----------+------------+
+| 0           | Y        | N          |
+| 1           | Y        | Y          |
+| 2           | N        | Y          |
+| 3           | Y        | Y          |
+| 4           | N        | N          |
++-------------+----------+------------+
+
+Output: 
++-------------+
+| product_id  |
++-------------+
+| 1           |
+| 3           |
++-------------+
+
+Explanation: Only products 1 and 3 are both low fat and recyclable.
+```
+
+**MY SOLUTION = 335ms:**
+```sql
+SELECT product_id
+FROM Products
+WHERE low_fats = 'Y' AND recyclable = 'Y';
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Interview (Q&A)/Join ) --->
+<!--- ( Interview (Q&A)/Aggregation Functions) --->
+<!--- ( Interview (Q&A)/Sorting and Grouping ) --->
+<!--- ( Interview (Q&A)/Subqueries ) --->
+<!--- ( Interview (Q&A)/Advanced String Functions / Regex / Clause ) --->
 
 
 
