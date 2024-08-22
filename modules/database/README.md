@@ -7,6 +7,14 @@
      - [Table naming (Singular vs. Plural)](#table-naming)
    - [Attributes](#introtoattributes)
    - [Record/Row (Registro)](#introtorecord)
+ - [**JOIN Clauses:**](#introtojoin)
+   - [INNER JOIN](#inner-join)
+   - [NATURAL JOIN](#natural-join)
+   - [LEFT JOIN](#left-join)
+   - [RIGHT JOIN](#right-join)
+   - [FULL OUTER JOIN](#full-outer-join)
+   - [CROSS JOIN](#cross-join)
+   - [JOIN VENN DIAGRAM](#join-ven-diagram)
  - **PostgreSQL:**
    - [**PostgreSQL Settings**](#postgresql-settings)
    - **Useful Commands:**
@@ -213,6 +221,332 @@ It is a set of fields, like an employee’s job record as shown below:
 Let's see a more complete example:
 
 ![img](images/db-components.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN ) --->
+
+---
+
+<div id="introtojoin"></div>
+
+## JOIN Clauses
+
+ - An **SQL JOIN** clause `combines rows` from **two** or **more tables**.
+ - It creates a set of rows in a **temporary table**.
+
+For example, imagine you have two tables **faceboook** and **linkedin** and want to:
+
+ - All rows from *faceboook* and *linkedin* tables;
+ - All columns from *faceboook* and *linkedin* tables;
+ - `WHERE (ON)` name (column value) in *faceboook* is the equal name (column value) in *linkedin*.
+
+```sql
+SELECT *
+FROM facebook JOIN linkedin
+ON facebook.name = linkedin.name;
+```
+
+![img](images/join-01.gif)  
+
+See that:
+
+ - Only **Matt** and **Lisa** have the same name in both tables.
+ - **Comparation Process:**
+   - First, the first row (name) from the first table (facebook) is compared with each row (name) in the second table.
+   - Next, the second row (name) from the first table (facebook) is compared with each row (name) in the second table (linkedin).
+   - Next, the third row (name) from the first table (facebook) is compared with each row (name) in the second table (linkedin).
+   - **NOTE:** This process repeats itself until the end...
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/INNER JOIN ) --->
+
+---
+
+<div id="inner-join"></div>
+
+## INNER JOIN
+
+> The **INNER JOIN** is the default type of **JOIN** in SQL.
+
+ - In fact you do not even need to specify **INNER JOIN** when writing a query.
+ - Only writing **JOIN** is an **INNER JOIN**.
+
+**NOTE:**  
+Another thing you need to know is that **INNER JOIN** is equivalent to `Intersection` in **set theory**:
+
+![img](images/inner-jon-01.gif)  
+
+**Another thing to consider is that SQL will join the rows every time there is a "match":**  
+So if your data in the columns you are joining on are not unique you will get **duplicate** data in the final table.
+
+For example, let's see a non Unique data in second table:
+
+```sql
+SELECT *
+FROM facebook INNER JOIN linkedin
+ON facebook.name = linkedin.name;
+```
+
+![img](images/inner-jon-02.gif)  
+
+Now, let's see a non Unique data in first table:
+
+![img](images/inner-jon-03.gif)  
+
+> **NOTE:**  
+> If you are not interested in *duplicate rows* you have to handle this in your "query".
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/NATURAL JOIN ) --->
+
+---
+
+<div id="natural-join"></div>
+
+## NATURAL JOIN
+
+> Use **NATURAL JOIN** when you want to `combine tables "based" on columns of the same name and type`, `without having to specify join conditions`.
+
+For example:
+
+![img](images/natural-join-01.png)  
+
+See that:
+
+ - The column with the same name and type is `COMPANY_ID`.
+ - Then we take the other non-common columns from the other tables:
+   - First table non-common columns: `ITEM_ID`, `ITEM_NAME`, `ITEM_UNIT`.
+   - Second table non-common columns: `COMPANY_ID`, `COMPANY_NAME`, `COMPANY_CITY`.
+ - Finally we join all the columns with the `COMPANY_ID` column as a column with the same name and type in common. 
+
+The SQL to do that is:
+
+**INPUT:**  
+```sql
+SELECT *
+FROM foods NATURAL JOIN company;
+```
+
+**OUTPUT:**  
+```sql
++------------+---------+--------------+-----------+---------------+--------------+
+| company_id | item_id | item_name    | item_unit | company_name  | company_city |
++------------+---------+--------------+-----------+---------------+--------------+
+|         16 |       1 | Chex Mix     | Pcs       | Akas Foods    | Delhi        |
+|         15 |       2 | BN Biscuit   | Pcs       | Jack Hill Ltd | London       |
+|         17 |       3 | Mighty Munch | Pcs       | Foodies       | London       |
+|         15 |       4 | Pot Rice     | Pcs       | Jack Hill Ltd | London       |
+|         18 |       5 | Jaffa Cakes  | Pcs       | Order All     | Boston       |
+|         15 |       6 | Cheez-It     | Pcs       | Jack Hill Ltd | London       |
++------------+---------+--------------+-----------+---------------+--------------+
+```
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/LEFT JOIN ) --->
+
+---
+
+<div id="left-join"></div>
+
+## LEFT JOIN
+
+> *LEFT refers to the first table*, or *the table you will be joining to*.
+
+For example, see the image (Veen Diagram) below to understand more easily:
+
+![img](images/left-join-01.png)  
+
+See that:
+
+ - We get all the data (rows) that belongs to the first table (set).
+ - We get the data (rows) that *simultaneously belongs (intersection)* both tables (sets).
+ - **NOTE:** But we do not get the data (rows) that belong only to the second table (set).
+
+For example:
+
+```sql
+SELECT *
+FROM facebook LEFT JOIN linkedin
+ON facebook.name = linkedin.name;
+```
+
+![img](images/left-join-02.gif)  
+
+> **NOTE:**  
+> See that **Louis** in second table was ignored because only appears in the second table.
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/RIGHT JOIN ) --->
+
+---
+
+<div id="right-join"></div>
+
+## RIGHT JOIN
+
+> SQL **RIGHT JOIN** is opposite to the **LEFT JOIN**.
+
+For example, see the image (Veen Diagram) below to understand more easily:
+
+![img](images/right-join-01.png)  
+
+Let's see a **RIGHT JOIN** example:
+
+```sql
+SELECT *
+FROM facebook RIGHT JOIN linkedin
+ON facebook.name = linkedin.name;
+```
+
+![img](images/right-join-02.gif)  
+
+> **NOTE:**  
+> See that now **Jeff** in the first table was ignored because only appears in the first table (LEFT).
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/FULL OUTER JOIN ) --->
+
+---
+
+<div id="full-outer-join"></div>
+
+## FULL OUTER JOIN
+
+> The **FULL OUTER JOIN** combines the results of both LEFT and RIGHT outer joins and returns all (matched or unmatched) rows from the tables on both sides of the join clause.
+
+For example, see the image (Veen Diagram) below to understand more easily:
+
+![img](images/full-outer-join-01.gif)  
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/CROSS JOIN ) --->
+
+---
+
+## CROSS JOIN
+
+> Use **CROSS JOIN** when you want to combine all the rows from *two* or *tables*, forming the `Cartesian Product` between them.
+
+For example, see the images below to understand more easily:
+
+![img](images/cross-join-01.png)  
+
+
+
+
+
+
+
+
+
+
+<!--- ( JOIN/JOIN VENN DIAGRAM ) --->
+
+---
+
+<div id="join-ven-diagram"></div>
+
+## JOIN VENN DIAGRAM
+
+![img](images/join-ven-diagram.jpg)  
 
 
 
@@ -636,57 +970,6 @@ SELECT product_id
 FROM Products
 WHERE low_fats = 'Y' AND recyclable = 'Y';
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--- ( Interview (Q&A)/Join ) --->
 <!--- ( Interview (Q&A)/Aggregation Functions) --->
