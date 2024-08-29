@@ -34,6 +34,7 @@
    - **Select:**
      - [Recyclable and Low Fat Products (LeetCode 1757)](#leetcode-1757)
    - **Join:**
+     - [Replace Employee ID With The Unique Identifier (1378)](#leetcode-1378)
    - **Aggregation Functions:**
    - **Sorting and Grouping:**
    - **Subqueries:**
@@ -918,6 +919,7 @@ DROP TABLE
 Imagine we have the following table:
 
 ```sql
+Input: Products table
 +-------------+---------+
 | Column Name | Type    |
 +-------------+---------+
@@ -971,7 +973,120 @@ FROM Products
 WHERE low_fats = 'Y' AND recyclable = 'Y';
 ```
 
+
+
+
+
+
+
+
+
+
 <!--- ( Interview (Q&A)/Join ) --->
+
+---
+
+<div id="leetcode-1378"></div>
+
+## Replace Employee ID With The Unique Identifier (1378)
+
+Imagine we have the following table:
+
+```sql
+Table: Employees
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| name          | varchar |
++---------------+---------+
+```
+
+Where:
+
+ - The `id` is the primary key (column with unique values) for this table.
+ - Each row of this table contains the `id` and the `name` of an employee in a company.
+
+We also have the following table:
+
+```sql
+Table: EmployeeUNI
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| unique_id     | int     |
++---------------+---------+
+```
+
+Where:
+
+ - The `(id, unique_id)` is the primary key for this table.
+ - Each row of this table contains the id and the corresponding unique id of an employee in the company.
+
+**QUESTIONS:**  
+Write a solution to `show the unique ID of each user`, `If a user does not have a unique ID replace just show null`.
+
+**EXAMPLE:**
+```sql
+Input: 
+Employees table:
++----+----------+
+| id | name     |
++----+----------+
+| 1  | Alice    |
+| 7  | Bob      |
+| 11 | Meir     |
+| 90 | Winston  |
+| 3  | Jonathan |
++----+----------+
+
+EmployeeUNI table:
++----+-----------+
+| id | unique_id |
++----+-----------+
+| 3  | 1         |
+| 11 | 2         |
+| 90 | 3         |
++----+-----------+
+
+Output: 
++-----------+----------+
+| unique_id | name     |
++-----------+----------+
+| null      | Alice    |
+| null      | Bob      |
+| 2         | Meir     |
+| 3         | Winston  |
+| 1         | Jonathan |
++-----------+----------+
+
+Explanation: 
+Alice and Bob do not have a unique ID, We will show null instead.
+The unique ID of Meir is 2.
+The unique ID of Winston is 3.
+The unique ID of Jonathan is 1.
+```
+
+**MY SOLUTION = 428ms | Beats 98.75%:**
+```sql
+SELECT unique_id, name
+FROM Employees LEFT JOIN EmployeeUNI
+ON Employees.id = EmployeeUNI.id;
+```
+
+Here...
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Interview (Q&A)/Aggregation Functions) --->
 <!--- ( Interview (Q&A)/Sorting and Grouping ) --->
 <!--- ( Interview (Q&A)/Subqueries ) --->
