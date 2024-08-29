@@ -129,6 +129,7 @@
  - [Step by Step Projects](modules/step-by-step-projects)
  - [Reverse Engineering](modules/reverse-engineering)
  - [Google Sheets](modules/google-sheets)
+ - [Economics](modules/economics)
  - [Lives](modules/lives)
 
 ---
