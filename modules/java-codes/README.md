@@ -9,24 +9,86 @@
    - [**Constructors**](#intro-to-constructors)
    - **Encapsulation:**
      - [Encapsulation problem and get/set solution](#encapsulation-problem)
- - **Web Development:**
- - **APIs:**
- - **Testing:**
- - **Databases:**
- - **Automation, Web scraping, Bots:**
- - **Command-Line Interface (CLI):**
- - **Tools:**
+   - [**Inheritance:**](#introtoinheritance)
+     - [The "protected" modifier](#protected-modifier)
+     - [The "super" keyword](#super)
+   - [**Polymorphism:**](#intro-polymorphism)
+     - **Compile Time Polymorphism (or Static Polymorphism)**
+       - [Method Overloading](#intro-method-overloading)
+       - Operator Overloading (Not supported by Java)
+     - **Runtime Polymorphism (or Dynamic Polymorphism)**
+       - [Method Overriding](#intro-method-overriding)
+       - [Abstract Class](#intro-abstract-classes)
+         - [Abstract Method](#intro-abs-method)
+       - [Interfaces](#intro-interfaces)
+         - [When to use Interfaces](#when-to-use-interfaces)
  - **Settings:**
    - [Java Development Kit (JDK)](#intro-to-jdk)
      - [Installing the JDK manually](#install-jdk)
    - **Compilation:**
      - [Compiling and running your first Java program](#ex01)
  - [**REFERENCES**](#ref)
-<!--- 
-[WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
-- Different topic = "50" Whitespace character.
+<!---
+- MAIN TOPIC
+    100 SPACES
+- MAIN TOPIC
+---------------
+- SUB TOPIC
+    20 SPACES
+- SUB TOPIC
 --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -239,6 +301,16 @@ Static Methods and Attributes can only access other methods and static attribute
 
 
 
+
+
+
+
+
+
+
+
+
+
 <!--- ( OOP/Constructors ) --->
 
 ---
@@ -334,7 +406,17 @@ Holder: Rodrigo
 
 
 
-<!--- ( Encapsulation ) --->
+
+
+
+
+
+
+
+
+
+
+<!--- ( OOP/Encapsulation ) --->
 
 ---
 
@@ -468,6 +550,576 @@ public class Driver {
 ```bash
 Balance: 100.0
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( OOP/Inheritance ) --->
+
+---
+
+<div id="introtoinheritance"></div>
+
+## Inheritance
+
+> To start with **Inheritance**, let's suppose we have a `Bank` and want to create a system for it.
+
+Like any company, our Bank has Employees... Let's model the `Employee` class:
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+    // Attributes.
+    private String name;
+    private String socialSecurity;
+    private double salary;
+
+    //...
+}
+```
+
+> **Now, imagine our bank also have an *Employee* with the position of *"Manager"*:**  
+> Is it really necessary to create another class with all the attributes that an *"Employee"* already has?
+
+**Here is where the concept of *"Inheritance"* comes into play:**
+
+ - We can make our `Manager class` *"inherit"* some common attributes from the `Employee class`.
+ - And create a `Manager class` with its *"specific attributes"*.
+
+To apply **"Inheritance"** in Java is very simple, just use the reserved word **extends**:
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+    private int password;
+    private int managedEmployees;
+
+    //...
+}
+```
+
+> **NOTE:**  
+> Now, every time we create an object of type `Manager`, this object will also have the attributes defined in the `Employee class`, because a `Manager` inherits the attributes of the `Employee class`.
+
+![image](images/extends-01.png)  
+
+---
+
+<div id="protected-modifier"></div>
+
+## The "protected" modifier
+
+Returning to our `Employee class`:
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+    // Attributes.
+    private String name;
+    private String socialSecurity;
+    private double salary;
+
+    // ...
+}
+```
+
+> **What if we need to access the attributes we inherited?**  
+> We wouldn't want to make the attributes of Employee *public*, as this would allow anyone to modify the attributes of objects of this type.
+
+To solva that we can use the **"protected"** modifier. The **protected** attribute can only be accessed (visible) by:
+
+- The class itself;
+- Its subclasses;
+- And classes within the same package.
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+    // Attributes.
+    protected String name;
+    protected String socialSecurity;
+    protected double salary;
+
+    //...
+}
+```
+
+---
+
+<div id="super"></div>
+
+## The "super" keyword
+
+To understand when to use the **"super"** keyword, imagine we have the following classes:
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+    // Attributes.
+    protected String name;
+    protected String socialSecurity;
+    protected double salary;
+
+    public double getBonus() {
+        return this.salary * 0.10;
+    }
+}
+```
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+    private int password;
+    private int managedEmployees;
+
+    @Override
+    public double getBonus() {
+        return this.salary * 0.15;
+    }
+}
+```
+
+Where:
+
+ - **We have a superclass *"Employee"*:**
+   - The `getBonus()` method apply bonus 10% to the salary.
+ - **We also have a subclass *"Manager"*:**
+   - The `Manager` class *inherits (extends)* of the Employee class.
+   - The `Manager` class *overrides* the `getBonus()` method of the `Employee` class:
+     - Applying bonus 15% to the salary.
+
+> **Now, imagine that to calculate the bonus for a `Manager`, we need to calculate the bonus for an `Employee` and add $1000 to it.**
+
+We could (poderíamos) do it like this:
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+    //...
+
+    public double getBonus() {
+        return (this.salary * 0.10) + 1000;
+    }
+}
+```
+
+> **Here we would have a problem:**  
+> If the `getBonus()` method in `Employee` changes, we would need to update the `Manager's` method to reflect the new bonus structure.
+
+To avoid this, the `Manager's getBonus()` can call the `Employee's` method using the keyword **super**:
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+    //...
+
+    @Override
+    public double getBonus() {
+        return super.getBonus() + 1000;
+    }
+}
+```
+
+ - This invocation will look for the **getBonus()** method in a *"superclass (Employee)"* of `Manager`:
+   - In this case, it will quickly find this method in `Employee`.
+ - This is a common practice because, in many cases, the *"overridden"* method typically does **"something extra"** compared to the method in the parent class.
+
+> **In short (Resumindo), we are taking the logic of the Superclass with the super.method() keyword and adding what we need.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( OOP/Polymorphism ) --->
+
+---
+
+<div id="intro-method-overloading"></div>
+
+## Method Overloading
+
+> When there are multiple *methods* with the `same name` but `different parameters` then these *methods* are said to be `overloaded`.
+
+For example:
+
+```java
+class Calculator {
+    // "int" methods.
+    int add(int x, int y) { return x + y; }
+    int add(int x, int y, int z) { return x + y + z; }
+    int add(int x, int y, int z, int w) { return x + y + z + w; }
+    
+    // "double" methods.
+    double add(double x, double y) { return x + y; }
+    double add(double x, double y, double z) { return x + y + z; }
+    double add(double x, double y, double z, double w) { return x + y + z + w; }
+}
+```
+
+> **NOTE:**  
+> See that we have **many methods (many forms)** with the `same name` but `different parameters`.
+
+---
+
+<div id="intro-method-overriding"></div>
+
+## Method Overriding
+
+To understand the concept of **Method Overriding**, imagine we have the following classes:
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+    // Attributes.
+    protected String name;
+    protected String socialSecurity;
+    protected double salary;
+}
+```
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+    private int password;
+    private int managedEmployees;
+}
+```
+
+Now, consider this... At the end of each year, the `Employees` at our bank receive a **bonus**:
+
+- Regular `Employees` receive **10%** of their salary;
+- And `Managers` receive **15%** of their salary.
+
+> **So, how do we apply this in practice?**
+
+- **Create two methods?**
+  - One method giving **10%** for regular Employees;
+  - And another method for Managers with **15%**.
+
+> **Well, this isn't a very smart (inteligente) approach!**
+
+**NOTE:**  
+The ideal solution here is to apply the concept of **Overriding**, where we create a method in the parent class with the most common characteristics and then *override* this method in the child classes, changing its behavior to suit our needs.
+
+For example:
+
+[Employee.java](src/Employee.java)
+```java
+public class Employee {
+
+  //...
+
+  public double getBonus() {
+      return this.salary * 0.10;
+  }
+}
+```
+
+[Manager.java](src/Manager.java)
+```java
+public class Manager extends Employee {
+
+  //...
+
+  @Override
+  public double getBonus() {
+      return this.salary * 0.15;
+  }
+}
+```
+
+See that:
+
+ - First, in the parent class, we create the method with the most common characteristics **(10%)**.
+ - Next, we `override` the parent method in a child class to meet our specific needs **(15%)**.
+
+> **NOTE:**  
+> Using `@Override` is not mandatory (obrigatório), but if a method is `annotated` with `@Override`, it must necessarily be `overriding` a method from the *parent class (classe pai)*.
+
+---
+
+<div id="intro-abstract-classes"></div>
+
+## Abstract Class
+
+To understand the concept of **Abstract Class** first, let's learn (review) some concepts:
+
+ - First, the keyword **abstract** prevents (impede) a class from being *"instantiated"*.
+ - **NOTE:** However, this class can be *"referenced"*.
+
+[Employee.java](src/Employee.java)
+```java
+public abstract class Employee {
+
+  //...
+}
+```
+
+Now if I try to *"instantiate"* the `Employee` class this will not be possible:
+
+```java
+Employee e = new Employee() // ERROR!!!
+```
+
+The code above would return an error because our `Employee` class has the **"abstract modifier"** in its declaration.
+
+> **If it can't be "instantiated", what's the purpose?**
+
+It is useful for **Polymorphism** and the *inheritance* of attributes and methods, which are very powerful features.
+
+---
+
+<div id="intro-abs-method"></div>
+
+## Abstract Method
+
+> In an **Abstract Class**, **we can specify that a certain method will always be implemented by the child classes**. That is, an **Abstract Method**.
+
+ - It indicates that all child classes must `override` this method, or they won't compile.
+ - It's as if you *inherit the responsibility* of having that method:
+   - É como se você *herdasse a responsabilidade* de ter aquele método.
+
+**How to declare an abstract method?**  
+Simply write the keyword **"abstract"** in the method signature and use a `semicolon (;)` instead of `curly braces ({})`.
+
+[Employee.java](src/Employee.java)
+```java
+public abstract class Employee {
+
+  //..
+
+  public abstract double getBonus();
+
+  //...
+}
+```
+
+> **NOTE:**  
+> Now, whoever (quem) *inherits* from the `Employee` class will be required to *override* the **getBonus()** method.
+
+---
+
+<div id="intro-interfaces"></div>
+
+## Interfaces
+
+> **Interfaces** allow different classes to *"implement the same set of methods"* but *"with distinct behaviors"*.
+
+For example, imagine you're developing an e-commerce system that needs to handle different payment methods, such as:
+
+- **Credit card.**
+- **PayPal.**
+
+Ok, how can we design a system that is flexible enough to handle these different payment methods without duplicating code or creating complex structures?
+
+> **The answer lies in using "Polymorphism" with "Interfaces".**
+
+Let's start by defining a **PaymentMethod Interface**. This *interface* will declare the **pay(double amount)** method, which will be implemented in `different ways` by each class that represents a payment method:
+
+[PaymentMethod.java](src/PaymentMethod.java)
+```java
+interface PaymentMethod {
+    void pay(double amount);
+}
+```
+
+> **Here, the *PaymentMethod Interface* establishes a `contract` that all payment method classes must follow:**  
+> In other words, any class that implements this interface must provide an implementation of the `pay()` method.
+
+Now, let's create two classes:
+
+- **CreditCardPayment.**
+- **PayPalPayment.**
+
+Both will implement the **PaymentMethod Interface**, but each will have its own logic for processing the payment:
+
+[CreditCardPayment.java](src/CreditCardPayment.java)
+```java
+class CreditCardPayment implements PaymentMethod {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Paying " + amount + " using Credit Card.");
+    }
+}
+```
+
+[PayPalPayment.java](src/PayPalPayment.java)
+```java
+class PayPalPayment implements PaymentMethod {
+    @Override
+    public void pay(double amount) {
+        System.out.println("Paying " + amount + " using PayPal.");
+    }
+}
+```
+
+The important points to note above are:
+
+ - Classes that implement the **PaymentMethod interface** are `"obliged (comply with the contract)"` to implement the **pay(double amount)** method.
+ - We are using the annotation `@Override` to say that this method is being *overridden*.
+
+Now, let's test this in practice:
+
+[TestInterface.java](src/TestInterface.java)
+```java
+public class TestInterface {
+    public static void main(String[] args) {
+
+        PaymentMethod paymentMethod;
+
+        paymentMethod = new CreditCardPayment();
+        processPayment(paymentMethod, 150.0);
+
+        paymentMethod = new PayPalPayment();
+        processPayment(paymentMethod, 250.0);
+    }
+
+    public static void processPayment(PaymentMethod method, double amount) {
+        method.pay(amount);
+    }
+}
+```
+
+See that we are using the PaymentMethod Interface as a reference:
+
+```java
+PaymentMethod paymentMethod;
+```
+
+We use the `paymentMethod` reference to instantiate the `CreditCardPayment` or `PayPalPayment` classes:
+
+```java
+paymentMethod = new CreditCardPayment();
+paymentMethod = new PayPalPayment();
+```
+
+We also have a method to process the payments:
+
+```java
+public static void processPayment(PaymentMethod method, double amount) {
+    method.pay(amount);
+}
+```
+
+The processPayment() method receives:
+
+ - The payment `reference`.
+ - The `amount` to be paid.
+
+**COMPILETION & RUN:**
+```bash
+javac TestInterface.java
+java TestInterface
+```
+
+**OUTPUT:**
+```bash
+Paying 150.0 using Credit Card.
+Paying 250.0 using PayPal.
+```
+
+---
+
+<div id="when-to-use-interfaces"></div>
+
+## When to use Interfaces
+
+ - Use interfaces when you want to define a `contract` that different classes must follow, but where the implementation can vary completely.
+ - **NOTE:** Interfaces are ideal when different classes do not share a common inheritance hierarchy or when you want classes to be able to implement multiple interfaces.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -790,6 +1442,58 @@ java -cp bin MathUtilsTest
 All Calculator tests passed.
 All MathUtils tests passed.
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
