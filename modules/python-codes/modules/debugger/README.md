@@ -292,7 +292,7 @@ pdb3 debugging.py
 
 As we know the `arrow (->)` means the current line (instruction) of code will be executed...
 
-> **But, how can we run this line?**
+> **But, how can we run this line?**  
 > A simple command to run the current line is the `step (or s)` command.
 
 For example:
@@ -345,14 +345,14 @@ For example:
 
 See that always we run the `step (or s)` command the `arrow (->)` changes the line (instruction).
 
-> **But what is the *purpose* or *advantage* of changing the line arrow?**  
+> **But what is the *"purpose"* or *"advantage"* of changing the line arrow?**  
 > This is important because the debugger only knows what is on that line (for example, the value of a variable) when it executes the line (instruction).
 
 <div id="print-or-p"></div>
 
 ### Print (or p)
 
-For example, let's use the command print (or p) to see the values in the **"hello"** and **"msg"** variables:
+For example, let's use the command `print (or p)` to see the values in the **"hello"** and **"msg"** variables:
 
 **Pdb:**
 ```bash
@@ -411,7 +411,7 @@ See that:
 
 ### type() and whatis
 
-Two other widely used commands are the `type()` and `whatis` commands, which return the type of a variable.
+> Two other useful commands are the `type()` and `whatis` commands, which return the variable type.
 
 For example, let's see the type of some variables:
 
@@ -738,11 +738,11 @@ The program finished and will be restarted
 > **NOTE:**  
 > To understand the need for the `break (or b)` command, let's imagine that we have a file with *10 thousand (10k)* lines.
 
-**Well, we would have a problem...**  
-We would have to go line by line using the `step (or s)` or `next (or n)` command until we reach the place we want.
+**Well, we would (teríamos) have a problem...**  
+We would (teríamos) have to go line by line using the `step (or s)` or `next (or n)` command until we reach the place we want.
 
 > **Ok, but how solve this problem?**  
-> Using the `break (or b)` command, we can sets a *"breakpoint (ponto de parada)"* on the selected line.
+> Using the `break (or b)` command, we can sets a **"Breakpoint (ponto de parada)"** on the selected line.
 
 For example, imagine we have the following code:
 
@@ -831,7 +831,7 @@ pdb3 debugging.py
 ```
 
 **Now, imagine we need to run all lines (instructions) until the the_sum() function:**  
-To do that, we can set a breakpoint (ponto de parada) on the `the_sum()` function.
+To do that, we can set a **breakpoint (ponto de parada)** on the `the_sum()` function.
 
 **Pdb:**
 ```bash
@@ -867,15 +867,15 @@ Breakpoint 1 at debugging.py:13
 
 See that:
 
- - We define a *Breakpoint (ponto de parada)* in the file "debugging.py".
+ - We define a **Breakpoint (ponto de parada)** in the file "debugging.py".
  - On the line 13.
 
 **NOTE:**  
-To list all *Breakpoints (pontos de parada)*, we need to use the `break (or b)` command without arguments:
+To list all **Breakpoints (pontos de parada)**, we need to use the `break (or b)` command without arguments:
 
 **Pdb:**
 ```bash
-(Pdb) b
+(Pdb) break
 Num Type         Disp Enb   Where
 1   breakpoint   keep yes   at debugging.py:13
 ```
@@ -887,12 +887,12 @@ Num Type         Disp Enb   Where
 
 ### Continue (or c)
 
-The `continue (or c)` command executes lines (instructions) until the next *breakpoint (ponto de parada)*.
+The `continue (or c)` command executes lines (instructions) until the next **breakpoint (ponto de parada)**.
 
-> **Next *Breakpoint (ponto de parada)*?**
+> **Why *"next Breakpoint (ponto de parada)"*?**
 
- - By default, the first instruction in the file will be the first Breakpoint (ponto de parada).
- - In other words, that's where the *arrow (->)* starts.
+ - By default, the first instruction in the file will be the first **Breakpoint (ponto de parada)**.
+ - In other words, where the `arrow (->)` starts.
 
 For example:
 
@@ -914,9 +914,9 @@ For example:
 ```
 
 > **NOTE:**  
-> See that in our case the first instruction is the `hello: str = "Hello, World!"`. In other words, the first Breakpoint (ponto de parada).
+> See that in our case the first instruction is the `hello: str = "Hello, World!"`. In other words, the first **Breakpoint (ponto de parada)**.
 
-Now, let's set some Breakpoints (pontos de parada) and changes the `arrow (->)` using the `continue (or c)` command:
+Now, let's set some **Breakpoints (pontos de parada)** and changes the `arrow (->)` using the `continue (or c)` command:
 
 **Pdb:**
 ```bash
@@ -937,7 +937,7 @@ Num Type         Disp Enb   Where
 (Pdb) 
 ```
 
-Now, let's check these Breakpoints (pontos de parada) using the `list (or l)` command:
+Now, let's check these **Breakpoints (pontos de parada)** using the `list (or l)` command:
 
 **Pdb:**
 ```bash
@@ -1052,7 +1052,7 @@ Finally, let's change the `arrow (->)` using the `continue (or c)` command:
 ```
 
 > **See how interesting the use of Breakpoints (pontos de parada) is.**  
-> We execute a range of lines (instructions) at once (de uma vez) just by adding Breakpoints (pontos de parada).
+> We execute a range of lines (instructions) at once (de uma vez) just by adding **Breakpoints (pontos de parada)**.
 
 > **Ok, but how remove Breakpoints (pontos de parada)?**  
 > Using the `clear (or cl)` command.
@@ -1061,7 +1061,7 @@ Finally, let's change the `arrow (->)` using the `continue (or c)` command:
 
 ### clear (or cl)
 
-To remove Breakpoints (pontos de parada) we use the `clear (or cl)` command:
+To remove **Breakpoints (pontos de parada)** we use the `clear (or cl)` command:
 
 **Pdb:**
 ```bash
@@ -1113,7 +1113,7 @@ Deleted breakpoint 3 at debugging.py:33
 
 ## REFERENCES
 
- - [Opening scripts in Debugger Mode](#debugger-mode)
+ - [Como debugar código Python? - Live de Python #197](https://www.youtube.com/watch?v=yffiyHEiUvo)
 
 ---
 
