@@ -3,8 +3,9 @@
 ## Contents
 
  - [Python Internals (Theory and Practice)](modules/python-internals)
- - [Errors and Exceptions](modules/errors-and-exceptions)
  - [Object-Oriented Programming (OOP)](modules/oop)
+ - [Errors and Exceptions](modules/errors-and-exceptions)
+ - [The Python Debugger](modules/debugger)
  - **Web Development:**
    - [Django](modules/django)
  - **APIs:**
