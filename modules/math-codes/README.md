@@ -29,7 +29,8 @@
 
  - [Algebraic Expressions](modules/algebra/algebraic-expressions)
  - [Set Theory](modules/algebra/set-theory)
+ - [Logarithms](modules/algebra/logarithms)
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+**Rodrigo** **L**eite da **S**ilva
