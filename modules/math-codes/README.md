@@ -30,6 +30,7 @@
  - [Algebraic Expressions](modules/algebra/algebraic-expressions)
  - [Set Theory](modules/algebra/set-theory)
  - [Logarithms](modules/algebra/logarithms)
+ - [Equations](modules/algebra/equations)
 
 ---
 
