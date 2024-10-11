@@ -19,6 +19,9 @@
 
 > Arithmetic is the branch of mathematics that deals with the basic operations and properties of numbers, including *addition*, *subtraction*, *multiplication*, *division*, and their combinations. **It mainly focuses on direct numerical calculations and manipulation of concrete quantities**.
 
+ - [Least Common Multiple (LCM) and Greatest Common Divisor (GCD)](modules/arithmetic/lcm-gcd)
+ - [Fractions](modules/arithmetic/fractions)
+
 ---
 
 <div id="algebra"></div>
