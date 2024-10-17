@@ -4,6 +4,7 @@
 
 ## Contents
 
+ - [Algorithms & Data Structures](modules/algorithms-and-ds)
  - [Programming](#section-programming)
  - [Software Engineering](#section-software-engineering)
  - [Database](#section-database)
@@ -21,8 +22,6 @@
 
 ## Programming
 
- - **Algorithms:**
-   - [Algorithms & Data Structures](modules/algorithms-and-ds)
  - **Programming Languages:**
    - [JavaScript](modules/javascript-codes)
    - [Python](modules/python-codes)
