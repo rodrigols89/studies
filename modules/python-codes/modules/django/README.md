@@ -2,10 +2,8 @@
 
 ## Contents
 
- - **Django Basics:**
-   - [Django Architecture ( Model-Template-View | MTV )](#django-architecture)
+ - **Django Fundamentals:**
    - [Projects vs. apps](#project-x-app)
-   - [Django Structure](#django-structure)
  - **Django Admin:**
    - `python manage.py createsuperuser` (http://localhost:8000/admin)
    - [Add your models to the Django Admin](#add-your-models-to-the-django-admin)
@@ -93,45 +91,13 @@
 
 
 
-<!--- ( Django Basics ) --->
-
----
-
-<div id="django-architecture"></div>
-
-## Django Architecture ( Model-Template-View | MTV )
-
-> **Django** is a Web Framework that is built on the **Model-Template-View (MTV)** pattern.
-
-For example, see the examples below to understand more easily:
-
-**Example-01:**
-![img](images/django-architecture-01.png)  
-
- - **Model:**
-   - The *model* is responsible for `storing` and `retrieving` data from a database.
-   - It also contains the business logic for the application, such as validation and relationships between data.
-   - **When to use:** The model is used to manage and manipulate data. It is responsible for handling the data-related tasks, such as fetching data from a database, processing it, and updating it.
- - **Template:**
-   - The *template* is `responsible for rendering the user interface of the application`.
-   - It uses *HTML*, *CSS*, and *JavaScript* to create the pages that users see.
-   - **When to use:** Templates are used for rendering and displaying information to the user. They take the data provided by the model and format it in a way that is suitable for presentation.
- - **View:**
-   - The *view* is `responsible for handling user requests` and `rendering the appropriate template`.
-   - It also communicates with the model to retrieve data.
-   - **When to use:** Views are used to present the user interface and handle user input. They interact with the model to fetch and display data, and they also capture user actions and pass them to the controller for further processing.
-
-
-
-
+<!--- ( Django Fundamentals ) --->
 
 ---
 
 <div id="project-x-app"></div>
 
 ## Projects vs. apps
-
-The difference between **a project** and **an app** is:
 
  - **A project** is a `collection of configuration` and `apps` for a particular website:
    - `A project can contain multiple apps.`
@@ -140,75 +106,6 @@ The difference between **a project** and **an app** is:
    - A database of public records;
    - A small poll app...
    - `An app can be in multiple projects.`
-
-
-
-
-
----
-
-<div id="django-structure"></div>
-
-## Django Structure
-
-After you create a Django project you will have the following structure:
-
-```bash
-django-admin startproject <ProjectName>
-```
-
-```bash
-├─── .<ProjectName>
-│    ├── <ProjectName>
-│    |      ├── __init__.py
-│    |      ├── asgi.py
-│    |      ├── settings.py
-│    |      ├── urls.py
-│    |      ├── wsgi.py
-│    ├── manage.py
-│    ├── <AppName>
-│    |      ├── /migrations
-│    |      |      ├── __init__.py
-│    |      ├── __init__.py
-│    |      ├── admin.py
-│    |      ├── apps.py
-│    |      ├── models.py
-│    |      ├── tests.py
-│    |      ├── views.py
-```
-
-Where:
-
- - `.<ProjectName>` Root folder.
-   - `<ProjectName>` Project setting files.
-     - `__init__.py`
-     - `asgi.py` ASGI server settings.
-     - `settings.py` All settings for the project:
-       - Define templates sources.
-       - Apps installed.
-       - Project secret key.
-     - `urls.py` Project URLs:
-       - www.example.com/blog
-       - www.example.com/admin
-     - `wsgi.py` WSGI server settings.
-   - `manage.py` File to manage the project.
-     - `python manage.py runserver`.
-   - `<AppName>` Project apps (E.g. /site, /store, etc).
-     - `/migrations` Manage changes to the Database.
-       - `__init__.py`
-     - `/templates` Project/App frontend files.
-       - `__init__.py`
-       - HTML, CSS, and JavaScript files.
-     - `__init__.py`
-     - `admin.py`
-     - `apps.py`
-     - `models.py` Here you will create things that you will store in your Database:
-       - For example, database tables.
-     - `tests.py`
-     - `views.py` Represents your App's logic:
-       - When the use click on the `/blog` URL what happens?
-       - When the user clicks on the `/admin` URL what happens?
-       - Link the views to the templates.
 
 
 
@@ -335,7 +232,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-> **NOTE:**
+> **NOTE:**  
 > If we look better, we don't have our models in the Django Admin.
 
 To solva that we need to register our models in the `admin.py` file:
@@ -421,7 +318,7 @@ DATABASES = {
 }
 ```
 
-> ***NOTE:**  
+> **NOTE:**  
 > By default, Django uses the **"sqlite3"** database.
 
 Now, let's see how to add other databases:
@@ -481,7 +378,7 @@ python manage.py migrate --database=postgresql_db
 python manage.py migrate
 ```
 
-> The command above is used to *"send migrations to the database"*.
+> **The command above is used to *"send migrations to the database"*.**
 
 For example:
 
@@ -511,10 +408,10 @@ class Employee(models.Model):
     name = models.CharField(max_length=250)
 ```
 
-> **NOTE:**  
-> Before run the `makemigrations` command, we need to:
-> - Add the App to the `INSTALLED_APPS` list in `settings.py` file.
-> - Run the command `python manage.py migrate`.
+Before run the `makemigrations` command, we need to:
+
+ - Add the App to the `INSTALLED_APPS` list in `settings.py` file.
+ - Run the command `python manage.py migrate`.
 
 ```bash
 python manage.py makemigrations
