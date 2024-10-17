@@ -758,29 +758,6 @@ Por fim, se tudo ocorreu bem, o usuário será redirecionado (redirect) para a t
 
 
 
----
-
-
-
-
-
----
-
-
-   - [](#)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -861,11 +838,6 @@ Vejam que:
 
 
 
-
-
-
-
-
 ---
 
 <div id="static-vs-media"></div>
@@ -878,63 +850,6 @@ Vejam que:
  - **Média (Media):**
    - Os arquivos de média são os arquivos que os usuários da aplicação fazem Upload para a sua aplicação.
    - Exemplo: Vídeos do Youtube (Os usuários que colocam os vídeos), Imagens do Instagram.
-
-
-
-
-
-
-
-
-
-
----
-
-
-
-
-   - [](#)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
