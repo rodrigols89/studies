@@ -1,7 +1,7 @@
 # Trigonometry
 
-> **Trigonometry is a branch of mathematics that studies the `relationships` between the *sides* and *angles* of a *"triangle"*.**  
-> These *relationships* can be used to *find missing sides* or *angles* of a Triangle.
+> **Trigonometry is a branch of mathematics that studies the `relationships` between the `sides` and `angles` of a *"triangle"*.**  
+> These *relationships* can be used to `find missing sides` or `angles` of a Triangle.
 
 ## Contents
 
@@ -12,18 +12,18 @@
    - [**Pythagorean Theorem (Find *"sides"* of a Right-Angled Triangle):**](#pythagorean-theorem)
      - [When is the "Pythagorean Theorem" useful?](#when-pt-useful)
      - [Find different sides of a Right-Angled Triangle](#fdsrat)
- - [**Sine(θ) | $S\frac{O}{H}$**](#intro-to-sine)
+ - [**Sine(θ) | SOH**](#intro-to-sine)
    - [Finding a missing side using sin(θ) ratio](#missing-side-sine)
    - [Finding a missing angle using sin<sup>-1</sup>(x)](#missing-angle-sine)
- - [**Cosine(θ) | $C\frac{A}{H}$**](#intro-to-cosine)
+ - [**Cosine(θ) | CAH**](#intro-to-cosine)
    - [Finding a missing side using cos(θ) ratio](#missing-side-cosine)
    - [Finding a missing angle using cos<sup>-1</sup>(x)](#missing-angle-cosine)
- - [**Tangent(θ) | $T\frac{O}{A}$**](#intro-to-tangent)
+ - [**Tangent(θ) | TOA**](#intro-to-tangent)
    - [Finding a missing side using tan(θ) ratio](#missing-side-tangent)
    - [Finding a missing angle using tan<sup>-1</sup>(x)](#missing-angle-tangent)
  - **Tips & Tricks:**
    - [When to use trigonometric ratios (SOH, CAH, TOA)?](#when-to-use-sohcahtoa)
-   - [When to use the Standard or Inverse trigonometric function?](#when-to-use-standard-or-inverse)
+   - [When to use the "Standard" or "Inverse Trigonometric" function?](#when-to-use-standard-or-inverse)
  - [**REFERENCES**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -90,7 +90,7 @@
 
 ## Angles can be represented as Greek Letters
 
-> **"Angles"** are often (frequentemente) represented as **"Greek letters"**.
+> **"Angles"** are often (frequentemente) represented as **"Greek Letters"**.
 
 For example, let's see some common **"Greek letters"** used to represent the angles of a triangle:
 
@@ -168,8 +168,6 @@ Let's see some different examples of **"Opposite"** and **"Adjacent"**:
 
 
 
----
-
 <!--- ( Pythagorean Theorem ) --->
 
 ---
@@ -181,8 +179,10 @@ Let's see some different examples of **"Opposite"** and **"Adjacent"**:
 Over 2000 years ago there was an amazing discovery about triangles...
 
  - When a triangle has a **right angle (90°)**;
- - And squares are made on each of the three sides (e quadrados são feitos em cada um dos três lados);
- - Then the biggest square has the exact same area as the other two squares put together (então o maior quadrado tem exatamente a mesma área que os outros dois quadrados juntos!)!
+ - And squares are made on each of the three sides:
+   - **PT-NOTE:** E são feitos quadrados em cada um dos três lados.
+ - Then the biggest square has the exact same area as the other two squares put together:
+   - **PT-NOTE:** Então o maior quadrado tem exatamente a mesma área que os outros dois quadrados juntos.
 
 See the image below to understand more easily:
 
@@ -282,7 +282,7 @@ For example, see the example below:
 
 <div id="intro-to-sine"></div>
 
-## Sine(θ) | $S\frac{O}{H}$
+## Sine(θ) | SOH
 
 > If we have the `opposite side` and the `hypotenuse`, use the **sine(θ)** ratio.
 
@@ -447,7 +447,7 @@ We can use the `sine(θ) ratio (SOH)` to determine the angle (θ) value:
 
 <div id="intro-to-cosine"></div>
 
-## Cosine(θ) | $C\frac{A}{H}$
+## Cosine(θ) | CAH
 
 > If we have the `adjacent side` and the `hypotenuse`, use the **cosine(θ)** ratio.
 
@@ -608,7 +608,7 @@ We can use the `cosine(θ) ratio (CAH)` to determine the angle (θ) value:
 
 <div id="intro-to-tangent"></div>
 
-## Tangent(θ) | $T\frac{O}{A}$
+## Tangent(θ) | TOA
 
 > If we have the `opposite side` and the `adjacent side`, use the **tangent(θ)** ratio.
 
@@ -777,7 +777,7 @@ We can use the `tangent(θ) ratio (TOA)` to determine the angle (θ) value:
 
 We can use **trigonometric ratios (SOH, CAH, TOA)** to find a `missing side` of a triangle when we have:
 
- - A Angle as reference.
+ - A angle (θ) as reference.
  - The length of at least one side of the triangle.
 
 We can use **trigonometric ratios (SOH, CAH, TOA)** to find a `missing angle` of a triangle when we have:
@@ -792,12 +792,12 @@ We can use **trigonometric ratios (SOH, CAH, TOA)** to find a `missing angle` of
 
 <div id="when-to-use-standard-or-inverse"></div>
 
-## When to use the Standard or Inverse trigonometric function?
+## When to use the "Standard" or "Inverse trigonometric" function?
 
  - **Standard:**
-   - We use *"standard trig"* functions when we know the angle.
+   - We use **"standard trig"** functions when we know the angle.
  - **Inverse:**
-   - We have to use the *"inverse trig"* functions when we don’t know the angle.
+   - We have to use the **"inverse trig"** functions when we don’t know the angle.
 
 
 
