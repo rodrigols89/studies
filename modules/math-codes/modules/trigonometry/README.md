@@ -12,6 +12,7 @@
    - [**Pythagorean Theorem (Find *"sides"* of a Right-Angled Triangle):**](#pythagorean-theorem)
      - [When is the "Pythagorean Theorem" useful?](#when-pt-useful)
      - [Find different sides of a Right-Angled Triangle](#fdsrat)
+   - [Sine, Cosine, and Tangent Table: 0 to 360 degrees](images/sine-cosine-tangent-table.md)
  - [**Sine(θ) | SOH**](#intro-to-sine)
    - [Finding a missing side using sin(θ) ratio](#missing-side-sine)
    - [Finding a missing angle using sin<sup>-1</sup>(x)](#missing-angle-sine)
