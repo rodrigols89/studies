@@ -3,9 +3,13 @@
 ## Contents
 
  - **Economics Concepts:**
-   - [Liquidity](#intro-to-liquidity)
-   - [Inflation and Deflation (PT-BR)](#inflation-deflation)
+   - [**Liquidity**](#intro-to-liquidity)
+   - **Inflation and Deflation:**
+     - [Inflação e Deflação: Uma abordagem monetária (PT-BR)](#inflation-deflation)
  - **Brazilian Economic System (Notes in Portuguese)**
+   - [Tesouro Nacional](#tesouro-nacional)
+
+
  - [**REFERENCES**](#ref)
 <!--- 
 [WHITESPACE RULES]
@@ -74,8 +78,8 @@
 
 > The term **"Liquidity"** is related to the speed and ease with which you can redeem (recover) the money from an investment.
 
- - The **higher** the liquidity, *the faster and easier the redemption (recovering)*.
- - The **lower** the liquidity, *the slower and more difficult the redemption (recovering)*.
+ - The **higher the liquidity**, *the faster and easier the redemption (recovering)*.
+ - The **lower the liquidity**, *the slower and more difficult the redemption (recovering)*.
 
 For example, see the chart below to understand the relationship between the **"Liquidity"** and the redemption (recovering) speed:
 
@@ -102,7 +106,7 @@ For example, see the chart below to understand the relationship between the **"L
 
 <div id="inflation-deflation"></div>
 
-## Inflation and Deflation (PT-BR)
+## Inflação e Deflação: Uma abordagem monetária (PT-BR)
 
 Segundo **Ludwig von Mises (Theory of Money and Credit)**:
 
@@ -159,14 +163,14 @@ No exemplo acima nós temos um ponto de equilíbrio do dinheiro.
 ![img](images/inflation-deflation-02.png)  
 
 > **Vejam que o preço (ou valor) do dinheiro caiu!**  
-> Isso é o que nós chamamos de `inflação (inflação)`.
+> Isso é o que nós chamamos de `inflação`.
 
 Por outro lado, se a **demanda (demanda)** por dinheiro aumenta:
 
 ![img](images/inflation-deflation-03.png)  
 
 > **Vejam que o preço (ou valor) do dinheiro aumentou!**  
-> Isso é o que chamamos de `deflação (deflação)`.
+> Isso é o que chamamos de `deflação`.
 
 
 
@@ -186,7 +190,172 @@ Por outro lado, se a **demanda (demanda)** por dinheiro aumenta:
 
 
 
-<!--- ( Brazilian Economic System (Notes in Portuguese) ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( B.E.S/Tesouro Nacional ) --->
+
+---
+
+<div id="tesouro-nacional"></div>
+
+## Tesouro Nacional
+
+ - **DATA DE CRIAÇÃO:**
+   - 10 de março de 1986.
+ - **OBJETIVO:**
+   - Responsável por gerenciar as finanças públicas do Brasil.
+ - **ORGÃO RESPONSAVEL:**
+   - Ministério da Fazenda.
+ - **PESSOAL RESPONSÁVEL:**
+   - Ministro da Fazenda (Atualmente: Fernando Haddad).
+
+---
+
+<div id="titulos-de-dividas"></div>
+
+## Títulos de dívidas do Tesouro Nacional
+
+> **O que são os títulos de dívidas do Tesouro Nacional?**
+
+ - **INTRODUÇÃO:**
+   - Os **títulos de dívida do Tesouro Nacional** são como empréstimos que o governo faz para a **população** e para **instituições financeiras**.
+ - **OBJETIVO:**
+   - Ao emitir esses títulos, o governo capta recursos para financiar suas atividades, como **investimentos em infraestrutura**, **programas sociais** e **pagamento de servidores**.
+ - **VANTAGENS:**
+   - Em troca desse empréstimo, **o governo paga juros aos investidores** e, **ao final do prazo, devolve o valor investido**.
+   - **NOTE:** Esses títulos são considerados uma das formas mais seguras de investimento, pois são respaldados pela credibilidade do governo.
+
+---
+
+<div id="tesouro-direto"></div>
+
+## Tesouro Direto
+
+ - **DATA DE CRIAÇÃO:**
+   - O **Tesouro Direto** foi criado em *2002*, em parceria entre o **Tesouro Nacional** e a **B3 (bolsa de valores)**. 
+ - **ORGÃO RESPONSAVEL:**
+   - O **Tesouro Direto** é um programa do *Tesouro Nacional*.
+ - **OBJETIVO:**
+   - Permite que qualquer cidadão que possua um CPF possa **investir** em **títulos do Tesouro Nacional**.
+
+---
+
+<div id="tesouro-selic"></div>
+
+ - **DATA DE CRIAÇÃO:**
+   - O **Tesouro Selic** estreou em *22 de outubro de 1979*, com o registro da custódia dos papéis.
+   - **NOTE:** Vejam que foi o mesmo ano que foi criado o **Tesouro Nacional**.
+ - **ORGÃO RESPONSAVEL:**
+   - O **Tesouro Direto** é um programa do *Tesouro Nacional*.
+ - **OBJETIVO:**
+   - Permite que qualquer cidadão que possua um CPF possa **investir** em **títulos do Tesouro Nacional**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   - [**Tesouro Nacional**](#tesouro-nacional)
+     - [**Títulos de dívidas do Tesouro Nacional**](#titulos-de-dividas)
+     - **Programas do Tesouro Nacional:**
+       - [Tesouro Direto](#tesouro-direto)
+       - [Tesouro Selic](#tesouro-selic)
+       - [Tesouro IPCA](#tesouro-ipca)
+       - [Tesouro IPCA+](#tesouro-ipca-plus)
+   - [**CDB**](#cdb)
+
+---
+
+<div id="cdb"></div>
+
+## CDB
+
+A B3 faz registro de CDBs desde 1986 e é líder nesse mercado.
+
+Certificado de Depósito Bancário (CDB) é um investimento de renda fixa no qual você aplica seu dinheiro em uma instituição financeira e em troca recebe o valor que investiu acrescido da rentabilidade prevista no CDB.
+
+> Diferente dos programas do **Tesouro Nacional** como *Tesouro Direto* e *Tesouro Selic*, **o CDB corresponde a títulos de dívidas de Bancos**.
+
+ - **NOTE:** O CDB tem o seguro do **FGC** que significa que se o Banco falir esse seguro (FGC) irá ressacir até 250 mil por investiror (CPF) por instituição financeira.
+
+
+, representou um passo fundamental para o fortalecimento das finanças públicas do país, consolidando a modernização institucional e a sistematização da gestão responsável dos recursos públicos.
+Em 2002 foi lançado o Programa Tesouro Direto, que possibilita qualquer cidadão que possua um CPF investir em títulos do Tesouro Nacional.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
