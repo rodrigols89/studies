@@ -1,16 +1,99 @@
-# Questões de EX-Matemática
+# Questões de EX-Matéria
 
 ## Conteúdo
 
+ - **Muito Fáceis:**
  - **Fáceis:**
-   - **Banca aqui:**
-     - Questão 1...
  - **Médias:**
-   - **Banca aqui:**
-     - Questão 1...
  - **Dificeis:**
-   - **Banca aqui:**
-     - Questão 1...
+<!--- 
+[WHITESPACE RULES]
+- Different topic = "50" Whitespace character.
+--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( ??? ) --->
+
+---
+
+
+
+
+
+
+
+
+
+
+
+<!---
+
+
+---
+
+<div id=""></div>
+
+## x
+
+**RESPOSTA:**  
+???
+
+
+**REFERÊNCIA:**  
+[]()
+
+
+--->
 
 ---
 
