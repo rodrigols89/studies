@@ -7,7 +7,12 @@
    - **Inflation and Deflation:**
      - [Inflação e Deflação: Uma abordagem monetária (PT-BR)](#inflation-deflation)
  - **Brazilian Economic System (Notes in Portuguese)**
-   - [Tesouro Nacional](#tesouro-nacional)
+   - [**Tesouro Nacional**](#tesouro-nacional)
+     - [Títulos de dívidas do Tesouro Nacional](#titulos-de-dividas)
+     - [Tesouro Selic](#tesouro-selic)
+     - [Tesouro Direto](#tesouro-direto)
+
+
 
 
  - [**REFERENCES**](#ref)
@@ -250,7 +255,7 @@ Por outro lado, se a **demanda (demanda)** por dinheiro aumenta:
 > **O que são os títulos de dívidas do Tesouro Nacional?**
 
  - **INTRODUÇÃO:**
-   - Os **títulos de dívida do Tesouro Nacional** são como empréstimos que o governo faz para a **população** e para **instituições financeiras**.
+   - Os **títulos de dívida do Tesouro Nacional** são como empréstimos que o governo pega com a **população** e **instituições financeiras**.
  - **OBJETIVO:**
    - Ao emitir esses títulos, o governo capta recursos para financiar suas atividades, como **investimentos em infraestrutura**, **programas sociais** e **pagamento de servidores**.
  - **VANTAGENS:**
@@ -259,20 +264,9 @@ Por outro lado, se a **demanda (demanda)** por dinheiro aumenta:
 
 ---
 
-<div id="tesouro-direto"></div>
-
-## Tesouro Direto
-
- - **DATA DE CRIAÇÃO:**
-   - O **Tesouro Direto** foi criado em *2002*, em parceria entre o **Tesouro Nacional** e a **B3 (bolsa de valores)**. 
- - **ORGÃO RESPONSAVEL:**
-   - O **Tesouro Direto** é um programa do *Tesouro Nacional*.
- - **OBJETIVO:**
-   - Permite que qualquer cidadão que possua um CPF possa **investir** em **títulos do Tesouro Nacional**.
-
----
-
 <div id="tesouro-selic"></div>
+
+## Tesouro Selic
 
  - **DATA DE CRIAÇÃO:**
    - O **Tesouro Selic** estreou em *22 de outubro de 1979*, com o registro da custódia dos papéis.
@@ -281,6 +275,32 @@ Por outro lado, se a **demanda (demanda)** por dinheiro aumenta:
    - O **Tesouro Direto** é um programa do *Tesouro Nacional*.
  - **OBJETIVO:**
    - Permite que qualquer cidadão que possua um CPF possa **investir** em **títulos do Tesouro Nacional**.
+
+---
+
+<div id="tesouro-direto"></div>
+
+## Tesouro Direto
+
+> O Tesouro Direto é um programa criado em 2002 para permitir que pessoas físicas negociem títulos público que até então só eram feitos por fundos e grandes investidores.
+
+ - **DATA DE CRIAÇÃO:**
+   - O **Tesouro Direto** foi criado em *2002*, em parceria entre o **Tesouro Nacional** e a **B3 (bolsa de valores)**. 
+ - **ORGÃO RESPONSAVEL:**
+   - O **Tesouro Direto** é um programa do *Tesouro Nacional*.
+ - **OBJETIVO:**
+   - Permite que qualquer cidadão que possua um CPF possa **investir** em **títulos do Tesouro Nacional**.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
