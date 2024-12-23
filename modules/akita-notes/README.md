@@ -4,11 +4,15 @@
 
 ## Conteúdo
 
- - [**O guia DEFINITIVO do UBUNTU para desenvolvedores iniciantes:**](https://www.youtube.com/watch?v=epiyExCyb2s)
+ - [**[VIDEO] - O guia DEFINITIVO do UBUNTU para desenvolvedores iniciantes**](https://www.youtube.com/watch?v=epiyExCyb2s)
    - [Criptografia Simétrica (Symmetric Encryotion)](#symmetric-encrytion)
    - [Criptografia Assimétrica  (Asymmetric Encrytion)](#asymmetric-encrytion)
      - [Exemplo de Criptgrafia Assimétrica](#ex-keys)
-<!--- 
+ - [**[VIDEO] - O Computador de Turing e Von Neumann | Por que calculadoras não são computadores?**](https://www.youtube.com/watch?v=G4MvFT8TGII)
+   - [Frase dedicada a Von Neumann (/noiman/)](#von-neumann-quote)
+
+
+<!---
 [WHITESPACE RULES]
 - Different topic = "50" Whitespace character.
 --->
@@ -112,6 +116,93 @@ Agora vamos ver um exemplo de **Criptografia Assimétrica (Asymmetric Encrytion)
    - Serviços como *GitHub*, *AWS*, *Google Cloud* exigem que você cadastre sua Chave `Públic (Public Key)`.
  - **Chave Privada (Private Key):**
    - Se eu assinar um comite no meu repositório local com minha `Chave Privada (Private key)`, o GitHub poderá verificar se foi eu mesmo que assinei esse comite utilizando minha `Chave Publica (Public Key)` que foi disponibilizada no GitHub.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( O Computador de Turing e Von Neumann ) --->
+
+---
+
+<div id="von-neumann-quote"></div>
+
+## Frase dedicada a Von Neumann (/noiman/)
+
+> A maioria dos matemáticos provam *"o que podem"*; Von Neumann (/noiman/) *"prova o que quer"*.
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
