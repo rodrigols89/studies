@@ -2,8 +2,11 @@
 
 ## Conteúdo
 
- - [Lingua Portuguesa](modules/lingua-portuguesa)
- - [Como praticar](modules/como-praticar)
+ - **Matéria:**
+   - [Língua Portuguesa](modules/lingua-portuguesa)
+   - [Raciocínio Lógico](modules/raciocinio-logico)
+ - **Dicas & Truques:**
+   - [Como praticar](modules/como-praticar)
 
 ---
 
