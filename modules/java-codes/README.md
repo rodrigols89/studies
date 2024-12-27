@@ -23,8 +23,9 @@
        - [Interfaces](#intro-interfaces)
          - [When to use Interfaces](#when-to-use-interfaces)
  - **Settings:**
-   - [Java Development Kit (JDK)](#intro-to-jdk)
+   - [**Java Development Kit (JDK)**](#intro-to-jdk)
      - [Installing the JDK manually](#install-jdk)
+   - [**SDKMAN**](#sdkman)
    - **Compilation:**
      - [Compiling and running your first Java program](#ex01)
  - [**REFERENCES**](#ref)
@@ -1253,6 +1254,95 @@ source ~/.bashrc
 ```
 
 Now your java is configured to be recognized in any directory in the terminal.
+
+
+
+
+
+
+
+
+
+
+<!--- ( Settings/SDKMAN ) --->
+
+---
+
+<div id="sdkman"></div>
+
+## SDKMAN
+
+To install the SDKMAN, run the following command (Please, before install unzip, zip, curl and tar):
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+
+```bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+```bash
+sdk version
+```
+
+**OUTPUT:**
+```bash
+SDKMAN!
+script: 5.18.2
+native: 0.5.0
+```
+
+Now you can list available Java versions to install:
+
+```bash
+sdk list java
+```
+
+Now, you can install a Java version you want. For example:
+
+```bash
+sdk install java 23.0.1-amzn
+```
+
+> **NOTE:**  
+> A versão esta atrelada a coluna *"Identifier"*.
+
+Another useful CLI is the **"gradle"**:
+
+```bash
+sdk list gradle
+```
+
+```bash
+sdk install gradle 8.12
+```
+
+Now, let's create a new project:
+
+```bash
+mkdir gradle-example && cd gradle-example
+```
+
+```bash
+gradle init
+```
+
+Finally, **run** the project:
+
+```bash
+gradle run
+```
+
+**OUTPUT:**
+```bash
+> Task :app:run
+Hello World!
+
+BUILD SUCCESSFUL in 3s
+2 actionable tasks: 2 executed
+Configuration cache entry stored.
+```
 
 
 
