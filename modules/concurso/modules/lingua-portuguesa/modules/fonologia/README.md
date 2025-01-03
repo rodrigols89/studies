@@ -3,6 +3,8 @@
 ## Conteúdo
 
  - **Teoria:**
+   - **Fonemas:**
+     - [](#)
  - **Questões de Concurso:**
    - **Muito Fáceis:**
      - [FGV - 2017 - Auxiliar (Pref Salvador)/Desenvolvimento Infantil](#mf-q01)
@@ -68,7 +70,78 @@
 
 
 
-<!--- ( Muito Fáceis ) --->
+<!--- (  Teoria ) --->
+
+---
+
+<div id="oqueeumfonema"></div>
+
+## O que é um Fonema?
+
+> Fonema é o som de cada letra ou dígrafo ().
+
+Por exemplo:
+
+| Palavra | nº de Letras | nº de Fonemas |
+| -------- | --- | --- |
+| Cachorro | 8 | 7 | 
+
+
+---
+
+<div id="vogal-vs-semivogal"></div>
+
+## Vogal vs. Semivogal
+
+ - **Vogal:**
+   - Uma **"vogal"** é a *"base da sílaba"* e *"soa mais forte nas palavras"*.
+ - **Semivogal:**
+   - Já uma **"semivogal"** *"soa mais fraca"* e é *"pronunciada mais rapidamente"*.
+   - Uma **"semivogal"** sempre se apoia em uma **"vogal"**.
+
+Por exemplo:
+
+![img](images/vogal-vs-semivogal.png)  
+
+---
+
+
+
+
+
+     - [O que é um Fonema?](#oqueeumfonema)
+     - [Vogal vs. Semivogal](#vogal-vs-semivogal)
+       - DICA: A letra "A" sempre é vogal
+     - [](#)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- (  QdQ/Muito Fáceis ) --->
 
 ---
 
