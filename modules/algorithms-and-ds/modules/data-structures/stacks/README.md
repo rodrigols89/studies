@@ -30,6 +30,11 @@
      - [Intro to Reverse Stack problems (e.g. Undo/Redo Operations)](#reverse-stack-theory)
      - [Reversing a Word/Phrase](#reversing-word-phrase)
  - [REFERENCES](#ref)
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
 
 
@@ -81,58 +86,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 <!--- ( Basics ) --->
+
+---
 
 <div id="intro-to-stacks"></div>
 

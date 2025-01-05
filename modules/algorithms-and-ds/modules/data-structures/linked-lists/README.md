@@ -16,55 +16,11 @@
    - [Linked-Lists: Advantages and Disadvantages](#ll-advantages-disadvantages)
    - [The duplicates items issue](#the-duplicates-issue)
  - [REFERENCES](#ref)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
 
 
@@ -131,9 +87,10 @@ See the image below to understand more easily:
 
 ![img](images/sll-01.png)  
 
-To implement a Node class is very easy. See the code below:
+<details>
+<summary>Python</summary>
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 class Node:
     def __init__(self, data):
@@ -160,7 +117,7 @@ See that **Singly Linked List** is composed of many Nodes where:
 
 Let's see how to implement a **Singly Linked List**:
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 class SinglyLinkedList(Node):
     def __init__(self):
@@ -184,7 +141,6 @@ Let's see the first approach:
 
 > ***Initialize* and *link* each Node manually.**
 
-**Python:**
 ```python
 from singly_linked_list import Node
 
@@ -224,9 +180,9 @@ See that using this approach:
 
 Now, let's see the second approach:
 
-> ***Using OOP concepts we can instance a SinglyLinkedList class and initialize the Nodes:**
+> **Using OOP concepts we can instance a SinglyLinkedList class and initialize the Nodes:**
 
-**Python:** [test_nodes_by_sll.py](src/python/test_nodes_by_sll.py)
+[test_nodes_by_sll.py](src/python/test_nodes_by_sll.py)
 ```python
 from singly_linked_list import SinglyLinkedList, Node
 
@@ -256,6 +212,17 @@ Value in the Third Node (tail): 30
 > - See that in the two approaches we always need to use the Node() class constructor to create new Nodes.
 > - This creates a code repetition problem. To solve this we can create methods to create nodes, such as: [push()](#sll-push) and [append()](#sll-append).
 
+</details>
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="sll-push"></div>
@@ -276,9 +243,10 @@ If we add item (element) **5** at the *front*, then the **Singly Linked List** b
 5->10->15->20->25
 ```
 
-Let's, see the code to do this:
+<details>
+<summary>Python</summary>
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 def push(self, data):
     new_node = Node(data)      # O(1)
@@ -311,7 +279,6 @@ $f(n) = O(1) + O(1) + O(1)$
 
 Now, let's test the **push()** method in practice:
 
-**Python:**
 ```python
 from singly_linked_list import SinglyLinkedList
 
@@ -344,6 +311,17 @@ Data in the fourth Node: 20
 Data in the fifth Node: 25
 ```
 
+</details>
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="sll-append"></div>
@@ -364,9 +342,10 @@ And we add the item (element) **25** at the end, then the **Singly Linked List**
 5->10->15->20->25
 ```
 
-Let's, see the code to do this:
+<details>
+<summary>Python</summary>
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 def append(self, data):
     new_node = Node(data)                  # O(1)
@@ -425,7 +404,6 @@ temp_node.next = new_node
 
 Finally, let's test the **append()** function in practice:
 
-**Python:**
 ```python
 from singly_linked_list import SinglyLinkedList, Node
 
@@ -476,6 +454,17 @@ List3 = append(1) + append(2) + append(3):
 > **NOTE:**  
 > See that this approach is linear Time Complexity O(n).
 
+</details>
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="sll-append-constant"></div>
@@ -486,7 +475,10 @@ List3 = append(1) + append(2) + append(3):
 
 First, we need to modify the **SinglyLinkedList()** class to have the *tail attribute (reference)*. This is because the *tail attribute* is used to save the last node in the linked list.
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+<details>
+<summary>Python</summary>
+
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 class SinglyLinkedList(Node):
     def __init__(self):
@@ -496,7 +488,7 @@ class SinglyLinkedList(Node):
 
 Now, let's see how to implement the **append_constant()** method with **constant Time Complexity O(1)** using the **tail** attribute:
 
-**Python:** [singly_linked_list.py](src/python/singly_linked_list.py)
+[singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
 def append_constant(self, data):
     new_node = Node(data)          # O(1)
@@ -567,7 +559,6 @@ See the abstraction below to understand more easily:
 **NOTE:**  
 However, this approach doesn't work for the code below:
 
-**Python**
 ```python
 List = SinglyLinkedList()
 List.head = Node(5)
@@ -588,9 +579,63 @@ This is because the *"tail"* attribute is not set to use the *"next"* attribute.
  - Another *disadvantage* is that the implementation may be a bit more complex than the original approach. This is because the **append_constant()** function now needs to track the *"tail"* and update the *"tail"* attribute.
  - **NOTE:** However, these disadvantages are generally *offset* by the time efficiency of the approach. **O(1)** complexity for the append operation is ideal for scenarios where elements are frequently added.
 
----
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( Traversal/Singly Linked List ) --->
+
+---
 
 <div id="sll-print-list-from-head"></div>
 
@@ -598,7 +643,8 @@ This is because the *"tail"* attribute is not set to use the *"next"* attribute.
 
 > An approach to **traverse a Singly Linked List** is to start from the Head until the last Node (Tail).
 
-The code to do this is the following:
+<details>
+<summary>Python</summary>
 
 **Python** [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -632,7 +678,6 @@ $f(n) = O(1) + O(1) + O(1) + O(1) + O(n) + O(1) + O(1)$
 
 Finally, let's test the print_list_from_head() function in practice:
 
-**Python:**
 ```python
 from singly_linked_list import SinglyLinkedList, Node
 
@@ -665,6 +710,7 @@ List is empty!
 > **NOTE:**  
 > See that here we are using the while statement. This is because we don't know how many items are printed.
 
+</details>
 
 
 
@@ -717,56 +763,10 @@ List is empty!
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 <!--- ( Double Linked List class ) --->
+
+---
 
 <div id="dll-class"></div>
 
@@ -787,7 +787,10 @@ See that:
 
 For example, see how to represent a **"Node"** class for a **Doubly Linked List**:
 
-**Python:** [doubly_linked_list.py](src/python/doubly_linked_list.py)
+<details>
+<summary>Python</summary>
+
+[doubly_linked_list.py](src/python/doubly_linked_list.py)
 ```python
 class Node:
     def __init__(self, data):
@@ -796,6 +799,7 @@ class Node:
         self.prev = None
 ```
 
+</details>
 
 
 
@@ -848,56 +852,10 @@ class Node:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 <!--- ( Circular Linked List ) --->
+
+---
 
 <div id="circular-linked-list-approaches"></div>
 
@@ -921,9 +879,9 @@ See the image below to understand more easily:
 
 **Circular Singly Linked Lists** are similar to *Single Linked Lists* with the exception of connecting the last node to the first node.
 
-For example, see the code below:
+<details>
+<summary>Python</summary>
 
-**Python:**
 ```python
 # Initialize the Nodes.
 first  = Node(3)
@@ -935,6 +893,8 @@ first.next  = second
 second.next = third
 third.next  = first
 ```
+
+</details>
 
 ### Circular Doubly Linked List
 
@@ -996,56 +956,9 @@ See the image below to understand more easily:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--- ( Tips & Tricks ) --->
 
 ---
-
-<!--- ( Tips & Tricks ) --->
 
 <div id="ll-advantages-disadvantages"></div>
 
@@ -1071,6 +984,15 @@ See the image below to understand more easily:
      - Sorting of linked lists is very complex and costly.
      - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
        - As compared to arrays that take **O(1)** time.
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -1155,53 +1077,6 @@ When you design a data storage structure, you need to decide whether items with 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( REFERENCES ) --->
 
 ---
@@ -1233,4 +1108,4 @@ When you design a data storage structure, you need to decide whether items with 
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+**Rodrigo** **L**eite da **S**ilva

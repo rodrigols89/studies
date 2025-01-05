@@ -80,7 +80,7 @@
 
 A constructor for an **Array class** is very simple. For example, see the code below:
 
-**Python** [Array.py](src/python/Array.py)
+[Array.py](src/python/Array.py)
 ```python
 class StaticArray:
     def __init__(self, size):
@@ -171,7 +171,7 @@ See that:
 
 > Traversing an array is very easy. You just need to traverse all elements in the **"self.arr"** variable.
 
-**Python** [Array.py](src/python/Array.py)
+[Array.py](src/python/Array.py)
 ```python
 def traverse(self):
     for index, _ in enumerate(self.arr):                   # O(n)
