@@ -10,54 +10,11 @@
  - **Tips & Tricks:**
    - [The duplicates items issue](#the-duplicates-issue)
  - [REFERENCES](#ref)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
 
 
 
@@ -117,6 +74,9 @@
 <div id="static-array-class-constructor"></div>
 
 ## Constructor | O(1)
+
+<details>
+<summary>Python</summary>
 
 A constructor for an **Array class** is very simple. For example, see the code below:
 
@@ -189,12 +149,25 @@ See that:
 
  - We have an array with the "size=5" filled as "None."
  - And the "nItems" counter is 0, that's, the Array is empty.
+</details>
+
+
+
+
+
+
+
+
+
 
 ---
 
 <div id="static-array-class-traversing"></div>
 
 ## Traversing (from the beginning) | O(n)
+
+<details>
+<summary>Python</summary>
 
 > Traversing an array is very easy. You just need to traverse all elements in the **"self.arr"** variable.
 
@@ -251,11 +224,25 @@ Index: 3, Item: 40
 Index: 4, Item: 50
 ```
 
+</details>
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="static-array-class-set-element-by-index"></div>
 
 ## Set element by index | O(1)
+
+<details>
+<summary>Python</summary>
 
 [Array.py](src/python/Array.py)
 ```python
@@ -372,11 +359,25 @@ Traceback (most recent call last):
 IndexError
 ```
 
+</details>
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="static-array-class-get-element-by-index"></div>
 
 ## Get element by index | O(1)
+
+<details>
+<summary>Python</summary>
 
 [Array.py](src/python/Array.py)
 ```python
@@ -416,8 +417,6 @@ $f(n) = O(1) + O(1) + O(1) = O(1)$
  - **`return self.arr[index]`**
    - Finally, we return the element from the passed index.
 
-
-
 Let's see how it works in practice:
 
 ```python
@@ -454,52 +453,7 @@ Traceback (most recent call last):
 IndexError
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</details>
 
 
 
@@ -638,53 +592,6 @@ When you design a data storage structure, you need to decide whether items with 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( REFERENCES ) --->
 
 ---
@@ -703,4 +610,4 @@ When you design a data storage structure, you need to decide whether items with 
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+**Rodrigo** **L**eite da **S**ilva
