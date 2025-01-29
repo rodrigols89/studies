@@ -4,6 +4,8 @@
 
 ## Projects
 
+ - **Web:**
+   - [Money Manager](projects/web/money-manager)
  - **Data Science:**
    - [Turnover Project](projects/data-science/turnover-project)
  - **CLI Projects:**
@@ -13,4 +15,4 @@
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+**Rodrigo** **L**eite da **S**ilva - **drigols**
