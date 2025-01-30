@@ -5,6 +5,8 @@
  - [**let**](#intro-to-let)
    - [let shadowing](#let-shadowing)
    - [Illegal shadowing](#illegal-shadowing)
+ - [**const**](#intro-to-const)
+   - [const and immutable objects](#const-and-immutable-objects)
  - [**REFERENCES**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -63,7 +65,7 @@
 
 
 
-<!--- ( Let) --->
+<!--- ( let ) --->
 
 ---
 
@@ -78,6 +80,7 @@ Variáveis declaradas com **"let"**:
 
 Por exemplo:
 
+[let-01.js](src/let-01.js)
 ```js
 let x = 10;
 x = 20;  // ✅ Permitido (reatribuição de valor)
@@ -112,6 +115,7 @@ Vejam que no exemplo acima nós:
 
 > Visto que uma variável declarada como **"let"** não pode ser declarada novamente no mesmo escopo o código abaixo resultará em um erro?
 
+[let-02.js](src/let-02.js)
 ```js
 function sayAnima(animal) {
   console.log(animal);
@@ -257,6 +261,142 @@ SyntaxError: Identifier 'b' has already been declared
 
 
 
+<!--- ( const ) --->
+
+---
+
+<div id="intro-to-const"></div>
+
+## const
+
+> Com a palavra-chave **"const"**, podemos criar uma variável que não permita alterar seus valores (veremos mais adiante que isso não é verdade)
+
+Por exemplo:
+
+[const-01.js](src/const-01.js)
+```js
+function sayName(name) {
+    console.log(name);
+}
+
+const myName = "Rodrigo Leite da Silva";
+sayName(myName);
+
+// Error!
+myName = 'drigols';
+```
+
+**OUTPUT:**
+```bash
+name = 'drigols';
+     ^
+
+TypeError: Assignment to constant variable.
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="const-and-immutable-objects"></div>
+
+## const and immutable objects
+
+Imagine that we have a constant object with the keyword **"const"**:
+
+[const-02.js](src/const-02.js)
+```js
+function sayPerson(person) {
+    console.log(person);
+}
+
+const person = {
+    name: "Rodrigo",
+    age: 28,
+};
+sayPerson(person);
+```
+
+**OUTPUT:**
+```bash
+{ name: 'Rodrigo', age: 28 }
+```
+
+Now, the question is:
+
+> **"Can we change the values of the properties of the object?"**
+
+Let's try:
+
+[const-02.js](src/const-02.js)
+```js
+function sayPerson(person) {
+    console.log(person);
+}
+
+const person = {
+    name: "Rodrigo",
+    age: 28,
+};
+sayPerson(person);
+
+
+person.name = "drigols - Software Engineer";
+person.age = 15;
+sayPerson(person);
+```
+
+**OUTPUT:**
+```bash
+{ name: 'Rodrigo', age: 28 }
+{ name: 'drigols - Software Engineer', age: 15 }
+```
+
+> **What?**  
+> Yes, we can change the values of the properties of the object.
+
+To solva that problem, we need to freeze the object with the function **freeze()** of the object "Object".
+
+[const-02.js](src/const-02.js)
+```js
+function sayPerson(person) {
+    console.log(person);
+}
+
+const person = {
+    name: "Rodrigo",
+    age: 28,
+};
+sayPerson(person);
+
+person.name = "drigols - Software Engineer";
+person.age = 15;
+sayPerson(person);
+
+// Freeze the object "person".
+Object.freeze(person);
+
+person.name = "Rodirgo Santoro";
+person.age = 50;
+sayPerson(person);
+```
+
+**OUTPUT:**
+```bash
+{ name: 'Rodrigo', age: 28 }
+{ name: 'drigols - Software Engineer', age: 15 }
+{ name: 'drigols - Software Engineer', age: 15 }
+```
+
+> **NOTE:**  
+> See that now we can't change the values of the properties of the object.
 
 
 
@@ -291,7 +431,63 @@ SyntaxError: Identifier 'b' has already been declared
 
 
 
-<!--- ( Let) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( REFERENCES ) --->
 
 ---
 
