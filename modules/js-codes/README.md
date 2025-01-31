@@ -7,6 +7,7 @@
    - [Illegal shadowing](#illegal-shadowing)
  - [**const**](#intro-to-const)
    - [const and immutable objects](#const-and-immutable-objects)
+ - [**Arrow Functions**](#arrow-functions)
  - [**REFERENCES**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -261,6 +262,7 @@ SyntaxError: Identifier 'b' has already been declared
 
 
 
+
 <!--- ( const ) --->
 
 ---
@@ -433,6 +435,66 @@ sayPerson(person);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Arrow Functions ) --->
+
+---
+
+<div id="arrow-functions"></div>
+
+## Arrow Functions
+
+Para criar uma Arrow Functions nós:
+
+ - **1st) -** Transformamos a função em uma variável adicionando:
+   - `const (mais recomendado)`, `let` ou `var`.
+ - **2nd) -** Removemos a palavra-chave `function`;
+ - **2º) -** Adicionamos a seta após os parâmetros.
+
+Por exemplo, veja a função abaixo:
+
+```js
+function display(result) {
+    console.log(result);
+}
+```
+
+Agora vamos transformar ela em uma Arrow Function:
+
+```js
+const display = (result) => {
+    console.log(result);
+};
+```
+
+Parênteses não são necessários se apenas uma expressão (instrução) estiver presente no mesmo bloco:
+
+```js
+const display = (result) => console.log(result);
+
+display(10);
+```
+
+**OUTPUT:**
+```bash
+10
+```
 
 
 
