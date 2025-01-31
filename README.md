@@ -23,7 +23,7 @@
 ## Programming
 
  - **Programming Languages:**
-   - [JavaScript](modules/javascript-codes)
+   - [JavaScript](modules/js-codes)
    - [Python](modules/python-codes)
    - [Java](modules/java-codes)
    - [C++](modules/cpp-codes)
