@@ -1636,7 +1636,6 @@ dkms.conf
 # C/C++ binary extension file
 *.bin
 
-# Zig Lang
-zig-out
-.zig-cache
-
+# Idx
+.idx
+.idx/*
