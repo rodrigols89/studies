@@ -12,6 +12,7 @@
  - [Information Security](#section-security)
  - [Artificial Intelligence](#section-ai)
  - [Mathematics](#section-math)
+ - [Chemistry](modules/chemistry)
  - [Tools](#section-tools)
  - [Practice Projects](#section-projects)
  - [Bonus](#section-bonus)
