@@ -6,6 +6,7 @@
    - [Taxa de Variação Linear](#linear-rate-of-change)
  - [**Limite**](#intro-to-limit)
    - [Limites laterais](#one-sided-limit)
+   - [Como utilizar o método Q.C.P para resolver limites](#intro-to-qcp)
  - [**Derivada**](#intro-to-derivative)
  - [**Integral**](#intro-to-integral)
  - **DICAS & TRUQUES:**
@@ -98,10 +99,10 @@ A **Taxa de Variação** indica:
 
 ## Taxa de Variação Linear
 
-Para entender a **"Taxa de Variação Linear"**, vamos começar com a seguinte *função q(x)*, que retorna:
+Para entender como funciona uma **"Taxa de Variação Linear"**, vamos começar com a seguinte *função q(x)*, que retorna:
 
-- O número de **metros (variável dependente y)** percorridos por um ciclista.
-- Com base no número de **segundos (variável independente x)** que o ciclista pedalou a bicicleta.
+ - O número de **metros (variável dependente y)** percorridos por um ciclista.
+ - Com base no número de **segundos (variável independente x)** que o ciclista pedalou.
 
 **Imagine que a função seja esta:**  
 ![img](images/linear-rate-of-change-01.png)  
@@ -142,25 +143,24 @@ if __name__ =='__main__':
 
 Olhando para o gráfico acima, podemos ver:
 
-- **Quantos *segundos (variável independente x)* o ciclista percorreu:**  
-  - 10 segundos.
-
-- **Quantos *metros (variável dependente y)* foram percorridos por segundo:**  
-  - 1 segundo  = 3 metros.  
-  - 2 segundos = 5 metros.  
-  - 3 segundos = 7 metros.  
-  - 4 segundos = 9 metros.  
-  - 5 segundos = 11 metros.  
-  - 6 segundos = 13 metros.  
-  - 7 segundos = 15 metros.  
-  - 8 segundos = 17 metros.  
-  - 9 segundos = 19 metros.  
-  - 10 segundos = 21 metros.  
+ - **Quantos *segundos (variável independente x)* o ciclista percorreu:**  
+   - 10 segundos.
+ - **Quantos *metros (variável dependente y)* foram percorridos por segundo:**  
+   - 1 segundo  = 3 metros.  
+   - 2 segundos = 5 metros.  
+   - 3 segundos = 7 metros.  
+   - 4 segundos = 9 metros.  
+   - 5 segundos = 11 metros.  
+   - 6 segundos = 13 metros.  
+   - 7 segundos = 15 metros.  
+   - 8 segundos = 17 metros.  
+   - 9 segundos = 19 metros.  
+   - 10 segundos = 21 metros.  
 
 Se prestarmos atenção, podemos ver:
 
  - Quanto de distância muda a cada segundo percorrido, que é de `2 metros por segundo`.
- - **NOTE:** Isso ocorre porque nossa função é linear (constante) e a variação (y<sub>1</sub> para y<sub>2</sub>) é a mesma (constante) de um valor de x para outro.  
+ - **NOTE:** Isso ocorre porque nossa função é linear (constante) e a variação (y<sub>1</sub> para y<sub>2</sub>) é a mesma (constante) de um valor de x para outro.
 
 > **Olhando para o gráfico é fácil, mas como identificar essa *mudança (Taxa de Variação)* para qualquer função linear?**
 
@@ -173,13 +173,12 @@ Para resolver isso nós podemos utilizar a seguinte formula:
 
 Ou seja, nós vamos precisar de apenas dois pares ordenados de valores **x** e **y** para aplicar na equação (formula):
 
-- **Após 1 segundo:**  
-  - *"x"* é *"1"*.  
-  - *"y"* é *"3"*.  
-
-- **Após 10 segundos:**  
-  - *"x"* é *"10"*.  
-  - *"y"* é *"21"*.  
+ - **Após 1 segundo:**
+   - *"x"* é *"1"*.
+   - *"y"* é *"3"*.
+ - **Após 10 segundos:**
+   - *"x"* é *"10"*.
+   - *"y"* é *"21"*.
 
 Logo:
 
@@ -190,7 +189,7 @@ Logo:
 \\\mathbf{ m = 2}
 --->
 
-> **Mas o que esse "2" significa?**
+> **Mas o que significa esse 2**
 
  - Significa que a nossa *variável dependente (y)* está mudando (aumentando ou diminuindo) 2 em relação a *variável independente (x)*.
  - Ou seja, o ciclista está percorrendo `2 metros por segundo`.
@@ -289,7 +288,7 @@ Agora, vamos testar a função para `x = 1`:
 > Não tem como dividir por zero!
 
  - **No contexto de limites, isso é o que conhecemos como:**
-   - *"Indeterminação"* ou *"Razão indeterminada"*.
+   - *"Indeterminação"*.
    - **NOTE:** Também podemos dizer que *"1" está fora do domínio da minha função* (neste exemplo).
 
 Para entender melhor vamos ver isso visualmente:
@@ -405,10 +404,10 @@ x: 5.0000, y: 11.0000
 **NOTE:**  
 Vejam que quando nós temos `x = 1`, temos um espaço em branco no gráfica.
 
-> **No contexto de limites isso é o que nós conhecemos como: *"Indeterminação" ou "Indefinido"*.**
+> **Novamente, contexto de limites isso é o que nós conhecemos como: *"Indeterminação" ou "Indefinido"*.**
 
 **Ok, mas como resolvemos isso?**  
-Quando temos um valor "indeterminado", precisamos nos aproximar *O MAIS PRÓXIMO POSSÍVEL* desse valor sem chegar nele.  
+Quando temos um valor "indeterminado", precisamos nos aproximar *O MAIS PRÓXIMO POSSÍVEL* desse valor SEM CHEGAR NELE.  
 
 > **Em outras palavras, precisamos alcançar o limite.**  
 
@@ -445,13 +444,10 @@ Olhando para o gráfico abaixo:
 
 > **Qual o limite da função *quando x se aproxima (tende a) a 1*?**
 
- - Vejam que essa função não tem um valor *definido*, ou seja, quando `x = 1` não existe um valor para **f(x)**:
-   - Isso porque a bolinha (ou não está pintada) está aberta (exclusão).
- - Porém, quando meu x se aproxima (tende) do 1, minha função **f(x)** meu se aproxima do 2:
+ - **Vejam que essa função não tem um valor *definido*, ou seja, quando `x = 1` não existe um valor para *f(x)*:**
+   - Isso porque a bolinha está aberta (não está pintada = exclusão) na intersecção entre os eixos x e y.
+ - **Porém, quando meu x se aproxima (tende) do 1, minha função *f(x)* se aproxima do 2:**
    - Nesse caso meu limite vai ser 2.
-
-> **NOTE:**  
-> Nesse caso o limite para a função vai ser 2.
 
 Continuando, a partir do mesmo gráfico qual o valor dos limites abaixo:
 
@@ -492,6 +488,8 @@ Como não foi especificado o lado que nós vamos partir (- ou +) nós dizemos qu
 
 ![img](images/one-sided-limit-06.png)  
 
+> **NOTE:**  
+>  Isso faz todo sentido. Porque se eu não sei em qual direção ir como vou escolher o limite correto?
 
 
 
@@ -502,19 +500,77 @@ Como não foi especificado o lado que nós vamos partir (- ou +) nós dizemos qu
 
 
 
+---
 
+<div id="intro-to-qcp"></div>
 
+## Como utilizar o método Q.C.P para resolver limites
 
+> Agora nós vamos aprender sobre o conceito de **Q.C.P (Quem Causa o Problema)** no contexto dos limites.
 
+Existe todo um estudo para entender esse conceito, utilizando números oposto que se cancelam, mas eu vou direto ao ponto com um método que simplfique tudo isso.
 
+Imagine que nós temos o seguinte limite:
 
+![img](images/qcp-01.png)  
 
+Está vendo aquela parte que tem **"x"** a **"setinha (→)"** e o **"3"**?
 
+![img](images/qcp-01-01.png)  
 
+Então, agora você vai remover essa **setinha (→)** adicionar o sinal oposto do número que vem depois da seta.
 
+> **Como assim?**  
+> Depois da seta (→) não é 3 (positivo)? Então adiciona o sinal de negativo (+) no lugar da seta.
 
+```bash
+x → 3
+|   |
+|   |
+x - 3 (Sinal oposto no lugar da seta)
+|   |
+|   | 
+(x - 3)
+```
 
+> **Mas o que é esse (x - 3)?**  
+> Esse é o nosso *Q.C.P (Quem Causa o Problema)*.
 
+Ou seja, nós precisamos remover ele da equação (limite).
+
+> **Mas como?**
+
+Para fazer isso (nesse exemplo) vou tentar fatorar o numerador de alguma maneira que me permita cancelar/eliminar o **(x - 3)**:
+
+![img](images/qcp-03.png)  
+
+Vejam que nós fizemos aparecer:
+
+ - **Quem Causa o Problema (QCP)** no numerador;
+ - **Quem Causa o Problema (QCP)** no denominador;
+ - E por fim, cancelamos um pelo outro.
+
+![img](images/qcp-04.png)  
+
+Viram que depois de cancelarmos **Quem Causa o Problema (QCP)** sobrou apenas **x + 3**? Então, esse é o limite da função:
+
+![img](images/qcp-05.png)  
+
+> **NOTE:**  
+> Ou seja, o limite para nossa função é 6.
+
+Isso é útil porque nem sempre teremos um gráfico para visualizar e determinar o limite da função. Mesmo assim, apenas para este exemplo, vamos observar como seria em um gráfico:
+
+![img](images/qcp-06.png)  
+
+Vejam que:
+
+ - **"3"** não está no domínio dessa função (bolinha está aberta/exclusão);
+ - Quando `x` se aproxima (tende) a 3.
+ - A nossa função (resultado) se aproxima de 6.
+
+> **NOTE:**  
+> Ou seja, **"6"** é o limite para essa função.
 
 
 
