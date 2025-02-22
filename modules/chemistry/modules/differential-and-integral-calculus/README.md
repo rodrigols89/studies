@@ -6,7 +6,7 @@
    - [Taxa de Variação Linear](#linear-rate-of-change)
  - [**Limite**](#intro-to-limit)
    - [Limites laterais](#one-sided-limit)
-   - [Como utilizar o método Q.C.P para resolver limites](#intro-to-qcp)
+   - [Como resolver limites com "Q.C.P" & "Diferença de dois quadrados"](#qcp-dots)
  - [**Derivada**](#intro-to-derivative)
  - [**Integral**](#intro-to-integral)
  - **DICAS & TRUQUES:**
@@ -193,13 +193,6 @@ Logo:
 
  - Significa que a nossa *variável dependente (y)* está mudando (aumentando ou diminuindo) 2 em relação a *variável independente (x)*.
  - Ou seja, o ciclista está percorrendo `2 metros por segundo`.
-
-
-
-
-
-
-
 
 
 
@@ -502,57 +495,155 @@ Como não foi especificado o lado que nós vamos partir (- ou +) nós dizemos qu
 
 ---
 
-<div id="intro-to-qcp"></div>
+<div id="qcp-dots"></div>
 
-## Como utilizar o método Q.C.P para resolver limites
+## Como resolver limites com "Q.C.P" & "Diferença de dois quadrados"
 
-> Agora nós vamos aprender sobre o conceito de **Q.C.P (Quem Causa o Problema)** no contexto dos limites.
+De início, imagine que nós temos o seguinte limite:
 
-Existe todo um estudo para entender esse conceito, utilizando números oposto que se cancelam, mas eu vou direto ao ponto com um método que simplfique tudo isso.
+![img](images/qcp-dots-01.png)  
+<!---
+\mathbf{\displaystyle \lim_{x \to 3}\frac{x^{2} - 9}{x - 3}}
+--->
 
-Imagine que nós temos o seguinte limite:
+Como podemos ver no exemplo acima o limite é `x = 3`:
 
-![img](images/qcp-01.png)  
+![img](images/qcp-dots-02.png)  
+<!---
+\mathbf{\displaystyle \lim_{x \to 3}\frac{x^{2} - 9}{x - 3} = \frac{3^{2} - 9}{3 - 3} = \frac{9 - 9}{3 - 3} = \frac{0}{0}}
+--->
 
-Está vendo aquela parte que tem **"x"** a **"setinha (→)"** e o **"3"**?
+> **NOTE:**  
+> Vejam que fazia sentido o limite ser `x = 3`, pois, temos uma *"Indeterminação"* nesse ponto.
 
-![img](images/qcp-01-01.png)  
+Uma maneira de resolver esse tipo de problema é sempre encontrar **"Quem Causa o Problema (Q.C.P)"**.
+
+No contexto de limites *"Quem SEMPRE Causa o Problema"* vai ser:
+
+ - O **"x"**;
+ - E **seu oposto**.
+
+> **Como assim?**
+
+ - *Quem Causou o problema* não foi `x = 3`?
+ - Então, o oposto vai ser `x = -3`.
+
+Porém, uma maneira mais simples de resolver isso é a seguinte... Está vendo aquela parte que tem **"x"**, a **"setinha (→)"** e o **"3"**?
+
+![img](images/qcp-dots-03.png)  
 
 Então, agora você vai remover essa **setinha (→)** adicionar o sinal oposto do número que vem depois da seta.
 
 > **Como assim?**  
-> Depois da seta (→) não é 3 (positivo)? Então adiciona o sinal de negativo (+) no lugar da seta.
+> Depois da seta (→) não é 3 (positivo)? Então, agora você vai adicionar o sinal de negativo (-) no lugar da seta.
 
 ```bash
 x → 3
 |   |
 |   |
-x - 3 (Sinal oposto no lugar da seta)
-|   |
-|   | 
-(x - 3)
+(x - 3) <--- (Sinal oposto no lugar da seta)
 ```
 
-> **Mas o que é esse (x - 3)?**  
-> Esse é o nosso *Q.C.P (Quem Causa o Problema)*.
+> **Mas afinal o que é esse (x - 3)?**  
+> `(x - 3)` é *Quem Causa o Problema (Q.C.P)* para essa equação (limite).
 
-Ou seja, nós precisamos remover ele da equação (limite).
+Ou seja, para resolver meu limite, primeiro precisamos remover `(x - 3)` da equação (limite).
 
 > **Mas como?**
 
-Para fazer isso (nesse exemplo) vou tentar fatorar o numerador de alguma maneira que me permita cancelar/eliminar o **(x - 3)**:
+Bem, uma maneira é fazer com que o nosso **Q.C.P (x - 3)** apareça em cima e em baixo da equação (limite) para cancelar/eliminar um com o outro:
 
-![img](images/qcp-03.png)  
+![img](images/qcp-dots-04.png)  
+
+> **Mas como?**
+
+Vamos voltar para o nosso limite para ver onde podemos manipular/fatorar para que seja possível cancelar/eliminar `(x - 3)` da equação (limite):
+
+![img](images/qcp-dots-01.png)  
+
+Bem, nós já temos `(x - 3)` no denominador.
+
+> **Tem como eu fazer `(x - 3)` no numerador para cancelar/eliminar um com o outro?**
+
+Como nossa equação (limite) é quadrática uma maneira seria utilizar a **"Diferença de dois Quadrados"** que permite reescrever expressões quadráticas na forma de um produto de dois binômios:
+
+![img](images/qcp-dots-05.png)  
+<!---
+\mathbf{a^{2} - b^{2} = (a + b).(a - b)}
+--->
+
+> **Ok, mas como essa fórmula funciona?**
+
+Imagine que nós queremos fatorar a expressão `x² - 9` no numerador da nossa equação (limite) utilizando a **"Diferença de dois Quadrados"**:
+
+![img](images/qcp-dots-06.png)
+<!---
+\mathbf{\displaystyle \lim_{x \to 3}\frac{x^{2} - 9}{x - 3}}
+--->
+
+Primeiro, nós precisamos identificar quem é o **"a"** e o **"b"** na expressão:
+
+```bash
+a² = x²
+b² = 9
+```
+
+Agora se vocês prestem atenção verão que nós temos 2 igualdades, `a² = x²` e `b² = 9`. Ou seja, podemos simplicar aplicando operações iguais dos dois lados.
+
+> **Como assim?**
+
+Por exemplo, eu posso simplicar tirando a raiz quadrada dos dois lados das duas igualdades:
+
+```bash
+----------- √ --------
+|                    |
+|                   \ /
+a² = x²             (a = x)
+|                       / \
+|                        |
+----------- √ ------------
+
+
+
+----------- √ --------
+|                    |
+|                   \ /
+b² = 9              (b = 3)
+|                       / \
+|                        |
+----------- √ ------------
+```
+
+Depois de simplificarmos temos que `a = x` e `b = 3`. Agora vamos adicioná-los na formula da **"Diferença de dois Quadrados"**:
+
+![img](images/qcp-dots-07.png)  
+<!---
+\\\mathbf{a^{2} - b^{2} = (a + b).(a - b)}
+\\
+\\\mathbf{x - 3 = (x + 3).(x - 3)}
+--->
+
+> **Mas como isso pode me ajudar e resolver meu limite?**
+
+Então:
+
+ - O meu `x² - 9` não foi simplificado para `x - 3`;
+ - E `x - 3` não é igual a `(x + 3).(x - 3)`?
+
+Logo, eu posos substituir no meu limite a expressão `x² - 9` pela expressão `(x + 3).(x - 3)`:
+
+![img](images/qcp-dots-08.png)  
+<!---
+\mathbf{\displaystyle \lim_{x \to 3}\frac{x^{2} - 9}{x - 3} = \frac{(x + 3).(x - 3)}{x - 3} = x + 3}
+--->
 
 Vejam que nós fizemos aparecer:
 
- - **Quem Causa o Problema (QCP)** no numerador;
- - **Quem Causa o Problema (QCP)** no denominador;
+ - **Quem Causa o Problema (x - 3)** no numerador;
+ - **Quem Causa o Problema (x - 3)** no denominador;
  - E por fim, cancelamos um pelo outro.
 
-![img](images/qcp-04.png)  
-
-Viram que depois de cancelarmos **Quem Causa o Problema (QCP)** sobrou apenas **x + 3**? Então, esse é o limite da função:
+Viram que depois de cancelarmos **Quem Causa o Problema (x - 3)** sobrou apenas **x + 3**? Então, esse é o limite da função:
 
 ![img](images/qcp-05.png)  
 
@@ -582,8 +673,55 @@ Vejam que:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Derivada ) --->
 <!--- ( Integral ) --->
+
+
+
+
+
+
+
 
 
 
@@ -700,7 +838,6 @@ Por exemplo:
 
 
 
-
 <!--- ( Configurações ) --->
 
 ---
@@ -746,7 +883,7 @@ pip install -U -v --require-virtualenv -r requirements.txt
 
 <div id="ref"></div>
 
-## REFERENCES
+## REFERÊNCIAS
 
  - **Geral:**
    - [Help Engenharia](https://helpengenharia.com/)
