@@ -15,5 +15,5 @@ if __name__ =='__main__':
     plt.xticks(range(0, 10+1, 1))
     plt.yticks(range(0, 21+1, 1))
     plt.grid()
-    plt.savefig("../images/rate-of-change-01.png")
+    plt.savefig("../images/meters-travelled-01.png")
     plt.show()

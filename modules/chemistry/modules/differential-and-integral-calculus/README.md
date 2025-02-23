@@ -76,13 +76,16 @@
 
 ## Taxa de Variação
 
+> **NOTE:**  
+> A primeira coisa que você tem que ter em mente é que **Taxa de Variação**, **Inclinação da Função** e **Derivada** *são a mesma coisa*.
+
 A **Taxa de Variação** indica:
 
  - A *rapidez (velocidade)* e a *direção* da mudança de uma *variável dependente (y)*.
  - Em relação à variação da *variável independente (𝑥)*.
 
 > **NOTE:**  
-> Em **Funções Lineares**, essa *taxa* é *constante*, enquanto em **Funções Não Lineares**, ela pode variar dependendo do valor de 𝑥.
+> Resumidamente, a *taxa de variação* indica quantos passos acontecem em `y (variável dependente)` quando eu dou um passo em `x (variável independente)`.
 
 
 
@@ -98,6 +101,9 @@ A **Taxa de Variação** indica:
 <div id="linear-rate-of-change"></div>
 
 ## Taxa de Variação Linear
+
+> **NOTE:**  
+> A primeira coisa que você tem que ter em mente é que **Taxa de Variação**, **Inclinação da Função** e **Derivada** *são a mesma coisa*.
 
 Para entender como funciona uma **"Taxa de Variação Linear"**, vamos começar com a seguinte *função q(x)*, que retorna:
 
@@ -139,7 +145,7 @@ if __name__ =='__main__':
 
 </details>
 
-![img](images/rate-of-change-01.png)  
+![img](images/meters-travelled-01.png)  
 
 Olhando para o gráfico acima, podemos ver:
 
@@ -164,14 +170,26 @@ Se prestarmos atenção, podemos ver:
 
 > **Olhando para o gráfico é fácil, mas como identificar essa *mudança (Taxa de Variação)* para qualquer função linear?**
 
-Para resolver isso nós podemos utilizar a seguinte formula:
+Bem, uma maneira de fazer isso é tirar a razão da diferença do meu `eixo-y` pelo meu `eixo-x`:
 
-![img](images/linear-rate-of-change-02.png)  
+![img](images/meters-travelled-02.png)
+
+Vejam que nós temos:
+
+ - A **diferença (Δy)** entre **y<sub>1</sub>** e **y<sub>2</sub>**.
+ - A **diferença (Δx)** entre **x<sub>1</sub>** e **x<sub>2</sub>**.
+ - **NOTE:** Por fim, nós temos a razão entre essas duas diferenças.
+
+A formula completa fica assim:
+
+![img](images/linear-rate-of-change-03.png)  
 <!---
 \mathbf{m = \frac{\Delta y}{\Delta x} = \frac{q(x)_{2} \ - \ q(1)_{1}}{x_{2} \ - \ x_{1}} = \frac{y_{2} \ - \ y_{1}}{x_{2} \ - \ x_{1}}}
 --->
 
-Ou seja, nós vamos precisar de apenas dois pares ordenados de valores **x** e **y** para aplicar na equação (formula):
+Agora, para resolver essa equação (formula) nós vamos precisar de apenas de dois pares ordenados de valores **x** e **y**.
+
+Por exemplo:
 
  - **Após 1 segundo:**
    - *"x"* é *"1"*.
@@ -182,7 +200,7 @@ Ou seja, nós vamos precisar de apenas dois pares ordenados de valores **x** e *
 
 Logo:
 
-![img](images/linear-rate-of-change-03.png)  
+![img](images/linear-rate-of-change-04.png)  
 <!---
 \\\mathbf{m = \frac{21 \ - \ 3}{10 \ - \ 1} = \frac{18}{9} = 2}
 \\
@@ -194,7 +212,8 @@ Logo:
  - Significa que a nossa *variável dependente (y)* está mudando (aumentando ou diminuindo) 2 em relação a *variável independente (x)*.
  - Ou seja, o ciclista está percorrendo `2 metros por segundo`.
 
-
+> **NOTE:**  
+> Outra observação é que esse *2 (taxa de variação)* é a *"derivada"* da nossa função.
 
 
 
@@ -288,6 +307,7 @@ Para entender melhor vamos ver isso visualmente:
 
 <details><summary>Python Code</summary>
 
+[limit-01.py](src/limit-01.py)
 ```python
 from matplotlib import pyplot as plt
 import numpy as np
@@ -714,6 +734,223 @@ Vejam que:
 
 
 <!--- ( Derivada ) --->
+
+---
+
+<div id="intro-to-derivative"></div>
+
+## Derivada
+
+> **NOTE:**  
+> A primeira coisa que você tem que ter em mente é que **Taxa de Variação**, **Inclinação da Função** e **Derivada** *são a mesma coisa*.
+
+Nós aprendemos como encontrar a [Taxa da Variação para uma Função Linear](#linear-rate-of-change) usando a razão da diferença do nosso `eixo-y` pelo nosso `eixo-x`:
+
+![img](images/meters-travelled-02.png)  
+![img](images/linear-rate-of-change-03.png)  
+
+> **Mas e se a função for "não-linear"?**
+
+Por exemplo, imagine que nós temos a seguinte função quadrática:
+
+![img](images/derivative-01.png)  
+<!---
+\mathbf{f(x) = x^{2}}
+--->
+
+<details>
+<summary>Código Python</summary>
+
+[derivative-01.py](src/derivative-01.py)
+```python
+from matplotlib import pyplot as plt
+import pandas as pd
+
+def f(x):
+  return x**2
+
+if __name__ =='__main__':
+
+    df = pd.DataFrame({'x': range(-10, 10+1)}) # x Values.
+    df['y'] = [f(x) for x in df.x] # y Values.
+
+    print(df)
+
+    # Window Settings
+    dpi = 100
+    width_px = 800
+    height_px = 500
+    figsize = (width_px / dpi, height_px / dpi)
+
+    plt.figure(figsize=figsize, dpi=dpi)
+    plt.plot(df.x, df.y, color='blue', marker='o')
+    plt.title(r'$f(x) = x^{2}$')
+    plt.xlabel('x')
+    plt.ylabel(r'$x^{2}$')
+    plt.xticks(range(-10, 10+1, 1))
+    plt.yticks(range(0, 100+1, 5))
+    plt.grid()
+    plt.savefig("../images/derivative-plot-01.png")
+    plt.show()
+```
+
+</details>
+
+![img](images/derivative-plot-01.png)  
+
+Se vocês prestarem atenção vão ver que para esse gráfico nós temos várias inclinações, ou seja, várias [Taxas de Variação](#intro-to-rate-of-change):
+
+![img](images/derivative-02.png)  
+
+ - Veja que nos pontos **(-7, 50)**, **(-5, -25)**, **(2, 5)**, **(4, 15)** e **(9, 80)** nós criamos algumas **retas tangentes** que tangenciam a curva.
+ - Essas **retas tangentes** representam a *"inclinação (Taxa de Variação)"* naquele ponto.
+ - **NOTE:** Como nossa função **não é linear (ou seja, não é constante)** nós podemos ter uma [Taxa de Variação](#intro-to-rate-of-change) diferente para diferentes pontos no gráfico (função).
+
+> **Então, como encontrar a [Taxa de Variação](#intro-to-rate-of-change) para uma "função não-linear"?**
+
+Para entender melhor como encontrar a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para uma **função "não-linear"**, vamos imaginar que nós temos o seguinte gráfico (é só um exemplo):
+
+![img](images/derivative-03.png)  
+
+Como eu não sei como encontrar a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para esse gráfico (pois ele não é constante), digamos que eu criei dois pontos distindos no gráfico e criei uma reta entre esses pontos:
+
+![img](images/derivative-04.png)  
+
+Agora eu posso traçar a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para essa reta!
+
+> **É o que eu quero? NÃO!**  
+> O que eu quero é a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) perfeita. Mas como não tem como vamos começar por aqui.
+
+Vamos começar chamando esse primeiro ponto que nós traçamos de **x**:
+
+![img](images/derivative-05.png)  
+
+> **Agora, qual o seu correspondente de "x" no gráfico?**  
+> *RESPOSTA:* f(x).
+
+![img](images/derivative-06.png)  
+
+> **E qual a distância de um ponto para outro?**  
+> *RESPOSTA:* Δx
+
+![img](images/derivative-07.png)  
+
+> **Agora, se eu estou no "x" e andei até o "Δx" onde estou?**  
+> *RESPOSTA:* (x + Δx)
+
+![img](images/derivative-08.png)  
+
+> **Continuando... Se f(x) é o correspondente de x, qual o correspondente de (x + Δx)?**  
+> *RESPOSTA:* f(x + Δx)
+
+![img](images/derivative-09.png)  
+
+> **Agora qual o meu Δy?**  
+> *RESPOSTA:* Diferença entre f(x) e f(x + Δx).
+
+![img](images/derivative-10.png)  
+
+> **E agora?**  
+
+Agora, para finalizar é só:
+
+ - dividir o meu `Δy`:
+   - Que é `f(x + Δx)` menos `f(x)`.
+ - Pelo meu `Δx`.
+
+![img](images/derivative-11.png)  
+<!---
+\mathbf{\frac{\Delta y}{\Delta x} = \frac{f(x + \Delta x) \ - \ f(x)}{\Delta x}}
+--->
+
+> **Mas o que essa fórmula representa?**  
+> Essa fórmula representa a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para uma reta entre dois pontos no gráfico.
+
+> **Mas é isso o que nós queremos? NÃO!**  
+> O que nós queremos é a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) da curva em QUALQUER PONTO.
+
+**NOTE:**  
+O problema é que essa curva vai ter [Taxa de Variação (inclinação)](#intro-to-rate-of-change) diferente para diferentes pontos na curva.
+
+![img](images/derivative-12.png)  
+
+> **E agora?**  
+
+Bem, imagine que eu peguei esses pontos que antes tinham uma distância um do outro (Δx) e aproximei eles tanto, tanto, mas tanto que eles ficaram quase colados:
+
+![img](images/derivative-13.png)  
+
+> **O que acontece aqui?**  
+
+Vocês concordam que quanto mais perto esses dois pontos ficam mais próximos de zero fica o meu `Δx`?
+
+Ou seja, nós podemos utilizar o conceito de limites para dizer que a nossa fórmula comece em dois pontos quaisquer e esses pontos se aproximem tanto, mas tanto um do outro que o nosso `Δx` se aproxima (tenda a) de zero:
+
+![img](images/derivative-14.png)  
+<!---
+\mathbf{\displaystyle \lim_{\Delta x \to 0} \frac{f(x + \Delta x) \ - \ f(x)}{\Delta x}}
+--->
+
+**NOTE:**  
+Ótimo, antes de colocar esse limite eu tinha que essa formula representava a [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para uma reta entre dois pontos no gráfico.
+
+> **E agora o que eu tenho?**  
+
+Agora o que nós temos é a **"Taxa de Variação/Inclinação/Derivada da minha função em um determinado ponto"**.
+
+> **Mas qual a vantagem disso?**
+
+ - Lembram que a minha função vai ter diferentes [Taxa de Variação (inclinação)](#intro-to-rate-of-change) para diferentes pontos na curva?
+ - **NOTE:** Então, agora eu posso calcular a **[Taxa de Variação (inclinação)](#intro-to-rate-of-change) para um determinado ponto no gráfico**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Integral ) --->
 
 
@@ -869,6 +1106,11 @@ python -m pip install --upgrade pip
 **INSTALANDO AS DEPENDÊNCIAS:**  
 ```bash
 pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+**SALVANDO NOVAS DEPENDEÊNCIAS (OU ATUALIZAÇÕES):**
+```bash
+pip freeze > requirements.txt --require-virtualenv
 ```
 
 **Agora, seja feliz!!!** 😬
