@@ -32,13 +32,76 @@
    - **Autoencoders:**
      - seq2seq
  - **Deep Generative Modeling:**
-   - **Generative Adversarial Networks (GAN)**
+   - **Generative Adversarial Networks (GAN):**
+ - **Useful Libraries:**
+   - **Keras:**
+     - **Keras Concepts:**
+       - [Sequential.add()](#sequential-add)
+       - [Sequential.compile()](#sequential-compile)
+       - [Sequential.fit()](#sequential-fit)
+       - [keras.layers](#keras-layers)
+         - [from keras.layers import Dense](#keras-layers-dense)
+     - **Keras Useful Functions/Methods:**
+       - [from keras.utils import to_categorical](#keras-to-categorical)
+   - **TensorFlow:**
+     - **TensorFlow Concepts:**
+       - [Why is TensorFlow called "TensorFlow"? (+TensorFlow Components)](#why-called-tf)
+     - **TensorFlow Useful Functions/Methods:**
+       - [Constants](#tf-const)
+       - [Variables](#tf-vars)
+     - **TensorBoard:**
+       - [Launching TensorBoard](#launching-tf-board)
+ - [**Settings**](#settings)
  - [**References**](#ref)
-<!---
-[WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
-- Different topic = "50" Whitespace character.
---->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -678,6 +741,54 @@ Here, the focus is the middle point where we need to stop the training before **
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Deep Computer Vision ) --->
 
 ---
@@ -1066,6 +1177,54 @@ For example, let's check step-by-step:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- (  Deep Sequence Modeling ) --->
 
 ---
@@ -1184,6 +1343,1059 @@ Let's, see another example:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ( Useful Libraries/Keras ) --->
+
+---
+
+<div id="sequential-add"></div>
+
+## `Sequential.add()`
+
+ - **Sequential:**
+   - The **Sequential** is a model in Keras that enables the creation of a sequential neural network, where layers are *stacked on top of each other*.
+ - **add():**
+   - The **add()** method is used to add layers to the sequential neural network.
+
+> **Does the order in which the layers are added matter?**
+
+ - Yes, in a Sequential model in Keras, the order in which the layers are added matters.
+ - Each layer added with the **add()** method is *appended to the end of the network*, and data flows sequentially through the layers from the input to the output.
+
+> **Does this mean that the add() method adds layers to a stack and the last one to be added will be the first to go?**
+
+ - In a Sequential model in Keras, the add() method indeed adds layers to a stack, but the last layer added will not be the first to go.
+ - Rather (Em vez disso), the data flows sequentially through the layers in the order they were added:
+   - The first layer added being the input layer.
+   - The last layer added being the output layer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="sequential-compile"></div>
+
+## `Sequential.compile()`
+
+> The **Sequential.compile()** method in Keras is used to *"configure the learning process"* of the model *"before the training"*.
+
+It specifies the *"optimizer"*, the *"loss function"*, and the *"metrics"* to be evaluated during training and testing.
+
+Let's see some explanation of these parameters:
+
+ - **loss:**
+   - The loss parameter specifies the loss function to be minimized during training.
+   - The loss function measures the difference between the predicted output of the model and the true target values.
+   - The choice of loss function depends on the type of problem being solved.
+     - For binary classification tasks, *'binary_crossentropy'* is commonly used.
+     - While for multi-class classification tasks, *'categorical_crossentropy'* is often used.
+ - **optimizer:**
+   - This parameter specifies the optimizer algorithm to be used during training.
+   - The optimizer determines how the model's weights are updated based on the gradient of the loss function.
+   - Common optimizers include *'adam'*, *'sgd' (Stochastic Gradient Descent)*, *'rmsprop'*, etc.
+ - **metrics:**
+   - This parameter specifies the evaluation metrics to be monitored during training and testing.
+   - Common metrics include:
+     - *'accuracy'* for classification tasks.
+     - *'mse' (Mean Squared Error)* for regression tasks
+
+Now, let's see some examples of the **Sequential.compile()** method.
+
+### Iris Dataset
+
+Let's get started by configuring the learning process of [The Iris Dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html) problem:
+
+[keras_iris_problem.py](src/keras/keras_iris_problem.py)
+```python
+from keras.optimizers import SGD
+
+
+optmizer_nn = SGD() # Stochastic Gradient Descent Optimizer.
+
+model.compile(
+    loss="categorical_crossentropy",
+    optimizer=optmizer_nn,
+    metrics=["acc"]  # "acc" is accuracy metrics.
+)
+```
+
+**NOTE:**  
+See that first, we instance the optimizer SGD (Stochastic Gradient Descent) to use on our ANN configuration.
+
+---
+
+<div id="sequential-fit"></div>
+
+## `Sequential.fit()`
+
+The **Sequential.fit()** method in Keras is used to *train the model on a given dataset*.
+
+It iterates over the dataset for a fixed number of epochs (iterations on the dataset) and updates the model's parameters (weights) to minimize the specified loss function.
+
+Let's see some **Sequential.fit()** parameters:
+
+ - **x:**
+   - This parameter specifies the input data.
+   - **NOTE:** It could be a Numpy array or a list of arrays if the model has multiple inputs.
+ - **y:**
+   - This parameter specifies the target (ground truth) data.
+   - **NOTE:** It could be a Numpy array or a list of arrays if the model has multiple outputs.
+ - **batch_size:**
+   - It defines how many samples will be propagated through the network before the model's parameters are updated.
+   - **NOTE:** Larger batch sizes generally result in faster training, but they may require more memory.
+ - **verbose:**
+   - It determines how much output the method will produce during training:
+     - Set to 0 (silent).
+     - Set to 1 (progress bar).
+     - Set to 2 (one line per epoch)
+ - **validation_data:**
+   - This parameter specifies the validation data to be used during training:
+     - It can be a tuple (x_val, y_val) of Numpy arrays.
+     - A tuple (x_val, y_val, val_sample_weights) if sample weights are provided.
+ - **validation_split:**
+   - This parameter specifies the fraction of training data to be used as validation data:
+     - For example, *"validation_split=0.1"* means *10%* of the training data will be used for validation, and the remaining *90%* will be used for training.
+ - **shuffle:**
+   - The shuffle parameter specifies whether (se/if) to shuffle the training data before each epoch.
+   - **NOTE:** Shuffling the data helps prevent the model from memorizing the order of the samples and improves generalization.
+
+Now, let's see some examples of the **Sequential.fit()** method.
+
+### Iris Dataset
+
+Let's get started by fit() [The Iris Dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html) problem:
+
+[keras_iris_problem.py](src/keras/keras_iris_problem.py)
+```python
+# Training the model.
+model.fit(
+    x_train,
+    y_train,
+    epochs=1000,
+    batch_size=105,
+    validation_data=(x_test, y_test),
+    verbose=1,
+    shuffle=True,
+)
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="keras-layers"></div>
+
+## `keras.layers`
+
+> **keras.layers** is a module that provides a variety of *layer classes* to build neural network architectures.
+
+These layer classes represent different types of neural network layers, such as:
+
+ - Fully Connected (Dense) Layers.
+ - Convolutional Layers.
+ - Recurrent Layers.
+ - Pooling Layers.
+ - Dropout Layers.
+ - Activation Layers...
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="keras-layers-dense"></div>
+
+## `from keras.layers import Dense`
+
+> The **Dense class** in Keras represents a *Fully Connected Layer* in a neural network.
+
+In a dense layer, *each neuron is connected to every neuron in the previous layer*, forming a *Dense* or *Fully Connected Network*.
+
+The most common parameters for the **Dense** class are:
+
+ - **units:**
+   - The *"units"* parameter specifies the number of neurons in the dense layer.
+   - It determines the dimensionality of the output space.
+   - **NOTE:** For example, setting units=64 means the dense layer will have 64 neurons.
+ - **kernel_initializer:**
+   - The *"kernel_initializer"* parameter specifies the method used to initialize the *weights matrix*.
+   - Weights initialization is crucial for effective training of neural networks.
+   - Keras provides various initializers such as:
+     - 'random_uniform'.
+     - 'glorot_uniform' (Xavier initialization).
+     - 'he_normal'.
+     - 'normal'.
+ - **activation:**
+   - The *"activation"* parameter specifies the activation function applied to the output of the neurons in the layer.
+   - Activation functions introduce non-linearity into the network, allowing it to learn complex patterns.
+   - If not specified, no activation is applied (i.e., "linear" activation).
+   - **NOTE:** Common activation functions include *'relu' (Rectified Linear Unit)*, *'sigmoid'*, *'tanh' (Hyperbolic Tangent)*, and *'softmax'*.
+
+Now, let's see some examples of the **Dense** class uses.
+
+### Iris Dataset
+
+Let's get started by adding Layers to [The Iris Dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html) problem:
+
+[keras_iris_problem.py](src/keras/keras_iris_problem.py)
+```python
+model = Sequential()
+
+# Add Dense Layers to the Sequential model.
+model.add(Dense(units=10, input_dim=4, kernel_initializer="normal", activation="relu"))
+model.add(Dense(units=3, kernel_initializer="normal", activation="softmax"))
+```
+
+Now, let's explain the code above:
+
+ - `model.add(Dense(units=10, input_dim=4, kernel_initializer="normal", activation="relu"))`
+   - **add():**
+     - First, we use the add() method to add the Dense layer to the Sequential model.
+   - **Dense():**
+     - Then, we use the Dense layer class to create a Dense layer with the following parameters:
+       - **units=10:**
+         - This parameter specifies the number of neurons in the Dense Layer. In this case, it's explicitly set to 10.
+       - **input_dim=4:**
+         - *"input_dim=4"* indicates that this is the input layer and specifies the dimensionality of the input data, which is 4 in this case.
+         - **NOTE:** This parameter is only required for the first layer in the model.
+       - **kernel_initializer="normal":**
+         - Sets the initialization method for the weights of the layer. In this case, "normal" distribution (Gaussian) is used.
+       - **activation="relu":**
+         - This parameter specifies the activation function to be applied to the output of the dense layer. In this case, it's set to "relu".
+ - `model.add(Dense(units=3, kernel_initializer="normal", activation="softmax"))`
+   - **add():**
+     - First, we use the add() method to add the Dense layer to the Sequential model.
+   - **Dense():**
+     - Then, we use the Dense layer class to create a Dense layer with the following parameters:
+       - **units=3:**
+         - This parameter specifies the number of neurons in the Dense Layer. In this case, it's explicitly set to 3.
+       - **Not use the "input_dim" parameter:**
+         - Since there's no *"input_dim"* parameter, *Keras infers the input shape from the previous layer*.
+         - Therefore, *this layer assumes the output shape of the previous layer as its input shape*.
+       - **kernel_initializer="normal":**
+         - Sets the initialization method for the weights of the layer. In this case, "normal" distribution (Gaussian) is used.
+       - **activation="softmax":**
+         - Sets the activation function for the layer as "softmax".
+         - "Softmax" is often used in the output layer of a classification model to convert raw scores into probabilities.
+         - It ensures that the output values are normalized and sum up to 1, making them interpretable as probabilities.
+
+The created neural network will look like this:
+
+![image](images/iris-architecture-01.png)
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="keras-to-categorical"></div>
+
+## `from keras.utils import to_categorical`
+
+To understand the need for "One-Hot Encoding" let's start with the following question:
+
+ - **Independent variables:**
+   - To train a Neural Network, we need to pass *inputs (x independent variables)* to our model and have the model learn from these *inputs (x independent variables)*.
+ - **Dependent variables:**
+   - In the training process, the model also needs to know the *output (y dependent variables)* to compare the inputs with the *output (y dependent variables)*.
+
+For example, [The Iris Dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_iris_dataset.html) has **150 samples** and 3 **categories (setosa, versicolor, virginica)**:
+
+![img](images/iris-dataset-01.png)  
+
+Now, let's check the **Independent** and **Dependent variables**:
+
+[keras_iris_problem.py](src/keras/keras_iris_problem.py)
+```python
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+from sklearn.datasets import load_iris
+import pandas as pd
+
+iris = load_iris()
+x = pd.DataFrame(iris.data, columns=[iris.feature_names])
+y = pd.Series(iris.target)
+
+print("Independent Variables:\n", x.head())
+print("\nDependent Variables:\n", y.head())
+print("\nClasses/Categories number:\n", y.value_counts())
+```
+
+**OUTPUT:**
+```bash
+Independent Variables:
+sepal length (cm) sepal width (cm) petal length (cm) petal width (cm)
+0               5.1              3.5               1.4              0.2
+1               4.9              3.0               1.4              0.2
+2               4.7              3.2               1.3              0.2
+3               4.6              3.1               1.5              0.2
+4               5.0              3.6               1.4              0.2
+
+Dependent Variables:
+0    0
+1    0
+2    0
+3    0
+4    0
+dtype: int32
+
+Classes/Categories number:
+0    50
+1    50
+2    50
+```
+
+How we know we have three types of **classes (categories)**.
+
+> **Then why do I need *"One-Hot Encoding"*?**
+
+The One-Hot Encoding separates the Classes/Categories into columns and set:
+
+ - 1 if the category is the same as the column name.
+ - 0 if the category is different from the column name.
+
+For example, see the image below to understand more easily:
+
+![img](images/one-hot-encoding-01.png)  
+
+Now, let's apply this concepts using the **keras "to_categorical"** function:
+
+[keras_iris_problem.py](src/keras/keras_iris_problem.py)
+```python
+from keras.utils import to_categorical
+
+y = to_categorical(y)
+print("\nDependent Variables One Hot Encoded:\n", y)
+```
+
+**OUTPUT:**
+```bash
+Dependent Variables One Hot Encoded:
+ [[1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [1. 0. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 0. 1.]]
+```
+
+### MNIST Dataset
+
+Another example is when training a Neural Network for the [MNIST Dataset](https://keras.io/api/datasets/mnist/).
+
+[keras_mnist_problem.py](src/keras/keras_mnist_problem.py)
+```python
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+from keras.datasets import mnist
+from keras.utils import to_categorical
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+print("Independent Variables:\n", x_train)
+print("\nDependent Variables:\n", y_train)
+```
+
+**OUTPUT:**
+```bash
+Independent Variables:
+ [[[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]
+
+ [[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]
+
+ [[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]
+
+ ...
+
+ [[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]
+
+ [[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]
+
+ [[0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  ...
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]
+  [0 0 0 ... 0 0 0]]]
+
+Dependent Variables:
+ [5 0 4 ... 5 6 8]
+```
+
+See that:
+
+ - **The Independent variables:**
+   - Matrices of pixels (images).
+   - For example: (60000, 28, 28) = 60000 images (matrices) 28x28 pixels.
+ - **The Dependent variables:**
+   - The labels of the images.
+   - 10 Classes/Categories: 0 to 9.
+
+Now, let's apply the **One-Hot Encoding** to the *Dependent Variables (y target)*:
+
+[keras_mnist_problem.py](src/keras/keras_mnist_problem.py)
+```python
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+
+print("------------------------------")
+print("|0, 1, 2, 3, 4, 5, 6, 7, 8, 9|")
+print("------------------------------")
+for i in range(50):
+    print(y_train[i])
+```
+
+**OUTPUT:**
+```bash
+------------------------------
+|0, 1, 2, 3, 4, 5, 6, 7, 8, 9|
+------------------------------
+[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+[0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+[0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 1. 0. 0. 0. 0. 0.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 0. 1. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+[0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+[1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+[0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]
+[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+[0. 0. 0. 0. 0. 0. 0. 1. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]
+[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.]
+[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]
+[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]
+```
+
+> **NOTE:**  
+> We have a mapping to the Classes/Categories of images again.
+
+
+
+
+
+
+
+
+
+
+<!-- ( Useful Libraries/TensorFlow ) --->
+
+---
+
+<div id="why-called-tf"></div>
+
+## Why is TensorFlow called "TensorFlow"? (+TensorFlow Components)
+
+> *TensorFlow* is called **'TensorFlow'** because it *handles (lida)* the flow (node/mathematical operation) of **"Tensors"**, which are data structures that you can think of as multi-dimensional arrays.
+
+### But what is a "Tensor"?
+
+> A **"Tensor"** is an **"n-dimensional "vector" or "matrix"** that can contain all data types.
+
+ - All *"tensor"* values carry the same type of data with a known (conhecida), or partially known (conhecida), form.
+ - The dimensionality of the matrix is defined by the *"shape"* of the input data.
+
+Let's, see some **"Tensors"** examples:
+
+![img](images/tensors-01.png)  
+
+Now imagine, we have a **4×4 matrix** with values from **1** to **16**:
+
+![img](images/tensors-02.png)  
+
+In **"TensorFlow"**, we can represent the *"tensor"* above as:
+
+```bash
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
+# or
+
+[
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 16]
+]
+```
+
+Now, let's see a **3-dimensional (shape 3x3x3)** *"tensor"*:
+
+![img](images/tensors-03.jpg)  
+
+In **"TensorFlow"**, we can represent the *"tensor"* above as:
+
+```python
+[
+  [[01, 02, 03], [04, 05, 06], [07, 08, 09]],
+  [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+  [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+]
+
+# or
+
+[
+  [
+    [01, 02, 03],
+    [04, 05, 06],
+    [07, 08, 09]
+  ],
+  [
+    [10, 11, 12],
+    [13, 14, 15],
+    [16, 17, 18]
+  ],
+  [
+    [19, 20, 21],
+    [22, 23, 24],
+    [25, 26, 27]
+  ]
+]
+```
+
+> **NOTE:**  
+> We can think of each block as a *sheet of paper (page)*, one after the other. In other words, each *sheet of paper (page)* is a depth (profundidade).
+
+See other examples of **"tensors"** and their dimensions below:
+
+![img](images/3d-tensors.png)  
+
+A **"Tensor"** have properties:
+
+ - **Rank:**
+   - Rank is used to identify the number of dimensions of a tensor.
+   - It is known (conhecido) as the order of a tensor.
+ - **Shape:**
+   - It is the number of rows and columns the tensor has.
+ - **Type:**
+   - It is the data type assigned to the tensors.
+
+Ok, now we know what a **“Tensor”** is. Let's go back to TensorFlow components.
+
+ - A tensor may be derived from the *"input data"* or the *"outcome of a process"*.
+ - All functions or methods are carried out (realizados) in a *"graph"* defined by using the TensorFlow library.
+
+### But what is a Graph? (In TensorFlow context)
+
+> A **"graph"** is a sequence of functions that are *carried out consecutively (executadas consecutivamente)*.
+
+ - Each operation represented in a *"graph"* is known (conhecida) as an **"op node (vertex)"**, and these nodes are related to each other.
+ - The **"edges"** connected to the nodes in the graph describe the operations to be performed.
+
+> Briefly, a **graph** help us to collect and describe the sequence of computations that you want your model to perform. 
+
+Let's, see some **"Graphs"** examples:
+
+![img](images/tf-graph-01.png)  
+![img](images/tf-graph-02.png)  
+![img](images/tf-graph-03.jpg)  
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="tf-vars"></div>
+
+## Variables
+
+ - In **TensorFlow**, *"variables"* are *"tensor"* objects that hold values that can be modified during the execution of the program.
+ - A variable can be created with **"tf.Variable()"** function.
+ - When you want to *train* a model, you have to use variables to *"hold"* and *"update parameters"*.
+ - A variable in TensorFlow is the recommended way to represent a shared, persistent state, that your program manipulates.
+
+Let’s see an example for a basic *linear model*:
+
+$y= wx + b$
+
+![img](images/tf-graph-04.jpg)
+
+[tf_var-v1.py](src/tensorflow/tf_var-v1.py)
+```python
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+w = tf.Variable([0.3], tf.float32)
+b = tf.Variable([-0.3], tf.float32)
+x = np.arange(1, 5)
+
+y = w * x + b
+
+print(y)
+
+plt.plot(x, y)
+plt.savefig("../images/tf-var-01.png", format="png")
+plt.show()
+```
+
+**OUTPUT:**
+```bash
+tf.Tensor([0.    0.3    0.6    0.90000004], shape=(4,), dtype=float32)
+```
+
+![img](images/tf-var-01.png)  
+
+---
+
+
+
+
+
+
+
+
+
+
+<div id="tf-const"></div>
+
+## Constants
+
+ - As constants in any source code, are the actual values that are fixed, the TensorFlow constants are the same.
+ - The values assigned to a TensorFlow constant cannot be changed in the future.
+
+> **NOTE:**  
+> We use TensorFlow constants, where we need non-changing value, such as datasets in our Machine Learning.
+
+For example, see the *"Tensors"* below, created with the **"tensorflow.constant()"** function:
+
+[tf_const-v1.py](src/tensorflow/tf_const-v1.py)
+```python
+import tensorflow as tf
+
+a = tf.constant(3.0)
+b = tf.constant(5.0)
+
+c = a * b
+
+print(c)
+```
+
+**OUTPUT:**
+```bash
+tf.Tensor(15.0, shape=(), dtype=float32)
+```
+
+![img](images/tf-graph-00.png)  
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="launching-tf-board"></div>
+
+## Launching TensorBoard
+
+To launch **"TensorBoard"**, we should open our terminal or command prompt and run:
+
+```bash
+tensorboard --logdir=<directory_name>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( References ) --->
 
 ---
@@ -1209,4 +2421,4 @@ Let's, see another example:
 
 ---
 
-**Rodrigo** **L**eite da **S**ilva - **rodrigols89**
+Ro**drigo** **L**eite da **S**ilva - **drigols**
