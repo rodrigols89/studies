@@ -81,7 +81,8 @@
 
 ## Artificial Intelligence
 
- - [Artificial Intelligence (Theory and Practice)](modules/ai-codes)
+ - [Artificial Intelligence (Theory and Practice)](https://github.com/rodrigols89/studies/tree/ai-theory/modules/ai-theory)
+ - [Artificial Intelligence (Codes commented)](modules/ai-codes)
 
 ---
 
