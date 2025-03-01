@@ -1,9 +1,71 @@
-# EzLearning
+> **NOTE:**  
+> I have old studies on [Artificial Intelligence (Clicking here)](docs/old-studies/README.md) that you might like to see.
+
+# Artificial Intelligence (Theory & Practice)
 
 ## Contents
 
- - [Project Structure](#project-structure)
+ - [**Project Structure**](#project-structure)
  - [**Settings**](#settings)
+ - [**References**](#ref)
+<!--- 
+[WHITESPACE RULES]
+- Same topic = "10" Whitespace character.
+- Different topic = "50" Whitespace character.
+--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Project Structure ) --->
 
 ---
 
@@ -11,7 +73,7 @@
 
 ## Project Structure
 
- - **ezlearning/**
+ - **ai-codes/**
    - Main package directory containing the source code.
     - **algorithms/**
       - Contains implementations of machine learning and deep learning algorithms.
@@ -51,6 +113,60 @@
       - Serves as the entry point for running demonstrations or integrated tests of the project.
    - **`README.md`**
      - Provides an overview of the project, including basic installation instructions, usage examples, and information for contributions or contact.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Settings ) --->
 
 ---
 
@@ -92,6 +208,26 @@ pip freeze > requirements.txt --require-virtualenv
 ```
 
 **Now, Be Happy!!!** 😬
+
+
+
+
+
+
+
+
+
+
+<!--- ( References ) --->
+
+---
+
+<div id="ref"></div>
+
+## References
+
+ - **General:**
+   - [Neural Networks from Scratch in Python Book](https://nnfs.io/)
 
 ---
 

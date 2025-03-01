@@ -1,8 +1,6 @@
-# Artificial Intelligence
+# Artificial Intelligence (Theory & Practice)
 
 > My **Artificial Intelligence** *studies*, *codes*, and *guides*.
-
-![project-logo](res/logo.jpg)
 
 ## Contents
 
