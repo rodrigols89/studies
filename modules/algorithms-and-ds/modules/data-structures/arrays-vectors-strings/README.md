@@ -2,15 +2,14 @@
 
 ## Contents
 
- - **StaticArray class:**
-   - [Constructor | O(1)](#static-array-class-constructor)
-   - [Traversing (from the beginning) | O(n)](#static-array-class-traversing)
-   - [Set element by index | O(1)](#static-array-class-set-element-by-index)
-   - [Get element by index | O(1)](#static-array-class-get-element-by-index)
+ - **Array Operations:**
+   - [Traversing (from the beginning) | O(n)](#traversing-from-the-beginning)
+   - [Set element by index | O(1)](#set-element-by-index)
+   - [Get element by index | O(1)](#get-element-by-index)
  - **Tips & Tricks:**
    - [The duplicates items issue](#the-duplicates-issue)
  - [REFERENCES](#ref)
-<!--- 
+<!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
 - Different topic = "50" Whitespace character.
@@ -67,109 +66,22 @@
 
 
 
-<!--- ( StaticArray class ) --->
+<!--- ( Array Operations ) --->
 
 ---
 
-<div id="static-array-class-constructor"></div>
-
-## Constructor | O(1)
-
-<details>
-<summary>Python</summary>
-
-A constructor for an **Array class** is very simple. For example, see the code below:
-
-[Array.py](src/python/Array.py)
-```python
-class StaticArray:
-    def __init__(self, size):
-        self.size = size          # O(1)
-        self.nItems = 0           # O(1)
-        self.arr = [None] * size  # O(1)
-```
-
-$f(n) = O(1) + O(1) + O(1) = O(1)$
-
-### Complexity Explanation
-
- - **Time Complexity: O(1)**
-   - The line `self.arr = [None] * size` has a constant time complexity O(1):
-     - This is because you are creating a list with a fixed size determined by the value of the variable "size". Regardless of how large "size" is, the time required to execute this line of code will remain constant because it does not depend on the specific size of the list but rather on the fixed number of operations needed to initialize it.
-     - **NOTE:** One way to think about this is that the line simply allocates an array of size "size" and initializes each element to the value None. This is a process that always takes the same amount of time, regardless of the size of the array.
- - **Space Complexity: O(n)**
-   - The *Space Complexity* of this code is **O(n)**, where **"n"** is the *"size"* of the array. This is because the *"arr"* variable is initialized as an array of size elements, which requires **O(n)** space.
-
-### Code explanation
-
- - **The constructor receives an initial "size":**
-   - How Arrays are *fixed size* Data Structures your constructor receives a value (int value) to init your size.
-   - The "size" value will be saved to be used later for the instance.
- - **We have "nItems" variable initialized as zero (0) to count how many elements has the Array.**
- - **Finally, we create an empty list "arr" to store the new elements:**
-   - This empty list initially will be None.
-   - This empty list also will be multiplied by the initial size. This is because the Array is (need be) fixed size.
-
-For example, see the images below:
-
-**Example, size=5:**
-![img](images/size-05.png)  
-
-**Example, size=10:**
-![img](images/size-10.png)  
-
-**Example, size=15:**
-![img](images/size-15.png)  
-
-Looking at the examples above we can note that:
-
- - The greater (quanto maior) the size we pass, the more elements can be stored.
- - The "nItems" variable has the index of the first empty block of the Array:
-   - In truth, "nItems" variable always has the index of the last empty block.
-
-> **Okay, but how does it work on Python?**
-
-```python
-from Array import StaticArray
-
-if __name__ == "__main__":
-
-    myArray = StaticArray(size=5)
-    print(f"Array: {myArray.arr}")
-    print(f"Number of Items: {myArray.nItems}")
-```
-
-**OUTPUT:**
-```bash
-Array: [None, None, None, None, None]
-Number of Items: 0
-```
-
-See that:
-
- - We have an array with the "size=5" filled as "None."
- - And the "nItems" counter is 0, that's, the Array is empty.
-</details>
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="static-array-class-traversing"></div>
+<div id="traversing-from-the-beginning"></div>
 
 ## Traversing (from the beginning) | O(n)
 
+Here, let's see how to implement the **traverse()** method to traverse the array from the beginning:
+
 <details>
 <summary>Python</summary>
 
-> Traversing an array is very easy. You just need to traverse all elements in the **"self.arr"** variable.
+<br/>
+
+> In Python to traversing an array is very easy. You just need to traverse all elements in the **"self.arr"** variable.
 
 [Array.py](src/python/Array.py)
 ```python
@@ -237,12 +149,18 @@ Index: 4, Item: 50
 
 ---
 
-<div id="static-array-class-set-element-by-index"></div>
+<div id="set-element-by-index"></div>
 
 ## Set element by index | O(1)
 
+Here, let's see how to implement the **set_element_by_index()** method to set an element at a specific index:
+
+![img](images/set-element-by-index.png)  
+
 <details>
 <summary>Python</summary>
+
+<br/>
 
 [Array.py](src/python/Array.py)
 ```python
@@ -372,12 +290,18 @@ IndexError
 
 ---
 
-<div id="static-array-class-get-element-by-index"></div>
+<div id="get-element-by-index"></div>
 
 ## Get element by index | O(1)
 
+Here, let's see how we can retrieve an element from an array by its index:
+
+![Get element by index](images/by-index.png)  
+
 <details>
 <summary>Python</summary>
+
+<br/>
 
 [Array.py](src/python/Array.py)
 ```python
@@ -601,13 +525,13 @@ When you design a data storage structure, you need to decide whether items with 
 ## REFERENCES
 
  - **General:**
+   - [Introduction To Algorithms (6.006 | Spring 2020 | Undergraduate)](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
+   - [Data Structures & Algorithms in Python](https://learning.oreilly.com/library/view/data-structures/9780134855912/)
    - [Runtime Calculator](https://www.timecomplexity.ai/)
    - [Big O Calc](https://www.bigocalc.com/)
    - [ChatGPT](https://chat.openai.com/)
    - [Bard](https://bard.google.com/)
- - [Introduction To Algorithms (6.006 | Spring 2020 | Undergraduate)](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/)
- - [Data Structures & Algorithms in Python](https://learning.oreilly.com/library/view/data-structures/9780134855912/)
 
 ---
 
-**Rodrigo** **L**eite da **S**ilva
+**Rodrigo** **L**eite da **S**ilva - **drigols**
