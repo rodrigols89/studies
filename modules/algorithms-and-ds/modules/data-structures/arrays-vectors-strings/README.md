@@ -155,7 +155,7 @@ Index: 4, Item: 50
 
 Here, let's see how to implement the **set_element_by_index()** method to set an element at a specific index:
 
-![img](images/set-element-by-index.png)  
+![img](images/by-index.png)  
 
 <details>
 <summary>Python</summary>
