@@ -287,6 +287,8 @@ print(outputs)
 
 <summary>TensorFlow</summary>
 
+</br>
+
 [neuron_tf_calc-01.py](examples/neurons/neuron_tf_calc-01.py)
 ```python
 import os
