@@ -2,25 +2,264 @@
 
 ## Contents
 
+ - **Node:**
+   - [Node class for a Singly Linked List](#node-class-sll)
+   - [Node class for a Double Linked List](#node-class-dll)
  - **Singly Linked List:**
-   - [Singly Linked List class (+Explanation how to create Nodes)](#sll-class)
-   - [Add a new Node at the front (push) | O(1)](#sll-push)
-   - [Add a new Node at the end (append) | O(n)](#sll-append)
-   - [Add a new Node at the end (append) with constant Time Complexity | O(1)](#sll-append-constant)
-   - [Traversing in SinglyLinkedList from the Head until last Node (Tail) | O(n)](#sll-print-list-from-head)
+   - [Singly Linked List class](#sll-class)
+   - [How to link and initialize a Singly Linked List manually](#link-initialize-sll-manually)
+   - [How to link and initialize a Singly Linked List using OOP (instance)](#link-initialize-sll-using-oop)
+   - **Operations:**
+     - [Add a new Node at the front (push) | O(1)](#sll-push)
+     - [Add a new Node at the end (append) | O(n)](#sll-append)
+     - [Add a new Node at the end (append) with constant Time Complexity | O(1)](#sll-append-constant)
+     - [Traversing in SinglyLinkedList from the Head until last Node (Tail) | O(n)](#sll-print-list-from-head)
  - **Double Linked List:**
-   - [Double Linked List class](#dll-class)
  - **Circular Linked List:**
    - [Circular Linked List approaches](#circular-linked-list-approaches)
- - **Tips & Tricks:**
-   - [Linked-Lists: Advantages and Disadvantages](#ll-advantages-disadvantages)
-   - [The duplicates items issue](#the-duplicates-issue)
- - [REFERENCES](#ref)
-<!--- 
+ - [**REFERENCES**](#ref)
+<!---
 [WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
-- Different topic = "50" Whitespace character.
+- Same topic = "20" Whitespace character.
+- Different topic = "100" Whitespace character.
 --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Node ) --->
+
+---
+
+<div id="node-class-sll"></div>
+
+## Node class for a Singly Linked List
+
+Here, let's see how to implement a **Node** class for a **Singly Linked List**:
+
+![img](images/sll-01.png)  
+
+<!--- ( Python) --->
+<details>
+
+<summary>Python</summary>
+
+</br>
+
+[singly_linked_list.py](src/python/singly_linked_list.py)
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="node-class-dll"></div>
+
+## Node class for a Double Linked List
+
+A **Doubly Linked List** is composed of connected **"Nodes"**, where each **"Node"** has:
+
+ - **"Data"** stored.
+ - A pointer **"prev"** to the previous *Node*.
+ - A pointer **"next"** to the next *Node*.
+
+![img](images/dll-01.png)  
+
+See that:
+
+ - The **"prev"** point of the first Node is NULL.
+ - The **"next"** point of the last Node also is NULL.
+
+Now, let's implement a **"Node"** class for a **Doubly Linked List**:
+
+<details>
+<summary>Python</summary>
+
+</br>
+
+[doubly_linked_list.py](src/python/doubly_linked_list.py)
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,43 +318,16 @@
 
 <div id="sll-class"></div>
 
-## Singly Linked List class (+Explanation how to create Nodes)
+## Singly Linked List class
 
-> To start **Singly Linked List** studies first, let's understand what's a **Node**.
+Here, let's see how to implement a **Singly Linked List** *class*:
 
-See the image below to understand more easily:
-
-![img](images/sll-01.png)  
-
+<!--- ( Python ) --->
 <details>
+
 <summary>Python</summary>
 
-[singly_linked_list.py](src/python/singly_linked_list.py)
-```python
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-```
-
-See that the Node class has only two instance variables:
-
- - **data:**
-   - Value to be stored.
- - **next:**
-   - Pointer to the next *node*.
-
-Now, let's understand what's a **Singly Linked List**. For example, see the image below:
-
-![img](images/sll-02.png)
-
-See that **Singly Linked List** is composed of many Nodes where:
-
- - Each Node contains a value stored.
- - And each Node contains a pointer to the next Node.
- - Finally, the last Node contains a pointer to NULL.
-
-Let's see how to implement a **Singly Linked List**:
+</br>
 
 [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -130,16 +342,41 @@ See that the **SinglyLinkedList** class:
    - That's, have access to the **"data"** and **"next"** instance variables.
  - Has only **head** instance variable.
 
-Now, let's understand how to initialize the Nodes. Here we have two approaches:
+</details>
 
- - ***Initialize* and *link* each Node manually.**
- - **Or using OOP concepts we can instance a SinglyLinkedList class and initialize the Nodes:**
-   - Remember that the *SinglyLinkedList* class inherits from the Node class.
-   - That's, have access to the Node class instance variables.
 
-Let's see the first approach:
 
-> ***Initialize* and *link* each Node manually.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="link-initialize-sll-manually"></div>
+
+## How to link and initialize a Singly Linked List manually
+
+Here, let's see how to `link` and `initialize` a **Singly Linked List** *manually*:
+
+<!--- ( Python ) --->
+<details>
+
+<summary>Python</summary>
+
+</br>
 
 ```python
 from singly_linked_list import Node
@@ -175,14 +412,45 @@ Value in the Third Node (tail): 30
 
 See that using this approach:
 
- - We initialize the **"data"** instance variables using the Node class constructor.
- - We link each Node to the next Node using the **"next"** instance variable.
+ - We `initialize` the **"data"** instance variables using the Node class constructor.
+ - We `link` each Node to the next Node using the **"next"** instance variable.
 
-Now, let's see the second approach:
+</details>
 
-> **Using OOP concepts we can instance a SinglyLinkedList class and initialize the Nodes:**
 
-[test_nodes_by_sll.py](src/python/test_nodes_by_sll.py)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="link-initialize-sll-using-oop"></div>
+
+## How to link and initialize a Singly Linked List using OOP (instance)
+
+Here, let's see how to link and initialize a **Singly Linked List** *using OOP (instance)* concept:
+
+<!--- ( Python ) --->
+<details>
+
+<summary>Python</summary>
+
+</br>
+
 ```python
 from singly_linked_list import SinglyLinkedList, Node
 
@@ -208,9 +476,8 @@ Value in the Second Node: 20
 Value in the Third Node (tail): 30
 ```
 
-> **NOTE:**  
-> - See that in the two approaches we always need to use the Node() class constructor to create new Nodes.
-> - This creates a code repetition problem. To solve this we can create methods to create nodes, such as: [push()](#sll-push) and [append()](#sll-append).
+ - See that in the two approaches (manually and using OOP) we always need to use the **Node()** class constructor to create new Nodes.
+ - **NOTE:** This creates a code repetition problem. To solve this we can create methods to create nodes, such as: [push()](#sll-push) and [append()](#sll-append).
 
 </details>
 
@@ -223,7 +490,18 @@ Value in the Third Node (tail): 30
 
 
 
+
+
+
+
+
+
+
+
+
+
 ---
+
 
 <div id="sll-push"></div>
 
@@ -243,8 +521,12 @@ If we add item (element) **5** at the *front*, then the **Singly Linked List** b
 5->10->15->20->25
 ```
 
+<!--- ( Python ) --->
 <details>
+
 <summary>Python</summary>
+
+</br>
 
 [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -322,7 +604,18 @@ Data in the fifth Node: 25
 
 
 
+
+
+
+
+
+
+
+
+
+
 ---
+
 
 <div id="sll-append"></div>
 
@@ -342,8 +635,12 @@ And we add the item (element) **25** at the end, then the **Singly Linked List**
 5->10->15->20->25
 ```
 
+<!--- ( Python ) --->
 <details>
+
 <summary>Python</summary>
+
+</br>
 
 [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -465,18 +762,31 @@ List3 = append(1) + append(2) + append(3):
 
 
 
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="sll-append-constant"></div>
 
 ## Add a new Node at the end (append) with constant Time Complexity | O(1)
 
-> Here, let's see how to implement the **append()** method with **constant Time Complexity O(1)**.
+Here, let's see how to implement the **append()** method with **constant Time Complexity O(1)**.
 
-First, we need to modify the **SinglyLinkedList()** class to have the *tail attribute (reference)*. This is because the *tail attribute* is used to save the last node in the linked list.
+**But, first, we need to modify the *SinglyLinkedList()* class to have the *tail attribute (reference)***:  
+This is because the *tail attribute* is used to save the last node in the linked list.
 
 <details>
 <summary>Python</summary>
+
+</br>
 
 [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -600,51 +910,18 @@ This is because the *"tail"* attribute is not set to use the *"next"* attribute.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Traversal/Singly Linked List ) --->
-
 ---
 
 <div id="sll-print-list-from-head"></div>
 
 ## Traversing in SinglyLinkedList from the Head until last Node (Tail) | O(n)
 
-> An approach to **traverse a Singly Linked List** is to start from the Head until the last Node (Tail).
+Here, let's see how to **traverse a Singly Linked List** from the Head until the last Node (Tail).
 
 <details>
 <summary>Python</summary>
+
+</br>
 
 **Python** [singly_linked_list.py](src/python/singly_linked_list.py)
 ```python
@@ -764,42 +1041,107 @@ List is empty!
 
 
 
-<!--- ( Double Linked List class ) --->
 
----
 
-<div id="dll-class"></div>
 
-## Double Linked List class
 
-> A **Doubly Linked List** is composed of connected **"Nodes"**, where each **"Node"** has:
 
- - **"Data"** stored.
- - A pointer **"prev"** to the previous *Node*.
- - A pointer **"next"** to the next *Node*.
 
-![img](images/dll-01.png)  
 
-See that:
 
- - The **"prev"** point of the first Node is NULL.
- - The **"next"** point of the last Node also is NULL.
 
-For example, see how to represent a **"Node"** class for a **Doubly Linked List**:
 
-<details>
-<summary>Python</summary>
 
-[doubly_linked_list.py](src/python/doubly_linked_list.py)
-```python
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
-```
 
-</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Double Linked List ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -879,23 +1221,6 @@ See the image below to understand more easily:
 
 **Circular Singly Linked Lists** are similar to *Single Linked Lists* with the exception of connecting the last node to the first node.
 
-<details>
-<summary>Python</summary>
-
-```python
-# Initialize the Nodes.
-first  = Node(3)
-second = Node(5)
-third  = Node(9)
-
-# Connect nodes.
-first.next  = second
-second.next = third
-third.next  = first
-```
-
-</details>
-
 ### Circular Doubly Linked List
 
 **Circular Doubly Linked List** has properties of both *Doubly Linked List* and *Circular Linked List* in which two consecutive elements are linked or connected by the previous and next pointer and the last node points to the first node by the next pointer and also the first node points to the last node by the previous pointer.
@@ -953,77 +1278,6 @@ See the image below to understand more easily:
 
 
 
-
-
-
-<!--- ( Tips & Tricks ) --->
-
----
-
-<div id="ll-advantages-disadvantages"></div>
-
-## Linked-Lists: Advantages and Disadvantages
-
- - **General:**
-   - **Advantages:**
-     - Dynamic Array.
-     - Ease of Insertion/Deletion.
-     - Insertion at the beginning is a constant time operation and takes O(1) time:
-       - As compared to arrays where inserting an element at the beginning takes **O(n)** time, where **"n"** is the number of elements in the array.
-   - **Disadvantages (Drawbacks):**
-     - Random access is not allowed. We have to access elements sequentially starting from the first node (head node):
-       - So we cannot do a *binary search* with Linked Lists efficiently with its default implementation. 
-     - Extra memory space for a *pointer* is required with each element of the list.
-     - Not cache-friendly (Não compatível com cache):
-     - Since array elements are contiguous locations, there is the locality of reference which is not there in the case of linked lists.
-     - It takes a lot of time in traversing and changing the pointers.
-     - Reverse traversing is not possible in singly linked lists.
-     - It will be confusing when we work with pointers.
-     - Direct access to an element is not possible in a linked list as in an array by index.
-     - Searching for an element is costly and requires O(n) time complexity.
-     - Sorting of linked lists is very complex and costly.
-     - Appending an element to a linked list is a costly operation, and takes **O(n)** time, where **"n"** is the number of elements in the linked list:
-       - As compared to arrays that take **O(1)** time.
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="the-duplicates-issue"></div>
-
-## The duplicates items issue
-
-> To understand **"the duplicates items issue"** see the two examples below.
-
-### Searching without Duplicates
-
-When you design a data storage structure, you need to decide whether items with duplicate keys will be allowed.
-
- - If you’re writing a data storage program in which duplicates are not allowed, you may need to guard against human error during an insertion.
- - Checking all the data items in the array to ensure (garantir) that not one of them already has the same key value as the item being inserted.
- - **NOTE:** This check increases the steps required for an insertion from *1* to *N*:
-   - This is because the Algorithm now needs to check all elements, that's, "N" times.
-
-### Searching with Duplicates
-
- - Allowing duplicates complicates the search algorithm. Even if the search finds a match, it must continue looking for possible additional matches until the last occupied cell.
- - At least, this is one approach; you could also stop after the first match and perform subsequent searches after that.
- - How you proceed depends on whether the question is:
-   - “Find me everyone with the family name of Smith”.
-   - “Find me someone with the family name of Smith”.
-   - “Find how many entries have the family name Smith”.
- - Finding all items matching a search key is an exhaustive search.
- - **NOTE:** Exhaustive searches require *N* steps because the algorithm must go all the way to the last occupied cell, regardless of what is being sought.
-
-> **NOTE:**
-> You need to worry about duplicate items to **Insertion**, **Deletion**, **Traversal**, and **Search**.
 
 
 
@@ -1108,4 +1362,25 @@ When you design a data storage structure, you need to decide whether items with 
 
 ---
 
-**Rodrigo** **L**eite da **S**ilva
+**Rodrigo** **L**eite da **S**ilva - **rodrigols89**
+
+<!---
+<!--- ( Python ) ->
+<details>
+
+<summary>Python</summary>
+
+</br>
+
+[]()
+```python
+
+```
+
+**OUTPUT:**  
+```bash
+
+```
+
+</details>
+--->
