@@ -7,6 +7,11 @@
    - [The First Artificial Neuron (Perceptron)](#intro-to-perceptron)
    - [Neuron calculation (Inputs, Weights, and Biases)](#neuron-calculation)
      - [3 neuron layer with 4 inputs](#3neuron-layer-w-4inputs)
+     - [Why do we need to transpose the matrix of weights?](#transpose-matrix-of-weights)
+
+
+
+
      - [Parameter counting of an Artificial Neural Network](#counting-ann-parameters)
  - [**Project Structure**](#project-structure)
  - [**Settings**](#settings)
@@ -229,7 +234,7 @@ Now let's program this for a single neuron:
 
 </br>
 
-[neuron_calc-01.py](examples/neurons/neuron_calc-01.py)
+[neuron_calc-01.py](../../examples/neurons/neuron_calc-01.py)
 ```python
 inputs = [1, 2, 3]
 weights = [0.2, 0.8, -0.5]
@@ -260,7 +265,7 @@ print(output)
 
 </br>
 
-[neuron_np_calc-01.py](examples/neurons/neuron_np_calc-01.py)
+[neuron_np_calc-01.py](../../examples/neurons/neuron_np_calc-01.py)
 ```python
 import numpy as np
 
@@ -289,7 +294,7 @@ print(outputs)
 
 </br>
 
-[neuron_tf_calc-01.py](examples/neurons/neuron_tf_calc-01.py)
+[neuron_tf_calc-01.py](../../examples/neurons/neuron_tf_calc-01.py)
 ```python
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -357,7 +362,7 @@ A single neuron is easy to calculate. Now, let's see how to calculate a **layer 
 
 </br>
 
-[neuron_calc-02.py](examples/neurons/neuron_calc-02.py)
+[neuron_calc-02.py](../../examples/neurons/neuron_calc-02.py)
 ```python
 inputs = [1, 2, 3, 2.5]
 
@@ -394,7 +399,7 @@ print(outputs)
 
 </br>
 
-[neuron_np_calc-02.py](examples/neurons/neuron_np_calc-02.py)
+[neuron_np_calc-02.py](../../examples/neurons/neuron_np_calc-02.py)
 ```python
 import numpy as np
 
@@ -429,7 +434,7 @@ print(layer_outputs)
 
 </br>
 
-[neuron_tf_calc-02.py](examples/neurons/neuron_tf_calc-02.py)
+[neuron_tf_calc-02.py](../../examples/neurons/neuron_tf_calc-02.py)
 ```python
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -461,6 +466,121 @@ tf.Tensor([4.8       1.2099999 2.385    ], shape=(3,), dtype=float32)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="transpose-matrix-of-weights"></div>
+
+## Why do we need to transpose the matrix of weights?
+
+To apply **Dot Products** between the *input matrix* and the *weights matrix*, first we need a condition:
+
+ - The number of *rows* in the *input matrix*;
+ - Must be equal to the number of *columns* in the *weights matrix*.
+
+![img](images/transpose-matrix-of-weights-01.png)  
+
+> **Ok, how solve this problem?**  
+> *"Transpose"* the *matrix of weights*.
+
+![img](images/transpose-matrix-of-weights-02.png)  
+
+
+
+<!--- ( From Scratch (Numpy) ) --->
+<details>
+
+<summary>From Scratch (Numpy)</summary>
+
+</br>
+
+[transpose-np-01.py](../../examples/utils/transpose-np-01.py)
+```python
+import numpy as np
+
+inputs = [
+    [1.0, 2.0, 3.0, 2.5],
+    [2.0, 5.0, -1.0, 2.0],
+    [-1.5, 2.7, 3.3, -0.8]
+]
+
+weights = [
+    [0.2, 0.8, -0.5, 1.0],
+    [0.5, -0.91, 0.26, -0.5],
+    [-0.26, -0.27, 0.17, 0.87]
+]
+
+biases = [2.0, 3.0, 0.5]
+
+layer_outputs = np.dot(inputs, np.array(weights).T) + biases
+
+print(layer_outputs)
+```
+
+**OUTPUT:**  
+```bash
+[[ 4.8    1.21   2.385] 
+ [ 8.9   -1.81   0.2  ] 
+ [ 1.41   1.051  0.026]]
+```
+
+</details>
+
+
+
+
+<!--- ( From Scratch (TensorFlow) ) --->
+<details>
+
+<summary>From Scratch (TensorFlow)</summary>
+
+</br>
+
+[transpose-np-01.py](../../examples/utils/transpose-tf-01.py)
+```python
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import tensorflow as tf
+
+inputs = tf.constant([
+    [1.0, 2.0, 3.0, 2.5],
+    [2.0, 5.0, -1.0, 2.0],
+    [-1.5, 2.7, 3.3, -0.8]
+])
+
+weights = tf.constant([
+    [0.2, 0.8, -0.5, 1.0],
+    [0.5, -0.91, 0.26, -0.5],
+    [-0.26, -0.27, 0.17, 0.87]
+])
+
+biases = tf.constant([2.0, 3.0, 0.5])
+
+layer_outputs = tf.tensordot(inputs, tf.transpose(weights), axes=1) + biases
+
+print(layer_outputs.numpy())
+```
+
+**OUTPUT:**  
+```bash
+[[ 4.8         1.2099999   2.385     ]
+ [ 8.9        -1.8100004   0.20000005]
+ [ 1.4100001   1.051       0.02599993]]
+```
+
+</details>
 
 
 
@@ -772,7 +892,7 @@ pip freeze > requirements.txt --require-virtualenv
 
 </br>
 
-[]()
+[](../../examples/)
 ```python
 
 ```
