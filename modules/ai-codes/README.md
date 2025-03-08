@@ -4,6 +4,7 @@
 
 ## Contents
 
+ - [Project Settings](#settings)
  - [Machine Learning](#ml)
  - [Recommender System](#recommender-system)
  - [Artificial Neural Networks & Deep Learning](docs/ann-dp)
@@ -16,6 +17,55 @@
    - [Hyperparameter Tuning](docs/hyperparameter-tuning)
    - [Cross-Validation](docs/cross-validation)
    - [Evaluation Metrics](#evaluation-metrics)
+
+<!--- ( Project Settings ) --->
+
+---
+
+<div id="settings"></div>
+
+## Project Settings
+
+> **NOTE:**  
+> *Python==3.12.7* is required for TensorFlow.
+
+**CREATE VIRTUAL ENVIRONMENT:**  
+```bash
+python -m venv environment
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
+```bash
+source environment/bin/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
+```bash
+source environment/Scripts/activate
+```
+
+**UPDATE PIP:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+**UPDATE DEPENDENCIES:**
+```bash
+pip freeze > requirements.txt --require-virtualenv
+```
+
+**Now, Be Happy!!!** 😬
+
+
+
+
+
+
 
 ---
 

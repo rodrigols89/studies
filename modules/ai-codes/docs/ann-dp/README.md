@@ -8,11 +8,13 @@
    - [Neuron calculation (Inputs, Weights, and Biases)](#neuron-calculation)
      - [3 neuron layer with 4 inputs](#3neuron-layer-w-4inputs)
      - [Why do we need to transpose the matrix of weights?](#transpose-matrix-of-weights)
+     - [Adding the biases](#adding-the-biases)
 
 
 
 
-     - [Parameter counting of an Artificial Neural Network](#counting-ann-parameters)
+
+   - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**Project Structure**](#project-structure)
  - [**Settings**](#settings)
  - [**References**](#ref)
@@ -130,7 +132,7 @@
 
 ## Artificial Neural Networks Inspiration
 
-> “Artificial” neural networks are inspired by the organic brain, translated to the computer.
+> *Artificial Neural Networks are inspired by the organic brain, translated to the computer.
 
 ![img](images/ann-inspiration-01.png)  
 
@@ -206,9 +208,10 @@ The most important components to calculate a neuron are:
  - **Weights**
  - **Bias**
 
-Initially, let's pay attention to the **"weight"** and **"bias"** components that *we can use to fit our model to the data (podemos usar para ajustar nosso modelo aos dados.)*.
+> **NOTE:**  
+> Initially, let's pay attention to the **"weight"** and **"bias"** components that *we can use to fit our model to the data (podemos usar para ajustar nosso modelo aos dados.)*.
 
-To understand more easily, let's take a look at the  image above:
+To understand more easily, let's take a look at the image below:
 
 ![img](images/inputs-weights-biases-01.gif)  
 
@@ -227,41 +230,10 @@ Now let's program this for a single neuron:
 
 ![img](images/inputs-weights-biases-02.gif)  
 
-<!--- ( From Scratch (Python) ) --->
+<!--- ( Numpy ) --->
 <details>
 
-<summary>From Scratch (Python)</summary>
-
-</br>
-
-[neuron_calc-01.py](../../examples/neurons/neuron_calc-01.py)
-```python
-inputs = [1, 2, 3]
-weights = [0.2, 0.8, -0.5]
-bias = 2
-
-output = (
-  inputs[0]*weights[0] +
-  inputs[1]*weights[1] +
-  inputs[2]*weights[2] + bias
-)
-
-print(output)
-```
-
-**OUTPUT:**  
-```bash
-2.3
-```
-
-</details>
-
-
-
-<!--- ( From Scratch (Numpy) ) --->
-<details>
-
-<summary>From Scratch (Numpy)</summary>
+<summary>Numpy</summary>
 
 </br>
 
@@ -355,47 +327,10 @@ A single neuron is easy to calculate. Now, let's see how to calculate a **layer 
 
 ![img](images/inputs-weights-biases-03.gif)  
 
-<!--- ( From Scratch (Python) ) --->
+<!--- ( Numpy ) --->
 <details>
 
-<summary>From Scratch (Python)</summary>
-
-</br>
-
-[neuron_calc-02.py](../../examples/neurons/neuron_calc-02.py)
-```python
-inputs = [1, 2, 3, 2.5]
-
-weights1 = [0.2, 0.8, -0.5, 1]
-weights2 = [0.5, -0.91, 0.26, -0.5]
-weights3 = [-0.26, -0.27, 0.17, 0.87]
-
-bias1 = 2
-bias2 = 3
-bias3 = 0.5
-
-outputs = [
-    inputs[0]*weights1[0] + inputs[1]*weights1[1] + inputs[2]*weights1[2] + inputs[3]*weights1[3] + bias1,
-    inputs[0]*weights2[0] + inputs[1]*weights2[1] + inputs[2]*weights2[2] + inputs[3]*weights2[3] + bias2,
-    inputs[0]*weights3[0] + inputs[1]*weights3[1] + inputs[2]*weights3[2] + inputs[3]*weights3[3] + bias3
-]
-
-print(outputs)
-```
-
-**OUTPUT:**  
-```bash
-[4.8, 1.21, 2.385]
-```
-
-</details>
-
-
-
-<!--- ( From Scratch (Numpy) ) --->
-<details>
-
-<summary>From Scratch (Numpy)</summary>
+<summary>Numpy</summary>
 
 </br>
 
@@ -484,10 +419,11 @@ tf.Tensor([4.8       1.2099999 2.385    ], shape=(3,), dtype=float32)
 
 ## Why do we need to transpose the matrix of weights?
 
-To apply **Dot Products** between the *input matrix* and the *weights matrix*, first we need a condition:
+To apply **Dot Products** between the *input matrix* and the *weights matrix*, first we need the following conditions:
 
- - The number of *rows* in the *input matrix*;
- - Must be equal to the number of *columns* in the *weights matrix*.
+ - The number of *columns* in the *input matrix*;
+ - Must be equal to the number of *rows* in the *weights matrix*.
+ - **NOTE:** The result will be a matrix with the same number of *rows* of the *first matrix (inputs)* and the number of *columns* of the *second matrix (weights)*.
 
 ![img](images/transpose-matrix-of-weights-01.png)  
 
@@ -496,16 +432,20 @@ To apply **Dot Products** between the *input matrix* and the *weights matrix*, f
 
 ![img](images/transpose-matrix-of-weights-02.png)  
 
+Now, let's see visually:
+
+![img](images/transpose-matrix-of-weights-03.gif)
 
 
-<!--- ( From Scratch (Numpy) ) --->
+
+<!--- ( Numpy ) --->
 <details>
 
-<summary>From Scratch (Numpy)</summary>
+<summary>Numpy</summary>
 
 </br>
 
-[transpose-np-01.py](../../examples/utils/transpose-np-01.py)
+[transpose-np-01.py](../../examples/neurons/transpose-np-01.py)
 ```python
 import numpy as np
 
@@ -539,15 +479,14 @@ print(layer_outputs)
 
 
 
-
-<!--- ( From Scratch (TensorFlow) ) --->
+<!--- ( TensorFlow ) --->
 <details>
 
-<summary>From Scratch (TensorFlow)</summary>
+<summary>TensorFlow</summary>
 
 </br>
 
-[transpose-np-01.py](../../examples/utils/transpose-tf-01.py)
+[transpose-np-01.py](../../examples/neurons/transpose-tf-01.py)
 ```python
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -581,6 +520,291 @@ print(layer_outputs.numpy())
 ```
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="adding-the-biases"></div>
+
+## Adding the biases
+
+![img](images/transpose-matrix-of-weights-03.gif)  
+
+> **NOTE:**  
+> If we look at the **Dot Product** above, we can see that the bias is missing.
+
+The bias vector will be added to each row vector of the matrix:
+
+![img](images/adding-the-biases-01.gif)  
+
+
+
+<!--- ( Numpy ) --->
+<details>
+
+<summary>Numpy</summary>
+
+</br>
+
+[adding-biases-np-01.py](../../examples/neurons/adding-biases-np-01.py)
+```python
+import numpy as np
+
+inputs = [
+    [1.0, 2.0, 3.0, 2.5],
+    [2.0, 5.0, -1.0, 2.0],
+    [-1.5, 2.7, 3.3, -0.8]
+]
+
+weights = [
+    [0.2, 0.8, -0.5, 1.0],
+    [0.5, -0.91, 0.26, -0.5],
+    [-0.26, -0.27, 0.17, 0.87]
+]
+
+biases = [2.0, 3.0, 0.5]
+
+outputs = np.dot(inputs, np.array(weights).T) + biases
+
+print(outputs)
+```
+
+**OUTPUT:**  
+```bash
+[[ 4.8    1.21   2.385] 
+ [ 8.9   -1.81   0.2  ] 
+ [ 1.41   1.051  0.026]]
+```
+
+</details>
+
+
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[adding-biases-tf-01.py](../../examples/neurons/adding-biases-tf-01.py)
+```python
+import tensorflow as tf
+
+inputs = tf.constant([
+    [1.0, 2.0, 3.0, 2.5],
+    [2.0, 5.0, -1.0, 2.0],
+    [-1.5, 2.7, 3.3, -0.8]
+])
+
+weights = tf.constant([
+    [0.2, 0.8, -0.5, 1.0],
+    [0.5, -0.91, 0.26, -0.5],
+    [-0.26, -0.27, 0.17, 0.87]
+])
+
+biases = tf.constant([2.0, 3.0, 0.5])
+
+layer_outputs = tf.tensordot(inputs, tf.transpose(weights), axes=1) + biases
+
+print(layer_outputs.numpy())
+```
+
+**OUTPUT:**  
+```bash
+[[ 4.8         1.2099999   2.385     ] 
+ [ 8.9        -1.8100004   0.20000005] 
+ [ 1.4100001   1.051       0.02599993]]
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -807,48 +1031,6 @@ Thus, the network has a total of `250 parameters`.
 
 
 
-<!--- ( Settings ) --->
-
----
-
-<div id="settings"></div>
-
-## Settings
-
-> **NOTE:**  
-> *Python==3.12.7* is required for TensorFlow.
-
-**CREATE VIRTUAL ENVIRONMENT:**  
-```bash
-python -m venv environment
-```
-
-**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
-```bash
-source environment/bin/activate
-```
-
-**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
-```bash
-source environment/Scripts/activate
-```
-
-**UPDATE PIP:**
-```bash
-python -m pip install --upgrade pip
-```
-
-**INSTALL PYTHON DEPENDENCIES:**  
-```bash
-pip install -U -v --require-virtualenv -r requirements.txt
-```
-
-**UPDATE DEPENDENCIES:**
-```bash
-pip freeze > requirements.txt --require-virtualenv
-```
-
-**Now, Be Happy!!!** 😬
 
 
 
@@ -885,6 +1067,9 @@ pip freeze > requirements.txt --require-virtualenv
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
 
 <!---
+
+
+
 <!--- () ->
 <details>
 
@@ -903,4 +1088,7 @@ pip freeze > requirements.txt --require-virtualenv
 ```
 
 </details>
+
+
+
 --->
