@@ -9,14 +9,14 @@
      - [3 neuron layer with 4 inputs](#3neuron-layer-w-4inputs)
      - [Why do we need to transpose the matrix of weights?](#transpose-matrix-of-weights)
      - [Adding the biases](#adding-the-biases)
+   - [Layers in Artificial Neural Networks (ANN)](#layers-in-ann)
+     - [Dense Neural Networks](#dense-neural-networks)
+     - [Implementing a Dense_Layer class](#impl-dense-layer-class)
 
 
 
 
-
-   - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
- - [**Project Structure**](#project-structure)
- - [**Settings**](#settings)
+     - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -656,12 +656,262 @@ print(layer_outputs.numpy())
 
 
 
+---
+
+<div id="layers-in-ann"></div>
+
+## Layers in Artificial Neural Networks (ANN)
+
+ - *Neural Networks* become (torna-se) *“deep”* when they have *2* or *more* **hidden layers**.
+ - A *hidden layer* isn’t an **"input"** or **"output layer"**.
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="dense-neural-networks"></div>
+
+## Dense Neural Networks
+
+> **What is a Dense Neural Network?**
+
+ - The name suggests that the **"layers"** are fully connected (dense) by neurons in a network layer.
+ - Each *neuron* in the current **"layer"** `receives output from all neurons present in the previous layer` - hence they are densely connected.
+
+**NOTE:**  
+In other words, *the dense layer is a fully connected layer*, meaning all neurons in one layer are connected to those in the next layer.
+
+![img](images/dense-neural-network-01.png)
+
+> **Why use a Dense Neural Network?**
+
+ - A densely (desamente) connected layer provides learning features of all combinations of the features from the previous layer.
+ - While a convolutional layer relies (depende) on consistent features with a small repetitive field.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="impl-dense-layer-class"></div>
+
+## Implementing a Dense_Layer class
+
+> Here, let's see how to implement a **Layer_Dense** *class*.
+
+To start, let's consider the following class:
+
+
+<!--- ( Python ) --->
+<details>
+
+<summary>Python class</summary>
+
+</br>
+
+```python
+class Layer_Dense:
+    def __init__(self, n_inputs, n_neurons):
+    # Initialize weights and biases
+    pass # using pass statement as a placeholder
+
+    def forward(self, inputs):
+    # Calculate output values from inputs, weights and biases
+    pass # using pass statement as a placeholder
+```
+
+ - **Weights:**
+   - As previously stated, *"weights"* are often initialized randomly for a model, but not always.
+   - **NOTE:** If you wish to load a pre-trained model, you will initialize the parameters to whatever that pretrained model finished with. 
+ - **forward method:**
+   - When we pass data through a model from beginning to end, this is called a **"forward pass"**.
+
+</details>
+
+</br>
+
+To continue the **Layer_Dense** class’ code let’s add the random initialization of *"weights"* and *"biases"*:
+
+<!--- ( NumPy ) --->
+<details>
+
+<summary>NumPy</summary>
+
+</br>
+
+[layers.py](../../models/layers.py)
+```python
+import numpy as np
+
+
+class Layer_np_Dense:
+
+    def __init__(self, n_inputs, n_neurons):
+        self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
+        self.biases = np.zeros((1, n_neurons))
+
+
+if __name__ == "__main__":
+
+    NPLayer = Layer_np_Dense(2, 3)
+    print("Weights:\n", NPLayer.weights)
+    print("\nBiases:\n", NPLayer.biases)
+```
+
+**OUTPUT:**  
+```bash
+Weights:
+ [[ 0.00941491 -0.00491597  0.00752583]
+ [ 0.01287294  0.0074615  -0.01165399]]
+
+Biases:
+ [[0. 0. 0.]]
+```
+
+**Code Explanation:**
+
+ - `self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)`
+   - Here, the weights are initialized (randomly).
+   - `Why multiply by 0.01?`
+     - This factor multiplies all randomly generated values, reducing their magnitude to 0.01 times the original value.
+     - **NOTE:** This is a common technique known as "small random initialization".
+   - `np.random.randn(n_inputs, n_neurons)`
+     - `np.random.randn` is a function from the NumPy library in Python that creates a matrix of random numbers.
+     - `n_inputs` and `n_neurons` are the dimensions of the matrix:
+       - `n_inputs` The number of inputs coming into this layer (e.g., the size of the previous layer).
+       - `n_neurons` The number of neurons in this dense layer.
+       - **NOTE:** The result is a matrix with `n_inputs rows` and `n_neurons columns`, filled with random values.
+ - `self.biases = np.zeros((1, n_neurons))`
+   - We’ll initialize the biases with the shape of (1, n_neurons), as a row vector, which will let us easily add it to the result of the dot product later, without additional operations like transposition.
+   - Why zero biases?
+     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
+
+</details>
+
+
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[layers.py](../../models/layers.py)
+```python
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import tensorflow as tf
+
+class Layer_tf_Dense:
+
+    def __init__(self, n_inputs, n_neurons):
+        self.weights = tf.Variable(0.01 * tf.random.normal((n_inputs, n_neurons)))
+        self.biases = tf.Variable(tf.zeros((1, n_neurons)))
+
+
+if __name__ == "__main__":
+
+    TFLayer = Layer_tf_Dense(2, 3)
+    print("\nWeights:\n", TFLayer.weights.numpy())
+    print("\nBiases:\n", TFLayer.biases.numpy())
+```
+
+**OUTPUT:**  
+```bash
+Weights:
+ [[-0.01406785 -0.00555743 -0.00936548]
+ [ 0.01850817  0.00405955 -0.00104433]]
+
+Biases:
+ [[0. 0. 0.]]
+```
+
+**Code Explanation:**
+
+ - `self.weights = tf.Variable(0.01 * tf.random.normal((n_inputs, n_neurons)))`
+   - Here, the weights are initialized (randomly).
+   - `Why multiply by 0.01?`
+     - This factor multiplies all randomly generated values, reducing their magnitude to 0.01 times the original value.
+     - **NOTE:** This is a common technique known as "small random initialization".
+   - `tf.random.normal((n_inputs, n_neurons))`
+     - `tf.random.normal` is a function from the TensorFlow library in Python that creates a matrix of random numbers.
+     - `n_inputs` and `n_neurons` are the dimensions of the matrix:
+       - `n_inputs` The number of inputs coming into this layer (e.g., the size of the previous layer).
+       - `n_neurons` The number of neurons in this dense layer.
+       - **NOTE:** The result is a matrix with `n_inputs rows` and `n_neurons columns`, filled with random values.
+ - `self.biases = tf.Variable(tf.zeros((1, n_neurons)))`
+   - We’ll initialize the biases with the shape of (1, n_neurons), as a row vector, which will let us easily add it to the result of the dot product later, without additional operations like transposition.
+   - Why zero biases?
+     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
+
+</details>
+
+</br>
+
+Now, let's implement the  **forward()** method — we need to update it with the *dot product* + *biases* calculation:
+
+[layers.py](../../models/layers.py)
+```python
+
+
+
+
+
+
+
+<!--- () ->
+<details>
+
+<summary>Title here...</summary>
+
+</br>
+
+[](../../models/)
+```python
+
+```
+
+**OUTPUT:**  
+```bash
+
+```
+
+</details>
 
 
 
@@ -922,95 +1172,6 @@ Thus, the network has a total of `250 parameters`.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Project Structure ) --->
-
----
-
-<div id="project-structure"></div>
-
-## Project Structure
-
- - **ai-codes/**
-   - Main package directory containing the source code.
-    - **algorithms/**
-      - Contains implementations of machine learning and deep learning algorithms.
-      - **`__init__.py`**
-        - Marks the directory as a Python package, enabling direct module imports.
-      - **`dl.py`**
-        - Implementations of deep learning algorithms.
-      - **`ml.py`**
-        - Functions and classes for traditional machine learning algorithms.
-      - **`utils.py`**
-        - Utility functions that support the algorithms.
-    - **datasets/**
-      - Holds scripts for loading and preprocessing datasets.
-      - **`__init__.py`**
-        - Marks the datasets directory as a package.
-      - **`loader.py`**
-        - Functions for loading and managing datasets.
-   - **docs/**
-     - Contains the detailed documentation of the project, such as usage guides, API references, and technical notes that help developers and users understand how the project works.
-     - **`__init__.py`**
-       - Marks the datasets directory as a package.
-   - **examples/**
-     - Holds practical examples and notebooks (e.g., Jupyter Notebooks) demonstrating how to use the algorithms and models provided by the project.
-     - **`__init__.py`**
-       - Marks the examples directory as a package.
-   - **models/**
-     - Defines models and neural network structures for training and evaluation.
-     - **`__init__.py`**
-       - Initializes the models module.
-   - **tests/**
-     - Contains automated unit and integration tests to ensure code quality and stability.
-     - **`__init__.py`**
-       - Marks the tests directory as a package.
-   - **`__init__.py`**
-     - Marks the root (top-level) directory as a Python package, enabling direct module imports.
-   - **`main.py`** (Optional)
-      - Serves as the entry point for running demonstrations or integrated tests of the project.
-   - **`README.md`**
-     - Provides an overview of the project, including basic installation instructions, usage examples, and information for contributions or contact.
 
 
 

@@ -3,9 +3,7 @@
 ## Contents
 
  - [**Fundamentals of Artificial Neural Networks:**](#intro-to-nn)
-   - [The First Artificial Neuron (Perceptron)](#perceptron)
    - [How do Artificial Neural Networks learn? (Hypothetical example)](#how-do-learn)
-   - [Dense Neural Networks](#intro-to-dnn)
    - [Planning ANN](#planning-implementing-ann)
    - [**Activation Functions:**](#activation-functions)
      - [Sigmoid Function](#sigmoid-function)
@@ -177,33 +175,6 @@ As we know, the human brain has **billions** of *neurons* and *synapses (which c
 
 
 
-
----
-
-<div id="perceptron"></div>
-
-## The First Artificial Neuron (Perceptron)
-
-The first **Artificial Neuron** created was the **[Perceptron](https://en.wikipedia.org/wiki/Perceptron)** in 1958 by [Frank Rosenblatt](https://en.wikipedia.org/wiki/Frank_Rosenblatt):
-
-![image](images/ann02.png)
-
- - The **[Perceptron](https://en.wikipedia.org/wiki/Perceptron)** had the main idea of receiving different inputs (or signals) and outputting the signal (result) **1** or **0**.
- - This signal (result) basically indicates whether the neuron will be *active* or *not* to proceed to another neuron.
- - Over time, scientists discovered that there were other possibilities for neurons; Not only *active* or *not*, but we won't delve into details for now.
-
-**NOTE:**  
-The idea of the **[Perceptron](https://en.wikipedia.org/wiki/Perceptron)** was a single *neuron* that received **x<sub>i</sub>** inputs; Multiplied these inputs by their respective weights; Then passed through a *Non-Linear Activation Function* and received an *output*.
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id=""></div>
@@ -304,31 +275,7 @@ In this example, we made the connection only from all inputs to the first neuron
 
 
 
----
 
-<div id="intro-to-dnn"></div>
-
-## Dense Neural Networks
-
-> **What is a Dense Neural Network?**
-
- - The name suggests that the **"layers"** are fully connected (dense) by neurons in a network layer.
- - Each *neuron* in the current **"layer"** `receives output from all neurons present in the previous layer` - hence they are densely connected.
-
-**NOTE:**  
-In other words, *the dense layer is a fully connected layer*, meaning all neurons in one layer are connected to those in the next layer.
-
-![img](images/dense-neural-network.png)
-
-> **Why use a Dense Neural Network?**
-
- - A densely (desamente) connected layer provides learning features of all combinations of the features from the previous layer.
- - While a convolutional layer relies (depende) on consistent features with a small repetitive field.
-
-Returning to our example of identifying numbers with an **Artificial Neural Network**.
-
-**Densely our Artificial Neural Network would look like this:**  
-![image](images/neural-net02.png)  
 
 
 
