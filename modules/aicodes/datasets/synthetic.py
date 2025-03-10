@@ -2,10 +2,11 @@
 # Programmatically generated data (Dados gerados programaticamente) #
 #####################################################################
 
+import matplotlib.pyplot as plt
 import numpy as np
 
 
-def create_data(samples, classes):
+def spiral_data(samples, classes):
     X = np.zeros((samples*classes, 2))
     y = np.zeros(samples*classes, dtype='uint8')
     for class_number in range(classes):
@@ -19,3 +20,11 @@ def create_data(samples, classes):
         X[ix] = np.c_[r*np.sin(t*2.5), r*np.cos(t*2.5)]
         y[ix] = class_number
     return X, y
+
+
+
+if __name__ == '__main__':
+
+    X, y = spiral_data(samples=100, classes=3)
+    plt.scatter(X[:,0], X[:,1])
+    plt.show()

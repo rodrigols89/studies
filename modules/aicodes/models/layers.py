@@ -1,47 +1,52 @@
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+import sys
+
+# Add the root directory 'aicodes' to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
 
 import numpy as np
 import tensorflow as tf
 
-from modules.ai_codes.datasets import spiral_data
+from datasets.synthetic import spiral_data
 
-class Layer_np_Dense:
+
+class LayerDenseNP:
 
     def __init__(self, n_inputs, n_neurons):
         self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
         self.biases = np.zeros((1, n_neurons))
 
-
     def forward(self, inputs):
         self.output = np.dot(inputs, self.weights) + self.biases
 
 
-
-
-class Layer_tf_Dense:
+class LayerDenseTF:
 
     def __init__(self, n_inputs, n_neurons):
-        self.weights = tf.Variable(0.01 * tf.random.normal((n_inputs, n_neurons)))
-        self.biases = tf.Variable(tf.zeros((1, n_neurons)))
-
+        self.layer = tf.keras.layers.Input(shape=(n_inputs,)),
+        self.layer = tf.keras.layers.Dense(n_neurons)
 
     def forward(self, inputs):
-        self.output = tf.tensordot(selfinputs, tf.transpose(self.weights), axes=1) + self.biases
-
-
+        self.output = self.layer(inputs)
 
 
 if __name__ == "__main__":
 
     X, y = spiral_data(samples=100, classes=3)
 
-    NPLayer = Layer_np_Dense(2, 3)
-    print("Weights:\n", NPLayer.weights)
-    print("\nBiases:\n", NPLayer.biases)
-    print("\nLayer Output:\n", NPLayer.output)
+    # Create Dense Layer with 2 input features and 3 output values
+    np_layer = LayerDenseNP(2, 3)
+    np_layer.forward(X)
+    print("---------- ( NumPy ) ----------")
+    print("Weights:\n", np_layer.weights)
+    print("\nBiases:\n", np_layer.biases)
+    print("\nLayer Output (0-5):\n", np_layer.output[:5])
 
-    TFLayer = Layer_tf_Dense(2, 3)
-    print("\nWeights:\n", TFLayer.weights.numpy())
-    print("\nBiases:\n", TFLayer.biases.numpy())
-    print("\nLayer Output:\n", TFLayer.output.numpy())
+    # Create Dense Layer with 2 input features and 3 output values
+    tf_layer = LayerDenseTF(2, 3)
+    tf_layer.forward(X)
+    print("\n---------- ( TensorFlow ) ----------")
+    print("Weights:\n", tf_layer.layer.get_weights()[0])
+    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
+    print("\nLayer Output (0-5):\n", tf_layer.output.numpy()[:5])

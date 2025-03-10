@@ -663,7 +663,7 @@ print(layer_outputs.numpy())
 ## Layers in Artificial Neural Networks (ANN)
 
  - *Neural Networks* become (torna-se) *“deep”* when they have *2* or *more* **hidden layers**.
- - A *hidden layer* isn’t an **"input"** or **"output layer"**.
+ - **NOTE:** A *hidden layer* isn’t an **"input"** or **"output layer"**.
 
 
 
@@ -730,10 +730,9 @@ In other words, *the dense layer is a fully connected layer*, meaning all neuron
 
 ## Implementing a Dense_Layer class
 
-> Here, let's see how to implement a **Layer_Dense** *class*.
+> Here, let's see how to implement a **LayerDense** *class*.
 
 To start, let's consider the following class:
-
 
 <!--- ( Python ) --->
 <details>
@@ -743,7 +742,8 @@ To start, let's consider the following class:
 </br>
 
 ```python
-class Layer_Dense:
+class LayerDense:
+
     def __init__(self, n_inputs, n_neurons):
     # Initialize weights and biases
     pass # using pass statement as a placeholder
@@ -753,17 +753,25 @@ class Layer_Dense:
     pass # using pass statement as a placeholder
 ```
 
- - **Weights:**
-   - As previously stated, *"weights"* are often initialized randomly for a model, but not always.
-   - **NOTE:** If you wish to load a pre-trained model, you will initialize the parameters to whatever that pretrained model finished with. 
- - **forward method:**
-   - When we pass data through a model from beginning to end, this is called a **"forward pass"**.
-
 </details>
 
 </br>
 
+Here:
+
+ - **weights:**
+   - As previously stated, *"weights"* are often initialized randomly for a model, but not always.
+   - **NOTE:** If you wish to load a pre-trained model, you will initialize the parameters to whatever that pretrained model finished with.
+ - **Biases:**
+   - The *"biases"* are often initialized to 0.
+   - Why zero biases?
+     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
+ - **forward() method:**
+   - When we pass data through a model from beginning to end, this is called a **"forward pass"**.
+
 To continue the **Layer_Dense** class’ code let’s add the random initialization of *"weights"* and *"biases"*:
+
+
 
 <!--- ( NumPy ) --->
 <details>
@@ -774,31 +782,11 @@ To continue the **Layer_Dense** class’ code let’s add the random initializat
 
 [layers.py](../../models/layers.py)
 ```python
-import numpy as np
-
-
-class Layer_np_Dense:
+class LayerDenseNP:
 
     def __init__(self, n_inputs, n_neurons):
         self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
         self.biases = np.zeros((1, n_neurons))
-
-
-if __name__ == "__main__":
-
-    NPLayer = Layer_np_Dense(2, 3)
-    print("Weights:\n", NPLayer.weights)
-    print("\nBiases:\n", NPLayer.biases)
-```
-
-**OUTPUT:**  
-```bash
-Weights:
- [[ 0.00941491 -0.00491597  0.00752583]
- [ 0.01287294  0.0074615  -0.01165399]]
-
-Biases:
- [[0. 0. 0.]]
 ```
 
 **Code Explanation:**
@@ -816,8 +804,6 @@ Biases:
        - **NOTE:** The result is a matrix with `n_inputs rows` and `n_neurons columns`, filled with random values.
  - `self.biases = np.zeros((1, n_neurons))`
    - We’ll initialize the biases with the shape of (1, n_neurons), as a row vector, which will let us easily add it to the result of the dot product later, without additional operations like transposition.
-   - Why zero biases?
-     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
 
 </details>
 
@@ -832,221 +818,143 @@ Biases:
 
 [layers.py](../../models/layers.py)
 ```python
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-import tensorflow as tf
-
-class Layer_tf_Dense:
+class LayerDenseTF:
 
     def __init__(self, n_inputs, n_neurons):
-        self.weights = tf.Variable(0.01 * tf.random.normal((n_inputs, n_neurons)))
-        self.biases = tf.Variable(tf.zeros((1, n_neurons)))
-
-
-if __name__ == "__main__":
-
-    TFLayer = Layer_tf_Dense(2, 3)
-    print("\nWeights:\n", TFLayer.weights.numpy())
-    print("\nBiases:\n", TFLayer.biases.numpy())
-```
-
-**OUTPUT:**  
-```bash
-Weights:
- [[-0.01406785 -0.00555743 -0.00936548]
- [ 0.01850817  0.00405955 -0.00104433]]
-
-Biases:
- [[0. 0. 0.]]
+        self.layer = tf.keras.layers.Input(shape=(n_inputs,)),
+        self.layer = tf.keras.layers.Dense(n_neurons)
 ```
 
 **Code Explanation:**
 
- - `self.weights = tf.Variable(0.01 * tf.random.normal((n_inputs, n_neurons)))`
-   - Here, the weights are initialized (randomly).
-   - `Why multiply by 0.01?`
-     - This factor multiplies all randomly generated values, reducing their magnitude to 0.01 times the original value.
-     - **NOTE:** This is a common technique known as "small random initialization".
-   - `tf.random.normal((n_inputs, n_neurons))`
-     - `tf.random.normal` is a function from the TensorFlow library in Python that creates a matrix of random numbers.
-     - `n_inputs` and `n_neurons` are the dimensions of the matrix:
-       - `n_inputs` The number of inputs coming into this layer (e.g., the size of the previous layer).
-       - `n_neurons` The number of neurons in this dense layer.
-       - **NOTE:** The result is a matrix with `n_inputs rows` and `n_neurons columns`, filled with random values.
- - `self.biases = tf.Variable(tf.zeros((1, n_neurons)))`
-   - We’ll initialize the biases with the shape of (1, n_neurons), as a row vector, which will let us easily add it to the result of the dot product later, without additional operations like transposition.
-   - Why zero biases?
-     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
+ - `self.layer = tf.keras.layers.Input(shape=(n_inputs,))`
+   - `tf.keras.layers.Input` is a function from the TensorFlow library that creates an input layer for a neural network.
+     - The `shape` argument is a tuple of integers that specifies the shape of the input data.
+     - `n_inputs` is the number of inputs coming into this layer (e.g., the size of the previous layer).
+ - `self.layer = tf.keras.layers.Dense(n_neurons)`
+   - `tf.keras.layers.Dense` is a function from the TensorFlow library that creates a dense layer for a neural network.
+   - `n_neurons` is the number of neurons in this dense layer.
 
 </details>
 
+
+
 </br>
 
-Now, let's implement the  **forward()** method — we need to update it with the *dot product* + *biases* calculation:
+Now, let's implement the  **forward()** method — Here, we need to update it with the *dot product* + *biases* calculation:
+
+
+<!--- ( NumPy ) --->
+<details>
+
+<summary>NumPy</summary>
+
+</br>
 
 [layers.py](../../models/layers.py)
 ```python
+class LayerDenseNP:
+
+    def __init__(self, n_inputs, n_neurons):
+        self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
+        self.biases = np.zeros((1, n_neurons))
+
+    def forward(self, inputs):
+        self.output = np.dot(inputs, self.weights) + self.biases
 
 
+if __name__ == "__main__":
 
+    X, y = spiral_data(samples=100, classes=3)
 
-
-
-
-<!--- () ->
-<details>
-
-<summary>Title here...</summary>
-
-</br>
-
-[](../../models/)
-```python
-
+    # Create Dense Layer with 2 input features and 3 output values
+    np_layer = LayerDenseNP(2, 3)
+    np_layer.forward(X)
+    print("---------- ( NumPy ) ----------")
+    print("Weights:\n", np_layer.weights)
+    print("\nBiases:\n", np_layer.biases)
+    print("\nLayer Output (0-5):\n", np_layer.output[:5])
 ```
 
 **OUTPUT:**  
 ```bash
+---------- ( NumPy ) ----------
+Weights:
+ [[ 0.00061946  0.01331959 -0.00786547]
+ [-0.02462831 -0.0080792   0.00398273]]
 
+Biases:
+ [[0. 0. 0.]]
+
+Layer Output (0-5):
+ [[ 0.00000000e+00  0.00000000e+00  0.00000000e+00]
+ [-2.27076821e-04 -1.31710312e-04  7.05966796e-05] 
+ [-4.14941407e-04 -2.87945500e-04  1.56987180e-04] 
+ [-6.59230377e-04 -4.11555339e-04  2.22228759e-04] 
+ [-9.90552057e-04 -2.85993681e-04  1.37124868e-04]]
 ```
+
+ - In the output, you can see we have *5 rows* of data that have *3 values each*.
+ - Each of those 3 values is the value from the *3 neurons* in the dense layer after passing in each of the samples.
 
 </details>
 
 
 
+<!--- ( TensorFlow ) --->
+<details>
 
+<summary>TensorFlow</summary>
 
+</br>
 
+[layers.py](../../models/layers.py)
+```python
+class LayerDenseTF:
 
+    def __init__(self, n_inputs, n_neurons):
+        self.layer = tf.keras.layers.Input(shape=(n_inputs,)),
+        self.layer = tf.keras.layers.Dense(n_neurons)
 
+    def forward(self, inputs):
+        self.output = self.layer(inputs)
 
 
+if __name__ == "__main__":
 
+    X, y = spiral_data(samples=100, classes=3)
 
+    # Create Dense Layer with 2 input features and 3 output values
+    tf_layer = LayerDenseTF(2, 3)
+    tf_layer.forward(X)
+    print("\n---------- ( TensorFlow ) ----------")
+    print("Weights:\n", tf_layer.layer.get_weights()[0])
+    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
+    print("\nLayer Output (0-5):\n", tf_layer.output.numpy()[:5])
+```
 
+**OUTPUT:**  
+```bash
+---------- ( TensorFlow ) ----------
+Weights:
+ [[ 0.70051754 -0.19958979  0.61595726]
+ [ 1.0418012   1.0692909   1.0174973 ]]
 
+Biases:
+ [0. 0. 0.]
 
+Layer Output (0-5):
+ [[0.         0.         0.        ]   
+ [0.00643532 0.01061239 0.00658279]    
+ [0.00914041 0.02001456 0.00971682]    
+ [0.01706547 0.03119325 0.0176831 ]    
+ [0.04405948 0.04249408 0.04282904]]
+```
 
+ - In the output, you can see we have *5 rows* of data that have *3 values each*.
+ - Each of those 3 values is the value from the *3 neurons* in the dense layer after passing in each of the samples.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</details>
 
 
 
@@ -1112,105 +1020,6 @@ Now, add all the parameters together:
 ```
 
 Thus, the network has a total of `250 parameters`.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--- ( References ) --->
 
