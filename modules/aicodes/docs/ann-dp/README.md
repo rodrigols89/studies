@@ -9,14 +9,11 @@
      - [3 neuron layer with 4 inputs](#3neuron-layer-w-4inputs)
      - [Why do we need to transpose the matrix of weights?](#transpose-matrix-of-weights)
      - [Adding the biases](#adding-the-biases)
-   - [Layers in Artificial Neural Networks (ANN)](#layers-in-ann)
+ - [**Layers in Artificial Neural Networks (ANN)**](#layers-in-ann)
      - [Dense Neural Networks](#dense-neural-networks)
      - [Implementing a Dense_Layer class](#impl-dense-layer-class)
-
-
-
-
      - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
+ - [**Activation Functions**](#activation-functions)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -656,6 +653,90 @@ print(layer_outputs.numpy())
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Layers ) --->
+
 ---
 
 <div id="layers-in-ann"></div>
@@ -1020,6 +1101,268 @@ Now, add all the parameters together:
 ```
 
 Thus, the network has a total of `250 parameters`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- (Activation Functions) --->
+
+---
+
+<div id="activation-functions"></div>
+
+## Activation Functions
+
+> In Neural Networks, *Activation Functions* are used to mimic (imitar) a neuron “firing” or “not firing” based on input information.
+
+When we're using an **Artificial Neural Network** to learn something, it's common to apply a **"Non-Linear Activation Function"**.
+
+> **But what does this kind of function do?**
+
+The purpose of **Activation Functions** is to introduce **"nonlinearities"** into an *Artificial Neural Network* (within the context of Neural Networks, of course).
+
+Let's look at the example below to make it clearer:
+
+![img](images/activation-function-001.png)
+
+Now suppose I ask you to separate these red points from the green ones using a Linear Function, could you do that? **NO!**
+
+You might achieve something similar to this, but it wouldn't solve the problem:
+
+![img](images/activation-function-002.png)
+
+ - In other words, no matter how many *Linear Functions* you use, it will always generate a line.
+ - On the other hand, with **Non-Linear Functions**, you can solve the problem of separating the red points from the green ones.
+
+Something like this:
+
+![img](images/activation-function-003.png)
+
+That's:
+
+ - *Activation Functions* are a crucial component of *Artificial Neural Networks* **used to introduce nonlinearity into the outputs of network layers**:
+   - They are applied to the linear combination of inputs to a layer to produce the output of that layer.
+ - Without *Activation Functions*, *Artificial Neural Networks* would be limited to performing linear calculations, which would make them incapable of handling (lidar) most real-world problems.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id=""></div>
+
+## x
+
+x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!--- ( References ) --->
 
