@@ -5,15 +5,15 @@
  - **Fundamentals of Artificial Neural Networks:**
    - [Artificial Neural Networks Inspiration](#ann-inspiration)
    - [The First Artificial Neuron (Perceptron)](#intro-to-perceptron)
-   - [Neuron calculation (Inputs, Weights, and Biases)](#neuron-calculation)
-     - [3 neuron layer with 4 inputs](#3neuron-layer-w-4inputs)
-     - [Why do we need to transpose the matrix of weights?](#transpose-matrix-of-weights)
-     - [Adding the biases](#adding-the-biases)
- - [**Layers in Artificial Neural Networks (ANN)**](#layers-in-ann)
+ - **Neurons:**
+   - [Neuron calculation (y = mx + b))](#neuron-calculation)
+   - [Implementing calculation for a single neuron from scratch](#single-neuron-calculation)
+ - **Layers:**
      - [Dense Neural Networks](#dense-neural-networks)
-     - [Implementing a Dense_Layer class](#impl-dense-layer-class)
+     - [How to implement a LayerDense() class](#impl-dense-layer-class)
      - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**Activation Functions**](#activation-functions)
+   - [Sigmoid Function](#sigmoid-function)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -191,11 +191,95 @@ The first **Artificial Neuron** created was the **[Perceptron](https://en.wikipe
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Neurons ) --->
+
 ---
 
 <div id="neuron-calculation"></div>
 
-## Neuron calculation (Inputs, Weights, and Biases)
+## Neuron calculation (y = mx + b)
 
 > Here, let's see how neurons are calculated.
 
@@ -316,13 +400,13 @@ tf.Tensor(4.8, shape=(), dtype=float32)
 
 ---
 
-<div id="3neuron-layer-w-4inputs"></div>
+<div id="single-neuron-calculation"></div>
 
-## 3 neuron layer with 4 inputs
+## Implementing calculation for a single neuron from scratch
 
-A single neuron is easy to calculate. Now, let's see how to calculate a **layer of 3 neurons** with **4 inputs**:
+Here, let's implement a calculation for a single neuron from scratch:
 
-![img](images/inputs-weights-biases-03.gif)  
+![img](images/neuron-impl-calc-01.gif)
 
 <!--- ( Numpy ) --->
 <details>
@@ -331,33 +415,30 @@ A single neuron is easy to calculate. Now, let's see how to calculate a **layer 
 
 </br>
 
-[neuron_np_calc-02.py](../../examples/neurons/neuron_np_calc-02.py)
+[single-neuron-np-01.py](../../examples/neurons/single-neuron-np-01.py)
 ```python
 import numpy as np
 
 inputs = [1.0, 2.0, 3.0, 2.5]
+weights = [0.2, 0.8, -0.5, 1.0]
+bias = 2.0
 
-weights = [
-    [0.2, 0.8, -0.5, 1],
-    [0.5, -0.91, 0.26, -0.5],
-    [-0.26, -0.27, 0.17, 0.87]
-]
+outputs = np.dot(inputs, weights) + bias
 
-biases = [2.0, 3.0, 0.5]
-
-layer_outputs = np.dot(weights, inputs) + biases
-
-print(layer_outputs)
+print("Neuron Output:", outputs)
 ```
 
-**OUTPUT:**  
+**OUTPUT:**
 ```bash
-[4.8   1.21  2.385]
+Neuron Output: 4.8
 ```
+
+**Code Explanation:**
+
+ - **Why don't we need to transpose the weight matrix?**
+   - No, in this case, we don't need to transpose the weights matrix, since (como) both `inputs` and `weights` are *one-dimensional* vectors with the same size (4 elements each) the **np.dot()** method simply calculates the dot product between them, which is a scalar number.
 
 </details>
-
-
 
 <!--- ( TensorFlow ) --->
 <details>
@@ -366,7 +447,7 @@ print(layer_outputs)
 
 </br>
 
-[neuron_tf_calc-02.py](../../examples/neurons/neuron_tf_calc-02.py)
+[single-neuron-tf-01.py](../../examples/neurons/single-neuron-tf-01.py)
 ```python
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -374,263 +455,24 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 
 inputs = tf.constant([1.0, 2.0, 3.0, 2.5])
-weights = tf.constant([[0.2, 0.8, -0.5, 1], [0.5, -0.91, 0.26, -0.5], [-0.26, -0.27, 0.17, 0.87]])
-biases = tf.constant([2.0, 3.0, 0.5])
+weights = tf.constant([0.2, 0.8, -0.5, 1.0])
+bias = tf.constant(2.0)
 
-layer_outputs = tf.tensordot(weights, inputs, axes=1) + biases
+# Calculate the "Dot Product" and "add" the bias.
+outputs = tf.tensordot(inputs, weights, axes=1) + bias
 
-print(layer_outputs)
-print(layer_outputs.numpy())
+print("Neuron Output:", outputs.numpy())
 ```
 
-**OUTPUT:**  
+**OUTPUT:**
 ```bash
-tf.Tensor([4.8       1.2099999 2.385    ], shape=(3,), dtype=float32)
-[4.8       1.2099999 2.385    ]
+Neuron Output: 4.8
 ```
 
-</details>
+**Code Explanation:**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="transpose-matrix-of-weights"></div>
-
-## Why do we need to transpose the matrix of weights?
-
-To apply **Dot Products** between the *input matrix* and the *weights matrix*, first we need the following conditions:
-
- - The number of *columns* in the *input matrix*;
- - Must be equal to the number of *rows* in the *weights matrix*.
- - **NOTE:** The result will be a matrix with the same number of *rows* of the *first matrix (inputs)* and the number of *columns* of the *second matrix (weights)*.
-
-![img](images/transpose-matrix-of-weights-01.png)  
-
-> **Ok, how solve this problem?**  
-> *"Transpose"* the *matrix of weights*.
-
-![img](images/transpose-matrix-of-weights-02.png)  
-
-Now, let's see visually:
-
-![img](images/transpose-matrix-of-weights-03.gif)
-
-
-
-<!--- ( Numpy ) --->
-<details>
-
-<summary>Numpy</summary>
-
-</br>
-
-[transpose-np-01.py](../../examples/neurons/transpose-np-01.py)
-```python
-import numpy as np
-
-inputs = [
-    [1.0, 2.0, 3.0, 2.5],
-    [2.0, 5.0, -1.0, 2.0],
-    [-1.5, 2.7, 3.3, -0.8]
-]
-
-weights = [
-    [0.2, 0.8, -0.5, 1.0],
-    [0.5, -0.91, 0.26, -0.5],
-    [-0.26, -0.27, 0.17, 0.87]
-]
-
-biases = [2.0, 3.0, 0.5]
-
-layer_outputs = np.dot(inputs, np.array(weights).T) + biases
-
-print(layer_outputs)
-```
-
-**OUTPUT:**  
-```bash
-[[ 4.8    1.21   2.385] 
- [ 8.9   -1.81   0.2  ] 
- [ 1.41   1.051  0.026]]
-```
-
-</details>
-
-
-
-<!--- ( TensorFlow ) --->
-<details>
-
-<summary>TensorFlow</summary>
-
-</br>
-
-[transpose-np-01.py](../../examples/neurons/transpose-tf-01.py)
-```python
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
-import tensorflow as tf
-
-inputs = tf.constant([
-    [1.0, 2.0, 3.0, 2.5],
-    [2.0, 5.0, -1.0, 2.0],
-    [-1.5, 2.7, 3.3, -0.8]
-])
-
-weights = tf.constant([
-    [0.2, 0.8, -0.5, 1.0],
-    [0.5, -0.91, 0.26, -0.5],
-    [-0.26, -0.27, 0.17, 0.87]
-])
-
-biases = tf.constant([2.0, 3.0, 0.5])
-
-layer_outputs = tf.tensordot(inputs, tf.transpose(weights), axes=1) + biases
-
-print(layer_outputs.numpy())
-```
-
-**OUTPUT:**  
-```bash
-[[ 4.8         1.2099999   2.385     ]
- [ 8.9        -1.8100004   0.20000005]
- [ 1.4100001   1.051       0.02599993]]
-```
-
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="adding-the-biases"></div>
-
-## Adding the biases
-
-![img](images/transpose-matrix-of-weights-03.gif)  
-
-> **NOTE:**  
-> If we look at the **Dot Product** above, we can see that the bias is missing.
-
-The bias vector will be added to each row vector of the matrix:
-
-![img](images/adding-the-biases-01.gif)  
-
-
-
-<!--- ( Numpy ) --->
-<details>
-
-<summary>Numpy</summary>
-
-</br>
-
-[adding-biases-np-01.py](../../examples/neurons/adding-biases-np-01.py)
-```python
-import numpy as np
-
-inputs = [
-    [1.0, 2.0, 3.0, 2.5],
-    [2.0, 5.0, -1.0, 2.0],
-    [-1.5, 2.7, 3.3, -0.8]
-]
-
-weights = [
-    [0.2, 0.8, -0.5, 1.0],
-    [0.5, -0.91, 0.26, -0.5],
-    [-0.26, -0.27, 0.17, 0.87]
-]
-
-biases = [2.0, 3.0, 0.5]
-
-outputs = np.dot(inputs, np.array(weights).T) + biases
-
-print(outputs)
-```
-
-**OUTPUT:**  
-```bash
-[[ 4.8    1.21   2.385] 
- [ 8.9   -1.81   0.2  ] 
- [ 1.41   1.051  0.026]]
-```
-
-</details>
-
-
-
-<!--- ( TensorFlow ) --->
-<details>
-
-<summary>TensorFlow</summary>
-
-</br>
-
-[adding-biases-tf-01.py](../../examples/neurons/adding-biases-tf-01.py)
-```python
-import tensorflow as tf
-
-inputs = tf.constant([
-    [1.0, 2.0, 3.0, 2.5],
-    [2.0, 5.0, -1.0, 2.0],
-    [-1.5, 2.7, 3.3, -0.8]
-])
-
-weights = tf.constant([
-    [0.2, 0.8, -0.5, 1.0],
-    [0.5, -0.91, 0.26, -0.5],
-    [-0.26, -0.27, 0.17, 0.87]
-])
-
-biases = tf.constant([2.0, 3.0, 0.5])
-
-layer_outputs = tf.tensordot(inputs, tf.transpose(weights), axes=1) + biases
-
-print(layer_outputs.numpy())
-```
-
-**OUTPUT:**  
-```bash
-[[ 4.8         1.2099999   2.385     ] 
- [ 8.9        -1.8100004   0.20000005] 
- [ 1.4100001   1.051       0.02599993]]
-```
+ - **Why don't we need to transpose the weight matrix?**
+   - No, in this case, we don't need to transpose the weights matrix, since (como) both `inputs` and `weights` are *one-dimensional* vectors with the same size (4 elements each) the **np.dot()** method simply calculates the dot product between them, which is a scalar number.
 
 </details>
 
@@ -739,34 +581,6 @@ print(layer_outputs.numpy())
 
 ---
 
-<div id="layers-in-ann"></div>
-
-## Layers in Artificial Neural Networks (ANN)
-
- - *Neural Networks* become (torna-se) *“deep”* when they have *2* or *more* **hidden layers**.
- - **NOTE:** A *hidden layer* isn’t an **"input"** or **"output layer"**.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
 <div id="dense-neural-networks"></div>
 
 ## Dense Neural Networks
@@ -806,12 +620,11 @@ In other words, *the dense layer is a fully connected layer*, meaning all neuron
 
 
 ---
-
 <div id="impl-dense-layer-class"></div>
 
-## Implementing a Dense_Layer class
+## How to implement a LayerDense() class
 
-> Here, let's see how to implement a **LayerDense** *class*.
+> Here, let's see how to implement a **LayerDense()** *class*.
 
 To start, let's consider the following class:
 
@@ -838,21 +651,17 @@ class LayerDense:
 
 </br>
 
-Here:
+**Code Explanation:**
 
  - **weights:**
-   - As previously stated, *"weights"* are often initialized randomly for a model, but not always.
+   - The *"weights"* are often initialized randomly for a model, but not always.
    - **NOTE:** If you wish to load a pre-trained model, you will initialize the parameters to whatever that pretrained model finished with.
  - **Biases:**
    - The *"biases"* are often initialized to 0.
-   - Why zero biases?
-     - It sometimes may be appropriate to initialize the biases to some non-zero number, but the most common initialization for biases is 0.
  - **forward() method:**
    - When we pass data through a model from beginning to end, this is called a **"forward pass"**.
 
-To continue the **Layer_Dense** class’ code let’s add the random initialization of *"weights"* and *"biases"*:
-
-
+To continue the code for the **LayerDense** class, let's add random initialization for the *"weights"* and zeros for the *"biases"*:
 
 <!--- ( NumPy ) --->
 <details>
@@ -975,9 +784,6 @@ Layer Output (0-5):
  [-9.90552057e-04 -2.85993681e-04  1.37124868e-04]]
 ```
 
- - In the output, you can see we have *5 rows* of data that have *3 values each*.
- - Each of those 3 values is the value from the *3 neurons* in the dense layer after passing in each of the samples.
-
 </details>
 
 
@@ -1032,8 +838,12 @@ Layer Output (0-5):
  [0.04405948 0.04249408 0.04282904]]
 ```
 
- - In the output, you can see we have *5 rows* of data that have *3 values each*.
- - Each of those 3 values is the value from the *3 neurons* in the dense layer after passing in each of the samples.
+**Code Explanation:**
+
+ - `self.output = self.layer(inputs)`
+   - `self.layer(inputs)` returns the output of the layer, given the input.
+   - The result is stored in `self.output`.
+
 
 </details>
 
@@ -1247,6 +1057,27 @@ That's:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="sigmoid-function"></div>
+
+## Sigmoid Function
+
+x
 
 
 
