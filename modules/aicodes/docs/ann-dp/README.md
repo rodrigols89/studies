@@ -14,6 +14,7 @@
      - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**Activation Functions**](#activation-functions)
    - [Sigmoid Function](#sigmoid-function)
+   - [ReLU (Rectified Linear Unit) Function](#relu-function)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -841,9 +842,10 @@ Layer Output (0-5):
 **Code Explanation:**
 
  - `self.output = self.layer(inputs)`
-   - `self.layer(inputs)` returns the output of the layer, given the input.
+   - `self.layer(inputs)` Apply **"forward pass"** in the dense layer:
+     - output = X ⋅ W<sup>T</sup> + b
+     - **NOTE:** *T* = *Transpose* the *weight matrix*.
    - The result is stored in `self.output`.
-
 
 </details>
 
@@ -1077,7 +1079,120 @@ That's:
 
 ## Sigmoid Function
 
-x
+> The **Sigmoid Function** was born out of the need to binarize data. *How do you binarize data?*  
+> Okay, suppose we have a bank and we want to binarize in order to differentiate between customers who are in **"debt"** and those who are **"not in debt"** to our bank.
+
+Let's suppose the binarization looked like this:
+
+ - **0**, For customers who are ***in debt*** to the Bank;
+ - **1**, For customers who are ***okay*** with the bank.
+
+Now let's take a look at the aspects of this **"Sigmoid Function"**:
+
+![image](images/sigmoide-function-01.png)
+
+Now, let's test the **Sigmoid Function** for some **x<sub>i</sub>** input values to understand how it works:
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>Python (From Scratch)</summary>
+
+</br>
+
+[sigmoide.py](../../algorithms/activations.py)
+```python
+from matplotlib import pyplot as plt
+from math import e
+
+import pandas as pd
+
+
+class ActivationFunctions:
+
+    @staticmethod
+    def sigmoid(x):
+        """
+        Compute the sigmoid activation function using the mathematical constant "e".
+
+        The sigmoid function is defined as:
+            sigmoid(x) = 1 / (1 + e^(-x))
+        It maps any real-valued number into a value between 0 and 1 and is widely used as an
+        activation function in neural networks.
+
+        The '@staticmethod' decorator indicates that this method does not rely on any instance-specific
+        data. It can be called directly from the class without needing to create an instance.
+        Use a static method when the function’s behavior is independent of the class's state.
+
+        Example usage:
+            result = ActivationFunctions.sigmoid(x)
+
+        Parameters:
+            x (float): The input value for which the sigmoid function is computed.
+
+        Returns:
+            float: The sigmoid of x.
+
+        Examples:
+            >>> print(ActivationFunctions.sigmoid(0))
+            0.5
+            >>> print(ActivationFunctions.sigmoid(1))
+            0.7310585786300049
+            >>> print(ActivationFunctions.sigmoid(-1))
+            0.2689414213699951
+        """
+        return 1 / (1 + (e**-x))
+
+
+if __name__ == "__main__":
+
+    df = pd.DataFrame({"x": range(-20, 20 + 1)})
+    df["y"] = [ActivationFunctions.sigmoid(n) for n in df.x]
+
+    plt.figure(figsize=(15, 5))  # Width, height.
+    plt.title("Sigmoid Function")
+    plt.xlabel("X")
+    plt.ylabel(r"$y = \frac{1}{1 + e^{-x}}$")
+    plt.xticks(range(-20, 20 + 1, 1))
+    plt.yticks(range(-20, 20 + 1, 1))
+    plt.axhline()
+    plt.axvline()
+    plt.grid()
+    plt.plot(df.x, df.y, color="green", marker="o")
+    plt.savefig("../docs/ann-dp/images/sigmoide-plot-01.png")
+    plt.show()
+```
+
+</details>
+
+</br>
+
+![img](images/sigmoide-plot-01.png)  
+
+Now it looks beautiful!! In addition to all the outputs for **40** inputs of **x**, from -*20* to *20*; We also have a prettier, more detailed plot with more inputs.
+
+ - **But what did you notice about this function?**  
+   - **1st -** If you pay attention to this function for negative values, it converges very quickly to zero (0);
+   - **2nd -** The same happens for positive values, it converges very quickly to 1.
+
+So we arrived where we wanted to binarize our clients with:
+
+> - **0**, For customers who are ***in debt*** to the Bank;
+> - **1**, For customers who are ***okay*** with the bank.
+
+> **NOTE:**  
+> Another interesting thing to note is that if you pay attention to our graph, this conversion to **0** or **1** always happens after **-5** or **5**:
+
+![image](images/sigmoid-example-01.png)  
+
+> **NOTE:**  
+> This interval between the point **"-5"** and **"5"** is what we know as the **"TRANSITION POINT"**.
+
+
+
+
+
+
 
 
 
@@ -1094,11 +1209,43 @@ x
 
 ---
 
-<div id=""></div>
+<div id="relu-function"></div>
 
-## x
+## ReLU (Rectified Linear Unit) Function
 
-x
+The **ReLU (Rectified Linear Unit) Activation Function** have as output a value between **"0"** and the **"maximum input value"**.
+
+For example, see the image below to understand more easily:
+
+![img](images/relu-function-01.png)  
+
+See that:
+
+ - **The ReLu receives as input "x".**
+ - **Return:**
+   - **"0" if "x" is less than "0":**
+     - This is because.. What's the maximum value between "-x" and "0"? It's "0".
+     - Then, we return "0" if "x" is less than "0".
+   - **"maximum input value" if "x" is greater than "0":**
+     - Here the output will be the input itself (própria entrada).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
