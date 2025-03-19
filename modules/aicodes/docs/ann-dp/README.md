@@ -14,7 +14,7 @@
      - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**Activation Functions**](#activation-functions)
    - [Sigmoid Function](#sigmoid-function)
-   - [ReLU (Rectified Linear Unit) Function](#relu-function)
+   - [Rectified Linear Unit (ReLU) Function](#relu-function)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -1023,15 +1023,16 @@ Thus, the network has a total of `250 parameters`.
 
 ## Activation Functions
 
-> In Neural Networks, *Activation Functions* are used to mimic (imitar) a neuron “firing” or “not firing” based on input information.
+> An **Activation Function** in the context of *Artificial Neural Networks* is used to modify the output of a neuron (or layer of neurons).
 
-When we're using an **Artificial Neural Network** to learn something, it's common to apply a **"Non-Linear Activation Function"**.
+In general, your neural network will have two types of activation functions.
 
-> **But what does this kind of function do?**
+ - Used in *hidden layers*.
+ - Used in the *output layer*.
 
-The purpose of **Activation Functions** is to introduce **"nonlinearities"** into an *Artificial Neural Network* (within the context of Neural Networks, of course).
+Here, the purpose of **Activation Functions** is to introduce **"nonlinearities"** into an *Artificial Neural Network* (within the context of Neural Networks, of course).
 
-Let's look at the example below to make it clearer:
+For example, let's look at the example below to make it clearer:
 
 ![img](images/activation-function-001.png)
 
@@ -1041,8 +1042,10 @@ You might achieve something similar to this, but it wouldn't solve the problem:
 
 ![img](images/activation-function-002.png)
 
- - In other words, no matter how many *Linear Functions* you use, it will always generate a line.
- - On the other hand, with **Non-Linear Functions**, you can solve the problem of separating the red points from the green ones.
+> **NOTE:**  
+> No matter (não importa) how many *Linear Functions* you use, it will always generate a line.
+
+On the other hand, with **Non-Linear Functions**, you can solve the problem of separating the red points from the green ones.
 
 Something like this:
 
@@ -1093,14 +1096,14 @@ Now let's take a look at the aspects of this **"Sigmoid Function"**:
 
 Now, let's test the **Sigmoid Function** for some **x<sub>i</sub>** input values to understand how it works:
 
-<!--- ( TensorFlow ) --->
+<!--- ( Python (From Scratch) ) --->
 <details>
 
 <summary>Python (From Scratch)</summary>
 
 </br>
 
-[sigmoide.py](../../algorithms/activations.py)
+[activations.py](../../algorithms/activations.py)
 ```python
 from matplotlib import pyplot as plt
 from math import e
@@ -1108,46 +1111,15 @@ from math import e
 import pandas as pd
 
 
-class ActivationFunctions:
-
-    @staticmethod
-    def sigmoid(x):
-        """
-        Compute the sigmoid activation function using the mathematical constant "e".
-
-        The sigmoid function is defined as:
-            sigmoid(x) = 1 / (1 + e^(-x))
-        It maps any real-valued number into a value between 0 and 1 and is widely used as an
-        activation function in neural networks.
-
-        The '@staticmethod' decorator indicates that this method does not rely on any instance-specific
-        data. It can be called directly from the class without needing to create an instance.
-        Use a static method when the function’s behavior is independent of the class's state.
-
-        Example usage:
-            result = ActivationFunctions.sigmoid(x)
-
-        Parameters:
-            x (float): The input value for which the sigmoid function is computed.
-
-        Returns:
-            float: The sigmoid of x.
-
-        Examples:
-            >>> print(ActivationFunctions.sigmoid(0))
-            0.5
-            >>> print(ActivationFunctions.sigmoid(1))
-            0.7310585786300049
-            >>> print(ActivationFunctions.sigmoid(-1))
-            0.2689414213699951
-        """
-        return 1 / (1 + (e**-x))
+def sigmoid(x):
+    return 1 / (1 + (e**-x))
 
 
 if __name__ == "__main__":
 
-    df = pd.DataFrame({"x": range(-20, 20 + 1)})
-    df["y"] = [ActivationFunctions.sigmoid(n) for n in df.x]
+    # Sigmoid Function.
+    df_sigmoid = pd.DataFrame({"x": range(-20, 20 + 1)})
+    df_sigmoid["y"] = [sigmoid(x) for x in df_sigmoid.x]
 
     plt.figure(figsize=(15, 5))  # Width, height.
     plt.title("Sigmoid Function")
@@ -1158,7 +1130,7 @@ if __name__ == "__main__":
     plt.axhline()
     plt.axvline()
     plt.grid()
-    plt.plot(df.x, df.y, color="green", marker="o")
+    plt.plot(df_sigmoid.x, df_sigmoid.y, color="green", marker="o")
     plt.savefig("../docs/ann-dp/images/sigmoide-plot-01.png")
     plt.show()
 ```
@@ -1188,6 +1160,132 @@ So we arrived where we wanted to binarize our clients with:
 > **NOTE:**  
 > This interval between the point **"-5"** and **"5"** is what we know as the **"TRANSITION POINT"**.
 
+Now, let's code the **Sigmoid Function** in the output of our layer:
+
+<!--- ( Python (From Scratch) ) --->
+<details>
+
+<summary>Python (From Scratch)</summary>
+
+</br>
+
+To start, let's add the **activation** attribute to the **Layer** class:
+
+[layers.py](../../models/layers.py)
+```python
+class LayerDenseNP:
+
+    def __init__(self, n_inputs, n_neurons, activation=None):
+        self.weights = 0.01 * np.random.randn(n_inputs, n_neurons)
+        self.biases = np.zeros((1, n_neurons))
+        self.activation = activation
+```
+
+Now, let's apply the **Sigmoid Function** to the output of our layer:
+
+[layers.py](../../models/layers.py)
+```python
+def forward(self, inputs):
+    self.output = np.dot(inputs, self.weights) + self.biases
+    # Aplica ativação, se houver.
+    if self.activation:
+        self.output = self.activation(self.output)
+```
+
+Finally, let's see in the practice:
+
+[layers.py](../../models/layers.py)
+```python
+if __name__ == "__main__":
+
+    X, y = spiral_data(samples=100, classes=3)
+
+    # Create Dense Layer with 2 input features and 3 output values.
+    np_layer = LayerDenseNP(2, 3, activation=sigmoid)
+    np_layer.forward(X)
+    print("---------- ( NumPy ) ----------")
+    print("Weights:\n", np_layer.weights)
+    print("\nBiases:\n", np_layer.biases)
+    print("\nLayer Output (0-5):\n", np_layer.output[:5])
+```
+
+**OUTPUT:**  
+```bash
+---------- ( NumPy ) ----------
+Weights:
+ [[-0.0023828   0.01972924  0.00949115]
+ [-0.01040912 -0.00440641 -0.00252301]]
+
+Biases:
+ [[0. 0. 0.]]
+
+Layer Output (0-5):
+ [[0.5        0.5        0.5       ]   
+ [0.49997737 0.49997248 0.4999858 ]    
+ [0.49994818 0.50002883 0.50001209]    
+ [0.49992139 0.49996464 0.49997994]    
+ [0.4999069  0.50010404 0.50004708]]
+```
+
+</details>
+
+
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+The TensorFlow already has this function implemented (we can use it directly):
+
+[layers.py](../../models/layers.py)
+```python
+class LayerDenseTF:
+
+    def __init__(self, n_inputs, n_neurons, activation=None):
+        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
+        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
+        self.activation = activation
+```
+
+Finally, let's see in the practice:
+
+[layers.py](../../models/layers.py)
+```python
+if __name__ == "__main__":
+
+    X, y = spiral_data(samples=100, classes=3)
+
+    # Create Dense Layer with 2 input features and 3 output values.
+    tf_layer = LayerDenseTF(2, 3, activation=sigmoid)
+    tf_layer.forward(X)
+    print("\n---------- ( TensorFlow ) ----------")
+    print("Weights:\n", tf_layer.layer.get_weights()[0])
+    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
+    print("\nLayer Output (0-5):\n", tf_layer.output.numpy()[:5])
+```
+
+**OUTPUT:**  
+```bash
+---------- ( TensorFlow ) ----------
+Weights:
+ [[0.84626436 0.5065782  1.032161  ]
+ [0.9937391  0.6013056  1.056459  ]]
+
+Biases:
+ [0. 0. 0.]
+
+Layer Output (0-5):
+ [[0.5        0.5        0.5       ]
+ [0.5019061  0.5011568  0.50194407] 
+ [0.50579244 0.5034993  0.50629604] 
+ [0.5092457  0.50558096 0.5101667 ] 
+ [0.5131485  0.5079184  0.5149145 ]]
+```
+
+</details>
 
 
 
@@ -1211,9 +1309,9 @@ So we arrived where we wanted to binarize our clients with:
 
 <div id="relu-function"></div>
 
-## ReLU (Rectified Linear Unit) Function
+## Rectified Linear Unit (ReLU) Function
 
-The **ReLU (Rectified Linear Unit) Activation Function** have as output a value between **"0"** and the **"maximum input value"**.
+The **Rectified Linear Unit (ReLU) Activation Function** have as output a value between **"0"** and the **"maximum input value"**.
 
 For example, see the image below to understand more easily:
 
@@ -1229,12 +1327,170 @@ See that:
    - **"maximum input value" if "x" is greater than "0":**
      - Here the output will be the input itself (própria entrada).
 
+To understand the aplication of the **Rectified Linear Unit (ReLU)**, let's consider a situation
+where:
+
+ - The *neurons have no activation function*.
+ - Which would be the same as having an activation function of **y=x**.
+
+The result of training this model will look like:
+
+![img](images/relu-function-02.png)  
+
+Now, using the **Rectified Linear Unit (ReLU)**, the result of training this model will look like:
+
+![img](images/relu-function-03.png)  
+
+Now, let's test the **Rectified Linear Unit (ReLU)** for some **x<sub>i</sub>** input values to understand how it works:
+
+<!--- ( Python (NumPy) ) --->
+<details>
+
+<summary>Python (NumPy)</summary>
+
+</br>
+
+[activations.py](../../algorithms/activations.py)
+```python
+from matplotlib import pyplot as plt
+
+import pandas as pd
+import numpy as np
+
+
+def relu(inputs):
+    return np.maximum(0, inputs)
+
+
+if __name__ == "__main__":
+
+    # ReLU Function.
+    df_relu = pd.DataFrame({"x": range(-20, 20 + 1)})
+    df_relu["y"] = [relu(x) for x in df_relu.x]
+
+    plt.figure(figsize=(15, 5))  # Width, height.
+    plt.title("ReLU Function")
+    plt.xlabel("X")
+    plt.ylabel(r"$y = max(0, x)$")
+    plt.xticks(range(-20, 20 + 1, 1))
+    plt.yticks(range(-20, 20 + 1, 1))
+    plt.axhline()
+    plt.axvline()
+    plt.grid()
+    plt.plot(df_relu.x, df_relu.y, color="green", marker="o")
+    plt.savefig("../docs/ann-dp/images/relu-plot-01.png")
+    plt.show()
+```
+
+</details>
+
+![img](images/relu-plot-01.png)  
+
+Now, let's code the **Rectified Linear Unit (ReLU)** in the output of our layer:
+
+[layers.py](../../models/layers.py)
+```python
+def forward(self, inputs):
+    self.output = np.dot(inputs, self.weights) + self.biases
+    # Aplica ativação, se houver.
+    if self.activation:
+        self.output = self.activation(self.output)
+```
+
+Finally, let's see in the practice:
+
+[layers.py](../../models/layers.py)
+```python
+if __name__ == "__main__":
+
+    X, y = spiral_data(samples=100, classes=3)
+
+    # Create Dense Layer with 2 input features and 3 output values.
+    np_layer = LayerDenseNP(2, 3, activation=sigmoid)
+    np_layer.forward(X)
+    print("---------- ( NumPy ) ----------")
+    print("Weights:\n", np_layer.weights)
+    print("\nBiases:\n", np_layer.biases)
+    print("\nLayer Output (0-5):\n", np_layer.output[:5])
+```
+
+**OUTPUT:**  
+```bash
+---------- ( NumPy ) ----------
+Weights:
+ [[-0.0023828   0.01972924  0.00949115]
+ [-0.01040912 -0.00440641 -0.00252301]]
+
+Biases:
+ [[0. 0. 0.]]
+
+Layer Output (0-5):
+ [[0.5        0.5        0.5       ]   
+ [0.49997737 0.49997248 0.4999858 ]    
+ [0.49994818 0.50002883 0.50001209]    
+ [0.49992139 0.49996464 0.49997994]    
+ [0.4999069  0.50010404 0.50004708]]
+```
+
+</details>
 
 
 
+<!--- ( TensorFlow ) --->
+<details>
 
+<summary>TensorFlow</summary>
 
+</br>
 
+The TensorFlow already has this function implemented (we can use it directly):
+
+[layers.py](../../models/layers.py)
+```python
+class LayerDenseTF:
+
+    def __init__(self, n_inputs, n_neurons, activation=None):
+        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
+        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
+        self.activation = activation
+```
+
+Finally, let's see in the practice:
+
+[layers.py](../../models/layers.py)
+```python
+if __name__ == "__main__":
+
+    X, y = spiral_data(samples=100, classes=3)
+
+    # Create Dense Layer with 2 input features and 3 output values.
+    tf_layer = LayerDenseTF(2, 3, activation=sigmoid)
+    tf_layer.forward(X)
+    print("\n---------- ( TensorFlow ) ----------")
+    print("Weights:\n", tf_layer.layer.get_weights()[0])
+    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
+    print("\nLayer Output (0-5):\n", tf_layer.output.numpy()[:5])
+```
+
+**OUTPUT:**  
+```bash
+---------- ( TensorFlow ) ----------
+Weights:
+ [[0.84626436 0.5065782  1.032161  ]
+ [0.9937391  0.6013056  1.056459  ]]
+
+Biases:
+ [0. 0. 0.]
+
+Layer Output (0-5):
+ [[0.5        0.5        0.5       ]
+ [0.5019061  0.5011568  0.50194407] 
+ [0.50579244 0.5034993  0.50629604] 
+ [0.5092457  0.50558096 0.5101667 ] 
+ [0.5131485  0.5079184  0.5149145 ]]
+```
+
+</details>
 
 
 
