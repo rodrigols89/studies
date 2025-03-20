@@ -1082,15 +1082,10 @@ That's:
 
 ## Sigmoid Function
 
-> The **Sigmoid Function** was born out of the need to binarize data. *How do you binarize data?*  
-> Okay, suppose we have a bank and we want to binarize in order to differentiate between customers who are in **"debt"** and those who are **"not in debt"** to our bank.
+The original, more *granular*, *Activation Function* used for neural networks was the **Sigmoid** activation function, which looks like:
 
-Let's suppose the binarization looked like this:
-
- - **0**, For customers who are ***in debt*** to the Bank;
- - **1**, For customers who are ***okay*** with the bank.
-
-Now let's take a look at the aspects of this **"Sigmoid Function"**:
+> **NOTE:**  
+> The sigmoid function is considered "granular" because it maps inputs to a continuous, smooth output between 0 and 1, capturing subtle variations in activation.
 
 ![image](images/sigmoide-function-01.png)
 
@@ -1141,16 +1136,10 @@ if __name__ == "__main__":
 
 ![img](images/sigmoide-plot-01.png)  
 
-Now it looks beautiful!! In addition to all the outputs for **40** inputs of **x**, from -*20* to *20*; We also have a prettier, more detailed plot with more inputs.
+> **But what did you notice about this function?**  
 
- - **But what did you notice about this function?**  
-   - **1st -** If you pay attention to this function for negative values, it converges very quickly to zero (0);
-   - **2nd -** The same happens for positive values, it converges very quickly to 1.
-
-So we arrived where we wanted to binarize our clients with:
-
-> - **0**, For customers who are ***in debt*** to the Bank;
-> - **1**, For customers who are ***okay*** with the bank.
+ - **1st -** If you pay attention to this function for negative values, it converges very quickly to zero (0);
+ - **2nd -** The same happens for positive values, it converges very quickly to 1.
 
 > **NOTE:**  
 > Another interesting thing to note is that if you pay attention to our graph, this conversion to **0** or **1** always happens after **-5** or **5**:

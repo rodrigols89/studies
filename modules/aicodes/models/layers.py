@@ -25,6 +25,7 @@ class LayerDenseNP:
         if self.activation:
             self.output = self.activation(self.output)
 
+
 class LayerDenseTF:
 
     def __init__(self, n_inputs, n_neurons, activation=None):
