@@ -81,7 +81,7 @@
 
 ## Artificial Intelligence
 
- - [Artificial Intelligence (Theory & Practice)](https://github.com/rodrigols89/studies/tree/ai-codes/modules/aicodes)
+ - [Artificial Intelligence (Theory & Practice)](https://github.com/rodrigols89/studies/tree/aicodes/modules/aicodes)
 
 ---
 
