@@ -20,6 +20,11 @@ def relu(x):
     return tf.nn.relu(x)
 
 
+def softmax(x):
+    x = tf.convert_to_tensor(x, dtype=tf.float32)
+    return tf.nn.softmax(x)
+
+
 if __name__ == "__main__":
 
     # Sigmoid Function.
@@ -54,4 +59,21 @@ if __name__ == "__main__":
     plt.grid()
     plt.plot(df_relu.x, df_relu.y, color="green", marker="o")
     plt.savefig("docs/ann-dp/images/relu-plot-01.png")
+    plt.show()
+
+    # Softmax Function.
+    df_softmax = pd.DataFrame({"x": range(-20, 20 + 1)})
+    df_softmax["y"] = softmax(df_softmax["x"])
+
+    plt.figure(figsize=(15, 5))  # Width, height.
+    plt.title("Softmax Function")
+    plt.xlabel("X")
+    plt.ylabel(r'$S_{i,j} = \frac{e^{z_{i,j}}}{\sum_{l=1}^{L} e^{z_{i,j}}}$')
+    plt.xticks(range(-20, 20 + 1, 1))
+    plt.yticks(range(-20, 20 + 1, 1))
+    plt.axhline()
+    plt.axvline()
+    plt.grid()
+    plt.plot(df_softmax.x, df_softmax.y, color="green", marker="o")
+    plt.savefig("docs/ann-dp/images/softmax-plot-01.png")
     plt.show()

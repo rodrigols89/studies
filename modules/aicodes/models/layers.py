@@ -27,7 +27,7 @@ if __name__ == "__main__":
     X, y = spiral_data(samples=100, classes=3)
 
     # Create Dense Layer with 2 input features and 3 output values.
-    tf_layer = LayerDense(2, 3, activation="relu")
+    tf_layer = LayerDense(2, 3, activation="softmax")
     tf_layer.forward(X)
     print("\n---------- ( TensorFlow ) ----------")
     print("Weights:\n", tf_layer.layer.get_weights()[0])

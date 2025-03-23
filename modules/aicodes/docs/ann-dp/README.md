@@ -14,6 +14,7 @@
  - [**Activation Functions**](#activation-functions)
    - [Sigmoid Function](#sigmoid-function)
    - [Rectified Linear Unit (ReLU) Function](#relu-function)
+   - [Softmax Function](#softmax-function)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -857,10 +858,23 @@ Thus, the network has a total of `250 parameters`.
 
 > An **Activation Function** in the context of *Artificial Neural Networks* is used to modify the output of a neuron (or layer of neurons).
 
-In general, your neural network will have two types of activation functions.
+In general, *activation functions* are used in:
 
- - Used in *hidden layers*.
- - Used in the *output layer*.
+ - *Hidden layers*.
+ - *Output layer*.
+
+The choice of *activation function* depends on the type of problem and the layer in question. In general terms:
+
+ - **Hidden layers:**
+   - Functions like *ReLU*, *tanh* or *sigmoid* are often (frequentemente) used to introduce non-linearity, regardless of whether the problem is regression or classification.
+ - **Output layer:**
+   - **Regression problems:**
+     - Typically linear activation (or no activation) is used to allow the output to be a continuous value and not limited to a specific range.
+   - **Classification problems:**
+     - **Binary classification (two classes, like "yes" or "no"):** The sigmoid function is commonly used, as it maps the output to the interval (0, 1), interpretable as a probability.
+     - **Multi-class classification (more than two classes):** The softmax function is often used, as it maps the output to the interval (0, 1) and interpretable as a probability distribution.
+
+### Applying non-linearity
 
 Here, the purpose of **Activation Functions** is to introduce **"nonlinearities"** into an *Artificial Neural Network* (within the context of Neural Networks, of course).
 
@@ -1898,6 +1912,488 @@ Layer Output (0-5):
 
 
 
+---
+
+<div id="softmax-function"></div>
+
+## Softmax Function
+
+The **Softmax Function** is a widely used *activation function* in neural networks, particularly in the *output layer of multi-class classification models*. It transforms a vector of raw scores (logits) into a probability distribution, where each value is between 0 and 1 and the total sums to 1.
+
+![image](images/softmax-function-01.png)  
+<!---
+S_{i,j} = \frac{e^{z_{i,j}}}{\sum_{l=1}^{L} e^{z_{i,j}}}
+--->
+
+For example, let's see some use cases of the **Softmax Function**:
+
+ - **Neural Networks:**
+   - The softmax function is typically applied in the output layer of a neural network for multi-class classification problems.
+   - **NOTE:** For example, in a digit recognition task (classifying digits 0-9), the network outputs a vector of 10 logits, and softmax converts these into probabilities for each digit.
+ - **Prediction:**
+   - After applying softmax, the class with the highest probability is usually chosen as the predicted class.
+   - **NOTE:** For instance, if the probabilities are [0.1, 0.7, 0.2] for three classes, the second class is predicted.
+ - **Training:**
+   - During model training, softmax is paired with a loss function like categorical cross-entropy.
+   - This measures the difference between the predicted probabilities and the true class labels, guiding the model to adjust its weights via backpropagation.
+
+
+Now, let's test the **Rectified Linear Unit (ReLU)** for some **x<sub>i</sub>** input values to understand how it works:
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+> **NOTE:**  
+> The TensorFlow already has a **Rectified Linear Unit (ReLU)** built-in.
+
+[activations.py](../../algorithms/activations.py)
+```python
+import os
+import sys
+
+# Add the root directory 'aicodes' to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
+
+from matplotlib import pyplot as plt
+
+import pandas as pd
+import tensorflow as tf
+
+
+def softmax(x):
+    x = tf.convert_to_tensor(x, dtype=tf.float32)
+    return tf.nn.softmax(x)
+
+
+if __name__ == "__main__":
+
+    # Softmax Function.
+    df_softmax = pd.DataFrame({"x": range(-20, 20 + 1)})
+    df_softmax["y"] = softmax(df_softmax["x"])
+
+    plt.figure(figsize=(15, 5))  # Width, height.
+    plt.title("Softmax Function")
+    plt.xlabel("X")
+    plt.ylabel(r'$S_{i,j} = \frac{e^{z_{i,j}}}{\sum_{l=1}^{L} e^{z_{i,j}}}$')
+    plt.xticks(range(-20, 20 + 1, 1))
+    plt.yticks(range(-20, 20 + 1, 1))
+    plt.axhline()
+    plt.axvline()
+    plt.grid()
+    plt.plot(df_softmax.x, df_softmax.y, color="green", marker="o")
+    plt.savefig("docs/ann-dp/images/softmax-plot-01.png")
+    plt.show()
+```
+
+</details>
+
+![img](images/softmax-plot-01.png)  
+
+Now, let's code the **Softmax Function** in the output of our layer:
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+To start, let's add the **activation** attribute to the **Layer** class:
+
+[layers.py](../../models/layers.py)
+```python
+class LayerDense:
+
+    def __init__(self, n_inputs, n_neurons, activation=None):
+        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
+        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
+        self.activation = activation
+```
+
+**Code Explanation:**
+
+ - The `tf.keras.layers.Dense()` function already has the **activation** parameter:
+   - That's, the layer (dense) output is automatically activated using the specified activation function.
+ - **NOTE:** The default parameter is *"linear"*.
+
+Finally, let's see in the practice:
+
+[layers.py](../../models/layers.py)
+```python
+import os
+import sys
+
+# Add the root directory 'aicodes' to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
+
+import numpy as np
+import tensorflow as tf
+
+from datasets.synthetic import spiral_data
+
+
+class LayerDense:
+
+    def __init__(self, n_inputs, n_neurons, activation=None):
+        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
+        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
+        self.activation = activation
+
+    def forward(self, inputs):
+        self.output = self.layer(inputs)
+
+
+if __name__ == "__main__":
+
+    X, y = spiral_data(samples=100, classes=3)
+
+    # Create Dense Layer with 2 input features and 3 output values.
+    tf_layer = LayerDense(2, 3, activation="softmax")
+    tf_layer.forward(X)
+    print("\n---------- ( TensorFlow ) ----------")
+    print("Weights:\n", tf_layer.layer.get_weights()[0])
+    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
+    print("\nLayer Output (0-5):\n", tf_layer.output.numpy())
+```
+
+**OUTPUT:**  
+```bash
+---------- ( TensorFlow ) ----------
+Weights:
+ [[-0.9386723   0.52760375  0.6610637 ]
+ [ 0.09589303 -0.86951226  0.55106294]]
+
+Biases:
+ [0. 0. 0.]
+
+Layer Output (0-5):
+ [[0.33333334 0.33333334 0.33333334]   
+ [0.3334049  0.33089867 0.33569643]    
+ [0.33049145 0.33049506 0.33901346]    
+ [0.33280903 0.3264336  0.34075743]    
+ [0.32013115 0.33771944 0.3421494 ]    
+ [0.3237468  0.32844344 0.3478097 ]    
+ [0.31925043 0.33026212 0.35048738]    
+ [0.31619573 0.3305957  0.35320857]    
+ [0.3218381  0.32183433 0.35632753]    
+ [0.30301088 0.34687877 0.3501104 ]    
+ [0.29953966 0.35440287 0.34605753]    
+ [0.30189562 0.33557016 0.3625342 ]    
+ [0.3024469  0.33047912 0.367074  ]    
+ [0.31361154 0.31520653 0.37118194]    
+ [0.2880692  0.36842155 0.34350926]    
+ [0.2842161  0.3688237  0.3469602 ]    
+ [0.28833297 0.33551648 0.37615055]    
+ [0.27769032 0.3565059  0.36580378]    
+ [0.27446187 0.35852867 0.36700946]    
+ [0.29918024 0.39323157 0.30758813]    
+ [0.2955667  0.31163213 0.39280117]    
+ [0.26694024 0.38627166 0.34678814]    
+ [0.2937857  0.4030256  0.30318868]    
+ [0.2647466  0.3979761  0.3372773 ]    
+ [0.2670591  0.40580568 0.32713524]    
+ [0.2705289  0.41202912 0.317442  ]    
+ [0.2984221  0.4130321  0.28854573]    
+ [0.27404982 0.4201914  0.30575874]    
+ [0.35137597 0.38610896 0.26251504]    
+ [0.33944446 0.3972701  0.26328543]    
+ [0.2944441  0.4251625  0.28039345]    
+ [0.28124586 0.43206254 0.28669158]    
+ [0.39350903 0.35806215 0.24842893]
+ [0.26805973 0.4402926  0.29164767]
+ [0.4072946  0.34903908 0.24366629]
+ [0.30979466 0.4301512  0.26005414]
+ [0.3845892  0.3756224  0.23978843]
+ [0.26349452 0.45349354 0.28301194]
+ [0.39778984 0.36778948 0.2344207 ]
+ [0.30448592 0.44268444 0.25282964]
+ [0.35591522 0.40874463 0.23534018]
+ [0.4518683  0.31787542 0.23025632]
+ [0.49148938 0.24973541 0.25877526]
+ [0.44905058 0.32664397 0.22430544]
+ [0.49795514 0.25547528 0.2465697 ]
+ [0.47023886 0.21381852 0.31594262]
+ [0.4897942  0.28402627 0.22617957]
+ [0.504318   0.26378998 0.23189196]
+ [0.5100771  0.2577654  0.23215745]
+ [0.46176785 0.32763892 0.21059313]
+ [0.52261263 0.22952981 0.24785763]
+ [0.5073952  0.20541191 0.28719282]
+ [0.49947762 0.1994313  0.30109102]
+ [0.52355474 0.25993136 0.21651387]
+ [0.50627714 0.28870326 0.20501964]
+ [0.52205104 0.19690426 0.28104478]
+ [0.468241   0.1863347  0.34542426]
+ [0.5498839  0.21538821 0.23472787]
+ [0.3753866  0.19163975 0.4329736 ]
+ [0.52447253 0.18475214 0.2907753 ]
+ [0.514687   0.18022273 0.3050902 ]
+ [0.54123867 0.18349738 0.27526388]
+ [0.31327263 0.19968772 0.48703957]
+ [0.35721573 0.18585202 0.4569323 ]
+ [0.22013865 0.24761872 0.53224254]
+ [0.21824072 0.24632098 0.53543824]
+ [0.23429658 0.22970095 0.5360025 ]
+ [0.23106068 0.22936988 0.5395694 ]
+ [0.20692912 0.24825494 0.54481596]
+ [0.38593405 0.16954577 0.44452018]
+ [0.15343669 0.53013855 0.31642473]
+ [0.14175554 0.4198973  0.4383472 ]
+ [0.16128665 0.30838048 0.53033286]
+ [0.17491359 0.27355337 0.55153304]
+ [0.1401666  0.381151   0.47868243]
+ [0.18347889 0.25220275 0.56431836]
+ [0.14211608 0.34845662 0.5094273 ]
+ [0.14415206 0.33133334 0.5245146 ]
+ [0.13190268 0.39055812 0.47753924]
+ [0.12944184 0.5176901  0.35286802]
+ [0.13171686 0.54397064 0.32431257]
+ [0.16556245 0.255754   0.5786836 ]
+ [0.12831077 0.54905623 0.322633  ]
+ [0.14966789 0.6006994  0.24963261]
+ [0.227716   0.5914264  0.18085758]
+ [0.11624568 0.47531638 0.40843794]
+ [0.1978927  0.61164385 0.19046345]
+ [0.23190804 0.59518135 0.1729106 ]
+ [0.11602439 0.54907393 0.3349017 ]
+ [0.15296623 0.62684613 0.22018759]
+ [0.11687662 0.57638836 0.306735  ]
+ [0.42991638 0.4342148  0.13586876]
+ [0.21218483 0.6180583  0.16975684]
+ [0.22592969 0.61131525 0.16275504]
+ [0.19574368 0.63172317 0.17253311]
+ [0.4915907  0.3812666  0.12714265]
+ [0.35776728 0.50781703 0.13441569]
+ [0.23390657 0.61334205 0.15275139]
+ [0.691577   0.16900145 0.13942148]
+ [0.497548   0.381015   0.12143694]
+ [0.33333334 0.33333334 0.33333334]
+ [0.33491704 0.33459288 0.33049014]
+ [0.3402085  0.3304959  0.32929564]
+ [0.33942178 0.33578405 0.32479423]
+ [0.33880234 0.33905867 0.32213897]
+ [0.33668283 0.34316528 0.3201519 ]
+ [0.34713238 0.33637556 0.3164921 ]
+ [0.3510313  0.33496508 0.31400353]
+ [0.35889894 0.31144673 0.32965437]
+ [0.36334175 0.3241279  0.31253037]
+ [0.36656818 0.32341444 0.31001735]
+ [0.3681578  0.3257726  0.30606955]
+ [0.37460113 0.30340973 0.32198912]
+ [0.37383223 0.325531   0.30063674]
+ [0.38358626 0.30892086 0.3074929 ]
+ [0.378498   0.3267341  0.29476795]
+ [0.38995224 0.295574   0.31447378]
+ [0.34830168 0.286985   0.36471334]
+ [0.3232166  0.29565182 0.3811316 ]
+ [0.34965506 0.28184822 0.36849672]
+ [0.38829577 0.27576572 0.33593848]
+ [0.40431523 0.2787387  0.31694597]
+ [0.4115221  0.28057477 0.30790317]
+ [0.33371672 0.27844784 0.3878354 ]
+ [0.36784047 0.2657574  0.3664021 ]
+ [0.27276266 0.32148695 0.40575036]
+ [0.38112453 0.25909963 0.3597758 ]
+ [0.3494247  0.26340425 0.38717106]
+ [0.2767128  0.30590582 0.41738144]
+ [0.33068082 0.2658067  0.40351248]
+ [0.2903269  0.28722444 0.42244872]
+ [0.27641878 0.29659596 0.42698523]
+ [0.31096083 0.2683719  0.42066723]
+ [0.29706427 0.27428472 0.42865103]
+ [0.22986588 0.3667078  0.4034264 ]
+ [0.34486556 0.24690518 0.40822923]
+ [0.2808896  0.27792263 0.4411878 ]
+ [0.25918776 0.29517692 0.44563526]
+ [0.21619406 0.40969026 0.37411568]
+ [0.25264367 0.29578298 0.45157328]
+ [0.2481707  0.29761946 0.4542099 ]
+ [0.23259284 0.31612203 0.45128518]
+ [0.20542595 0.4077764  0.38679767]
+ [0.22118443 0.4661456  0.31267   ]
+ [0.23742272 0.4774933  0.28508404]
+ [0.20889409 0.46302146 0.3280845 ]
+ [0.19818604 0.44322035 0.35859364]
+ [0.1973027  0.45196447 0.3507328 ]
+ [0.23756659 0.49142426 0.27100924]
+ [0.23724231 0.49474657 0.26801112]
+ [0.19711444 0.4773193  0.32556626]
+ [0.21287347 0.49827042 0.28885606]
+ [0.18627948 0.46705237 0.3466682 ]
+ [0.20378672 0.5020267  0.29418662]
+ [0.17988063 0.46431488 0.35580453]
+ [0.24813637 0.5100877  0.24177594]
+ [0.23267448 0.51743466 0.24989086]
+ [0.18797804 0.50774246 0.30427945]
+ [0.17725793 0.49552652 0.3272156 ]
+ [0.3846968  0.42236185 0.19294131]
+ [0.48337424 0.3295521  0.18707366]
+ [0.33916548 0.46473062 0.19610392]
+ [0.25457093 0.5253195  0.22010949]
+ [0.37709528 0.43646893 0.18643586]
+ [0.44980466 0.37120974 0.17898557]
+ [0.3664524  0.44937158 0.184176  ]
+ [0.53219754 0.28955933 0.17824315]
+ [0.40121418 0.4221503  0.17663552]
+ [0.5874374  0.21825877 0.19430384]
+ [0.5714464  0.16822642 0.26032722]
+ [0.472087   0.36045125 0.16746172]
+ [0.44903255 0.38454527 0.16642213]
+ [0.5967987  0.221827   0.18137431]
+ [0.58726233 0.24019483 0.17254287]
+ [0.57068557 0.26398614 0.16532825]
+ [0.60476464 0.1622809  0.23295446]
+ [0.6208378  0.19311947 0.18604274]
+ [0.62500244 0.18927309 0.18572444]
+ [0.6223308  0.20414622 0.17352308]
+ [0.6331041  0.18084106 0.1860549 ]
+ [0.52033377 0.13998446 0.33968174]
+ [0.52630985 0.13821831 0.33547187]
+ [0.37063    0.1499712  0.4793988 ]
+ [0.5235706  0.13495252 0.3414769 ]
+ [0.5002278  0.13414516 0.36562702]
+ [0.21804924 0.19126552 0.5906852 ]
+ [0.5438922  0.12981519 0.32629263]
+ [0.51191825 0.12903067 0.3590511 ]
+ [0.3347414  0.14641072 0.5188478 ]
+ [0.16316108 0.2288134  0.6080256 ]
+ [0.20815817 0.18513264 0.60670924]
+ [0.4342711  0.12850735 0.43722156]
+ [0.34968197 0.1374972  0.51282084]
+ [0.19841081 0.18396719 0.617622  ]
+ [0.18722959 0.18928649 0.6234839 ]
+ [0.14599356 0.23215406 0.62185246]
+ [0.0997705  0.46250263 0.43772689]
+ [0.17472085 0.19130835 0.6339708 ]
+ [0.12381357 0.26678905 0.6093974 ]
+ [0.1142491  0.2932852  0.5924657 ]
+ [0.33333334 0.33333334 0.33333334]
+ [0.32990375 0.33481127 0.33528498]
+ [0.32736033 0.33414388 0.3384958 ]
+ [0.32650906 0.33158466 0.34190628]
+ [0.32166144 0.3450199  0.33331862]
+ [0.316442   0.3402689  0.34328902]
+ [0.31280863 0.34344184 0.34374955]
+ [0.3093898  0.34596804 0.34464222]
+ [0.31340852 0.35803944 0.32855198]
+ [0.30287227 0.3478083  0.34931934]
+ [0.30142045 0.35979643 0.33878312]
+ [0.3079759  0.36776003 0.3242641 ]
+ [0.31044337 0.3708769  0.3186797 ]
+ [0.29613146 0.37181723 0.3320513 ]
+ [0.29317874 0.37471184 0.33210942]
+ [0.2961546  0.38018072 0.3236647 ]
+ [0.31482425 0.380743   0.30443278]
+ [0.3035519  0.38661534 0.30983272]
+ [0.35108444 0.36334    0.2855755 ]
+ [0.28645816 0.39303082 0.32051095]
+ [0.36175835 0.3590567  0.27918497]
+ [0.36289227 0.3604606  0.27664712]
+ [0.28090724 0.40311942 0.3159733 ]
+ [0.36147165 0.3664467  0.27208164]
+ [0.33755088 0.38723406 0.27521506]
+ [0.38205826 0.35220575 0.26573595]
+ [0.33609378 0.39281264 0.27109358]
+ [0.4189856  0.31453058 0.26648378]
+ [0.42033893 0.31640837 0.26325268]
+ [0.44069332 0.27371022 0.2855965 ]
+ [0.43778592 0.29699588 0.26521823]
+ [0.44145823 0.2955131  0.26302868]
+ [0.4507612  0.26083562 0.28840315]
+ [0.37783575 0.37503174 0.24713248]
+ [0.44315028 0.24279939 0.3140503 ]
+ [0.4626808  0.25518522 0.28213406]
+ [0.46799886 0.26184392 0.27015725]
+ [0.46620968 0.24390216 0.2898881 ]
+ [0.46995324 0.27959588 0.25045085]
+ [0.47298977 0.23856874 0.28844154]
+ [0.4836305  0.25464138 0.26172814]
+ [0.47184598 0.22806159 0.3000924 ]
+ [0.4913733  0.25222197 0.25640476]
+ [0.4783389  0.22314142 0.29851967]
+ [0.3993034  0.21576    0.38493663]
+ [0.42265135 0.21142277 0.36592594]
+ [0.41664535 0.20966567 0.373689  ]
+ [0.31399563 0.23177202 0.45423242]
+ [0.3922057  0.20843726 0.3993571 ]
+ [0.43265787 0.20215541 0.36518666]
+ [0.50436294 0.20785311 0.287784  ]
+ [0.37502292 0.2054341  0.41954306]
+ [0.34999225 0.2091843  0.44082347]
+ [0.4388943  0.19337374 0.36773193]
+ [0.42923507 0.19198279 0.37878215]
+ [0.24410604 0.253272   0.5026219 ]
+ [0.25641885 0.24100642 0.50257474]
+ [0.1718605  0.393363   0.43477646]
+ [0.333649   0.20153387 0.46481714]
+ [0.1760441  0.34960613 0.47434983]
+ [0.16835445 0.37487683 0.4567687 ]
+ [0.16945021 0.35912558 0.4714242 ]
+ [0.30512086 0.20249973 0.49237946]
+ [0.167908   0.34821275 0.48387924]
+ [0.21381901 0.25407797 0.53210294]
+ [0.17127801 0.32287145 0.5058505 ]
+ [0.16298015 0.3431916  0.49382824]
+ [0.17145327 0.31047997 0.5180668 ]
+ [0.14858772 0.484044   0.36736828]
+ [0.19884975 0.25411445 0.5470358 ]
+ [0.17522876 0.56093353 0.2638377 ]
+ [0.14680465 0.5158567  0.3373386 ]
+ [0.1532862  0.54480034 0.30191344]
+ [0.14040662 0.5056885  0.35390487]
+ [0.15627159 0.56252766 0.28120074]
+ [0.15300225 0.56341684 0.28358093]
+ [0.17558955 0.58513176 0.23927869]
+ [0.2907387  0.533366   0.1758953 ]
+ [0.13412301 0.5337876  0.33208933]
+ [0.16098568 0.59118974 0.2478246 ]
+ [0.1919895  0.5975478  0.21046263]
+ [0.13739514 0.57124466 0.2913602 ]
+ [0.34497213 0.49745008 0.15757781]
+ [0.35506687 0.49026456 0.15466858]
+ [0.1562935  0.60916424 0.2345422 ]
+ [0.28822127 0.5500124  0.16176628]
+ [0.40971306 0.44559625 0.14469074]
+ [0.5514605  0.310236   0.13830341]
+ [0.6613495  0.14826839 0.19038211]
+ [0.66711754 0.17059883 0.16228369]
+ [0.6718409  0.1635884  0.16457076]
+ [0.5408345  0.32728472 0.13188082]
+ [0.50743294 0.36164734 0.13091977]
+ [0.6195862  0.24892777 0.13148595]
+ [0.6673709  0.19330838 0.13932066]
+ [0.6684988  0.19467318 0.13682802]
+ [0.6243749  0.11562687 0.25999826]
+ [0.67954236 0.12421913 0.19623859]
+ [0.69378877 0.16467695 0.1415343 ]
+ [0.7023398  0.13909575 0.15856437]]
+```
+
+**Output Explanation:**
+
+ - To each row of the output matrix, we are assigning a probability to each class.
+ - The sum of each class (in each row) is equal to 1, that is, 100%.
+ - **NOTE:** The class with the highest probability is the predicted class.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1995,6 +2491,10 @@ Layer Output (0-5):
 
 ## References
 
+ - **A.I used:**
+   - [ChatGPT](https://chatgpt.com/)
+   - [Grok](https://grok.com/)
+   - [Claude3](https://claude.ai/)
  - **General:**
    - [Neural Networks from Scratch in Python Book](https://nnfs.io/)
 
