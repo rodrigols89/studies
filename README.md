@@ -11,7 +11,7 @@
  - [Computer Science Fundamentals](#section-csf)
  - [Information Security](#section-security)
  - [Artificial Intelligence](#section-ai)
- - [Mathematics](#section-math)
+ - [Matemática](https://github.com/rodrigols89/studies/tree/mathematics/modules/mathematics)
  - [Chemistry](modules/chemistry)
  - [Tools](#section-tools)
  - [Practice Projects](#section-projects)
@@ -82,14 +82,6 @@
 ## Artificial Intelligence
 
  - [Artificial Intelligence (Theory & Practice)](https://github.com/rodrigols89/studies/tree/aicodes/modules/aicodes)
-
----
-
-<div id="section-math"></div>
-
-## Mathematics
-
- - [Math (Theory and Practice)](modules/math-codes)
 
 ---
 
