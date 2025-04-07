@@ -5,6 +5,7 @@
 
 > **Meus *exercícios* e *questões* da minha graduação em Matemática.**  
 
+ - [Trigonometria](modules/trigonometry/)
  - [Cálculo Diferencial e Integral (Cálculo Infinitesimal)](modules/differential-and-integral-calculus)
 
 ---
