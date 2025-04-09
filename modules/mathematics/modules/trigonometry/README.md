@@ -9,6 +9,8 @@
    - [**Raio**](#intro-to-raios)
    - [**Ângulo**](#intro-to-angulos)
      - [Ângulos podem ser representados por letras gregas](#angles-greek-letters)
+   - [**Triângulo**](#intro-to-triangle)
+     - [Regra de existência de um triângulo](#triangle-rule)
      - [A soma de todos os ângulos de "qualquer triângulo" = 180 graus (180°)](#tsaat)
    - [**Circunferência e Círculo**](#intro-to-circumference)
      - [Perímetro de uma Circunferência (+Formula)](#circumference-perimeter)
@@ -306,13 +308,75 @@ Por exemplo, vejamos algumas **"letras gregas"** comuns usadas para representar 
 
 ![img](images/angles-greek-letters-01.png)  
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-triangle"></div>
+
+## Triângulo
+
+Um triângulo é uma figura geométrica com:
+
+ - 3 vértices (pontos);
+ - 3 arestas (lados ou linhas);
+ - 3 angulos (ângulos internos).
+
+Por exemplo:
+
+![img](images/triangulo-01.png)  
+
+> **NOTE:**  
+> Veja que nesse exemplos o triângulo também tem *"ângulos externos"*.
+
+---
+
+<div id="triangle-rule"></div>
+
+## Regra de existência de um triângulo
+
+**Pergunta:** Com 3 segmentos de retas, sempre vou conseguir desenhar um triângulo?  
+**Resposta:** nem sempre!!  
+
+Isso isso acontecer nós temos que ter a seguinte condição:
+
+> A soma dos dois menores lados do triângulo **deve ser maior** do que a medida do **maior lado do triângulo**.
+
+Por exemplo:
+
+![img](images/triangle-rule-01.png)  
+
+Vejamos outros exemplos:
+
+![img](images/triangle-rule-02.png)  
+
+> **REGRA:**  
+> A soma dos dois menores lados do triângulo **deve ser maior** do que a medida do maior lado do triângulo.
+
 ---
 
 <div id="tsaat"></div>
 
 ## A soma de todos os ângulos de "qualquer triângulo" = 180 graus (180°)
 
-> A soma de todos os ângulos de `qualquer triângulo` resulta em *180 graus (180°)*.
+> A soma de todos os ângulos de `qualquer triângulo` *sempre* resultará em *180 graus (180°)*.
 
 **EXEMPLO-01:**  
 ![img](images/tsaat-01.png)  
@@ -391,9 +455,6 @@ O perímetro de um círculo (circunferência) pode ser calculado usando a fórmu
 ```python
 C = 2πr
 ```
-
-> **Por que o perímetro do uma circunferência (círculo) é `2πr`?**  
-> Em breve...
 
 ---
 
@@ -511,8 +572,8 @@ Uma das vantagens de saber que o perímetro de uma circunferência dividida por 
 
 ![img](images/circle-area-01.png)  
 
-> **Por que a área do círculo é `πr²`?**  
-> Em breve...
+
+
 
 
 
@@ -690,6 +751,8 @@ pip freeze > requirements.txt --require-virtualenv
    - **Ângulo:**
      - [Ângulos - brasilescola](https://brasilescola.uol.com.br/matematica/angulos.htm)
      - [Classificando ângulos](https://descompliqueamatematica.com.br/classificacao-de-angulos/)
+   - **Triângulo:**
+     - [Geometria - Triângulos](https://apppublico.com.br/educacao_cristais/pdf/20200531185510_6%207%20DG%20AULA%204.pdf)
    - **Circumferência e Círculo:**
      - [ELEMENTOS DA CIRCUNFERÊNCIA E DO CÍRCULO](https://blog.professorferretto.com.br/elementos-da-circunferencia-e-do-circulo/)
      - [CIRCUNFERÊNCIA E CÍRCULO](https://blog.professorferretto.com.br/conceitos-iniciais-sobre-a-circunferencia-e-o-circulo/)
