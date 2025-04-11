@@ -1,5 +1,8 @@
 # Trigonometria
 
+> **A Trigonometria é o ramo da Matemática que estuda as *relações* entre os `lados` e os `ângulos` de um *"triângulo"*.**  
+> Essas *relações* podem ser usadas para `encontrar lados` ou `ângulos faltantes` de um triângulo.
+
 ## Contents
 
  - **Pré-Requisitos:**
@@ -23,8 +26,14 @@
      - [Diametro de uma Circunferência](#circumference-diameter)
      - [Razão entre o perímetro e o diâmetro de uma circunferência (Pi π)](#circumference-ratio)
      - [Área de um Círculo](#circle-area)
-   - **Radiano**
-   - **Triângulo**
+   - **Graus e Radiano**
+     - [Radiano](#intro-to-radiano)
+     - [Comparando Graus e Radianos no Círculo Unitário (Trigonométrico)](#comparing-graus-and-radianos)
+
+
+
+
+
  - [**Configurações**](#settings)
  - [**REFERÊNCIAS**](#ref)
 <!---
@@ -583,6 +592,77 @@ Uma das vantagens de saber que o perímetro de uma circunferência dividida por 
 
 
 
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-radiano"></div>
+
+## Radiano
+
+> Um **"Radiano"** é o **"ângulo que gera um arco"** de **"comprimento igual ao do raio"**."
+
+![img](images/radian-01.gif)  
+
+ - O comprimento do arco varia de acordo com o tamanho do raio.
+ - **NOTE:** Mas o ângulo de 1 radiano sempre significa que *"comprimento do arco" = "comprimento do raio"*, qualquer que seja o valor do raio.
+
+
+> **O que aconteceria se rodassemos ao redor do círculo adicionando outros radianos?**
+
+![img](images/radian-02.png)  
+
+Vejam que:
+
+ - **Temos 6 radianos.**
+   - E um pouquinho mais.
+ - **Esses 6 radianos podem ser usados para medir ângulos:**
+   - Ou seja, agora usamos *"radianos"* em vez de *"graus"* para medir ângulos.
+
+---
+
+<div id="comparing-graus-and-radianos"></div>
+
+## Comparando Graus e Radianos no Círculo Unitário (Trigonométrico)
+
+Para entender a relação de Graus e Radianos no Círculo Unitário (Trigonométrico) vamos considerar que uma rotação completa do círculo (circunferência) é:
+
+ - **Graus:**
+   - 360° (ou 360 graus)
+ - **Radianos:**
+   - `2π` (ou `2π` radianos)
+
+![img](images/degrees-to-radians-01.png)  
+
+> **Por que a volta em um circulo (circunferência) é *"2π"* radianos?**  
+> Em geometria, usamos `2π` para representar uma volta completa em um círculo (circunferência) quando os ângulos são medidos em radianos (Por hora, vamos só lembrar disso).
+
+Sabendo disso, também podemos dizer que a metade de um círculo (circunferência) é:
+
+ - **360° (ou 360 graus) dividido por 2:**
+   - 180° (ou 180 graus)
+ - **2π (ou 2π radianos) dividido por 2:**
+   - 1rad (ou 1π radiano) = π
+
+![img](images/degrees-to-radians-02.png)  
+
+> **E se eu dividir esses 180° (ou π) por 2?**
+
+![img](images/degrees-to-radians-03.png)  
+
+> **Agora se eu pegar esses 180° (ou π) e acrescentar 90° (ou π/2)?**
+
+![img](images/degrees-to-radians-04.png)  
+
+> **Para finalizar, se eu pegar esses 270° (ou 3π/2) e acrescentar mais 90° (ou π/2)?**
+
+![img](images/degrees-to-radians-05.png)  
 
 
 
