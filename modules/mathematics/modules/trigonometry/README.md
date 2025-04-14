@@ -29,11 +29,6 @@
    - **Graus e Radiano**
      - [Radiano](#intro-to-radiano)
      - [Comparando Graus e Radianos no Círculo Unitário (Trigonométrico)](#comparing-graus-and-radianos)
-
-
-
-
-
  - [**Configurações**](#settings)
  - [**REFERÊNCIAS**](#ref)
 <!---
