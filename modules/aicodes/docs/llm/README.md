@@ -11,14 +11,14 @@
    - **STAGE 01:**
      - **Data Preparation & Sampling:**
        - [Tokenizing text](#tokenizing-text)
-
-
    - **STAGE 02:**
    - **STAGE 03:**
+ - **Utils Functions:**
+   - [read_txt()](#read-txt)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
-- Same topic = "20" Whitespace character.
+- Same topic = "10" Whitespace character.
 - Different topic = "100" Whitespace character.
 --->
 
@@ -142,16 +142,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="transformer-architecture"></div>
@@ -162,16 +152,6 @@ Most modern LLMs rely on the **Transformer Architecture**, which is a deep neura
 
 > **NOTE:**  
 > To understand LLMs, it is interesting to understand the original transformer, which was developed for machine translation, translating texts from English to German and French.
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -201,16 +181,6 @@ Using a specific neural network layer or another pretrained neural network model
 
 > **NOTE:**  
 > However, it’s important to note that different data formats require distinct embedding models. For example, an embedding model designed for text would not be suitable for embedding audio or video data.
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -335,6 +305,7 @@ For example:
 
 
 
+
 <!--- ( Build a Large Language Model (Step by Step) ) --->
 
 ---
@@ -346,16 +317,6 @@ For example:
 Here, we will implement a simple Large Language Model (LLM) by following the following steps (stages):
 
 ![image](images/llm-sbs-01.png)
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -378,108 +339,9 @@ These tokens are either individual words or special characters, including punctu
 
 ![image](images/tokenizing-text-01.png)
 
-To start, let's create some useful functions to *read* and *print* `.txt` files:
-
-<!--- ( Python (From Scratch) ) --->
-<details>
-
-<summary>Python (From Scratch)</summary>
-
 </br>
 
-First, let's create a function to *read* a `.txt` file:
-
-[utils.py](../../algorithms/utils.py)
-```python
-import re
-
-
-def read_txt(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        text = f.read()
-        print("The text read successfully.")
-        print("Total number of characters:", len(text))
-        print("Text type:", type(text), "\n")
-    return text
-
-
-if __name__ == "__main__":
-
-    file_path = "datasets/the-verdict.txt"
-    text = read_txt(file_path)
-```
-
-**OUTPUT:**
-```bash
-The text read successfully.
-Total number of characters: 20479
-Text type: <class 'str'>
-```
-
-Now, let's create a function to *print* a `.txt` file:
-
-[utils.py](../../algorithms/utils.py)
-```python
-import re
-
-
-def read_txt(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        text = f.read()
-        print("The text read successfully.")
-        print("Total number of characters:", len(text))
-        print("Text type:", type(text), "\n")
-    return text
-
-
-def print_txt(txt):
-    print(txt)
-
-
-if __name__ == "__main__":
-
-    file_path = "datasets/the-verdict.txt"
-    text = read_txt(file_path)
-
-    print_txt(text)
-```
-
-**OUTPUT:**  
-```bash
-I HAD always thought Jack Gisburn rather a cheap genius--though a good fellow enough--so it was no great surprise to me to hear that, in the height of his glory, he had dropped his 
-painting, married a rich widow, and established himself in a villa on the Riviera. (Though I rather thought it would have been Rome or Florence.)
-
-.
-.
-.
-
-He stood up and laid his hand on my shoulder with a laugh. "Only the irony of it is that I _am_ still painting--since Grindle's doing it for me! The Strouds stand alone, and happen 
-once--but there's no exterminating our kind of art."
-```
-
-> **NOTE:**  
-> We can use slicing to select a specific section of the text.
-
-```python
-    file_path = "datasets/the-verdict.txt"
-    text = read_txt(file_path)
-
-    print(text[:353])
-```
-
-**OUTPUT:**
-```bash
-I HAD always thought Jack Gisburn rather a cheap genius--though a good fellow enough--so it was no great surprise to me to hear that, in the height of his glory, he had dropped his 
-painting, married a rich widow, and established himself in a villa on the Riviera. (Though I rather thought it would have been Rome or Florence.)
-
-"The height of his glory"
-```
-
-</details>
-
-</br>
-
-Now, Our goal is to tokenize this text into individual tokens:
+Let's implement a **tokenizer_txt()** function to see how this works:
 
 <!--- ( Python (From Scratch) ) --->
 <details>
@@ -508,6 +370,10 @@ if __name__ == "__main__":
 
 **OUTPUT:**  
 ```bash
+The text read successfully.
+Total number of characters: 20479
+Text type: <class 'str'> 
+
 Text tokenized successfully.
 Total number of tokens (without whitespaces): 4690
 ```
@@ -548,84 +414,158 @@ print(tokens[:30])
 
 
 
-<!--- () ->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Utils Functions ) --->
+
+---
+
+<div id="read-txt"></div>
+
+## read_txt()
+
+Here, let's implement a useful function to read a `.txt` files:
+
+<!--- ( Python (From Scratch) ) --->
 <details>
 
-<summary>Title here...</summary>
+<summary>Python (From Scratch)</summary>
 
 </br>
 
-[](../../examples/)
+[utils.py](../../algorithms/utils.py)
 ```python
+import re
 
+
+def read_txt(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        text = f.read()
+        print("The text read successfully.")
+        print("Total number of characters:", len(text))
+        print("Text type:", type(text), "\n")
+    return text
+
+
+if __name__ == "__main__":
+
+    file_path = "../datasets/the-verdict.txt"
+    text = read_txt(file_path)
+
+    print(text)
 ```
 
-**OUTPUT:**  
+**OUTPUT:**
 ```bash
+The text read successfully.
+Total number of characters: 20479
+Text type: <class 'str'>
+```
 
+> **NOTE:**  
+> We can use slicing to select a specific section of the text.
+
+```python
+    file_path = "datasets/the-verdict.txt"
+    text = read_txt(file_path)
+
+    print(text[:353])
+```
+
+**OUTPUT:**
+```bash
+I HAD always thought Jack Gisburn rather a cheap genius--though a good fellow enough--so it was no great surprise to me to hear that, in the height of his glory, he had dropped his painting, married a rich widow, and established himself in a villa on the Riviera. (Though I rather thought it would have been Rome or Florence.)
+
+"The height of his glory"
 ```
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</br>
 
 
 
