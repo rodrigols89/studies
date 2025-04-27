@@ -1,4 +1,4 @@
-# Lógica Matemática
+# Raciocínio Lógico
 
 ## Conteúdo
 
@@ -605,6 +605,16 @@ Ou seja, a resposta correta seria **"Errado"**, pois nossa tabela-verdade não t
 
 </details>
 
+
+
+
+
+
+
+
+
+
+---
 
 
 
