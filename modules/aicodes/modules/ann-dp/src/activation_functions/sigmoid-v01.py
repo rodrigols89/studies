@@ -41,7 +41,7 @@ if __name__ == "__main__":
     plt.axvline()
     plt.grid()
     plt.plot(df_sigmoid.x, df_sigmoid.y, color="green", marker="o")
-    plt.savefig("docs/ann-dp/images/sigmoide-plot-01.png")
+    plt.savefig("../../images/sigmoide-plot-01.png")
     plt.show()
 
     # ReLU Function.
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     plt.axvline()
     plt.grid()
     plt.plot(df_relu.x, df_relu.y, color="green", marker="o")
-    plt.savefig("docs/ann-dp/images/relu-plot-01.png")
+    plt.savefig("../../images/relu-plot-01.png")
     plt.show()
 
     # Softmax Function.
@@ -75,5 +75,5 @@ if __name__ == "__main__":
     plt.axvline()
     plt.grid()
     plt.plot(df_softmax.x, df_softmax.y, color="green", marker="o")
-    plt.savefig("docs/ann-dp/images/softmax-plot-01.png")
+    plt.savefig("../../images/softmax-plot-01.png")
     plt.show()

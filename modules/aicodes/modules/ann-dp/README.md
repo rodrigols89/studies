@@ -9,12 +9,13 @@
    - [Neuron calculation (y = mx + b))](#neuron-calculation)
  - **Layers:**
      - [Dense Neural Networks](#dense-neural-networks)
-     - [How to implement a LayerDense() class](#impl-dense-layer-class)
+     - [How to implement a Dense Layer](#impl-dense-layer)
      - [How to count the parameters of an Artificial Neural Network](#counting-ann-parameters)
  - [**Activation Functions**](#activation-functions)
    - [Sigmoid Function](#sigmoid-function)
    - [Rectified Linear Unit (ReLU) Function](#relu-function)
    - [Softmax Function](#softmax-function)
+ - [**Project Settings**](#settings)
  - [**References**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -535,150 +536,178 @@ In other words, *the dense layer is a fully connected layer*, meaning all neuron
 
 
 ---
-<div id="impl-dense-layer-class"></div>
 
-## How to implement a LayerDense() class
+<div id="impl-dense-layer"></div>
 
-> Here, let's see how to implement a **LayerDense()** *class*.
+## How to implement a Dense Layer
 
-To start, let's consider the following class:
+Here, let's implement the following Dense Neural Network:
 
-<!--- ( Python ) --->
-<details>
+![img](images/dense-neural-network-01.png)
 
-<summary>Python class</summary>
+To start, let's prepare the *input layer*:
 
-</br>
-
-```python
-class LayerDense:
-
-    def __init__(self, n_inputs, n_neurons):
-        # Initialize weights and biases
-        pass # using pass statement as a placeholder
-
-    def forward(self, inputs):
-        # Calculate output values from inputs, weights and biases
-        pass # using pass statement as a placeholder
-```
-
-</details>
-
-</br>
-
-**Code Explanation:**
-
- - **weights:**
-   - The *"weights"* are often initialized randomly for a model, but not always.
-   - **NOTE:** If you wish to load a pre-trained model, you will initialize the parameters to whatever that pretrained model finished with.
- - **Biases:**
-   - The *"biases"* are often initialized to 0.
- - **forward() method:**
-   - When we pass data through a model from beginning to end, this is called a **"forward pass"**.
-
-To continue the code for the **LayerDense** class, let's add random initialization for the *"weights"* and zeros for the *"biases"*:
-
-<!--- ( TensorFlow ) --->
 <details>
 
 <summary>TensorFlow</summary>
 
 </br>
 
-[layers.py](../../models/layers.py)
-```python
-class LayerDense:
-
-    def __init__(self, n_inputs, n_neurons):
-        self.layer = tf.keras.layers.Input(shape=(n_inputs,)),
-        self.layer = tf.keras.layers.Dense(n_neurons)
-```
-
-**Code Explanation:**
-
- - `self.layer = tf.keras.layers.Input(shape=(n_inputs,))`
-   - `tf.keras.layers.Input` is a function from the TensorFlow library that creates an input layer for a neural network.
-     - The `shape` argument is a tuple of integers that specifies the shape of the input data.
-     - `n_inputs` is the number of inputs coming into this layer (e.g., the size of the previous layer).
- - `self.layer = tf.keras.layers.Dense(n_neurons)`
-   - `tf.keras.layers.Dense` is a function from the TensorFlow library that creates a dense layer for a neural network.
-   - `n_neurons` is the number of neurons in this dense layer.
-
-</details>
-
-</br>
-
-Now, let's implement the  **forward()** method — Here, we need to update it with the *dot product* + *biases* calculation:
-
-<!--- ( TensorFlow ) --->
-<details>
-
-<summary>TensorFlow</summary>
-
-</br>
-
-[layers.py](../../models/layers.py)
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
 ```python
 import os
-import sys
-
-# Add the root directory 'aicodes' to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
-
 import tensorflow as tf
 
-from datasets.synthetic import spiral_data
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
 
 
-class LayerDense:
+# Input size.
+n_inputs = 5
 
-    def __init__(self, n_inputs, n_neurons):
-        self.layer = tf.keras.layers.Input(shape=(n_inputs,)),
-        self.layer = tf.keras.layers.Dense(n_neurons)
-
-    def forward(self, inputs):
-        self.output = self.layer(inputs)
-
-
-if __name__ == "__main__":
-
-    X, y = spiral_data(samples=100, classes=3)
-
-    # Create Dense Layer with 2 input features and 3 output values
-    tf_layer = LayerDense(2, 3)
-    tf_layer.forward(X)
-    print("\n---------- ( TensorFlow ) ----------")
-    print("Weights:\n", tf_layer.layer.get_weights()[0])
-    print("\nBiases:\n", tf_layer.layer.get_weights()[1])
-    print("\nLayer Output (0-5):\n", tf_layer.output.numpy()[:5])
+# Tensor of input.
+inputs = tf.keras.Input(shape=(n_inputs,))
 ```
 
-**OUTPUT:**  
-```bash
----------- ( TensorFlow ) ----------
-Weights:
- [[-0.18609464  0.63661337 -0.54816973]
- [-0.3579759   1.0245361   0.16465557]]
+</details>
 
-Biases:
- [0. 0. 0.]
+</br>
 
-Layer Output (0-5):
- [[ 0.          0.          0.        ]
- [-0.00283553  0.00778301  0.00332946]
- [-0.00790809  0.02402488 -0.00484317]
- [-0.0118611   0.03467902  0.00099368]
- [-0.01561574  0.04547948  0.00238798]]
+Continuing, let's create the hidden layers:
+
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
+```python
+# Hidden layers.
+hidden1 = tf.keras.layers.Dense(3)(inputs)
+hidden2 = tf.keras.layers.Dense(3)(hidden1)
+hidden3 = tf.keras.layers.Dense(3)(hidden2)
 ```
 
 **Code Explanation:**
 
- - `self.output = self.layer(inputs)`
-   - `self.layer(inputs)` Apply **"forward pass"** in the dense layer:
-     - output = X ⋅ W<sup>T</sup> + b
-     - **NOTE:** *T* = *Transpose* the *weight matrix*.
-   - The result is stored in `self.output`.
+ - **Here we:**
+   - Pass the number of neurons in the hidden layer: `Dense(3)`.
+   - Connect with the previous layer.
+
+</details>
+
+</br>
+
+Continuing, let's connect the *last hidden layer* with the *output layer*:
+
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
+```python
+# Output layer.
+output = tf.keras.layers.Dense(1)(hidden3)
+```
+
+</details>
+
+</br>
+
+Now, let's make the model (connect the layers):
+
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
+```python
+# Make the model (connect the layers).
+model = tf.keras.Model(inputs=inputs, outputs=output)
+model.summary()  # Visualize the model architecture.
+```
+
+**OUTPUT:**
+```bash
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)             │ (None, 5)                   │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 3)                   │              18 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 3)                   │              12 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 3)                   │              12 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_3 (Dense)                      │ (None, 1)                   │               4 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 46 (184.00 B)
+ Trainable params: 46 (184.00 B)
+ Non-trainable params: 0 (0.00 B)
+```
+
+**Code Explanation:**
+
+ - 📌 **Why do we need this?**
+   - **Defines the complete architecture:**
+     - Tells TensorFlow how data flows from input to output.
+   - **Creates a trainable model:**
+     - Without this line, you would just have disconnected layers.
+     - TensorFlow wouldn't know how to train or infer.
+   - `.fit()`, `.predict()`, `.evaluate()`:
+     - These functions only work with a built Model.
+   - `.summary()`
+     - Shows the layers and their parameters with this structure.
+
+</details>
+
+</br>
+
+In the first part we defined the size of the input neurons, now we will create values ​​that will be passed as input to the model:
+
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
+```python
+# Make random input data (one sample with 5 features).
+input_data = tf.random.normal((1, n_inputs))
+```
+
+</details>
+
+</br>
+
+Finally, let's apply the **forward pass**:
+
+<details>
+
+<summary>TensorFlow</summary>
+
+</br>
+
+[dense_layer-v1.py](src/layer/dense_layer-v1.py)
+```python
+result = model(input_data)  # Apply forward pass.
+
+print("Tensor:", result)
+print("Tensor value:", result.numpy())
+```
+
+**OUTPUT:**
+```bash
+Tensor: tf.Tensor([[1.5610214]], shape=(1, 1), dtype=float32)
+Tensor value: [[1.5610214]]
+```
 
 </details>
 
@@ -2463,6 +2492,62 @@ Layer Output (0-5):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Project Settings ) --->
+
+---
+
+<div id="settings"></div>
+
+## Project Settings
+
+> **NOTE:**  
+> *Python==3.12.7* is required for TensorFlow.
+
+**CREATE VIRTUAL ENVIRONMENT:**  
+```bash
+python -m venv environment
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (LINUX):**  
+```bash
+source environment/bin/activate
+```
+
+**ACTIVATE THE VIRTUAL ENVIRONMENT (WINDOWS):**  
+```bash
+source environment/Scripts/activate
+```
+
+**UPDATE PIP:**
+```bash
+python -m pip install --upgrade pip
+```
+
+**INSTALL PYTHON DEPENDENCIES:**  
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+**UPDATE DEPENDENCIES:**
+```bash
+pip freeze > requirements.txt --require-virtualenv
+```
+
+**Now, Be Happy!!!** 😬
 
 
 
