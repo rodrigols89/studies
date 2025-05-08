@@ -1,8 +1,5 @@
 import os
-import sys
 
-# Add the root directory 'aicodes' to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
 
 from matplotlib import pyplot as plt

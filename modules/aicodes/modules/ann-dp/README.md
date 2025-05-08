@@ -15,6 +15,7 @@
    - [Sigmoid Function](#sigmoid-function)
    - [Rectified Linear Unit (ReLU) Function](#relu-function)
    - [Softmax Function](#softmax-function)
+ - **Implementations:**
  - [**Project Settings**](#settings)
  - [**References**](#ref)
 <!---
@@ -320,7 +321,7 @@ Now let's program this for a single neuron:
 
 </br>
 
-[neuron_np_calc-01.py](../../examples/neurons/neuron_np_calc-01.py)
+[neuron_np_calc-01.py](src/neurons/neuron_np_calc-01.py)
 ```python
 import numpy as np
 
@@ -356,7 +357,7 @@ print(outputs)
 
 </br>
 
-[neuron_tf_calc-01.py](../../examples/neurons/neuron_tf_calc-01.py)
+[neuron_tf_calc-01.py](src/neurons/neuron_tf_calc-01.py)
 ```python
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -565,7 +566,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
 n_inputs = 5
 
 # Tensor of input.
-inputs = tf.keras.Input(shape=(n_inputs,))
+inputs = tf.keras.Input(shape=(n_inputs,), name="input_layer")
 ```
 
 </details>
@@ -583,9 +584,9 @@ Continuing, let's create the hidden layers:
 [dense_layer-v1.py](src/layer/dense_layer-v1.py)
 ```python
 # Hidden layers.
-hidden1 = tf.keras.layers.Dense(3)(inputs)
-hidden2 = tf.keras.layers.Dense(3)(hidden1)
-hidden3 = tf.keras.layers.Dense(3)(hidden2)
+hidden1 = tf.keras.layers.Dense(4, name="hidden_layer_1")(inputs)
+hidden2 = tf.keras.layers.Dense(4, name="hidden_layer_2")(hidden1)
+hidden3 = tf.keras.layers.Dense(4, name="hidden_layer_3")(hidden2)
 ```
 
 **Code Explanation:**
@@ -609,7 +610,7 @@ Continuing, let's connect the *last hidden layer* with the *output layer*:
 [dense_layer-v1.py](src/layer/dense_layer-v1.py)
 ```python
 # Output layer.
-output = tf.keras.layers.Dense(1)(hidden3)
+output = tf.keras.layers.Dense(1, name="output_layer")(hidden3)
 ```
 
 </details>
@@ -639,16 +640,16 @@ Model: "functional"
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ input_layer (InputLayer)             │ (None, 5)                   │               0 │
 ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense (Dense)                        │ (None, 3)                   │              18 │
+│ hidden_layer_1 (Dense)               │ (None, 4)                   │              24 │
 ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense_1 (Dense)                      │ (None, 3)                   │              12 │
+│ hidden_layer_2 (Dense)               │ (None, 4)                   │              20 │
 ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense_2 (Dense)                      │ (None, 3)                   │              12 │
+│ hidden_layer_3 (Dense)               │ (None, 4)                   │              20 │
 ├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
-│ dense_3 (Dense)                      │ (None, 1)                   │               4 │
+│ output_layer (Dense)                 │ (None, 1)                   │               5 │
 └──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
- Total params: 46 (184.00 B)
- Trainable params: 46 (184.00 B)
+ Total params: 69 (276.00 B)
+ Trainable params: 69 (276.00 B)
  Non-trainable params: 0 (0.00 B)
 ```
 
@@ -679,7 +680,7 @@ In the first part we defined the size of the input neurons, now we will create v
 
 [dense_layer-v1.py](src/layer/dense_layer-v1.py)
 ```python
-# Make random input data (one sample with 5 features).
+# Make random input (tensor) data (one sample with 5 features).
 input_data = tf.random.normal((1, n_inputs))
 ```
 
@@ -687,7 +688,7 @@ input_data = tf.random.normal((1, n_inputs))
 
 </br>
 
-Finally, let's apply the **forward pass**:
+Continuing, let's apply the **forward pass**:
 
 <details>
 
@@ -981,7 +982,7 @@ Now, let's test the **Sigmoid Function** for some **x<sub>i</sub>** input values
 > **NOTE:**  
 > The TensorFlow already has a **Sigmoid Function** built-in.
 
-[activations.py](../../algorithms/activations.py)
+[sigmoid-v01.py](src/activation_functions/sigmoid-v01.py)
 ```python
 import os
 import sys
@@ -1057,48 +1058,24 @@ Now, let's code the **Sigmoid Function** in the output of our layer:
 
 To start, let's add the **activation** attribute to the **Layer** class:
 
-[layers.py](../../models/layers.py)
+[dense_layer_w_sigmoid.py](src/layer/dense_layer_w_sigmoid.py)
 ```python
-class LayerDense:
+# Hidden layers.
+hidden1 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_1")(inputs)
+hidden2 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_2")(hidden1)
+hidden3 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_3")(hidden2)
 
-    def __init__(self, n_inputs, n_neurons, activation=None):
-        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
-        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
-        self.activation = activation
+# Output layer.
+output = tf.keras.layers.Dense(1, activation='sigmoid', name="output_layer")(hidden3)
 ```
 
-**Code Explanation:**
-
- - The `tf.keras.layers.Dense()` function already has the **activation** parameter:
-   - That's, the layer (dense) output is automatically activated using the specified activation function.
- - **NOTE:** The default parameter is *"linear"*.
+> **NOTE:**  
+> See that we can define the Activation Function of the output layer as **"sigmoid"**.
 
 Finally, let's see in the practice:
 
 [layers.py](../../models/layers.py)
 ```python
-import os
-import sys
-
-# Add the root directory 'aicodes' to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Hide TensorFlow warnings
-
-import numpy as np
-import tensorflow as tf
-
-from datasets.synthetic import spiral_data
-
-
-class LayerDense:
-
-    def __init__(self, n_inputs, n_neurons, activation=None):
-        self.layer = (tf.keras.layers.Input(shape=(n_inputs,)),)
-        self.layer = tf.keras.layers.Dense(n_neurons, activation=activation)
-        self.activation = activation
-
-    def forward(self, inputs):
-        self.output = self.layer(inputs)
 
 
 if __name__ == "__main__":
@@ -2496,10 +2473,15 @@ Layer Output (0-5):
 
 
 
+ - **Implementations:**
 
+<!--- ( Implementations ) --->
 
+---
 
+<div id="tf-ann"></div>
 
+## Implementing a Artificial (Dense) Neural Network
 
 
 

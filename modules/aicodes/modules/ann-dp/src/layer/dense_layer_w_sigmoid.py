@@ -11,12 +11,12 @@ n_inputs = 5
 inputs = tf.keras.Input(shape=(n_inputs,), name="input_layer")
 
 # Hidden layers.
-hidden1 = tf.keras.layers.Dense(4, name="hidden_layer_1")(inputs)
-hidden2 = tf.keras.layers.Dense(4, name="hidden_layer_2")(hidden1)
-hidden3 = tf.keras.layers.Dense(4, name="hidden_layer_3")(hidden2)
+hidden1 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_1")(inputs)
+hidden2 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_2")(hidden1)
+hidden3 = tf.keras.layers.Dense(4, activation='sigmoid', name="hidden_layer_3")(hidden2)
 
 # Output layer.
-output = tf.keras.layers.Dense(1, name="output_layer")(hidden3)
+output = tf.keras.layers.Dense(1, activation='sigmoid', name="output_layer")(hidden3)
 
 # Make the model (connect the layers).
 model = tf.keras.Model(inputs=inputs, outputs=output)
