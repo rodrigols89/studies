@@ -132,7 +132,7 @@
 
 ## Artificial Neural Networks Inspiration
 
-> *Artificial Neural Networks are inspired by the organic brain, translated to the computer.
+> Artificial Neural Networks are inspired by the organic brain, translated to the computer.
 
 ![img](images/ann-inspiration-01.png)  
 
@@ -510,7 +510,7 @@ tf.Tensor(4.8, shape=(), dtype=float32)
 **NOTE:**  
 In other words, *the dense layer is a fully connected layer*, meaning all neurons in one layer are connected to those in the next layer.
 
-![img](images/dense-neural-network-01.png)
+![img](images/dense-neural-network-01.png)  
 
 > **Why use a Dense Neural Network?**
 
@@ -544,7 +544,7 @@ In other words, *the dense layer is a fully connected layer*, meaning all neuron
 
 Here, let's implement the following Dense Neural Network:
 
-![img](images/dense-neural-network-01.png)
+![img](images/dense-neural-network-01.png)  
 
 To start, let's prepare the *input layer*:
 
