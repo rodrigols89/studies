@@ -2,31 +2,27 @@
 
 ## Conteúdo
 
- - **Fundamentos de Proposições Lógicas:**
-   - [Quando uma sentença é declarativa e sua relação com proposições lógicas?](#declarative-sentences)
-   - [Sentenças: Abertas e Fechadas](#open-and-closed)
-   - [Quais são os Princípios Fundamentais do Pensamento lógico?](#principles-of-logic)
- - **Tabela-Verdade:**
-   - **Questões abertas (livros, tutoriais):**
-     - [Conjunção: Quando é verdadeiro?](#conjunction-table)
-     - [Disjunção Inclusiva: Quando é verdadeiro?](#disjunction-inclusive-table)
-     - [Disjunção Exclusiva: Quando é verdadeiro?](#disjunction-inclusive-table)
-     - [Condicional: Quando é verdadeiro?](#conditional-table)
-     - [Bicondicional: Quando é verdadeiro?](#biconditional-table)
-     - [Tautologia & Contradição](#tautology-and-contradiction)
-     - [Como saber quantas linhas e quais valores V/F em cada linha de uma Tabela-Verdade de "n" letras de proposições?](#n-letters-count)
-     - [`A ∨ B' ⇒ (A ∨ B)'`](#qal-01)
-     - [`(A ∨ A') ⇒ (B ∧ B')`](#qal-02)
-     - [`[(A ∧ B') ⇒ C']'`](#qal-03)
-   - **Questões de Concurso:**
-     - **Fáceis:**
-       - [3312948 CEBRASPE (CESPE) - 2025 - Analista Administrativo (ANM)/Administração](#qcf-01)
-     - **Médias:**
-     - **Dificeis:**
+ - **Lógica das Proposições:**
+   - **Fundamentos de Proposições Lógicas:**
+     - [Quando uma sentença é declarativa e sua relação com proposições lógicas?](#declarative-sentences)
+     - [Sentenças: Abertas e Fechadas](#open-and-closed)
+     - [Quais são os Princípios Fundamentais do Pensamento lógico?](#principles-of-logic)
+     - [Tautologia, Contradição, Silogismo, Contingência e Equivalência](#tcsce)
+   - **Tabela-Verdade:**
+     - **Questões:**
+       - [Conjunção: Quando é verdadeiro?](#conjunction-table)
+       - [Disjunção Inclusiva: Quando é verdadeiro?](#disjunction-inclusive-table)
+       - [Disjunção Exclusiva: Quando é verdadeiro?](#disjunction-inclusive-table)
+       - [Condicional: Quando é verdadeiro?](#conditional-table)
+       - [Bicondicional: Quando é verdadeiro?](#biconditional-table)
+       - [Como saber quantas linhas e quais valores V/F em cada linha de uma Tabela-Verdade de "n" letras de proposições?](#n-letters-count)
+       - [`A ∨ B' ⇒ (A ∨ B)'`](#qal-01)
+       - [`(A ∨ A') ⇒ (B ∧ B')`](#qal-02)
+       - [`[(A ∧ B') ⇒ C']'`](#qal-03)
 <!---
 [WHITESPACE RULES]
 - Same topic = "20" Whitespace character.
-- Different topic = "100" Whitespace character.
+- Different topic = "200" Whitespace character.
 --->
 
 
@@ -129,7 +125,8 @@
 
 
 
-<!--- ( Fundamentos de Proposições Lógicas ) --->
+
+<!--- ( Lógica das Proposições ) --->
 
 ---
 
@@ -323,55 +320,143 @@ De acordo com a lógica:
 
 
 
+---
 
+<div id="tcsce">
 
+## Tautologia, Contradição, Silogismo, Contingência e Equivalência
 
+### Tautologia
 
+> **Quando uma proposição é considerada uma "tautologia"?**
 
+<details>
+<summary>RESPOSTA</summary>
+<br/>
 
+> Uma proposição é considerada uma **tautologia** quando ela é **sempre verdadeira**, independentemente dos valores lógicos de suas variáveis. Na tabela-verdade, todas as linhas da coluna final resultam em **V (verdadeiro)**.
 
+**Exemplo 1: `A ∨ A'` (Disjunção com a negação)**  
+Este é um exemplo clássico, pois uma *"proposição ou sua negação (`A ∨ A'`)"* sempre será verdadeira:
 
+| A   | A'  | A ∨ A' |
+|-----|-----|--------|
+| V   | F   | **V**  |
+| F   | V   | **V**  |
 
+**Por que isso é útil?**  
+Tautologias são fundamentais em lógica, pois *representam verdades universais*. Elas aparecem em provas lógicas e na simplificação de circuitos digitais.
 
+</details>
 
 
+### Contradição
 
+> **Quando uma proposição é considerada uma "contradição"?**
 
+<details>
+<summary>RESPOSTA</summary>
+<br/>
 
+> Uma proposição é considerada uma **contradição** quando ela é **sempre falsa**, independentemente dos valores lógicos de suas variáveis. Na tabela-verdade, todas as linhas da coluna final resultam em **F (falso)**.
 
+**Exemplo 1: `A ∧ A'` (Conjunção com a negação)**  
+Este é um exemplo clássico, pois uma *"proposição e sua negação (`A ∧ A'`)"* nunca podem ser verdadeiras ao mesmo tempo:
 
+| A   | A'  | A ∧ A' |
+|-----|-----|--------|
+| V   | F   | **F**  |
+| F   | V   | **F**  |
 
+**Explicação**:  
+Para `A ∧ A'` ser verdadeiro, tanto `A` quanto `A'` precisam ser verdadeiros, mas isso é impossível, pois `A'` é a negação de `A`.
 
+**Por que isso é útil?**  
+Contradições são importantes para identificar argumentos inválidos ou condições impossíveis em sistemas lógicos, como em verificação de software ou matemática.
 
+</details>
 
 
+### Silogismo
 
+> **O que é um silogismo na lógica?**
 
+<details>
+<summary>RESPOSTA</summary>
+<br/>
 
+> Um **silogismo** é uma forma de raciocínio dedutivo que consiste em duas premissas (ou proposições) que levam a uma conclusão lógica. Na lógica proposicional, um silogismo pode ser representado por uma implicação (→) que é sempre verdadeira, ou seja, uma tautologia.
 
+Um exemplo simples de silogismo é:
 
+- **Premissa 1:** Se chove, então a rua fica molhada. (P → Q)  
+- **Premissa 2:** Está chovendo. (P)  
+- **Conclusão:** Portanto, a rua está molhada. (Q)  
 
+Na lógica, isso é representado por [(P → Q) ∧ P] → Q. Veja a tabela-verdade:
 
+| P   | Q   | P → Q | (P → Q) ∧ P | [(P → Q) ∧ P] → Q |
+|-----|-----|-------|-------------|-------------------|
+| V   | V   | V     | V           | **V**            |
+| V   | F   | F     | F           | **V**            |
+| F   | V   | V     | F           | **V**            |
+| F   | F   | V     | F           | **V**            |
 
+**Explicação**:  
+Como a última coluna é sempre V (verdadeiro), isso confirma que o silogismo é uma tautologia.
 
+</details>
 
 
+### Contingência
 
+> **Quando uma proposição é considerada uma "contingência"?**
 
+<details>
+<summary>RESPOSTA</summary>
+<br/>
 
+> Uma proposição é considerada uma **contingência** quando ela não é nem uma tautologia nem uma contradição, ou seja, quando seu valor lógico depende dos valores das variáveis proposicionais. Em sua tabela-verdade, há pelo menos uma linha onde a proposição é verdadeira e pelo menos uma linha onde é falsa.
 
+Um exemplo simples de contingência é `A ∧ B`:
 
+| A   | B   | A ∧ B |
+|-----|-----|-------|
+| V   | V   | **V** |
+| V   | F   | **F** |
+| F   | V   | **F** |
+| F   | F   | **F** |
 
+**Explicação**:  
+Aqui, `A ∧ B` é verdadeira apenas quando A e B são verdadeiras, e falsa nos outros casos. Portanto, é uma contingência.
 
+</details>
 
 
+### Equivalência
 
+> **O que significa "equivalência" entre duas proposições?**
 
+<details>
+<summary>RESPOSTA</summary>
+<br/>
 
+> Duas proposições são **equivalentes** se elas tiverem os mesmos valores de verdade para todas as possíveis combinações de valores das variáveis proposicionais.  
+> Suas tabelas-verdade são idênticas.
 
+Um exemplo de equivalência é a lei de De Morgan: `(A ∧ B)' ≡ A' ∨ B'`:
 
+| A   | B   | A ∧ B | 👉 (A ∧ B)' | A'  | B'  | 👉 A' ∨ B' |
+|-----|-----|-------|----------|-----|-----|--------|
+| V   | V   | V     | **F**    | F   | F   | **F**  |
+| V   | F   | F     | **V**    | F   | V   | **V**  |
+| F   | V   | F     | **V**    | V   | F   | **V**  |
+| F   | F   | F     | **V**    | V   | V   | **V**  |
 
+**Explicação**:  
+As colunas de `(A ∧ B)'` e `A' ∨ B'` são idênticas, confirmando que as proposições são equivalentes.
 
+</details>
 
 
 
@@ -392,27 +477,189 @@ De acordo com a lógica:
 
 
 
+---
 
+## Operadores proposicionais e seus correspondentes
 
+### Conjunção (^)
 
+> Quais operações podem corresponder ao operador da conjunção (^)?
 
+<details>
 
+<summary>RESPOSTA</summary>
 
+<br/>
 
+ - **Símbolo lógico:** `P ^ Q`
+ - **Equivalente matemático:** `P * Q (multiplicação booleana)`
 
+| P | Q | P ^ Q |
+|---|---|-------|
+| 1 | 1 | 1     |
+| 1 | 0 | 0     |
+| 0 | 1 | 0     |
+| 0 | 0 | 0     |
 
+> **NOTE:**  
+> 1 = VERDADEIRO, 0 = FALSO.
 
+Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (Relação Matemática)**:
 
+ - **Teoria dos conjuntos:**
+   - A conjunção corresponde à **"interseção de conjuntos"**, denotada por `A ∩ B`.
+   - A interseção contém os elementos que pertencem a ambos os conjuntos `A e B`.
+   - **Exemplo:**
+     - Se A = `{1, 2, 3}` e `B = {2, 3, 4}`, então `A ∩ B = {2, 3}`, pois esses são os elementos comuns aos dois conjuntos.
+ - **Álgebra booleana (Relação Matemática):**
+   - A conjunção é representada pela operação `AND (multiplicação booleana)`.
+   - Onde, `1 ^ 1 = 1`, e qualquer outra combinação `(1 ^ 0, 0 ^ 1, 0 ^ 0)` resulta em `0`.
+   - **Exemplo:**
+     - P = 1, Q = 1: P ^ Q = `1 x 1 = 1`
+     - P = 1, Q = 0: P ^ Q = `1 x 0 = 0`
+     - P = 0, Q = 0: P ^ Q = `0 x 0 = 0`
 
+</details>
 
 
 
+### Disjunção (v)
 
+> Quais operações podem corresponder ao operador da disjunção (v)?
 
+<details>
 
+<summary>RESPOSTA</summary>
 
+<br/>
 
-<!--- ( Tabela-Verdade ) --->
+ - **Símbolo lógico:** `P v Q`
+ - **Equivalente matemático:** `P + Q` com a regra booleana de que `1 + 1 = 1` (não 2!)
+
+| P | Q | P v Q |
+|---|---|-------|
+| 1 | 1 | 1     |
+| 1 | 0 | 1     |
+| 0 | 1 | 1     |
+| 0 | 0 | 0     |
+
+> **NOTE:**  
+> 1 = VERDADEIRO, 0 = FALSO.
+
+Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (Relação Matemática)**:
+
+ - **Teoria dos conjuntos:**
+   - A disjunção corresponde à **"união de conjuntos"**, denotada por `A ∪ B`.
+   - `A` união contém todos os elementos que estão em `A`, em `B` ou em ambos.
+   - **Exemplo:**
+     - Usando os mesmos conjuntos `A = {1, 2, 3}` e `B = {2, 3, 4}`, temos `A ∪ B = {1, 2, 3, 4}`,
+ - **Álgebra booleana (Relação Matemática):**
+   - A disjunção é representada pela operação `OR (adição booleana)`.
+   - Onde, `0 v 0 = 0`, e qualquer outra combinação `(1 v 0, 0 v 1, 1 v 1)` resulta em `1`.
+   - No entanto, pode ser aproximada como uma **"soma saturada"**, onde `P v Q = min(P + Q, 1)`, ou expressa como `P + Q - P * Q`.
+   - **Exemplo:**
+     - P = 0, Q = 0: P v Q = `0 + 0 = 0`
+     - P = 0, Q = 1: P v Q = `0 + 1 = 1`
+     - P = 1, Q = 1: P v Q = `1 + 1 - 1 * 1 = 1`
+
+</details>
+
+
+
+### Condicional (→)
+
+> Quais operações podem corresponder ao operador Condicional (→)?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+ - **Símbolo lógico:** `P → Q`
+ - **Equivalente matemático:** `¬P + Q`
+
+| P | Q | P → Q |
+|---|---|-------|
+| 1 | 1 | 1     |
+| 1 | 0 | 0     |
+| 0 | 1 | 1     |
+| 0 | 0 | 1     |
+
+> **NOTE:**  
+> 1 = VERDADEIRO, 0 = FALSO.
+
+Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (Relação Matemática)**:
+
+ - **Teoria dos conjuntos:**
+   - O condicional está relacionado à **"inclusão de conjuntos"**.
+   - Se `A ⊆ B (A é subconjunto de B)`, significa que todo elemento de `A` também está em `B`, o que é análogo a `"se x ∈ A, então x ∈ B"`.
+   - **Exemplo:**
+     - Se `A = {2, 4}` e `B = {1, 2, 3, 4}`, então `A ⊆ B`, pois todos os elementos de `A` estão em `B`.
+     - Isso reflete o condicional: se um elemento pertence a A, ele obrigatoriamente pertence a B.
+ - **Álgebra booleana (Relação Matemática):**
+   - Não há correspondência direta com `+`, `-`, ou `*`.
+   - Porém, `P → Q` pode ser reescrito como `¬P v Q`, que, em termos matemáticos, é equivalente a `max(1 - P, Q)`.
+
+</details>
+
+
+
+### Bicondicional (↔)
+
+> Quais operações podem corresponder ao operador Bicondicional (↔)?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+ - **Símbolo lógico:** `P ↔ Q`
+ - **Equivalente matemático:** `(P * Q) + (¬P * ¬Q)` (Ou também: P = Q | valores iguais → verdadeiro)
+
+| P | Q | P ↔ Q |
+|---|---|-------|
+| 1 | 1 | 1     |
+| 1 | 0 | 0     |
+| 0 | 1 | 0     |
+| 0 | 0 | 1     |
+
+> **NOTE:**  
+> 1 = VERDADEIRO, 0 = FALSO.
+
+Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (Relação Matemática)**:
+
+ - **Teoria dos conjuntos:**
+   - O bicondicional corresponde à **"igualdade de conjuntos"**.
+   - `A = B` se e somente se `A ⊆ B` e `B ⊆ A`, ou seja, os conjuntos têm exatamente os mesmos elementos.
+   - **Exemplo:**
+     - Se `A = {1, 2}` e `B = {1, 2}`, então `A = B`, pois possuem os mesmos elementos.
+     - Isso reflete o bicondicional: "x ∈ A se e somente se x ∈ B" é verdadeiro para todo x.
+ - **Álgebra booleana (Relação Matemática):**
+   - O bicondicional pode ser expresso como `(P → Q) ^ (Q → P)` ou como `(P ^ Q) v (¬P ^ ¬Q)`.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -673,73 +920,6 @@ Logo:
 
 ---
 
-<div id="tautology-and-contradiction"></div>
-
-## Tautologia & Contradição
-
-### Tautologia
-
-> **Quando uma proposição é considerada uma "tautologia"?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-> Uma proposição é considerada uma **tautologia** quando ela sempre retorna *verdade (V)* em todas as linhas da Tabela-Verdade.
-
-Um exemplo simples de é *tautologia* é `A ∨ A' (disjunção)`:
-
-| A | A' | A ∨ A' |
-|---|----|--------|
-| V | F  | V      |
-| F | V  | V      |
-
-</details>
-
-### Contradição
-
-> **Quando uma proposição é considerada uma "contradição"?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-> Uma proposição é considerada uma **contradição** quando ela sempre retorna *falso (F)* em todas as linhas da Tabela-Verdade.
-
-Um exemplo simples de é *contradição* é `A ∧ A' (conjunção)`:
-
-| A | A' | A ∧ A' |
-|---|----|--------|
-| V | F  | F      |
-| F | V  | F      |
-
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
 <div id="n-letters-count"></div>
 
 ## Como saber quantas linhas e quais valores V/F em cada linha de uma Tabela-Verdade de "n" letras de proposições?
@@ -950,152 +1130,6 @@ Qual a tabela-verdade para a seguinte fórmula bem formada (fbf): `[(A ∧ B') �
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Questões de Concurso/Fáceis  ) --->
-
----
-
-<div id="qcf-01"></div>
-
-## 3312948 CEBRASPE (CESPE) - 2025 - Analista Administrativo (ANM)/Administração
-
-Considerando a proposição **P: “Não prometo que você voltará, e, se voltar, não será o mesmo.”**, julgue o item seguinte, em relação a aspectos da lógica sentencial dessa proposição.
-
-A tabela-verdade referente à proposição P possui mais de 15 linhas.
-
- - Certo
- - Errado
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-Primeiro vamos identificar quais (quantas) proposições simples tem a sentença:
-
- - (¬a) "Não prometo que você voltará";
- - (b) "e, se voltar";
- - (¬c) "não será o mesmo".
-
-Logo, nós teremos a seguinte proposição composta:
-
-```bash
-¬a ∧ (b → ¬c)
-```
-
-> **NOTE:**  
-> Porém, a questão que saber se "A tabela-verdade referente à proposição P possui mais de 15 linhas".
-
-Sabendo que nós temos 3 proposições simples e a formula para calcular o número de linhas de uma tabela-verdade é dada por **2<sup>n</sup>**, sendo **“n”** o número de proposições simples, temos:
-
-```bash
-2³ = 8
-```
-
-Ou seja, a resposta correta seria **"Errado"**, pois nossa tabela-verdade não terá mais 15 linhas.
-
-</details>
 
 
 
