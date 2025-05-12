@@ -82,6 +82,7 @@
 ## Artificial Intelligence
 
  - [Artificial Intelligence (Theory & Practice)](https://github.com/rodrigols89/studies/tree/aicodes/modules/aicodes)
+ - [Inteligência Artificial com TensorFlow](modules/tf-ai)
 
 ---
 
