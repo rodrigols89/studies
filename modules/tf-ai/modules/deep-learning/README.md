@@ -24,6 +24,7 @@
    - Adadelta
    - Nadam
    - FTRL
+ - [**Regularization (L1, L2, ElasticNet, Dropout, ..., etc):**](#regularization)
  - **Gráficos (Plots):**
    - **🤖 Gráficos relacionados ao treinamento do modelo:**
      - [Gráfico de Perda (Loss) por Época em Redes Neurais](#loss-by-epoch-plot)
@@ -33,6 +34,7 @@
      - [Matriz de Confusão (Confusion Matrix) – Entendendo os Acertos e Erros do Modelo](#confusion-matrix)
  - **Projetos:**
    - [🌸 Iris flower data set](#iris-data-set)
+ - [**🚀 Instalação / Execução local**](#settings)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -401,6 +403,106 @@ model.compile(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Regularization ) --->
+
+---
+
+<div id="regularization"></div>
+
+## Regularization (L1, L2, ElasticNet, Dropout, ..., etc)
+
+> **Durante o treinamento de redes neurais, o modelo pode memorizar demais os dados de treino (isso é o famoso overfitting).**  
+> A regularização é uma técnica que penaliza pesos muito altos, ajudando o modelo a generalizar melhor.
+
+### ➕ Regularization adiciona um termo extra à *Função de Perda (Cost Function)*
+
+ - Isso desencoraja o modelo de aprender pesos grandes.
+ - Ele "força" a rede a ter pesos mais equilibrados.
+
+### 🧩 Tipos de Regularização
+
+| Nome                     | O que faz                                                 | Quando usar                                                       |
+| ------------------------ | --------------------------------------------------------- | ----------------------------------------------------------------- |
+| **L1 (Lasso)**           | Zera pesos desnecessários → modelo mais simples e esparso | Quando quer eliminar pesos e fazer seleção automática de features |
+| **L2 (Ridge)**           | Penaliza pesos grandes suavemente → não zera pesos        | Quando quer evitar overfitting sem eliminar pesos                 |
+| **L1 + L2 (ElasticNet)** | Combinação dos dois                                       | Quando quer o melhor dos dois mundos                              |
+| **Dropout**              | Desliga aleatoriamente neurônios durante o treino         | Para evitar co-adaptação entre neurônios                          |
+| **Early Stopping**       | Para o treinamento quando a validação piora               | Quando o modelo começa a sobreajustar                             |
+| **Data Augmentation**    | Aumenta o dataset com variações dos dados                 | Para aumentar diversidade e robustez                              |
+| **Batch Normalization**  | Normaliza a saída das camadas                             | Acelera e estabiliza o treinamento                                |
+| **Noise Injection**      | Adiciona ruído aos dados ou pesos                         | Para tornar o modelo mais robusto                                 |
+| **Weight Constraint**    | Impõe limites ao valor dos pesos (ex: norm max)           | Para manter os pesos sob controle                                 |
+| **Label Smoothing**      | Suaviza os rótulos (em vez de 1 e 0, usa 0.9 e 0.1)       | Evita que a rede fique confiante demais                           |
 
 
 
@@ -1661,6 +1763,8 @@ Classe Real: 1
 
 
 
+
+<!--- ( 🚀 Instalação / Execução local ) --->
 
 ---
 
