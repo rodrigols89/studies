@@ -2,6 +2,35 @@
 
 ## Conteúdo
 
+ - [**Funções de Perda (Loss Functions):**](#loss-functions)
+   - **Problemas de Regressão:**
+     - Mean Squared Error (MSE | Problemas com saída contínua, ex: preço, temperatura)
+     - Mean Absolute Error (MAE | Quando você quer menos sensibilidade a outliers)
+     - Huber Loss (Regressão robusta, Combinação entre MSE e MAE, mais robusta a outliers)
+   - **Problemas de Classificação:**
+     - Binary Cross Entropy (Quando há apenas 2 classes, ex: spam/não-spam)
+     - Categorical Cross-Entropy (Saídas em one-hot (ex: [0, 0, 1])
+     - Sparse Categorical Crossentropy (Saídas como rótulo inteiro, ex: 2 ao invés de [0, 0, 1])
+   - **Comparação entre distribuições de probabilidade:**
+     - Kullback-Leibler Divergence (Quando se quer medir a diferença entre duas distribuições)
+ - [**Optimizers (ou Otimizadores):**](#optimizers)
+   - Stochastic Gradient Descent (SGD)
+   - SGD com Momentum
+   - Learning Rate
+   - Learning Rate Decay
+   - Adam
+   - RMSprop
+   - Adagrad
+   - Adadelta
+   - Nadam
+   - FTRL
+ - **Gráficos (Plots):**
+   - **🤖 Gráficos relacionados ao treinamento do modelo:**
+     - [Gráfico de Perda (Loss) por Época em Redes Neurais](#loss-by-epoch-plot)
+     - [Gráfico de Acurácia por Época em Redes Neurais](#accuracy-by-epoch-plot)
+     - [Interpretando os Gráficos de Perda e Acurácia](#loss-vs-accuracy)
+   - **✅ Gráficos relacionados ao desempenho do modelo:**
+     - [Matriz de Confusão (Confusion Matrix) – Entendendo os Acertos e Erros do Modelo](#confusion-matrix)
  - **Projetos:**
    - [🌸 Iris flower data set](#iris-data-set)
  - [**REFERÊNCIAS**](#ref)
@@ -10,6 +39,934 @@
 - Same topic = "20" Whitespace character.
 - Different topic = "200" Whitespace character.
 --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Funções de Perda (Loss Functions) ) --->
+
+---
+
+<div id="loss-functions"></div>
+
+## Funções de Perda (Loss Functions)
+
+> Funções de perda (Loss Functions) são fórmulas matemáticas que medem o erro entre a **"saída prevista"** pela rede neural e a **"saída real"**.
+
+Em outras palavras, elas dizem:
+
+ - Quão ruim está a previsão da rede;
+ - **NOTE:** Quanto menor o valor da perda, melhor o modelo está aprendendo.
+
+### 🎯 Para que servem?
+
+As *funções de perda (loss functions)** servem para orientar o processo de aprendizagem da rede neural. Durante o treinamento, a rede ajusta seus pesos internos para minimizar essa perda.
+
+> **NOTE:**  
+> ➡️ Os otimizadores (como Adam, SGD, etc.) usam essa perda para saber como e quanto alterar os pesos (e bias) da rede.
+
+### ⏱️ Quando são usadas?
+
+As funções de perda **são usadas em todo treino da rede neural**:
+
+ - A cada batch de dados;
+ - Em cada época;
+ - **NOTE:** São indispensáveis — sem ela, o modelo não aprende.
+
+### 📦 Tipos de Funções de Perda
+
+> A função de perda muda dependendo do tipo de problema (Regressão ou Classificação).
+
+**🔵 1. Classificação:**  
+Para tarefas em que o modelo precisa prever classes (ex: detectar se uma flor é iris-setosa, iris-versicolor ou iris-virginica).
+
+| Função de Perda                   | Quando usar                                                                |
+| --------------------------------- | -------------------------------------------------------------------------- |
+| `categorical_crossentropy`        | Classificação multiclasse com one-hot encoding                             |
+| `sparse_categorical_crossentropy` | Classificação multiclasse com labels inteiros (sem one-hot)                |
+| `binary_crossentropy`             | Classificação binária (ex: 0 ou 1)                                         |
+| `Kullback-Leibler divergence`     | Quando se quer medir a diferença entre duas distribuições de probabilidade |
+
+**🟠 2. Regressão:**  
+Para tarefas em que o modelo precisa prever números contínuos (ex: preço de uma casa, temperatura, etc.)
+
+| Função de Perda       | Quando usar                                |
+| --------------------- | ------------------------------------------ |
+| `mean_squared_error`  | Regressão – penaliza mais os grandes erros |
+| `mean_absolute_error` | Regressão – menos sensível a outliers      |
+| `huber_loss`          | Regressão robusta – mistura dos dois acima |
+
+
+### ⚙️ Como implementar?
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+Na prática, você escolhe a **função de perda (loss function)** ao compilar o modelo com TensorFlow:
+
+<br/>
+
+```python
+model.compile(
+    loss='categorical_crossentropy',  # <- Função de perda
+)
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Optimizers (ou Otimizadores) ) --->
+
+---
+
+<div id="optimizers"></div>
+
+## Optimizers (ou Otimizadores)
+
+> **"Otimizadores"** são algoritmos usados para **ajustar os pesos de uma rede neural durante o treinamento**, **minimizando a função de perda (loss function)**.
+
+### 🎯 Para que servem?
+
+ - Encontrar os melhores valores de pesos e bias;
+ - Reduzir o erro (loss) entre as previsões e os valores reais;
+ - Ajudar o modelo a convergir para uma solução precisa;
+ - Tornar o treinamento mais rápido e estável.
+
+### ⚙️ Como implementar?
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+Na prática, você escolhe o **otimizador** ao compilar o modelo com TensorFlow:
+
+<br/>
+
+```python
+model.compile(
+    optimizer="adam",  # <- Otimizador
+)
+```
+
+</details>
+
+<br/>
+
+| 🔧 Nome                                  | 📝 Breve descrição                                                                                                                                                    |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Stochastic Gradient Descent (SGD)**    | Método clássico. Atualiza pesos a cada amostra. Simples e eficiente, mas pode oscilar.                                                                                |
+| **SGD com Momentum**                     | Variante do SGD. Adiciona uma "memória" do gradiente anterior (momentum), o que ajuda a evitar oscilações e acelera em direção à solução.                             |
+| **Learning Rate**                        | Hiperparâmetro que controla o "tamanho do passo" que o otimizador dá ao atualizar os pesos. Um valor muito alto pode pular o mínimo; muito baixo pode demorar demais. |
+| **Learning Rate Decay**                  | Estratégia para diminuir gradualmente o learning rate conforme o treinamento avança. Permite aprendizado rápido no início e refinamento no final.                     |
+| **Adam**                                 | Muito usado. Combina Momentum + RMSprop. Adapta os passos automaticamente e funciona bem em muitos problemas.                                                         |
+| **RMSprop**                              | Mantém histórico de gradientes com média exponencial. Ideal para problemas com dados não estacionários (como séries temporais).                                       |
+| **Adagrad**                              | Adapta o tamanho do passo para cada parâmetro com base no histórico de gradientes. Funciona bem com dados esparsos.                                                   |
+| **Adadelta**                             | Variante do Adagrad que limita a acumulação dos gradientes passados. Melhora a estabilidade.                                                                          |
+| **Nadam**                                | Combina Adam com Nesterov momentum. Pode oferecer convergência mais rápida e suave.                                                                                   |
+| **FTRL (Follow The Regularized Leader)** | Otimizador específico para problemas com muitos dados esparsos (ex: grandes sistemas de recomendação). Muito usado no Google.                                         |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Gráficos ) --->
+
+---
+
+<div id="loss-by-epoch-plot"></div>
+
+## Gráfico de Perda (Loss) por Época em Redes Neurais
+
+**🔍 O que é "Perda (Loss) por Época"?**  
+Durante o treinamento de uma rede neural, o modelo tenta prever os resultados certos com base nos dados de entrada. A **função de perda (loss function)** é usada para medir o quanto o modelo erra em cada etapa.
+
+ - **Perda (Loss):** Um número que representa o erro do modelo — quanto menor, melhor.
+ - **Época (Epoch):** Uma passada completa por todos os dados de treino. Se você treina por 50 épocas, o modelo verá o mesmo conjunto de dados 50 vezes.
+ - **Gráfico de perda por época:** Mostra como o *erro (loss)* muda ao longo do treinamento. Ele ajuda a entender se o modelo está aprendendo, estagnado ou até piorando.
+
+> **Por que esse gráfico é importante?**
+
+ - **Ele responde perguntas como:**
+   - O modelo está aprendendo com o tempo?
+   - A perda está diminuindo ou aumentando?
+   - O modelo está sofrendo overfitting?
+
+Ótimo, agora que nós já entendemos o que é **"Perda (Loss) por Época"**, vamos vamos criar uma função que faz isso para nós para qualquer tipo de rede neural e salva o gráfico em uma imagem:
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+[plots.py](src/plots.py)
+```python
+import matplotlib.pyplot as plt
+import os
+
+def plot_loss(history, filename="loss_plot.png"):
+    """
+    Gera e salva um gráfico de perda (loss) por época com base no objeto `history` do Keras.
+    
+    Parâmetros:
+    - history: objeto retornado por model.fit()
+    - filename: nome do arquivo de imagem que será salvo
+    """
+    loss = history.history.get("loss")
+    val_loss = history.history.get("val_loss")
+
+    epochs = range(1, len(loss) + 1)
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(epochs, loss, "b-", label="Loss de Treinamento")
+    
+    if val_loss:
+        plt.plot(epochs, val_loss, "r--", label="Loss de Validação")
+
+    plt.title("Perda (Loss) por Época")
+    plt.xlabel("Época")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.grid(True)
+
+    plt.savefig("../images/" + filename)
+    plt.close()
+```
+
+Agora é só treinar o modelo com o método `fit()` e pegar o objeto retornado pelo mesmo e passar para a função `plot_loss()`:
+
+```python
+# Treinamento
+history = model.fit(
+    X_train,
+    y_train_ohe,
+    epochs=50,
+    batch_size=8,
+    verbose=0
+)
+
+plot_loss(history, filename="loss_plot-01.png")
+```
+
+**GRÁFICO:**
+
+![img](images/loss_plot-01.png)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="accuracy-by-epoch-plot"></div>
+
+## Gráfico de Acurácia por Época em Redes Neurais
+
+**🎯 O que é "Acurácia por Época"?**  
+Durante o treinamento de uma rede neural, além de medir quanto o modelo está errando (com a perda), também queremos saber o quanto ele está acertando. Para isso usamos a acurácia.
+
+ - **Acurácia (accuracy):** A porcentagem de acertos que o modelo teve em relação ao total de exemplos avaliados.
+ - **Época (Epoch):** Uma rodada completa de treinamento, onde o modelo vê todos os dados uma vez.
+ - **Gráfico de acurácia por época:** Mostra como a porcentagem de acertos do modelo muda a cada época.
+
+> **Para que serve esse gráfico?**
+
+ - **Esse gráfico ajuda a responder:**
+   - O modelo está melhorando ao longo do tempo?
+   - O modelo está memorizando os dados de treino (overfitting)?
+   - O desempenho está estagnado?
+
+É comum usar dois tipos de acurácia no gráfico:
+
+ - **Acurácia de treino:** desempenho nos dados usados para treinar.
+ - **Acurácia de validação:** desempenho em dados que o modelo nunca viu durante o treino.
+
+Ótimo, agora que nós já entendemos o que é **"Acurácia por Época"**, vamos vamos criar uma função que faz isso para nós para qualquer tipo de rede neural e salva o gráfico em uma imagem:
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+[plots.py](src/plots.py)
+```python
+def plot_accuracy(history, filename="accuracy_plot.png"):
+    """
+    Gera e salva um gráfico de acurácia por época com base no objeto `history` do Keras.
+
+    Parâmetros:
+    - history: objeto retornado por model.fit()
+    - filename: nome do arquivo de imagem que será salvo
+    """
+    acc = history.history.get("accuracy")
+    val_acc = history.history.get("val_accuracy")
+
+    epochs = range(1, len(acc) + 1)
+
+    plt.figure(figsize=(8, 5))
+    plt.plot(epochs, acc, "b-", label="Acurácia de Treinamento")
+    
+    if val_acc:
+        plt.plot(epochs, val_acc, "g--", label="Acurácia de Validação")
+
+    plt.title("Acurácia por Época")
+    plt.xlabel("Época")
+    plt.ylabel("Acurácia")
+    plt.legend()
+    plt.grid(True)
+
+    plt.savefig("../images/" + filename)
+    plt.close()
+```
+
+Agora é só treinar o modelo com o método `fit()` e pegar o objeto retornado pelo mesmo e passar para a função `plot_accuracy()`:
+
+```python
+# Treinamento
+history = model.fit(
+    X_train,
+    y_train_ohe,
+    epochs=50,
+    batch_size=8,
+    verbose=0
+)
+
+plot_accuracy(history, filename="accuracy_plot-01.png")
+```
+
+**GRÁFICO:**
+
+![img](images/accuracy_plot-01.png)  
+
+</details>
+
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="loss-vs-accuracy"></div>
+
+## Interpretando os Gráficos de Perda e Acurácia
+
+Quando treinamos uma rede neural, é essencial acompanhar como o modelo está se comportando a cada época. Os dois principais gráficos para isso são:
+
+ - Gráfico de Perda por Época (Loss)
+ - Gráfico de Acurácia por Época (Accuracy)
+
+Mas, mais importante que olhar separadamente, é analisar os dois juntos.
+
+### 🔁 Por que observar os dois gráficos juntos?
+
+A combinação dos dois gráficos ajuda você a entender se:
+
+ - O modelo está aprendendo bem.
+ - O modelo está sofrendo com overfitting (ajuste exagerado aos dados de treino).
+ - O modelo está subajustado (underfitting), ou seja, não aprendeu o suficiente.
+
+### ✅ Situação 1: O Modelo Está Aprendendo Bem
+
+Comportamento esperado:
+
+| Gráfico         | O que acontece?     |
+| --------------- | ------------------- |
+| 📉 **Loss**     | Diminui com o tempo |
+| 📈 **Accuracy** | Aumenta com o tempo |
+
+> **➡️ Interpretação:** 
+> O modelo está aprendendo a generalizar e se adaptar aos dados.
+
+### ⚠️ Situação 2: Overfitting (Sobreajuste)
+
+Comportamento típico:
+
+| Gráfico         | Treinamento      | Validação         |
+| --------------- | ---------------- | ----------------- |
+| 📉 **Loss**     | Diminui          | Começa a subir 📈 |
+| 📈 **Accuracy** | Sobe bastante 📈 | Começa a cair 📉  |
+
+> **➡️ Interpretação:**  
+> O modelo está aprendendo bem os dados de treino, mas está memorizando demais e não consegue generalizar para novos dados (test/validação). Isso é *"overfitting"*.
+
+ - **🛠️ O que fazer nesse caso:**
+   - Reduza o número de épocas.
+   - Use técnicas como regularização (Dropout, L2, etc.).
+   - Adicione mais dados ou use Data Augmentation.
+
+### 🧊 Situação 3: Underfitting (Subajuste)
+
+Comportamento típico:
+
+| Gráfico         | O que acontece?             |
+| --------------- | --------------------------- |
+| 📉 **Loss**     | Fica alto ou não muda muito |
+| 📈 **Accuracy** | Baixa ou não sobe muito     |
+
+> **➡️ Interpretação:**  
+> O modelo não está aprendendo o suficiente nem no treino nem na validação.
+
+ - **🛠️ O que fazer nesse caso:**
+   - Aumente a complexidade do modelo (mais camadas ou neurônios).
+   - Treine por mais épocas.
+   - Melhore o pré-processamento dos dados.
+
+Ótimo, agora que nós já entendemos qual a vantagem de comparar os gráficos de **Perda (Loss)** e **Acurácia (Accuracy)**, vamos criar um gráfico que gera essa comparação para qualquer Rede Neural e salve em uma imagem:
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+[plots.py](src/plots.py)
+```python
+def loss_vs_accuracy_plot(history, filename="training_metrics.png"):
+    """
+    Gera e salva um gráfico com a perda (loss) e acurácia (accuracy) por época, usando o histórico de treinamento.
+    
+    Parâmetros:
+    - history: objeto retornado por model.fit()
+    - filename: nome do arquivo de imagem a ser salvo
+    """
+    loss = history.history.get("loss")
+    val_loss = history.history.get("val_loss")
+    acc = history.history.get("accuracy")
+    val_acc = history.history.get("val_accuracy")
+
+    epochs = range(1, len(loss) + 1)
+
+    plt.figure(figsize=(12, 5))
+
+    # 🔻 Subplot 1: Perda
+    plt.subplot(1, 2, 1)
+    plt.plot(epochs, loss, "b-", label="Perda de Treinamento")
+    if val_loss:
+        plt.plot(epochs, val_loss, "r--", label="Perda de Validação")
+    plt.title("Perda por Época")
+    plt.xlabel("Época")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.grid(True)
+
+    # 🔺 Subplot 2: Acurácia
+    plt.subplot(1, 2, 2)
+    plt.plot(epochs, acc, "g-", label="Acurácia de Treinamento")
+    if val_acc:
+        plt.plot(epochs, val_acc, "m--", label="Acurácia de Validação")
+    plt.title("Acurácia por Época")
+    plt.xlabel("Época")
+    plt.ylabel("Acurácia")
+    plt.legend()
+    plt.grid(True)
+
+    plt.savefig("../images/" + filename)
+    plt.close()
+```
+
+Agora é só treinar o modelo com o método `fit()` e pegar o objeto retornado pelo mesmo e passar para a função `loss_vs_accuracy_plot()`:
+
+```python
+# Treinamento
+history = model.fit(
+    X_train,
+    y_train_ohe,
+    validation_data=(X_test, y_test_ohe),  # obrigatório para ter val_loss e val_accuracy
+    epochs=50,
+    batch_size=8,
+    verbose=0
+)
+
+loss_vs_accuracy_plot(history, filename="loss-vs-accuracy-01.png")
+```
+
+**GRÁFICO:**
+
+![img](images/loss-vs-accuracy-01.png)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="confusion-matrix"></div>
+
+## Matriz de Confusão (Confusion Matrix) – Entendendo os Acertos e Erros do Modelo
+
+**✅ O que é a Matriz de Confusão (Confusion Matrix)?**  
+A *matriz de confusão (Confusion Matrix)* é uma tabela que mostra como o seu `modelo de classificação` está se saindo, comparando as previsões com os valores reais.
+
+Ela indica onde o modelo acertou e onde errou, classe por classe.
+
+### 🧠 Estrutura da Matriz
+
+Para um problema com 3 classes (por exemplo, Iris Dataset), por exemplo:
+
+|                    | **Classe Prevista: 0**  | **Classe Prevista: 1**  | **Classe Prevista: 2**   |
+| ------------------ | ----------------------- | ----------------------- | ------------------------ |
+| **Classe Real: 0** | ✅ Acertos da classe 0  | ❌ Erros para classe 1  | ❌ Erros para classe 2  |
+| **Classe Real: 1** | ❌ Erros para classe 0  | ✅ Acertos da classe 1  | ❌ Erros para classe 2  |
+| **Classe Real: 2** | ❌ Erros para classe 0  | ❌ Erros para classe 1  | ✅ Acertos da classe 2  |
+
+> **NOTE:**  
+> Olhando para a tabela acima é interessante ver quando (quantas vezes) ele errou por linha (classe real).  
+> Quando ele erra nós dizemos que ele **"se confundiu"** com essa classe prevista (coluna).
+
+ - Os acertos estão na diagonal principal (em verde).
+ - Os erros estão fora da diagonal (em vermelho).
+
+### 🎯 Para que serve?
+
+ - Avaliar quais classes o modelo *confunde*.
+ - Diagnosticar erros específicos (ex: a classe 1 sempre é confundida com a 2).
+ - Melhorar o modelo, observando padrões de erro.
+
+Ótimo, agora que nós já entendemos qual a vantagem de utilizar uma **Matriz de Confusão (Confusion Matrix)**, vamos criar um gráfico que gera essa comparação para qualquer Rede Neural e salve em uma imagem:
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+[plots.py](src/plots.py)
+```python
+def plot_confusion_matrix(y_true, y_pred, class_names=None, filename="confusion_matrix.png"):
+    """
+    Gera e salva um gráfico de matriz de confusão.
+    
+    Parâmetros:
+    - y_true: rótulos verdadeiros
+    - y_pred: rótulos previstos pelo modelo
+    - class_names: nomes das classes (opcional)
+    - filename: nome do arquivo de saída
+    """
+    # Calcula a matriz de confusão
+    cm = confusion_matrix(y_true, y_pred)
+
+    # Cria os rótulos se não forem fornecidos
+    if class_names is None:
+        class_names = [str(i) for i in range(cm.shape[0])]
+
+    # Cria o gráfico
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+                xticklabels=class_names,
+                yticklabels=class_names)
+
+    plt.xlabel("Classe Predita")
+    plt.ylabel("Classe Real")
+    plt.title("Matriz de Confusão")
+    plt.tight_layout()
+
+    plt.savefig("../images/" + filename)
+    plt.close()
+```
+
+Agora nós vamos:
+
+ - Treinar o modelo;
+ - Fazer previsões com `X_test`:
+   - `y_pred = [[0.1, 0.7, 0.2], [0.8, 0.1, 0.1], [0.2, 0.3, 0.5]]` 
+ - Retornar o índice de maior probabilidade em cada linha:
+   - Ou seja, transforma as probabilidades em rótulos previstos (classes).
+   - `y_pred_classes = tf.argmax(y_pred, axis=1).numpy()`
+   - Retorno: `<tf.Tensor: shape=(3,), dtype=int64, numpy=array([1, 0, 2])>`
+
+`y_pred_classes = tf.argmax(y_pred, axis=1).numpy()`  
+Essa linha transforma as probabilidades de saída da rede em classes previstas (inteiros).
+
+| Saída da rede (`y_pred`) | Classe prevista (`y_pred_classes`) |
+| ------------------------ | ---------------------------------- |
+| \[0.1, 0.7, 0.2]         | 1 (maior probabilidade é 0.7)      |
+| \[0.8, 0.1, 0.1]         | 0 (maior probabilidade é 0.8)      |
+| \[0.2, 0.3, 0.5]         | 2 (maior probabilidade é 0.5)      |
+
+O código antes de chamar a função para criar a **Matriz de Confusão (Confusion Matrix)** é o seguinte:
+
+```python
+# Treinamento
+history = model.fit(
+    X_train,
+    y_train_ohe,
+    validation_data=(X_test, y_test_ohe),  # obrigatório para ter val_loss e val_accuracy
+    epochs=50,
+    batch_size=8,
+    verbose=0
+)
+
+y_pred = model.predict(X_test)
+y_pred_classes = tf.argmax(y_pred, axis=1).numpy()
+
+plot_confusion_matrix(
+    y_true=y_test,
+    y_pred=y_pred_classes,
+    class_names=["Setosa", "Versicolor", "Virginica"],
+    filename="confusion-matrix-01.png"
+)
+```
+
+**GRÁFICO:**
+
+![img](images/confusion-matrix-01.png)  
+
+</details>
+
 
 
 
@@ -603,8 +1560,6 @@ Classe Real: 1
 
 </details>
 
-<br/>
-
 
 
 
@@ -762,3 +1717,20 @@ pip install -U -v --require-virtualenv -r requirements.txt
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
+
+<!--->
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+[](src/)
+```python
+
+```
+
+</details>
+
+<br/>
