@@ -2,6 +2,9 @@
 
 ## Conteúdo
 
+ - **Fundamentos de Deep Learning:**
+   - [Ordem dos componentes no treinamento](#training-order)
+ - [**Funções de Ativação (Activation Functions):**](#activation-functions)
  - [**Funções de Perda (Loss Functions):**](#loss-functions)
    - **Problemas de Regressão:**
      - Mean Squared Error (MSE | Problemas com saída contínua, ex: preço, temperatura)
@@ -143,6 +146,310 @@
 
 
 
+<!--- ( Fundamentos de Deep Learning ) --->
+
+---
+
+<div id="training-order"></div>
+
+## Ordem dos componentes no treinamento
+
+### 🔁 1. Forward Pass (Propagação Direta)
+
+ - **1. Entrada passa pelas camadas:**
+   - A cada camada densa ou convolucional:
+     - Os dados são multiplicados pelos pesos e somados ao viés.
+     - A seguir, aplica-se a função de ativação.
+ - **2. Camada de saída:**
+   - A saída passa por uma função de ativação final (ex: *softmax* ou *sigmoid*).
+ - **3. Cálculo da Loss (Função de Perda):**
+   - A saída da rede é comparada com a resposta correta (rótulo).
+   - A função de perda calcula o erro da predição.
+
+### 🔁 2. Backward Pass (Backpropagation)
+
+ - **4. Backpropagation:**
+   - O erro (loss) calculado é propagado de volta pela rede usando a derivada da função de ativação em cada camada.
+ - **5. Otimização (Otimizador):**
+   - O otimizador usa o gradiente para ajustar os pesos da rede, tentando minimizar a loss.
+   - Isso envolve hiperparâmetros como:
+     - learning rate;
+     - momentum;
+     - e outros (dependendo do otimizador: Adam, SGD, etc).
+
+**🎯 Em resumo:**
+
+| Ordem | Etapa                                | Componente envolvido                  |
+| ----- | ------------------------------------ | ------------------------------------- |
+| 1     | Propagação direta (Forward Pass)     | **Funções de ativação**               |
+| 2     | Cálculo da perda                     | **Função de perda (Loss)**            |
+| 3     | Propagação reversa (Backpropagation) | Derivadas das **funções de ativação** |
+| 4     | Atualização de pesos                 | **Otimizador (Optimizer)**            |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Funções de Ativação (Activation Functions) ) --->
+
+---
+
+<div id="activation-functions"></div>
+
+## Funções de Ativação (Activation Functions)
+
+> As **Funções de Ativação (Activation Functions)** são operações matemáticas aplicadas ao final de cada neurônio de uma rede neural. Elas determinam se um neurônio **"dispara" (ativa)** ou não, **de forma não linear**.
+
+### 🎯 Para que servem?
+
+As funções de ativação têm 3 principais objetivos:
+
+ - **1. Introduzir não linearidade:**
+   - Permite à rede aprender relações complexas nos dados (como imagens, sons, linguagem).
+ - **2. Controlar a saída do neurônio:**
+   - Podem limitar os valores (ex: entre 0 e 1 ou -1 e 1).
+ - **3. Facilitar o aprendizado:**
+   - Algumas funções ajudam os gradientes a fluir melhor durante o treinamento.
+
+### 🔁 Onde utilizar?
+
+ - Exceto (geralmente) na *camada de entrada*;
+ - Você utiliza funções de ativação em cada *camada densa* ou *convolucional* da sua rede neural;
+ - E com atenção especial à *camada de saída*.
+
+🔍 Principais Funções de Ativação
+
+| Função         | Fórmula / Saída                     | Quando usar                                                 |
+| -------------- | ----------------------------------- | ----------------------------------------------------------- |
+| **ReLU**       | `f(x) = max(0, x)`                  | Muito usada em camadas ocultas. Rápida e eficiente.         |
+| **Sigmoid**    | `f(x) = 1 / (1 + e^-x)`             | Saída binária (ex: classificação 0 ou 1).                   |
+| **Tanh**       | `f(x) = (e^x - e^-x)/(e^x + e^-x)`  | Alternativa à sigmoid. Saída entre -1 e 1.                  |
+| **Softmax**    | `exp(x_i)/∑exp(x_j)`                | Camada de saída em classificação com múltiplas classes.     |
+| **Leaky ReLU** | `f(x) = x se x>0, αx se x<=0`       | Resolve o "problema de neurônio morto" do ReLU.             |
+| **ELU**        | `x se x > 0; α(exp(x)-1) se x <= 0` | Variante mais suave que Leaky ReLU.                         |
+| **Swish**      | `f(x) = x * sigmoid(x)`             | Usada em redes modernas (por exemplo, Google EfficientNet). |
+
+### 🛠️ Como implementar?
+
+<details>
+
+<summary>TensorFlow (Python)</summary>
+
+<br/>
+
+No TensorFlow você adiciona esse argumento na hora de criar as camadas:
+
+```python
+# Camadas Ocultas (Hidden Layers)
+hidden1 = tf.keras.layers.Dense(5, activation="relu", name="hidden_layer_1")(inputs)
+hidden2 = tf.keras.layers.Dense(3, activation="relu", name="hidden_layer_2")(hidden1)
+
+# Camada de Saída (Output Layer)
+output = tf.keras.layers.Dense(3, activation="softmax", name="output_layer")(hidden2)
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Funções de Perda (Loss Functions) ) --->
 
 ---
@@ -151,7 +458,7 @@
 
 ## Funções de Perda (Loss Functions)
 
-> Funções de perda (Loss Functions) são fórmulas matemáticas que medem o erro entre a **"saída prevista"** pela rede neural e a **"saída real"**.
+> **Funções de Perda (Loss Functions)** são fórmulas matemáticas que medem o erro entre a *"saída prevista"* pela rede neural e a *"saída real"*.
 
 Em outras palavras, elas dizem:
 
@@ -160,7 +467,7 @@ Em outras palavras, elas dizem:
 
 ### 🎯 Para que servem?
 
-As *funções de perda (loss functions)** servem para orientar o processo de aprendizagem da rede neural. Durante o treinamento, a rede ajusta seus pesos internos para minimizar essa perda.
+As **Funções de Perda (Loss Functions)** servem para orientar o processo de aprendizagem da rede neural. Durante o treinamento, a rede ajusta seus pesos internos para minimizar essa perda.
 
 > **NOTE:**  
 > ➡️ Os otimizadores (como Adam, SGD, etc.) usam essa perda para saber como e quanto alterar os pesos (e bias) da rede.
@@ -197,7 +504,7 @@ Para tarefas em que o modelo precisa prever números contínuos (ex: preço de u
 | `huber_loss`          | Regressão robusta – mistura dos dois acima |
 
 
-### ⚙️ Como implementar?
+### 🛠️ Como implementar?
 
 <details>
 
@@ -336,7 +643,7 @@ model.compile(
  - Ajudar o modelo a convergir para uma solução precisa;
  - Tornar o treinamento mais rápido e estável.
 
-### ⚙️ Como implementar?
+### 🛠️ Como implementar?
 
 <details>
 
@@ -503,6 +810,39 @@ model.compile(
 | **Noise Injection**      | Adiciona ruído aos dados ou pesos                         | Para tornar o modelo mais robusto                                 |
 | **Weight Constraint**    | Impõe limites ao valor dos pesos (ex: norm max)           | Para manter os pesos sob controle                                 |
 | **Label Smoothing**      | Suaviza os rótulos (em vez de 1 e 0, usa 0.9 e 0.1)       | Evita que a rede fique confiante demais                           |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -761,8 +1101,6 @@ plot_accuracy(history, filename="accuracy_plot-01.png")
 ![img](images/accuracy_plot-01.png)  
 
 </details>
-
-<br/>
 
 
 
@@ -1267,8 +1605,6 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 </details>
 
-<br/>
-
 Agora vamos carregar o conjunto de dados:
 
  - X recebe as 4 características das flores (sépalas e pétalas).
@@ -1290,8 +1626,6 @@ y = iris.target  # 3 classes
 
 </details>
 
-<br/>
-
 Agora vamos aplicar uma **normalização (ou padronização)** nos dados:
 
 <details>
@@ -1308,8 +1642,6 @@ X_scaled = scaler.fit_transform(X)
 ```
 
 </details>
-
-<br/>
 
 Continuando, um processo comum em *Machine Learning (Deep Learning)* é dividir os **dados em dados de treinamento** e **"dados de teste"**:
 
@@ -1331,8 +1663,6 @@ X_train, X_test, y_train, y_test = train_test_split(
  - `random_state=42` garante que a divisão seja reprodutível.
 
 </details>
-
-<br/>
 
 Agora vamos aplicar **"One-hot encoding"** nas classes.
 
@@ -1424,8 +1754,6 @@ y_test_ohe = tf.keras.utils.to_categorical(y_test, num_classes=3)
 
 </details>
 
-<br/>
-
 Continuando, agora nós precisamos definir o número de **neuronios de entrada** da nossa Rede Neural:
 
 <details>
@@ -1457,8 +1785,6 @@ inputs = tf.keras.Input(shape=(n_inputs,), name="input_layer")
 
 </details>
 
-<br/>
-
 Agora nós vamos definir as **Camadas Ocultas (Hidden layers)** da nossa Rede Neural:
 
 <details>
@@ -1476,8 +1802,6 @@ hidden2 = tf.keras.layers.Dense(3, activation="relu", name="hidden_layer_2")(hid
 
 </details>
 
-<br/>
-
 Agora nós vamos conectar nossas **Camadas Ocultas (Hidden layers)** com nossa **Camada de Saída (Output layer)**:
 
 <details>
@@ -1493,8 +1817,6 @@ output = tf.keras.layers.Dense(3, activation="softmax", name="output_layer")(hid
 ```
 
 </details>
-
-<br/>
 
 Para finalizar essa parte de camadas, vamos criar o nosso **Modelo (conectar as camadas)** e **visualizar sua estrutura**:
 
@@ -1532,12 +1854,9 @@ Model: "functional"
 
 </details>
 
-<br/>
-
 Agora nós vamos **"preparar o modelo para treino"**. Essa parte conhecida como **"compilação"** é o momento em que você diz ao modelo:
 
 > Aqui está **"como você vai aprender"**, **"como calcular o erro"**, e **"como vamos medir seu desempenho"**.
-
 
 <details>
 
@@ -1556,8 +1875,6 @@ model.compile(
 ```
 
 </details>
-
-<br/>
 
 Agora que nós já orientamos o nosso modelo quais métricas utilizar vamos treinar o nosso modelo:
 
@@ -1606,8 +1923,6 @@ model.fit(
 
 </details>
 
-<br/>
-
 Agora nós vamos **avalia (validar)** o modelo nos dados de teste:
 
 <details>
@@ -1632,8 +1947,6 @@ Acurácia do modelo: 0.70
 Uma **acurácia de 0.70 (ou 70%)** significa que o nosso modelo **acertou 70% das previsões** no conjunto de teste.
 
 </details>
-
-<br/>
 
 Ótimo, que temos um modelo treinado (não é perfeito 70%, mas é o que temos por agora) vamos tentar fazer algumas previsões:
 
