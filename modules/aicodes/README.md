@@ -27,28 +27,28 @@
  - **Machine Learning:**
    - **Classical Learning:**
      - **Supervised Learning:**
-       - **[Regression:](docs/regression)**
+       - **[Regression:](modules/regression)**
          - Linear Regression
-           - [Introdução às Regressões Lineares](docs/linear-regression/intro-to-linear-regression.md)
-           - [Regressão Linear (SSE, OLS, GD)](docs/linear-regression/linear-regression-sse-ols-gd.md)
+           - [Introdução às Regressões Lineares](modules/linear-regression/intro-to-linear-regression.md)
+           - [Regressão Linear (SSE, OLS, GD)](modules/linear-regression/linear-regression-sse-ols-gd.md)
          - Polynomial Regression
          - Ridge/Lasso Regression (+Regularization L1 & L2)
-           - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](docs/ridge-regression/intro-to-ridge-regression-l1-l2.md)
+           - [Introdução ao Algoritmo Ridge Regression (Regularização L1 & L2)](modules/ridge-regression/intro-to-ridge-regression-l1-l2.md)
          - Elastic Net
-           - [Introdução ao Algoritmo Elastic Net](docs/elastic-net/intro-to-elastic-net.md)
+           - [Introdução ao Algoritmo Elastic Net](modules/elastic-net/intro-to-elastic-net.md)
        - **Classification:**
          - Logistic Regression
-           - [Introdução à Regressão Logística](docs/logistic-regression/README.md)
-           - [Confusion Matrix](docs/logistic-regression/confusion-matrix.md)
+           - [Introdução à Regressão Logística](modules/logistic-regression/README.md)
+           - [Confusion Matrix](modules/logistic-regression/confusion-matrix.md)
          - Decision Trees
-           - [Introdução a Decision trees (Árvores de Decisão)](docs/decision-trees/intro-to-decision-trees.md)
+           - [Introdução a Decision trees (Árvores de Decisão)](modules/decision-trees/intro-to-decision-trees.md)
          - SVM - (Support Vector Machine)
          - Naive Bayes
-           - [Introdução ao Algoritmo Naive Bayes](docs/naive-bayes/intro-to-naive-bayes.md)
+           - [Introdução ao Algoritmo Naive Bayes](modules/naive-bayes/intro-to-naive-bayes.md)
          - K-Nearest Neighbors (KNN)
-           - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](docs/knn/intro-to-knn.md)
-           - [KNN com Scikit-Learn](docs/knn/knn-w-sklearn.md)
-     - [**Unsupervised Learning:**](docs/concepts/unsupervised-learning.md)
+           - [Introdução ao Algoritmo KNN (K-Nearest Neighbors)](modules/knn/intro-to-knn.md)
+           - [KNN com Scikit-Learn](modules/knn/knn-w-sklearn.md)
+     - [**Unsupervised Learning:**](modules/concepts/unsupervised-learning.md)
        - **Clustering:**
          - Fuzzy C-Means
          - Mean-Shift
@@ -65,7 +65,7 @@
        - Euclat
        - Apriori
        - FP-Growth
-     - **[Ensemble Methods](docs/ensemble-methods/ensemble-methods.md)**
+     - **[Ensemble Methods](modules/ensemble-methods/ensemble-methods.md)**
 
 ---
 
@@ -73,10 +73,10 @@
 
 ## Recommender System
 
- - [Métodos (abordagens) utilizadas em Sistema de Recomendação](docs/recommender-system/recommender-system-methods.md)
- - [Método Cosine Distance/ Similarity (Teoria)](docs/recommender-system/cosine-distance-similarity.md)
- - [Método Matrix Factorization/ SVD++ (Teoria)](docs/recommender-system/matrix-factorization-svd.md)
- - [Sistema de Recomendação com a biblioteca Surprise](docs/recommender-system/surpriselib.ipynb)
+ - [Métodos (abordagens) utilizadas em Sistema de Recomendação](modules/recommender-system/recommender-system-methods.md)
+ - [Método Cosine Distance/ Similarity (Teoria)](modules/recommender-system/cosine-distance-similarity.md)
+ - [Método Matrix Factorization/ SVD++ (Teoria)](modules/recommender-system/matrix-factorization-svd.md)
+ - [Sistema de Recomendação com a biblioteca Surprise](modules/recommender-system/surpriselib.ipynb)
 
 ---
 
@@ -84,7 +84,7 @@
 
 ## Useful Libraries
 
-   - [CatBoost](docs/useful-libraries/catboost)
+   - [CatBoost](modules/useful-libraries/catboost)
 
 ---
 
@@ -95,33 +95,32 @@
 <div id="ai-concepts"></div>
 
  - **Artificial Intelligence & Data Science Concepts:**
-   - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](docs/concepts/crisp-dm.md)
-   - [Review: Overfitting, Underfitting & O trade-off viés-variância](docs/concepts/overfitting-underfitting.ipynb)
-   - [Tipos (etapas) de Projectos de Data Science](docs/concepts/project-types.md)
-   - [Learning Curves para Machine Learning](docs/concepts/learning-curves-for-ml.ipynb)
-   - [Dados de Treino vs Dados de Teste](docs/concepts/training-vs-test-sets.md)
-   - [Dados de Treino, Validação & Teste](docs/concepts/training-validation-testing.md)
-   - [Data Storytelling](docs/concepts/data-storytelling.md)
-   - [Data Pipeline](docs/concepts/data-pipeline.md)
+   - [CRoss Industry Standard Process for Data Mining (CRISP-DM)](modules/concepts/crisp-dm.md)
+   - [Review: Overfitting, Underfitting & O trade-off viés-variância](modules/concepts/overfitting-underfitting.ipynb)
+   - [Tipos (etapas) de Projectos de Data Science](modules/concepts/project-types.md)
+   - [Learning Curves para Machine Learning](modules/concepts/learning-curves-for-ml.ipynb)
+   - [Dados de Treino vs Dados de Teste](modules/concepts/training-vs-test-sets.md)
+   - [Dados de Treino, Validação & Teste](modules/concepts/training-validation-testing.md)
+   - [Data Storytelling](modules/concepts/data-storytelling.md)
+   - [Data Pipeline](modules/concepts/data-pipeline.md)
 
 ---
 
 <div id="dt-ppc"></div>
 
  - **Data Preprocessing:**
-   - [Data types](docs/preprocessing/data-types.md)
-     - [Convert attributes to category (08)](https://github.com/drigols/studies/blob/master/docs/stack-bootcamp-ds-2021-10/notebooks/machine_learning_deploy.ipynb)
-   - [Missing Data](docs/preprocessing/missing-data.md)
-   - [Correlation between two numerical variables](docs/preprocessing/correlation.md)
-   - [Data Normalization](docs/preprocessing/data-normalization.md)
+   - [Data types](modules/preprocessing/data-types.md)
+   - [Missing Data](modules/preprocessing/missing-data.md)
+   - [Correlation between two numerical variables](modules/preprocessing/correlation.md)
+   - [Data Normalization](modules/preprocessing/data-normalization.md)
 
 ---
 
 <div id="feature-engineering"></div>
 
- - **[Feature Engineering:](docs/feature-engineering/intro-to-feature-engineering.md)**
-   - [Missing Data Imputation](docs/feature-engineering/missing-data-imputation/README.md)
-   - [Categorical Encoding](docs/feature-engineering/categorical-encoding/categorical-encoding.md)
+ - **[Feature Engineering:](modules/feature-engineering/intro-to-feature-engineering.md)**
+   - [Missing Data Imputation](modules/feature-engineering/missing-data-imputation/README.md)
+   - [Categorical Encoding](modules/feature-engineering/categorical-encoding/categorical-encoding.md)
    - **Variable Transformation:**
      - Logarithm
      - Reciprocal
@@ -151,7 +150,7 @@
      - Sum, subtraction, mean, min, max, product, quotient of group of features
    - **Aggregating Transaction Data:**
      - Same as above but in same feature over time window
-   - [Extracting features from Text](docs/feature-engineering/extracting-features-from-text)
+   - [Extracting features from Text](modules/feature-engineering/extracting-features-from-text)
    - **Extracting features from images:**
      - Coming soon...
 
