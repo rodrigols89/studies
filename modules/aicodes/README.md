@@ -6,16 +6,16 @@
 
  - [Machine Learning](#ml)
  - [Recommender System](#recommender-system)
- - [Artificial Neural Networks & Deep Learning](docs/ann-dp)
- - [Largue Language Models](docs/llm)
- - [Reinforcement Learning](docs/rl/)
+ - [Artificial Neural Networks & Deep Learning](modules/ann-dp)
+ - [Largue Language Models](modules/llm)
+ - [Reinforcement Learning](modules/rl/)
  - [Useful Libraries](#useful-libraries)
  - **Tips & Tricks:**
    - [Artificial Intelligence & Data Science Concepts](#ai-concepts)
    - [Data Preprocessing](#dt-ppc)
    - [Feature Engineering](#feature-engineering)
-   - [Hyperparameter Tuning](docs/hyperparameter-tuning)
-   - [Cross-Validation](docs/cross-validation)
+   - [Hyperparameter Tuning](modules/hyperparameter-tuning)
+   - [Cross-Validation](modules/cross-validation)
    - [Evaluation Metrics](#evaluation-metrics)
 
 ---
@@ -171,8 +171,8 @@ It is very important to use multiple **Evaluation Metrics** to evaluate your *mo
 
 > Using **Evaluation Metrics** is critical to ensuring that your model is operating correctly and optimally.
 
- - [Evaluation Metrics for Regression Problems](docs/evaluation-metrics/ev-for-regression-problems)
- - [Evaluation Metrics for Classification Problems](docs/evaluation-metrics/ev-for-classification-problems)
+ - [Evaluation Metrics for Regression Problems](modules/evaluation-metrics/ev-for-regression-problems)
+ - [Evaluation Metrics for Classification Problems](modules/evaluation-metrics/ev-for-classification-problems)
 
 ---
 
