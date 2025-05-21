@@ -10,13 +10,9 @@ tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 file_path = "../datasets/the-verdict.txt"
 text = read_txt(file_path)
 
-tokens = tokenizer.tokenize(text)  # Tokenize the text
+tokens = tokenizer.tokenize(text)   # Tokenize the text
 vocabulary = tokenizer.get_vocab()  # Get the vocabulary
 
-print("Vocabulary size:", len(vocabulary))
-
-# Print some vocabulary examples
-for i, item in enumerate(vocabulary.items()):
-    print(item)
-    if i >= 20:
-        break
+print("Vocabulary type:", type(vocabulary))
+for voc in list(vocabulary.items())[:10]:
+    print(voc)
