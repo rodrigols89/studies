@@ -19,9 +19,11 @@
    - **Tokenization:**
      - [Tokenização de texto (Tokenizing text)](#tokenization)
      - [Convertendo tokens em IDs de token (Converting tokens into token IDs)](#token-id)
+     - [Convertendo IDs de tokens em tensores de incorporação (Embeddings)](#token-id-to-tensor)
    - **Encode & Decode:**
      - [encode()](#intro-to-encode)
      - [decode()](#intro-to-decode)
+   - **Sliding Window (input-target)**
  - **Mecanismo de atenção (Attention mechanism):**
  - **Arquiteturas de LLMs (LLMs architecture):**
  - **Pré-treinamento (Pretraining):**
@@ -1073,6 +1075,118 @@ Vocabulary type: <class 'dict'>
 
 ---
 
+<div id="token-id-to-tensor"></div>
+
+## Convertendo IDs de tokens em tensores de incorporação (Embeddings)
+
+Converter os IDs de tokens em *tensores de incorporação ("Embeddings")* é a última etapa da preparação antes do modelo propriamente dito (LLM) processar os dados.
+
+Vamos ver como fazer isso na prática:
+
+<details>
+
+<summary>PyTorch</summary>
+
+<br/>
+
+Para transformar os IDs de tokens em tensores, você só precisa ajustar o parâmetro `return_tensors="pt" (para utilizar PyTorch)`: 
+
+[embeddings_pytorch.py](src/embeddings_pytorch.py)
+```python
+# encode process = here we tokenize + convert to IDs
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,
+    return_tensors="pt",      # pt = Pytorch
+    truncation=True,
+    padding=False
+)
+
+input_ids = encoding["input_ids"]
+token_type_ids = encoding["token_type_ids"]
+attention_mask = encoding["attention_mask"]
+
+print("Tensor input_ids shape:", input_ids.shape)
+print("Tensor token_type_ids shape:", token_type_ids.shape)
+print("Tensor attention_mask shape:", attention_mask.shape)
+```
+
+**OUTPUT:**
+```bash
+Tensor input_ids shape: torch.Size([1, 512])
+Tensor token_type_ids shape: torch.Size([1, 512])
+Tensor attention_mask shape: torch.Size([1, 512])
+```
+
+> **NOTE:**  
+> Vejam que agora nós temos **PyTorch tensores**.
+
+</details>
+
+
+
+
+
+<details>
+
+<summary>TensorFlow</summary>
+
+<br/>
+
+Para transformar os IDs de tokens em tensores, você só precisa ajustar o parâmetro `return_tensors="tf" (para utilizar TensorFlow)`: 
+
+[embeddings_tensorflow.py](src/embeddings_tensorflow.py)
+```python
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,
+    return_tensors="tf",      # tf = Tensorflow
+    truncation=True,
+    padding=False
+)
+
+input_ids = encoding["input_ids"]
+token_type_ids = encoding["token_type_ids"]
+attention_mask = encoding["attention_mask"]
+
+print("Tensor input_ids shape:", input_ids[0, :10])
+print("Tensor token_type_ids shape:", token_type_ids[0, :10])
+print("Tensor attention_mask shape:", attention_mask[0, :10])
+```
+
+**OUTPUT:**
+```bash
+Tensor input_ids shape: tf.Tensor([  101  1045  2018  2467  2245  2990 21025 19022 14287  2738], shape=(10,), dtype=int32)
+Tensor token_type_ids shape: tf.Tensor([0 0 0 0 0 0 0 0 0 0], shape=(10,), dtype=int32)
+Tensor attention_mask shape: tf.Tensor([1 1 1 1 1 1 1 1 1 1], shape=(10,), dtype=int32)
+```
+
+> **NOTE:**  
+> Vejam que agora nós temos **TensorFlow tensores**.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 <div id="intro-to-encode"></div>
 
 ## encode()
@@ -1308,6 +1422,65 @@ d a rich widow, and established himself in a villa on the riviera. ( though i ra
 
 
 
+---
+
+<div id="sliding-window"></div>
+
+## Sliding Window (input-target)
+
+Como já aprendemos, alguns LLMs são pré-treinados para **prever da próxima palavra em um texto**, por exemplo:
+
+![img](images/sliding-window-01.png)  
+
+Vamos ver um exemplo mais fácil:
+
+```python
+"O rato roeu a roupa do rei de Roma"
+```
+
+**Tokenizado:**
+```python
+tokens = ["O", "rato", "roeu", "a", "roupa", "do", "rei", "de", "Roma"]
+```
+
+Agora, criamos pares `input → target` com *Sliding Window*:
+
+| Input                                                    | Target    |
+| -------------------------------------------------------- | --------- |
+| `["O"]`                                                  | `"rato"`  |
+| `["O", "rato"]`                                          | `"roeu"`  |
+| `["O", "rato", "roeu"]`                                  | `"a"`     |
+| `["O", "rato", "roeu", "a"]`                             | `"roupa"` |
+| `["O", "rato", "roeu", "a", "roupa"]`                    | `"do"`    |
+| `["O", "rato", "roeu", "a", "roupa", "do"]`              | `"rei"`   |
+| `["O", "rato", "roeu", "a", "roupa", "do", "rei"]`       | `"de"`    |
+| `["O", "rato", "roeu", "a", "roupa", "do", "rei", "de"]` | `"Roma"`  |
+
+### 🧠 Como o modelo aprende?
+
+O modelo recebe o **input (lista de tokens)** e é treinado para prever o **target (próximo token)**. Isso é a base do aprendizado de linguagem.
+
+### ✅ Resumo
+
+| Conceito            | Explicação                                                   |
+| ------------------- | ------------------------------------------------------------ |
+| **O que é?**        | Técnica que divide texto longo em blocos sobrepostos         |
+| **Para que serve?** | Permitir input contínuo para LLMs com limitação de tokens    |
+| **Quando usar?**    | Em textos longos, geração de texto, fine-tuning              |
+| **Quando evitar?**  | Quando o modelo aceita entradas longas ou a tarefa é pequena |
+
+Agora vamos ver como implementar isso na prática:
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1458,28 +1631,6 @@ pip install -U -v --require-virtualenv -r requirements.txt
 <summary>Python (From Scratch)</summary>
 
 <br/>
-
-[](src/)
-```python
-
-```
-
-**OUTPUT:**
-```bash
-
-```
-
-</details>
-
-
-
-
-
-<details>
-
-<summary>Transformers (Hugging Face)</summary>
-
-</br>
 
 [](src/)
 ```python
