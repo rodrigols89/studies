@@ -20,10 +20,11 @@
      - [Tokenização de texto (Tokenizing text)](#tokenization)
      - [Convertendo tokens em IDs de token (Converting tokens into token IDs)](#token-id)
      - [Convertendo IDs de tokens em tensores de incorporação (Embeddings)](#token-id-to-tensor)
+     - [Criando token embeddings](#creating-token-embeddings)
    - **Encode & Decode:**
      - [encode()](#intro-to-encode)
      - [decode()](#intro-to-decode)
-   - **Sliding Window (input-target)**
+   - [**Sliding Window (input-target)**](#sliding-window)
  - **Mecanismo de atenção (Attention mechanism):**
  - **Arquiteturas de LLMs (LLMs architecture):**
  - **Pré-treinamento (Pretraining):**
@@ -1176,6 +1177,44 @@ Tensor attention_mask shape: tf.Tensor([1 1 1 1 1 1 1 1 1 1], shape=(10,), dtype
 
 
 
+
+
+
+
+
+
+
+
+
+---
+
+<div id="creating-token-embeddings"></div>
+
+## Criando token embeddings
+
+Token Embedding é o processo de transformar:
+
+ - Tokens *inteiros* (IDs):
+   - Que são números inteiros representando palavras ou subpalavras.
+ - Em vetores densos de *números reais*.
+
+Esse processo é essencial para que os modelos de linguagem (LLMs) possam trabalhar com texto de forma numérica.
+
+Por exemplo:
+
+```bash
+token_id  = 1037     # "a" no BERT tokenizer.
+embedding = [0.1, 0.5, ..., -0.2]  # vetor de 768 dimensões.
+```
+
+### 🧠 Por que isso é importante?
+
+Redes neurais não entendem palavras ou números inteiros diretamente — elas precisam de *vetores contínuos* que capturam semântica, contexto e relação entre palavras. Embeddings fazem essa ponte.
+
+### 🚫 Quando não utilizar?
+
+ - ❌ Se estiver usando um modelo pré-treinado completo (ex: AutoModel do Hugging Face) — os embeddings já estão lá.
+ - ❌ Se estiver apenas tokenizando e não treinando nenhum modelo.
 
 
 
