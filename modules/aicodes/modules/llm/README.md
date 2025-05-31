@@ -1,25 +1,40 @@
 # Large Language Models
 
-## Contents
+## Conteúdo
 
- - **Fundamentals of Large Language Models:**
-   - [What is an LLM?](#what-is-an-llm)
-   - [Transformer Architecture](#transformer-architecture)
-   - [Understanding word embeddings](#understanding-word-embeddings)
-   - [Word2Vec Idea](#word2vec-idea)
- - [**Build a Large Language Model (Step by Step):**](#build-a-llm-sbs)
-   - **STAGE 01:**
-     - **Data Preparation & Sampling:**
-       - [Tokenizing text](#tokenizing-text)
-   - **STAGE 02:**
-   - **STAGE 03:**
- - **Utils Functions:**
-   - [read_txt()](#read-txt)
- - [**References**](#ref)
+ - **Fundamentos Teóricos:**
+   - [O que são LLMs?](#intro-to-llm)
+   - [Como o modelo "entende" linguagem?](#how-understand)
+   - [Como LLMs são treinados)](#how-are-trained)
+   - [Diferença entre LLMs e modelos tradicionais de NLP](#llm-vs-nlp)
+   - [Por que os Transformers revolucionaram o NLP?](#transformers-inovation)
+   - [Como funciona o Mecanismo de Attention (Atenção)?](#attention-mechanism)
+   - [Exemplos de tarefas resolvidas por LLMs](#llm-examples)
+   - [Entendendo "Word Embeddings"](#understanding-word-embeddings)
+   - [Word2Vec](#word2vec-idea)
+   - [Sliding Window (input-target)](#sliding-window)
+ - **Preparação e amostragem de dados (Data preparation & sampling):**
+     - [Tokenização de texto (Tokenizing text)](#tokenization)
+     - [Convertendo tokens em IDs de token (Converting tokens into token IDs)](#token-id)
+     - [Convertendo IDs de tokens em tensores de incorporação (Embeddings)](#token-id-to-tensor)
+     - [Criando token embeddings](#creating-token-embeddings)
+ - **Mecanismo de atenção (Attention mechanism):**
+ - **Arquiteturas de LLMs (LLMs architecture):**
+ - **Pré-treinamento (Pretraining):**
+ - **Loop de treinamento (Training loop):**
+ - **Avaliação do modelo (Model evaluation):**
+ - **Carregamento pesos pré-treinados (Load pretrained weights):**
+ - **Afinação (Fine-tuning):**
+   - **Modelos de classificação (Classification models):**
+   - **Assistentes pessoais ou modelos de chat (Personal assistants or chat models):**
+ - **Utils:**
+   - []
+ - [**🚀 Instalação / Execução local**](#settings)
+ - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
-- Different topic = "100" Whitespace character.
+- Different topic = "200" Whitespace character.
 --->
 
 
@@ -122,16 +137,20 @@
 
 
 
-<!--- ( Fundamentals of Large Language Models ) --->
+
+<!--- ( Fundamentos Teóricos ) --->
 
 ---
 
-<div id="what-is-an-llm"></div>
+<div id="intro-to-llm"></div>
 
-## What is an LLM?
+## O que são LLMs?
 
- - An ***LLM*** is a neural network designed to *understand*, *generate*, and *respond* to human like text.
- - These models are deep neural networks trained on massive amounts of text data, sometimes encompassing (abrangendo) large portions of the entire publicly available text on the internet.
+**📘 Definição:**  
+LLMs (Large Language Models) são modelos de aprendizado de máquina treinados para **"entender"**, **"gerar"** e **"manipular linguagem natural"**.
+
+> **OBSERVAÇÃO:**  
+> Eles são chamados de "grandes" por causa da quantidade massiva de parâmetros (milhões ou bilhões) e por serem treinados em grandes volumes de texto da internet, livros, artigos, fóruns, código-fonte etc.
 
 
 
@@ -144,14 +163,252 @@
 
 ---
 
-<div id="transformer-architecture"></div>
+<div id="how-understand"></div>
 
-## Transformer Architecture
+### Como o modelo "entende" linguagem?
 
-Most modern LLMs rely on the **Transformer Architecture**, which is a deep neural network architecture introduced in the 2017 paper [“Attention Is All You Need”](https://arxiv.org/abs/1706.03762).
+Na verdade, LLMs não entendem no sentido humano. Eles aprendem probabilidades estatísticas:
 
-> **NOTE:**  
-> To understand LLMs, it is interesting to understand the original transformer, which was developed for machine translation, translating texts from English to German and French.
+> Se eu vejo a frase: "O céu está ___", a palavra mais provável é "azul".  
+> Esse "palpite" é feito com base no que ele viu durante o treinamento.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="how-are-trained"></div>
+
+### Como LLMs são treinados
+
+ - **Pré-treinamento (Pretraining):**
+   - O modelo é exposto a grandes quantidades de texto e aprende padrões de linguagem por meio de tarefas como **"prever a próxima palavra"** (auto-regressivo) ou **"preencher palavras faltantes"** (máscara).
+ - **Ajuste fino (Fine-tuning):**
+   - O modelo pode ser adaptado para tarefas específicas, como:
+     - Classificação de texto;
+     - Tradução;
+     - Geração de código;
+     - Resumo de documentos.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="llm-vs-nlp"></div>
+
+## Diferença entre LLMs e modelos tradicionais de NLP
+
+ - Antes dos LLMs, os modelos de **NLP** eram **específicos para cada tarefa**, como *análise de sentimentos*, *tradução*, ou *resumo*.
+ - Com os **LLMs**, **um único modelo pode ser usado para várias tarefas** com pouco ou nenhum ajuste.
+
+### Comparação Direta
+
+| Característica                  | Modelos Tradicionais de NLP                 | LLMs (Large Language Models)                        |
+| ------------------------------- | ------------------------------------------- | --------------------------------------------------- |
+| **Arquitetura**                 | Simples (SVM, Regressão, Naive Bayes, RNNs) | Transformer (profundo e em larga escala)            |
+| **Treinamento**                 | Um modelo por tarefa                        | Um único modelo para tarefas múltiplas              |
+| **Requer feature engineering?** | Sim! Manual e demorado                      | Não. O modelo aprende tudo automaticamente          |
+| **Escalabilidade**              | Limitado                                    | Altamente escalável e flexível                      |
+| **Precisão/Desempenho**         | OK, mas limitado com grandes volumes        | Alta, especialmente com dados em larga escala       |
+| **Entrada/Saída**               | Tipicamente vetores numéricos               | Texto puro (prompts e respostas)                    |
+| **Contexto considerado**        | Curto (às vezes só 1 frase)                 | Longo (vários parágrafos ou até milhares de tokens) |
+| **Exemplos**                    | TF-IDF + SVM, Word2Vec + LSTM               | GPT, BERT, T5, LLaMA, Claude, Gemini                |
+
+### Explicando com um exemplo
+
+ - **Modelo tradicional (pré-LLM):**
+   - Transformar o texto em vetores (TF-IDF, Bag of Words).
+   - Treinar um SVM ou uma Regressão Logística para prever o sentimento.
+   - Modelo só serve pra essa tarefa.
+ - **LLM:**
+   - Você escreve:
+     - `Classifique o sentimento desta frase: Estou muito feliz hoje!`
+   - O modelo responde:
+     - `Sentimento: Positivo`
+   - **OBSERVAÇÃO:** O mesmo modelo pode também traduzir, resumir, gerar código...
+
+### Vantagens dos LLMs sobre modelos tradicionais
+
+ - ✅ **Generalização:** Um modelo para muitas tarefas;
+ - ✅ **Zero-shot & few-shot:** Resolve tarefas com poucas instruções;
+ - ✅ Menos dependência de dados rotulados;
+ - ✅ Contexto mais longo e melhor compreensão;
+ - ✅ Geração de linguagem natural mais fluida.
+
+### Mas os modelos tradicionais morreram?
+
+ - **❌ Não! Eles ainda são úteis quando:**
+   - Você tem poucos dados e poucos recursos computacionais;
+   - A tarefa é muito específica e não exige interpretação profunda;
+   - Você precisa de explicabilidade clara e rápida.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="transformers-inovation"></div>
+
+## Por que os Transformers revolucionaram o NLP?
+
+> Transformers são uma arquitetura introduzida no artigo [**"Attention is All You Need" (2017)**](https://arxiv.org/abs/1706.03762).
+
+**OBSERVAÇÃO:**  
+Eles eliminaram a necessidade de processar palavras em sequência como faziam **RNNs** e **LSTMs** — e com isso, permitiram muito mais *"paralelismo"*, *"contexto global"* e *"velocidade"*.
+
+### 🚫 Problema dos modelos anteriores (RNN, LSTM)
+
+ - Processavam tokens um por um (sequencialmente).
+ - Sofriam com longas dependências ("o que foi dito 30 palavras atrás?").
+ - Eram lentos para treinar.
+ - Tinha dificuldade com frases longas e contexto amplo.
+
+### ✅ Como o Transformer resolveu tudo isso?
+
+**A resposta:** Attention Mechanism.
+
+> O modelo aprende a **"prestar atenção"** nas palavras mais importantes do texto — independentemente da posição!
+
+### 🧩 Componentes principais do Transformer
+
+| Componente                    | Função Básica                                                    |
+| ----------------------------- | ---------------------------------------------------------------- |
+| **Embedding**                 | Converte palavras em vetores numéricos.                          |
+| **Self-Attention**            | Calcula a importância de cada palavra em relação às outras.      |
+| **Positional Encoding**       | Adiciona informação da posição das palavras (já que é paralelo). |
+| **Feedforward Layers**        | Faz transformações profundas nos vetores.                        |
+| **Normalization & Residuals** | Ajudam a estabilizar e melhorar o aprendizado.                   |
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="attention-mechanism"></div>
+
+## Como funciona o Mecanismo de Attention (Atenção)?
+
+> O mecanismo de atenção permite que o modelo **"foque" em partes importantes da entrada** — como humanos fazem ao ler.
+
+Por exemplo, imagine que nós temos a frase:
+
+Imagine a frase:
+
+> “A maçã estava azeda, então ela foi jogada fora.”
+
+ - A palavra **"ela"** poderia se referir à **maçã** ou à **azeda**.
+ - O modelo precisa **“prestar atenção”** nas palavras relevantes para entender corretamente.
+
+### 🧮 Fórmula matemática (simples)
+
+A fórmula matemática (simples) é a seguinte:
+
+$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$
+
+ - `QKᵀ`
+   - Compara (multiplica) os queries com os keys → gera pontuações de atenção.
+ - `/ √d_k`
+   - Normaliza para evitar explosões numéricas.
+ - `softmax`
+   - Transforma em probabilidades.
+ - `× V`
+   - Gera a atenção ponderada, ou seja, a saída final.
+
+### 🔢 Exemplo numérico ilustrativo
+
+```bash
+Frase: ["O", "gato", "correu"]
+
+→ Para "correu", o modelo calcula:
+
+Q(correu) • K(O)     →  baixa atenção
+Q(correu) • K(gato)  →  alta atenção
+Q(correu) • K(correu)→  média atenção
+```
+
+> **Resultado:**  
+> O modelo vai ponderar mais o **"gato"**, porque **"gato correu"** tem uma relação forte.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="llm-examples"></div>
+
+### Exemplos de tarefas resolvidas por LLMs
+
+Vamos começar com uma introdução de algumas tarefas que podem ser resolvidas utilizando **"LLMs"**:
+
+| Tarefa                      | Exemplo prático                             |
+| --------------------------- | ------------------------------------------- |
+| **Geração de texto**        | Chatbots, redação automática                |
+| **Classificação**           | Análise de sentimentos, spam vs. não spam   |
+| **Tradução**                | Inglês → Português, etc.                    |
+| **Perguntas e Respostas**   | Assistente de dúvidas                       |
+| **Resumo automático**       | Resumir longos artigos                      |
+| **Extração de informações** | Pegar nomes, datas, eventos de um texto     |
+| **Geração de código**       | Auto-complete em IDEs, explicação de código |
+
+### 🚀 Aplicações Reais das LLMs
+
+| **Área**                   | **Aplicação**                                                                                       |
+| -------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Assistentes virtuais**   | Chatbots inteligentes (ex: ChatGPT, Google Bard, Alexa)                                             |
+| **Educação**               | Tutores personalizados, correção automática de redações, explicações sob demanda                    |
+| **Saúde**                  | Análise de prontuários, resposta a perguntas médicas, apoio à decisão clínica                       |
+| **Atendimento ao cliente** | Respostas automáticas, suporte 24/7, resumo de interações com usuários                              |
+| **Pesquisa e ciência**     | Síntese de artigos, geração de hipóteses, revisão automática de literatura                          |
+| **Programação**            | Autocompletar código, explicar funções, gerar trechos em diferentes linguagens (ex: GitHub Copilot) |
+| **Tradução de idiomas**    | Traduções contextuais e multilíngues, com adaptação ao domínio específico                           |
+| **Criação de conteúdo**    | Geração de artigos, roteiros, marketing, posts para redes sociais                                   |
+| **Direito**                | Análise de contratos, extração de cláusulas, sumarização de decisões legais                         |
+| **Análise de sentimentos** | Classificação de avaliações e sentimentos em redes sociais e e-commerce                             |
+| **Segurança cibernética**  | Explicação de exploits, análise de logs e geração de alertas                                        |
+| **Games e NPCs**           | Diálogos gerados dinamicamente, comportamentos inteligentes, roteiros                               |
+
+### 📈 Exemplos Reais de Impacto com LLMs
+
+| **Organização / Produto** | **Uso de LLMs**                                                                          |
+| --------------------------|------------------------------------------------------------------------------------------|
+| `Duolingo`                | Feedback em tempo real sobre frases escritas por alunos com explicações contextualizadas |
+| `Notion AI`               | Geração e reformulação de textos, resumos automáticos, criação de tarefas                |
+| `Khan Academy (GPT-4)`    | Tutor personalizado que responde dúvidas dos alunos com explicações passo a passo        |
+| `GitHub Copilot`          | Sugestões de código em tempo real, explicações de funções, geração de testes             |
+| `GrammarlyGO`             | Reescrita e aprimoramento de textos com base no contexto do usuário                      |
+| `Legal Robot`             | Análise de contratos com explicação em linguagem natural das cláusulas jurídicas         |
+| `You.com (YouChat)`       | Motor de busca com respostas geradas por LLM, integrando fontes e interatividade         |
 
 
 
@@ -166,21 +423,22 @@ Most modern LLMs rely on the **Transformer Architecture**, which is a deep neura
 
 <div id="understanding-word-embeddings"></div>
 
-## Understanding word embeddings
+## Entendendo "Word Embeddings"
 
- - Deep neural network models, including LLMs, cannot process raw text directly.
- - Since text is categorical, it isn’t compatible with the mathematical operations used to implement and train neural networks.
- - Therefore, we need a way to represent words as continuous-valued vectors.
+ - Modelos de Deep Learning, incluindo LLMs, não podem processar texto bruto diretamente;
+ - Como o texto é categórico, ele não é compatível com as operações matemáticas utilizadas para implementar e treinar redes neurais;
+ - Portanto, precisamos de uma forma de representar palavras como vetores com valores contínuos.
 
-> **NOTE:**  
-> The concept of converting data into a vector format is often referred to as **embedding**.
+> **OBSERVAÇÃO:**  
+> O conceito de converter dados (áudio, vídeo, texto) para o formato de vetor (numérico) é frequentemente chamado de **"embedding"**.
 
-Using a specific neural network layer or another pretrained neural network model, we can embed different data types — For example, video, audio, and text:
+Por exemplo:
 
-![image](images/word-embeddings-01.png)  
+![img](images/word-embeddings-01.png)  
 
-> **NOTE:**  
-> However, it’s important to note that different data formats require distinct embedding models. For example, an embedding model designed for text would not be suitable for embedding audio or video data.
+> **OBSERVAÇÃO:**  
+> No entanto, é importante observar que diferentes formatos de dados exigem *modelos de embbedding* distintos.  
+> Por exemplo, um modelo de embedding projetado para texto não seria adequado para embbedding de dados de áudio ou vídeo.
 
 
 
@@ -195,128 +453,13 @@ Using a specific neural network layer or another pretrained neural network model
 
 <div id="word2vec-idea"></div>
 
-## Word2Vec Idea
+## Word2Vec
 
-> The main idea behind **Word2Vec** is that words that appear in similar contexts tend to have similar meanings.
+> A principal *ideia* por trás do **Word2Vec** é que *"palavras que aparecem em contextos semelhantes tendem a ter significados semelhantes"*.
 
-Consequently, when projected into two-dimensional word embeddings for visualization purposes, similar terms are clustered together.
+Consequentemente, quando projetadas em embeddings de palavras bidimensionais para fins de visualização, palavras semelhantes ficam agrupadas.
 
-For example:
-
-![image](images/word2vec-idea-01.png)  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Build a Large Language Model (Step by Step) ) --->
-
----
-
-<div id="build-a-llm-sbs"></div>
-
-## Build a Large Language Model (Step by Step)
-
-Here, we will implement a simple Large Language Model (LLM) by following the following steps (stages):
-
-![image](images/llm-sbs-01.png)
+![img](images/word2vec-idea-01.png)  
 
 
 
@@ -329,72 +472,385 @@ Here, we will implement a simple Large Language Model (LLM) by following the fol
 
 ---
 
-<div id="tokenizing-text"></div>
+<div id="sliding-window"></div>
 
-## Tokenizing text
+## Sliding Window (input-target)
 
-> Here, let’s discuss how we can split input text into individual tokens, a required preprocessing step for creating *embeddings* for an *LLM*.
+Como já aprendemos, alguns LLMs são pré-treinados para **prever da próxima palavra em um texto**, por exemplo:
 
-These tokens are either individual words or special characters, including punctuation characters, as shown below:
+![img](images/sliding-window-01.png)  
 
-![image](images/tokenizing-text-01.png)
+Vamos ver um exemplo mais fácil:
 
-</br>
+```python
+"O rato roeu a roupa do rei de Roma"
+```
 
-Let's implement a **tokenizer_txt()** function to see how this works:
+**Tokenizado:**
+```python
+tokens = ["O", "rato", "roeu", "a", "roupa", "do", "rei", "de", "Roma"]
+```
 
-<!--- ( Python (From Scratch) ) --->
+Agora, criamos pares `input → target` com *Sliding Window*:
+
+| Input                                                    | Target    |
+| -------------------------------------------------------- | --------- |
+| `["O"]`                                                  | `"rato"`  |
+| `["O", "rato"]`                                          | `"roeu"`  |
+| `["O", "rato", "roeu"]`                                  | `"a"`     |
+| `["O", "rato", "roeu", "a"]`                             | `"roupa"` |
+| `["O", "rato", "roeu", "a", "roupa"]`                    | `"do"`    |
+| `["O", "rato", "roeu", "a", "roupa", "do"]`              | `"rei"`   |
+| `["O", "rato", "roeu", "a", "roupa", "do", "rei"]`       | `"de"`    |
+| `["O", "rato", "roeu", "a", "roupa", "do", "rei", "de"]` | `"Roma"`  |
+
+### 🧠 Como o modelo aprende?
+
+O modelo recebe o **input (lista de tokens)** e é treinado para prever o **target (próximo token)**. Isso é a base do aprendizado de linguagem.
+
+### ✅ Resumo
+
+| Conceito            | Explicação                                                   |
+| ------------------- | ------------------------------------------------------------ |
+| **O que é?**        | Técnica que divide texto longo em blocos sobrepostos         |
+| **Para que serve?** | Permitir input contínuo para LLMs com limitação de tokens    |
+| **Quando usar?**    | Em textos longos, geração de texto, fine-tuning              |
+| **Quando evitar?**  | Quando o modelo aceita entradas longas ou a tarefa é pequena |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Preparação e amostragem de dados (Data preparation & sampling) ) --->
+
+---
+
+<div id="tokenization"></div>
+
+## Tokenização de texto (Tokenizing text)
+
+> Aqui, vamos discutir como podemos dividir uma entrada texto em *tokens* individuais, uma etapa de pré-processamento necessária para criar *embeddings* para um *LLM*.
+
+Esses tokens são palavras individuais ou caracteres especiais, incluindo sinais de pontuação, conforme mostrado abaixo:
+
+![img](images/tokenizing-01.png)  
+
+Vamos ver como implementar isso na prática:
+
+<!--- ( Transformers (Hugging Face) ) --->
 <details>
 
-<summary>Python (From Scratch)</summary>
+<summary>Transformers (Hugging Face)</summary>
 
 </br>
 
-[utils.py](../../algorithms/utils.py)
+Para criar tokens com a biblioteca biblioteca [🤗 Transformers (Hugging Face)](https://github.com/huggingface/transformers) vamos utilizar o tokenizador `AutoTokenizer` com o modelo `bert-base-uncased`:
+
+[transformers_tokenizers.py](src/transformers_tokenizers.py)
 ```python
-def tokenizer_txt(text):
-    text_tokenized = re.split(r'([,.:;?_!"()\']|--|\s)', text)
-    text_tokenized = [item.strip() for item in text_tokenized if item.strip()]
-    print("Text tokenized successfully.")
-    print("Total number of tokens (without whitespaces):", len(text_tokenized), "\n")
-    return text_tokenized
+from transformers import AutoTokenizer
+
+from utils import read_txt
 
 
-if __name__ == "__main__":
+# load the BERT tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
-    file_path = "datasets/the-verdict.txt"
-    text = read_txt(file_path)
-
-    tokens = tokenizer_txt(text)
-```
-
-**OUTPUT:**  
-```bash
-The text read successfully.
-Total number of characters: 20479
-Text type: <class 'str'> 
-
-Text tokenized successfully.
-Total number of tokens (without whitespaces): 4690
-```
-
-> **NOTE:**  
-> This print statement outputs 4690, which is the number of tokens in this text (without whitespaces).
-
-For example, let’s print the first 30 tokens for a quick visual check:
-
-```python
-file_path = "datasets/the-verdict.txt"
+# Load the and read the text
+file_path = "../datasets/the-verdict.txt"
 text = read_txt(file_path)
 
-tokens = tokenizer_txt(text)
+# Tokenization
+tokens = tokenizer.tokenize(text)
 
-print(tokens[:30])
+print("Total number of tokens (without whitespaces):", len(tokens))
+print("Tokens (first 10):", tokens[:10])
 ```
 
 **OUTPUT:**  
 ```bash
-['I', 'HAD', 'always', 'thought', 'Jack', 'Gisburn', 'rather', 'a', 'cheap', 'genius', '--', 'though', 'a', 'good', 'fellow', 'enough', '--', 'so', 'it', 'was', 'no', 'great', 'surprise', 'to', 'me', 'to', 'hear', 'that', ',', 'in']
+Total number of tokens (without whitespaces): 5212
+Tokens (first 10): ['i', 'had', 'always', 'thought', 'jack', 'gi', '##sb', '##urn', 'rather', 'a']
+```
+
+> **Por que nós temos mais tokens utilizando o tokenizador da Hugging Face?**
+
+### 🧠 Diferença fundamental: Subword Tokenization
+
+O **BERT** não usa tokenização por palavras ou pontuações simples. Ele usa um método chamado:
+
+> **👉 WordPiece Tokenization:**  
+> Palavras desconhecidas ou raras são quebradas em subpartes, chamadas *"subwords"*.
+
+Por exemplo:
+
+```bash
+'Gisburn' → ['gi', '##sb', '##urn']
+```
+
+A ideia é balancear entre:
+
+ - Cobertura de vocabulário (poucos tokens desconhecidos);
+ - Tamanho do vocabulário (tornar o modelo mais eficiente).
+
+### `🧠 O que são esses ##?`
+
+ - No **BERT**, os tokens que começam com `##` são subpalavras que continuam uma palavra anterior.
+ - Por exemplo:
+   - `gi` é o começo da palavra `Gisburn`;
+   - ``##sb`` e ``##urn`` são subpalavras que continuam `gi` até formar `gi + sb + urn = Gisburn`.
+
+Esse tipo de tokenização:
+
+ - Reduz o número de palavras *OOV (out-of-vocabulary)*;
+ - Garante que até palavras não vistas no treinamento ainda sejam entendidas em partes.
+
+### 📌 Outros detalhes que aumentam a contagem no BERT:
+
+| Fator                                 | Explicação                                                                        |
+| ------------------------------------- | --------------------------------------------------------------------------------- |
+| **Subwords**                          | Palavras como `Gisburn`, `unbelievable` viram várias partes                       |
+| **Lowercasing**                       | O `bert-base-uncased` transforma tudo em minúsculo antes de tokenizar             |
+| **Tokens especiais (em outros usos)** | `[CLS]`, `[SEP]` etc. (no seu caso não estão aparecendo porque você só tokenizou) |
+| **Sem filtragem de pontuação**        | O tokenizer BERT inclui pontuações como tokens próprios (`.`, `,`, etc.)          |
+
+### ✅ Conclusão
+
+| Tokenizador          | Tipo de tokenização            | Total de tokens | Exemplo                 |
+| -------------------- | ------------------------------ | --------------- | ----------------------- |
+| `Seu (com re.split)` | Baseado em pontuação e espaços | 4690            | `'Gisburn'`             |
+| `BERT ("WordPiece")` | Subword Tokenization           | 5212            | `'gi', '##sb', '##urn'` |
+
+> **OBSERVAÇÃO:**  
+> O BERT gera mais tokens porque ele quebra palavras em partes menores que estão no vocabulário aprendido durante o pré-treinamento. Isso permite lidar melhor com palavras raras ou compostas.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="token-id"></div>
+
+## Convertendo tokens em IDs de token (Converting tokens into token IDs)
+
+Aqui nós vamos ver o processo de atribuir um ID numérico único para cada token (palavra, subpalavra ou símbolo) com base em um vocabulário fixo do modelo.
+
+### 📘 O que é "Vocabulário" em LLMs?
+
+No contexto de Modelos de Linguagem (LLMs), o vocabulário é a lista de todos os tokens que o modelo conhece.
+
+**✅ Cada token tem:**
+
+ - Uma forma textual (ex: "hello", "##ing", "!")
+ - Um ID único (ex: 101, 1254, 999)
+
+> **OBSERVAÇÃO:**  
+> Esse vocabulário é definido antes do treinamento do modelo, geralmente criado com base em um grande corpus de texto.
+
+### 🧠 Por que esse vocabulário é importante?
+
+Porque o modelo só consegue processar textos usando os *tokens* do seu *vocabulário*. Se uma palavra não estiver nele, será dividida em subpalavras ou marcada como token desconhecido ([UNK]).
+
+Por exemplo, imagine que temos o seguinte texto como entrada:
+
+**Entrada (Input):**
+```python
+I love learning because I love new things
+```
+
+| Token      | Token ID |
+| ---------- | -------- |
+| `[PAD]`    | 0        |
+| `[UNK]`    | 1        |
+| `i`        | 2        |
+| `love`     | 3        |
+| `learning` | 4        |
+| `because`  | 5        |
+| `new`      | 6        |
+| `things`   | 7        |
+
+**🧮 Tokenização (simples):**
+```python
+tokens = ['i', 'love', 'learning', 'because', 'i', 'love', 'new', 'things']
+```
+
+> **OBSERVAÇÃO:**  
+> Mesmo que as palavras **"i"** e **"love"** apareçam mais de uma vez, elas serão tokenizadas da mesma forma, pois o vocabulário é estático.
+
+**🔢 Conversão para Token IDs:**
+```python
+token_ids = [2, 3, 4, 5, 2, 3, 6, 7]
+```
+
+| Palavra      | Token      | Token ID |
+| ------------ | ---------- | -------- |
+| **I**        | `i`        | 2        |
+| **love**     | `love`     | 3        |
+| **learning** | `learning` | 4        |
+| **because**  | `because`  | 5        |
+| **I**        | `i`        | 2        |
+| **love**     | `love`     | 3        |
+| **new**      | `new`      | 6        |
+| **things**   | `things`   | 7        |
+
+**✅ Observações:**
+
+ - Tokens repetidos (como "i" e "love") continuam recebendo o mesmo ID.
+ - O modelo trata repetições de **forma contextual**:
+   - Ou seja, mesmo com o mesmo token ID, o significado pode *"mudar dependendo do contexto anterior"*.
+
+Agora vamos ver como implementar isso na prática:
+
+<!--- ( Transformers (Hugging Face) ) --->
+<details>
+
+<summary>Transformers (Hugging Face)</summary>
+
+</br>
+
+Com a biblioteca **transformers (Hugging Face)** podemos utilizar a função `tokenizer.get_vocab()` para pegar o vocaculário dos tokens:
+
+[transformers_tokenizers.py](src/transformers_tokenizers.py)
+```python
+from transformers import AutoTokenizer
+
+from utils import read_txt
+
+
+# load the BERT tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+
+# Load the and read the text
+file_path = "../datasets/the-verdict.txt"
+text = read_txt(file_path)
+
+tokens = tokenizer.tokenize(text)   # Tokenize the text
+vocabulary = tokenizer.get_vocab()  # Get the vocabulary
+
+print("Vocabulary type:", type(vocabulary))
+for voc in list(vocabulary.items())[:10]:
+    print(voc)
+```
+
+**OUTPUT:**
+```bash
+Vocabulary type: <class 'dict'>
+('women', 2308)
+('[unused452]', 457)
+('sponsorship', 12026)
+('devout', 26092)
+('william', 2520)
+('glide', 21096)
+('referees', 25118)
+('handball', 12378)
+('1950s', 4856)
+('treated', 5845)
 ```
 
 </details>
@@ -408,30 +864,96 @@ print(tokens[:30])
 
 
 
+---
 
+<div id="token-id-to-tensor"></div>
 
+## Convertendo IDs de tokens em tensores de incorporação (Embeddings)
 
+Converter os IDs de tokens em *tensores de incorporação ("Embeddings")* é a última etapa da preparação antes do modelo propriamente dito (LLM) processar os dados.
 
+Vamos ver como fazer isso na prática:
 
+<!--- ( PyTorch ) --->
+<details>
 
+<summary>Transformers (PyTorch)</summary>
 
+<br/>
 
+Para transformar os IDs de tokens em tensores, você só precisa ajustar o parâmetro `return_tensors="pt" (para utilizar PyTorch)`: 
 
+[embeddings_pytorch.py](src/embeddings_pytorch.py)
+```python
+# encode process = here we tokenize + convert to IDs
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,
+    return_tensors="pt",      # pt = Pytorch
+    truncation=True,
+    padding=False
+)
 
+input_ids = encoding["input_ids"]
+token_type_ids = encoding["token_type_ids"]
+attention_mask = encoding["attention_mask"]
 
+print("Tensor input_ids shape:", input_ids.shape)
+print("Tensor token_type_ids shape:", token_type_ids.shape)
+print("Tensor attention_mask shape:", attention_mask.shape)
+```
 
+**OUTPUT:**
+```bash
+Tensor input_ids shape: torch.Size([1, 512])
+Tensor token_type_ids shape: torch.Size([1, 512])
+Tensor attention_mask shape: torch.Size([1, 512])
+```
 
+> **NOTE:**  
+> Vejam que agora nós temos **PyTorch tensores**.
 
+</details>
 
+<!--- ( TensorFlow ) --->
+<details>
 
+<summary>Transformers (TensorFlow)</summary>
 
+<br/>
 
+Para transformar os IDs de tokens em tensores, você só precisa ajustar o parâmetro `return_tensors="tf" (para utilizar TensorFlow)`: 
 
+[embeddings_tensorflow.py](src/embeddings_tensorflow.py)
+```python
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,
+    return_tensors="tf",      # tf = Tensorflow
+    truncation=True,
+    padding=False
+)
 
+input_ids = encoding["input_ids"]
+token_type_ids = encoding["token_type_ids"]
+attention_mask = encoding["attention_mask"]
 
+print("Tensor input_ids shape:", input_ids[0, :10])
+print("Tensor token_type_ids shape:", token_type_ids[0, :10])
+print("Tensor attention_mask shape:", attention_mask[0, :10])
+```
 
+**OUTPUT:**
+```bash
+Tensor input_ids shape: tf.Tensor([  101  1045  2018  2467  2245  2990 21025 19022 14287  2738], shape=(10,), dtype=int32)
+Tensor token_type_ids shape: tf.Tensor([0 0 0 0 0 0 0 0 0 0], shape=(10,), dtype=int32)
+Tensor attention_mask shape: tf.Tensor([1 1 1 1 1 1 1 1 1 1], shape=(10,), dtype=int32)
+```
 
+> **NOTE:**  
+> Vejam que agora nós temos **TensorFlow tensores**.
 
+</details>
 
 
 
@@ -442,19 +964,41 @@ print(tokens[:30])
 
 
 
+---
 
+<div id="creating-token-embeddings"></div>
 
+## Criando token embeddings
 
+Token Embedding é o processo de transformar:
 
+ - Tokens *inteiros* (IDs):
+   - Que são números inteiros representando palavras ou subpalavras.
+ - Em vetores densos de *números reais*.
 
+Esse processo é essencial para que os modelos de linguagem (LLMs) possam trabalhar com texto de forma numérica.
 
+Por exemplo:
 
+**Exemplo-01:**  
+```bash
+token_id  = 1037     # "a" no BERT tokenizer.
+embedding = [0.1, 0.5, ..., -0.2]  # vetor de 768 dimensões.
+```
+**Exemplo-02:**  
+![img](images/token-embedding-01.png)  
 
+**Exemplo-03:**  
 
 
+### 🧠 Por que isso é importante?
 
+Redes neurais não entendem palavras ou números inteiros diretamente — elas precisam de *vetores contínuos* que capturam semântica, contexto e relação entre palavras. Embeddings fazem essa ponte.
 
+### 🚫 Quando não utilizar?
 
+ - ❌ Se estiver usando um modelo pré-treinado completo (ex: AutoModel do Hugging Face) — os embeddings já estão lá.
+ - ❌ Se estiver apenas tokenizando e não treinando nenhum modelo.
 
 
 
@@ -500,7 +1044,65 @@ print(tokens[:30])
 
 
 
-<!--- ( Utils Functions ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Utils ) --->
 
 ---
 
@@ -508,7 +1110,7 @@ print(tokens[:30])
 
 ## read_txt()
 
-Here, let's implement a useful function to read a `.txt` files:
+Aqui nós vamos aprender como ler um arquivo de texto no formato `.txt`:
 
 <!--- ( Python (From Scratch) ) --->
 <details>
@@ -517,7 +1119,7 @@ Here, let's implement a useful function to read a `.txt` files:
 
 </br>
 
-[utils.py](../../algorithms/utils.py)
+[utils.py](src/utils.py)
 ```python
 import re
 
@@ -525,9 +1127,6 @@ import re
 def read_txt(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         text = f.read()
-        print("The text read successfully.")
-        print("Total number of characters:", len(text))
-        print("Text type:", type(text), "\n")
     return text
 
 
@@ -536,24 +1135,21 @@ if __name__ == "__main__":
     file_path = "../datasets/the-verdict.txt"
     text = read_txt(file_path)
 
-    print(text)
+    print("Total number of characters:", len(text))
+    print("Text type:", type(text), "\n")
 ```
 
 **OUTPUT:**
 ```bash
-The text read successfully.
 Total number of characters: 20479
-Text type: <class 'str'>
+Text type: <class 'str'> 
 ```
 
-> **NOTE:**  
-> We can use slicing to select a specific section of the text.
+> **OBSERVAÇÃO:**  
+> Podemos usar o conceito **fatiamento (slicing)** para selecionar uma parte específica do texto.
 
 ```python
-    file_path = "datasets/the-verdict.txt"
-    text = read_txt(file_path)
-
-    print(text[:353])
+print(text[:353])
 ```
 
 **OUTPUT:**
@@ -565,7 +1161,6 @@ I HAD always thought Jack Gisburn rather a cheap genius--though a good fellow en
 
 </details>
 
-</br>
 
 
 
@@ -668,48 +1263,86 @@ I HAD always thought Jack Gisburn rather a cheap genius--though a good fellow en
 
 
 
-<!--- ( References ) --->
+<!--- ( 🚀 Instalação / Execução local ) --->
+
+---
+
+<div id="settings"></div>
+
+## 🚀 Instalação / Execução local
+
+### Crie e ative o ambiente virtual (recomendado)
+
+```bash
+python -m venv environment
+```
+
+*LINUX:*  
+```bash
+source environment/bin/activate
+```
+
+*WINDOWS:*  
+```bash
+source environment/Scripts/activate
+```
+
+### Atualize o pip
+
+```bash
+python -m pip install --upgrade pip
+```
+
+### Instale as dependências
+
+```bash
+pip install -U -v --require-virtualenv -r requirements.txt
+```
+
+
+
+
+
+
+
+
+
+
+<!--- ( REFERÊNCIAS ) --->
 
 ---
 
 <div id="ref"></div>
 
-## References
+## REFERÊNCIAS
 
- - **A.I used:**
-   - [ChatGPT](https://chatgpt.com/)
-   - [Grok](https://grok.com/)
-   - [Claude3](https://claude.ai/)
- - **General:**
-   - [Neural Networks from Scratch in Python Book](https://nnfs.io/)
+ - **AI Agents:**
+   - [ChatGPT](https://chat.openai.com/)
+ - **Books:**
+   - [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)
 
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
 
-<!---
 
 
 
-<!--- () ->
+
 <details>
 
-<summary>Title here...</summary>
+<summary></summary>
 
-</br>
+<br/>
 
-[](../../examples/)
+[](src/)
 ```python
 
 ```
 
-**OUTPUT:**  
+**OUTPUT:**
 ```bash
 
 ```
 
 </details>
-
-
-
---->
