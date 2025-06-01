@@ -28,12 +28,12 @@
    - **Modelos de classificação (Classification models):**
    - **Assistentes pessoais ou modelos de chat (Personal assistants or chat models):**
  - **Utils:**
-   - []
+   - [read_txt()](#read_txt)
  - [**🚀 Instalação / Execução local**](#settings)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
+- Same topic = "20" Whitespace character.
 - Different topic = "200" Whitespace character.
 --->
 
@@ -161,6 +161,16 @@ LLMs (Large Language Models) são modelos de aprendizado de máquina treinados p
 
 
 
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="how-understand"></div>
@@ -171,6 +181,17 @@ Na verdade, LLMs não entendem no sentido humano. Eles aprendem probabilidades e
 
 > Se eu vejo a frase: "O céu está ___", a palavra mais provável é "azul".  
 > Esse "palpite" é feito com base no que ele viu durante o treinamento.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -195,6 +216,17 @@ Na verdade, LLMs não entendem no sentido humano. Eles aprendem probabilidades e
      - Tradução;
      - Geração de código;
      - Resumo de documentos.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -264,6 +296,17 @@ Na verdade, LLMs não entendem no sentido humano. Eles aprendem probabilidades e
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="transformers-inovation"></div>
@@ -297,6 +340,17 @@ Eles eliminaram a necessidade de processar palavras em sequência como faziam **
 | **Positional Encoding**       | Adiciona informação da posição das palavras (já que é paralelo). |
 | **Feedforward Layers**        | Faz transformações profundas nos vetores.                        |
 | **Normalization & Residuals** | Ajudam a estabilizar e melhorar o aprendizado.                   |
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -363,6 +417,17 @@ Q(correu) • K(correu)→  média atenção
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="llm-examples"></div>
@@ -419,6 +484,17 @@ Vamos começar com uma introdução de algumas tarefas que podem ser resolvidas 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="understanding-word-embeddings"></div>
@@ -449,6 +525,17 @@ Por exemplo:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="word2vec-idea"></div>
@@ -460,6 +547,17 @@ Por exemplo:
 Consequentemente, quando projetadas em embeddings de palavras bidimensionais para fins de visualização, palavras semelhantes ficam agrupadas.
 
 ![img](images/word2vec-idea-01.png)  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -733,6 +831,17 @@ Esse tipo de tokenização:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="token-id"></div>
@@ -864,6 +973,17 @@ Vocabulary type: <class 'dict'>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="token-id-to-tensor"></div>
@@ -964,6 +1084,17 @@ Tensor attention_mask shape: tf.Tensor([1 1 1 1 1 1 1 1 1 1], shape=(10,), dtype
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="creating-token-embeddings"></div>
@@ -985,11 +1116,16 @@ Por exemplo:
 token_id  = 1037     # "a" no BERT tokenizer.
 embedding = [0.1, 0.5, ..., -0.2]  # vetor de 768 dimensões.
 ```
+
+<br/>
+
 **Exemplo-02:**  
 ![img](images/token-embedding-01.png)  
 
-**Exemplo-03:**  
+<br/>
 
+**Exemplo-03:**  
+![img](images/token-embedding-02.png)  
 
 ### 🧠 Por que isso é importante?
 
@@ -999,6 +1135,189 @@ Redes neurais não entendem palavras ou números inteiros diretamente — elas p
 
  - ❌ Se estiver usando um modelo pré-treinado completo (ex: AutoModel do Hugging Face) — os embeddings já estão lá.
  - ❌ Se estiver apenas tokenizando e não treinando nenhum modelo.
+
+Vamos ver como fazer isso na prática:
+
+<details>
+
+<summary>Transformer + PyTorch</summary>
+
+<br/>
+
+[token_embedding_pytorch.py](src/token_embedding_pytorch.py)
+```python
+import torch
+from transformers import AutoTokenizer
+
+from utils import read_txt
+
+
+# load the BERT tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+
+# Load the and read the text
+file_path = "../datasets/the-verdict.txt"
+text = read_txt(file_path)
+
+# encode process = here we tokenize + convert to IDs
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,  # Add [CLS], [SEP]
+    return_tensors="pt",      # pt = Pytorch
+    truncation=True,          # Truncates if too long
+    padding=False             # Do not add padding
+)
+
+# Get the input IDs
+input_ids = encoding["input_ids"]
+
+vocab_size = tokenizer.vocab_size     # vocab size
+embedding_dim = 768                   # embedding dim
+
+# Create embedding layer
+embedding_layer = torch.nn.Embedding(vocab_size, embedding_dim)
+
+print("Layer dimensions (shape):", embedding_layer.weight.shape)
+print("\nFirst token embedding dimension (shape):", embedding_layer.weight[0].shape)
+print("\nFirst token embedding value (tensor):", embedding_layer.weight[0][:20])
+```
+
+#### Explicação do Código
+
+ - `vocab_size = tokenizer.vocab_size`
+   - Obtém o número total de tokens únicos no vocabulário do tokenizador `BERT (bert-base-uncased)`.
+   - **Exemplo:** Se o `vocab_size` for 30.522 (que é o nosso caso), significa que existem 30.522 tokens distintos (palavras, subpalavras, pontuações, etc.) que o modelo entende.
+ - `embedding_dim = 768`
+   - Define a dimensão dos vetores de embedding.
+   - **Por que 768?** Essa é a dimensão usada pelo modelo BERT-base (cada token é representado como um vetor de 768 números).
+ - `embedding_layer = torch.nn.Embedding(vocab_size, embedding_dim)`
+   - **O que faz:** Cria uma camada de embedding do PyTorch.
+   - **Como funciona internamente:** É como uma *"tabela de lookup"* que, dado um *token_id (um número entre 0 e vocab_size-1)*, retorna um vetor de tamanho *embedding_dim (nesse caso, 768)*.
+   - **Inicialização:** Os vetores são inicializados aleatoriamente (a menos que você carregue pesos pré-treinados).
+ - `O que tem dentro de embedding_layer?`
+   - A principal coisa que ele contém é a tabela de embeddings – uma matriz de pesos onde cada linha representa o vetor associado a um token:
+     - `Linha[0]:` 768 pesos (weight) para o token 0.
+     - `Linha[1]:` 768 pesos (weight) para o token 1.
+     - ...
+     - `Linha[vocab_size-1]:` 768 pesos (weight) para o token `vocab_size-1`.
+
+**OUTPUT:**
+```bash
+Layer dimensions (shape): torch.Size([30522, 768])
+
+First token embedding dimension (shape): torch.Size([768])
+
+First token embedding value (tensor): tensor([-0.2344, -0.0046, -2.6109, -1.0261,  0.7495, -0.0959,  2.9716, -1.6094,
+        -0.1729,  0.0674, -0.6070, -1.8236,  1.1297,  0.4856, -1.7770, -0.8983,
+        -1.3048, -1.2164, -0.1922, -0.0672], grad_fn=<SliceBackward0>)
+```
+
+Vejam que:
+
+ - `print("Layer dimensions (shape):", embedding_layer.weight.shape)`
+   - Aqui nós temos uma camada embedding com 30.522 tokens, cada um com 768 valores (pesos/weights):
+     - Como nós sabemos esse valores (pesos/weights) foram inicializados aleatoriamente.
+ - `print("\nFirst token embedding dimension (shape):", embedding_layer.weight[0].shape)`
+   - Aqui nós estamos exibindo as dimensões do primeiro token (palavra única) na tabela de embeddings:
+     - Nada mas do que uma lista com 768 valores (pesos/weights), *reais*.
+ - `print("First token embedding value (tensor):", embedding_layer.weight[0][:20])`
+   - Aqui nós estamos exibindo os 20 pesos (weights) do primeiro token (palavra única) da camada de embedding.
+
+Você pode explorar mais detalhes da nossa camada embedding utilizando:
+
+```python
+print(embedding_layer.__dict__)
+```
+
+**OUTPUT:**
+```bash
+{'training': True, '_parameters': {'weight': Parameter containing:
+tensor([[ 1.2361,  1.0225, -1.2596,  ...,  0.4168,  1.4311,  0.3879],
+        [-0.7385,  0.5236, -1.4423,  ...,  1.0549, -2.3647,  1.2509],
+        [ 0.8065,  0.5177, -0.0426,  ..., -0.4130,  0.5765, -0.4022],
+        ...,
+        [-1.2222, -0.8426,  0.2170,  ..., -0.6425,  0.9004, -1.2794],
+        [-0.8202,  0.8905, -0.0465,  ..., -0.2120,  0.7153,  0.7043],
+        [ 0.8098,  0.1132,  1.3992,  ...,  0.1763, -0.0457, -0.0235]],
+       requires_grad=True)}, '_buffers': {}, '_non_persistent_buffers_set': set(), '_backward_pre_hooks': OrderedDict(), '_backward_hooks': OrderedDict(), '_is_full_backward_hook': None, '_forward_hooks': Order
+edDict(), '_forward_hooks_with_kwargs': OrderedDict(), '_forward_hooks_always_called': OrderedDict(), '_forward_pre_hooks': OrderedDict(), '_forward_pre_hooks_with_kwargs': OrderedDict(), '_state_dict_hooks': O
+rderedDict(), '_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_pre_hooks': OrderedDict(), '_load_state_dict_post_hooks': OrderedDict(), '_modules': {}, 'num_embeddings': 30522, 'embedding_dim': 768, 'p
+adding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False}
+```
+
+> **OBSERVAÇÃO:**  
+> Vejam que aqui nós podemos ver todos os parâmetros e atributos da camada embedding.
+
+</details>
+
+
+
+<!--- ( TensorFlow ) --->
+<details>
+
+<summary>Transformers + TensorFlow</summary>
+
+<br/>
+
+[token_embedding_tensorflow.py](src/token_embedding_tensorflow.py)
+```python
+import tensorflow as tf
+from transformers import AutoTokenizer
+
+from utils import read_txt
+
+# Load the BERT tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+
+# Read the input text
+file_path = "../datasets/the-verdict.txt"
+text = read_txt(file_path)
+
+# Tokenize and convert text to input IDs
+encoding = tokenizer.encode_plus(
+    text,
+    add_special_tokens=True,   # Add [CLS] and [SEP] tokens
+    return_tensors="tf",       # Use TensorFlow tensors
+    truncation=True,           # Truncate if the text is too long
+    padding=False              # Do not apply padding
+)
+
+# Get input IDs
+input_ids = encoding["input_ids"]  # shape: (1, seq_len)
+
+# Define vocabulary size and embedding dimension
+vocab_size = tokenizer.vocab_size
+embedding_dim = 768  # BERT-base uses 768-dimensional embeddings
+
+# Create the embedding layer
+embedding_layer = tf.keras.layers.Embedding(
+    input_dim=vocab_size,
+    output_dim=embedding_dim
+)
+
+# Apply embedding lookup on input IDs
+embedded_tokens = embedding_layer(input_ids)  # shape: (1, seq_len, 768)
+
+# Print information about the embedding layer
+print("Layer dimensions (shape):", embedding_layer.weights[0].shape)
+print("\nFirst token embedding dimension (shape):", embedding_layer.weights[0][0].shape)
+print("\nFirst token embedding value (tensor):", embedding_layer.weights[0][0][:20])
+```
+
+**OUTPUT:**
+```bash
+Layer dimensions (shape): (30522, 768)
+
+First token embedding dimension (shape): (768,)
+
+First token embedding value (tensor): tf.Tensor(
+[-0.04233279 -0.0479785  -0.00253046 -0.02014258  0.01921842 -0.02670938
+  0.01929888  0.0185066   0.01841432 -0.04865185  0.01238776 -0.0382238
+ -0.00538279  0.0330565  -0.01576235 -0.03277471  0.02024061 -0.03092581
+ -0.02762043  0.00779605], shape=(20,), dtype=float32)
+```
+
+</details>
 
 
 
