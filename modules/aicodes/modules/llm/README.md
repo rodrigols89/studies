@@ -13,20 +13,12 @@
    - [Entendendo "Word Embeddings"](#understanding-word-embeddings)
    - [Word2Vec](#word2vec-idea)
    - [Sliding Window (input-target)](#sliding-window)
+   - [Mecanismo de atenção (Attention mechanism)](#attention-mechanism)
  - **Preparação e amostragem de dados (Data preparation & sampling):**
      - [Tokenização de texto (Tokenizing text)](#tokenization)
      - [Convertendo tokens em IDs de token (Converting tokens into token IDs)](#token-id)
      - [Convertendo IDs de tokens em tensores de incorporação (Embeddings)](#token-id-to-tensor)
      - [Criando token embeddings](#creating-token-embeddings)
- - **Mecanismo de atenção (Attention mechanism):**
- - **Arquiteturas de LLMs (LLMs architecture):**
- - **Pré-treinamento (Pretraining):**
- - **Loop de treinamento (Training loop):**
- - **Avaliação do modelo (Model evaluation):**
- - **Carregamento pesos pré-treinados (Load pretrained weights):**
- - **Afinação (Fine-tuning):**
-   - **Modelos de classificação (Classification models):**
-   - **Assistentes pessoais ou modelos de chat (Personal assistants or chat models):**
  - **Utils:**
    - [read_txt()](#read_txt)
  - [**🚀 Instalação / Execução local**](#settings)
@@ -615,6 +607,61 @@ O modelo recebe o **input (lista de tokens)** e é treinado para prever o **targ
 | **Quando usar?**    | Em textos longos, geração de texto, fine-tuning              |
 | **Quando evitar?**  | Quando o modelo aceita entradas longas ou a tarefa é pequena |
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="attention-mechanism"></div>
+
+## Mecanismo de atention (Attention mechanism)
+
+O mecanismo de attention é usado para:
+
+ - 🔍 Atribuir importância a diferentes partes de uma entrada.
+ - 🧠 Ajudar o modelo a lembrar de coisas distantes no texto (como a primeira palavra da frase).
+ - 🌍 Mapear relações entre palavras — mesmo quando estão longe no texto.
+
+### ⚙️ Como funciona (simplesmente)?
+
+Vamos supor que temos uma frase:
+
+> **O gato pulou no telhado.**
+
+O modelo vai calcular *quanto cada palavra "olha" para as outras*:
+
+| Palavra atual | Atenção em “O” | “gato” | “pulou” | “no” | “telhado” |
+| ------------- | -------------- | ------ | ------- | ---- | --------- |
+| **“pulou”**   | 0.1            | 0.3    | 0.0     | 0.1  | 0.5       |
+
+> **Observação:**  
+> - Isso quer dizer que **“pulou”** presta mais atenção em **“telhado”** e **“gato”**, pois tem maior probabilidades, respectivamente.
+> - Esse "peso" de atenção é aprendido automaticamente durante o treinamento.
+
+### 🔁 Principais tipos de Attention
+
+ - **Self-Attention:**
+   - Cada palavra foca em todas as outras, incluindo ela mesma (usado no Transformer).
+ - **Cross-Attention:**
+   - Uma sequência foca em outra (ex: no encoder-decoder).
+ - **Multi-Head Attention:**
+   - Várias atenções são feitas em paralelo para capturar diferentes relações.
 
 
 
