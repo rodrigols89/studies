@@ -21,17 +21,14 @@ encoding = tokenizer.encode_plus(
 )
 
 # Get the input IDs
-input_ids = encoding["input_ids"]  # shape: (1, seq_len)
+input_ids = encoding["input_ids"]
 
-# Criar embedding manual
 vocab_size = tokenizer.vocab_size     # vocab size
 embedding_dim = 768                   # embedding dim
 
 # Create embedding layer
 embedding_layer = torch.nn.Embedding(vocab_size, embedding_dim)
 
-# Aplicar lookup (embedding)
-embedded_tokens = embedding_layer(input_ids)  # shape: (1, seq_len, 768)
-
-# Mostrar apenas os 3 primeiros tokens (slicing)
-print("Embedding dos 3 primeiros tokens:\n", embedded_tokens[:, :3, :])
+print("Layer dimensions (shape):", embedding_layer.weight.shape)
+print("\nFirst token embedding dimension (shape):", embedding_layer.weight[0].shape)
+print("\nFirst token embedding value (tensor):", embedding_layer.weight[0][:20])
