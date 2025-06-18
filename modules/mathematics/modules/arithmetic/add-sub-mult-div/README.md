@@ -131,6 +131,30 @@ Resposta
 
 
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/02.jpeg)  
+
+</details>
+
+
+
+
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/03.pdf)  
+
+</details>
+
 
 
 
