@@ -12,10 +12,6 @@
    - [Divisão onde o dividendo tem mais de uma casa decimal](#div-more-units-01)
    - [Algumas divisões necessitam pegar mais de um digito por vez](#div-more-units-2)
    - [Regra do elevador](#elevator-rule)
-
-
-
-
    - **Questões Abertas:**
      - [](#)
 <!---
