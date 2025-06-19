@@ -3,13 +3,13 @@
 
 # Matemática
 
-> **Meus *exercícios* e *questões* da minha graduação em Matemática.**  
+> **Meus *exercícios* e *questões* de Matemática.**  
 
 ---
 
 ## Aritmética
 
- - [Adição, Subtração, Multiplicação e Divisão](modules/arithmetic/add-sub-mult-div)
+ - [Adição, Subtração, Multiplicação e Divisão](modules/add-sub-mult-div)
 
 ---
 
