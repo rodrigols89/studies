@@ -12,6 +12,7 @@
    - [Divisão onde o dividendo tem mais de uma casa decimal](#div-more-units-01)
    - [Algumas divisões necessitam pegar mais de um digito por vez](#div-more-units-2)
    - [Regra do elevador](#elevator-rule)
+   - [Como fazer divisão com números decimais?](#div-w-decimals)
 <!---
 [WHITESPACE RULES]
 - Same topic = "20" Whitespace character.
@@ -565,6 +566,39 @@ E agora? Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="div-w-decimals"></div>
+
+## Como fazer divisão com números decimais?
+
+Como fazer divisão de números que contenham casas decimais, por exemplo:
+
+![img](images/div-w-decimals-00.png)  
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/div-w-decimals-01.jpeg)  
+
+</details>
 
 
 
