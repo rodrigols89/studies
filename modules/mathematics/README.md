@@ -10,6 +10,7 @@
 ## Aritmética
 
  - [Adição, Subtração, Multiplicação e Divisão](modules/add-sub-mult-div)
+ - [Frações](modules/fractions)
 
 ---
 
