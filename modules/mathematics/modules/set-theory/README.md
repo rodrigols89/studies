@@ -7,7 +7,7 @@
    - [Interseção de Conjuntos](#intersection-of-sets)
    - [Complementar de um Conjunto](#complement-of-sets)
  - **Questões Abertas:**
-   - [(UFBA) Enquete sobre as preferências esportivas](#ufba-enq-01)
+   - [(UFBA) Enquete sobre preferências esportivas](#ufba-enq-01)
  - **Questões do ENEM:**
  - **Questões de Concurso:**
 <!---
@@ -267,7 +267,7 @@ Por exemplo:
 
 <div id="ufba-enq-01"></div>
 
-## (UFBA) Enquete sobre as preferências esportivas
+## (UFBA) Enquete sobre preferências esportivas
 
 Em uma enquete, várias pessoas foram entrevistadas acerca de suas preferências em relação a três esportes:
 
