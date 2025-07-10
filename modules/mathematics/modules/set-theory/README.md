@@ -8,6 +8,7 @@
    - [Complementar de um Conjunto](#complement-of-sets)
  - **Questões Abertas:**
    - [(UFBA) Enquete sobre preferências esportivas](#ufba-enq-01)
+   - [(PUC/Campinas-SP) Pesquisa de programas favoritos](#puc-campinas-sp-02)
  - **Questões do ENEM:**
  - **Questões de Concurso:**
 <!---
@@ -257,10 +258,6 @@ Por exemplo:
 
 
 
-
-
-
-
 <!--- ( Questões Abertas ) --->
 
 ---
@@ -420,6 +417,50 @@ Opção `b`
 
 
 
+---
+
+<div id="puc-campinas-sp-02"></div>
+
+## (PUC/Campinas-SP) Pesquisa de programas favoritos
+
+(PUC/Campinas-SP) Numa comunidade constituída de 1800 pessoas, há três programas de TV favoritos: esportes (E), novelas (N) e humorismo (H). A tabela a seguir indica quantas pessoas assistem a esses programas:
+
+| Programas     | Número de Telespectadores |
+|---------------|---------------------------|
+| **E**         | 400                       |
+| **N**         | 1220                      |
+| **H**         | 1080                      |
+| **E e N**     | 220                       |
+| **N e H**     | 800                       |
+| **E e H**     | 180                       |
+| **E e N e H** | 100                       |
+
+Por meio desses dados, verifica-se que o número de pessoas da comunidade que não assistem a qualquer dos três tipos de programas é:
+
+ - a) 200.
+ - b) 300.
+ - c) 900.
+ - d) 100.
+ - e) 50.
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/puc-campinas-sp-02.jpeg)  
+
+</details>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -483,119 +524,9 @@ Opção `b`
 <details>
 
 <summary></summary>
+
+<br/>
+
 RESPOSTA
-<br/>
-
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-Para resolver esse tipo de problema (de intersecções) a primeira coisa que nós precisamos fazer identificar se tem **ALGUM NÚMERO QUE NÃO APARECE EM NENHUM DOS CONJUNTOS (CATEGORIA), PARA NÃO ESQUECER**:
-
-```bash
-     n((A∪B∪C)´)
-          |
-          |
-     NENHUM(40)
-```
-
-> **NOTE:**  
-> Vejam que nós estamos `negando (´)` a união de todos os conjuntos, ou seja, esse grupo não está em nenhum dos conjuntos.
-
-Agora nós vamos adicionar (somar) o número TOTAL de cada conjunto (categoria):
-
-```bash
-     n((A∪B∪C)´)   +   n(A)   +   n(B)   +   n(C)   +   n(A∩B∩C)
-          |             |          |          |             |
-          |             |          |          |             |
-     NENHUM(40)         |          |          |             |
-          |         Volei(300)     |          |          TODOS(50)
-          |             |          |          |             |
-          |             |   Basquete(260)     |             |
-          |             |          |          |             |
-          |             |          |      Tênis(200)        |
-          |             |          |          |             |
-```
-
- - ➡️ Isso **"conta todo mundo"**, mas elementos que estão em mais de um conjunto são contados mais de uma vez.
- - ➡️ **NOTE:** Lembre-se que **"TODOS"** é a única intersecção que vai ser *somada e não subtraída*.
-
-Continuando, agora nós vamos subtrair (diminuir) as intersecções dos conjuntos individuais entre eles **(SEM A INTERSECÇÃO DE TODOS)**:
-
-```bash
-     n((A∪B∪C)´)   +   n(A)   +   n(B)   +   n(C)   +   n(A∩B∩C)   -   n(A∩B)   -   n(A∩C)   -   n(B∩C)
-          |             |          |          |             |             |            |            |
-          |             |          |          |             |             |            |            |
-     NENHUM(40)         |          |          |             |             |            |            |
-                    Volei(300)     |          |          TODOS(50)        |            |            |
-                                   |          |                           |            |            |
-                            Basquete(260)     |                           |            |            |  
-                                              |                         V/B(180)       |            |
-                                          Tênis(200)                                   |            |
-                                                                                     V/T(130)       |
-                                                                                                    |
-                                                                                                  B/T(100)
-```
-
-Resumindo, a fórmula para 3 conjuntos (categorias) é a seguinte:
-
-```bash
-n(A∪B∪C) = n((A∪B∪C)´)   +   n(A)   +   n(B)   +   n(C)   +   n(A∩B∩C)   -   n(A∩B)   -   n(A∩C)   -   n(B∩C)
-                40        +   300    +   260    +   200    +      50      -    180     -    130     -   100
-```
-
-Uma maneira inteligente de resolver essa conta é:
-
- - Somar todos os positivos (adições), incluindo o conjunto NENHUM (nenhuma categoria);
- - E subtrair de todas as subtrações.
-
- Por exemplo:
-
-```bash
-(Soma de todos positivos, incluindo o conjunto NENHUM (nenhuma categoria))
-40 + 300 + 260 + 200 + 50 = 850
-
-(Subtração de todas as subtrações)
--180 - 130 - 100 = 410
-
-(Subtração de todos negativos dos positivos)
-850 - 410 = 440
-```
-
-Logo, o número de pessoas entrevista foi **"440"**.
-
-**RESPOSTA:**  
-Opção `b`
 
 </details>
