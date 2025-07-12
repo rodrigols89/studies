@@ -11,7 +11,7 @@
  - [Computer Science Fundamentals](#section-csf)
  - [Information Security](#section-security)
  - [Artificial Intelligence](#section-ai)
- - [Matemática](https://github.com/rodrigols89/studies/tree/mathematics/modules/mathematics)
+ - [Mathematics](#section-math)
  - [Chemistry](modules/chemistry)
  - [Tools](#section-tools)
  - [Practice Projects](#section-projects)
@@ -74,6 +74,12 @@
 
  - [Information Security Fundamentals](modules/security/fundamentals)
  - [Penetration Testing (Tips & Tricks)](modules/security/pentest-tips)
+
+---
+
+<div id="section-math"></div>
+
+ - [Matemática (Portuguese BR notes)](modules/mathematics)
 
 ---
 
