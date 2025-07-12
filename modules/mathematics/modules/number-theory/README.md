@@ -10,6 +10,9 @@
    - [Quando um número é divisível por "6"?](#divisible-by-6)
    - [Quando um número é divisível por "9"?](#divisible-by-9)
  - [**Multiplos (O que são multiplos de um número?)**](#multiples)
+ - [**Números Primos**](#prime-numbers)
+   - [O número "1" é primo?](#prime-number-1)
+   - [Podemos formar qualquer número natural com a multiplicação de primos?](#prime-multiplication)
  - **Questões Abertas:**
  - **Questões do ENEM:**
  - **Questões de Concurso:**
@@ -414,6 +417,226 @@ Por exemplo, para saber os múltiplos de 6, fazemos:
 
 > **NOTE:**  
 > Eles nunca terminam, porque podemos sempre multiplicar o 6 por números maiores.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Números Primos ) --->
+
+---
+
+<div id="prime-numbers"></div>
+
+## Números Primos
+
+> Qual a condição para um número ser considerado primo?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> Para um número se considerado primo ele **só pode ser divisível por 1 e por ele mesmo**.
+
+Por exemplo:
+
+```bash
+    2                 3                 5
+   / \               / \               / \
+  ÷   ÷             ÷   ÷             ÷   ÷
+ /     \           /     \           /     \
+1       2         1       3         1       5
+|       |         |       |         |       |
+2       1         3       1         5       1
+
+
+
+    7                 11               13
+   / \               /  \             /  \
+  ÷   ÷             ÷    ÷           ÷    ÷
+ /     \           /      \         /       \
+1       7         1       11       1        13
+|       |         |        |       |         |
+7       1         11       1       13        1
+```
+
+</details>
+
+---
+
+<div id="prime-number-1"></div>
+
+## O número "1" é primo?
+
+Sabendo que um número é considerado primo de se ele é divisível por 1 e por ele mesmo.
+
+> O número "1" é um número primo?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+#### 🧠 Regra-chave
+
+Um número primo deve ter dois divisores **distintos**:
+
+ - 1.
+ - e ele mesmo.
+
+Agora observe:
+
+> O número 1 só tem um divisor, que é ele mesmo.
+
+#### E por que essa definição é importante?
+
+É uma questão de coerência matemática.  
+Se o número 1 fosse considerado primo, quebraria várias regras e teoremas.
+
+#### ✅ Exemplo: Teorema Fundamental da Aritmética
+
+> Todo número inteiro maior que 1 pode ser escrito como produto de primos únicos (fatoração única).
+
+Se o 1 fosse primo, por exemplo:
+
+```bash
+6 = 2 × 3
+```
+
+Mas também: 
+
+```bash
+6 = 1 × 2 × 3
+
+ou
+
+6 = 1 × 1 × 2 × 3, etc...
+```
+
+**🔁 Isso geraria infinitas fatorações diferentes!**  
+😵‍💫 A matemática perderia a unicidade da fatoração.
+
+#### 🧮 Então o número 1 é o quê?
+
+> O número **1** é uma **“unidade”** — um número neutro da multiplicação.
+
+Ele não é primo, nem composto, e tem papel especial:
+
+```bash
+1 × n = n
+```
+
+Ele não contribui para a estrutura de fatores primos.
+
+#### ✅ Conclusão
+
+ - O número 1 não é considerado primo porque não tem dois divisores distintos.
+ - Além disso, chamá-lo de primo quebraria regras fundamentais da matemática, como a fatoração única.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="prime-multiplication"></div>
+
+## Podemos formar qualquer número natural com a multiplicação de primos?
+
+> É possível formar qualquer número natural com a multiplicação de números primos?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> Sim, nós podemos formar qualquer número natural com a multiplicação de números primos.
+
+Por exemplo:
+
+```bash
+15 pode ser formado com a multiplicação dos seguintes números primos:
+3 x 5 = 15
+
+50 pode ser formado com a multiplicação dos seguintes números primos:
+2 x 5 x 5 = 50
+```
 
 </details>
 
