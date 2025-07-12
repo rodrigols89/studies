@@ -77,6 +77,8 @@
 
 ---
 
+## Mathematics
+
 <div id="section-math"></div>
 
  - [Matemática (Portuguese BR notes)](modules/mathematics)
