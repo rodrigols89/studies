@@ -13,6 +13,7 @@
  - [**Números Primos**](#prime-numbers)
    - [O número "1" é primo?](#prime-number-1)
    - [Podemos formar qualquer número natural com a multiplicação de primos?](#prime-multiplication)
+ - [Fatoração "numérica"](#numerical-factorization)
  - **Questões Abertas:**
  - **Questões do ENEM:**
  - **Questões de Concurso:**
@@ -639,6 +640,137 @@ Por exemplo:
 ```
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Fatoração "numérica" ) --->
+
+---
+
+<div id="numerical-factorization"></div>
+
+## Fatoração "numérica"
+
+> O que é uma "fatoração numérica"?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+Uma **Fatoração Numérica** é o processo de escrever um número como *produto (multiplicação)* de fatores menores, ou seja, quebrar algo em "peças multiplicativas".
+
+Por exemplo:
+
+```bash
+36 = 2 × 2 × 3 × 3 = 2² × 3²
+```
+
+> **NOTE:**  
+> Lembrando que essa fatoração é sempre utilizando números primos.
+
+Por exemplo, vamos decompor o número **60** em fatores primos, com a famosa *"chave de fatoração"*:
+
+```bash
+60 | 2
+30 | 2
+15 | 3
+ 5 | 5
+ 1
+```
+
+Ou seja, 60 também pode ser escrito como:
+
+```bash
+60 = 2 × 2 × 3 × 5
+60 = 2² × 3¹ × 5¹
+```
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
