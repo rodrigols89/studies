@@ -18,9 +18,9 @@
  - [**O que é o "MMC (Mínimo Multiplo Comum)"?**](#mmc)
    - [Quais tipos de problemas são resolvidos com MMC?](#mmc-problems)
    - [Qual o mínimo múltiplo comum entre 16 e 20?](#mmc-16-20)
- - [**O que é o "MDC (Máximo Divisor Comum)"?**](#mcd)
-   - [Quais tipos de problemas são resolvidos com MDC?](#mcd-problems)
-   - [Qual o máximo divisor comum entre 90, 96 e 54?](#mcd-90-96-54)
+ - [**O que é o "MDC (Máximo Divisor Comum)"?**](#mdc)
+   - [Quais tipos de problemas são resolvidos com MDC?](#mdc-problems)
+   - [Qual o máximo divisor comum entre 90, 96 e 54?](#mdc-90-96-54)
  - **Questões Abertas:**
  - **Questões do ENEM:**
  - **Questões de Concurso:**
@@ -989,7 +989,7 @@ MMC(3, 4) = 12
 
 ---
 
-<div id="mcd"></div>
+<div id="mdc"></div>
 
 ## O que é o "MDC (Máximo Divisor Comum)"?
 
@@ -1025,7 +1025,7 @@ Aqui o nesse exemplo o *máximo divisor comum* entre **12** e **18** é o númer
 
 ---
 
-<div id="mcd-problems"></div>
+<div id="mdc-problems"></div>
 
 ## Quais tipos de problemas são resolvidos com MDC?
 
@@ -1096,7 +1096,7 @@ Aplicando o MDC de **18** e **24**, que é **6**, nós temos que podemos reduzir
 
 ---
 
-<div id="mmc-90-96-54"></div>
+<div id="mdc-90-96-54"></div>
 
 ## Qual o máximo divisor comum entre 90, 96 e 54
 
