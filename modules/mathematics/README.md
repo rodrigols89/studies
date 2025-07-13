@@ -7,6 +7,12 @@
 
 ---
 
+## Lógica Matemática
+
+ - [Raciocínio Lógico](modules/logic)
+
+---
+
 ## Aritmética
 
  - [Adição, Subtração, Multiplicação e Divisão](modules/add-sub-mult-div)
@@ -17,7 +23,6 @@
 
 ## Álgebra
 
- - [Raciocínio Lógico](modules/logic)
  - [Teoria dos Conjuntos](modules/set-theory)
 
 ---
