@@ -13,7 +13,14 @@
  - [**Números Primos**](#prime-numbers)
    - [O número "1" é primo?](#prime-number-1)
    - [Podemos formar qualquer número natural com a multiplicação de primos?](#prime-multiplication)
- - [Fatoração "numérica"](#numerical-factorization)
+ - [**Fatoração "numérica"**](#numerical-factorization)
+   - [Quantos divisores tem o número 60?](#60-divisors-number)
+ - [**O que é o "MMC (Mínimo Multiplo Comum)"?**](#mmc)
+   - [Quais tipos de problemas são resolvidos com MMC?](#mmc-problems)
+   - [Qual o mínimo múltiplo comum entre 16 e 20?](#mmc-16-20)
+ - [**O que é o "MDC (Máximo Divisor Comum)"?**](#mcd)
+   - [Quais tipos de problemas são resolvidos com MDC?](#mcd-problems)
+   - [Qual o máximo divisor comum entre 90, 96 e 54?](#mcd-90-96-54)
  - **Questões Abertas:**
  - **Questões do ENEM:**
  - **Questões de Concurso:**
@@ -692,23 +699,6 @@ Por exemplo:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( Fatoração "numérica" ) --->
 
 ---
@@ -764,6 +754,23 @@ Ou seja, 60 também pode ser escrito como:
 
 
 
+---
+
+<div id="60-divisors-number"></div>
+
+## Quantos divisores tem o número 60?
+
+> Quantos divisores tem o número 60?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/60-divisors-number.jpeg)  
+
+</details>
 
 
 
@@ -771,6 +778,339 @@ Ou seja, 60 também pode ser escrito como:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( MMC ) --->
+
+---
+
+<div id="mmc"></div>
+
+## O que é o "MMC (Mínimo Multiplo Comum)"?
+
+> O que é o MMC (Mínimo Multiplo Comum) entre números?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> O MMC de dois ou mais números é o menor número (excluindo o zero) que é múltiplo comum de todos eles ao mesmo tempo.
+
+Por exemplo:
+
+ - **Múltiplos de 4:**
+   - 4, 8, 12, 16, **20**, 24, ...
+ - **Múltiplos de 5:**
+   - 5, 10, 15, **20**, 25, 30, ...
+
+Aqui o nesse exemplo o *mínimo (menor) múltiplo comum* entre **4** e **5** é o número **20**.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="mmc-problems"></div>
+
+## Quais tipos de problemas são resolvidos com MMC?
+
+> Quais tipos de problemas são resolvidos com MMC?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> Use MMC quando tiver problemas de *encontro (sincronização)*.
+
+Por exemplo:
+
+ - **DOIS SEMÁFOROS:**
+   - Um semáforo pisca a cada 15 segundos, e o outro a cada 20 segundos.
+   - Pergunta: Depois de quanto tempo eles vão piscar juntos novamente?
+   - → MMC(15, 20) = **60 segundos**
+ - **ALUNOS PULANDO CORDA:**
+   - Ana pula a cada 6 segundos e João a cada 8.
+   - Pergunta: Quando pularão juntos pela primeira vez?
+   - → MMC(6, 8) = **24 segundos**
+ - **TORNEIRAS GOTEJANDO:**
+   - Três torneiras gotejam a cada 9, 12 e 15 minutos.
+   - Pergunta: Qual o intervalo para todas gotejarem juntas?
+   - → MMC(9, 12, 15) = **180 minutos**
+
+> **NOTE:**  
+> Outro caso comum de utilização de MMC é quando temos frações com denominadores diferentes.
+
+Por exemplo:
+
+\( \frac{1}{3} + \frac{1}{4} \)
+
+No exemplo acima nós precisamos encontrar o MMC entre 3 e 4 e igualar os denominadores.
+
+```bash
+MMC(3, 4) = 12
+```
+
+\( \frac{1}{12} + \frac{1}{12} \)
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="mmc-16-20"></div>
+
+## Qual o mínimo múltiplo comum entre 16 e 20?
+
+> Qual o mínimo múltiplo comum entre 16 e 20?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+![img](images/mmc-16-20.jpeg)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( MDC ) --->
+
+---
+
+<div id="mcd"></div>
+
+## O que é o "MDC (Máximo Divisor Comum)"?
+
+> O que é o MDC (Máximo Divisor Comum) entre números?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> O MDC entre dois ou mais números é o maior número inteiro positivo que divide todos eles ao mesmo tempo, ou seja, o maior divisor comum.
+
+Por exemplo:
+
+ - **Divisores de 12:**
+   - 1, 2, 3, 4, **6**, 12
+ - **Divisores de 18:**
+   - 1, 2, 3, **6**, 9, 18
+
+Aqui o nesse exemplo o *máximo divisor comum* entre **12** e **18** é o número **6**.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="mcd-problems"></div>
+
+## Quais tipos de problemas são resolvidos com MDC?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+> Use MDC quando quiser **dividir algo em partes iguais (sem sobras)**.
+
+Por exemplo:
+
+ - **DIVISÃO DE BOMBONS:**
+   - Temos 24 bombons de morango e 36 de chocolate.
+   - Pergunta: Qual o maior número de pacotes idênticos que podemos montar, sem sobras?
+   - ✔️ MDC(24, 36) = 12 pacotes.
+   - Cada pacote terá:
+     - 24 ÷ 12 = 2 bombons de morango.
+     - 36 ÷ 12 = 3 bombons de chocolate.
+ - **DIVISÃO DE CAIXAS COM PEÇAS:**
+   - Temos 40 parafusos e 60 porcas.
+   - Pergunta: Qual o maior número de caixas idênticas que podemos montar?
+   - ✔️ MDC(40, 60) = 20 caixas.
+   - Cada caixa terá:
+     - 40 ÷ 20 = 2 parafusos.
+     - 60 ÷ 20 = 3 porcas.
+ - **FORMAR TIMES:**
+   - Uma escola tem 50 meninas e 65 meninos para um torneio.
+   - Pergunta: Qual o maior número de times mistos idênticos que podem ser formados sem sobrar alunos?
+   - ✔️ MDC(50, 65) = 5 times.
+   - Cada time terá:
+     - 50 ÷ 5 = 10 meninas.
+     - 65 ÷ 5 = 13 meninos.
+ - **KITS ESCOLARES:**
+   - Temos 48 lápis e 36 canetas.
+   - Pergunta: Quantos kits iguais podemos montar com todos os materiais, sem sobras?
+   - ✔️ MDC(48, 36) = 12 kits.
+   - Cada kit terá:
+     - 48 ÷ 12 = 4 lápis.
+     - 36 ÷ 12 = 3 canetas.
+
+> **NOTE:**  
+> Outro caso comum de utilização de MDC é quando temos que reduzir (simplificar) uma fração em sua forma mais simples.
+
+Por exemplo:
+
+\( \frac{18}{24} \)
+
+```bash
+MDC(18, 24) = 6
+```
+
+Aplicando o MDC de **18** e **24**, que é **6**, nós temos que podemos reduzir (simplificar) a fração para:
+
+\( \frac{18 \div 6}{24 \div 6} = \frac{3}{4} \)
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="mmc-90-96-54"></div>
+
+## Qual o máximo divisor comum entre 90, 96 e 54
+
+> Qual o máximo divisor comum entre 90, 96 e 54?
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/mdc-90-96-54.jpeg)  
+
+</details>
 
 
 
