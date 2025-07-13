@@ -897,7 +897,7 @@ Por exemplo:
 
 Por exemplo:
 
-\( \frac{1}{3} + \frac{1}{4} \)
+$\frac{1}{3} + \frac{1}{4}$
 
 No exemplo acima nós precisamos encontrar o MMC entre 3 e 4 e igualar os denominadores.
 
@@ -905,7 +905,7 @@ No exemplo acima nós precisamos encontrar o MMC entre 3 e 4 e igualar os denomi
 MMC(3, 4) = 12
 ```
 
-\( \frac{1}{12} + \frac{1}{12} \)
+$\frac{1}{12} + \frac{1}{12}$
 
 </details>
 
@@ -1073,7 +1073,7 @@ Por exemplo:
 
 Por exemplo:
 
-\( \frac{18}{24} \)
+$\frac{18}{24}$
 
 ```bash
 MDC(18, 24) = 6
@@ -1081,7 +1081,7 @@ MDC(18, 24) = 6
 
 Aplicando o MDC de **18** e **24**, que é **6**, nós temos que podemos reduzir (simplificar) a fração para:
 
-\( \frac{18 \div 6}{24 \div 6} = \frac{3}{4} \)
+$\frac{18 \div 6}{24 \div 6} = \frac{3}{4}$
 
 </details>
 

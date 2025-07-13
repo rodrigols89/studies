@@ -1,7 +1,7 @@
 > **NOTE:**  
 > All *notes* and *exercises* are in *Brazilian Portuguese*.
 
-# Matemática
+# Matemática (Portuguese BR notes)
 
 > **Meus *exercícios* e *questões* de Matemática.**  
 
