@@ -22,6 +22,9 @@
    - [Quais tipos de problemas são resolvidos com MDC?](#mdc-problems)
    - [Qual o máximo divisor comum entre 90, 96 e 54?](#mdc-90-96-54)
  - **Questões Abertas:**
+   - [(OBMEP – Adaptado) Divisão de pedaços de rolos de arame](#obmep-rolos-de-arame)
+   - [(OBMEP – Adaptado) Encontro de dois ciclistas](#obmep-encontro-de-dois-ciclistas)
+   - [Menor número inteiro de três algarismos divisível por 4, 8 e 10](#menor-numero-inteiro-de-tres-algarismos-divisivel-por-4-8-e-10)
  - **Questões do ENEM:**
  - **Questões de Concurso:**
 <!---
@@ -1085,15 +1088,6 @@ $\frac{18 \div 6}{24 \div 6} = \frac{3}{4}$
 
 </details>
 
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="mdc-90-96-54"></div>
@@ -1109,6 +1103,247 @@ $\frac{18 \div 6}{24 \div 6} = \frac{3}{4}$
 <br/>
 
 ![img](images/mdc-90-96-54.jpeg)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Questões Abertas ) --->
+
+---
+
+<div id="obmep-rolos-de-arame"></div>
+
+## (OBMEP – Adaptado) Divisão de pedaços de rolos de arame
+
+
+Dois rolos de arame, um de 210 metros e outro de 330 metros, devem ser cortados em pedaços de mesmo comprimento. Quantos pedaços podem ser feitos se desejamos que cada um destes pedaços tenha o maior comprimento possível?
+
+ - a) 7 pedaços
+ - b) 11 pedaços
+ - c) 35 pedaços
+ - d) 18 pedaços
+ - e) 55 pedaços
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+A primeira coisa que nós precisamos fazer é idenfiticar as **variáveis/constantes do problema** e **o que o problemar quer (solução)**:
+
+ - **Variáveis/Constantes:**
+   - *Rolo com 210 metros de arame:*
+     - A = 210
+   - *Rolo com 330 metros de arame:*
+     - B = 330
+ - **Problema:**
+   - *Os arames devem ser cortados em pedaços de mesmo comprimento:*
+     - Problema de divisão: MDC(210, 330)
+   - *Quantos pedaços podem ser feitos?*
+
+De início, vamos tirar o **MÁXIMO DIVISOR COMUM (MDC)** de **210** e **330** para descobrir o maior comprimento que podemos cortar (dividir) igualmente os dois rolos de arames:
+
+```bash
+210, 330 | 2
+105, 165 | 3
+ 35,  55 | 5
+  7,  11 | /  2 x 3 x 5 = 30 metros
+```
+
+Sabendo que em que cada rolo nós vamos dividir em pedaços de 30 metros:
+
+```bash
+210 ÷ 30 = 7 pedaços
+330 ÷ 30 = 11 pedaços
+```
+
+Ou seja, nós vamos ter 7 + 11 pedaços, 7 + 11 = 18 pedaços.
+
+**RESPOSTA:**  
+Opção **"D"**.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="obmep-encontro-de-dois-ciclistas"></div>
+
+## (OBMEP – Adaptado) Encontro de dois ciclistas
+
+(OBMEP – Adaptado) Dois ciclistas correm numa pista circular e gastam, respectivamente, 30 segundos e 35 segundos para completar uma volta na pista. Eles partem do mesmo local e no mesmo instante. Após algum tempo os dois atletas se encontram, pela primeira vez, no local de largada. Depois de quanto tempo da largada ocorrerá o encontro?
+
+ - a) 60 segundos
+ - b) 70 segundos
+ - c) 90 segundos
+ - d) 210 segundos
+ - e) 420 segundos
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+A primeira coisa que nós precisamos fazer é idenfiticar as **variáveis/constantes do problema** e **o que o problemar quer (solução)**:
+
+ - **Variáveis/Constantes:**
+   - *O ciclista A dando uma volta em 30 segundos:*
+     - A = 30 segundos
+   - *O ciclista B dando uma volta em 35 segundos:*
+     - B = 35
+ - **Problema:**
+   - *Depois de quanto tempo da largada ocorrerá o encontro?*
+     - Problema de encontro/sincronização: MMC(30, 35)
+
+```bash
+30, 35 | 2
+15, 35 | 3
+ 5,  7 | 5
+ 1,  7 | 7
+ 1,  1 | / 2 x 3 x 5 x 7 = 210 segundos
+```
+
+Logo, os ciclista se encontraram depois de *210* segundos da largada.
+
+**RESPOSTA:**  
+Opção **"E"**.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="menor-numero-inteiro-de-tres-algarismos-divisivel-por-4-8-e-10"></div>
+
+## Menor número inteiro de três algarismos divisível por 4, 8 e 10
+
+Determine o menor número inteiro positivo de três algarismos que é divisível, ao mesmo tempo, por 4, 8 e 10.
+
+ - a) 80
+ - b) 100
+ - c) 110
+ - d) 120
+ - e) 160
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+A primeira coisa que nós precisamos fazer é idenfiticar as **variáveis/constantes do problema** e **o que o problemar quer (solução)**:
+
+ - **Variáveis/Constantes:**
+   - A = 4
+   - B = 8
+   - C = 10
+ - **Problema:**
+   - *Menor número inteiro de três algarismos divisível por 4, 8 e 10?*
+
+Aqui a primeira coisa que nós vamos fazer é tirar de **4**, **8** e **10**:
+
+```bash
+4   8   10 | 2
+2   4   5  | 2
+1   2   5  | 2
+1   1   5  | 5
+1   1   1  | / 2 x 2 x 2 x 5 = 2³ x 5 = 40
+```
+
+Mas, lembre-se que a questão quer:
+
+> ** O menor número inteiro de três algarismos divisível por 4, 8 e 10**.
+
+Quando você calcula o MMC de alguns números, como no caso:
+
+```bash
+MMC(4, 8, 10) = 40
+```
+
+> **NOTE:**  
+> Isso significa que **"todos os múltiplos de 40" "também serão múltiplos de 4, 8 e 10 ao mesmo tempo"**.
+
+Ou seja:
+
+> Qual é o menor múltiplo de 40 (porque 40 é o MMC) que tem três algarismos?
+
+ - 40 × 1 = 40  ❌(Só tem dois algarismos)
+ - 40 × 2 = 80  ❌(Só tem dois algarismos)
+ - 40 × 3 = 120 ✅(**Primeiro** múltiplo com 3 algarismos)
+ - 40 × 4 = 160 ✅(*Seundo* múltiplo com 3 algarismos) 
+
+Seguindo o que a nossa questão deseja, *Menor número inteiro de três algarismos divisível por 4, 8 e 10 é **120***.
+
+**RESPOSTA:**  
+Opção **"D"**.
 
 </details>
 
