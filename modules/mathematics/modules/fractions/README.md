@@ -16,9 +16,13 @@
    - [Como converter uma "Fração Imprópria" em uma "Fração Mista"](#convert-improper-to-mixed)
     - [Como converter uma "Fração Mista" em uma "Fração Imprópria"](#convert-mixed-to-improper)
  - [**Manipulação de Frações**](#fraction-manipulation)
+ - [**REFERÊNCIA**](#ref)
+<!--- ( Questões Abertas ) --->
+<!--- ( Questões do ENEM ) --->
+<!--- ( Questões de Concurso ) --->
 <!---
 [WHITESPACE RULES]
-- Same topic = "20" Whitespace character.
+- Same topic = "10" Whitespace character.
 - Different topic = "200" Whitespace character.
 --->
 
@@ -160,16 +164,6 @@ Por exemplo:
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="intro-to-improper-fractions"></div>
@@ -194,16 +188,6 @@ Por exemplo:
  - **NOTE:** Isso significa que o valor da fração é maior ou igual a 1.
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -380,16 +364,6 @@ Vejam que nesse caso:
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="dividing-two-fractions"></div>
@@ -538,16 +512,6 @@ A maneira mais simples e prática de dividir duas frações é:
 ![img](images/comma-to-fraction-00.jpeg)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -711,7 +675,15 @@ Outro exemplo simples:
 <details>
 
 <summary></summary>
-RESPOSTA
+
 <br/>
+
+RESPOSTA
+
+```bash
+
+```
+
+![img](images/)  
 
 </details>

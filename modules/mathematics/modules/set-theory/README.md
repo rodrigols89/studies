@@ -11,11 +11,66 @@
    - [(PUC/Campinas-SP) Pesquisa de programas favoritos](#puc-campinas-sp-02)
  - **Questões do ENEM:**
  - **Questões de Concurso:**
+ - [**REFERÊNCIA**](#ref)
+<!--- ( Questões Abertas ) --->
+<!--- ( Questões do ENEM ) --->
+<!--- ( Questões de Concurso ) --->
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
-- Different topic = "100" Whitespace character.
+- Different topic = "200" Whitespace character.
 --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -117,16 +172,6 @@ A operação de **União de Conjuntos** também pode ser representada de forma *
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="intersection-of-sets"></div>
@@ -172,16 +217,6 @@ A operação de **Interseção de Conjuntos** também pode ser representada de f
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="complement-of-sets"></div>
@@ -206,6 +241,57 @@ Por exemplo:
 ![img](images/complement-set-example.jpg)  
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -407,16 +493,6 @@ Opção `b`
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="puc-campinas-sp-02"></div>
@@ -504,6 +580,57 @@ Por meio desses dados, verifica-se que o número de pessoas da comunidade que n�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERÊNCIA ) --->
 
 ---
@@ -528,5 +655,11 @@ Por meio desses dados, verifica-se que o número de pessoas da comunidade que n�
 <br/>
 
 RESPOSTA
+
+```bash
+
+```
+
+![img](images/)  
 
 </details>
