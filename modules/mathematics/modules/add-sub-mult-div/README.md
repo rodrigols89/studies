@@ -13,11 +13,16 @@
    - [Algumas divisões necessitam pegar mais de um digito por vez](#div-more-units-2)
    - [Regra do elevador](#elevator-rule)
    - [Como fazer divisão com números decimais?](#div-w-decimals)
+ - [**REFERÊNCIA**](#ref)
+<!--- ( Questões Abertas ) --->
+<!--- ( Questões do ENEM ) --->
+<!--- ( Questões de Concurso ) --->
 <!---
 [WHITESPACE RULES]
-- Same topic = "20" Whitespace character.
+- Same topic = "10" Whitespace character.
 - Different topic = "200" Whitespace character.
 --->
+
 
 
 
@@ -143,6 +148,8 @@ Por exemplo:
 ![img](images/add-w-comma-01.jpeg)  
 
 </details>
+
+
 
 
 
@@ -375,6 +382,8 @@ Por exemplo:
 
 
 
+
+
 <!--- ( Divisão ) --->
 
 ---
@@ -392,16 +401,6 @@ Por exemplo:
 ![img](images/div-components.png)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -445,16 +444,6 @@ $9 \div 2$
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="div-more-units-01"></div>
@@ -476,16 +465,6 @@ $438 \div 2$
 ![img](images/div-more-units-01.jpeg)
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -527,16 +506,6 @@ $5674 \div 20$
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="elevator-rule"></div>
@@ -560,16 +529,6 @@ E agora? Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 ![img](images/elevator-rule-01.jpeg)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -659,6 +618,50 @@ Como fazer divisão de números que contenham casas decimais, por exemplo:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( REFERÊNCIA ) --->
 
 ---
@@ -681,7 +684,15 @@ Como fazer divisão de números que contenham casas decimais, por exemplo:
 <details>
 
 <summary></summary>
-RESPOSTA
+
 <br/>
+
+RESPOSTA
+
+```bash
+
+```
+
+![img](images/)  
 
 </details>

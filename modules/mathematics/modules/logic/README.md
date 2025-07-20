@@ -19,9 +19,13 @@
        - [`A ∨ B' ⇒ (A ∨ B)'`](#qal-01)
        - [`(A ∨ A') ⇒ (B ∧ B')`](#qal-02)
        - [`[(A ∧ B') ⇒ C']'`](#qal-03)
+ - [**REFERÊNCIA**](#ref)
+<!--- ( Questões Abertas ) --->
+<!--- ( Questões do ENEM ) --->
+<!--- ( Questões de Concurso ) --->
 <!---
 [WHITESPACE RULES]
-- Same topic = "20" Whitespace character.
+- Same topic = "10" Whitespace character.
 - Different topic = "200" Whitespace character.
 --->
 
@@ -191,16 +195,6 @@ Seu principal objetivo é transmitir uma *informação*, *opinião* ou *fato*. E
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="open-and-closed">
@@ -237,16 +231,6 @@ Seu principal objetivo é transmitir uma *informação*, *opinião* ou *fato*. E
      - "Todo ser humano é mortal." (É sempre V)
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -300,16 +284,6 @@ De acordo com a lógica:
      - **NOTE:** Na lógica formal, representamos isso como `A ∨ ¬A`, que significa *"A é verdadeira ou não-A é verdadeira"*.
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -457,16 +431,6 @@ Um exemplo de equivalência é a lei de De Morgan: `(A ∧ B)' ≡ A' ∨ B'`:
 As colunas de `(A ∧ B)'` e `A' ∨ B'` são idênticas, confirmando que as proposições são equivalentes.
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -650,17 +614,6 @@ Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (R
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="conjunction-table"></>
@@ -680,16 +633,6 @@ Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (R
 ![img](images/conjunction-table-01.png)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -732,16 +675,6 @@ Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (R
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="disjunction-inclusive-table"></>
@@ -761,16 +694,6 @@ Outros exemplos de uso são na **Teoria dos Conjuntos** e **Álgebra Booleana (R
 ![img](images/exclusive-disjunction-table-01.png)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -838,16 +761,6 @@ Então:
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="biconditional-table"></>
@@ -898,16 +811,6 @@ Logo:
    - A promessa foi quebrada → resultado *falso (F)*.
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1010,16 +913,6 @@ Como podem ver a fórmula para calcular o número de possibilidades (linhas) com
 
 
 
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="qal-01"></div>
@@ -1041,16 +934,6 @@ Qual a tabela-verdade para a seguinte *fórmula bem formada (fbf)*: `A ∨ B' �
 | F | F | V  | V      | F       | V        | V                 |
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1083,16 +966,6 @@ Qual a tabela-verdade para a seguinte fórmula bem formada (fbf): `(A ∨ A') �
 | F | F |  V |  V |   V    |   F    |          F          |
 
 </details>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1247,3 +1120,19 @@ Qual a tabela-verdade para a seguinte fórmula bem formada (fbf): `[(A ∧ B') �
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
+
+<details>
+
+<summary></summary>
+
+<br/>
+
+RESPOSTA
+
+```bash
+
+```
+
+![img](images/)  
+
+</details>

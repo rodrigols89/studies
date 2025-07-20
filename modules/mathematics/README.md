@@ -1,9 +1,15 @@
 > **NOTE:**  
 > All *notes* and *exercises* are in *Brazilian Portuguese*.
 
-# Matemática
+# Matemática (Portuguese BR notes)
 
 > **Meus *exercícios* e *questões* de Matemática.**  
+
+---
+
+## Lógica Matemática
+
+ - [Raciocínio Lógico](modules/logic)
 
 ---
 
@@ -17,8 +23,8 @@
 
 ## Álgebra
 
- - [Raciocínio Lógico](modules/logic)
  - [Teoria dos Conjuntos](modules/set-theory)
+ - [Potenciação, Radiciação e Logaritmos](modules/exp-rad-log/)
 
 ---
 
