@@ -8,7 +8,7 @@
    - [Money Manager](projects/web/money-manager)
  - **Data Science:**
    - [Turnover Project](projects/data-science/turnover-project)
-   - [Pythonando (Arcane 06 - 2025)](projects/data-science/arcane-06-2025)
+   - [Easy RAG ( Pythonando | Arcane 06 - 2025 )](projects/data-science/arcane-06-2025)
  - **CLI Projects:**
    - [Musical Notes](projects/cli/musical-notes)
  - **Cloud:**
