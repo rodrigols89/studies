@@ -26,6 +26,7 @@
  - [Teoria dos Conjuntos](modules/set-theory)
  - [Potenciação, Radiciação e Logaritmos](modules/exp-rad-log)
  - [Sequências e Progressões](modules/sequences-progressions)
+ - [Análise Combinatória](modules/combinatorial-analysis)
 
 ---
 
