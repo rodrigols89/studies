@@ -30,4 +30,15 @@
 
 ---
 
+## Algebra Linear
+
+ - [Algebra Linear](modules/linear-algebra)
+
+
+---
+
+## Geometria
+
+---
+
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
