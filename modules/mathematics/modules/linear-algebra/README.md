@@ -2,7 +2,7 @@
 
 ## Conteúdo
 
- - **VETORES NO PLANO E NO ESPAÇO:**
+ - [O que é a "norma" de um Vetor?](#vector-norm)
  - [**REFERÊNCIA**](#ref)
 <!--- ( Questões Abertas ) --->
 <!--- ( Questões do ENEM ) --->
@@ -117,15 +117,15 @@
 
 
 
-<!--- ( VETORES NO PLANO E NO ESPAÇO ) --->
+<!--- ( ??? ) --->
 
 ---
 
 <div id="vector-norm"></div>
 
-## O que é a "Norma" de um Vetor?
+## O que é a "norma" de um Vetor?
 
-> **O que é a "Norma" de um Vetor?**
+> **O que é a "norma" de um Vetor?**
 
 <details>
 
