@@ -2,10 +2,11 @@
 
 ## Contents
 
- - [Design and Analysis of Algorithms](#daa)
- - [Data Structures Implementations](#ds-implementations)
- - [Algorithms Implementations](#aimp)
- - [Structured Query Language (SQL)](#sql)
+ - [Data Structures](#ds)
+ - [Algorithms](#alg)
+ - [Database](#database)
+ - [System Design](#system-design)
+ - [Selection Processes](#selection-processes)
 
 
 
@@ -18,19 +19,13 @@
 
 ---
 
-<div id="ds-implementations"></div>
+<div id="ds"></div>
 
-## Data Structures Implementations
+## Data Structures
 
 Data Structure is a *format* to **organize**, **processing**, **retrieving**, **manage** and **store data** in a way that **allows efficient access and modification.**
 
- - [Arrays, Vectors, Strings](modules/data-structures/arrays-vectors-strings)
- - [Linked Lists](modules/data-structures/linked-lists)
- - [Stacks (LIFO: Last-In, First-Out)](modules/data-structures/stacks)
- - [Queues (FIFO: First In, First Out)](modules/data-structures/queues)
- - [Hashing](modules/data-structures/hashing)
- - [Trees](modules/data-structures/trees)
- - [Graphs](modules/data-structures/graphs)
+ - [Coming soon...](#)
 
 
 
@@ -45,11 +40,11 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 ---
 
-<div id="aimp"></div>
+<div id="alg"></div>
 
 ## Algorithms Implementations
 
- - [Recursion](modules/algorithms-implementations/recursion)
+ - [Coming soon...](#)
 
 
 
@@ -64,13 +59,11 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 ---
 
-<div id="sql"></div>
+<div id="database"></div>
 
-## Structured Query Language
+## Database
 
- - [Structured Query Language (SQL)](#sql)
-
-
+ - [Coming soon...](#)
 
 
 
@@ -78,12 +71,18 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 
 
+
+
+
+<!--- ( System Design ) --->
 
 ---
 
-Ro**drigo** **L**eite da **S**ilva - **drigols**
+<div id="system-design"></div>
 
+## System Design
 
+ - [Coming soon...](#)
 
 
 
@@ -94,136 +93,15 @@ Ro**drigo** **L**eite da **S**ilva - **drigols**
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( --- ) --->
+<!--- ( Selection Processes ) --->
 
 ---
 
+<div id="selection-processes"></div>
 
+## Selection Processes
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ - [Programa de Estágio Nubank 2026 (Ciência de Dados)](modules/nubank-intern-cd-08-2025)
 
 
 
@@ -237,19 +115,3 @@ Ro**drigo** **L**eite da **S**ilva - **drigols**
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
-
-<details>
-
-<summary></summary>
-
-<br/>
-
-RESPOSTA
-
-```bash
-
-```
-
-![img](images/)  
-
-</details>
