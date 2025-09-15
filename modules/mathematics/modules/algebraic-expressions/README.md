@@ -127,7 +127,7 @@
 
 
 
-<!--- ( Por em evidência ) --->
+<!--- ( Monômio ) --->
 
 ---
 
@@ -143,45 +143,25 @@
 
 <br/>
 
-Um **monômio** é uma **expressão algébrica** que contém:
-- um **número** (coeficiente),
-- multiplicado por **letras** (variáveis),
-- que podem estar elevadas a **expoentes inteiros não negativos**.
+#### Definição
 
-Ou seja:  
+Um **monômio** é um *número e/ou letra(s) ligados apenas por um produto*, em que:
 
-> 👉 É um **único termo algébrico** formado por multiplicação de números e letras.  
+ - As letras aparecem com **expoentes inteiros não negativos**.
 
-**EXEMPLO-01:**
+**Exemplos e Contraexemplos:**
 
-$5$  
-(um monômio com coeficiente $5$ e nenhuma variável).
+| Expressão     | É monômio? | Motivo                                                                   |
+|----------------|-----------|--------------------------------------------------------------------------|
+| $7x$           | ✅ Sim    | Número e letra ligados por produto.                                      |
+| $-3x^2y$       | ✅ Sim    | Produto de coeficiente e variáveis com expoentes inteiros não negativos. |
+| $5$            | ✅ Sim    | É apenas um número (pode ser visto como $5x^0$).                         |
+| $\dfrac{1}{x}$ | ❌ Não    | Expoente negativo: $x^{-1}$.                                             |
+| $\sqrt{x}$     | ❌ Não    | Expoente fracionário: $x^{1/2}$.                                         |
+| $2x + y$       | ❌ Não    | Tem **soma**, não é só produto.                                          |
 
-<br/>
-
-**EXEMPLO-02:**
-
-$x$  
-(um monômio com coeficiente $1$ e variável $x$).
-
-<br/>
-
-**EXEMPLO-03:**
-
-$-7y$  
-(um monômio com coeficiente $-7$ e variável $y$).
-
-<br/>
-
-**EXEMPLO-04:**
-
-$3x^2$  
-(um monômio com coeficiente $3$ e variável $x^2$).
-
-**EXEMPLO-05:**
-
-$-2ab$  
-(um monômio com coeficiente $-2$, variáveis $a$ e $b$).
+> **Resumindo**  
+> ➡️ **Monômio = um único termo** (número e letras multiplicados, com expoentes inteiros não negativos).  
 
 </details>
 
@@ -306,7 +286,25 @@ $-2ab$
 
 <br/>
 
-> Um **polinômio** é uma **expressão algébrica** formada pela **soma ou subtração de monômios**.
+#### Definição
+
+Um **polinômio** é uma **soma ou subtração de monômios**, em que:
+
+ - As variáveis aparecem com **expoentes inteiros não negativos**;
+ - **Sem variáveis no denominador**:
+   - Quando falamos que um polinômio não pode ter denominador, estamos nos referindo a denominador com a variável.
+   - 👉 Ou seja, a letra (incógnita) não pode aparecer no denominador.
+
+**Exemplos e Contraexemplos:**
+
+| Expressão             | É polinômio? | Motivo                                                 |
+|-----------------------|--------------|--------------------------------------------------------|
+| $3x^2 + 2x - 5$       | ✅ Sim       | Soma de monômios com expoentes inteiros não negativos. |
+| $7x^3 - 4x^2 + x + 9$ | ✅ Sim       | Soma de monômios.                                      |
+| $2x^2y + 3y^2 - xy$   | ✅ Sim       | Polinômio em duas variáveis.                           |
+| $\dfrac{1}{x} + 2$    | ❌ Não       | Variável no denominador (expoente negativo).           |
+| $\sqrt{x} + 3$        | ❌ Não       | Expoente fracionário ($x^{1/2}$).                      |
+| $2^x + 1$             | ❌ Não       | Expoente não é constante, é a variável.                |
 
 **EXEMPLO-01:**
 
@@ -353,33 +351,8 @@ $\frac{1}{2}x^2 - \frac{3}{4}x + \frac{5}{6}$
 
 $6x^5 - 3x^3 + x^2 - 8$
 
-#### 📌 Observações importantes
-
-1. **Polinômio ≠ Monômio**  
-   - Monômio → um termo.  
-   - Polinômio → dois ou mais termos (soma/subtração).  
-
-2. **Grau do polinômio**  
-   - O grau é o **maior grau entre os seus monômios**.  
-   - Exemplo:  
-     $2x^3 + 5x^2 - x + 7$ → grau $3$.  
-
-3. **Tipos de polinômios por número de termos**  
-   - **Monômio** → 1 termo.  
-   - **Binômio** → 2 termos.  
-   - **Trinômio** → 3 termos.  
-   - **Polinômio** → 4 ou mais termos.  
-
-4. **Coeficientes e termos independentes**  
-   - Em $3x^2 + 2x - 5$:  
-     - Coeficientes: $3$, $2$ e $-5$.  
-     - Termo independente: $-5$.  
-
-#### 🚀 Conclusão
-
- - Polinômios são **somas ou subtrações de monômios**.  
- - São classificados pelo **número de termos** e pelo **grau**.  
- - Representam a base para estudos de **equações, fatoração e produtos notáveis**.
+> **Resumindo:**  
+> ➡️ **Polinômio = soma (ou subtração) de monômios, "sem variáveis no denominador" e "sem expoentes negativos" ou "fracionários".**
 
 </details>
 
@@ -508,7 +481,7 @@ Bem, para entender esse conceito vamos partir da *Propriedade Distributiva*:
 
 $a(b + c) = a \cdot b + a \cdot c$
 
-> **Mas qual relação essa propriedade (distributiva) tem com "Port em evidência"?**
+> **Mas qual relação essa propriedade (distributiva) tem com "Por em evidência"?**
 
 Vamos partir da seguinte expressão:
 
@@ -526,16 +499,16 @@ $7 \cdot 4 + 3 \cdot 4 = 4(7 + 3)$
 
 Vamos ver outros exemplos para ficar mais claro...
 
-**EXEMPLO-01:**
+**EXEMPLO-01:**  
 $4 \cdot π \cdot 3 + 2 \cdot  π =  π(4 \cdot 3 + 2)$
 
-**EXEMPLO-02:**
-$ 8 \sqrt{2} - 3 \sqrt{2} = \sqrt{2}(8 - 3)$
+**EXEMPLO-02:**  
+$8\sqrt{2} - 3 \sqrt{2} = \sqrt{2}(8 - 3)$
 
-**EXEMPLO-03:**
+**EXEMPLO-03:**  
 $(x + 1)(6 - x) + (x + 1)(7) = (x + 1)[(6 - 1) + 7]$
 
-**EXEMPLO-04:**
+**EXEMPLO-04:**  
 $4 \sqrt{3} + \frac{\sqrt{3}}{2}$
 
 **NOTE:**  
@@ -599,16 +572,10 @@ $4 \sqrt{3} + \sqrt{3} \cdot \frac{1}{2} = \sqrt{3}(4 + \frac{1}{2})$
 
 Muitas vezes o fator comum não é um número ou variável, e sim um **polinômio inteiro**.
 
- - **Monômio:**
-   - Um monômio é simplesmente um *termo algébrico único*, formado por um número (coeficiente) multiplicado por variáveis com expoentes inteiros não negativos.
- - **Polinômio:**
-   - Soma de monômios, com variáveis elevadas a expoentes inteiros não negativos.
- - **Polinômio inteiro**:
-   - É um polinômio que **não aparece com a variável no denominador** (ou seja, está escrito de forma "limpa", como soma de monômios).”
-
-A ideia é a mesma de **"Por em evidência" simples**:
-
 $A \cdot P(x) + B\cdot P(x) = P(x)(A + B)$
+
+> **NOTE:**  
+> A ideia é a mesma de **"Por em evidência" simples**:
 
 **EXEMPLO-01:**
 
