@@ -6,7 +6,6 @@
  - [Algorithms](#alg)
  - [Database](#database)
  - [System Design](#system-design)
- - [Selection Processes](#selection-processes)
 
 
 
@@ -16,6 +15,8 @@
 
 
 
+
+<!--- ( Data Structures ) --->
 
 ---
 
@@ -36,15 +37,15 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 
 
-<!--- ( Algorithms Implementations ) --->
+<!--- ( Algorithms ) --->
 
 ---
 
 <div id="alg"></div>
 
-## Algorithms Implementations
+## Algorithms
 
- - [Coming soon...](#)
+ - [Mathematical Algorithms](modules/math)
 
 
 
@@ -83,34 +84,6 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 ## System Design
 
  - [Coming soon...](#)
-
-
-
-
-
-
-
-
-
-
-<!--- ( Selection Processes ) --->
-
----
-
-<div id="selection-processes"></div>
-
-## Selection Processes
-
- - [Programa de Estágio Nubank 2026 (Ciência de Dados)](modules/nubank-intern-cd-08-2025)
-
-
-
-
-
-
-
-
-
 
 ---
 
