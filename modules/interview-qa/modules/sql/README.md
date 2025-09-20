@@ -3,9 +3,9 @@
 ## Contents
 
  - **SELECT:**
-   - [1757. Recyclable and Low Fat Products](#1757-ralfp)
+   - [`1757. Recyclable and Low Fat Products`](#1757-ralfp)
  - **JOIN:**
-   - [1378. Replace Employee ID With The Unique Identifier](#1378-reiwtui)
+   - [`1378. Replace Employee ID With The Unique Identifier`](#1378-reiwtui)
  - **Tips and Tricks:**
 <!---
 [WHITESPACE RULES]
@@ -123,7 +123,7 @@
 
 <div id="1757-ralfp"></div>
 
-## 1757. Recyclable and Low Fat Products
+## `1757. Recyclable and Low Fat Products`
 
 **Table: Products**
 ```bash
@@ -318,7 +318,7 @@ WHERE low_fats = 'Y' AND recyclable = 'Y';
 
 <div id="1378-reiwtui"></div>
 
-## 1378. Replace Employee ID With The Unique Identifier
+## `1378. Replace Employee ID With The Unique Identifier`
 
 **Table: Employees**
 ```bash

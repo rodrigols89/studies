@@ -3,7 +3,7 @@
 ## Contents
 
  - **Divisibility:**
-   - [412. Fizz Buzz](#412-fizz-buzz)
+   - [`412. Fizz Buzz | O(n)`](#412-fizz-buzz)
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
@@ -120,7 +120,7 @@
 
 <div id="412-fizz-buzz"></div>
 
-## 412. Fizz Buzz
+## `412. Fizz Buzz | O(n)`
 
 > Given an integer **n**, return a string array **answer** (1-indexed) where:
 
