@@ -56,7 +56,7 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 
 
-<!--- ( Structured Query Language (SQL) ) --->
+<!--- ( Database ) --->
 
 ---
 
@@ -64,7 +64,7 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 ## Database
 
- - [Coming soon...](#)
+ - [Structured Query Language (SQL)](modules/sql)
 
 
 
