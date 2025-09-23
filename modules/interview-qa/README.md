@@ -46,6 +46,7 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 ## Algorithms
 
  - [Mathematical Algorithms](modules/math)
+ - [Two Pointers](modules/two-pointers)
 
 
 
