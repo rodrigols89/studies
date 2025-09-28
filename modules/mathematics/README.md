@@ -25,8 +25,21 @@
 
  - [Teoria dos Conjuntos](modules/set-theory)
  - [Potenciação, Radiciação e Logaritmos](modules/exp-rad-log)
+ - [Expressões Algébricas: Manipulações, Fatorações](modules/algebraic-expressions)
  - [Sequências e Progressões](modules/sequences-progressions)
  - [Análise Combinatória](modules/combinatorial-analysis)
+
+---
+
+## Algebra Linear
+
+ - [Algebra Linear](modules/linear-algebra)
+
+---
+
+## Geometria
+
+ - [Geometria Plana](modules/plane-geometry)
 
 ---
 
