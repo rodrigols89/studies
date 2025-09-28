@@ -5,6 +5,7 @@
  - **Fundamentals:**
    - [`O que é, quanto (ou não) utilizar, vantagem e desvantagem da técnica "Two Pointers"?`](#oqvdt)
  - **Two Pointers (same direction):**
+   - [`26. Remove Duplicates from Sorted Array`](#26-rdfsa)
  - **Two Pointers (opposite ends):**
  - **Fast and Slow Pointers (Floyd's Tortoise and Hare):**
    - [`141. Linked List Cycle`](#141-llc)
@@ -130,7 +131,7 @@
 
 <details>
 
-<summary>RESPOSTA</summary>
+<summary>ANSWER</summary>
 
 <br/>
 
@@ -289,6 +290,305 @@ Evite utilizar a técnica **"Two Pointers"** quando:
 
 
 
+<!--- ( Two Pointers (same direction) ) --->
+
+---
+
+<div id="26-rdfsa"></div>
+
+## `26. Remove Duplicates from Sorted Array`
+
+> **NOTE:**  
+> Read and understand the problem: [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+<details>
+
+<summary>ANSWER</summary>
+
+<br/>
+
+De início vamos identificar as **entradas** e as **saídas** do nosso problema:
+
+- **Entrada:**
+  - `nums` → Lista de inteiros **ordenada não decrescente**.
+- **Saída:**
+  - Um número inteiro `k` → quantidade de elementos únicos.
+  - Os primeiros `k` elementos do array `nums` devem conter os valores únicos, preservando a ordem.
+
+Inicialmente o problema nos deu o seguinte código:
+
+```python
+from typing import List
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        pass
+```
+
+Agora, vamos verificar se a lista `nums` é vazia, se estiver vamos parar a função retornando `0`:
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+```
+
+Agora nós vamos criar o primeiro ponteiro, `write` que indica a posição onde o próximo número único será gravado.
+
+> **NOTE:**  
+> O primeiro elemento de `nums` sempre é único (visto que a lista está ordenada), então `write` começa em `1`. 
+
+ - **O ponteiro write começa em 1 e não em 0 porque:**
+   - O primeiro elemento do array (`nums[0]`) sempre será mantido, já que em um array ordenado o primeiro valor nunca pode ser duplicado em relação a algo anterior.
+   - Portanto, não precisamos sobrescrever `nums[0]`. Ele já faz parte da solução.
+   - O ponteiro `write` indicar a próxima posição disponível para escrever um valor único.
+   - Como o índice 0 já está ocupado corretamente, a próxima posição disponível é o índice 1.
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+        write = 1                             # O(1)
+```
+
+Agora nós vamos percorrer nossa lista `nums` com um segundo ponteiro, `read` que vai percorrendo a lista a partir do índice 1:
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+        write = 1                             # O(1)
+        for read in range(1, len(nums)):      # O(n)
+            pass
+```
+
+> **E agora o que vamos fazer dentro desse loop?**
+
+Primeiro, nós vamos comparar se o elemento atual (`nums[read]`) for diferente do anterior (`nums[read - 1]`), ou seja,  encontramos um número único:
+
+ - Gravamos (salvamos) esse elemento na posição `write`:
+   - Lembrando que `write` indica a primeira posição livre na lista `nums` que começou com `1`.
+ - Incrementamos `write`.
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+        write = 1                             # O(1)
+        for read in range(1, len(nums)):      # O(n)
+            if nums[read] != nums[read - 1]:  # O(1)
+                nums[write] = nums[read]      # O(1)
+                write += 1                    # O(1)
+```
+
+Por fim, nós vamos retornar `write`, que indica a quantidade de números únicos na lista `nums`:
+
+```python
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+        write = 1                             # O(1)
+        for read in range(1, len(nums)):      # O(n)
+            if nums[read] != nums[read - 1]:  # O(1)
+                nums[write] = nums[read]      # O(1)
+                write += 1                    # O(1)
+        return write                          # O(1)
+```
+
+**NOTE:**  
+Partindo do presuposto que a lista `nums` não está vazia (nós testamos antes), mesmo que ela tenha apenas um elemento, a função retorna `1`, pois o primeiro elemento de `nums` sempre é único - `write = 1`.
+
+O código completo para testes ficou assim:
+
+[26-remove-duplicates-from-sorted-array.py](src/26-remove-duplicates-from-sorted-array.py)
+```python
+from typing import List
+
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:                          # O(1)
+            return 0                          # O(1)
+        write = 1                             # O(1)
+        for read in range(1, len(nums)):      # O(n)
+            if nums[read] != nums[read - 1]:  # O(1)
+                nums[write] = nums[read]      # O(1)
+                write += 1                    # O(1)
+        return write                          # O(1)
+
+
+if __name__ == '__main__':
+    s = Solution()
+    arr = [0,0,1,1,1,2,2,3,3,4, 9, 15]
+    k = s.removeDuplicates(arr)
+    print("Number of unique elements:", k)
+    print("Modified array:", arr)
+```
+
+**OUTPUT:**
+```bash
+Number of unique elements: 7
+Modified array: [0, 1, 2, 3, 4, 9, 15, 3, 3, 4, 9, 15]
+```
+
+> **What?**
+
+ - Não deveriamos ter a lista modificada, sem elementos repetidos?
+ - Por que nós retornarmos o valor de "k" e não a lista `nums` modificado?
+
+#### in-place
+
+ - **🔹 Em Python (e em quase todas as linguagens), listas são objetos mutáveis.**
+   - Quando passamos `nums` para a função, não é feita uma cópia; a função recebe uma referência para o mesmo objeto em memória.
+   - Portanto, qualquer modificação feita dentro da função (nums[write] = nums[read]) altera a lista original.
+ - **🔹 O motivo de a função retornar apenas write (que é o k, o tamanho da parte útil do array) é que o problema do LeetCode define assim:**
+   - Você precisa modificar o array original `in-place`.
+   - *E retornar quantos elementos únicos (k) foram armazenados do índice 0 até k-1.*
+   - A parte do array além de k pode ser ignorada.
+
+Sendo assim, nós *não precisamos (devemos)* imprimir toda a lista porque o que nos importa é a quantidade `k (write)` retornada pelo a função:
+
+```python
+if __name__ == '__main__':
+    s = Solution()
+    arr = [0,0,1,1,1,2,2,3,3,4,9,15]
+    k = s.removeDuplicates(arr)
+    print("Number of unique elements:", k)
+    print("Unique elements:", arr[:k])
+```
+
+**OUTPUT:**
+```bash
+Number of unique elements: 7
+Unique elements: [0, 1, 2, 3, 4, 9, 15]
+```
+
+> **E por que se k=7 nós não ultrapassamos de 15 se o primeiro índice é 0?**  
+> Não deveria ser [0, 1, 2, 3, 4, 9, 15, 3] do índice 0 ao 7?
+
+ - `O Slicing ([start:end]) em Python funciona assim:`
+   - start → índice inicial (*inclusivo*, ou seja, ele aparece na lista).
+   - end → índice final (*exclusivo*, ou seja, ele não aparece na lista).
+ - `O que significa nums[:k]?`
+   - → “Pegue os elementos do índice 0 até k-1”.
+   - Ele não inclui o índice k.
+
+Para finalizar nós vamos ter as seguintes complexidades de tempo e espaço:
+
+- **Time Complexity:**
+  - Worst Case: `O(n)` → Percorremos todos os elementos uma vez.
+  - Best Case: `O(n)` → Mesmo se todos forem iguais, ainda percorremos a lista inteira:
+    - **NOTE:** Porém, se só tivermos 1 elemento na lista o *best case* seria `O(1)`.
+  - Average Case: `O(n)` → Em média, percorremos a lista inteira.
+- **Space Complexity:**
+  - Worst Case: `O(1)` → Usamos apenas dois ponteiros (`read` e `write`).
+  - Best Case: `O(1)` → Mesma lógica.
+  - Average Case: `O(1)` → Sempre constante.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -305,53 +605,16 @@ Evite utilizar a técnica **"Two Pointers"** quando:
 
 ## `141. Linked List Cycle`
 
-> Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
-
- - There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer:
-   - Existe um ciclo em uma lista encadeada se houver algum nó na lista que possa ser alcançado novamente seguindo continuamente o ponteiro `next`.
- - Internally, `pos` is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
-   - Internamente, `pos` é usado para denotar o índice do nó ao qual o ponteiro`next` da cauda está conectado.
-   - **Observe que `pos` não é passado como parâmetro**.
- - Return `true` if there is a cycle in the linked list. Otherwise, return false.
- - **Constraints:**
-   - The number of the nodes in the list is in the range [0, 104].
-   - `-105 <= Node.val <= 105`
-   - `pos` is `-1` or a valid index in the linked-list.
-
-**Example 1:**  
-![img](images/141-llc-01.png)  
-
-```bash
-Input: head = [3,2,0,-4], pos = 1
-Output: true
-Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
-```
-
-**Example 2:**  
-![img](images/141-llc-02.png)  
-
-```bash
-Input: head = [1,2], pos = 0
-Output: true
-Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
-```
-
-**Example 3:**  
-![img](images/141-llc-03.png)  
-
-```bash
-Input: head = [1], pos = -1
-Output: false
-Explanation: There is no cycle in the linked list.
-```
+> **NOTE:**  
+> Read and understand the problem: [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 
 <details>
 
-<summary>RESPOSTA</summary>
+<summary>ANSWER</summary>
 
 <br/>
 
-Para começar vamos identificar as entradas e as saídas:
+Para começar vamos identificar as **entradas** e as **saídas** do nosso problema:
 
  - **Entrada:**
    - `head` → Referência para o primeiro nó da lista encadeada.
@@ -359,7 +622,7 @@ Para começar vamos identificar as entradas e as saídas:
    - `true` → Se existir um ciclo.
    - `false` → se não existir ciclo.
 
-Inicialmente o problema nos deu o seguinte:
+Inicialmente o problema nos deu o seguinte código:
 
 ```python
 class ListNode:
@@ -419,7 +682,7 @@ class Solution:
 Vejam que:
 
  - `while fast and fast.next:`
-   - O loop while vai ser executado enquanto `fast` e `fast.next` não forem `None`.
+   - O loop while vai ser executado enquanto `fast` e `fast.next` não forem `None` (simultaneamente).
    - Ou seja, se não tiver um ciclo, `fast.next` vai ser `None` e o loop vai parar retornando `False`.
  - `Dentro do loop while nós estamos incrementando os ponteiros:`
    - *Um devagar (anda um nó/node por vez):* `slow = slow.next`
@@ -467,6 +730,8 @@ if __name__ == '__main__':
 True
 ```
 
+Para finalizar nós vamos ter as seguintes complexidades de tempo e espaço:
+
 - **Time Complexity:**
   - `Worst Case: O(n)`  
     - O loop percorre a lista inteira até confirmar que não há ciclo, analisando cada nó.  
@@ -483,9 +748,89 @@ True
   - `Average Case: O(1)`  
     - Em todos os cenários, o espaço extra não cresce com o tamanho da entrada.  
 
-
-
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -520,7 +865,7 @@ True
 
 <br/>
 
-RESPOSTA
+ANSWER
 
 ```bash
 
