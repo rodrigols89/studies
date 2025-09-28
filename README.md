@@ -16,6 +16,7 @@
  - [Tools](#section-tools)
  - [Practice Projects](#section-projects)
  - [Bonus](#section-bonus)
+ - [Interview (Q&A)](modules/interview-qa)
 
 ---
 
