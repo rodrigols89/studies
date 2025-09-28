@@ -7,7 +7,7 @@
  - **Retas:**
    - [`O que são retas concorrentes?`](#retas-concorrentes)
  - **Segmento de reta:**
-   - [`O que é o "Segmento de Reta"?`](#segmento-de-reta)
+   - [`O que é "Segmento de Reta"?`](#segmento-de-reta)
    - [`O que é uma "Semirreta"?`](#semirreta)
    - [`O que significa "Congruência de segmentos"?`](#congruencia-de-segmentos)
  - **Ângulos:**
@@ -23,8 +23,6 @@
      - [`Problema (02) de ângulo com variável "x"`](#angulos-questao-06)
      - [`Problema (01) de ângulo com variáveis "x" e "y"`](#angulos-questao-07)
      - [`Problema (02) de ângulo com variáveis "x" e "y"`](#angulos-questao-08)
- - **Triângulos:**
-   - [`O que é um "Triângulo" (por definição)?`](#triangulos)
  - [**REFERÊNCIA**](#ref)
 <!--- ( Questões Abertas ) --->
 <!--- ( Questões do ENEM ) --->
@@ -398,9 +396,9 @@
 
 <div id="segmento-de-reta"></div>
 
-## `O que é o "Segmento de Reta"?`
+## `O que é "Segmento de Reta"?`
 
-> **O que é o "Segmento de Reta"?**
+> **O que é "Segmento de Reta"?**
 
 <details>
 
@@ -443,7 +441,9 @@
 <br/>
 
  - Diferente de uma *"reta"*, **que é infinita nos dois sentidos**;
- - Uma *semirreta* tem um **início fixo**, e para indicar seu sentido ilimitado, ela é representada por uma seta em um de seus lados
+ - Uma *semirreta* tem um **início fixo**, e para indicar seu sentido ilimitado;
+ - Ela é representada por uma seta em um de seus lados:
+   - Ou seja, qual direção a semirreta vai seguir.
 
 > **👉 Representação:**  
 > Se o ponto inicial é A e a direção vai até B, escrevemos a semirreta como $\overrightarrow{AB}$.
@@ -478,9 +478,8 @@
 
 <br/>
 
-> A palavra *"congruente"* na matemática significa **“ter a mesma medida”**.
-
-Então, quando falamos de segmentos *"congruentes"*, queremos dizer que eles têm o mesmo comprimento.
+> **A palavra *"congruente"* na matemática significa *“ter a mesma medida”*.**  
+> Então, quando falamos de segmentos *"congruentes"*, queremos dizer que eles (ou elas) têm o mesmo comprimento.
 
 Ou seja, dois segmentos de reta são congruentes quando:
 
@@ -616,7 +615,7 @@ $\overline{AB} \cong \overline{CD}$
 
 Uma definição de *"ângulo"* é a seguinte:
 
-> Ângulo é a reunião de **duas semirretas com a mesma origem**, chamadas de lados do ângulo, e o ponto comum, chamado de vértice.
+> Um *ângulo* é a reunião de **duas semirretas com a mesma origem**, chamadas de lados do ângulo, e o ponto comum, chamado de vértice.
 
 ![img](images/angulo-01.png)  
 
@@ -782,9 +781,11 @@ $75º + 15º = 90º$
 
 > Dois ângulos são suplementares quando somam **180º**.
 
-Assim:
+Ou seja:
 
 $180º - 36º = 144º$ 
+
+Sendo assim, a resposta seria: **"d) 64º"**
 
 </details>
 
@@ -826,6 +827,8 @@ Logo:
 $x = 180º - 37º - 83º$  
 $x = 60º$
 
+Sendo assim, a resposta seria: **"e) 60º"**
+
 </details>
 
 
@@ -859,11 +862,13 @@ $x = 60º$
 
 <br/>
 
-> Sabendo que os ângulos obtusos são maiores que 90º.
-
 Na imagem temos um ângulo de **150º**.
 
 $90º + (90º - 30º) = 90º + 60º = 150º$
+
+Sendo assim, a resposta seria: **"a) Agudo"**
+
+> **Sabendo que os ângulos obtusos são maiores que 90º.**
 
 </details>
 
