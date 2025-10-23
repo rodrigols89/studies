@@ -40,6 +40,7 @@
 ## Geometria
 
  - [Geometria Plana](modules/plane-geometry)
+ - [Trigonometria](modules/trigonometry)
 
 ---
 
