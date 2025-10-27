@@ -44,4 +44,10 @@
 
 ---
 
+## Estatística
+
+ - [Estatística](modules/statistics)
+
+---
+
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
