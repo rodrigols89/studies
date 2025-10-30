@@ -13,6 +13,7 @@
    - [`Mediana`](#intro-to-median)
    - [`Percentis e Quartis`](#percentis-and-quartis)
      - [`Quiz 01`](#percentis-and-quartis-quizz-01)
+   - [`Moda`](#intro-to-mode)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -681,9 +682,39 @@ A resposta correta é a letra `D`.
 
 
 
+---
 
+<div id="intro-to-mode"></div>
 
+## `Moda`
 
+Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilometros) em x horas:
+
+![img](images/intro-to-mean-03.png)  
+
+> **Qual valor mais aparece, ou é mais recorrente nesse estudo?**  
+> É o "5".
+
+ - Ou seja, o **"5"** é a moda.
+ - **NOTE:** Por exemplo, a moda é o que todo mundo está usando.
+
+Algumas observações aqui são:
+
+ - Essa medida não é tão "sensual" para variáveis quantitativas (números):
+   - Mas, lembre-se que depende do contexto.
+ - Essa medida é mais utilizada em variáveis qualitativas (categóricas).
+
+Por exemplo:
+
+![img](images/intro-to-mode-01.png)  
+
+**NOTE:**  
+Outra observação aqui é que nesse tipo de variável nós não conseguimos tirar a média, mediana ou percentil. Nós só conseguimos "contar" quantas vezes um certo valor aparece.
+
+Agora pense comigo:
+
+> **A `moda` é a média entre dados qualitativos (categóricos).**  
+> Por exemplo, se você tivesse que **"chutar"** o hobby que um novo ciclista mais gosta, a moda nos daria essa **"generalização"**.
 
 
 
