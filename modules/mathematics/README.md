@@ -40,6 +40,13 @@
 ## Geometria
 
  - [Geometria Plana](modules/plane-geometry)
+ - [Trigonometria](modules/trigonometry)
+
+---
+
+## Estatística
+
+ - [Estatística](modules/statistics)
 
 ---
 
