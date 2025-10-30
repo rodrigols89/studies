@@ -9,8 +9,10 @@
    - [`Popoulação vs. Amostra`](#population-vs-sample)
    - [`Parâmetro vs. Estatística`](#parameter-vs-statistic)
  - **Medidas de Posição:**
-   - [Média](#intro-to-mean)
-   - [Mediana](#intro-to-median)
+   - [`Média`](#intro-to-mean)
+   - [`Mediana`](#intro-to-median)
+   - [`Percentis e Quartis`](#percentis-and-quartis)
+     - [`Quiz 01`](#percentis-and-quartis-quizz-01)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -415,7 +417,7 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 <div id="intro-to-mean"></div>
 
-## Média
+## `Média`
 
 > **A Média nasce com uma missão de *"generalização"*.**  
 
@@ -503,7 +505,7 @@ Por fim, a fórmula da `média` é a seguinte:
 
 <div id="intro-to-median"></div>
 
-## Mediana (Intro)
+## `Mediana`
 
 > Se a `média` é o **"ponto de equilíbrio"** da nossa régua quem poderia me ajudar a saber se esse ponto de equilíbrio está sendo *"puxado/influenciado"* por algum dos extremos?
 
@@ -582,32 +584,93 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 
 
 
+---
 
+<div id="percentis-and-quartis"></div>
 
+## `Percentis e Quartis`
 
+> Percentil tem haver com **posições (ª)** ou **porcentagem (%)**.
 
+Como Percentil tem haver com porcentagem (%) é como se nós dividíssemos a nossa amostra de dados em 100 partes ou em porcentos:
 
+ - 100% dos dados;
+ - 50% dos dados;
+ - 25% dos dados;
+ - 1% dos dados...
 
+Mas existem outras nomencaturas para essas porcentagens:
 
+ - **Percentis:**
+   - De 1 em 1 porcento (%).
+ - **Decis:**
+   - De 10 em 10 porcento (%).
+ - **Quartis:**
+   - De 25 em 25 porcento (%).
 
+Agora imagine que você tirou 7,5 em uma prova e eu diga que você:
 
+ - **Está no percentil 94:**
+   - Ótimo, isso que dizer que você ficou entre os 6% melhores.
+ - **Está no percentil 5:**
+   - Bem, agora você não está tão bem qualificado como gostaria.
+   - Por mais que você esteja provado, você está entre os 5% piores.
 
+> **NOTE:**  
+> Vejam que existe uma relativação (contexto) que nós devemos analisar.
 
+Para entender mais sobre **percentis** vamos começar revisando a `mediana` que divide os dados em 2 caixas (volumes):
 
+![img](images/intro-to-median-01.png)  
 
+> **E os percentis?**  
+> Os percentis nos diz em quantas caixas (volumes) iguais nós vamos dividir nossos dados.
 
+Por exemplo, imagine que nós dividimos nossos dados acima em 4 caixas (volumes) iguais, cada uma representando 25%:
 
+![img](images/intro-to-percentis-01.png)  
 
+> **Olhando para as divisões (caixas/volumes) acima o que nós podemos dizer (interpretar)?**
 
+ - **Na primeira caixa (que nós conhecemos como "Primeiro Quartil (Q1)" | 25% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"ímpar"* de objetos de estudo, o valor do meio é o **ponto central**.
+   - Ou seja, 25% (Q1) dos ciclista correram `ATÉ 5 quílometros em x horas`.
+ - **Na segunda caixa (que nós conhecemos como "Segundo Quartil (Q2)/ou a Mediana" | 50% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"par"* de objetos de estudo, nós precisamos tirar a média do maior valor desses 25% pelo menor valor dos próximos 25%.
+   - Ou seja, os outros 25% (Q2) dos ciclista conseguiram correram `DE 5 ATÉ 6,2 quílometros em x horas`.
+ - **Na terceira caixa (que nós conhecemos como "Terceiro Quartil (Q3)" | 75% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"ímpar"* de objetos de estudo, o valor do meio é o **ponto central**.
+   - Ou seja, os outros 25% (Q3) dos ciclista correram `DE 6,2 ATÉ 10,8 quílometros em x horas`.
+ - **Na quarta caixa (que nós conhecemos como "Quarto Quartil (Q4)" | 100% dos dados):**
+   - Ou seja, os outros 25% (Q4) dos ciclista correram `MAIS DE 10,8 quílometros em x horas`.
 
+> **NOTE:**  
+> Uma observação aqui é que os "quartis" nunca vão lhe dizer nada sobre os valores extremos (mínimo ou máximo).
 
+---
 
+<div id="percentis-and-quartis-quizz-01"></div>
 
+## `Quiz 01`
 
+> **Se a nota de um aluno foi classificada no percentil 90, o que isso significa?**
 
+ - **A)** O percentil 90 da nota significa que o aluno obteve apenas 9% da pontuação total possível.
+ - **B)** O percentil 90 da nota indica que o aluno está entre os 90% com a nota mais baixa da turma.
+ - **C)** O percentil 90 da nota representa que o aluno tem uma nota maior que 9.
+ - **D)** O percentil 90 da nota significa que o aluno obteve uma pontuação melhor que 90% dos demais estudantes da turma.
 
+<details>
 
+<summary>RESPOSTA</summary>
 
+<br/>
+
+A resposta correta é a letra `D`.
+
+> "O percentil 90 da nota significa que o aluno obteve uma pontuação melhor que 90% dos demais estudantes da turma."
+
+</details>
 
 
 
