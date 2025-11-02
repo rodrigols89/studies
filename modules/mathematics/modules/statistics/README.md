@@ -9,8 +9,11 @@
    - [`Popoulação vs. Amostra`](#population-vs-sample)
    - [`Parâmetro vs. Estatística`](#parameter-vs-statistic)
  - **Medidas de Posição:**
-   - [Média](#intro-to-mean)
-   - [Mediana](#intro-to-median)
+   - [`Média`](#intro-to-mean)
+   - [`Mediana`](#intro-to-median)
+   - [`Percentis e Quartis`](#percentis-and-quartis)
+     - [`Quiz 01`](#percentis-and-quartis-quizz-01)
+   - [`Moda`](#intro-to-mode)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -415,9 +418,9 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 <div id="intro-to-mean"></div>
 
-## Média
+## `Média`
 
-> **A Média nasce com uma missão de *"generalização"*.**  
+> **A Média nasce com uma missão de *"generalização"*.**
 
 **Como assim?**  
 Bem, se você tiver que chutar algo (algum lugar), chute na média.
@@ -458,7 +461,7 @@ Ai que a gente começa a entender que não é só a média que resolver todos os
 
 #### Exemplo 02
 
-Agora, imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilometros) em x horas:
+Agora, imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
 ![img](images/intro-to-mean-03.png)  
 
@@ -466,7 +469,7 @@ Vejam que na nossa `base de dados` acima:
 
  - Cada linha (objeto de estudo) representa um aluno.
  - E a coluna/variável/feature que nós coletamos foi a quilometragem que o aluno andou com a bicicleta em um determinado período de tempo:
-   - Isso pode ser visto como o nosso `contexto de negócio`.
+   - Isso pode ser visto como o nosso contexto de negócio.
 
 > **Mas, como eu calcularia a média de quilometragem que os alunos percorreram em x horas?**
 
@@ -474,15 +477,15 @@ Bem, nós somaríamos a quilometragem de todos os alunos e dividirmos pelo total
 
 ![img](images/intro-to-mean-04.png)  
 
-Olhando para o cálculo acima e imaginando que os ciclista tinham 2h para percorrer (contexto), nós podemos dizer que em média esses cicclistas percorrem 13,45km em 2h.
+Olhando para o cálculo acima e imaginando que os ciclistas tinham 2h para percorrer (contexto), nós podemos dizer que em média esses ciclistas percorrem 13,45 km em 2h.
 
-> **Ela me diz quantos quílometros cada ciclista corre?**  
+> **Ela me diz quantos quilômetros cada ciclista corre?**  
 > NÃO!
 
-A média é uma medida **"generalista"**, ela da uma visão do `equilíbrio` entre de tempo percorrido entre os ciclistas (dados).
+A média é uma medida **"generalista"**, ela dá uma visão do `equilíbrio` entre de tempo percorrido entre os ciclistas (dados).
 
 > **NOTE:**  
-> O equilíbrio não significa que é o melhor valor para todo mundo, mas é o melhor valor que você poderia dar se **"tivesse que chutar"** quantos quílometros os ciclistas iriam percorrer.
+> O equilíbrio não significa que é o melhor valor para todo mundo, mas é o melhor valor que você poderia dar se **"tivesse que chutar"** quantos quilômetros os ciclistas iriam percorrer.
 
 #### Fórmula da média
 
@@ -503,11 +506,11 @@ Por fim, a fórmula da `média` é a seguinte:
 
 <div id="intro-to-median"></div>
 
-## Mediana (Intro)
+## `Mediana`
 
-> Se a `média` é o **"ponto de equilíbrio"** da nossa régua quem poderia me ajudar a saber se esse ponto de equilíbrio está sendo *"puxado/influenciado"* por algum dos extremos?
+> Se a `média` é o **"ponto de equilíbrio"** da nossa régua, quem poderia me ajudar a saber se esse ponto de equilíbrio está sendo *"puxado/influenciado"* por algum dos extremos?
 
-A `mediana` quem pode nos ajudar a resolver esse problema e para isso, imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilometros) em x horas:
+A `mediana` quem pode nos ajudar a resolver esse problema e para isso, imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
 ![img](images/intro-to-mean-03.png)  
 
@@ -520,7 +523,7 @@ Vejam que agora:
  - Primeiro, nós ordenamos os dados (esse passo já estava feito, senão teria que ser feito);
  - Segundo, dividimos em duas caixas (partes) de volume:
    - Os indivíduos que *menos conseguiram percorrer a distância* ficaram na primeira caixa (volume);
-   - Os indivíduos que *mais conseguiram percorrer a distância* ficaram na segunda caixa (volume).
+   - Os indivíduos que mais *conseguiram percorrer a distância* ficaram na segunda caixa (volume).
 
 > **Mas qual a vantagem de dividir em 2 caixas (volumes)?**
 
@@ -528,27 +531,27 @@ Agora nós podemos:
 
  - Pegar o **maior valor** da primeira caixa;
  - Pegar o **menor valor** da segunda caixa;
- - Por fim, **tirar a media desses 2 valores**.
+ - Por fim, **tirar a média desses 2 valores**.
 
 ![img](images/intro-to-median-02.png)  
 
 > **Mas o que isso significa?**
 
- - Significa, que *"metade dos nossos ciclista"* correram **ATÉ** 6,2 quílometros em x horas:
+ - Significa, que *"metade dos nossos ciclista"* correram **ATÉ 6,2 quilômetros em x horas**:
    - Primeira caixa (volume).
- - Outra metade, conseguiu correr **A PARTIR DE** 6,2 quílometros em x horas.
+ - Outra metade, conseguiu correr **A PARTIR DE 6,2 quilômetros em x horas**.
    - Segunda caixa (volume).
 
 Agora pensem comigo:
 
- - Se usando a `média` nós tivemos 13,45 quílometros em x horas;
- - E usando a `mediana` tivemos 6,2 quílometros em x horas.
+ - Se usando a `média` nós tivemos 13,45 quilômetros em x horas;
+ - E usando a `mediana` tivemos 6,2 quilômetros em x horas.
 
 > **O que isso significa?**
 
- - Isso significa que nós temos algum valor *"puxando/influenciando"* a régua para a extremidade de "maior quilometragem":
-   - Da mesma forma se a média fossse 2 ou 1 teria algum valor *"puxando/influenciando"* a extremidade de "menor quilometragem".
- - Ou seja, quando a média está muito longe da mediana que dizer que ela foi influenciada por uma das extremidades.  
+ - Isso significa que nós temos algum valor *"puxando/influenciando"* a régua para a extremidade de *"maior quilometragem"*:
+   - Da mesma forma, se a média fosse 2 ou 1 teria algum valor *"puxando/influenciando"* a extremidade de *"menor quilometragem"*.
+ - Ou seja, quando a média está muito longe da mediana quer dizer que ela foi influenciada por uma das extremidades.
  - Nesse, nosso caso ela foi influenciada pelo o valor extremo: *"72,5"*.
 
 > **Com isso, qual o objetivo da mediana?**
@@ -582,6 +585,93 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 
 
 
+---
+
+<div id="percentis-and-quartis"></div>
+
+## `Percentis e Quartis`
+
+> Percentil tem haver com **posições (ª)** ou **porcentagem (%)**.
+
+Como Percentil tem haver com porcentagem (%) é como se nós dividíssemos a nossa amostra de dados em 100 partes ou em por centos:
+
+ - 100% dos dados;
+ - 50% dos dados;
+ - 25% dos dados;
+ - 1% dos dados...
+
+Mas existem outras nomencaturas para essas porcentagens:
+
+ - **Percentis:**
+   - De 1 em 1 por cento (%).
+ - **Decis:**
+   - De 10 em 10 por cento (%).
+ - **Quartis:**
+   - De 25 em 25 por cento (%).
+
+Agora imagine que você tirou 7,5 em uma prova e eu diga que você:
+
+ - **Está no percentil 94:**
+   - Ótimo, isso que dizer que você ficou entre os 6% melhores.
+ - **Está no percentil 5:**
+   - Bem, agora você não está tão bem qualificado como gostaria.
+   - Por mais que você esteja provado, você está entre os 5% piores.
+
+> **NOTE:**  
+> Vejam que existe uma relativação (contexto) que nós devemos analisar.
+
+Para entender mais sobre **percentis** vamos começar revisando a `mediana` que divide os dados em 2 caixas (volumes):
+
+![img](images/intro-to-median-01.png)  
+
+> **E os percentis?**  
+> Os percentis nos diz em quantas caixas (volumes) iguais nós vamos dividir nossos dados.
+
+Por exemplo, imagine que nós dividimos nossos dados acima em 4 caixas (volumes) iguais, cada uma representando 25%:
+
+![img](images/intro-to-percentis-01.png)  
+
+> **Olhando para as divisões (caixas/volumes) acima o que nós podemos dizer (interpretar)?**
+
+ - **Na primeira caixa (que nós conhecemos como "Primeiro Quartil (Q1)" | 25% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"ímpar"* de objetos de estudo, o valor do meio é o **ponto central**.
+   - Ou seja, 25% (Q1) dos ciclista correram `ATÉ 5 quílometros em x horas`.
+ - **Na segunda caixa (que nós conhecemos como "Segundo Quartil (Q2)/ou a Mediana" | 50% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"par"* de objetos de estudo, nós precisamos tirar a média do maior valor desses 25% pelo menor valor dos próximos 25%.
+   - Ou seja, os outros 25% (Q2) dos ciclista conseguiram correram `DE 5 ATÉ 6,2 quílometros em x horas`.
+ - **Na terceira caixa (que nós conhecemos como "Terceiro Quartil (Q3)" | 75% dos dados):**
+   - **NOTE:** Como nesses 25% nós tinhamos um número *"ímpar"* de objetos de estudo, o valor do meio é o **ponto central**.
+   - Ou seja, os outros 25% (Q3) dos ciclista correram `DE 6,2 ATÉ 10,8 quílometros em x horas`.
+ - **Na quarta caixa (que nós conhecemos como "Quarto Quartil (Q4)" | 100% dos dados):**
+   - Ou seja, os outros 25% (Q4) dos ciclista correram `MAIS DE 10,8 quílometros em x horas`.
+
+> **NOTE:**  
+> Uma observação aqui é que os "quartis" nunca vão lhe dizer nada sobre os valores extremos (mínimo ou máximo).
+
+---
+
+<div id="percentis-and-quartis-quizz-01"></div>
+
+## `Quiz 01`
+
+> **Se a nota de um aluno foi classificada no percentil 90, o que isso significa?**
+
+ - **A)** O percentil 90 da nota significa que o aluno obteve apenas 9% da pontuação total possível.
+ - **B)** O percentil 90 da nota indica que o aluno está entre os 90% com a nota mais baixa da turma.
+ - **C)** O percentil 90 da nota representa que o aluno tem uma nota maior que 9.
+ - **D)** O percentil 90 da nota significa que o aluno obteve uma pontuação melhor que 90% dos demais estudantes da turma.
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+A resposta correta é a letra `D`.
+
+> "O percentil 90 da nota significa que o aluno obteve uma pontuação melhor que 90% dos demais estudantes da turma."
+
+</details>
 
 
 
@@ -592,35 +682,39 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 
 
 
+---
 
+<div id="intro-to-mode"></div>
 
+## `Moda`
 
+Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilometros) em x horas:
 
+![img](images/intro-to-mean-03.png)  
 
+> **Qual valor mais aparece, ou é mais recorrente nesse estudo?**  
+> É o "5".
 
+ - Ou seja, o **"5"** é a moda.
+ - **NOTE:** Por exemplo, a moda é o que todo mundo está usando.
 
+Algumas observações aqui são:
 
+ - Essa medida não é tão "sensual" para variáveis quantitativas (números):
+   - Mas, lembre-se que depende do contexto.
+ - Essa medida é mais utilizada em variáveis qualitativas (categóricas).
 
+Por exemplo:
 
+![img](images/intro-to-mode-01.png)  
 
+**NOTE:**  
+Outra observação aqui é que nesse tipo de variável nós não conseguimos tirar a média, mediana ou percentil. Nós só conseguimos "contar" quantas vezes um certo valor aparece.
 
+Agora pense comigo:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+> **A `moda` é a média entre dados qualitativos (categóricos).**  
+> Por exemplo, se você tivesse que **"chutar"** o hobby que um novo ciclista mais gosta, a moda nos daria essa **"generalização"**.
 
 
 
