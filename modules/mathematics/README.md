@@ -46,7 +46,7 @@
 
 ## Estatística
 
- - [Estatística](modules/statistics)
+ - [Ensinando Estatística Divertidamente](modules/eed)
 
 ---
 

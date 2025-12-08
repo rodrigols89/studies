@@ -1,4 +1,6 @@
-# Estatística
+# Ensinando Estatística Divertidamente (EED)
+
+> Minhas notas do curso ["Ensinando Estatística Divertidamente"](https://lp.asn.rocks/eed-b/)
 
 ## Conteúdo
 
@@ -8,12 +10,17 @@
    - [`Defina (com exemplos) o que são dados, observações, variáveis e contexto?`](#data-observation-variable-context)
    - [`Popoulação vs. Amostra`](#population-vs-sample)
    - [`Parâmetro vs. Estatística`](#parameter-vs-statistic)
+   - [`Medidas de Posição vs. Dispersão`](#position-vs-dispersion)
  - **Medidas de Posição:**
    - [`Média`](#intro-to-mean)
    - [`Mediana`](#intro-to-median)
    - [`Percentis e Quartis`](#percentis-and-quartis)
      - [`Quiz 01`](#percentis-and-quartis-quizz-01)
    - [`Moda`](#intro-to-mode)
+ - **Medidas de Dispersão:**
+   - [`Amplitude`](#intro-to-amplitude)
+   - [`Variância e Desvio Padrão`](#intro-to-var-std)
+   - [`Coeficiente de Variação`](#intro-to-coef-var)
  - [**REFERÊNCIAS**](#ref)
 <!---
 [WHITESPACE RULES]
@@ -308,7 +315,18 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 </details>
 
+---
 
+<div id="position-vs-dispersion"></div>
+
+## `Medidas de Posição vs. Dispersão`
+
+ - **Medidas de Posição:**
+   - Medidas que nos dão uma posição na régua.
+   - *Média*, *Mediana*, *Percentis*, *Moda*.
+ - **Medidas de Dispersão:**
+   - Nos diz quão os dados estão dispersos na régua.
+   - *Amplitude*, *Variância*, *Desvio Padrão* e *Coeficiente de Variação*.
 
 
 
@@ -688,7 +706,7 @@ A resposta correta é a letra `D`.
 
 ## `Moda`
 
-Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilometros) em x horas:
+Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
 ![img](images/intro-to-mean-03.png)  
 
@@ -715,6 +733,448 @@ Agora pense comigo:
 
 > **A `moda` é a média entre dados qualitativos (categóricos).**  
 > Por exemplo, se você tivesse que **"chutar"** o hobby que um novo ciclista mais gosta, a moda nos daria essa **"generalização"**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Medidas de Dispersão ) --->
+
+---
+
+<div id="intro-to-amplitude"></div>
+
+## `Amplitude`
+
+A amplitude é definida como sendo a **"diferença entre o maior e o menor valor do conjunto de dados"**.
+
+> **Mas para que serve essa medida?**
+
+Por exemplo, imagine que nós estamos analisando o `objeto de estudo` "alunos" e de início nós pedimos a *amplitude* da variável "idade". Ou seja, **"a maior idade menos a menor idade"**.
+
+Digamos que a amplitude foi **2**...
+
+> **O que isso significa?**
+
+Bem, 2 anos de idade entre o aluno mais velho e o mais novo pode nos dizer que TALVEZ:
+
+ - A média e a mediana estão próximas;
+ - Os dados podem estar bem distribuídos...
+
+> **NOTE:**  
+> Por fim, mas não menos importante, vale lembrar que a "amplitude" só é utilizada com variáveis numéricas (números). Não faz sentido utilizar a amplitude em variáveis qualitativas (categóricas).
+
+![img](images/intro-to-amplitude-01.png)  
+
+#### Exemplo 02
+
+Imagine que nós temos os seguintes dados de um estudo de ciclistas que percorrem uma distância (em quilômetros) em x horas:
+
+![img](images/intro-to-mean-03.png)  
+
+Digamos que a `média` e a `mediana` foram as seguintes:
+
+ - `Média:`
+   - 13,45
+ - `Mediana:`
+   - 6,2
+
+Agora, imagine que a Amplitude foi a seguinte:
+
+ - `Amplitude:`
+   - A = 72,5 - 2,5 = 70 Km
+
+Bem, vamos refletir sobre essas informações:
+
+ - `Média + Mediana`
+   - Começando pelo a `mediana`:
+     - Nós temos que metade dos ciclistas correram acima de 6,2 quilômetros em x horas.
+     - E a outra metade correu abaixo de 6,2 quilômetros em x horas.
+   - Agora, pense comigo... se a metade correu abaixo (menos) de 6,2 quilômetros em x horas, **"como a `média` foi 13,45?"**
+   - **NOTE:** Isso dá uma *sensação* de que algum valor está *puxando/influenciando* a `média`.
+ - `Amplitude`
+   - Se nós já tínhamos uma *sensação* que algo estava *puxando/influenciando* a `média`;
+   - Agora com a amplitude de 70 Km isso só se concretiza mais.
+   - *Por que?*
+     - Porque o menor valor para o maior valor nós estamos falando de 70 km.
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-var-std"></div>
+
+## `Variância e Desvio Padrão`
+
+Para entender sobre a `Variância e Desvio Padrão`, imagine que nós temos os seguintes dados, de ciclistas que percorrem uma distância (em quilômetros) em x horas:
+
+![img](images/intro-to-mean-03.png)  
+
+Agora, o dono da competição precisa escolher um local adequado para essa corrida, com base nesses dados.
+
+> **Qual o tamanho do local adequado?**
+
+Bem, como nós não temos muitas informações, e apenas uma variável, o melhor "chute" que nós poderíamos dar seria a `média`:
+
+![img](images/intro-to-mean-04.png)  
+
+**Mas, *"qual o risco"* eu tenho desses ciclistas darem várias vezes no local que nós escolhemos?**  
+Ou seja, *"qual o risco"* eu tenho da minha decisão está errada, com base na `média`?
+
+Para calcular esse risco, nós precisaríamos de:
+
+> **Uma medida que mensuraria o quanto nós erramos ao usar a `média` para tomar uma decisão!**
+
+Isso, porque no momento que nós **"chutamos" a média"** para tomar uma decisão é como se a partir de agora nós chutassemos a `média` para todo mundo:
+
+![img](images/standard-deviation-01.png)  
+
+O que significa isso?
+
+ - **O cara que correu 2.5 quilômetros:**
+   - Eu estou "chutando" que ele aguenta 13,45 quilômetros em x horas.
+ - **O cara que correu 3.2 quilômetros:**
+   - Eu estou "chutando" que ele aguenta 13,45 quilômetros em x horas.
+ - **O cara que correu 5.2 quilômetros:**
+   - Eu estou "chutando" que ele aguenta 13,45 quilômetros em x horas.
+ - **O cara que correu 72.5 quilômetros:**
+   - Eu estou "chutando" que ele aguenta 13,45 quilômetros em x horas.
+
+Vocês concordam comigo que **se a gente calcular a distância** do meu **$x$** e **$\bar{x}$**, ou seja, do valor do **$x$** verdadeiro para o chute **$\bar{x}$** nós estamos tendo uma visão de `erro`?
+
+![img](images/standard-deviation-02.png)  
+
+Pense comigo:
+
+ - Se na primeira amostra o ciclista correu 2.5 e eu estou dizendo que ele aguenta 13,45 quilômetros em x horas:
+   - Eu estou errando em -10.95 quilômetros.
+
+> **O problema para essa mensuração é que se eu tiver 1000 ciclistas eu vou ter 1000 linhas de erro!**  
+> Como eu vou tomar uma decisão com 1000 erros diferentes?
+
+Uma alternativa seria calcular a `média` dos erros:
+
+![img](images/standard-deviation-03.png)  
+
+Olhando para o cálculo acima nos deparamos com outro problema agora:
+
+> **A `média` dos erros $(x - \bar{x})$ sempre resultará em 0.**  
+
+**Como assim?**  
+Lembram que a `média` é o ponto de equilíbrio entre os dados (ou pontos na régua), por isso, a soma dos erros sempre resultará em zero (0).
+
+### `Variância`
+
+Bem, como nós temos valores positivos e negativos uns anulando os outros, uma alternativa para resolver esse problema seria:
+
+> **Elevar os erros ao quadrado.**  
+
+A partir do momento que nós elevamos todos os erros ao quadrado, nós:
+
+ - Tornamos os erros negativos em positivos;
+ - Porém, também levamos todos os erros para uma outra dimensão:
+   - Pelo menos em termos numéricos em relação ao erro original.
+
+![img](images/standard-deviation-04.png)  
+
+> **NOTE:**  
+> Agora é só tirar a média desses erros que nós não teremos mais um erro nulo (zero).
+
+![img](images/standard-deviation-05.png)  
+
+Esses processos de:
+
+ - **Elevar os erros ao quadrado:**
+   - Tornando os erros negativos em positivos.
+ - **Tirar a média desses erros.**
+
+> **É o que nós conhecemos como `Variância`.**
+
+A fórmula real da **variância (amostral)** é a seguinte:
+
+![img](images/standard-deviation-05-01.png)  
+
+> **Ué, mas por que nós temos esse "n - 1" no denominador e não apenas n?**
+
+Pense comigo:
+
+ - Se eu tenho uma população enorme (100 mil pessoas);
+ - E nós pegamos apenas uma pequena parte dela (1000 pessoas).
+ 
+> **Vocês concordam que nós vamos ter um certo receio (medo) de prever algo com essa pequena amostra?**
+
+Agora, se eu aumentar para 50 mil pessoas:
+
+> **Vocês concordam que o meu receio (medo) diminui?**
+
+Esse "sentimento" é o que os matemáticos tentaram trazer para uma equação, ou seja:
+
+> **NOTE:**  
+> Quando minha *amostra é pequena* é importante que eu *penalize a minha medida*, por isso, eu uso o "n - 1" no denominador.
+
+> **NOTE:**  
+> Esse sentimento (n -1 no denominador) é o que nós conhecemos como [Correção de Bessel](https://en.wikipedia.org/wiki/Bessel%27s_correction).
+
+### `Desvio padrão`
+
+Agora, pense comigo:
+
+> **Ao "elevar todos os erros ao quadrado" é como se nós levássemos esses erros para outra dimensão porque eles ficaram muito grandes.**  
+
+É tanto que a nossa **média dos erros** ficou bem maior em relação à **média original**:
+
+**MÉDIA ORIGINAL DOS DADOS:**  
+![img](images/intro-to-mean-04.png)  
+
+**MÉDIA DOS ERROS AO QUADRADO:**
+![img](images/standard-deviation-05.png)  
+
+> **E agora como nós fazemos para trazer essa média dos erros para a dimensão original?**
+
+Para fazer a *média dos erros* voltar para a dimensão original precisamos tirar a **raiz quadrada**:
+
+![img](images/standard-deviation-06.png)  
+
+> **NOTE:**  
+> Essa técnica de trazer a média dos erros para a dimensão original é o que nós conhecemos como `Desvio Padrão`.
+
+**Fórmula do Desvio Padrão:**
+![img](images/standard-deviation-07.png)
+
+**Mas o que isso significa?**
+Esse valor nos diz o **quanto nós erramos em média**, ao usar a `média` para tomar nossas decisões.
+
+Voltando para o nosso problema de escolher o local para a corrida, podemos dizer:
+
+> **Amigo, você pode adotar um local para 13,45 quilômetros em x horas, que é a média dos seus ciclistas.**  
+
+Porém, o meu *erro* é que eles:
+
+ - Podem correr 20 quilômetros a mais;
+ - Ou 20 quilômetros a menos.
+
+**Agora, pense comigo, nesse contexto esse *erro é MUITO GRANDE*!**  
+O erro é muito grande para escolher um local adequado, onde em média os ciclistas correm 13,45 quilômetros em x horas e o meu erro é de 20 quilômetros para mais ou para menos.
+
+> **Aqui o ideal seria utilizar outro método estatístico para tomar uma decisão melhor.**
+
+Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária de idade para contar piadas e que você fez a seguinte análise:
+
+ - A média das pessoas (público) é de 32 anos;
+ - E o erro médio é de 1,5 para mais ou para menos.
+
+> **Nesse contexto, o nosso erro é quase nulo, porque é quase 1 ano de diferença só o erro.**
+
+## Resumidamente
+
+ - **Variância:**
+   - `Média dos erros ao quadrado.`
+   - Remove (anula) números (erros) negativos;
+   - **NOTE:** Leva a **média dos erros** para uma outra dimensão.
+ - **Desvio Padrão:**
+   - `A raiz quadrada da variância.`
+   - **NOTE:** Traz a **média dos erros** para a dimensão original.
+ - **Variação vem de variabilidade que significa:**
+   - Se o meu desvio padrão é pequeno é porque os meus pontos estão muito próximos da média.
+   - Se o meu desvio padrão é grande é porque os meus pontos estão muito dispersos ao longo da minha régua.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-coef-var"></div>
+
+## `Coeficiente de Variação`
+
+Os principais objetivos do `Coeficiente de Variação` são:
+
+ - Dizer quão grande é o `Desvio Padrão` em *relação* a `média`;
+ - Permitir comparar variabilidade de amostras que estão em contextos diferentes.
+
+Para entender melhor, imagine que:
+
+ - Em um avião, lutadores de sumô estão viajando com seus bebês e colocaram todos os bebês na parte de frente e os lutadores na parte de trás do avião.
+ - Em outro avião está um grupo de maratonistas:
+   - Podemos imaginar que são pessoas com o mesmo porte; pesos.
+
+> **Imagine que a média dos 2 exemplos acima foi de 75kg.**  
+
+Vocês concordam que:
+
+> **O `Desvio Padrão` no avião com lutadores de sumô e seus bebês vai ser maior do que o `Desvio Padrão` no avião com maratonistas.**  
+> Isso porque a variação entre os dados está muito grande.
+
+**NOTE:**  
+Vejam que no exemplo acima nós comparamos a variabilidade de amostras diferentes.
+
+Por fim, a fórmula do `Coeficiente de Variação` é a seguinte:
+
+![img](images/coef-var-01.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
