@@ -150,13 +150,14 @@
 
 Em resumo:
 
- - Um **Modelo (Equação) Determinístico** é *sempre a mesma coisa*, *não existe uma mudança*, *não existe uma variação*:
+ - **Um Modelo (Equação) Determinístico é *sempre a mesma coisa*, *não existe uma mudança*, *não existe uma variação*:**
    - A minha equação é perfeita;
-   - Onde acontecer muito isso? Na física:
-     - "Se eu jogar uma pedrinha em uma posição x, quanto tempo ela levar para chegar no chão?"
-     - Bem, se você souber o peso do objeto e a distância do projeto você consegue "determinar" o tempo.
-     - **NOTE:** Ou seja, é sempre o mesmo modelo (equação) que sempre funciona sem variabilidade.
- - Um **Modelo (Equação) Estatístico** é aquele que por mais que eu queira eu não consigo ter uma equação precisa o tempo inteiro:
+   - Onde acontecer isso?:
+     - Na física:
+       - "Se eu jogar uma pedrinha em uma posição x, quanto tempo ela levar para chegar no chão?"
+       - Bem, se você souber o peso do objeto e a distância do projeto você consegue "determinar" o tempo.
+       - **NOTE:** Ou seja, é sempre o mesmo modelo (equação) que sempre funciona sem variabilidade.
+ - **Um Modelo (Equação) Estatístico é aquele que por mais que eu queira eu não consigo ter uma equação precisa o tempo inteiro:**
    - Vai ter momentos que nós vamos errar um pouco para cima; vai ter momento que nós vamos errar um pouco para baixo.
    - **NOTE:** Ou seja, um modelo (equação) estatístico é aquele que carrega um `erro`.
 
@@ -185,7 +186,7 @@ Em resumo:
 
 <br/>
 
-Bem, em resumo:
+Em resumo:
 
  - **Dados:**
    - Os dados também conhecidos como *"Base de Dados"*, tem.
@@ -194,16 +195,28 @@ Bem, em resumo:
        - Por que `objeto de estudo`? Porque é aquele *"negócio"* que eu estou interessado em gerar alguma análise.
        - Que "negócio" é esse? Pode ser um indivíduo, um produto, pode ser qualquer coisa (vai depender do contexto).
      - `Colunas:`
-       - São `informações` sobre os nossos `objeto de estudo`.
+       - São `informações` sobre o nosso `objeto de estudo`.
        - Isso é o que nós conhecemos na estatística/programação/matématica de `variáveis/atributos/features`.
  - **Observações:**
    - São as entidades a respeito das quais se coletam os dados *(objeto de estudo)*.
  - **Variáveis:**
    - Variáveis são aquilo que descrevem o nosso `objeto de estudo`.
  - **Contexto:**
-   - É a `lógica desses dados`, sem isso você não consegue interpretar nada! Tudo é Contexto!
+   - É a `lógica desses dados`, sem isso você não consegue interpretar nada!
+   - **NOTE:** Tudo é Contexto!
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -228,13 +241,12 @@ Bem, em resumo:
 
 <br/>
 
-Bem, em resumo:
+Em resumo:
 
  - **Uma População:**
    - É o *"todo do seu estudo"*.
    - É o *"todo do seu problema"*.
    - É o *"todo do seu contexto"*.
-   - EXEMPLO-01:
  - **Uma Amostra:**
    - É um *"pedaço desse todo"*.
 
@@ -250,10 +262,21 @@ Vejam a tabela abaixo para ficar mais claro:
 
 #### 💡 Resumidamente
 
- - **População** → O todo que queremos estudar.
- - **Amostra** → Uma parte desse todo, usada quando não é viável estudar todos os elementos.
+ - **População** → O **todo** que queremos estudar.
+ - **Amostra** → Uma **parte desse todo**, usada quando não é viável estudar todos os elementos.
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -309,11 +332,31 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 > **E como diferenciar um parâmetro de uma estatística em um estudo?**
 
-É comum usarmos letras gregas para representar parâmetros e letras latinas para representar estatísticas:
+É comum usarmos **"letras gregas para representar parâmetros"** e **"letras latinas para representar estatísticas"**:
 
 ![img](images/parameter-vs-statistic-01.png)  
 
 </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -321,12 +364,28 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 ## `Medidas de Posição vs. Dispersão`
 
+
+> **Qual a diferença entre medidas de posição e medidas de dispersão?**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+Em resumo:
+
  - **Medidas de Posição:**
    - Medidas que nos dão uma posição na régua.
    - *Média*, *Mediana*, *Percentis*, *Moda*.
  - **Medidas de Dispersão:**
    - Nos diz quão os dados estão dispersos na régua.
    - *Amplitude*, *Variância*, *Desvio Padrão* e *Coeficiente de Variação*.
+
+</details>
+
+
+
 
 
 
@@ -438,6 +497,14 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 ## `Média`
 
+> **Explique a medida de posição: "média".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 > **A Média nasce com uma missão de *"generalização"*.**
 
 **Como assim?**  
@@ -486,12 +553,12 @@ Agora, imagine que nós temos o estudo de um determinado número de ciclistas qu
 Vejam que na nossa `base de dados` acima:
 
  - Cada linha (objeto de estudo) representa um aluno.
- - E a coluna/variável/feature que nós coletamos foi a quilometragem que o aluno andou com a bicicleta em um determinado período de tempo:
+ - E a coluna/variável/feature (nesse caso só temos uma) que nós coletamos foi a quilometragem que o aluno andou com a bicicleta em um determinado período de tempo:
    - Isso pode ser visto como o nosso contexto de negócio.
 
-> **Mas, como eu calcularia a média de quilometragem que os alunos percorreram em x horas?**
+> **Mas, como eu calcularia a média de quilometragem que os ciclistas percorreram em x horas?**
 
-Bem, nós somaríamos a quilometragem de todos os alunos e dividirmos pelo total de alunos:
+Bem, nós somaríamos a quilometragem de todos os alunos e dividirmos pelo número total de ciclistas:
 
 ![img](images/intro-to-mean-04.png)  
 
@@ -511,6 +578,18 @@ Por fim, a fórmula da `média` é a seguinte:
 
 ![img](images/intro-to-mean-formula.png)
 
+</details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -526,6 +605,14 @@ Por fim, a fórmula da `média` é a seguinte:
 
 ## `Mediana`
 
+> **Explique a medida de posição: "mediana".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 > Se a `média` é o **"ponto de equilíbrio"** da nossa régua, quem poderia me ajudar a saber se esse ponto de equilíbrio está sendo *"puxado/influenciado"* por algum dos extremos?
 
 A `mediana` quem pode nos ajudar a resolver esse problema e para isso, imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
@@ -540,8 +627,8 @@ Vejam que agora:
 
  - Primeiro, nós ordenamos os dados (esse passo já estava feito, senão teria que ser feito);
  - Segundo, dividimos em duas caixas (partes) de volume:
-   - Os indivíduos que *menos conseguiram percorrer a distância* ficaram na primeira caixa (volume);
-   - Os indivíduos que mais *conseguiram percorrer a distância* ficaram na segunda caixa (volume).
+   - Os **indivíduos que menos conseguiram percorrer a distância** ficaram na primeira caixa (volume);
+   - Os **indivíduos que mais conseguiram percorrer a distância** ficaram na segunda caixa (volume).
 
 > **Mas qual a vantagem de dividir em 2 caixas (volumes)?**
 
@@ -594,6 +681,18 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 > **NOTE:**  
 > Vejam que nesse caso o número do meio (ponto central) que vai representar a mediana. Nós não precisamos tirar a média do maior valor da primeira caixa (volume) pelo menor valor da segunda caixa (volume).
 
+</details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -609,9 +708,17 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 
 ## `Percentis e Quartis`
 
-> Percentil tem haver com **posições (ª)** ou **porcentagem (%)**.
+> **Explique como *"Percentis"* e *"Quartis"* são utilizados nas medida de posição.**
 
-Como Percentil tem haver com porcentagem (%) é como se nós dividíssemos a nossa amostra de dados em 100 partes ou em por centos:
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+Como **percentil** tem haver com **porcentagem (%):**
+
+> É como se nós dividíssemos a nossa amostra de dados em *100 partes (100%)* ou em *por centos (%)*:
 
  - 100% dos dados;
  - 50% dos dados;
@@ -656,7 +763,7 @@ Por exemplo, imagine que nós dividimos nossos dados acima em 4 caixas (volumes)
    - Ou seja, 25% (Q1) dos ciclista correram `ATÉ 5 quílometros em x horas`.
  - **Na segunda caixa (que nós conhecemos como "Segundo Quartil (Q2)/ou a Mediana" | 50% dos dados):**
    - **NOTE:** Como nesses 25% nós tinhamos um número *"par"* de objetos de estudo, nós precisamos tirar a média do maior valor desses 25% pelo menor valor dos próximos 25%.
-   - Ou seja, os outros 25% (Q2) dos ciclista conseguiram correram `DE 5 ATÉ 6,2 quílometros em x horas`.
+   - Ou seja, os outros 25% (Q2) dos ciclista conseguiram correr `DE 5 ATÉ 6,2 quílometros em x horas`.
  - **Na terceira caixa (que nós conhecemos como "Terceiro Quartil (Q3)" | 75% dos dados):**
    - **NOTE:** Como nesses 25% nós tinhamos um número *"ímpar"* de objetos de estudo, o valor do meio é o **ponto central**.
    - Ou seja, os outros 25% (Q3) dos ciclista correram `DE 6,2 ATÉ 10,8 quílometros em x horas`.
@@ -665,6 +772,8 @@ Por exemplo, imagine que nós dividimos nossos dados acima em 4 caixas (volumes)
 
 > **NOTE:**  
 > Uma observação aqui é que os "quartis" nunca vão lhe dizer nada sobre os valores extremos (mínimo ou máximo).
+
+</details>
 
 ---
 
@@ -700,11 +809,30 @@ A resposta correta é a letra `D`.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 <div id="intro-to-mode"></div>
 
 ## `Moda`
+
+> **Explique a medida de posição: "moda".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
 
 Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
@@ -733,6 +861,8 @@ Agora pense comigo:
 
 > **A `moda` é a média entre dados qualitativos (categóricos).**  
 > Por exemplo, se você tivesse que **"chutar"** o hobby que um novo ciclista mais gosta, a moda nos daria essa **"generalização"**.
+
+</details>
 
 
 
@@ -846,11 +976,19 @@ Agora pense comigo:
 
 ## `Amplitude`
 
+> **Explique a medida de dispersão: "amplitude".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 A amplitude é definida como sendo a **"diferença entre o maior e o menor valor do conjunto de dados"**.
 
 > **Mas para que serve essa medida?**
 
-Por exemplo, imagine que nós estamos analisando o `objeto de estudo` "alunos" e de início nós pedimos a *amplitude* da variável "idade". Ou seja, **"a maior idade menos a menor idade"**.
+Para entender a **amplitude** imagine que nós estamos analisando o `objeto de estudo` "alunos" e de início nós pedimos a *amplitude* da variável "idade". Ou seja, **"a maior idade menos a menor idade"**.
 
 Digamos que a amplitude foi **2**...
 
@@ -896,7 +1034,19 @@ Bem, vamos refletir sobre essas informações:
    - Se nós já tínhamos uma *sensação* que algo estava *puxando/influenciando* a `média`;
    - Agora com a amplitude de 70 Km isso só se concretiza mais.
    - *Por que?*
-     - Porque o menor valor para o maior valor nós estamos falando de 70 km.
+     - Porque do menor valor para o maior valor nós estamos falando de 70 km.
+
+</details>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -914,6 +1064,15 @@ Bem, vamos refletir sobre essas informações:
 
 ## `Variância e Desvio Padrão`
 
+
+> **Explique as medida de dispersão: "variância" e "desvio padrão".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 Para entender sobre a `Variância e Desvio Padrão`, imagine que nós temos os seguintes dados, de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
 ![img](images/intro-to-mean-03.png)  
@@ -922,18 +1081,18 @@ Agora, o dono da competição precisa escolher um local adequado para essa corri
 
 > **Qual o tamanho do local adequado?**
 
-Bem, como nós não temos muitas informações, e apenas uma variável, o melhor "chute" que nós poderíamos dar seria a `média`:
+Bem, como nós não temos muitas informações, e apenas uma variável, o melhor **"chute"** que nós poderíamos dar seria a `média`:
 
 ![img](images/intro-to-mean-04.png)  
 
-**Mas, *"qual o risco"* eu tenho desses ciclistas darem várias vezes no local que nós escolhemos?**  
+**Mas *"qual é o risco"* de esses ciclistas darem várias voltas no local que nós escolhemos?**  
 Ou seja, *"qual o risco"* eu tenho da minha decisão está errada, com base na `média`?
 
 Para calcular esse risco, nós precisaríamos de:
 
 > **Uma medida que mensuraria o quanto nós erramos ao usar a `média` para tomar uma decisão!**
 
-Isso, porque no momento que nós **"chutamos" a média"** para tomar uma decisão é como se a partir de agora nós chutassemos a `média` para todo mundo:
+Isso, porque no momento que nós **"chutamos a média"** para tomar uma decisão é como se a partir de agora nós chutassemos a `média` para todo mundo:
 
 ![img](images/standard-deviation-01.png)  
 
@@ -969,7 +1128,7 @@ Olhando para o cálculo acima nos deparamos com outro problema agora:
 > **A `média` dos erros $(x - \bar{x})$ sempre resultará em 0.**  
 
 **Como assim?**  
-Lembram que a `média` é o ponto de equilíbrio entre os dados (ou pontos na régua), por isso, a soma dos erros sempre resultará em zero (0).
+Lembram que a `média` é o ponto de equilíbrio entre os dados (ou pontos na régua), por isso, a **média dos erros sempre resultará em zero (0)**.
 
 ### `Variância`
 
@@ -981,7 +1140,7 @@ A partir do momento que nós elevamos todos os erros ao quadrado, nós:
 
  - Tornamos os erros negativos em positivos;
  - Porém, também levamos todos os erros para uma outra dimensão:
-   - Pelo menos em termos numéricos em relação ao erro original.
+   - Pelo menos, em termos numéricos em relação ao erro original.
 
 ![img](images/standard-deviation-04.png)  
 
@@ -1017,11 +1176,8 @@ Agora, se eu aumentar para 50 mil pessoas:
 
 Esse "sentimento" é o que os matemáticos tentaram trazer para uma equação, ou seja:
 
-> **NOTE:**  
-> Quando minha *amostra é pequena* é importante que eu *penalize a minha medida*, por isso, eu uso o "n - 1" no denominador.
-
-> **NOTE:**  
-> Esse sentimento (n -1 no denominador) é o que nós conhecemos como [Correção de Bessel](https://en.wikipedia.org/wiki/Bessel%27s_correction).
+ - Quando minha *amostra é pequena* é importante que eu *penalize a minha medida*, por isso, eu uso o "n - 1" no denominador.
+ - Esse sentimento (n -1 no denominador) é o que nós conhecemos como [Correção de Bessel](https://en.wikipedia.org/wiki/Bessel%27s_correction).
 
 ### `Desvio padrão`
 
@@ -1031,15 +1187,11 @@ Agora, pense comigo:
 
 É tanto que a nossa **média dos erros** ficou bem maior em relação à **média original**:
 
-**MÉDIA ORIGINAL DOS DADOS:**  
-![img](images/intro-to-mean-04.png)  
-
-**MÉDIA DOS ERROS AO QUADRADO:**
-![img](images/standard-deviation-05.png)  
+![img](images/mean-vs-standard-deviation-01.png)  
 
 > **E agora como nós fazemos para trazer essa média dos erros para a dimensão original?**
 
-Para fazer a *média dos erros* voltar para a dimensão original precisamos tirar a **raiz quadrada**:
+Para fazer a *média dos erros* voltar para a dimensão original nós precisamos tirar a **raiz quadrada**:
 
 ![img](images/standard-deviation-06.png)  
 
@@ -1050,7 +1202,8 @@ Para fazer a *média dos erros* voltar para a dimensão original precisamos tira
 ![img](images/standard-deviation-07.png)
 
 **Mas o que isso significa?**
-Esse valor nos diz o **quanto nós erramos em média**, ao usar a `média` para tomar nossas decisões.
+
+> Esse valor nos diz o **quanto nós erramos em média**, ao usar a `média` para tomar nossas decisões.
 
 Voltando para o nosso problema de escolher o local para a corrida, podemos dizer:
 
@@ -1066,6 +1219,8 @@ O erro é muito grande para escolher um local adequado, onde em média os ciclis
 
 > **Aqui o ideal seria utilizar outro método estatístico para tomar uma decisão melhor.**
 
+**EXEMPLO 02:**
+
 Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária de idade para contar piadas e que você fez a seguinte análise:
 
  - A média das pessoas (público) é de 32 anos;
@@ -1078,13 +1233,27 @@ Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária d
  - **Variância:**
    - `Média dos erros ao quadrado.`
    - Remove (anula) números (erros) negativos;
-   - **NOTE:** Leva a **média dos erros** para uma outra dimensão.
+   - **NOTE:** `Leva a média dos erros para uma outra dimensão`.
  - **Desvio Padrão:**
    - `A raiz quadrada da variância.`
-   - **NOTE:** Traz a **média dos erros** para a dimensão original.
+   - **NOTE:** `Traz a média dos erros de volta para a dimensão original`.
  - **Variação vem de variabilidade que significa:**
    - Se o meu desvio padrão é pequeno é porque os meus pontos estão muito próximos da média.
    - Se o meu desvio padrão é grande é porque os meus pontos estão muito dispersos ao longo da minha régua.
+   - **NOTE:** `Lembrando que tudo isso vai depender do contexto`.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1101,12 +1270,20 @@ Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária d
 
 ## `Coeficiente de Variação`
 
+> **Explique a medida de dispersão: "Coeficiente de Variação".**
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 Os principais objetivos do `Coeficiente de Variação` são:
 
  - Dizer quão grande é o `Desvio Padrão` em *relação* a `média`;
  - Permitir comparar variabilidade de amostras que estão em contextos diferentes.
 
-Para entender melhor, imagine que:
+Para entender melhor isso, imagine que:
 
  - Em um avião, lutadores de sumô estão viajando com seus bebês e colocaram todos os bebês na parte de frente e os lutadores na parte de trás do avião.
  - Em outro avião está um grupo de maratonistas:
@@ -1116,16 +1293,20 @@ Para entender melhor, imagine que:
 
 Vocês concordam que:
 
-> **O `Desvio Padrão` no avião com lutadores de sumô e seus bebês vai ser maior do que o `Desvio Padrão` no avião com maratonistas.**  
-> Isso porque a variação entre os dados está muito grande.
+ - O `Desvio Padrão` no avião com lutadores de sumô e seus bebês vai ser maior do que o `Desvio Padrão` no avião com maratonistas.
+ - Isso porque a variação entre os dados está muito grande.
+
+> **NOTE:**  
+> Vejam que no exemplo acima nós comparamos a **"variabilidade de amostras diferentes"**.
 
 **NOTE:**  
-Vejam que no exemplo acima nós comparamos a variabilidade de amostras diferentes.
+Isso mesmo um dos objetivos do `Coeficiente de Variação` é comparar a variabilidade de amostras diferentes.
 
 Por fim, a fórmula do `Coeficiente de Variação` é a seguinte:
 
 ![img](images/coef-var-01.png)  
 
+</details>
 
 
 
