@@ -1,4 +1,4 @@
-# Aprende a usar a LangChain
+# Aprenda a usar LangChain
 
 > Minnhas **notas** e **códigos** do livro [Aprende a usar a LangChain](https://learning.oreilly.com/library/view/aprende-a-usar/9798341637917/)
 
@@ -10,6 +10,15 @@
    - [`Método .invoke()`](#invoke-method)
    - [`Modelo de Mensagens de Conversa no LangChain`](#messages-in-langchain)
    - [`"Templates de Prompt" no LangChain`](#templates-in-langchain)
+ - **RAG Parte I: Indexar os teus dados:**
+   - [`RAG (Retrieval-Augmented Generation)`](#intro-to-rag)
+   - [`Chunks (chunk_size)`](#intro-to-chunks)
+   - [`Overlap (chunk_overlap)`](#intro-to-overlap)
+   - [`O que são Incorporações de Texto? (Text Embeddings)`](#text-embeddings)
+   - [`Carregadores de Documentos (Document Loaders) no LangChain`](#document-loaders)
+   - [`Divisão de Texto (Text Splitters) no LangChain`](#text-splitters)
+   - [`Gerando Texto Incorporado (Text Embeddings)`](#making-embeddings)
+   - [`Indexação de Conhecimento (Indexing) no LangChain`](#chp02-indexing)
  - **Configurações:**
    - [`Criando o ambiente virtual`](#create-env)
 <!---
@@ -715,7 +724,7 @@ from langchain_core.prompts import ...
 ```
 
 > **NOTE:**  
-> Esse módulo **define como você constrói prompts de forma estruturada**, reutilizável e segura no LangChain.
+> 📌 Esse módulo **define como você constrói prompts de forma estruturada**, reutilizável e segura no LangChain.
 
 Ele existe para:
 
@@ -816,6 +825,971 @@ LangChain is a decentralized platform that connects businesses with language ser
 
  - Use **prompts** para **definir estrutura**.
  - Use **messages** para **controlar conversa**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( RAG Parte I: Indexar os teus dados ) --->
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-rag"></div>
+
+## `RAG (Retrieval-Augmented Generation)`
+
+Retrieval‑Augmented Generation (RAG) é uma técnica que combina:
+
+ - Recuperação de documentos (retrieval);
+ - Com modelos geradores de linguagem (generation).
+
+Em vez de confiar apenas no conhecimento “embutido” nos parâmetros do modelo, o RAG permite que o sistema vá buscar trechos de texto relevantes em uma base externa (por exemplo, Wikipedia, banco de documentos corporativos) e use essas informações para gerar respostas mais precisas e contextualizadas.
+
+![img](images/rag-01.png)  
+
+### `Quando utilizar RAG?`
+
+ - **Base de conhecimento grande e em constante atualização:**
+   - Documentações, FAQs, bases científicas.
+ - **Domínios técnicos/especializados:**
+   - Jurídico, médico, pesquisadores que exigem precisão e citações.
+ - **Sistemas de suporte ao cliente:**
+   - Chatbots que precisam referenciar manuais, políticas, termos de serviço.
+
+### `Quando não utilizar RAG?`
+
+ - **Tarefas de conversação livre:**
+   - Bate‑papo informal, criação de conteúdo criativo onde não há necessidade de buscar fatos externos.
+ - **Restrições de latência:**
+   - Se seu sistema exige respostas em tempo real (<100 ms) e não comporta o tempo extra de recuperação.
+ - **Ambientes com poucos dados:**
+   - Se a base de documentos for pequena e autossuficiente, pode ser mais simples usar um LLM puro ou até finetuning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-chunks"></div>
+
+## `Chunks (chunk_size)`
+
+> Imagina que você precisa criar um *RAG* que utiliza a **Constituição Federal** para auxiliar advogados.
+
+Se, para uma pergunta sobre **direito do consumidor**, enviarmos *toda a constituição*, isso fará com que o modelo de IA não consiga processar todas as informações, já que, quanto maior o prompt, **menos precisa tende a ser a resposta**.
+
+Para isso, utilizamos a técnica de **"chunks"**, onde, pegamos um arquivo geral e o quebramos em vários pequenos trechos:
+
+![img](images/chunks-01.png)  
+
+> **NOTE:**  
+> 📌 Podemos usar um `chunk_size` para especificar quantos caracteres teremos por **chunk**.
+
+A *Constituição Federal* possui **64.488 palavras**. Se definirmos um `chunk_size` como **100**, teremos **645 mini arquivos (64.488÷100)** da Constituição.
+
+### 🧾 Exemplos:
+
+ - **Art. 1º** A República Federativa do Brasil, formada pela união indissolúvel dos Estados e Municípios e do Distrito Federal, constitui-se em Estado Democrático de Direito e tem como fundamentos...
+ - **Parágrafo único.** Todo o poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente, nos termos desta Constituição...
+ - **Art. 2º** São Poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-overlap"></div>
+
+## `Overlap (chunk_overlap)`
+
+**Mas agora enfrentamos outro problema:**  
+Ao separar o texto por chunks, pode ser que eles **fiquem sem sentido**, já que partes importantes da informação podem ser **cortadas (separadas)**.
+
+> **NOTE:**  
+> 📌 Para isso, usamos o parâmetro `chunk_overlap`.
+
+ - Ele define quantos caracteres de sobreposição haverá entre um chunk e o próximo.
+ - 👉 Isso é útil para manter o contexto entre pedaços consecutivos.
+
+Por exemplo, Exemplo com `chunk_size = 500` e `chunk_overlap = 100`
+
+```bash
+[000 ... 499]
+[400 ... 899]
+[800 ... 1299]
+```
+
+Vejam que:
+
+ - **Nosso primeiro chunk começa em 000 e termina em 499:**
+   - Ou seja, as primeiras 500 palavras da Constituição.
+ - **Nosso segundo chunk começa em 400 (por causa do "chunk_overlap = 100") e termina em 899:**
+   - Ou seja, ele está pegando as 100 últimas palavras do chunk anterior.
+   - **NOTE:** Isso é importante para evitar perda de contexto entre os chunks.
+
+Por exemplo, imagine que nós temos o seguinte texto:
+
+```bash
+Python é uma excelente linguagem de programação para web e IA.
+```
+
+Se aplicarmos:
+
+ - `chunk_size = 7`
+ - `chunk_overlap = 3`
+
+Vamos ter:
+
+```bash
+Python é uma excelente linguagem de programação para web e IA.
+   |   |  |      |         |     |       |
+   0   1  2      3         4     5       6
+   ---------------------------------------
+                chunk 1
+
+
+Python é uma excelente linguagem de programação para web e IA.
+                           |     |       |       |    |  |  |
+                           1     2       3       4    5  6  7
+                           -----------------------------------
+                                        chunk 2
+```
+
+> **NOTE:**  
+> 📌 Vejam que nós pegamos as **3 últimas palavras do chunk (overlap = 3)** para não perde contexto.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="text-embeddings"></div>
+
+## `O que são Incorporações de Texto? (Text Embeddings)`
+
+> As **incorporações de texto** são uma forma de **converter palavras ou frases do texto em dados numéricos que uma máquina pode entender**.
+
+ - Pense nisso como se estivesse transformando o texto em uma lista de números, em que cada número captura uma parte do significado do texto.
+ - Essa técnica ajuda as máquinas a entender o contexto e as relações entre as palavras.
+
+![img](images/embeddings-01.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="document-loaders"></div>
+
+## `Carregadores de Documentos (Document Loaders) no LangChain`
+
+Para que serve `langchain_community.document_loaders`?
+
+```python
+from langchain_community.document_loaders import ...
+```
+
+Esse módulo reúne **carregadores de documentos (document loaders)**, ou seja, classes responsáveis por:
+
+ - ler arquivos ou fontes externas (PDF, TXT, CSV, HTML, URLs, etc.)
+ - extrair o conteúdo
+ - converter tudo para o formato padrão do LangChain: `Document`
+
+> **📌 Em RAG, tudo começa aqui.**  
+> Se o dado não foi carregado corretamente, o resto do pipeline falha.
+
+### `1️⃣ O que é um Document?`
+
+Todo *loader* retorna uma lista de objetos `Document`:
+
+```python
+Document(
+    page_content="texto extraído",
+    metadata={"source": "..."}
+)
+```
+
+Esse formato é usado depois por:
+
+ - text splitters
+ - embeddings
+ - vector stores
+ - retrievers
+
+### `2️⃣ Imports mais utilizados`
+
+ - `TextLoader`
+   - Carrega arquivos `.txt`
+
+```python
+from langchain_community.document_loaders import TextLoader
+
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+```
+
+> **📌 Uso comum:**  
+> logs, textos simples, dumps.
+
+ - `PyPDFLoader`
+   - Extrai texto de arquivos PDF (página por página).
+
+```python
+from langchain_community.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader("data/manual.pdf")
+documents = loader.load()
+```
+
+> **NOTE:**  
+> 📌 Cada página vira um Document.
+
+ - `CSVLoader`
+   - Lê arquivos .csv.
+
+```python
+from langchain_community.document_loaders import CSVLoader
+
+loader = CSVLoader(
+    file_path="data/users.csv",
+    source_column="email"
+)
+documents = loader.load()
+```
+
+> **NOTE:**  
+> 📌 Cada linha vira um Document.
+
+ - `JSONLoader`
+   - Carrega dados estruturados em `JSON`.
+
+```python
+from langchain_community.document_loaders import JSONLoader
+
+loader = JSONLoader(
+    file_path="data/data.json",
+    jq_schema=".items[]",
+    text_content=False
+)
+documents = loader.load()
+```
+
+> **NOTE:**  
+> 📌 Muito usado com APIs e dumps de dados.
+
+ - `UnstructuredFileLoader`
+   - Loader genérico para vários formatos.
+
+```python
+from langchain_community.document_loaders import UnstructuredFileLoader
+
+loader = UnstructuredFileLoader("data/report.docx")
+documents = loader.load()
+```
+
+**📌 Funciona com:**
+
+ - `.docx`
+ - `.pptx`
+ - `.html`
+ - `.md`
+
+ - `WebBaseLoader`
+   - Carrega conteúdo direto de URLs.
+
+```python
+from langchain_community.document_loaders import WebBaseLoader
+
+loader = WebBaseLoader("https://docs.langchain.com/")
+documents = loader.load()
+```
+
+> **NOTE:**  
+> 📌 Muito usado para *RAG* com *documentação online*.
+
+ - `DirectoryLoader`
+   - Carrega vários arquivos de uma pasta.
+
+```python
+from langchain_community.document_loaders import DirectoryLoader
+
+loader = DirectoryLoader(
+    "data/",
+    glob="**/*.pdf"
+)
+documents = loader.load()
+```
+
+> **NOTE:**  
+> 📌 Essencial para bases grandes de documentos.
+
+### `Documentação do "Document loaders"`
+
+> Aqui -> [Document loaders](https://docs.langchain.com/oss/python/integrations/document_loaders)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="text-splitters"></div>
+
+## `Divisão de Texto (Text Splitters) no LangChain`
+
+1️⃣ Para que serve langchain_text_splitters?
+
+```python
+from langchain_text_splitters import ...
+```
+
+Esse módulo contém os **Text Splitters**, responsáveis por **quebrar documentos grandes em pedaços menores (chunks)**.
+
+📌 Isso é essencial porque:
+
+ - LLMs têm limite de tokens
+ - embeddings funcionam melhor com textos menores
+ - buscas vetoriais ficam mais precisas
+
+> **NOTE:**  
+> 📌 Em *RAG*, o `splitter` é o coração da qualidade.
+
+### `2️⃣ O problema que ele resolve`
+
+ - **Sem splitter ❌:**
+   - texto grande demais
+   - perda de contexto
+   - embeddings ruins
+ - **Com splitter ✅:**
+   - chunks consistentes
+   - contexto preservado
+   - melhor recuperação
+
+### `3️⃣ Imports mais utilizados`
+
+ - `RecursiveCharacterTextSplitter (mais usado)`
+   - Divide texto de forma inteligente, tentando manter estrutura.
+
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+Parâmetros principais:
+
+ - `chunk_size` → tamanho do chunk
+ - `chunk_overlap` → sobreposição entre chunks
+ - `separators` → lista de separadores (opcional)
+
+> **NOTE:**  
+> 📌 Padrão para RAG com texto natural.
+
+ - `CharacterTextSplitter`
+   - Divide texto de forma simples e direta.
+
+```python
+from langchain_text_splitters import CharacterTextSplitter
+
+splitter = CharacterTextSplitter(
+    separator="\n",
+    chunk_size=300,
+    chunk_overlap=30
+)
+```
+
+Parâmetros:
+
+ - `separator` → caractere de divisão (\n, .)
+ - `chunk_size`
+ - `chunk_overlap`
+
+> **NOTE:**  
+> 📌 Bom para textos bem estruturados.
+
+ - `TokenTextSplitter`
+   - Divide baseado em tokens, não caracteres.
+
+```python
+from langchain_text_splitters import TokenTextSplitter
+
+splitter = TokenTextSplitter(
+    chunk_size=256,
+    chunk_overlap=25
+)
+```
+
+Parâmetros:
+
+ - `chunk_size` → tokens por chunk
+ - `chunk_overlap`
+ - `encoding_name` → tokenizer (ex: "cl100k_base")
+
+> **NOTE:**  
+> 📌 Ideal quando você precisa respeitar limite exato de tokens.
+
+### `4️⃣ Regra de ouro 🧠`
+
+Escolha o `splitter` de acordo com o tipo de dado, não por moda.
+
+ - texto livre → `RecursiveCharacterTextSplitter`
+ - tokens exatos → `TokenTextSplitter`
+ - markdown → `MarkdownTextSplitter`
+ - HTML → `HTMLTextSplitter`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="making-embeddings"></div>
+
+## `Gerando Texto Incorporado (Text Embeddings)`
+
+O LangChain tem várias API para se trabalhar com Textos Incorporados (Text Embeddings) e vocês podem escolhar qualquer um deles de acordo com a sua necessidade.
+
+> Aqui está a documentação oficial -> [Embedding models](https://docs.langchain.com/oss/python/integrations/text_embedding)
+
+Por exemplo, vamos utilizar a classe `OpenAIEmbeddings` da OpenAI:
+
+[chapter02/text-embeddings-01.py](codes/chapter02/text-embeddings-01.py)
+```python
+from langchain_openai import OpenAIEmbeddings
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+model = OpenAIEmbeddings()
+
+embeddings = model.embed_documents(
+    [
+        "Hi there!",
+        "Oh, hello!",
+        "What's your name?",
+        "My friends call me World",
+        "Hello World!",
+    ]
+)
+```
+
+Se você desse um print() o resultado seria algo parecido com isso (não vou mostrar porque é muito grande):
+
+**OUTPUT:**
+```bash
+[
+  [
+    -0.004845875, 0.004899438, -0.016358767, -0.024475135, -0.017341806,
+      0.012571548, -0.019156644, 0.009036391, -0.010227379, -0.026945334,
+      0.022861943, 0.010321903, -0.023479493, -0.0066544134, 0.007977734,
+    0.0026371893, 0.025206111, -0.012048521, 0.012943339, 0.013094575,
+    -0.010580265, -0.003509951, 0.004070787, 0.008639394, -0.020631202,
+    ... 1511 more items
+  ]
+  [
+      -0.009446913, -0.013253193, 0.013174579, 0.0057552797, -0.038993083,
+      0.0077763423, -0.0260478, -0.0114384955, -0.0022683728, -0.016509168,
+      0.041797023, 0.01787183, 0.00552271, -0.0049789557, 0.018146982,
+      -0.01542166, 0.033752076, 0.006112323, 0.023872782, -0.016535373,
+      -0.006623321, 0.016116094, -0.0061090477, -0.0044155475, -0.016627092,
+    ... 1511 more items
+  ]
+  ... 3 more items
+]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="chp02-indexing"></div>
+
+## `Indexação de Conhecimento (Indexing) no LangChain (+Indexing vs. Retrieval)`
+
+### `1️⃣ O que é Indexing no LangChain?`
+
+> O termo `Indexing` se refere ao processo de **transformar dados brutos (documentos)** em uma estrutura **pesquisável por similaridade semântica**.
+
+Em termos práticos, é quando você:
+
+ - carrega documentos
+ - divide em chunks
+ - gera embeddings
+ - armazena tudo em um Vector Store
+
+> **NOTE:**  
+> 📌 Sem `indexação`, não existe *RAG*.
+
+### `2️⃣ Por que a indexação é necessária?`
+
+LLMs:
+
+ - não “lembram” de documentos
+ - não pesquisam sozinhas
+ - não acessam arquivos diretamente
+
+> **NOTE:**  
+> 📌 A `indexação` *cria uma memória externa consultável*.
+
+### `3️⃣ Fluxo completo de Indexing`
+
+No processo de indexação, o LangChain segue o seguinte fluxo:
+
+```bash
+Dados brutos
+   ↓
+DocumentLoader
+   ↓
+TextSplitter
+   ↓
+Embeddings
+   ↓
+VectorStore (Index)
+```
+
+> **NOTE:**  
+> 📌 O resultado final é o índice vetorial.
+
+### `4️⃣ Exemplo mínimo de indexação`
+
+**Passo 1 — Carregar documentos:**
+```python
+from langchain_community.document_loaders import TextLoader
+
+loader = TextLoader("data/manual.txt")
+documents = loader.load()
+```
+
+**Passo 2 — Dividir o texto:**
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+**Passo 3 — Gerar embeddings:**
+```python
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+```
+
+**Passo 4 — Criar o índice (Vector Store):**
+```python
+from langchain_community.vectorstores import FAISS
+
+vectorstore = FAISS.from_documents(
+    chunks,
+    embeddings
+)
+```
+
+> **NOTE:**  
+> 📌 Aqui nasce o índice.
+
+### `5️⃣ Consultando o índice (busca semântica)`
+
+> Porém, ainda falta fazer a consulta semântica nesse índice.
+
+Para isso nós vamos utilizar o conceito de **"Text Similarity"**:
+
+```python
+results = vectorstore.similarity_search(
+    "How does indexing work?",
+    k=3
+)
+
+for doc in results:
+    print(doc.page_content)
+```
+
+### `6️⃣ Indexing vs Retrieval`
+
+| Conceito    | Quando acontece | O que faz         |
+| ----------- | --------------- | ----------------- |
+| `Indexing`  | Antes do uso    | Cria o índice     |
+| `Retrieval` | Em runtime      | Consulta o índice |
+
+### `7️⃣ Persistindo e Carregando o índice`
+
+> Nós também precisamos persistir e carregar o índice de algum Banco de Dados.
+
+**Persistindo o índice:**
+```python
+vectorstore.save_local("faiss_index")
+```
+
+**Carregando o índice:**
+```python
+from langchain_community.vectorstores import FAISS
+
+vectorstore = FAISS.load_local(
+    "faiss_index",
+    embeddings,
+    allow_dangerous_deserialization=True
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( ??? ) --->
+
 
 
 
