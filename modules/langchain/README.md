@@ -19,6 +19,8 @@
    - [`Divisão de Texto (Text Splitters) no LangChain`](#text-splitters)
    - [`Gerando Texto Incorporado (Text Embeddings)`](#making-embeddings)
    - [`Indexação de Conhecimento (Indexing) no LangChain`](#chp02-indexing)
+   - [`PGVector: Banco de Dados Vetorial com PostgreSQL no LangChain`](#chp02-pgvector)
+   - [`Exemplo Completo — Usando PGVector com LangChain`](#chp02-pgvector-exemplo)
  - **Configurações:**
    - [`Criando o ambiente virtual`](#create-env)
 <!---
@@ -1683,6 +1685,587 @@ vectorstore = FAISS.load_local(
     allow_dangerous_deserialization=True
 )
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="chp02-pgvector"></div>
+
+## `PGVector: Banco de Dados Vetorial com PostgreSQL no LangChain`
+
+### `1️⃣ O que é PGVector?`
+
+PGVector é uma extensão do PostgreSQL que permite armazenar e buscar embeddings (vetores) diretamente no banco de dados.
+
+**📌 Em outras palavras:**
+
+> PostgreSQL + vetores = Vector Store persistente e robusto
+
+### `2️⃣ Por que PGVector entra nesse contexto?`
+
+Até agora nós vimos:
+
+```bash
+DocumentLoader
+→ TextSplitter
+→ Embeddings
+→ VectorStore
+```
+
+O `PGVector` é o `VectorStore` — só que:
+
+ - persistente
+ - escalável
+ - SQL
+ - pronto para produção
+
+> **NOTE:**  
+> 📌 Diferente de FAISS (memória/local), o PGVector vive em um banco real.
+
+### `3️⃣ Criando um container docker com PGVector`
+
+```bash
+docker run \
+    --name pgvector \
+    -e POSTGRES_USER=lcuser \
+    -e POSTGRES_PASSWORD=lcpass \
+    -e POSTGRES_DB=lcdb \
+    -p 6024:5432 \
+    -d pgvector/pgvector:pg16
+```
+
+ - `docker run`
+   - Inicia um container Docker.
+ - `--name pgvector`
+   - Define o nome do container como pgvector.
+   - Facilita: *"docker ps"*, *"docker stop pgvector"*
+ - `-e POSTGRES_USER=lcuser`
+ - `-e POSTGRES_PASSWORD=lcpass`
+ - `-e POSTGRES_DB=lcdb`
+   - Variáveis de ambiente do PostgreSQL
+   - Criam automaticamente:
+     - `POSTGRES_USER` -> usuário: langchain
+     - `POSTGRES_PASSWORD` -> senha: langchain
+     - `POSTGRES_DB` -> banco: langchain
+ - `-p 6024:5432`
+   - Mapeamento de porta
+   - 5432 → porta interna do PostgreSQL no container
+   - 6024 → porta acessível na sua máquina
+   - Conexão externa:
+     - *postgresql://langchain:langchain@localhost:6024/langchain*
+ - `-d`
+   - Roda o container em background.
+ - `pgvector/pgvector:pg16`
+   - Isso é:
+     - PostgreSQL 16
+     - extensão pgvector já instalada
+   - 📌 Você não precisa instalar nada manualmente. 
+
+### `4️⃣ O que acontece quando esse container sobe?`
+
+Internamente, o PostgreSQL:
+
+ - inicia normalmente
+ - ativa a extensão pgvector
+ - fica pronto para criar colunas do tipo vector
+
+Exemplo SQL real:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS vector;
+```
+
+### `5️⃣ Como o PGVector armazena embeddings?`
+
+Cada embedding vira algo assim:
+
+```sql
+vector(1536)
+```
+
+Onde:
+
+ - 1536 = dimensão do embedding (OpenAI small)
+
+📌 Um registro típico:
+
+```bash
+id | content | embedding | metadata
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="chp02-pgvector-exemplo"></div>
+
+## `Exemplo Completo — Usando PGVector com LangChain`
+
+**📦 Pré-requisitos:**
+
+ - Container do PGVector rodando (o Docker que você já subiu)
+ - Variável de ambiente OPENAI_API_KEY configurada
+ - Pacotes instalados:
+   - `pip install langchain langchain-community langchain-openai psycopg2-binary`
+
+Vamos começar criando uma instância de `load_dotenv()` que vai ser responsável por carregar as variáveis de ambiente:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+Continuando, agora vamos implementar a **String de Conexão com PostgreSQL (PGVector) no LangChain**:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
+```
+
+ - `postgresql`
+   - Define o tipo de banco de dados.
+   - O LangChain usa isso para saber:
+     - que é PostgreSQL
+     - que suporta pgvector
+ - `+psycopg2`
+   - Define o driver Python usado para conectar ao banco.
+   - Por quê?
+     - PostgreSQL não fala Python diretamente
+     - o driver faz essa ponte
+   - Biblioteca necessária:
+     - `pip install psycopg2-binary`
+ - `://`
+   - Separador padrão entre:
+     - tipo de conexão
+     - credenciais
+ - `lcuser:lcpass`
+   - Credenciais -> username:password
+   - Isso vem diretamente do Docker:
+     - `-e POSTGRES_USER=lcuser`
+     - `-e POSTGRES_PASSWORD=lcpass`
+ - `@localhost`
+   - Define **onde o banco está rodando**.
+   - localhost → sua máquina
+   - poderia ser:
+     - IP
+     - nome do container
+     - hostname de produção
+ -  `:6024`
+   - Porta externa mapeada pelo Docker:
+     - `-p 6024:5432`
+     - 📌 Importante:
+       - 5432 → porta interna do PostgreSQL
+       - 6024 → porta que você acessa
+ - `/lcdb`
+   - Nome do banco de dados.
+   - Criado automaticamente pelo Docker:
+     - `-e POSTGRES_DB=lcdb`
+
+Ótimo, agora vamos implementar um `loader de arquivos` de texto que vai ler um arquivo `.txt`:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+from langchain_community.document_loaders import TextLoader
+
+loader = TextLoader("data/example.txt")
+```
+
+> **O que tem na variável `loader`?**
+
+```python
+loader = TextLoader("data/example.txt")
+print(loader)
+print(type(loader))
+```
+
+**OUTPUT:**
+```bash
+<langchain_community.document_loaders.text.TextLoader object at 0x7fed2d540890>
+<class 'langchain_community.document_loaders.text.TextLoader'>
+```
+
+Vejam que nós temos apenas objetos da classe `langchain_community.document_loaders.text.TextLoader`.
+
+> **E como eu acesso meus dados? (Meu texto em `data/example.txt`)?**
+
+Para isso nós precisamos utilizar o método `load()` da classe `TextLoader` que é responsável por ler o arquivo:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+loader = TextLoader("data/example.txt")
+text = loader.load()
+
+print("\nType:", type(text))
+print("\nContent:", text)
+```
+
+**OUTPUT:**
+```bash
+Type: <class 'list'>
+
+Content: [Document(metadata={'source': 'data/example.txt'}, page_content='LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).\n\nIt provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).\n\nOne of the core ideas of LangChain is to connect language models with external data sources.\n\nThis is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.\n\nVector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.\n\nPGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.\n\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nIndexing is the process of transforming raw documents into searchable vector representations.\n\nRetrieval is the process of querying those vectors to find the most relevant information for a user question.\n')]
+```
+
+Ótimo, vejam que agora nós temos:
+
+ - **Um objeto lista:**
+   - `<class 'list'>`
+ - **Uma tupla `Document()`:**
+   - Representando um único documento.
+   - Essa tupla tem os seguintes campos:
+     - `page_content`
+     - `metadata`
+
+Por exemplo, vamos ver o conteúdo (`page_content`) e os metadados (`metadata`) do nosso documento (`Document`):
+
+```python
+for index, document in enumerate(text):
+    print(f"\n------------ Document {index} ------------")
+    print("\n[PAGE CONTENT]\n", document.page_content)
+    print("\[nMETADATA]\n", document.metadata)
+```
+
+**OUTPUT:**
+```bash
+------------ Document 0 ------------
+
+[PAGE CONTENT]
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+Vector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.
+
+PGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.
+
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Indexing is the process of transforming raw documents into searchable vector representations.
+
+Retrieval is the process of querying those vectors to find the most relevant information for a user question.
+
+
+[METADATA]
+ {'source': 'data/example.txt'}
+```
+
+Continuando na nossa implementação vamos dividir os dados do nosso arquivo `.txt` em 500 palavras (chunk_size=500) com 50 palavras de overlap (chunk_overlap=50):
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+```
+
+> **O que tem na variável `splitter`?**
+
+```python
+print(splitter)
+print(type(splitter))
+```
+
+**OUTPUT:**
+```bash
+<langchain_text_splitters.character.RecursiveCharacterTextSplitter object at 0x751f76613170>
+<class 'langchain_text_splitters.character.RecursiveCharacterTextSplitter'>
+```
+
+ - Novamente, temos objetos LangChain, `langchain_text_splitters.character.RecursiveCharacterTextSplitter` nesse caso.
+ - Bem, se nós temos objetos eles tem (ou podem ter) métodos e nós podemos utilizar esses métodos.
+ - A classe `RecursiveCharacterTextSplitter` tem o método `split_documents()` que divide os dados em chunks:
+
+> **NOTE:**  
+> 📌 Lembrando que quando nós criamos uma instância de `RecursiveCharacterTextSplitter()` nós definimos a quantidade de pedaços (chunks) e a quantidade de overlap (chunk_overlap).
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+chunks = splitter.split_documents(text)
+```
+
+> **O que tem na variável `chunks`?**
+
+```python
+print("\nType:", type(chunks))
+print("\nContent:", chunks)
+```
+
+**OUTPUT:**
+```bash
+Type: <class 'list'>
+
+Content: [Document(metadata={'source': 'data/example.txt'}, page_content='LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).\n\nIt provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).\n\nOne of the core ideas of LangChain is to connect language models with external data sources.\n\nThis is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.'), Document(metadata={'source': 'data/example.txt'}, page_content='Vector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.\n\nPGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.\n\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nIndexing is the process of transforming raw documents into searchable vector representations.'), Document(metadata={'source': 'data/example.txt'}, page_content='Retrieval is the process of querying those vectors to find the most relevant information for a user question.')]
+```
+
+> **Ué, é a mesma coisa que o nosso `text = loader.load()` tem?**  
+> Não, não!
+
+ - **Primeiro, se vocês prestarem atenção verão que nós temos 3 objetos `Document()`:**
+   - Lembram que nós definimos 500 palavras por divisão (chunk_size)?
+   - Então, cada `Document()` tem 500 palavras.
+
+Por exemplo, vamos ver separadamente esses `Document()`:
+
+```python
+for index, document in enumerate(chunks):
+    print(f"\n------------ Document {index} ------------")
+    print("\n[PAGE CONTENT]\n", document.page_content)
+    print("\n[METADATA]\n", document.metadata)
+```
+
+**OUTPUT:**
+```bash
+------------ Document 0 ------------
+
+[PAGE CONTENT]
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+
+------------ Document 1 ------------
+
+[PAGE CONTENT]
+ Vector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.
+
+PGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.
+
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Indexing is the process of transforming raw documents into searchable vector representations.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+
+------------ Document 2 ------------
+
+[PAGE CONTENT]
+ Retrieval is the process of querying those vectors to find the most relevant information for a user question.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+```
+
+**Ótimo, entendendo tudo isso agora vamos transformar esses chunks em vetores:**  
+Para isso, primeiro vamos importar e instanciar a classe `OpenAIEmbeddings`:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+```
+
+Vejam que aqui nós estamos utilizando o modelo pré-treinado `text-embedding-3-small` da OpenAI.
+
+> **Agora é só pegar nossos chunks (textos divididos) e transformar em vetores (embeddings)?**  
+> Não nesse nosso exemplo!
+
+**Lembram que nós criamos um container com PostgreSQL que dá suporte a pgvector?**  
+Então, aqui vamos criar uma instância da classe `PGVector` que vai:
+
+ - Receber os nossos chunks (textos divididos);
+ - A instancia (classe responsável) que vai gerar os embeddings;
+ - Conexão com o banco de dados (string de conexão);
+ - Um nome para a nossa coleção:
+   - Nome lógico da *coleção de vetores*.
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+from langchain_community.vectorstores import PGVector
+
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+```
+
+**O que acontece internamente?**  
+Quando esse código roda, o *LangChain*:
+
+```bash
+1. Conecta no PostgreSQL
+2. Cria tabelas se não existirem
+3. Para cada chunk:
+      - lê page_content
+      - gera embedding
+      - salva vetor + metadata
+4. Cria ou reutiliza a coleção
+```
+
+> **O que temos na variável `vectorstore`?**
+
+É um objeto que sabe:
+
+ - onde estão os vetores
+ - como buscá-los
+ - como calcular similaridade
+
+> **O que esse código (até esse momento) NÃO faz?**
+
+ - ❌ Não responde perguntas
+ - ❌ Não chama LLM
+ - ❌ Não faz RAG completo
+ - **NOTE:** Ele apenas cria a memória.
+
+> **NOTE:**  
+> 📌 Novamente, se nós temos uma instância de uma classe (`vectorstore`), essa instância tem (ou pode ter) um método.
+
+Isso mesmo, aqui nossa instância `vectorstore` pode utilizar o método `similarity_search` para buscar vetores similares:
+
+[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+```python
+results = vectorstore.similarity_search(
+    query="What is LangChain?",
+    k=3
+)
+```
+
+O código acima faz uma **busca semântica no índice vetorial** e **retorna os 3 textos mais relevantes**, com base no significado da pergunta.
+
+ - 📌 Não é busca por palavra-chave
+ - 📌 Não é SQL tradicional
+ - 📌 É busca por similaridade de significado
+
+> **O que temos na variável `query_results`?**
+
+```python
+query_results = vectorstore.similarity_search(
+    query="What is LangChain?",
+    k=3
+)
+
+print("\nType:", type(query_results))
+print("\nContent:", query_results)
+```
+
+**OUTPUT:**
+```bash
+Type: <class 'list'>
+
+Content: [Document(metadata={'source': 'data/example.txt'}, page_content='LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).\n\nIt provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).\n\nOne of the core ideas of LangChain is to connect language models with external data sources.\n\nThis is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.'), Document(metadata={'source': 'data/example.txt'}, page_content='LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).\n\nIt provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).\n\nOne of the core ideas of LangChain is to connect language models with external data sources.\n\nThis is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.'), Document(metadata={'source': 'data/example.txt'}, page_content='Vector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.\n\nPGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.\n\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nIndexing is the process of transforming raw documents into searchable vector representations.')]
+```
+
+Se vocês prestarem bem atenção verão que nós temos uma lista (`<class 'list'>`) com 3 Documents, por exemplo vamos exibir o `page_content` e `metadata` desses `Document()``, separadamente:
+
+```python
+query_results = vectorstore.similarity_search(
+    query="What is LangChain?",
+    k=3
+)
+
+for index, document in enumerate(query_results):
+    print(f"\n------------ Document {index} ------------")
+    print("\n[PAGE CONTENT]\n", document.page_content)
+    print("\n[METADATA]\n", document.metadata)
+```
+
+**OUTPUT:**
+```bash
+------------ Document 0 ------------
+
+[PAGE CONTENT]
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+
+------------ Document 1 ------------
+
+[PAGE CONTENT]
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+
+------------ Document 2 ------------
+
+[PAGE CONTENT]
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+[METADATA]
+ {'source': 'data/example.txt'}
+```
+
 
 
 
