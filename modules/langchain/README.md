@@ -21,6 +21,13 @@
    - [`Indexação de Conhecimento (Indexing) no LangChain`](#chp02-indexing)
    - [`PGVector: Banco de Dados Vetorial com PostgreSQL no LangChain`](#chp02-pgvector)
    - [`Exemplo Completo — Usando PGVector com LangChain`](#chp02-pgvector-exemplo)
+ - **Capítulo 3. RAG Parte II: Conversando com os seus dados:**
+   - [`Introdução ao RAG (Retrieval-Augmented Generation)`](#chp03-intro-to-rag)
+   - [`Três fases de um sistema RAG`](#chp03-three-steps)
+   - [`Exemplo Completo: Construindo um RAG com LangChain + PGVector`](#chp03-full-example)
+   - [`Criando um "chain" de perguntas e respostas`](#chp03-chain)
+ - **Dicas & Truques:**
+   - [`Prompting vs. Fine Tuning vs. RAG`](#chp03-prompting-vs-fine-tuning-vs-rag)
  - **Configurações:**
    - [`Criando o ambiente virtual`](#create-env)
 <!---
@@ -1746,6 +1753,7 @@ O `PGVector` é o `VectorStore` — só que:
 ```bash
 docker run \
     --name pgvector \
+    --restart always \
     -e POSTGRES_USER=lcuser \
     -e POSTGRES_PASSWORD=lcpass \
     -e POSTGRES_DB=lcdb \
@@ -1758,6 +1766,8 @@ docker run \
  - `--name pgvector`
    - Define o nome do container como pgvector.
    - Facilita: *"docker ps"*, *"docker stop pgvector"*
+ - `--restart always`
+   - Sempre inicia o container automaticamente.
  - `-e POSTGRES_USER=lcuser`
  - `-e POSTGRES_PASSWORD=lcpass`
  - `-e POSTGRES_DB=lcdb`
@@ -2371,29 +2381,84 @@ This is achieved by loading documents, splitting them into smaller chunks, gener
 
 
 
-<!--- ( ??? ) --->
+<!--- ( Capítulo 3. RAG Parte II: Conversando com os seus dados ) --->
 
+---
 
+<div id="chp03-intro-to-rag"></div>
 
+## `Introdução ao RAG (Retrieval-Augmented Generation)`
 
+> **RAG (Retrieval-Augmented Generation)** é uma técnica utilizada para melhorar a precisão dos resultados gerados pelos LLMs, *"fornecendo contexto de fontes externas"*.
 
+ - O termo foi originalmente cunhado num artigo de pesquisadores da Meta AI que descobriram que os modelos com RAG são mais factuais e específicos do que os modelos sem RAG:
+   - [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
+ - Sem o RAG, o LLM depende apenas dos seus dados pré-treinados, que podem estar desactualizados.
 
+![img](images/intro-to-rag-01.png)  
 
+Para entender melhor, imagine que nós temos o seguinte modelo de LLM:
 
+```python
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+```
 
+**Isso aqui é APENAS o modelo:**
 
+ - **✔️ Ele foi pré-treinado com:**
+   - livros
+   - artigos
+   - código público
+   - dados gerais (até uma data limite)
+ - **✔️ Ele NÃO CONHECE:**
+   - seu .txt
+   - seu banco PostgreSQL
+   - sua empresa
+   - dados privados
+   - dados atualizados
+ - **✔️ Ele responde usando:**
+   - probabilidade
+   - padrões aprendidos
+   - conhecimento geral
 
+Por exemplo:
 
+```python
+llm.invoke("What is LangChain?")
+```
 
+ - ➡️ Resposta correta? **Provavelmente sim**
+ - ➡️ Atualizada? **Talvez não**
+ - ➡️ Específica do SEU projeto? **❌ NÃO**
 
+**❌ Problema do modelo sozinho:**
 
+ - Pode alucinar
+ - Pode responder com informações desatualizadas
+ - Não conhece dados privados
+ - Não sabe o que você adicionou recentemente
 
+### `Adicionando dados externos`
 
+Como esse modelo recebe informação de uma fonte externa?
 
+```python
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+```
 
+Aqui, você está dizendo:
 
+> “Esse conhecimento NÃO está no modelo.  
+> Guarde isso fora e recupere quando eu precisar.”
 
+### `🔑 Frase para fixar (essa é ouro)`
 
+ - RAG não faz o modelo saber mais.
+ - RAG faz o modelo responder melhor com dados que ele não conhecia.
 
 
 
@@ -2415,12 +2480,24 @@ This is achieved by loading documents, splitting them into smaller chunks, gener
 
 
 
+---
 
+<div id="chp03-three-steps"></div>
 
+## `Três fases de um sistema RAG`
 
+Um sistema **RAG (Retrieval-Augmented Generation)** para uma aplicação de IA segue normalmente três fases principais:
 
+ - **Indexação (Indexing):**
+   - Esta fase do envolve o pré-processamento da fonte de dados externa e o armazenamento de embeddings que representam os dados num vetor onde podem ser facilmente recuperados.
+ - **Recuperação (Retrieval):**
+   - Esta fase envolve a recuperação dos dados e dos embeddings relevantes armazenados no vetor com base na consulta de um utilizador.
+ - **Geração (Generation):**
+   - Esta fase envolve a síntese do prompt original com os documentos relevantes recuperados como um prompt final enviado ao modelo para uma previsão.
 
+Vejamos a imagem abaixo para ficar mais claro:
 
+![img](images/rag-three-steps-01.png)  
 
 
 
@@ -2442,22 +2519,549 @@ This is achieved by loading documents, splitting them into smaller chunks, gener
 
 
 
+---
 
+<div id="chp03-full-example"></div>
 
+## `Exemplo Completo: Construindo um RAG com LangChain + PGVector`
 
+**🎯 Objetivo final:**
 
+> Criar um sistema que busca informações em documentos e gera respostas usando um LLM, baseado apenas nesses documentos.
 
+O fluxo que nós vamos seguir vai ser o seguinte:
 
+```bash
+Documentos
+ → Loader
+ → Splitter (chunk + overlap)
+ → Embeddings
+ → Vector Store (PGVector)
+ → Retriever
+ → Prompt com contexto
+ → LLM
+ → Resposta (RAG)
+```
 
+Vamos começar fazendo o nosso código reconhecer as variáveis de ambiente:
 
+**1️⃣ Carregando variáveis de ambiente:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
 
+ - **Por quê?**
+   - Carrega `OPENAI_API_KEY`
+   - Evita hardcode de segredos
+   - Essencial para produção
 
+Continuando, agora vamos escrever a string de conexão com o Banco de Dados:
 
+**2️⃣ String de conexão com o PostgreSQL (PGVector):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
+```
 
+O que isso define:
 
+ - Usuário: lcuser
+ - Senha: lcpass
+ - Host: localhost
+ - Porta: 6024
+ - Banco: lcdb
+ - **NOTE:** 📌 É aqui que os embeddings ficarão persistidos.
 
+Agora, vamos iniciar o nosso **"Loading (Ingestion)"**, ou seja, carregar *dados externos*:
 
+**3️⃣ Carregando documentos (Document Loader):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_community.document_loaders import TextLoader
 
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+```
+
+**O que sai daqui?**
+
+ - `List[Document]`
+   - Cada Document contém:
+     - *page_content* → texto
+     - *metadata* → origem, caminho, etc.
+
+Agora, nós vamos para a etapa de **Splitting (Chunking + Overlap)** quebrar o texto em pedaços menores:
+
+**4️⃣ Dividindo o texto (Chunking + Overlap):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+**Por que isso é obrigatório?**
+
+ - LLMs têm limite de tokens
+ - Embeddings funcionam melhor com texto curto
+ - Overlap preserva contexto
+
+Continuando, agora nós vamos criar uma instância de um modelo pré-treinado que será responsável por transformar nossos documentos em *vetores (embeddings)*:
+
+**5️⃣ Instanciando o modelo de embeddings:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+```
+
+**O que isso fará?**
+
+ - Converte texto → vetor numérico
+ - Captura significado semântico
+ - Base da busca por similaridade
+ - **NOTE:** *📌 Isso não gera texto, apenas números.*
+
+Agora, nós vamos criar o famoso **Indexing (Embedding + Vector Store)**. Essa etapa envolve:
+
+ - Transformar cada *chunk* em *vetores (embeddings)*
+ - Armazenar esses vetores em um *Vector Store*
+
+**6️⃣ Criando o índice vetorial (PGVector):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_community.vectorstores import PGVector
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+```
+
+> **NOTE:**  
+> 📌 ISSO é indexação em RAG
+
+**O que acontece aqui?**
+
+ - Conecta no PostgreSQL
+ - Cria tabelas
+ - Gera embeddings
+ - Salva vetores + metadata
+ - **NOTE:** 📌 Aqui nasce a memória do seu RAG.
+
+Agora, nós vamos criar o nosso `retriever`:
+
+**7️⃣ Criando o Retriever (ponte entre índice e pergunta):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 3}
+)
+```
+
+**O que é um Retriever?**
+
+ - Recebe uma pergunta
+ - Busca os documentos mais relevantes
+ - Retorna `List[Document]`
+ - **NOTE:** 📌 Ele não gera resposta, apenas recupera contexto.
+
+Continuando, agora nós vamos criar um **modelo (template) de prompt** que vai nos auxiliar a adicionar esse contexto a pergunta recebida:
+
+**8️⃣ Criando o Prompt de RAG:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_core.prompts import ChatPromptTemplate
+
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+```
+
+**Por que isso é importante?**
+
+ - Evita alucinação
+ - Força o LLM a usar o contexto
+ - Dá previsibilidade às respostas
+
+Agora, nós vamos criar uma instância de algum modelo pré-treinado do ChatGPT que será responsável por nos responder as perguntas (com ajuda do contexto):
+
+**9️⃣ Instanciando o LLM (Chat Model):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+```
+
+**Por que `temperature=0`?**
+
+ - Respostas mais factuais
+ - Menos criatividade
+ - Ideal para RAG
+
+Agora, nós vamos criar uma pergunta simples (mas poderia ser uma pergunta de algum sistema, agente ou usuário):
+
+**🔟 Criando a pergunta:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+question = "What is LangChain and PGVector?"
+```
+
+> **Então, essa pergunta vai para o nosso modelo (instância llm) não é?**
+
+Não, na verdade primeiro essa pergunta vai ser feita nos nossos dados externos ao modelo "llm", ou seja, no nosso contexto:
+
+> **Em termos simples:**
+> É aqui que o RAG *“busca conhecimento fora do modelo”*.
+
+**1️⃣1️⃣ Recuperando o contexto:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+docs = retriever.invoke(question)
+```
+
+**O que `docs` contém?**
+
+ - `List[Document]`
+   - Ainda não é texto utilizável pelo LLM.
+
+Agora, nós vamos manipular esse `docs (List[Document])` para ser um texto que possa ser lido pelo a nossa instância "llm" — **Esse trecho faz a etapa de "Augmentation (Context Construction) do RAG"**:
+
+**1️⃣2️⃣ Transformando documentos em contexto:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+context = "\n\n".join(
+    doc.page_content for doc in docs
+)
+```
+
+Continuando, agora nós vamos criar um `chain`:
+
+**1️⃣3️⃣ Criando a Chain (Prompt → LLM):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+chain = prompt | llm
+```
+
+Aqui, nós estamos criando uma `chain` conectando:
+
+ - um `PromptTemplate` (prompt)
+ - a um `LLM` (llm)
+ - **NOTE:** Usando o operador `| (pipe)`, o LangChain monta um pipeline executável.
+
+> **Em termos simples:**  
+> *“Pegue a saída do prompt e passe diretamente como entrada para o modelo.”*
+
+Agora nós vamos converter o nosso prompt (ChatPromptTemplate) em mensagens prontas para um ChatModel (nossa instância "llm"):
+
+**1️⃣4️⃣ Convertendo o Prompt em uma Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+messages = prompt.format_messages(
+    context=context,
+    question=question
+)
+```
+
+Vejam que nós passamos:
+
+ - Nosso contexto
+ - E a pergunta
+
+Internamente, o LangChain vai na nossa variável `prompt`, que contém um modelo de prompt, e vai:
+
+ - Substitui `{context}` pelo *texto recuperado*
+ - Substitui `{question}` pela *pergunta (do usuário, agent, etc.)*
+
+Por exemplo, vamos analisar a variável `messages`:
+
+**1️⃣5️⃣ Analisando a Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+messages = prompt.format_messages(
+    context=context,
+    question=question
+)
+
+print("\ntype:", type(messages))
+print("\nmessages:", messages)
+```
+
+**OUTPUT:**
+```bash
+type: <class 'list'>
+
+messages: [HumanMessage(content='\nAnswer the question using ONLY the context below.\n\nContext:\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nUsing PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.\n\nQuestion:\nWhat is LangChain and PGVector?\n\nIf the answer is not in the context, say "I don\'t know".\n', additional_kwargs={}, response_metadata={})]
+```
+
+Vejam que:
+
+ - Nós temos uma lista: `<class 'list'>`
+ - Temos uma mensagem que tem o atributo `content` com o nosso prompt otimizado
+
+Por exemplo, vamos ver só o nosso `content`:
+
+**1️⃣6️⃣ Analisando o Conteúdo da Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+messages = prompt.format_messages(
+    context=context,
+    question=question
+)
+
+print(messages[0].content)
+```
+
+**OUTPUT:**
+```bash
+Answer the question using ONLY the context below.
+
+Context:
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Question:
+What is LangChain and PGVector?
+
+If the answer is not in the context, say "I don't know".
+```
+
+É esse prompt que o nosso modelo vai receber.
+
+> **Mas, por que o `Context` está recebendo três respostas iguais?**
+
+Por que nós utilizamos uma pesquisa de similitudes para encontrar os documentos mais relevantes:
+
+ - Como foi `k=3`, vamos receber 3 respostas
+ - Eles, são iguais por acaso, mas poderiam ser diferentes
+
+Ótimo, agora que nós já temos uma mensagem (prompt) otimizada que pode ser utilizada no ChatModel, vamos chamar o método `invoke` da nossa instância `llm` e passar como argumento essa mensagem:
+
+** Fazendo a pergunta ao nosso modelo:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+answer = llm.invoke(messages)
+print(answer.content)
+```
+
+**OUTPUT:**
+```bash
+LangChain is a tool that allows developers to build production-ready RAG systems with persistence, scalability, and SQL support. PGVector is a component used in conjunction with LangChain for this purpose.
+```
+
+> **NOTE:**  
+> 🎉 Ótimo, agora nós temos um RAG funcional.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="chp03-chain"></div>
+
+## `Criando um "chain" de perguntas e respostas`
+
+Lembram que nós tinhamos um passo que nós substituiamos as variáveis do nosso template pelo `contexto` e `pergunta`?
+
+[chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+```python
+messages = prompt.format_messages(
+    context=context,
+    question=question
+)
+```
+
+Então, existe uma maneira mais idiomática muito utilizada para fazer isso:
+
+[chapter03/chain-01.py](codes/chapter03/chain-01.py)
+```python
+chain = prompt | llm
+```
+
+ - **O que é esse `|` no LangChain?**
+   - No LangChain, o operador `|` não é o *“OU”* do Python comum.
+   - Ele foi sobrecargado para significar:
+     - *“Pegue a saída do objeto da esquerda e passe como entrada para o objeto da direita”*.
+   - **NOTE:** Tecnicamente, isso cria um RunnableSequence.
+
+Ótimo, como nós passamos o nosso prompt para a nossa instância `llm` (usando o operador `|`) e salvamos na variável chain, agora nós podemos utilizar o método `invoke()` a partir da variável `chain` para fazer a pergunta ao nosso modelo:
+
+[chapter03/chain-02.py](codes/chapter03/chain-02.py)
+```python
+answer = chain.invoke({
+    "context": context,
+    "question": question
+})
+```
+
+Vejam que nós passamos como argumento:
+
+ - **Um dicionário `{}`**
+ - **Que tem os campos:chaves:**
+   - `context`
+   - `question`
+
+Por fim, é só pegar essa resposta (`answer`) e imprimir:
+
+[chapter03/chain-03.py](codes/chapter03/chain-03.py)
+```python
+print(answer.content)
+```
+
+**OUTPUT:**
+```bash
+LangChain is a tool that allows developers to build production-ready RAG systems with persistence, scalability, and SQL support. PGVector is a component used in conjunction with LangChain for this purpose.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Dicas & Truques ) --->
+
+---
+
+<div id="chp03-prompting-vs-fine-tuning-vs-rag"></div>
+
+## `Prompting vs. Fine Tuning vs. RAG`
+
+| Técnica       | Modifica o modelo?  | Usa dados externos? |
+| ------------- | ------------------- | ------------------- |
+| `Prompting`   | ❌ Não              | ❌ Não             |
+| `Fine-tuning` | ✅ Sim              | ❌ Não             |
+| `RAG`         | ❌ Não              | ✅ Sim             |
 
 
 

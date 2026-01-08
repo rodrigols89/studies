@@ -1,0 +1,17 @@
+LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs).
+
+It provides building blocks for common use cases such as chatbots, question answering systems, and retrieval-augmented generation (RAG).
+
+One of the core ideas of LangChain is to connect language models with external data sources.
+
+This is achieved by loading documents, splitting them into smaller chunks, generating embeddings, and storing them in vector databases.
+
+Vector databases allow semantic search, meaning that queries are matched based on meaning rather than exact keywords.
+
+PGVector is a PostgreSQL extension that enables storing and searching vector embeddings directly in a relational database.
+
+Using PGVector with LangChain allows developers to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+Indexing is the process of transforming raw documents into searchable vector representations.
+
+Retrieval is the process of querying those vectors to find the most relevant information for a user question.
