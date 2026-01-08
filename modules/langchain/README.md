@@ -11,7 +11,6 @@
    - [`Modelo de Mensagens de Conversa no LangChain`](#messages-in-langchain)
    - [`"Templates de Prompt" no LangChain`](#templates-in-langchain)
  - **RAG Parte I: Indexar os teus dados:**
-   - [`RAG (Retrieval-Augmented Generation)`](#intro-to-rag)
    - [`Chunks (chunk_size)`](#intro-to-chunks)
    - [`Overlap (chunk_overlap)`](#intro-to-overlap)
    - [`O que são Incorporações de Texto? (Text Embeddings)`](#text-embeddings)
@@ -26,6 +25,7 @@
    - [`Três fases de um sistema RAG`](#chp03-three-steps)
    - [`Exemplo Completo: Construindo um RAG com LangChain + PGVector`](#chp03-full-example)
    - [`Criando um "chain" de perguntas e respostas`](#chp03-chain)
+   - [`Criando um RAG "runnable"`](#chp03-rag-runnable)
  - **Dicas & Truques:**
    - [`Prompting vs. Fine Tuning vs. RAG`](#chp03-prompting-vs-fine-tuning-vs-rag)
  - **Configurações:**
@@ -938,84 +938,6 @@ LangChain is a decentralized platform that connects businesses with language ser
 
 
 <!--- ( RAG Parte I: Indexar os teus dados ) --->
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="intro-to-rag"></div>
-
-## `RAG (Retrieval-Augmented Generation)`
-
-Retrieval‑Augmented Generation (RAG) é uma técnica que combina:
-
- - Recuperação de documentos (retrieval);
- - Com modelos geradores de linguagem (generation).
-
-Em vez de confiar apenas no conhecimento “embutido” nos parâmetros do modelo, o RAG permite que o sistema vá buscar trechos de texto relevantes em uma base externa (por exemplo, Wikipedia, banco de documentos corporativos) e use essas informações para gerar respostas mais precisas e contextualizadas.
-
-![img](images/rag-01.png)  
-
-### `Quando utilizar RAG?`
-
- - **Base de conhecimento grande e em constante atualização:**
-   - Documentações, FAQs, bases científicas.
- - **Domínios técnicos/especializados:**
-   - Jurídico, médico, pesquisadores que exigem precisão e citações.
- - **Sistemas de suporte ao cliente:**
-   - Chatbots que precisam referenciar manuais, políticas, termos de serviço.
-
-### `Quando não utilizar RAG?`
-
- - **Tarefas de conversação livre:**
-   - Bate‑papo informal, criação de conteúdo criativo onde não há necessidade de buscar fatos externos.
- - **Restrições de latência:**
-   - Se seu sistema exige respostas em tempo real (<100 ms) e não comporta o tempo extra de recuperação.
- - **Ambientes com poucos dados:**
-   - Se a base de documentos for pequena e autossuficiente, pode ser mais simples usar um LLM puro ou até finetuning.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 
@@ -2964,19 +2886,378 @@ LangChain is a tool that allows developers to build production-ready RAG systems
 
 
 
+---
+
+<div id="chp03-rag-runnable"></div>
+
+## `Criando um RAG "runnable"`
+
+Até então, nós tinhamos o seguinte código RAG:
+
+[chapter03/chain-01.py](codes/chapter03/chain-01.py)
+```python
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import PGVector
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+
+from dotenv import load_dotenv
 
 
+load_dotenv()
 
 
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
+
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 3}
+)
+
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+
+question = "What is LangChain and PGVector?"
+
+docs = retriever.invoke(question)
+
+context = "\n\n".join(
+    doc.page_content for doc in docs
+)
+
+chain = prompt | llm
+
+answer = chain.invoke({
+    "context": context,
+    "question": question
+})
+
+print(answer.content)
+```
+
+### `🧠 O que significa “RAG 100% com Runnable”?`
+
+No LangChain moderno:
+
+ - ❌ Não ficar chamando `.invoke()` manualmente em cada parte
+ - ❌ Não montar contexto *“na mão”*
+ - ✅ Tudo vira `Runnable`
+ - ✅ O fluxo inteiro vira um *pipeline* único
+ - ✅ Um único `.invoke()` dispara tudo
+
+Isso é o que permite:
+
+ - tracing
+ - streaming
+ - paralelismo
+ - composição
+ - produção
+
+### `📦 Passo 1 — Entender o pipeline RAG como Runnables`
+
+Um RAG completo tem 4 estágios:
+
+```bash
+Pergunta
+  ↓
+Retriever (Runnable)
+  ↓
+Formatter de contexto (Runnable)
+  ↓
+Prompt (Runnable)
+  ↓
+LLM (Runnable)
+```
+
+> **NOTE:**  
+> 👉 Tudo isso pode ser encadeado com `|`.
+
+### `📄 Passo 2 — Loader, Splitter e VectorStore (pré-processamento)`
+
+**⚠️ Essas etapas NÃO precisam ser Runnable, porque:**
+
+ - Elas rodam uma vez
+ - São preparação de dados
+ - Não fazem parte da inferência
+
+Seu código aqui já está perfeito e permanece igual:
+
+```python
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+```
+
+### `🔍 Passo 3 — Retriever como Runnable`
+
+Aqui começa o RAG de verdade.
+
+```python
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 3}
+)
+```
+
+Importantíssimo:
+
+ - retriever já é um `Runnable`
+ - Ele recebe uma str (pergunta)
+ - Ele retorna `List[Document]`
+
+### `🧱 Passo 4 — Criar um Runnable para formatar o contexto`
+
+> **O LLM não entende Document.**  
+> Ele entende texto!
+
+Então precisamos de um `Runnable` intermediário:
+
+```python
+from langchain_core.runnables import RunnableLambda
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+format_context = RunnableLambda(format_docs)
+```
+
+Isso transforma:
+
+ - `List[Document]` → `str`
+
+### `📝 Passo 5 — Prompt como Runnable`
+
+Nós já temos isso corretamente:
+
+```python
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+```
+
+### `🤖 Passo 6 — LLM como Runnable`
+
+Aqui nós também já temos isso corretamente:
+
+```python
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+```
+
+### `🔗 Passo 7 — Montar o RAG 100% Runnable`
+
+Agora vem a parte mais importante.
+
+**🎯 Queremos isso:**
+
+ - Pergunta entra
+ - Retriever busca contexto
+ - Contexto vai para o prompt
+ - Prompt vai para o LLM
+
+```python
+from langchain_core.runnables import RunnablePassthrough
+
+rag_chain = (
+    {
+        "context": retriever | format_context,
+        "question": RunnablePassthrough()
+    }
+    | prompt
+    | llm
+)
+```
+
+**O que está acontecendo aqui?**  
+| Parte                   | Função                   |
+| ----------------------- | ------------------------ |
+| `RunnablePassthrough()` | passa a pergunta adiante |
+| `retriever`             | busca docs               |
+| `format_context`        | transforma docs em texto |
+| `{}`                    | cria inputs nomeados     |
+| `prompt`                | monta mensagens          |
+| `llm`                   | gera resposta            |
 
 
+ - 📌 Nenhuma variável solta
+ - 📌 Nenhuma montagem manual
+ - 📌 Tudo declarativo
 
+### `▶️ Passo 8 — Executar o RAG (1 linha)`
 
+Por fim, nós só precisamos executar o RAG:
 
+```python
+question = "What is LangChain and PGVector?"
 
+response = rag_chain.invoke(question)
 
+print(response.content)
+```
 
+### `✅ Código final COMPLETO (RAG 100% Runnable)`
 
+[chapter03/runnable-01.py](codes/chapter03/runnable-01.py)
+```python
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_community.vectorstores import PGVector
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
+
+# ----------------------------
+# Indexação (offline / setup)
+# ----------------------------
+
+loader = TextLoader("../../data/history_of_computing.txt")
+documents = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+
+# ----------------------------
+# RAG (online / runtime)
+# ----------------------------
+
+retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 3}
+)
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+format_context = RunnableLambda(format_docs)
+
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+
+rag_chain = (
+    {
+        "context": retriever | format_context,
+        "question": RunnablePassthrough()
+    }
+    | prompt
+    | llm
+)
+
+question = "What's computer father?"
+
+response = rag_chain.invoke(question)
+
+print(response.content)
+```
+
+**OUTPUT:**
+```bash
+LangChain is a tool that allows developers to build production-ready RAG systems with persistence, scalability, and SQL support. PGVector is a component used in conjunction with LangChain for this purpose.
+```
 
 
 
