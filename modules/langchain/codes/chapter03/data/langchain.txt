@@ -1,0 +1,5 @@
+LangChain is a framework for building applications with large language models.
+
+It provides abstractions for prompts, chains, retrievers, memory, and agents.
+
+LangChain is commonly used to build RAG systems, chatbots, and AI assistants.

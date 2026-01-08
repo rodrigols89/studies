@@ -1,0 +1,5 @@
+PGVector is a PostgreSQL extension that enables vector similarity search.
+
+It allows storing embeddings inside PostgreSQL and querying them efficiently.
+
+PGVector is often used as a vector database backend for RAG systems.

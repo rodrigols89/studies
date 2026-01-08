@@ -26,6 +26,7 @@
    - [`Exemplo Completo: Construindo um RAG com LangChain + PGVector`](#chp03-full-example)
    - [`Criando um "chain" de perguntas e respostas`](#chp03-chain)
    - [`Criando um RAG "runnable"`](#chp03-rag-runnable)
+   - [`Criando RAG que utilizam "source", "category" nos resultados`](#chp03-source-category)
  - **Dicas & Truques:**
    - [`Prompting vs. Fine Tuning vs. RAG`](#chp03-prompting-vs-fine-tuning-vs-rag)
  - **Configurações:**
@@ -3279,18 +3280,308 @@ LangChain is a tool that allows developers to build production-ready RAG systems
 
 
 
+---
+
+<div id="chp03-source-category"></div>
+
+## `Criando RAG que utilizam "source", "category" nos resultados`
+
+Aqui nesse tutorial nós vamos praticar o seguinte:
+
+ - Adicionar metadata (`source`, `category`) aos documentos
+ - Salvar isso no PGVector
+ - Filtrar documentos no momento da recuperação
+ - Continuar usando RAG 100% com Runnable
+ - Entender conceitualmente o porquê disso existir
+
+### `🧠 Por que filtros por metadata existem em RAG?`
+
+**Sem metadata, o RAG responde assim:**
+
+ > “Procure qualquer coisa parecida com a pergunta”
+
+**Com metadata, o RAG responde assim:**
+
+> *“Procure apenas em documentos dessa fonte, dessa categoria, desse tipo”*
+
+Isso é essencial quando você tem:
+
+ - múltiplos arquivos
+ - múltiplas áreas (docs, suporte, jurídico, marketing)
+ - múltiplas versões
+ - múltiplos clientes (multi-tenant)
+
+### `🗂️ Parte 1 — Exemplos de arquivos com metadata`
+
+Vamos criar 3 arquivos reais, cada um com um contexto diferente.
+
+[chapter03/data/langchain.txt](codes/chapter03/data/langchain.txt)
+```txt
+LangChain is a framework for building applications with large language models.
+
+It provides abstractions for prompts, chains, retrievers, memory, and agents.
+
+LangChain is commonly used to build RAG systems, chatbots, and AI assistants.
+```
+
+Metadata desejada:
+
+ - `source = "documentation"`
+ - `category = "langchain"`
+
+[chapter03/data/pgvector.txt](codes/chapter03/data/pgvector.txt)
+```txt
+PGVector is a PostgreSQL extension that enables vector similarity search.
+
+It allows storing embeddings inside PostgreSQL and querying them efficiently.
+
+PGVector is often used as a vector database backend for RAG systems.
+```
+
+Metadata desejada:
+
+ - `source = "documentation"`
+ - `category = "pgvector"`
+
+[chapter03/data/history.txt](codes/chapter03/data/history.txt)
+```txt
+Ancient Greek philosophy includes figures such as Socrates, Plato, and Aristotle.
+
+These philosophers laid the foundations of Western philosophy.
+```
+
+Metadata desejada:
+
+ - `source = "history_book"`
+ - `category = "philosophy"`
+
+### `🧱 Parte 2 — Carregando documentos COM metadata`
+
+O `TextLoader` aceita metadata manualmente.
+
+**🔧 Antes (nosso código atual):** [chapter03/chain-01.py](codes/chapter03/chain-01.py)
+```python
+documents = loader.load()
+```
+
+**✅ Depois (com metadata):** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+from langchain_core.documents import Document
+
+documents = [
+    Document(
+        page_content=open("data/langchain.txt").read(),
+        metadata={"source": "documentation", "category": "langchain"}
+    ),
+    Document(
+        page_content=open("data/pgvector.txt").read(),
+        metadata={"source": "documentation", "category": "pgvector"}
+    ),
+    Document(
+        page_content=open("data/history.txt").read(),
+        metadata={"source": "history_book", "category": "philosophy"}
+    ),
+]
+```
+
+> **NOTE:**  
+> 📌 Agora cada *chunk* herda essa metadata automaticamente.
+
+### `✂️ Parte 3 — Splitter preserva metadata (importante!)`
+
+Agora nós vamos utilizar o `RecursiveCharacterTextSplitter` para dividir o texto em pedaços menores (chunks + overlap):
+
+[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+```
+
+Aqui, cada chunk mantém:
+
+ - `page_content`
+ - `metadata.source`
+ - `metadata.category`
+
+### `🧠 Parte 4 — Indexação no PGVector (nada muda!)`
+
+[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+from langchain_postgres import PGVector
+from langchain_openai import OpenAIEmbeddings
 
 
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+```
+
+O PGVector agora armazena:
+
+ - vetor
+ - texto
+ - metadata (JSONB)
+
+### `🔍 Parte 5 — Recuperação COM filtros por metadata`
+
+Agora vem a parte que nós queremos:
+
+**🎯 Exemplo 1 — Buscar SOMENTE LangChain:** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+langchain_retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={
+        "k": 3,
+        "filter": {
+            "category": "langchain"
+        }
+    }
+)
+```
+
+ - **📌 O RAG:**
+   - ❌ ignora PGVector
+   - ❌ ignora história
+   - ✅ busca só LangChain
 
 
+**🎯 Exemplo 2 — Buscar SOMENTE documentação técnica:** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+docs_retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={
+        "k": 3,
+        "filter": {
+            "source": "documentation"
+        }
+    }
+)
+```
 
+**🎯 Exemplo 3 — Filtro combinado (AND):** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+combined_retriever = vectorstore.as_retriever(
+    search_type="similarity",
+    search_kwargs={
+        "k": 3,
+        "filter": {
+            "source": "documentation",
+            "category": "pgvector"
+        }
+    }
+)
+```
 
+ - Apenas documentos de PGVector
+ - Apenas da documentação
 
+O resto do nosso código muda poucas coisas, ele completo ficará assim:
 
+[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+```python
+from langchain_core.documents import Document
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_postgres import PGVector
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 
+from dotenv import load_dotenv
 
+load_dotenv()
 
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
 
+documents = [
+    Document(
+        page_content=open("data/langchain.txt").read(),
+        metadata={"source": "documentation", "category": "langchain"}
+    ),
+    Document(
+        page_content=open("data/pgvector.txt").read(),
+        metadata={"source": "documentation", "category": "pgvector"}
+    ),
+    Document(
+        page_content=open("data/history.txt").read(),
+        metadata={"source": "history_book", "category": "philosophy"}
+    ),
+]
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection=CONNECTION_STRING,  # ✅ AQUI
+    collection_name="ex01_documents"
+)
+
+retriever = vectorstore.as_retriever(
+    search_kwargs={
+        "k": 3,
+        "filter": {
+            "category": "pgvector"
+        }
+    }
+)
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    temperature=0
+)
+
+rag_chain = (
+    {
+        "context": retriever | RunnableLambda(format_docs),
+        "question": RunnablePassthrough()
+    }
+    | prompt
+    | llm
+)
+
+response = rag_chain.invoke("What is PGVector used for?")
+print(response.content)
+```
 
 
 
