@@ -27,6 +27,7 @@
    - [`Criando um "chain" de perguntas e respostas`](#chp03-chain)
    - [`Criando um RAG "runnable"`](#chp03-rag-runnable)
    - [`Criando RAG que utilizam "source", "category" nos resultados`](#chp03-source-category)
+   - [`RAG conversacional com memória`](#rag-conversational-with-memory)
  - **Pré-Processamento e Validação:**
    - [`Como um RAG pode ser avaliado`](#rag-evaluation)
  - **Dicas & Truques:**
@@ -3586,6 +3587,107 @@ print(response.content)
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="rag-conversational-with-memory"></div>
+
+## `RAG conversacional com memória`
+
+Um RAG normal tem o seguinte fluxo:
+
+```bash
+Pergunta → Retriever → Contexto → LLM → Resposta
+```
+
+**⚠️ Problema:**
+
+ - Cada pergunta é isolada
+ - O modelo não lembra perguntas anteriores
+ - Perguntas como:
+   - "E ele suporta PostgreSQL?"
+   - **NOTE:** Não fazem sentido sem histórico.
+
+### `✅ RAG Conversacional resolve isso`
+
+Ele adiciona memória de conversa, ficando assim:
+
+```bash
+Histórico da conversa
+        ↓
+Pergunta atual
+        ↓
+Retriever (considera o histórico)
+        ↓
+Contexto + Histórico
+        ↓
+LLM
+```
+
+Agora o modelo entende:
+
+ - Referências (“ele”, “isso”, “aquilo”)
+ - Continuidade de raciocínio
+ - Perguntas de follow-up
+
+## `Tipos de memória no LangChain`
+
+Existem vários tipos de memória, mas para RAG usamos principalmente:
+
+ - **🧠 Conversation Buffer Memory:**
+   - Guarda toda a conversa
+   - Simples e ideal para aprendizado
+ - **🧠 Conversation Summary Memory:**
+   - Resume o histórico
+   - Melhor para conversas longas
+
+### `Onde a memória entra no RAG?`
+
+Existem dois pontos possíveis:
+
+ - **Opção A — Memória só no prompt:**
+   - Histórico entra junto com contexto
+   - Mais simples
+ - **Opção B — Memória influencia o retriever:**
+   - Histórico altera a busca vetorial
+   - Mais avançado
+
+### `Estrutura do Prompt Conversacional`
+
+Agora o prompt precisa de 3 coisas:
+
+ - Histórico da conversa
+ - Contexto recuperado
+ - Pergunta atual
+
+```bash
+Conversation history:
+{chat_history}
+
+Context:
+{context}
+
+Question:
+{question}
+```
 
 
 
