@@ -1,16 +1,16 @@
-# Aprenda a usar LangChain
+# LangChain
 
-> Minnhas **notas** e **códigos** do livro [Aprende a usar a LangChain](https://learning.oreilly.com/library/view/aprende-a-usar/9798341637917/)
+> Minnhas **notas** e **códigos** da ferramenta [LangChain](https://github.com/langchain-ai)
 
 ## Conteúdo
 
- - **1. Fundamentos de LLM com LangChain:**
+ - **Fundamentos de LLM com LangChain:**
    - [`O que é ChatOpenAI?`](#intro-to-chatopenai)
    - [`Métodos de Execução de Runnables no LangChain`](#runnables-methods-langchain)
    - [`Método .invoke()`](#invoke-method)
    - [`Modelo de Mensagens de Conversa no LangChain`](#messages-in-langchain)
    - [`"Templates de Prompt" no LangChain`](#templates-in-langchain)
- - **RAG Parte I: Indexar os teus dados:**
+ - **Indexando os dados:**
    - [`Chunks (chunk_size)`](#intro-to-chunks)
    - [`Overlap (chunk_overlap)`](#intro-to-overlap)
    - [`O que são Incorporações de Texto? (Text Embeddings)`](#text-embeddings)
@@ -20,13 +20,15 @@
    - [`Indexação de Conhecimento (Indexing) no LangChain`](#chp02-indexing)
    - [`PGVector: Banco de Dados Vetorial com PostgreSQL no LangChain`](#chp02-pgvector)
    - [`Exemplo Completo — Usando PGVector com LangChain`](#chp02-pgvector-exemplo)
- - **Capítulo 3. RAG Parte II: Conversando com os seus dados:**
+ - **Conversando com os seus dados:**
    - [`Introdução ao RAG (Retrieval-Augmented Generation)`](#chp03-intro-to-rag)
    - [`Três fases de um sistema RAG`](#chp03-three-steps)
    - [`Exemplo Completo: Construindo um RAG com LangChain + PGVector`](#chp03-full-example)
    - [`Criando um "chain" de perguntas e respostas`](#chp03-chain)
    - [`Criando um RAG "runnable"`](#chp03-rag-runnable)
    - [`Criando RAG que utilizam "source", "category" nos resultados`](#chp03-source-category)
+ - **Pré-Processamento e Validação:**
+   - [`Como um RAG pode ser avaliado`](#rag-evaluation)
  - **Dicas & Truques:**
    - [`Prompting vs. Fine Tuning vs. RAG`](#chp03-prompting-vs-fine-tuning-vs-rag)
  - **Configurações:**
@@ -141,7 +143,7 @@
 
 
 
-<!--- ( 1. Fundamentos de LLM com LangChainn ) --->
+<!--- ( Fundamentos de LLM com LangChainn ) --->
 
 ---
 
@@ -215,7 +217,7 @@ Os principais (os mais usados) parâmetros da classe ChatOpenAI são:
 
 Por exemplo:
 
-[chapter01/ChatOpenAI-v1.py](codes/chapter01/ChatOpenAI-v1.py)
+[ChatOpenAI-v1.py](codes/ChatOpenAI-v1.py)
 ```python
 from langchain_openai.chat_models import ChatOpenAI
 
@@ -440,7 +442,7 @@ O método `.invoke()` é a forma padrão e moderna de **executar um modelo no La
  - Esse é o mais importante.
  - Ele pode assumir 3 formas principais.
 
-**Forma 1 — String simples (mais comum):** [chapter01/invoke-01.py](codes/chapter01/invoke-01.py)
+**Forma 1 — String simples (mais comum):** [invoke-01.py](codes/invoke-01.py)
 ```python
 from langchain_openai.chat_models import ChatOpenAI
 from dotenv import load_dotenv
@@ -466,7 +468,7 @@ blue and clear, with fluffy white clouds scattered across the horizon. The sun i
 > 📌 Aqui o *LangChain* converte automaticamente a string em:  
 > `HumanMessage(content="The sky is")`
 
-**Forma 2 — Lista de mensagens (chat explícito):** [chapter01/invoke-02.py](codes/chapter01/invoke-02.py)
+**Forma 2 — Lista de mensagens (chat explícito):** [invoke-02.py](codes/invoke-02.py)
 ```python
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
@@ -501,7 +503,7 @@ LangChain is a blockchain platform that aims to facilitate cross-border communic
  - assistant
  - histórico de conversa
 
-**Forma 3 — Dicionário (com Prompt Template / LCEL):** [chapter01/invoke-03.py](codes/chapter01/invoke-03.py)
+**Forma 3 — Dicionário (com Prompt Template / LCEL):** [invoke-03.py](codes/invoke-03.py)
 ```python
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -664,7 +666,7 @@ ToolMessage(
 
 ### `3️⃣ Exemplo mínimo completo`
 
-[chapter01/messages-01.py](codes/chapter01/messages-01.py)
+[messages-01.py](codes/messages-01.py)
 ```python
 from langchain_core.messages import (
     SystemMessage,
@@ -806,7 +808,7 @@ ChatPromptTemplate.from_messages([
 
 ### `3️⃣ Exemplo mínimo completo`
 
-[chapter01/prompts-01.py](codes/chapter01/prompts-01.py)
+[prompts-01.py](codes/prompts-01.py)
 ```python
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -1413,7 +1415,7 @@ O LangChain tem várias API para se trabalhar com Textos Incorporados (Text Embe
 
 Por exemplo, vamos utilizar a classe `OpenAIEmbeddings` da OpenAI:
 
-[chapter02/text-embeddings-01.py](codes/chapter02/text-embeddings-01.py)
+[text-embeddings-01.py](codes/text-embeddings-01.py)
 ```python
 from langchain_openai import OpenAIEmbeddings
 
@@ -1780,7 +1782,7 @@ id | content | embedding | metadata
 
 Vamos começar criando uma instância de `load_dotenv()` que vai ser responsável por carregar as variáveis de ambiente:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 from dotenv import load_dotenv
 
@@ -1789,7 +1791,7 @@ load_dotenv()
 
 Continuando, agora vamos implementar a **String de Conexão com PostgreSQL (PGVector) no LangChain**:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 CONNECTION_STRING = (
     "postgresql+psycopg2://"
@@ -1838,7 +1840,7 @@ CONNECTION_STRING = (
 
 Ótimo, agora vamos implementar um `loader de arquivos` de texto que vai ler um arquivo `.txt`:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 from langchain_community.document_loaders import TextLoader
 
@@ -1865,7 +1867,7 @@ Vejam que nós temos apenas objetos da classe `langchain_community.document_load
 
 Para isso nós precisamos utilizar o método `load()` da classe `TextLoader` que é responsável por ler o arquivo:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 loader = TextLoader("data/example.txt")
 text = loader.load()
@@ -1930,7 +1932,7 @@ Retrieval is the process of querying those vectors to find the most relevant inf
 
 Continuando na nossa implementação vamos dividir os dados do nosso arquivo `.txt` em 500 palavras (chunk_size=500) com 50 palavras de overlap (chunk_overlap=50):
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -1961,7 +1963,7 @@ print(type(splitter))
 > **NOTE:**  
 > 📌 Lembrando que quando nós criamos uma instância de `RecursiveCharacterTextSplitter()` nós definimos a quantidade de pedaços (chunks) e a quantidade de overlap (chunk_overlap).
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 chunks = splitter.split_documents(text)
 ```
@@ -2038,7 +2040,7 @@ Indexing is the process of transforming raw documents into searchable vector rep
 **Ótimo, entendendo tudo isso agora vamos transformar esses chunks em vetores:**  
 Para isso, primeiro vamos importar e instanciar a classe `OpenAIEmbeddings`:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 from langchain_openai import OpenAIEmbeddings
 
@@ -2061,7 +2063,7 @@ Então, aqui vamos criar uma instância da classe `PGVector` que vai:
  - Um nome para a nossa coleção:
    - Nome lógico da *coleção de vetores*.
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 from langchain_community.vectorstores import PGVector
 
@@ -2107,7 +2109,7 @@ Quando esse código roda, o *LangChain*:
 
 Isso mesmo, aqui nossa instância `vectorstore` pode utilizar o método `similarity_search` para buscar vetores similares:
 
-[chapter02/pgvector-01.py](codes/chapter02/pgvector-01.py)
+[pgvector-01.py](codes/pgvector-01.py)
 ```python
 results = vectorstore.similarity_search(
     query="What is LangChain?",
@@ -2304,7 +2306,7 @@ This is achieved by loading documents, splitting them into smaller chunks, gener
 
 
 
-<!--- ( Capítulo 3. RAG Parte II: Conversando com os seus dados ) --->
+<!--- ( Conversando com os seus dados ) --->
 
 ---
 
@@ -2468,7 +2470,7 @@ Documentos
 
 Vamos começar fazendo o nosso código reconhecer as variáveis de ambiente:
 
-**1️⃣ Carregando variáveis de ambiente:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣ Carregando variáveis de ambiente:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from dotenv import load_dotenv
 load_dotenv()
@@ -2481,7 +2483,7 @@ load_dotenv()
 
 Continuando, agora vamos escrever a string de conexão com o Banco de Dados:
 
-**2️⃣ String de conexão com o PostgreSQL (PGVector):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**2️⃣ String de conexão com o PostgreSQL (PGVector):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 CONNECTION_STRING = (
     "postgresql+psycopg2://"
@@ -2500,7 +2502,7 @@ O que isso define:
 
 Agora, vamos iniciar o nosso **"Loading (Ingestion)"**, ou seja, carregar *dados externos*:
 
-**3️⃣ Carregando documentos (Document Loader):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**3️⃣ Carregando documentos (Document Loader):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_community.document_loaders import TextLoader
 
@@ -2517,7 +2519,7 @@ documents = loader.load()
 
 Agora, nós vamos para a etapa de **Splitting (Chunking + Overlap)** quebrar o texto em pedaços menores:
 
-**4️⃣ Dividindo o texto (Chunking + Overlap):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**4️⃣ Dividindo o texto (Chunking + Overlap):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -2537,7 +2539,7 @@ chunks = splitter.split_documents(documents)
 
 Continuando, agora nós vamos criar uma instância de um modelo pré-treinado que será responsável por transformar nossos documentos em *vetores (embeddings)*:
 
-**5️⃣ Instanciando o modelo de embeddings:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**5️⃣ Instanciando o modelo de embeddings:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_openai import OpenAIEmbeddings
 
@@ -2558,7 +2560,7 @@ Agora, nós vamos criar o famoso **Indexing (Embedding + Vector Store)**. Essa e
  - Transformar cada *chunk* em *vetores (embeddings)*
  - Armazenar esses vetores em um *Vector Store*
 
-**6️⃣ Criando o índice vetorial (PGVector):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**6️⃣ Criando o índice vetorial (PGVector):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_community.vectorstores import PGVector
 
@@ -2583,7 +2585,7 @@ vectorstore = PGVector.from_documents(
 
 Agora, nós vamos criar o nosso `retriever`:
 
-**7️⃣ Criando o Retriever (ponte entre índice e pergunta):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**7️⃣ Criando o Retriever (ponte entre índice e pergunta):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 retriever = vectorstore.as_retriever(
     search_type="similarity",
@@ -2600,7 +2602,7 @@ retriever = vectorstore.as_retriever(
 
 Continuando, agora nós vamos criar um **modelo (template) de prompt** que vai nos auxiliar a adicionar esse contexto a pergunta recebida:
 
-**8️⃣ Criando o Prompt de RAG:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**8️⃣ Criando o Prompt de RAG:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -2625,7 +2627,7 @@ If the answer is not in the context, say "I don't know".
 
 Agora, nós vamos criar uma instância de algum modelo pré-treinado do ChatGPT que será responsável por nos responder as perguntas (com ajuda do contexto):
 
-**9️⃣ Instanciando o LLM (Chat Model):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**9️⃣ Instanciando o LLM (Chat Model):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 from langchain_openai import ChatOpenAI
 
@@ -2643,7 +2645,7 @@ llm = ChatOpenAI(
 
 Agora, nós vamos criar uma pergunta simples (mas poderia ser uma pergunta de algum sistema, agente ou usuário):
 
-**🔟 Criando a pergunta:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**🔟 Criando a pergunta:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 question = "What is LangChain and PGVector?"
 ```
@@ -2655,7 +2657,7 @@ Não, na verdade primeiro essa pergunta vai ser feita nos nossos dados externos 
 > **Em termos simples:**
 > É aqui que o RAG *“busca conhecimento fora do modelo”*.
 
-**1️⃣1️⃣ Recuperando o contexto:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣1️⃣ Recuperando o contexto:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 docs = retriever.invoke(question)
 ```
@@ -2667,7 +2669,7 @@ docs = retriever.invoke(question)
 
 Agora, nós vamos manipular esse `docs (List[Document])` para ser um texto que possa ser lido pelo a nossa instância "llm" — **Esse trecho faz a etapa de "Augmentation (Context Construction) do RAG"**:
 
-**1️⃣2️⃣ Transformando documentos em contexto:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣2️⃣ Transformando documentos em contexto:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 context = "\n\n".join(
     doc.page_content for doc in docs
@@ -2676,7 +2678,7 @@ context = "\n\n".join(
 
 Continuando, agora nós vamos criar um `chain`:
 
-**1️⃣3️⃣ Criando a Chain (Prompt → LLM):** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣3️⃣ Criando a Chain (Prompt → LLM):** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 chain = prompt | llm
 ```
@@ -2692,7 +2694,7 @@ Aqui, nós estamos criando uma `chain` conectando:
 
 Agora nós vamos converter o nosso prompt (ChatPromptTemplate) em mensagens prontas para um ChatModel (nossa instância "llm"):
 
-**1️⃣4️⃣ Convertendo o Prompt em uma Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣4️⃣ Convertendo o Prompt em uma Mensagem:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 messages = prompt.format_messages(
     context=context,
@@ -2712,7 +2714,7 @@ Internamente, o LangChain vai na nossa variável `prompt`, que contém um modelo
 
 Por exemplo, vamos analisar a variável `messages`:
 
-**1️⃣5️⃣ Analisando a Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣5️⃣ Analisando a Mensagem:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 messages = prompt.format_messages(
     context=context,
@@ -2737,7 +2739,7 @@ Vejam que:
 
 Por exemplo, vamos ver só o nosso `content`:
 
-**1️⃣6️⃣ Analisando o Conteúdo da Mensagem:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+**1️⃣6️⃣ Analisando o Conteúdo da Mensagem:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 messages = prompt.format_messages(
     context=context,
@@ -2775,7 +2777,7 @@ Por que nós utilizamos uma pesquisa de similitudes para encontrar os documentos
 
 Ótimo, agora que nós já temos uma mensagem (prompt) otimizada que pode ser utilizada no ChatModel, vamos chamar o método `invoke` da nossa instância `llm` e passar como argumento essa mensagem:
 
-** Fazendo a pergunta ao nosso modelo:** [chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+** Fazendo a pergunta ao nosso modelo:** [rag-example-01.py](codes/rag-example-01.py)
 ```python
 answer = llm.invoke(messages)
 print(answer.content)
@@ -2817,7 +2819,7 @@ LangChain is a tool that allows developers to build production-ready RAG systems
 
 Lembram que nós tinhamos um passo que nós substituiamos as variáveis do nosso template pelo `contexto` e `pergunta`?
 
-[chapter03/rag-example-01.py](codes/chapter03/rag-example-01.py)
+[rag-example-01.py](codes/rag-example-01.py)
 ```python
 messages = prompt.format_messages(
     context=context,
@@ -2827,7 +2829,7 @@ messages = prompt.format_messages(
 
 Então, existe uma maneira mais idiomática muito utilizada para fazer isso:
 
-[chapter03/chain-01.py](codes/chapter03/chain-01.py)
+[chain-01.py](codes/chain-01.py)
 ```python
 chain = prompt | llm
 ```
@@ -2840,7 +2842,7 @@ chain = prompt | llm
 
 Ótimo, como nós passamos o nosso prompt para a nossa instância `llm` (usando o operador `|`) e salvamos na variável chain, agora nós podemos utilizar o método `invoke()` a partir da variável `chain` para fazer a pergunta ao nosso modelo:
 
-[chapter03/chain-02.py](codes/chapter03/chain-02.py)
+[chain-02.py](codes/chain-02.py)
 ```python
 answer = chain.invoke({
     "context": context,
@@ -2857,7 +2859,7 @@ Vejam que nós passamos como argumento:
 
 Por fim, é só pegar essa resposta (`answer`) e imprimir:
 
-[chapter03/chain-03.py](codes/chapter03/chain-03.py)
+[chain-03.py](codes/chain-03.py)
 ```python
 print(answer.content)
 ```
@@ -2895,7 +2897,7 @@ LangChain is a tool that allows developers to build production-ready RAG systems
 
 Até então, nós tinhamos o seguinte código RAG:
 
-[chapter03/chain-01.py](codes/chapter03/chain-01.py)
+[chain-01.py](codes/chain-01.py)
 ```python
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -3165,7 +3167,7 @@ print(response.content)
 
 ### `✅ Código final COMPLETO (RAG 100% Runnable)`
 
-[chapter03/runnable-01.py](codes/chapter03/runnable-01.py)
+[runnable-01.py](codes/runnable-01.py)
 ```python
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -3315,7 +3317,7 @@ Isso é essencial quando você tem:
 
 Vamos criar 3 arquivos reais, cada um com um contexto diferente.
 
-[chapter03/data/langchain.txt](codes/chapter03/data/langchain.txt)
+[data/langchain.txt](codes/data/langchain.txt)
 ```txt
 LangChain is a framework for building applications with large language models.
 
@@ -3329,7 +3331,7 @@ Metadata desejada:
  - `source = "documentation"`
  - `category = "langchain"`
 
-[chapter03/data/pgvector.txt](codes/chapter03/data/pgvector.txt)
+[data/pgvector.txt](codes/data/pgvector.txt)
 ```txt
 PGVector is a PostgreSQL extension that enables vector similarity search.
 
@@ -3343,7 +3345,7 @@ Metadata desejada:
  - `source = "documentation"`
  - `category = "pgvector"`
 
-[chapter03/data/history.txt](codes/chapter03/data/history.txt)
+[data/history.txt](codes/data/history.txt)
 ```txt
 Ancient Greek philosophy includes figures such as Socrates, Plato, and Aristotle.
 
@@ -3359,12 +3361,12 @@ Metadata desejada:
 
 O `TextLoader` aceita metadata manualmente.
 
-**🔧 Antes (nosso código atual):** [chapter03/chain-01.py](codes/chapter03/chain-01.py)
+**🔧 Antes (nosso código atual):** [chain-01.py](codes/chain-01.py)
 ```python
 documents = loader.load()
 ```
 
-**✅ Depois (com metadata):** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+**✅ Depois (com metadata):** [rag-source-category.py](codes/rag-source-category.py)
 ```python
 from langchain_core.documents import Document
 
@@ -3391,7 +3393,7 @@ documents = [
 
 Agora nós vamos utilizar o `RecursiveCharacterTextSplitter` para dividir o texto em pedaços menores (chunks + overlap):
 
-[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+[rag-source-category.py](codes/rag-source-category.py)
 ```python
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -3411,7 +3413,7 @@ Aqui, cada chunk mantém:
 
 ### `🧠 Parte 4 — Indexação no PGVector (nada muda!)`
 
-[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+[rag-source-category.py](codes/rag-source-category.py)
 ```python
 from langchain_postgres import PGVector
 from langchain_openai import OpenAIEmbeddings
@@ -3439,7 +3441,7 @@ O PGVector agora armazena:
 
 Agora vem a parte que nós queremos:
 
-**🎯 Exemplo 1 — Buscar SOMENTE LangChain:** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+**🎯 Exemplo 1 — Buscar SOMENTE LangChain:** [rag-source-category.py](codes/rag-source-category.py)
 ```python
 langchain_retriever = vectorstore.as_retriever(
     search_type="similarity",
@@ -3458,7 +3460,7 @@ langchain_retriever = vectorstore.as_retriever(
    - ✅ busca só LangChain
 
 
-**🎯 Exemplo 2 — Buscar SOMENTE documentação técnica:** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+**🎯 Exemplo 2 — Buscar SOMENTE documentação técnica:** [rag-source-category.py](codes/rag-source-category.py)
 ```python
 docs_retriever = vectorstore.as_retriever(
     search_type="similarity",
@@ -3471,7 +3473,7 @@ docs_retriever = vectorstore.as_retriever(
 )
 ```
 
-**🎯 Exemplo 3 — Filtro combinado (AND):** [chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+**🎯 Exemplo 3 — Filtro combinado (AND):** [rag-source-category.py](codes/rag-source-category.py)
 ```python
 combined_retriever = vectorstore.as_retriever(
     search_type="similarity",
@@ -3490,7 +3492,7 @@ combined_retriever = vectorstore.as_retriever(
 
 O resto do nosso código muda poucas coisas, ele completo ficará assim:
 
-[chapter03/rag-source-category.py](codes/chapter03/rag-source-category.py)
+[rag-source-category.py](codes/rag-source-category.py)
 ```python
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
@@ -3582,6 +3584,479 @@ rag_chain = (
 response = rag_chain.invoke("What is PGVector used for?")
 print(response.content)
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Pré-Processamento e Validação ) --->
+
+---
+
+<div id="rag-evaluation"></div>
+
+## `Como um RAG pode ser avaliado`
+
+> Aqui, nós vamos debater como um RAG pode ser avaliado.
+
+### `1️⃣ O que é “Avaliação de RAG”?`
+
+Avaliar um RAG não é perguntar:
+
+> “A resposta parece boa?”
+
+Avaliar um RAG é responder perguntas como:
+
+ - ❓ A resposta usa o contexto recuperado?
+ - ❓ A resposta alucina?
+ - ❓ A resposta ignora informações relevantes?
+ - ❓ O retriever trouxe bons documentos?
+ - ❓ O LLM respondeu de forma fiel ao contexto?
+
+Em RAG, o erro pode estar em 3 lugares:
+
+ - Recuperação (retriever)
+ - Contexto (prompt / formatação)
+ - Geração (LLM)
+
+### `2️⃣ Dimensões clássicas de avaliação de RAG`
+
+Vamos focar nas 4 mais importantes (as que o mercado usa).
+
+**✅ 1. Relevance (Relevância):**
+
+> Os documentos recuperados são relevantes para a pergunta?
+
+Exemplo ruim:
+
+ - *Pergunta:* What is LangChain?
+ - *Contexto:* texto sobre filosofia grega
+
+> **NOTE:**  
+> ❌ Falha do retriever
+
+**✅ 2. Faithfulness (Fidelidade):**
+
+> A resposta é baseada apenas no contexto?
+
+Exemplo ruim:
+
+ - Contexto não fala de versões
+ - Resposta inventa versão do LangChain
+
+> **NOTE:**  
+> ❌ Alucinação do LLM
+
+**✅ 3. Answer Correctness (Correção)**
+
+> A resposta está correta dentro do contexto fornecido?
+
+Importante:
+
+ - Não é “verdade universal”
+ - É “verdade segundo o contexto”
+
+**✅ 4. Context Coverage (Cobertura)**
+
+> O contexto recuperado contém informação suficiente para responder?
+
+ - ❌ Se não contém → problema do retriever ou chunking
+
+### `3️⃣ Avaliação manual (conceito)`
+
+Antes de automatizar, entenda o processo humano.
+
+**Pergunta:**
+```bash
+What is LangChain and PGVector?
+```
+
+**Contexto recuperado:**
+```bash
+LangChain is a framework...
+PGVector is a PostgreSQL extension...
+```
+
+**Resposta do LLM:**
+```bash
+LangChain is a framework for LLM applications...
+PGVector is used to store embeddings in PostgreSQL...
+```
+
+ - ✔️ Usa contexto
+ - ✔️ Não inventa
+ - ✔️ Responde corretamente
+
+> **NOTE:**  
+> 👉 RAG aprovado
+
+### `4️⃣ Avaliação automática: a ideia`
+
+Vamos usar o próprio LLM como avaliador.
+
+> **NOTE:**  
+> 📌 Isso é chamado de `LLM-as-a-Judge`.
+
+Ele recebe:
+
+ - pergunta
+ - contexto
+ - resposta gerada
+
+E avalia critérios objetivos.
+
+### `5️⃣ Criando um Prompt de Avaliação`
+
+Aqui, vamos criar um segundo prompt, só para avaliação:
+
+```python
+evaluation_prompt = ChatPromptTemplate.from_template("""
+You are evaluating a RAG system.
+
+Question:
+{question}
+
+Context:
+{context}
+
+Answer:
+{answer}
+
+Evaluate the answer based on the following criteria:
+1. Faithfulness (is the answer grounded in the context?)
+2. Relevance (does it address the question?)
+3. Completeness (does it fully answer the question?)
+
+Give a score from 1 to 5 for each criterion and explain briefly.
+""")
+```
+
+> **NOTE:**  
+> 📌 Esse prompt **não responde a pergunta**, ele **julga a resposta**.
+
+### `6️⃣ Fluxo completo com Avaliação`
+
+O fluxo para avaliar o nosso RAG ficaria assim:
+
+```bash
+Pergunta
+  ↓
+Retriever
+  ↓
+Contexto
+  ↓
+LLM responde
+  ↓
+LLM avalia a resposta
+```
+
+### `7️⃣ Código COMPLETO (RAG + Avaliação)`
+
+O código completo com avaliação ficaria assim:
+
+[rag-evaluation-01.py](codes/rag-evaluation-01.py)
+```python
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_community.vectorstores import PGVector
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+CONNECTION_STRING = (
+    "postgresql+psycopg2://"
+    "lcuser:lcpass@localhost:6024/lcdb"
+)
+
+# ----------------------------
+# Indexação
+# ----------------------------
+
+loader = TextLoader("data/example.txt")
+documents = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=200,
+    chunk_overlap=50
+)
+
+chunks = splitter.split_documents(documents)
+
+embeddings = OpenAIEmbeddings(
+    model="text-embedding-3-small"
+)
+
+vectorstore = PGVector.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    connection_string=CONNECTION_STRING,
+    collection_name="ex01_documents"
+)
+
+# ----------------------------
+# RAG
+# ----------------------------
+
+retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+prompt = ChatPromptTemplate.from_template("""
+Answer the question using ONLY the context below.
+
+Context:
+{context}
+
+Question:
+{question}
+
+If the answer is not in the context, say "I don't know".
+""")
+
+llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+
+rag_chain = (
+    {
+        "context": retriever | RunnableLambda(format_docs),
+        "question": RunnablePassthrough()
+    }
+    | prompt
+    | llm
+)
+
+question = "What is LangChain and PGVector?"
+
+docs = retriever.invoke(question)
+context = format_docs(docs)
+
+answer = rag_chain.invoke(question)
+
+# ----------------------------
+# Avaliação do RAG
+# ----------------------------
+
+evaluation_prompt = ChatPromptTemplate.from_template("""
+You are evaluating a RAG system.
+
+Question:
+{question}
+
+Context:
+{context}
+
+Answer:
+{answer}
+
+Evaluate the answer based on:
+1. Faithfulness
+2. Relevance
+3. Completeness
+
+Score each from 1 to 5 and explain briefly.
+""")
+
+evaluation_chain = evaluation_prompt | llm
+
+evaluation = evaluation_chain.invoke({
+    "question": question,
+    "context": context,
+    "answer": answer.content
+})
+
+print("ANSWER:\n", answer.content)
+print("\nEVALUATION:\n", evaluation.content)
+```
+
+**OUTPUT:**
+```bash
+ANSWER:
+ LangChain is a framework designed to simplify the development of applications powered by large language models (LLMs). PGVector is used with LangChain to build production-ready RAG systems with persistence, scalability, and SQL support.
+
+EVALUATION:
+ 1. Faithfulness: 5 - The answer accurately describes LangChain as a framework for applications powered by large language models and PGVector as a tool used with LangChain for building RAG systems.
+2. Relevance: 5 - The answer directly addresses the question by providing information on both LangChain and PGVector and how they are used together.
+3. Completeness: 5 - The answer provides a clear explanation of both LangChain and PGVector, including their purposes and how they are used in building RAG systems.
+
+Overall, the answer is comprehensive, relevant, and faithful to the information provided in the context.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
