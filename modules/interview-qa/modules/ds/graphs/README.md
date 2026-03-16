@@ -3,13 +3,9 @@
 ## Contents
 
  - **Fundamentals:**
-   - [Intro to Graphs (Vertex/Node, Edge, Weight, Adjacency, Path, Cycle)](#intro-to-graphs)
+   - [`What are the components of a graph?`](#intro-to-graphs)
  - [**Undirected Graphs**](#undirected-graph)
    - [Adjacency Matrix for Undirected Graphs](#adj-matrix-for-ug)
-     - [Adjacency Matrix class using Array (n x n) for Undirected Graph | O(n<sup>2</sup>)](#amcuafug)
-       - [Add an edge on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-addedge)
-       - [Add "edge weights" on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-addweights)
-       - [Remove an Edge on the Adjacency Matrix for an Undirected Graph | O(1)](#amcuafug-remove)
    - [Adjacency List for Undirected Graphs](#adj-list-for-ug)
  - [**Directed Graphs**](#directed-graph)
  - [REFERENCES](#ref)
@@ -119,7 +115,7 @@
 
 <div id="intro-to-graphs"></div>
 
-## What are the components of a graph?
+## `What are the components of a graph?`
 
 > **What are the (main) components of a graph?**
 

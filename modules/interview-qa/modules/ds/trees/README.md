@@ -1407,7 +1407,7 @@ Inorder: [1, 5, 8, 10, 12, 15, 20, 22, 25, 28, 30, 30, 36, 36, 36, 40, 48, 50]
 
 <div id="postorder-traversal"></div>
 
-## Postorder Traversal | O(n)
+## Postorder Traversal
 
 > **What is *"Postorder Traversal"* technique?**
 
