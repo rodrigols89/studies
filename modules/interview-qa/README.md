@@ -5,6 +5,7 @@
  - [Data Structures](#ds)
  - [Algorithms](#alg)
  - [Database](#database)
+ - [Design and Analysis of Algorithms](#daa)
  - [System Design](#system-design)
 
 
@@ -26,7 +27,13 @@
 
 Data Structure is a *format* to **organize**, **processing**, **retrieving**, **manage** and **store data** in a way that **allows efficient access and modification.**
 
- - [Coming soon...](#)
+ - [Arrays, Vectors, Strings](#)
+ - [Linked Lists](modules/ds/linked-lists)
+ - [Stacks (LIFO: Last-In, First-Out)](modules/ds/stacks)
+ - [Queues (FIFO: First In, First Out)](modules/ds/queues)
+ - [Hashing](modules/ds/hashing)
+ - [Trees](modules/ds/trees)
+ - [Graphs](modules/ds/graphs)
 
 
 
@@ -45,8 +52,9 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 
 ## Algorithms
 
- - [Two Pointers](modules/two-pointers)
- - [Mathematical Algorithms](modules/math)
+ - [Recursion](modules/algorithms-implementations/recursion)
+ - [Two Pointers](modules/algorithms/two-pointers)
+ - [Mathematical Algorithms](modules/algorithms/math)
 
 
 
@@ -66,6 +74,25 @@ Data Structure is a *format* to **organize**, **processing**, **retrieving**, **
 ## Database
 
  - [Structured Query Language (SQL)](modules/sql)
+
+
+
+
+
+
+
+
+
+
+<!--- ( DAA ) --->
+
+---
+
+<div id="daa"></div>
+
+## Design and Analysis of Algorithms
+
+ - [Coming soon...](#)
 
 
 
