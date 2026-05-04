@@ -639,7 +639,7 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 <!--- ( details principal ) --->
 <details>
 
-<summary>**ANSWER**</summary>
+<summary>ANSWER</summary>
 
 <br/>
 
