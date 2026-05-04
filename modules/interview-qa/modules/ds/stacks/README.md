@@ -6,7 +6,6 @@
  - **Stack using Linked List (Dynamic Size Approach):**
  - **Reverse Stack Problems:**
    - [`What types of problems are solved with "Reverse Stack"?`](#reverse-stack-theory)
-   - [`Reversing a Word/Phrase`](#reversing-word-phrase)
  - [REFERENCES](#ref)
 <!--- 
 [WHITESPACE RULES]
