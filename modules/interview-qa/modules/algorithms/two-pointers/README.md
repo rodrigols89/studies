@@ -7,6 +7,7 @@
  - **Two Pointers (same direction):**
    - [`26. Remove Duplicates from Sorted Array`](#26-rdfsa)
  - **Two Pointers (opposite ends):**
+   - [`125. Valid Palindrome`](#125-valid-palindrome)
  - **Fast and Slow Pointers (Floyd's Tortoise and Hare):**
    - [`141. Linked List Cycle`](#141-llc)
 <!---
@@ -126,8 +127,6 @@
 <div id="oqvdt"></div>
 
 ## `O que é, quanto (ou não) utilizar, vantagem e desvantagem da técnica "Two Pointers"?`
-
-> **O que é, quanto (ou não) utilizar, vantagem e desvantagem da técnica "Two Pointers"?**
 
 <details>
 
@@ -597,6 +596,781 @@ Para finalizar nós vamos ter as seguintes complexidades de tempo e espaço:
 
 
 
+<!--- ( Two Pointers (opposite ends) ) --->
+
+---
+
+<div id="125-valid-palindrome"></div>
+
+## `125. Valid Palindrome`
+
+> A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string `s`, return `true` if it is a palindrome, or `false` otherwise.
+
+**Example 1:**
+```text
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+```
+
+**Example 2:**
+```text
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+```
+
+**Example 3:**
+```text
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
+```
+
+**Constraints:**
+
+ - `1 <= s.length <= 2 * 105`
+ - `s` consists only of printable ASCII characters.
+
+
+<!--- ( details principal ) --->
+<details>
+
+<summary>ANSWER</summary>
+
+<br/>
+
+Sabendo, que uma função segue a seguinte lógica:
+
+```bash
+ENTRADA(INPUT) ➔ PROCESSAMENTO(PROCESSING) ➔ SAÍDA(OUTPUT)
+```
+
+Para resolver esse problema, vamos começar analisando 3 pontos chaves:
+
+ - Entender o problema;
+ - Qual a entrada (o que vamos receber e seu tipo);
+ - Qual a saída/retorno (O que vamos retornar e seu tipo).
+
+> **⚠️ NOTE:**  
+> A partir destas informações que nós vamos entender como processar os dados dentro da função.
+
+
+
+<!--- ( Entendendo o problema )--->
+<details>
+
+<summary>Entendendo o problema</summary>
+
+<br/>
+
+Um **palindrome** (ou **palíndromo**, em português) é uma palavra, frase, número ou sequência que pode ser lida **da mesma forma de trás para frente**.
+
+**Exemplos simples:**
+| Palavra/Número | Ao contrário | É palindrome? |
+| -------------- | ------------ | ------------- |
+| ANA            | ANA          | ✅ Sim       |
+| OVO            | OVO          | ✅ Sim       |
+| RADAR          | RADAR        | ✅ Sim       |
+| CASA           | ASAC         | ❌ Não       |
+| 121            | 121          | ✅ Sim       |
+| 123            | 321          | ❌ Não       |
+
+
+**Também existem frases palíndromas.**
+```text
+SOCORRAM ME SUBI NO ONIBUS EM MARROCOS
+```
+
+Se ignorarmos espaços e acentos:
+
+```text
+SOCORRAMMESUBINOONIBUSEMMARROCOS
+```
+
+Lendo ao contrário, fica igual.
+
+> **✅ É um palindrome.**
+
+Outra coisa é que nós devemos ignorar:
+
+ - Caracters *"não alfanuméricos"* (#, $, ^, ', ...)
+ - Espaços em branco
+
+</details>
+<!--- ( /Entendendo o problema )--->
+
+
+
+<!--- ( Qual a entrada (o que vamos receber e seu tipo)? )--->
+<details>
+
+<summary>Qual a entrada (o que vamos receber e seu tipo)?</summary>
+
+<br/>
+
+> A entrada que nós vamos receber será uma `string s`.
+
+</details>
+<!--- ( /Qual a entrada (o que vamos receber e seu tipo)? )--->
+
+
+
+<!--- ( Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
+<details>
+
+<summary>Qual a saída/retorno (O que vamos retornar e seu tipo)?</summary>
+
+<br/>
+
+A saída (output) será um **booleano**:
+
+ - `True` - Se a palavra (ou frase) for palindrome
+ - `False` - Se a palavra (ou frase) não for palindrome
+
+</details>
+<!--- ( /Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
+
+
+
+<!--- ( Código Completo )--->
+<details>
+
+<summary>Código Completo</summary>
+
+<br/>
+
+[125-valid-palindrome.py](src/125-valid-palindrome.py)
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left:int = 0
+        right:int = len(s) - 1
+
+        while left < right:
+
+            # Ignora caracteres não alfanuméricos da esquerda
+            while left < right and s[left].isalnum() is False:
+                left += 1
+
+            # Ignora caracteres não alfanuméricos da direita
+            while left < right and s[right].isalnum() is False:
+                right -= 1
+
+            # Compara ignorando maiúsculas/minúsculas
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+
+        return True
+
+
+if __name__ == "__main__":
+
+    texto = "# ! R A D A R & #"
+
+    solution = Solution()
+    resultado = solution.isPalindrome(texto)
+    print(f'"{texto}" é palindrome? {resultado}')
+```
+
+**OUTPUT:**
+```bash
+"# ! R A D A R & #" é palindrome? True
+```
+
+</details>
+<!--- ( /Código Completo )--->
+
+
+
+<!--- ( Solução passo a passo (Step-by-Step) )--->
+<details>
+
+<summary>Solução passo a passo (Step-by-Step)</summary>
+
+<br/>
+
+Vamos começar criando 2 ponteiros:
+
+ - Um vai começar no início da string (left)
+ - E o outro vai começar no fim da string (right)
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+```
+
+Para entender melhor imagina o seguinte cenário:
+
+```text
+R A D A R
+0 1 2 3 4
+|       |
+|       |---> right (4)
+|---> left (0)
+```
+
+Agora, nós vamos criar um loop `while` com a seguinte condição:
+
+> O ponteiro `left` *tem que ser menor que o ponteiro* `right`.
+
+**⚠️ NOTE:**  
+Isso, porque nós queremos evitar que os ponteiros se cruzem (um passe do outro).
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+
+        while left > right:
+          pass
+```
+
+Ótimo, agora nós precisamos criar mecanismos para que:
+
+ - O ponteiro `left` ande para a direita
+ - O ponteiro `right` ande para a esquerda
+
+**NOTE:**  
+Porém, ao mesmo tempo que nós vamos fazer nossos ponteiros andarem em suas direções opostas, nós também temos que fazer eles ignorarem (pularem) caracteres que NÃO são letras e números.
+
+Ou seja, ignorar:
+
+```
+espaços
+vírgulas
+pontos
+#
+@
+:
+!
+etc
+```
+
+Por exemplo, imagine o cenário abaixo:
+
+```text
+# ! R A D A R & #
+0 1 2 3 4 5 6 7 8
+|               |
+|               |---> right (8)
+|---> left (0)
+```
+
+ - Nós vamos ter que incrementar/decrementar os ponteiros sem que --> `left` seja maior que o `right`:
+   - Ou seja, um passe do outro
+ - E quando for um caractere *"não alfanuméricos (#, , $,..., etc)"* pular (incrementar/decrementar os ponteiros)
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+
+            # Ignora caracteres não alfanuméricos da esquerda
+            while left < right and s[left].isalnum() is False:
+                left += 1
+
+            # Ignora caracteres não alfanuméricos da direita
+            while left < right and s[right].isalnum() is False:
+                right -= 1
+```
+
+> **⚠️ NOTE:**  
+> A função `isalnum()` verifica se um caractere é uma letra (A-Z, a-z) ou número (0-9), ou seja, **são alfanuméricos**.
+> - Retorna `True` quando o caractere é letra ou número
+> - Retorna `False` quando é espaço ou caractere especial (#, @, !, etc).
+
+Os comandos `while` acima podem ser lidos, como:
+
+```text
+"Enquanto os ponteiros não se cruzarem (left < right)
+E (AND) o caractere atual for um "não alfanumérico" (isalnum() is False),
+continue avançando o ponteiro (+= 1 ou -= 1)."
+```
+
+Ótimo, com as duas condições acima os 2 ponteiros estão andando um em direção ao outro e só vão parar se os caracteres forem "alfanuméricos (letras e números), por exemplo:
+
+```text
+# ! R A D A R & #
+0 1 2 3 4 5 6 7 8
+    |       |
+    |       |---> right (8)
+    |---> left (0)
+```
+
+**Agora, nós precisamos comparar se o "valor" no ponteiro da esquerda (left) é igual ao "valor" do ponteiro da direita (right):**  
+Aqui, vale salientar que na primeira comparação que for negativo (os valores não forem iguais) a nossa função já vai retorna `False`, pois a palavra ou frase não será palindrome...
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+
+            # Ignora caracteres não alfanuméricos da esquerda
+            while left < right and s[left].isalnum() is False:
+                left += 1
+
+            # Ignora caracteres não alfanuméricos da direita
+            while left < right and s[right].isalnum() is False:
+                right -= 1
+
+            # Compara ignorando maiúsculas/minúsculas
+            if s[left].lower() != s[right].lower():
+                return False
+```
+
+> **⚠️ NOTE:**  
+> Para evitar erros como a letra `A` não seja igual a letra `a` nós utilizamos a função `lower()`, que converte todos os caracteres de uma string para minúsculo (lower).
+
+**⚠️ NOTE:**  
+Agora, vocês concordam comigo que essa mesma condição vai ser a mesma para *"parar o loop while" (confirmar que é palindrome)*?
+
+Isso mesmo, se nós continuarmos comparando e sempre o "valor" do ponteiro da esquerda (left) for igual ao "valor" do ponteiro da direita, vai chegar um ponto onde essa condição não será satisfeita:
+
+```python
+while left < right:
+    ...
+```
+
+**⚠️ NOTE:**  
+Ou seja, aqui nós já comparamos todos os valores (os ponteiros se cruzaram) e nenhum foi False: `s[left].lower() != s[right].lower()`
+
+Ótimo, agora nós precisamos fazer nossos ponteiros continuarem andando, isso porque os `while` internos só fazem os ponteiros andarem quando os seus valores tiverem caracteres **"não alfanuméricos"**.
+
+```text
+R A D A R
+0 1 2 3 4
+|       |
+|       |---> right (4)
+|---> left (0)
+```
+
+> **⚠️ NOTE:**  
+> Vejam que no exemplo acima, não teve nenhum caractere **"não alfanumérico"** e os ponteiros nesse caso não seriam incrementados, pois não entrariam nos *loops while*.
+
+Para resolver esse problema, nós temos que incrementar os 2 ponteiros (um para cada direção):
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left:int = 0
+        right:int = len(s) - 1
+
+        while left < right:
+
+            # Ignora caracteres não alfanuméricos da esquerda
+            while left < right and s[left].isalnum() is False:
+                left += 1
+
+            # Ignora caracteres não alfanuméricos da direita
+            while left < right and s[right].isalnum() is False:
+                right -= 1
+
+            # Compara ignorando maiúsculas/minúsculas
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+```
+
+Por fim, se o nosso `while` comparar todos os valores dos 2 ponteiros (em todas as iterações) e todos forem iguais nós precisamos retornar `True`
+
+```bash
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left:int = 0
+        right:int = len(s) - 1
+
+        while left < right:
+
+            # Ignora caracteres não alfanuméricos da esquerda
+            while left < right and s[left].isalnum() is False:
+                left += 1
+
+            # Ignora caracteres não alfanuméricos da direita
+            while left < right and s[right].isalnum() is False:
+                right -= 1
+
+            # Compara ignorando maiúsculas/minúsculas
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+
+        return True
+```
+
+</details>
+<!--- ( /Solução passo a passo (Step-by-Step) )--->
+
+
+
+<!--- ( Complexidade de Tempo (Time Complexity) )--->
+<details>
+
+<summary>Complexidade de Tempo (Time Complexity)</summary>
+
+<br/>
+
+A Complexidade de Tempo mede:
+
+> **Quantas operações um algoritmo executa conforme a entrada aumenta.**
+
+<details>
+
+<summary>Melhor Caso: Big-Omega → Ω</summary>
+
+<br/>
+
+O `Melhor Caso` acontece quando o algoritmo encontra um erro logo na primeira comparação.
+
+**Exemplo:**
+```text id="q2m8v5"
+"RADIO"
+```
+
+**Primeira comparação:**
+```text id="x7n1k4"
+R != O
+```
+
+Então:
+
+```python id="v4m9q2"
+return False
+```
+
+O algoritmo executa aproximadamente:
+
+```text id="k5x2n8"
+1 comparação
+```
+
+$T(n)=1$
+
+**Complexidade:**
+```text id="m1q7v4"
+Ω(1)
+```
+
+</details>
+
+<details>
+
+<summary>Caso Médio: Big-Theta → Θ</summary>
+
+<br/>
+
+O `Caso Médio` acontece quando os ponteiros percorrem parte significativa da string.
+
+**Exemplo:**
+```text id="p8x3m1"
+"RACECAR"
+```
+
+Os ponteiros fazem comparações até o centro.
+
+**Quantidade aproximada de operações:**
+
+Se a string possui tamanho `n`:
+
+* `left` pode avançar até `n/2`
+* `right` pode recuar até `n/2`
+
+$T(n)=\frac{n}{2}+\frac{n}{2}$
+
+Simplificando:
+
+$T(n)=n$
+
+Removendo constantes da análise assintótica:
+
+```text id="w4m1q7"
+Θ(n)
+```
+
+</details>
+
+<details>
+
+<summary>Pior Caso: Big-O → O</summary>
+
+<br/>
+
+O `Pior Caso` acontece quando:
+
+* toda a string precisa ser percorrida
+* ou existem muitos caracteres especiais para ignorar
+
+**Exemplo:**
+
+```text id="r7x2m5"
+"###A MAN A PLAN A CANAL PANAMA###"
+```
+
+Os loops internos precisam percorrer muitos caracteres.
+
+Mas:
+
+```text id="k9m4v1"
+cada caractere é visitado no máximo uma vez
+```
+
+ - O ponteiro `left` pode andar no máximo `n` vezes.
+ - O ponteiro `right` pode andar no máximo `n` vezes.
+
+Então:
+
+$T(n)=n+n$
+
+Simplificando:
+
+$T(n)=2n$
+
+Na notação `Big-O`, ignoramos constantes:
+
+$T(n)=O(n)$
+
+> **Por que NÃO é `O(n²)`?**
+
+Porque os ponteiros:
+
+* nunca voltam
+* nunca revisitam índices
+* apenas avançam/recuam
+
+Ou seja:
+
+```text id="c8m1q5"
+cada caractere é consumido uma única vez
+```
+
+</details>
+
+</details>
+<!--- ( /Complexidade de Tempo (Time Complexity) )--->
+
+
+
+<!--- ( Complexidade de Espaço (Space Complexity) )--->
+<details>
+
+<summary>Complexidade de Espaço (Space Complexity)</summary>
+
+<br/>
+
+A Complexidade de Espaço mede:
+
+> **Quanta memória extra o algoritmo utiliza.**
+
+Nosso algoritmo usa apenas:
+
+```python id="q5n1k8"
+left
+right
+e algumas variáveis temporárias.
+```
+
+O algoritmo NÃO cria:
+
+* nova string
+* array auxiliar
+* lista
+* pilha
+* hash map
+
+A quantidade de memória não depende de `n`.
+
+$S(n)=1$
+
+Logo:
+
+```text id="t8q2m5"
+O(1)
+```
+
+</details>
+<!--- ( /Complexidade de Espaço (Space Complexity) )--->
+
+
+
+<!--- ( Qual problema essa abordagem tem (ou pode ter)? )--->
+<details>
+
+<summary>Qual problema essa abordagem tem (ou pode ter)?</summary>
+
+<br/>
+
+Apesar de ser eficiente, essa abordagem possui algumas limitações.
+
+### `1. Strings Imutáveis no Python`
+
+Em Python, strings são imutáveis.
+
+Então operações como:
+
+```python id="k1m7v4"
+lower()
+```
+
+podem gerar pequenos custos internos.
+
+### `2. Unicode e Caracteres Especiais`
+
+Dependendo do idioma, alguns caracteres podem gerar comportamentos inesperados.
+
+Exemplo:
+
+```text id="x4q8n1"
+á
+ç
+ã
+ê
+```
+
+O método:
+
+```python id="m7x2q5"
+isalnum()
+```
+
+pode tratar Unicode de maneira diferente dependendo do contexto.
+
+### `3. Não Funciona para Estruturas Complexas`
+
+Essa abordagem funciona muito bem para:
+
+* ✅ strings
+
+Mas pode não ser ideal para:
+
+* árvores
+* grafos
+* estruturas encadeadas complexas
+
+### `4. Muitas Verificações Condicionais`
+
+Quando existem muitos caracteres especiais:
+
+```text id="p2m8v4"
+#, @, !, %, espaços...
+```
+
+os loops internos executam várias verificações extras.
+
+</details>
+<!--- ( /Qual problema essa abordagem tem (ou pode ter)? )--->
+
+</details>
+<!--- ( /details principal ) --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--- ( Fast and Slow Pointers (Floyd's Tortoise and Hare) ) --->
 
 ---
@@ -859,18 +1633,221 @@ Para finalizar nós vamos ter as seguintes complexidades de tempo e espaço:
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
 
+<!--- ( details principal ) --->
 <details>
 
-<summary></summary>
+<summary>ANSWER</summary>
 
 <br/>
 
-ANSWER
+Sabendo, que uma função segue a seguinte lógica:
 
+```bash
+ENTRADA(INPUT) ➔ PROCESSAMENTO(PROCESSING) ➔ SAÍDA(OUTPUT)
+```
+
+Para resolver esse problema, vamos começar analisando 3 pontos chaves:
+
+ - Entender o problema;
+ - Qual a entrada (o que vamos receber e seu tipo);
+ - Qual a saída/retorno (O que vamos retornar e seu tipo).
+
+> **⚠️ NOTE:**  
+> A partir destas informações que nós vamos entender como processar os dados dentro da função.
+
+
+
+<!--- ( Entendendo o problema )--->
+<details>
+
+<summary>Entendendo o problema</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Entendendo o problema )--->
+
+
+
+<!--- ( Qual a entrada (o que vamos receber e seu tipo)? )--->
+<details>
+
+<summary>Qual a entrada (o que vamos receber e seu tipo)?</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Qual a entrada (o que vamos receber e seu tipo)? )--->
+
+
+
+<!--- ( Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
+<details>
+
+<summary>Qual a saída/retorno (O que vamos retornar e seu tipo)?</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
+
+
+
+<!--- ( Código Completo )--->
+<details>
+
+<summary>Código Completo</summary>
+
+<br/>
+
+[](src/)
+```python
+
+```
+
+**OUTPUT:**
 ```bash
 
 ```
 
-![img](images/)  
+</details>
+<!--- ( /Código Completo )--->
+
+
+
+<!--- ( Solução passo a passo (Step-by-Step) )--->
+<details>
+
+<summary>Solução passo a passo (Step-by-Step)</summary>
+
+<br/>
+
+...
+
+```python
+
+```
 
 </details>
+<!--- ( /Solução passo a passo (Step-by-Step) )--->
+
+
+
+<!--- ( Complexidade de Tempo (Time Complexity) )--->
+<details>
+
+<summary>Complexidade de Tempo (Time Complexity)</summary>
+
+<br/>
+
+A Complexidade de Tempo mede:
+
+> **Quantas operações um algoritmo executa conforme a entrada aumenta.**
+
+<!--- ( Melhor Caso ) --->
+<details>
+<summary>Melhor Caso: Big-Omega → Ω</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Melhor Caso ) --->
+
+<!--- ( Caso Médio ) --->
+<details>
+<summary>Caso Médio: Big-Theta → Θ</summary>
+<br/>
+
+...
+
+</details>
+<!--- ( /Caso Médio ) --->
+
+<!--- ( Pior Caso ) --->
+<details>
+<summary>Pior Caso: Big-O → O</summary>
+<br/>
+
+...
+
+</details>
+<!--- ( /Pior Caso ) --->
+
+</details>
+<!--- ( /Complexidade de Tempo (Time Complexity) )--->
+
+
+
+<!--- ( Complexidade de Espaço (Space Complexity) )--->
+<details>
+
+<summary>Complexidade de Espaço (Space Complexity)</summary>
+
+<br/>
+
+A Complexidade de Espaço mede:
+
+> **Quanta memória extra o algoritmo utiliza.**
+
+<!--- ( Melhor Caso ) --->
+<details>
+<summary>Melhor Caso: Big-Omega → Ω</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Melhor Caso ) --->
+
+<!--- ( Caso Médio ) --->
+<details>
+<summary>Caso Médio: Big-Theta → Θ</summary>
+<br/>
+
+...
+
+</details>
+<!--- ( /Caso Médio ) --->
+
+<!--- ( Pior Caso ) --->
+<details>
+<summary>Pior Caso: Big-O → O</summary>
+<br/>
+
+...
+
+</details>
+<!--- ( /Pior Caso ) --->
+
+</details>
+<!--- ( /Complexidade de Espaço (Space Complexity) )--->
+
+
+
+<!--- ( Qual problema essa abordagem tem (ou pode ter)? )--->
+<details>
+
+<summary>Qual problema essa abordagem tem (ou pode ter)?</summary>
+
+<br/>
+
+...
+
+</details>
+<!--- ( /Qual problema essa abordagem tem (ou pode ter)? )--->
+
+
+
+</details>
+<!--- ( /details principal ) --->
+
+
