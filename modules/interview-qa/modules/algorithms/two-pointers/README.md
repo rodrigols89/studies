@@ -703,7 +703,7 @@ Outra coisa é que nós devemos ignorar:
 </details>
 <!--- ( /Entendendo o problema )--->
 
-
+---
 
 <!--- ( Qual a entrada (o que vamos receber e seu tipo)? )--->
 <details>
@@ -717,7 +717,7 @@ Outra coisa é que nós devemos ignorar:
 </details>
 <!--- ( /Qual a entrada (o que vamos receber e seu tipo)? )--->
 
-
+---
 
 <!--- ( Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
 <details>
@@ -734,7 +734,7 @@ A saída (output) será um **booleano**:
 </details>
 <!--- ( /Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
 
-
+---
 
 <!--- ( Código Completo )--->
 <details>
@@ -744,7 +744,7 @@ A saída (output) será um **booleano**:
 <br/>
 
 [125-valid-palindrome.py](src/125-valid-palindrome.py)
-```bash
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left:int = 0
@@ -787,7 +787,7 @@ if __name__ == "__main__":
 </details>
 <!--- ( /Código Completo )--->
 
-
+---
 
 <!--- ( Solução passo a passo (Step-by-Step) )--->
 <details>
@@ -801,7 +801,7 @@ Vamos começar criando 2 ponteiros:
  - Um vai começar no início da string (left)
  - E o outro vai começar no fim da string (right)
 
-```bash
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left = 0
@@ -818,14 +818,9 @@ R A D A R
 |---> left (0)
 ```
 
-Agora, nós vamos criar um loop `while` com a seguinte condição:
+Agora nós vamos criar um mecanismo que evite que esses ponteiros se cruzem, ou seja, um passe do valor do outro:
 
-> O ponteiro `left` *tem que ser menor que o ponteiro* `right`.
-
-**⚠️ NOTE:**  
-Isso, porque nós queremos evitar que os ponteiros se cruzem (um passe do outro).
-
-```bash
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left = 0
@@ -835,17 +830,17 @@ class Solution:
           pass
 ```
 
+> **⚠️ NOTE:**  
+> Vejam que a condição que nós criamos foi que... O ponteiro `left` *tem que ser maior que o ponteiro* `right`.
+
 Ótimo, agora nós precisamos criar mecanismos para que:
 
  - O ponteiro `left` ande para a direita
  - O ponteiro `right` ande para a esquerda
 
-**NOTE:**  
-Porém, ao mesmo tempo que nós vamos fazer nossos ponteiros andarem em suas direções opostas, nós também temos que fazer eles ignorarem (pularem) caracteres que NÃO são letras e números.
+Porém, ao mesmo tempo que nós vamos fazer os ponteiros andarem em suas direções opostas, nós também temos que fazer eles ignorarem (pularem) caracteres que NÃO são letras e números, ou seja, *não alfanuméricos*.
 
-Ou seja, ignorar:
-
-```
+```text
 espaços
 vírgulas
 pontos
@@ -866,11 +861,26 @@ Por exemplo, imagine o cenário abaixo:
 |---> left (0)
 ```
 
- - Nós vamos ter que incrementar/decrementar os ponteiros sem que --> `left` seja maior que o `right`:
+ - Nós vamos ter que incrementar/decrementar os ponteiros **sem que** --> `left` seja maior que o `right`:
    - Ou seja, um passe do outro
  - E quando for um caractere *"não alfanuméricos (#, , $,..., etc)"* pular (incrementar/decrementar os ponteiros)
 
-```bash
+Visualmente, na primeira iteração do loop externo nós teremos a seguinte situação:
+
+```text
+# ! R A D A R & #
+0 1 2 3 4 5 6 7 8
+    |       |
+    |       |---> right (8)
+    |---> left (0)
+```
+
+> **⚠️ NOTE:**  
+> Vejam que nós não andamos os ponteiros por todas as letras, apenas **ignoramos os não alfanuméricos até encontrar um alfanumérico**.
+
+Na prática, para implementar isso nós vamos criar os seguintes loops internos:
+
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left = 0
@@ -913,7 +923,7 @@ continue avançando o ponteiro (+= 1 ou -= 1)."
 **Agora, nós precisamos comparar se o "valor" no ponteiro da esquerda (left) é igual ao "valor" do ponteiro da direita (right):**  
 Aqui, vale salientar que na primeira comparação que for negativo (os valores não forem iguais) a nossa função já vai retorna `False`, pois a palavra ou frase não será palindrome...
 
-```bash
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left = 0
@@ -935,20 +945,17 @@ class Solution:
 ```
 
 > **⚠️ NOTE:**  
-> Para evitar erros como a letra `A` não seja igual a letra `a` nós utilizamos a função `lower()`, que converte todos os caracteres de uma string para minúsculo (lower).
+> Para evitar erros como a letra **"A"** não seja igual a letra **"a"** nós utilizamos a função `lower()`, que converte todos os caracteres de uma string para minúsculo (lower).
 
-**⚠️ NOTE:**  
-Agora, vocês concordam comigo que essa mesma condição vai ser a mesma para *"parar o loop while" (confirmar que é palindrome)*?
-
-Isso mesmo, se nós continuarmos comparando e sempre o "valor" do ponteiro da esquerda (left) for igual ao "valor" do ponteiro da direita, vai chegar um ponto onde essa condição não será satisfeita:
+**Agora, vocês concordam comigo que essa mesma condição vai ser a mesma para *"parar o loop while" (confirmar que é palindrome)*?**  
+Isso mesmo, se nós continuarmos comparando e sempre o "valor" do ponteiro da esquerda (left) for igual ao "valor" do ponteiro da direita (right), vai chegar um ponto onde essa condição não será satisfeita:
 
 ```python
 while left < right:
     ...
 ```
 
-**⚠️ NOTE:**  
-Ou seja, aqui nós já comparamos todos os valores (os ponteiros se cruzaram) e nenhum foi False: `s[left].lower() != s[right].lower()`
+> **Ou seja, aqui nós já comparamos todos os valores (os ponteiros se cruzaram) e nenhum foi False: `s[left].lower() != s[right].lower()`**  
 
 Ótimo, agora nós precisamos fazer nossos ponteiros continuarem andando, isso porque os `while` internos só fazem os ponteiros andarem quando os seus valores tiverem caracteres **"não alfanuméricos"**.
 
@@ -961,11 +968,11 @@ R A D A R
 ```
 
 > **⚠️ NOTE:**  
-> Vejam que no exemplo acima, não teve nenhum caractere **"não alfanumérico"** e os ponteiros nesse caso não seriam incrementados, pois não entrariam nos *loops while*.
+> Vejam que no exemplo acima, não teve nenhum caractere **"não alfanumérico"** e os ponteiros nesse caso não seriam incrementados, pois não entrariam nos *loops while internos*.
 
 Para resolver esse problema, nós temos que incrementar os 2 ponteiros (um para cada direção):
 
-```bash
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left:int = 0
@@ -989,9 +996,11 @@ class Solution:
             right -= 1
 ```
 
-Por fim, se o nosso `while` comparar todos os valores dos 2 ponteiros (em todas as iterações) e todos forem iguais nós precisamos retornar `True`
+Por fim, se o nosso `while` comparar todos os valores dos 2 ponteiros (em todas as iterações) e todos forem iguais que dizer que a palvra/frase é *palindrome*.
 
-```bash
+> Ou seja, precisamos retornar `True`.
+
+```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         left:int = 0
@@ -1020,7 +1029,7 @@ class Solution:
 </details>
 <!--- ( /Solução passo a passo (Step-by-Step) )--->
 
-
+---
 
 <!--- ( Complexidade de Tempo (Time Complexity) )--->
 <details>
@@ -1167,7 +1176,7 @@ cada caractere é consumido uma única vez
 </details>
 <!--- ( /Complexidade de Tempo (Time Complexity) )--->
 
-
+---
 
 <!--- ( Complexidade de Espaço (Space Complexity) )--->
 <details>
@@ -1209,7 +1218,7 @@ O(1)
 </details>
 <!--- ( /Complexidade de Espaço (Space Complexity) )--->
 
-
+---
 
 <!--- ( Qual problema essa abordagem tem (ou pode ter)? )--->
 <details>
@@ -1669,7 +1678,7 @@ Para resolver esse problema, vamos começar analisando 3 pontos chaves:
 </details>
 <!--- ( /Entendendo o problema )--->
 
-
+---
 
 <!--- ( Qual a entrada (o que vamos receber e seu tipo)? )--->
 <details>
@@ -1683,7 +1692,7 @@ Para resolver esse problema, vamos começar analisando 3 pontos chaves:
 </details>
 <!--- ( /Qual a entrada (o que vamos receber e seu tipo)? )--->
 
-
+---
 
 <!--- ( Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
 <details>
@@ -1697,7 +1706,7 @@ Para resolver esse problema, vamos começar analisando 3 pontos chaves:
 </details>
 <!--- ( /Qual a saída/retorno (O que vamos retornar e seu tipo)? )--->
 
-
+---
 
 <!--- ( Código Completo )--->
 <details>
@@ -1719,7 +1728,7 @@ Para resolver esse problema, vamos começar analisando 3 pontos chaves:
 </details>
 <!--- ( /Código Completo )--->
 
-
+---
 
 <!--- ( Solução passo a passo (Step-by-Step) )--->
 <details>
@@ -1737,7 +1746,7 @@ Para resolver esse problema, vamos começar analisando 3 pontos chaves:
 </details>
 <!--- ( /Solução passo a passo (Step-by-Step) )--->
 
-
+---
 
 <!--- ( Complexidade de Tempo (Time Complexity) )--->
 <details>
@@ -1784,7 +1793,7 @@ A Complexidade de Tempo mede:
 </details>
 <!--- ( /Complexidade de Tempo (Time Complexity) )--->
 
-
+---
 
 <!--- ( Complexidade de Espaço (Space Complexity) )--->
 <details>
@@ -1831,7 +1840,7 @@ A Complexidade de Espaço mede:
 </details>
 <!--- ( /Complexidade de Espaço (Space Complexity) )--->
 
-
+---
 
 <!--- ( Qual problema essa abordagem tem (ou pode ter)? )--->
 <details>
@@ -1849,5 +1858,3 @@ A Complexidade de Espaço mede:
 
 </details>
 <!--- ( /details principal ) --->
-
-
