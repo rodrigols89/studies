@@ -3,8 +3,12 @@
 ## Contents
 
  - **🧠 Planning:**
+ - **👨‍💻 Development:**
+   - **Python:**
+     - [Django](modules/development/python/django/README.md)
  - **🛠️ Tools:**
    - [`O que é um arquivo Makefile?`](modules/tools/makefile/README.md)
+   - [uv](modules/tools/uv/README.md)
  - **🔐 Security:**
    - [`O que significa CORS?`](modules/security/cors/README.md)
  - **📁 Structure:**
