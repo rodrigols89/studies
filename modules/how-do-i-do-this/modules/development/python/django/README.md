@@ -9,6 +9,8 @@
    - [`Como modelar uma tabela com Django models`](#hmdt)
    - [`Como registrar uma tabela no Django Admin`](#register-table-django-admin)
    - [`Como instanciar uma classe (tabela) e salvar no Banco de Dados`](#instance-table-and-save-on-db)
+ - **Eventos:**
+   - [`Criando um signal (gatilho) para determinados eventos`](#create-signals)
 <!---
 [WHITESPACE RULES]
 - 20
@@ -369,23 +371,79 @@ def clientes(request):
 
 
 
+---
+
+<div id="create-signals"></div>
+
+## `Criando um signal (gatilho) para determinados eventos`
+
+> A finalidade de uma `signal` no Django é permitir que o sistema execute ações automaticamente quando algum evento acontece na aplicação.
+
+Ela funciona como um “gatilho”, por exemplo:
+
+ - usuário foi criado
+ - objeto foi salvo
+ - objeto foi deletado
+ - usuário fez login
+ - requisição começou
+ - requisição terminou
+
+> **⚠️ NOTE:**  
+> Quando um desses eventos acontece, o Django “dispara” uma signal, e funções registradas podem reagir automaticamente.
+
+### `Registrando o signal (ready)`
+
+Vamos começar criando um método `ready()` que será executado quando o Django carregar/inicializar a aplicação.
+
+`apps.py`
+```python
+from django.apps import AppConfig
+
+class UsuariosConfig(AppConfig):
+    name = 'usuarios'
+
+    def ready(self):
+        import usuarios.signals
+```
+
+> **Por que usar ready()?**
+
+ - Porque as `signals` precisam ser registradas.
+ - O Django só conhece a `signal` depois que o módulo é importado.
+ - Isso força o carregamento do arquivo:
+   - `usuarios/signals.py`
+
+### `Criando um signal`
+
+Para criar um signal nós temos que ficar atentos aos seguintes parâmetros:
+
+ - `signal` → O QUE está acontecendo
+   - `post_save` → Depois de salvar
+   - `pre_save` → Antes de salvar
+   - `post_delete` → Depois de deletar
+   - `pre_delete` → Antes de deletar
+   - `m2m_changed` → Quando relacionamento ManyToMany muda
+ - `sender` → QUEM está fazendo
+ - `dispatch_uid` → IDENTIDADE única da função
+ - `weak` → detalhe interno (quase nunca importa)
+
+**EXEMPLO:**
+```python
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+
+
+@receiver(
+    signal=post_save,
+    sender=User,
+    dispatch_uid="user_create_profile"
+)
+def criar_perfil(sender, instance, created, **kwargs):
+    if created:
+        print("Criando perfil automaticamente")
+```
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Rodrigo** **L**eite da **S**ilva - **rodrigols89**
