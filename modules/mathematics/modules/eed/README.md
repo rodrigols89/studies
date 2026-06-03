@@ -21,7 +21,12 @@
    - [`Amplitude`](#intro-to-amplitude)
    - [`Variância e Desvio Padrão`](#intro-to-var-std)
    - [`Coeficiente de Variação`](#intro-to-coef-var)
- - [**REFERÊNCIAS**](#ref)
+ - **Análise Gráfica:**
+   - [`Gráfico de Pizza (Pie Chart)`](#intro-to-pie-chart)
+   - [`Gráfico de Barras (Bar Chart)`](#intro-to-bar-chart)
+   - [`Histograma (histogram)`](#intro-to-histogram)
+   - [`Box Plot`](#intro-to-box-plot)
+   - [`Gráfico de Linha (Line Chart)`](#line-chart)
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
@@ -140,14 +145,6 @@
 
 ## `Qual a diferença de um Modelo (equação) Deterministico vs. Estatístico?`
 
-> **Você saberia me responder qual a diferença entre em um *Modelo (Equação) Determinístico* e um *Estatístico*?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
 Em resumo:
 
  - **Um Modelo (Equação) Determinístico é *sempre a mesma coisa*, *não existe uma mudança*, *não existe uma variação*:**
@@ -160,8 +157,6 @@ Em resumo:
  - **Um Modelo (Equação) Estatístico é aquele que por mais que eu queira eu não consigo ter uma equação precisa o tempo inteiro:**
    - Vai ter momentos que nós vamos errar um pouco para cima; vai ter momento que nós vamos errar um pouco para baixo.
    - **NOTE:** Ou seja, um modelo (equação) estatístico é aquele que carrega um `erro`.
-
-</details>
 
 
 
@@ -179,12 +174,6 @@ Em resumo:
 ## `Defina (com exemplos) o que são dados, observações, variáveis e contexto?`
 
 > **Qual a diferença entre *"dados"*, *"observações"*, *"variáveis"* e *"contexto"*?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Em resumo:
 
@@ -205,19 +194,6 @@ Em resumo:
    - É a `lógica desses dados`, sem isso você não consegue interpretar nada!
    - **NOTE:** Tudo é Contexto!
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -234,12 +210,6 @@ Em resumo:
 ## `Popoulação vs. Amostra`
 
 > **Qual a diferença entre *"população"* e *"amostra"*?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Em resumo:
 
@@ -265,19 +235,6 @@ Vejam a tabela abaixo para ficar mais claro:
  - **População** → O **todo** que queremos estudar.
  - **Amostra** → Uma **parte desse todo**, usada quando não é viável estudar todos os elementos.
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -294,12 +251,6 @@ Vejam a tabela abaixo para ficar mais claro:
 ## `Parâmetro vs. Estatística`
 
 > **Qual a diferença entre *"parâmetro"* e *"estatística"*?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Em resumo:
 
@@ -336,19 +287,6 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 ![img](images/parameter-vs-statistic-01.png)  
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -364,14 +302,7 @@ Imagine que queremos saber a média de altura dos estudantes de uma universidade
 
 ## `Medidas de Posição vs. Dispersão`
 
-
 > **Qual a diferença entre medidas de posição e medidas de dispersão?**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Em resumo:
 
@@ -382,7 +313,6 @@ Em resumo:
    - Nos diz quão os dados estão dispersos na régua.
    - *Amplitude*, *Variância*, *Desvio Padrão* e *Coeficiente de Variação*.
 
-</details>
 
 
 
@@ -497,14 +427,6 @@ Em resumo:
 
 ## `Média`
 
-> **Explique a medida de posição: "média".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
 > **A Média nasce com uma missão de *"generalização"*.**
 
 **Como assim?**  
@@ -578,18 +500,6 @@ Por fim, a fórmula da `média` é a seguinte:
 
 ![img](images/intro-to-mean-formula.png)
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -604,14 +514,6 @@ Por fim, a fórmula da `média` é a seguinte:
 <div id="intro-to-median"></div>
 
 ## `Mediana`
-
-> **Explique a medida de posição: "mediana".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 > Se a `média` é o **"ponto de equilíbrio"** da nossa régua, quem poderia me ajudar a saber se esse ponto de equilíbrio está sendo *"puxado/influenciado"* por algum dos extremos?
 
@@ -681,18 +583,6 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 > **NOTE:**  
 > Vejam que nesse caso o número do meio (ponto central) que vai representar a mediana. Nós não precisamos tirar a média do maior valor da primeira caixa (volume) pelo menor valor da segunda caixa (volume).
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -708,15 +598,7 @@ Bem, nesse caso nós utilizamos a seguinte fórmula:
 
 ## `Percentis e Quartis`
 
-> **Explique como *"Percentis"* e *"Quartis"* são utilizados nas medida de posição.**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-Como **percentil** tem haver com **porcentagem (%):**
+O conceito de **percentil** tem haver com **porcentagem (%):**
 
 > É como se nós dividíssemos a nossa amostra de dados em *100 partes (100%)* ou em *por centos (%)*:
 
@@ -773,8 +655,6 @@ Por exemplo, imagine que nós dividimos nossos dados acima em 4 caixas (volumes)
 > **NOTE:**  
 > Uma observação aqui é que os "quartis" nunca vão lhe dizer nada sobre os valores extremos (mínimo ou máximo).
 
-</details>
-
 ---
 
 <div id="percentis-and-quartis-quizz-01"></div>
@@ -809,30 +689,11 @@ A resposta correta é a letra `D`.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 <div id="intro-to-mode"></div>
 
 ## `Moda`
-
-> **Explique a medida de posição: "moda".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Para entender o que é a `moda` imagine que nós temos o estudo de um determinado número de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
@@ -862,7 +723,6 @@ Agora pense comigo:
 > **A `moda` é a média entre dados qualitativos (categóricos).**  
 > Por exemplo, se você tivesse que **"chutar"** o hobby que um novo ciclista mais gosta, a moda nos daria essa **"generalização"**.
 
-</details>
 
 
 
@@ -976,14 +836,6 @@ Agora pense comigo:
 
 ## `Amplitude`
 
-> **Explique a medida de dispersão: "amplitude".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
 A amplitude é definida como sendo a **"diferença entre o maior e o menor valor do conjunto de dados"**.
 
 > **Mas para que serve essa medida?**
@@ -1036,19 +888,6 @@ Bem, vamos refletir sobre essas informações:
    - *Por que?*
      - Porque do menor valor para o maior valor nós estamos falando de 70 km.
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1064,14 +903,6 @@ Bem, vamos refletir sobre essas informações:
 
 ## `Variância e Desvio Padrão`
 
-
-> **Explique as medida de dispersão: "variância" e "desvio padrão".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Para entender sobre a `Variância e Desvio Padrão`, imagine que nós temos os seguintes dados, de ciclistas que percorrem uma distância (em quilômetros) em x horas:
 
@@ -1242,19 +1073,6 @@ Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária d
    - Se o meu desvio padrão é grande é porque os meus pontos estão muito dispersos ao longo da minha régua.
    - **NOTE:** `Lembrando que tudo isso vai depender do contexto`.
 
-</details>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1269,14 +1087,6 @@ Agora mudando de `contexto`, imagina que uma humorista pediu uma faixa etária d
 <div id="intro-to-coef-var"></div>
 
 ## `Coeficiente de Variação`
-
-> **Explique a medida de dispersão: "Coeficiente de Variação".**
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
 
 Os principais objetivos do `Coeficiente de Variação` são:
 
@@ -1306,7 +1116,6 @@ Por fim, a fórmula do `Coeficiente de Variação` é a seguinte:
 
 ![img](images/coef-var-01.png)  
 
-</details>
 
 
 
@@ -1412,34 +1221,182 @@ Por fim, a fórmula do `Coeficiente de Variação` é a seguinte:
 
 
 
-<!--- ( REFERÊNCIA ) --->
+<!--- ( Análise Gráfica ) --->
 
 ---
 
-<div id="ref"></div>
+<div id="intro-to-pie-chart"></div>
 
-## REFERÊNCIA
+## `Gráfico de Pizza (Pie Chart)`
 
- - **Cursos:**
-   - [Licenciatura - Matemática](https://www.faculdadeunica.com.br/graduacao/ead/matematica-3080)
-   - [Entendendo Estatística Divertidamente](https://lp.asn.rocks/eed-a)
+ - O Gráfico de Pizza tem por missão essencial ser desenharo para uma variável categórica (nominal ou ordinal):
+   - Normimal: Ex: `Feminino` e `Masculino`;
+   - Ordinal: Ex: `Primeiro` e `Segundo`.
+ - Cada fatia do gráfico (pizza) vai representar um *nível (possibilidades)* da sua variável categórica.
+
+### `Problemas de níveis (possibilidades) no Gráfico de Pizza (Pie Chart)`
+
+Um problema comum quando estamos nos referindo ao **Gráfico de Pizza (Pie Chart)** é quando nós temos muitos níveis (possibilidades). 
+
+ - Imagine que cada nível é uma peça de roupa;
+ - E cada roupa eu gostaria de uma cor diferente;
+ - Se eu tivesse 10 níveis (possibilidades) eu teria que escolher 10 cores diferentes.
+
+> **E se eu tiver 1000 peças de roupas diferentes eu teria que escolher 1000 cores diferentes?**
+
+**Já imaginou uma pizza sendo dividida em 1000 fatias?**  
+Vocês concordam que as fatias vão ser tão pequenas que vai ser difícil ver cada uma delas?
+
+> **NOTE:**  
+> Existem vários outros problemas no **Gráfico de Pizza (Pie Chart)**, mas o importante é nós sabermos que ele não é muito recomendado no ambiente profissional.
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-bar-chart"></div>
+
+## `Gráfico de Barras (Bar Chart)`
+
+### `Que tipo de variável é utilizado em um Gráfico de Barras (Bar Chart)?`
+
+> **Um *Gráfico de Barras (Bar Chart)* é utilizado em variáveis categóricas (nominal ou ordinal):**
+
+![img](images/bar-chart-01.png)  
+
+> **NOTE:**  
+> Essas barras nunca se encostam, pois cada barra representa uma categoria diferente.
+
+Na verdade elas só se encostam se você desejar **comparar variáveis categóricas diferentes**:
+
+![img](images/bar-chart-02.png)  
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-histogram"></div>
+
+## `Histograma (histogram)`
+
+### `O que representa o eixo-x e y de um Histograma (histogram)?`
+
+ - **Eixo-X**
+   - No **eixo-x** um *Histograma (histogram)* **representa uma variável numérica** (seja ela discreta ou contínua).
+ - **Eixo-Y**
+   - No **eixo-y** nós vamos ter a frequência com qual a(s) variável(s) no eixo-x aparece(m).
+   - **NOTE:** Ou seja, a frequência em qual aquele **intervalo de valores** acontece.
+
+![img](images/histogram-01.png)  
+
+ - Veja que diferente do "Gráfico de Barras (Bar Chart)**, aqui as barras se encostam.
+ - Isso porque as variáveis no *eixo-x* são contínuas (ou discreta).
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-box-plot"></div>
+
+## `Box Plot (Gráfico de Caixa ou Bigode)`
+
+> O gráfico `Box Plot (Gráfico de Caixa ou Bigode)` está intrinsecamente relacionado ao conceito de percentis e quartis.
+
+Para entender melhor um `Box Plot` (Gráfico de Caixa ou Bigode) vamos imaginar que nós temos o seguinte conjunto de dados (em um Box Plot os dados sempre devem está ordenados) representado preços de roupas vendidas:
+
+![img](images/box-plot-ex-01.png)  
+
+Agora, vamos aplicar o conceito de "quartis" a esse conjunto de dados, ou seja, vamos dividir o conjunto de dados em 4 partes:
+
+![img](images/box-plot-ex-02.png)  
+
+> **NOTE:**  
+> Em um Box Plot vamos prestar atenção apenas na marcação dos 3 primeiros quartis.
+
+
+Ótimo, agora vamos definir qual o valor que representa cada um desses quartis + o valor mínimo e máximo:
+
+![img](images/box-plot-ex-03.png)  
+
+Continuando, agora vamos desenhar um gráfico que vai representar uma escala com "preços" no eixo-x:
+
+![img](images/box-plot-ex-04.png)  
+
+Agora, com base nós 3 primeiros quartis que nós pegamos e o gráfico desenhado vamos criar uma caixa (box) para representar o nosso conjunto de dados:
+
+![img](images/box-plot-ex-05.png)  
+
+### `Definindo o bigode (whisker)`
+
+Agora, nós vamos definir os bigodes (whiskers) do `Box Plot`, que são os valores que nós temos no nosso conjunto de dados, mas não estão dentro da caixa (box):
+
+![img](images/box-plot-ex-05-01.png)  
+
+Vejam que no exemplo acima:
+
+ - **Bigode (whisker) esquerdo:**
+   - Como nosso menor valor era 70 e o nosso primeiro quartil (Q1) também era 70, o nosso bigode (whisker) esquerdo também ficou no 70.
+   - **OBS:** Nesse exemplo em específico não foi necessário desenhar um bigode (whisker) para a esquerda, porque nenhum dos nossos valores no conjunto de dados era menor que 70.
+ - **Bigode (whisker) direito:**
+   - Já o bigode (whisker) direto se estendeu até o valor 95, pois era o maior valor do nosso conjunto de dados que não estava dentro da caixa (box).
+
+### `Definindo a "Regra de Outliers" do Box Plot`
+
+Outro conceito importante é o da **"Regra de Outliers"** de um `Box Plot`, que nada mais é que:
+
+ - **O tamanho da caixa (box):**
+   - Tamanho da caixa (box) = `Q3 - Q1 = 20`
+ - **Aumenta em 50%:**
+   - `(Q3 - Q1) * 1.5` = `20 * 1.5` = `30`
+
+![img](images/box-plot-ex-06.png)  
+
+No nosso conjunto de dados não temos nenhum valor que:
+
+ - Seja menor que 40;
+ - Seja maior que 120.
+
+> **NOTE:**  
+> Qualquer valor que fosse menor que 40 ou maior que 120, seria um **outlier** (para esse conjunto de dados).
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="line-chart"></div>
+
+## `Gráfico de Linha (Line Chart)`
+
+> Em breve...
 
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
-
-<details>
-
-<summary></summary>
-
-<br/>
-
-RESPOSTA
-
-```bash
-
-```
-
-![img](images/)  
-
-</details>
