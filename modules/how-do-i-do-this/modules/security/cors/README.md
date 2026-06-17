@@ -1,4 +1,4 @@
-# `O que significa CORS?`
+# O que significa CORS?
 
 ## Conteúdo
 

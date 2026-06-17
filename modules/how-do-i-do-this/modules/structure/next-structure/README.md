@@ -1,4 +1,4 @@
-# `Qual a 📁 estrutura de um projeto Next.js?`
+# Qual a 📁 estrutura de um projeto Next.js?
 
 ## Conteúdo
 

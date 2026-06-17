@@ -1,4 +1,4 @@
-# `Protegendo rotas (páginas) do frontend`
+# Protegendo rotas (páginas) do frontend
 
 ## Conteúdo
 

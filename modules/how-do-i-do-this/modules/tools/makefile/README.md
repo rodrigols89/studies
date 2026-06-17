@@ -1,8 +1,9 @@
-# `O que é um arquivo Makefile?`
+# Makefile
 
 ## Conteúdo
 
- - [`Makefile`](#makefile)
+ - [`Introdução ao arquivo Makefile`](#makefile)
+ - [`Caminhos prontos`](#ready-paths)
 <!---
 [WHITESPACE] = 50
 --->
@@ -51,7 +52,7 @@
 
 <div id="makefile"></div>
 
-## `Makefile`
+## `Introdução ao arquivo Makefile`
 
 > Um `Makefile` é um arquivo usado para automatizar tarefas no projeto.
 
@@ -103,6 +104,75 @@ make run
      - Se existir um arquivo chamado frontserver, o make pode achar que já está "feito".
    - *✅ Com .PHONY:*
      - Ele sempre executa o comando, independente de arquivos com esse nome.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="ready-paths"></div>
+
+## `Caminhos prontos`
+
+> Muitas vezes é interessante rodar os binários dentro do ambiente virtual sem precisar iniciar o mesmo.
+
+Aqui, estão alguns exemplos de caminhos prontos que nós podemos utilizar para rodar direto os binários do nosso projeot sem ativar o ambiente virtual:
+
+```conf
+# --------------- ( ROOT/USERS ) ---------------
+
+ROOT := $(CURDIR)
+
+
+# ----------------- ( PYTHON ) -----------------
+
+VENV := $(ROOT)/.venv
+PYTHON := $(VENV)/bin/python
+PIP := $(PYTHON) -m pip
+UV := $(VENV)/bin/uv
+
+RUFF := $(VENV)/bin/ruff
+PYTEST := $(VENV)/bin/pytest
+COVERAGE := $(VENV)/bin/coverage
+PRECOMMIT := $(VENV)/bin/pre-commit
+```
 
 ---
 
