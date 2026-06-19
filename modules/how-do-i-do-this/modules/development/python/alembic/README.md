@@ -462,6 +462,64 @@ Banco atualizado:
 003 (HEAD)
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="ccumlca"></div>
+
+## `Como criar uma migração limpa (nova) com Alembic`
+
+> Imagine que você ficou perdido e precisa criar uma migração (alteração) de alguma tabela no seu Banco de Dado.
+
+Uma alternativa é seguir o seguinte fluxo:
+
+Vamos começar limpando as versões do Alembic:
+
+```bash
+rm -rf alembic/versions/*
+```
+
+
+Apague as tabelas do banco (você precisa está conectado no banco de dados):
+
+```sql
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+```
+
+Ótimo, agora é cria uma migration nova:
+
+```bash
+alembic revision --autogenerate -m "initial schema"
+```
+
+Por fim, vamos atualizar as nossas migrações para o `head`:
+
+```bash
+alembic upgrade head
+```
+
+> **NOTE:**  
+> Isso gera uma única migration limpa contendo o estado atual dos seus models.
+
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
