@@ -3,9 +3,11 @@
 ## Conteúdo
 
  - [**O que é uma URL no contexto do SQLAlchemy?**](#sqlalchemy-url)
-   - [`Como criar uma classe de load (.env) de uma URL`](#load-url-class)
+   - [`Como criar uma classe (Settings) de load (.env) de uma URL`](#load-url-class)
  - **ORM:**
    - [`Como mapear uma tabela com declarative_base()`](#how-mapping-table)
+ - **Code Snippets:**
+   - [`Como fazer uma consulta de alguém pelo número de telefone`](#cfucdapndt)
 <!---
 [WHITESPACE RULES]
 - "10" Whitespace character.
@@ -60,7 +62,7 @@ dialect+driver://username:password@host:port/database_name
 
 <div id="load-url-class"></div>
 
-## `Como criar uma classe de load (.env) de uma URL`
+## `Como criar uma classe (Settings) de load (.env) de uma URL`
 
 Uma boa prática é criar uma classe que vai ter um atributo de classe que vai representar nossa URL e quem precisar desta URL é só criar uma instância dessa classe:
 
@@ -85,13 +87,6 @@ DATABASE_URL=${DATABASE_DIALECT}://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTG
 
 `config.py`
 ```python
-"""
-Configuration module for application settings.
-
-This module loads environment variables and provides
-centralized configuration for the system.
-"""
-
 import os
 
 from dotenv import load_dotenv
@@ -100,14 +95,6 @@ load_dotenv()
 
 
 class Settings:
-    """
-    Application settings loader.
-
-    Attributes
-    ----------
-    DATABASE_URL : str
-        Database connection string.
-    """
 
     DATABASE_URL: str = os.getenv("DATABASE_URL", "")
 
@@ -178,6 +165,128 @@ class HeroModel(Base):
 
 > **NOTE:**  
 > Uma observação é que para definir o nome da tabela nós criamos uma variável de classe com o nome `__tablename__`.
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="cfucdapndt"></div>
+
+## `Como fazer uma consulta de alguém pelo número de telefone`
+
+```python
+# app/repositories/responsavel_repository.py
+
+from sqlalchemy.orm import Session
+
+from app.models.responsavel import Responsavel
+
+
+def get_responsavel_by_phone(
+    db: Session,
+    phone: str,
+) -> Responsavel | None:
+
+    return (
+        db.query(Responsavel)
+        .filter(
+            Responsavel.telefone == phone
+        )
+        .first()
+    )
+```
+
+<details>
+
+<summary>driver.py</summary>
+
+<br/>
+
+> Aqui, nós vamos entender como essa função é (pode ser) utilizada.
+
+Vamos começar criando (pegando) uma sessão com o nosso banco de dados:
+
+```python
+from app.db.session import SessionLocal
+
+session = SessionLocal()
+```
+
+Agora, vamos chamar a função `get_responsavel_by_phone()` e passar como argumento a sessão + o número de telefone que nós desejamos procurar:
+
+```python
+# driver.py
+
+from app.db.session import SessionLocal
+
+session = SessionLocal()
+
+from app.repositories.responsavel_repository import get_responsavel_by_phone
+
+responsavel = get_responsavel_by_phone(
+    session,
+    phone="558396241663",
+)
+
+print("Type:", type(responsavel))
+print("Resultado:", responsavel)
+```
+
+**OUTPUT:**
+```bash
+Type: <class 'app.models.responsavel.Responsavel'>
+Resultado: <app.models.responsavel.Responsavel object at 0x7626a45089e0>
+```
+
+**NOTE:**  
+Vejam que nós temos um objeto do tipo, `Responsavel`, isso também significa que nossa consulta foi realizada com sucesso.
+
+> **E se a consulta não fosse realizada com sucesso?**
+
+Nós, teríamos a seguinte saída:
+
+**OUTPUT:**
+```bash
+Type: <class 'NoneType'>
+Resultado: None
+```
+
+> **E como acessar os campos da nossa classe (table)?**
+
+Simples, veja a continuação do código abaixo:
+
+```python
+# driver.py
+
+from app.db.session import SessionLocal
+
+session = SessionLocal()
+
+from app.repositories.responsavel_repository import get_responsavel_by_phone
+
+responsavel = get_responsavel_by_phone(
+    session,
+    phone="558396241699",
+)
+
+if responsavel:
+    print("Responsável encontrado:")
+    print(f"ID: {responsavel.id}")
+    print(f"Nome: {responsavel.nome}")
+    print(f"Telefone: {responsavel.telefone}")
+else:
+    print("Responsável não encontrado.")
+```
+
+</details>
 
 ---
 

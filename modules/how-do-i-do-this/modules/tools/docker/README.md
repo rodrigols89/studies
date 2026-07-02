@@ -4,6 +4,8 @@
 
  - [`localhost vs. container name (ex: web, db, redis)`](#localhost-vs-container-name)
  - [`Como rodar scripts (SQL) de inicialização assim que um container subir (pela primeira vez)`](#init-script)
+ - [`Entendendo o mapeamento de portas (host:container)`](#eomdp)
+<!---
 [WHITESPACE RULES]
 - "20" Whitespace character.
 --->
@@ -208,7 +210,126 @@ services:
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="eomdp"></div>
+
+## `Entendendo o mapeamento de portas (host:container)`
+
+Essa é uma dúvida muito importante para entender Docker.
+
+Quando você vê:
+
+```yaml
+ports:
+  - "5433:5432"
+```
+
+o formato é sempre:
+
+```text
+HOST:CONTAINER
+```
+
+Ou seja:
+
+```text
+5433:5432
+│    │
+│    └── Porta dentro do container
+│
+└────── Porta da sua máquina (VPS)
+```
+
+### `Exemplo`
+
+Seu PostgreSQL está rodando **dentro** do container na porta padrão **5432**.
+
+Mas você quer acessá-lo pela VPS usando a porta **5433**.
+
+Então faz:
+
+```yaml
+ports:
+  - "5433:5432"
+```
+
+Visualmente:
+
+```text
+             VPS
+      localhost:5433
+             │
+             ▼
+┌─────────────────────────┐
+│     Container Docker    │
+│                         │
+│ PostgreSQL → porta 5432 │
+└─────────────────────────┘
+```
+
+Quando você faz:
+
+```bash
+psql -h localhost -p 5433
+```
+
+o Docker recebe a conexão e encaminha para:
+
+```text
+container:5432
+```
+
+### `Outro exemplo`
+
+Suponha dois bancos:
+
+**EasyRAG**
+
+```yaml
+ports:
+  - "5432:5432"
+```
+
+**EducaBot**
+
+```yaml
+ports:
+  - "5433:5432"
+```
+
+Ficaria assim:
+
+```text
+VPS
+
+localhost:5432 ─────► EasyRAG PostgreSQL (5432)
+
+localhost:5433 ─────► EducaBot PostgreSQL (5432)
+```
+
+ - Perceba que **os dois PostgreSQL continuam usando a porta 5432 dentro dos containers**.
+ - O que muda é **a porta publicada na VPS**.
+
 ---
 
 **Rodrigo** **L**eite da **S**ilva - **rodrigols89**
-

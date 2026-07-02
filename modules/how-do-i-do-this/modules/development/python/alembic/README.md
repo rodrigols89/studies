@@ -213,7 +213,11 @@ target_metadata = None
 ```python
 # DEPOIS
 from app.db.base import Base
+
+# Para as tabelas serem criadas primeiro, você
+# deve importa-lás (mesmo que não use as).
 from app.models.gestor import Gestor
+from app.models.pedido import Pedido
 
 target_metadata = Base.metadata
 ```
