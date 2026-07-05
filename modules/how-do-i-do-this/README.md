@@ -15,6 +15,8 @@
    - [Postman](modules/tools/postman/README.md)
    - [Docker](modules/tools/docker/README.md)
    - [uv](modules/tools/uv/README.md)
+ - **🛢️ Database:**
+   - [Como criar uma "Entidade Associativa"](modules/database/associative-entity/README.md)
  - **🔐 Security:**
    - [O que significa CORS?](modules/security/cors/README.md)
  - **📁 Structure:**
