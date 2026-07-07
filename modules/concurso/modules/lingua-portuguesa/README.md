@@ -2,7 +2,7 @@
 
 ## Conteúdo
 
- - [Fonologia (Fonética)](modules/fonologia/README.md)
+ - [Fonética (Fonemas, Dígrafos, Encontros Consonantais, Vocálicos). Separação Silábica](modules/fonologia/README.md)
 
 ---
 

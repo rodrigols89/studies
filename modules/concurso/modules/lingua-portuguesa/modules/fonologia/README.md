@@ -1,309 +1,431 @@
-# Fonologia (Fonética)
+# Fonética (Fonemas, Dígrafos, Encontros Consonantais, Vocálicos). Separação Silábica
 
 ## Conteúdo
 
- - **Teoria:**
-   - **Fonemas:**
-     - [](#)
- - **Questões de Concurso:**
-   - **Muito Fáceis:**
-     - [FGV - 2017 - Auxiliar (Pref Salvador)/Desenvolvimento Infantil](#mf-q01)
-     - [FGV - 2014 - Agente de Defesa Civil (Osasco)](#mf-q02)
-     - [FGV - 2014 - Motorista (Osasco)/Transportes Leves](#mf-q03)
-   - **Fáceis:**
-   - **Médias:**
-   - **Dificeis:**
-<!--- 
-[WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
-- Different topic = "50" Whitespace character.
---->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- (  Teoria ) --->
-
----
-
-<div id="oqueeumfonema"></div>
-
-## O que é um Fonema?
-
-> Fonema é o som de cada letra ou dígrafo ().
-
-Por exemplo:
-
-| Palavra | nº de Letras | nº de Fonemas |
-| -------- | --- | --- |
-| Cachorro | 8 | 7 | 
-
-
----
-
-<div id="vogal-vs-semivogal"></div>
-
-## Vogal vs. Semivogal
-
- - **Vogal:**
-   - Uma **"vogal"** é a *"base da sílaba"* e *"soa mais forte nas palavras"*.
- - **Semivogal:**
-   - Já uma **"semivogal"** *"soa mais fraca"* e é *"pronunciada mais rapidamente"*.
-   - Uma **"semivogal"** sempre se apoia em uma **"vogal"**.
-
-Por exemplo:
-
-![img](images/vogal-vs-semivogal.png)  
-
----
-
-
-
-
-
-     - [O que é um Fonema?](#oqueeumfonema)
-     - [Vogal vs. Semivogal](#vogal-vs-semivogal)
-       - DICA: A letra "A" sempre é vogal
-     - [](#)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- (  QdQ/Muito Fáceis ) --->
-
----
-
-<div id="mf-q01"><div>
-
-## FGV - 2017 - Auxiliar (Pref Salvador)/Desenvolvimento Infantil
-
-Assinale a opção que indica a separação silábica errada.
-
- - **(A)** Meados = me-a-dos.
- - **(B)** Passado = pas-sa-do.
- - **(C)** Desesperadamente = des-es-pe-ra-da-men-te.
- - **(D)** Fantasma = fan-tas-ma.
-
-**RESPOSTA:** ACEITEI!  
-A resposta é a letra **"D"**.
-
+ - **Fonemas:**
+   - [`O que é um Fonema, Letra ou Grafema?`](#oqeuflog)
+   - [`Qual a diferença de "vogal" e "semivogal"?`](#qddves)
+ - **Ditongo:**
+   - [`O que é um "ditondo" e com se classifica?`](#oqeudecsc)
+ - **Tritongo:**
+   - [`O que é um "tritongo" e com se classifica?`](#oqeutecsc)
+ - **Hiato:**
+   - [`O que é um "hiato" e com se classifica?`](#oqeuhecsc)
+ - **Encontro Consonantal:**
+   - [`O que é um "Encontro consonantal"?`](#oqeuec)
  - **Dígrafo:**
-   - Um dígrafo é a união de duas letras que representam um único som na língua portuguesa, como "ch" ou "lh".
- - O **"s"** da segunda sílaba só ficaria na primeira se houvesse o dígrafo **"ss"**, como ocorre na palavra **"passado": pas-sa-do**:
-
-**REFERÊNCIA:**  
-[FGV - 2017 - Auxiliar (Pref Salvador)/Desenvolvimento Infantil](https://www.tecconcursos.com.br/questoes/639863)
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="mf-q02"></div>
-
-## FGV - 2014 - Agente de Defesa Civil (Osasco)
-
-Na palavra “fluxo”, a pronúncia da letra X é a mesma que ocorre em:
-
- - **(A)** - vexame;
- - **(B)** - coxinha;
- - **(C)** - tóxico;
- - **(D)** - exame;
- - **(E)** - puxar.
-
-**RESPOSTA:** ACEITEI!  
-A resposta é a letra **"C"**.
-
- - **fluxo::**
-   - Na palavra “fluxo”, a letra “x” tem som de ks: f-l-u-k-s-o.
-   - Nesse caso, temos 5 letras (f, l, u, x, o), mas 6 fonemas (f, l, u, k, s, o).
- - **tóxico:**
-   - Na palavra “tóxico”, a letra X tem som de ks: t-ó-k-s-i-c-o.
-   - Nesse caso, temos 6 letras (t, o, x, i, c, o), mas 7 fonemas (t, o, k, s, i, c, o).
-
-**REFERÊNCIA:**  
-[FGV - 2014 - Agente de Defesa Civil (Osasco)](https://www.tecconcursos.com.br/questoes/281928)
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="mf-q03"></div>
-
-## FGV - 2014 - Motorista (Osasco)/Transportes Leves
-
-A palavra abaixo cuja separação silábica está correta é:
-
- - **(A)** - his-tó-ria;
- - **(B)** - té-cni-cas;
- - **(C)** - pes-soas;
- - **(D)** - se-gu-ra-nça;
- - **(E)** - de-ter-mi-na-sse.
-
-**RESPOSTA:** ACEITEI!  
-Em "história", o acento tônico recai na penúltima sílaba, sendo quanto à tonicidade um vocábulo paroxítono. Silabicamente, "história" distribui-se da seguinte maneira: his - tó - ria.
-
-**REFERÊNCIA:**  
-[FGV - 2014 - Motorista (Osasco)/Transportes Leves](https://www.tecconcursos.com.br/questoes/282369)
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="mf-q04"></div>
-
-## FGV - 2014 - Agente Funerário (Osasco)
-
-No vocábulo “exigências”, a pronúncia da letra **"X"** corresponde a **"Z"**; a palavra com essa letra que tem sua pronúncia identificada corretamente é:
-
- - **(A)** - tóxico (=CH);
- - **(B)** - sexual (=SS);
- - **(C)** - texto (=CS);
- - **(D)** - externo (=CS);
- - **(E)** - vexame (CH).
-
-**RESPOSTA:** ERREI!  
-Não prestei atenção na questão, onde cada resposta tinha uma pronuncia relacionada. Por exemplo:
-
- - **tóxico (=CH):** ERRADO!
-   - Número de letras: 5 (t-e-x-t-o)
-   - Número de fonemas: 6 (/t-e-k-s-t-o/)
- - **sexual (=SS):** ERRADO!
-   - Número de letras: 7 (s-e-x-u-a-l)
-   - Número de fonemas: 6 (/s-e-k-s-u-aʊ̯/
-
-
-
- - **:** Não tem som de **"SS"**, mas sim de **"k"** e **"s"**.
- - **texto (=CS):** Tem som de **""**.
-
- - **(B)** - sexual (=SS);
- - **(C)** - texto (=CS);
- - **(D)** - externo (=CS);
- - **(E)** - vexame (CH).
-
-
-vexame (CH). == Correta.
-
-
-**REFERÊNCIA:**  
-[FGV - 2014 - Agente Funerário (Osasco)](https://www.tecconcursos.com.br/questoes/282866)
-
-
-
-
-
+   - [`O que é um "dígrafo"?`](#oqeu-digrafo)
+ - **Dífono:**
+   - [`O que é um "dífono"?`](#oqeu-difono)
+   - [`Quais os sons (fonemas) da letra "x"?`](#qosfdlx)
+ - **Separação Silábica:**
+   - [`Regras de separação silábica`](#regras-de-separacao)
+ - **prosódia:**
+   - [`O que é "prosódia"?`](#intro-to-prosodia)
+ - **Ortoépia:**
+   - [`O que é "ortoépia"?`](#intro-to-ortoepia)
 <!---
-
-
----
-
-<div id=""></div>
-
-## x
-
-**RESPOSTA:**  
-???
-
-
-**REFERÊNCIA:**  
-[]()
-
-
+[WHITESPACE RULES]
+- "20" Tópicos diferentes.
+- "5" Mesmo tópico.
 --->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
-**Rodrigo** **L**eite da **S**ilva
+<div id="oqeuflog"></div>
+
+## `O que é um Fonema, Letra ou Grafema?`
+
+ - **1. Fonema:** É o elemento sonoro mais simples da língua, **o que se ouve**.
+   - Ex.: **mala** — 4 fonemas: /m/ /a/ /l/ /a/
+ - **2. Letra ou Grafema:** Não pode ser confundida com fonema, pois ela é só uma representação gráfica de um som e o fonema é aquilo que se ouve.
+   - Ex.: **carro** apresenta:
+     - 5 letras: c-a-r-r-o (o que se vê) e
+     - 4 fonemas: /K/ /a/ /r/ /ô/ (o que se ouve).
+
+
+
+
+
+---
+
+<div id="qddves"></div>
+
+## `Qual a diferença de "vogal" e "semivogal"?`
+
+- **Vogal:**
+    - Uma **"vogal"** é a *"base da sílaba"* e “*soa mais forte nas palavras"*.
+- **Semivogal:**
+    - Uma **"semivogal"** *"soa mais fraca"* e é *"pronunciada mais rapidamente"*.
+    - Uma **"semivogal"** sempre se apoia em uma **"vogal"**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeudecsc"></div>
+
+## `O que é um "ditondo" e com se classifica?`
+
+![img](images/oqeudecsc-01.jpg)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeutecsc"></div>
+
+## `O que é um "tritongo" e com se classifica?`
+
+![img](images/oqeutecsc-01.jpg)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeuhecsc"></div>
+
+## `O que é um "hiato" e com se classifica?`
+
+![img](images/oqeuhecsc-01.jpg)  
+
+|                            |                             |                           |
+| -------------------------- | --------------------------- | ------------------------- |
+| **cair:** ca-ir            | **sair:** sa-ir             | **juiz:** ju-iz           |
+| **ruim:** ru-im            | **raiz:** ra-iz             | **rainha:** ra-i-nha      |
+| **bainha:** ba-i-nha       | **gratuito:** gra-tu-i-to   | **fluido:** flu-i-do      |
+| **construir:** cons-tru-ir | **destruir:** des-tru-ir    | **possuir:** pos-su-ir    |
+| **reunir:** re-u-nir       | **coordenar:** co-or-de-nar | **cooperar:** co-o-pe-rar |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeuec"></div>
+
+## `O que é um "Encontro consonantal"?`
+
+> Encontro consonantal é o **encontro de sons consonantais dentro da palavra**.
+
+Podem ser:
+
+- Pertencem à mesma sílaba, ex.: pro — ble — ma.
+- Pertencem a sílabas diferentes: dig — no.
+
+> **ATENÇÃO!**  
+> Encontro consonantal **não é** o encontro de duas letras consoantes, mas de **dois sons consonantais.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeu-digrafo"></div>
+
+## `O que é um "dígrafo"?`
+
+**Dígrafo: duas letras → um fonema**  
+Ca**ch**o**rr**o, **Que**ijo, **Gue**to, **Qui**tanda, E**xc**e**ss**o.
+
+Os **dígrafos** podem ser classificado em:
+
+ - **CONSONANTAL:**
+   - ch, lh, nh, rr, ss, sc, sç, xc, xs, qu, gu
+ - **VOCÁLICO:**
+   - am, an, em, en, im, in, om, on, um, un
+
+**ATENÇÃO!**  
+Os **grupos GU e QU geralmente formam dígrafos quando o U não é pronunciado.**
+
+Por exemplo:
+
+ - **QUITANDA:**
+   - Por exemplo, em “quitanda”, ao pronunciar a palavra, percebe-se que o som do U do grupo QU não aparece.
+   - O som que se ouve é apenas o do K, portanto, “QU” representa um único fonema, configurando um dígrafo.
+   - Se a palavra fosse escrita de forma fonética, seria algo como “kitãda”, eliminando o U, já que ele não tem som.
+ - **TRANQUILO:**
+   - Já em “tranquilo”, a situação é diferente. Ao pronunciar a palavra com atenção, nota-se que o U tem som.
+   - Fala-se claramente “trãkuilo”.
+   - Aqui, tanto o U quanto o I são audíveis.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqeu-difono"></div>
+
+## `O que é um "dífono"?`
+
+**Dífono: uma letra → dois fonemas**  
+Tá**x**i, E**x**ato, Tóra**x**, Sexo, Fi**x**o
+
+ - **CONSONANTAL:**
+   - x → /ks/, /gz/, /ss/
+ - **EXEMPLOS:**
+   - táxi → /k/ + /s/
+   - exato → /g/ + /z/
+   - sexo → /k/ + /s/
+   - tórax → /k/ + /s/
+   - fixo → /k/ + /s/
+
+
+
+
+
+---
+
+<div id="qosfdlx"></div>
+
+## `Quais os sons (fonemas) da letra "x"?`
+
+Costuma-se atribuir ao "x" os seguintes sons/fonemas (considerando também as palavras em que o "x" não tem som algum):
+
+- (1) representa duas consoantes (/ks/): **táxi, conexão, maxilar**.
+- (2) representa o dígrafo /ss/: **máximo, sintaxe, próximo**.
+- (3) representa a consoante /z/: **inexorável, exame, êxito**.
+- (4) representa o dígrafo /ch/: **abacaxi, paixão, xarope**.
+- (5) representa a consonante /s/: **exposição, êxtase, excluído.**
+- (6) tem apenas valor etimológico; não representa fonema algum: **exsudação** (/esu…/), **exceção** (/ese…/), **exsicar** (/esi…).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="regras-de-separacao"></div>
+
+## `Regras de separação silábica`
+
+> Aqui estão algumas regras de **"separação silábica"**.
+
+### `SEPARAM-SE`
+
+- **HIATO:**
+    - co-o-pe-rar;
+- **ENCONTRO CONSONANTAL IMPERFEITO:**
+    - dig-no
+    - ca-rac-te-ri-za-do
+- **DÍGRAFOS:**
+    - rr, ss, sc, sç, xc, xs
+
+### `NÃO SE SEPARAM`
+
+- **DITONGO:**
+    - coi-sa
+- **TRITONGO**
+    - i-guais
+- **ENCONTRO CONSONANTAL PERFEITO:**
+    - pro-va
+- **DÍGRAFOS:**
+    - ch, lh, nh, gu, qu, am, em, im, om, an, en, in, on, um
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-prosodia"></div>
+
+## `O que é "prosódia"?`
+
+A **prosódia** é a parte da gramática que `estuda a acentuação tônica correta das palavras`.
+
+| **Prosódia (sílaba tônica correta → errada)** |
+| --- |
+| ru-**bri**-ca → *NÃO* **rú**-bri-ca |
+| re-**cor**-de → *NÃO* **ré**-cor-de |
+| fi-lan-**tró**-po → *NÃO* fi-**lân**-tro-po |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="intro-to-ortoepia"></div>
+
+## `O que é "ortoépia"?`
+
+A **ortoépia** é a parte da gramática que `estuda a pronúncia correta das palavras`.
+
+| **Ortoépia (pronúncia correta)** |
+| --- |
+| **mortadela** → *NÃO* “mortandela” |
+| **beneficente** → *NÃO* “beneficiente” |
+| **privilégio** → *NÃO* “previlégio” |
+| **lagartixa** → *NÃO* “largatixa” |
+| **estupro** → *NÃO* “estrupo” |
+| **prazeroso** → *NÃO* “prazeiroso” |
+| **paralelepípedo** → *NÃO* “paralepípedo” |
+| **frustrado** → *NÃO* “frustado” |
+
+---
+
+**Rodrigo L**eite da **S**ilva - **rodrigols89**
