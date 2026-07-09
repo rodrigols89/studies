@@ -9,6 +9,7 @@
 > A ***Aritmética*** é o ramo da Matemática que estuda os números e as operações básicas realizadas com eles — *adição*, *subtração*, *multiplicação* e *divisão* —, bem como suas propriedades e relações. **Seu foco principal está nos cálculos numéricos e na manipulação de quantidades**.
 
  - [Adição, Subtração, Multiplicação e Divisão](modules/aritmetica/add-sub-mult-div/README.md)
+ - [Teoria dos Números](modules/aritmetica/number-theory/README.md)
 
 ---
 
