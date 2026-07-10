@@ -17,6 +17,9 @@
 
 > A ***Álgebra*** é o ramo da Matemática que `utiliza símbolos e letras para representar números` e quantidades desconhecidas, chamadas de variáveis. Ela estuda *expressões algébricas*, *equações*, *inequações*, *funções* e as *relações entre grandezas*, permitindo generalizar propriedades e padrões matemáticos.
 
+ - [Teoria dos Conjuntos](modules/algebra/set-theory/README.md)
+ - [Expressões Algébricas](modules/algebra/algebraic-expressions/README.md)
+
 ---
 
 ## Geometria
