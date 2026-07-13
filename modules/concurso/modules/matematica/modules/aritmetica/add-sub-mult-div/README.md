@@ -455,9 +455,8 @@ Para entender a **"Regra do zero no quociente"** imagine que nós temos a seguin
 
 ![img](images/elevator-rule-00.png)  
 
-E agora? Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
-
-> **Como resolver agora?**
+**E agora?**  
+Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 
 ![img](images/elevator-rule-01.png)  
 
@@ -476,11 +475,9 @@ E agora? Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 
 ## Como fazer divisão com números decimais?
 
-Como fazer divisão de números que contenham casas decimais, por exemplo:
-
 ![img](images/div-w-decimals-00.png)  
 
-![img](images/div-w-decimals-01.jpeg)  
+![img](images/div-w-decimals-01.png)  
 
 
 

@@ -2,6 +2,19 @@
 
 ## Conteúdo
 
+- **Dividores:**
+  - [O que são divisores de um número?](#divisors)
+  - [Quando um número é divisível por "2"?](#divisible-by-2)
+  - [Quando um número é divisível por "3"?](#divisible-by-3)
+  - [Quando um número é divisível por "5"?](#divisible-by-5)
+  - [Quando um número é divisível por "6"?](#divisible-by-6)
+  - [Quando um número é divisível por "9"?](#divisible-by-9)
+- **Dividores:**
+  - [O que são multiplos de um número?](#multiples)
+- **Números Primos:**
+  - [O que são números primos?](#prime-numbers)
+  - [O número "1" é primo?](#prime-number-1)
+  - [Podemos formar qualquer número natural com a multiplicação de primos?](#prime-multiplication)
 - **Fatoração "numérica"**
   - [`O que é uma "fatoração numérica" e quais problemas ela resolve?`](#numerical-factorization)
 - **MMC (Mínimo Multiplo Comum):**
@@ -23,6 +36,623 @@
 --->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Dividores ) --->
+
+---
+
+<div id="divisors"></div>
+
+## O que são divisores de um número?
+
+**📌 Definição formal:**  
+Os divisores de um número (por exemplo, 12) são todos os números pelos quais podemos dividi-lo de forma que o resto da divisão seja zero (1, 2, 3, 4, 6, 12).
+
+**Exemplo 01:** Divisores de 12  
+
+ - ✅ 12 ÷ 1 = 12 *(resto/mod 0)*
+ - ✅ 12 ÷ 2 = 6 *(resto/mod 0)*
+ - ✅ 12 ÷ 3 = 4 *(resto/mod 0)*
+ - ✅ 12 ÷ 4 = 3 *(resto/mod 0)*
+ - ✅ 12 ÷ 6 = 2 *(resto/mod 0)*
+ - ✅ 12 ÷ 12 = 1 *(resto/mod 0)*
+
+> **NOTE:**  
+> Lembrando que esse processo *inicia dividindo por 1* e *termina dividindo por ele mesmo*.
+
+Logo, os divisores de **12** são:
+
+```bash
+{1, 2, 3, 4, 6, 12}
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="divisible-by-2"></div>
+
+## Quando um número é divisível por "2"?
+
+> Um número é divisível por "2" quando o último dígito (algarismo) é par (0, 2, 4, 6, 8):
+
+Por exemplo:
+
+ - 4**0** ÷ 2 = 20
+ - 25**2** ÷ 2 = 126
+ - 48**6** ÷ 2 = 243
+ - 127**8** ÷ 2 = 639
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="divisible-by-3"></div>
+
+## Quando um número é divisível por "3"?
+
+> Um número é divisível por "3" quando a soma dos digitos (algarismos) é múltiplo de 3.
+
+Por exemplo:
+
+```bash
+36 = 3 + 6 = 9 (múltiplo de 3 porque 3x3 = 9)
+216 = 2 + 1 + 6 = 9 (múltiplo de 3 porque 3x3 = 9)
+468 = 4 + 6 + 8 = 18 (múltiplo de 3 porque 3x6 = 18)
+1278 = 1 + 2 + 7 + 8 = 18 (múltiplo de 3 porque 3x6 = 18)
+```
+
+
+
+
+
+
+
+
+
+---
+
+<div id="divisible-by-5"></div>
+
+## Quando um número é divisível por "5"?
+
+> Um número é divisível por "5" quando o último digito (algarismo) é **0 ou (∨) 5**.
+
+Por exemplo:
+
+ - 2**5** ÷ 5 = 5
+ - 62**5** ÷ 5 = 125
+ - 30**0** ÷ 5 = 60
+ - 48**0** ÷ 5 = 96
+
+
+
+
+
+
+
+
+
+---
+
+<div id="divisible-by-6"></div>
+
+## Quando um número é divisível por "6"?
+
+> Um número é divisível por "6" quando é divisível por **"2" e (∧) "3"** ao mesmo tempo.
+
+Por exemplo:
+
+```bash
+1278 = 1 + 2 + 7 + 8 = 18 (múltiplo de 3 porque 3x6 = 18)
+1278 = o último dígito é um número par.
+1278 ÷ 6 = 213
+
+156 = 1 + 5 + 6 = 12 (múltiplo de 3 porque 3x4 = 12)
+156 = o último dígito é um número par.
+156 ÷ 6 = 26
+
+288 = 2 + 8 + 8 = 18 (múltiplo de 3 porque 3x6 = 18)
+288 = o último dígito é um número par.
+288 ÷ 6 = 48
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="divisible-by-9"></div>
+
+## Quando um número é divisível por "9"?
+
+> Um número é divisível por "9" quando a soma dos seus dígitos (algarismos) é múltiplo de 9.
+
+Por exemplo:
+
+```bash
+216 = 2 + 1 + 6 = 9 (múltiplo de 3 porque 9x1 = 9)
+4068 = 4 + 0 + 6 + 8 = 18 (múltiplo de 3 porque 9x2 = 18)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Multiplos ) --->
+
+---
+
+<div id="multiples"></div>
+
+## O que são multiplos de um número?
+
+**📌 Definição formal:**  
+Um número é múltiplo de outro quando ele é o resultado de uma multiplicação por esse número.
+
+Por exemplo, para saber os múltiplos de 6, fazemos:
+
+ - ✅ 6 × 0 = **0 (multiplo de 6)**
+ - ✅ 6 × 1 = **6 (multiplo de 6)**
+ - ✅ 6 × 2 = **12 (multiplo de 6)**
+ - ✅ 6 × 3 = **18 (multiplo de 6)**
+ - ✅ 6 × 4 = **24 (multiplo de 6)**
+ - ✅ 6 × 5 = **30 (multiplo de 6)**
+ - ✅ 6 × 6 = **36 (multiplo de 6)**
+ - ✅ 6 × 7 = **42 (multiplo de 6)**
+ - ✅ 6 × 8 = **48 (multiplo de 6)**
+ - ✅ 6 × 9 = **54 (multiplo de 6)**
+ - ✅ 6 × 10 = **60 (multiplo de 6)**
+
+> **NOTE:**  
+> Eles nunca terminam, porque podemos sempre multiplicar o 6 por números maiores.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Números Primos ) --->
+
+---
+
+<div id="prime-numbers"></div>
+
+## O que são números primos?
+
+> Para um número se considerado primo ele **só pode ser divisível por 1 e por ele mesmo**.
+
+Por exemplo:
+
+```bash
+    2                 3                 5
+   / \               / \               / \
+  ÷   ÷             ÷   ÷             ÷   ÷
+ /     \           /     \           /     \
+1       2         1       3         1       5
+|       |         |       |         |       |
+2       1         3       1         5       1
+
+
+
+    7                 11               13
+   / \               /  \             /  \
+  ÷   ÷             ÷    ÷           ÷    ÷
+ /     \           /      \         /       \
+1       7         1       11       1        13
+|       |         |        |       |         |
+7       1         11       1       13        1
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="prime-number-1"></div>
+
+## O número "1" é primo?
+
+Um número primo deve ter dois divisores **distintos**:
+
+ - 1.
+ - e ele mesmo.
+
+Agora observe:
+
+> O número 1 só tem um divisor, que é ele mesmo.
+
+#### `E por que essa definição é importante?`
+
+É uma questão de coerência matemática.  
+Se o número 1 fosse considerado primo, quebraria várias regras e teoremas.
+
+#### `✅ Exemplo: Teorema Fundamental da Aritmética`
+
+> Todo número inteiro maior que 1 pode ser escrito como produto de primos únicos (fatoração única).
+
+Se o 1 fosse primo, por exemplo:
+
+```bash
+6 = 2 × 3
+```
+
+Mas também: 
+
+```bash
+6 = 1 × 2 × 3
+
+ou
+
+6 = 1 × 1 × 2 × 3, etc...
+```
+
+**🔁 Isso geraria infinitas fatorações diferentes!**  
+😵‍💫 A matemática perderia a unicidade da fatoração.
+
+#### `🧮 Então o número 1 é o quê?`
+
+> O número **1** é uma **“unidade”** — um número neutro da multiplicação.
+
+Ele não é primo, nem composto, e tem papel especial:
+
+```bash
+1 × n = n
+```
+
+Ele não contribui para a estrutura de fatores primos.
+
+#### `✅ Conclusão`
+
+ - O número 1 não é considerado primo porque não tem dois divisores distintos.
+ - Além disso, chamá-lo de primo quebraria regras fundamentais da matemática, como a fatoração única.
+
+
+
+
+
+
+
+
+
+---
+
+<div id="prime-multiplication"></div>
+
+## Podemos formar qualquer número natural com a multiplicação de primos?
+
+> Sim, nós podemos formar qualquer número natural com a multiplicação de números primos.
+
+Por exemplo:
+
+```bash
+15 pode ser formado com a multiplicação dos seguintes números primos:
+3 x 5 = 15
+
+50 pode ser formado com a multiplicação dos seguintes números primos:
+2 x 5 x 5 = 50
+```
 
 
 
@@ -162,7 +792,7 @@ Ou seja, 60 também pode ser escrito como:
 
 Os problemas que podem ser resolvidos por fatoração são os seguintes:
 
- - Descobrir quantos (número total, não quais são) divisores um número tem;
+> **Descobrir quantos (número total, não quais são) divisores um número tem.**
 
 ### `Exemplo-01: Quantos divisores tem o número 60?`
 
@@ -285,7 +915,7 @@ Os problemas que podem ser resolvidos por fatoração são os seguintes:
 
 ## `O que é "MMC (Mínimo Multiplo Comum)" e quais problemas ele resolve?`
 
-> O **MMC (Mínimo Múltiplo Comum)** de dois ou mais números é o menor número, diferente de zero, que é múltiplo comum de todos eles ao mesmo tempo.
+O **MMC (Mínimo Múltiplo Comum)** de dois ou mais números é o menor número, diferente de zero, que é múltiplo comum de todos eles ao mesmo tempo.
 
 Por exemplo:
 
@@ -294,11 +924,12 @@ Por exemplo:
  - **Múltiplos de 5:**
    - 5, 10, 15, **20**, 25, 30, ...
 
+**OBSERVAÇÃO:**  
 Aqui o nesse exemplo o *mínimo (menor) múltiplo comum* entre **4** e **5** é o número **20**.
 
 ### `Quais tipos de problemas são resolvidos com MMC?`
 
-> Usamos MMC entre números quando tiver problemas de *encontro (sincronização)*.
+**Usamos MMC entre números quando tiver problemas de *encontro (sincronização)*.**
 
 Por exemplo:
 
@@ -447,7 +1078,7 @@ A primeira coisa que nós precisamos fazer é idenfiticar as **variáveis/consta
  - **Problema:**
    - *Menor número inteiro de três algarismos divisível por 4, 8 e 10?*
 
-Aqui a primeira coisa que nós vamos fazer é tirar de **4**, **8** e **10**:
+Aqui a primeira coisa que nós vamos fazer é tirar o `MMC` de **4**, **8** e **10**:
 
 ```bash
 4   8   10 | 2
@@ -595,7 +1226,7 @@ Opção **"D"**.
 
 ## `O que é "MDC (Máximo Divisor Comum)" e quais problemas ele resolve?`
 
-> O MDC entre dois ou mais números é o maior número inteiro positivo que divide todos eles ao mesmo tempo, ou seja, o maior divisor comum.
+O **MDC (Máximo Divisor Comum)** entre dois ou mais números é o maior número inteiro positivo que divide todos eles ao mesmo tempo, ou seja, o maior divisor comum.
 
 Por exemplo:
 
@@ -604,11 +1235,12 @@ Por exemplo:
  - **Divisores de 18:**
    - 1, 2, 3, **6**, 9, 18
 
+**OBSERVAÇÃO:**  
 Aqui o nesse exemplo o *máximo divisor comum* entre **12** e **18** é o número **6**.
 
 ### `Quais tipos de problemas são resolvidos com MDC?`
 
-> Usamos MDC quando desejamos **dividir algo em partes iguais (sem sobras)**.
+Usamos MDC quando desejamos **dividir algo em partes iguais (sem sobras)**.
 
 Por exemplo:
 
@@ -643,7 +1275,7 @@ Por exemplo:
 
 ### `Redução de frações com MDC`
 
-> Outro caso comum de utilização de **MDC** é quando temos que reduzir (simplificar) uma fração em sua forma mais simples.
+Outro caso comum de utilização de **MDC** é quando temos que reduzir (simplificar) uma fração em sua forma mais simples.
 
 Por exemplo:
 
@@ -656,8 +1288,6 @@ MDC(18, 24) = 6
 Aplicando o MDC de **18** e **24**, que é **6**, nós temos que podemos reduzir (simplificar) a fração para:
 
 $\frac{18 \div 6}{24 \div 6} = \frac{3}{4}$
-
-</details>
 
 
 
