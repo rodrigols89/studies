@@ -26,6 +26,8 @@
 
 > A ***Geometria*** é o ramo da Matemática que **estuda as formas, os tamanhos, as posições e as propriedades das figuras no plano e no espaço**. Ela investiga *pontos*, *retas*, *planos*, *ângulos*, *figuras planas* e *sólidos geométricos*, permitindo descrever, medir e compreender as relações espaciais e as características das formas.
 
+ - [Geometria Plana](modules/geometria/geometria-plana/README.md)
+
 ---
 
 ## Trigonometria
