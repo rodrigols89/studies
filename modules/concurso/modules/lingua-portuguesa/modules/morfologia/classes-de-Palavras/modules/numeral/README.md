@@ -2,8 +2,7 @@
 
 ## Conteúdo
 
-- [`O que é um numeral?`](#what-is-numeral)
-- [`Como identificar um numeral?`](#how-to-identify-a-numeral)
+- [`O que e como identificar um numeral?`](#what-is-numeral)
 <!---
 [WHITESPACE RULES]
 10 Whitespace character.
@@ -23,58 +22,19 @@
 
 <div id="what-is-numeral"></div>
 
-## `O que é um numeral?`
+## `O que e como identificar um numeral?`
 
 **Numeral** é a palavra que `indica quantidade`, `ordem`, `multiplicação`, `fração` ou `conjunto numérico`, **relacionando-se, geralmente, a um substantivo**.
 
 Por exemplo:
 
-- **Quantidade (Cardinais):**
-  - Um
-  - Dois
-  - Dez
-  - Cem
-  - Mil
-- **Ordem (Ordinais):**
-  - Primeiro
-  - Segundo
-  - Terceiro
-  - Décimo
-  - Centésimo
-- **Multiplicação (Multiplicativos):**
-  - Dobro
-  - Triplo
-  - Quádruplo
-  - Quíntuplo
-  - Sêxtuplo
-- **Fração (Fracionários):**
-  - Meio
-  - Terço
-  - Quarto
-  - Quinto
-  - Décimo
-- **Conjunto numérico (Coletivos):**
-  - Par
-  - Dezena
-  - Dúzia
-  - Centena
-  - Milhar
+- **Quantidade (Cardinais):** Um, Dois, Dez, Cem, Mil
+- **Ordem (Ordinais):** Primeiro, Segundo, Terceiro, Décimo, Centésimo
+- **Multiplicação (Multiplicativos):** Dobro, Triplo, Quádruplo, Quíntuplo, Sêxtuplo
+- **Fração (Fracionários):** Meio, Terço, Quarto, Quinto, Décimo
+- **Conjunto numérico (Coletivos):** Par, Dezena, Dúzia, Centena, Milhar
 
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="how-to-identify-a-numeral"></div>
-
-## `Como identificar um numeral?`
+### `Como identificar um numeral?`
 
 Para identificar um numeral, verifique se a palavra:
 

@@ -2,9 +2,8 @@
 
 ## Conteúdo
 
-- [`O que é um pronome?`](#what-is-pronoun)
-- [`Tipos de pronomes`](#types-of-pronouns)
-- [`Como identificar um pronome?`](#how-to-identify-a-pronoun)
+- [`O que e como identificar um pronome?`](#what-is-pronoun)
+- [`Pronomes de tratamento`](#pronomes-de-tratamento)
 <!---
 [WHITESPACE RULES]
 10 Whitespace character.
@@ -30,64 +29,15 @@
 
 Por exemplo:
 
-- **Pessoais:**
-  - Eu
-  - Tu
-  - Ele
-  - Nós
-  - Eles
-- **Possessivos:**
-  - Meu
-  - Tua
-  - Seu
-  - Nossa
-  - Deles
-- **Demonstrativos:**
-  - Este
-  - Esse
-  - Aquele
-  - Isto
-  - Aquilo
-- **Indefinidos:**
-  - Alguém
-  - Ninguém
-  - Tudo
-  - Algo
-  - Vários
-- **Interrogativos:**
-  - Quem
-  - Qual
-  - Quais
-  - Quanto
-  - Quantos
-- **Relativos:**
-  - Que
-  - Quem
-  - O qual
-  - Cujo
-  - Onde
-- **De tratamento:**
-  - Você
-  - Senhor
-  - Senhora
-  - Vossa Excelência
-  - Vossa Senhoria
+- **Pessoais:** Eu, Tu, Ele, Nós, Eles
+- **Possessivos:** Meu, Tua, Seu, Nossa, Deles
+- **Demonstrativos:** Este, Esse, Aquele, Isto, Aquilo
+- **Indefinidos:** Alguém, Ninguém, Tudo, Algo, Vários
+- **Interrogativos:** Quem, Qual, Quais, Quanto, Quantos
+- **Relativos:** Que, Quem, O qual, Cujo, Onde
+- **De tratamento:** Você, Senhor, Senhora, Vossa Excelência, Vossa Senhoria
 
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="how-to-identify-a-pronoun"></div>
-
-## `Como identificar um pronome?`
+### `Como identificar um pronome?`
 
 Para identificar um pronome, verifique se a palavra:
 
@@ -96,61 +46,6 @@ Para identificar um pronome, verifique se a palavra:
 - Retoma um substantivo já mencionado.
 - Refere-se às pessoas do discurso.
 - Indica `posse`, `demonstração`, `indefinição`, `pergunta` ou `relação entre orações`.
-
-### `Exemplos`
-
-| Expressão | Tipo | Justificativa |
-|-----------|------|---------------|
-| **Me** avisaram ontem. | Pessoal (oblíquo átono) | Substitui o falante e funciona como complemento verbal sem preposição. |
-| Entreguei o livro **lhe**. | Pessoal (oblíquo átono) | Substitui a pessoa a quem algo é entregue (objeto indireto). |
-| Trouxeram **mim** para a reunião. | Pessoal (oblíquo tônico) | É usado após preposição para representar a 1.ª pessoa. |
-| O presente é para **ti**. | Pessoal (oblíquo tônico) | Representa a 2.ª pessoa após preposição. |
-| **Consigo** trouxe os documentos. | Pessoal (reflexivo) | Refere-se ao próprio sujeito após a preposição **com**. |
-| **Si** mesmo tomou a decisão. | Pessoal (reflexivo) | Refere-se ao próprio sujeito da oração. |
-| **Conosco** viajaram os professores. | Pessoal (oblíquo tônico) | Representa a 1.ª pessoa do plural após preposição. |
-| **Convosco** irei amanhã. | Pessoal (oblíquo tônico) | Representa a 2.ª pessoa do plural após preposição. |
-| **Se** arrependeu do erro. | Pessoal (oblíquo reflexivo) | Indica que a ação recai sobre o próprio sujeito. |
-| O diretor chamou-**o**. | Pessoal (oblíquo átono) | Substitui um substantivo masculino como objeto direto. |
-| **Nosso** objetivo foi alcançado. | Possessivo | Indica posse em relação à 1.ª pessoa do plural. |
-| **Vosso** pedido foi aceito. | Possessivo | Indica posse em relação à 2.ª pessoa do plural. |
-| **Minha** resposta está correta. | Possessivo | Indica que algo pertence ao falante. |
-| **Teus** amigos chegaram. | Possessivo | Indica posse em relação ao interlocutor. |
-| A decisão é **nossa**. | Possessivo | Indica pertencimento ao grupo do falante. |
-| A responsabilidade é **vossa**. | Possessivo | Indica pertencimento ao grupo do interlocutor. |
-| Este livro é **seu**. | Possessivo | Indica posse, embora possa gerar ambiguidade quanto ao possuidor. |
-| A vitória foi **dela**. | Possessivo | Indica posse utilizando uma locução pronominal. |
-| O mérito é **dele**. | Possessivo | Indica posse de forma explícita, evitando ambiguidades. |
-| As mochilas são **deles**. | Possessivo | Indica posse pertencente a várias pessoas. |
-| **Este** assunto será cobrado na prova. | Demonstrativo | Indica algo próximo de quem fala ou do momento presente. |
-| **Esse** argumento não convence. | Demonstrativo | Indica algo próximo de quem ouve ou já mencionado. |
-| **Aquele** edifício foi demolido. | Demonstrativo | Indica algo distante de quem fala e de quem ouve. |
-| **Isto** merece atenção. | Demonstrativo | Refere-se a algo ainda não especificado ou ao momento presente. |
-| **Isso** não faz sentido. | Demonstrativo | Retoma uma ideia já mencionada anteriormente. |
-| **Aquilo** parecia impossível. | Demonstrativo | Refere-se a algo distante ou anteriormente mencionado. |
-| Entre João e Pedro, prefiro **este**. | Demonstrativo | Retoma o último elemento citado em uma oposição. |
-| Dos dois candidatos, **aquele** foi aprovado. | Demonstrativo | Retoma o primeiro elemento citado em determinada construção. |
-| **Outrem** responderá pela empresa. | Indefinido | Refere-se a uma pessoa não identificada. |
-| **Cada** candidato recebeu uma prova. | Indefinido | Refere-se individualmente aos elementos de um conjunto. |
-| **Certo** aluno faltou. | Indefinido | Refere-se a um indivíduo não identificado. |
-| **Qualquer** pessoa pode participar. | Indefinido | Refere-se a um elemento não determinado do grupo. |
-| **Nenhum** documento foi encontrado. | Indefinido | Indica ausência total de elementos. |
-| **Todo** cidadão tem direitos. | Indefinido | Refere-se à totalidade de um conjunto. |
-| **Alguns** desistiram da prova. | Indefinido | Refere-se a uma quantidade indeterminada. |
-| **Bastantes** candidatos compareceram. | Indefinido | Indica uma quantidade indefinida considerada suficiente. |
-| **Quem** fez a redação? | Interrogativo | Introduz uma pergunta sobre uma pessoa. |
-| **Qual** alternativa está correta? | Interrogativo | Solicita a identificação de um elemento. |
-| **Quais** disciplinas você prefere? | Interrogativo | Solicita a identificação de vários elementos. |
-| **Quanto** custa este curso? | Interrogativo | Pergunta sobre quantidade, valor ou intensidade. |
-| **Quantos** candidatos foram aprovados? | Interrogativo | Pergunta sobre quantidade. |
-| A pessoa **de quem** falei chegou. | Relativo | Retoma um antecedente (pessoa) e liga duas orações. |
-| O livro **cujo** autor ganhou o prêmio esgotou. | Relativo | Indica relação de posse entre dois substantivos. |
-| A cidade **onde** nasci cresceu muito. | Relativo | Retoma um lugar anteriormente mencionado. |
-| O processo sobre **o qual** conversamos foi arquivado. | Relativo | Retoma um antecedente e evita ambiguidades. |
-| A candidata **a quem** me referi foi aprovada. | Relativo | Retoma uma pessoa antecedente exigida por preposição. |
-| **Vossa Excelência** assinou o decreto. | De tratamento | Forma de tratamento destinada a altas autoridades. |
-| **Vossa Senhoria** receberá o ofício. | De tratamento | Forma de tratamento respeitosa para autoridades e particulares. |
-| **Vossa Magnificência** presidirá a cerimônia. | De tratamento | Utilizada para reitores de universidades. |
-| **Vossa Reverendíssima** conduzirá a celebração. | De tratamento | Utilizada para autoridades religiosas. |
 
 ### `Dica`
 
@@ -173,6 +68,175 @@ Exemplos:
 
 - **Que** livro você comprou? → Pronome **interrogativo**.
 - O livro **que** comprei é novo. → Pronome **relativo**.
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="pronomes-de-tratamento"></div>
+
+## `Pronomes de tratamento`
+
+| Pronome de tratamento                                | A quem se aplica                                                                                                                                                                                                         |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Vossa Onipotência**                                | Deus (não possui abreviatura).                                                                                                                                                                                           |
+| **Vossa Excelência (V. Ex.ª)**                       | Presidente (sem abreviatura), ministro, embaixador, governador, secretário de Estado, prefeito, senador, deputado federal, deputado estadual, juiz, general, almirante, brigadeiro e presidente de câmara de vereadores. |
+| **Vossa Magnificência (V. Mag.ª)**                   | Reitor de universidade (admite-se também **Vossa Excelência**).                                                                                                                                                          |
+| **Vossa Senhoria (V. S.ª)**                          | Pessoas civis e autoridades não contempladas por tratamento específico.                                                                                                                                                  |
+| **Vossa Santidade (V. S.)**                          | Papa.                                                                                                                                                                                                                    |
+| **Vossa Eminência (V. Em.ª)**                        | Cardeais.                                                                                                                                                                                                                |
+| **Vossa Majestade (V. M.)**                          | Reis e imperadores.                                                                                                                                                                                                      |
+| **Vossa Alteza (V. A.)**                             | Príncipes, arquiduques e duques.                                                                                                                                                                                         |
+| **Vossa Paternidade (V. P.)**                        | Abades e superiores de ordens religiosas.                                                                                                                                                                                |
+| **Vossa Reverendíssima (V. Rev.ma)**                 | Sacerdotes, cônegos e religiosos de elevada dignidade.                                                                                                                                                                   |
+| **Vossa Reverência (V. Rev.ª)**                      | Sacerdotes e religiosos em geral.                                                                                                                                                                                        |
+| **Vossa Excelência Reverendíssima (V. Ex.ª Rev.ma)** | Arcebispos e bispos.                                                                                                                                                                                                     |
+| **Vossa Eminência Reverendíssima (V. Em.ª Rev.ma)**  | Cardeais.                                                                                                                                                                                                                |
+| **Vossa Beatitude (V. Beat.)**                       | Patriarcas de Igrejas Orientais.                                                                                                                                                                                         |
+| **Vossa Graça (V. G.)**                              | Bispos anglicanos e, historicamente, nobres.                                                                                                                                                                             |
+| **Vossa Mercê**                                      | Forma histórica de tratamento respeitoso (originou "você").                                                                                                                                                              |
+| **Vossa Ilustríssima (V. Il.ma)**                    | Antigamente utilizada para pessoas de destaque; atualmente em desuso oficial.                                                                                                                                            |
+| **Vossa Digníssima (V. Dig.ma)**                     | Forma antiga para autoridades e pessoas de prestígio.                                                                                                                                                                    |
+| **Vossa Senhoria Ilustríssima**                      | Forma antiga para autoridades locais.                                                                                                                                                                                    |
+| **Vossa Senhoria Reverendíssima**                    | Religiosos quando cabível.                                                                                                                                                                                               |
+| **Vossa Excelência Militar**                         | Altos oficiais militares (uso protocolar específico).                                                                                                                                                                    |
+| **Vossa Excelência Consular**                        | Cônsules em determinados protocolos diplomáticos.                                                                                                                                                                        |
+| **Vossa Excelência Judiciária**                      | Magistrados, em contextos protocolares.                                                                                                                                                                                  |
+| **Vossa Excelência Ministerial**                     | Ministros de Estado e ministros de tribunais superiores.                                                                                                                                                                 |
+| **Vossa Excelência Parlamentar**                     | Senadores e deputados, em solenidades.                                                                                                                                                                                   |
+| **Vossa Honorabilidade**                             | Chefes de governo e altas autoridades em alguns países.                                                                                                                                                                  |
+| **Vossa Honra**                                      | Juízes (uso tradicional em alguns países; no Brasil prefere-se **Vossa Excelência**).                                                                                                                                    |
+| **Vossa Excelência Imperial**                        | Imperadores.                                                                                                                                                                                                             |
+| **Vossa Alteza Imperial**                            | Príncipes imperiais.                                                                                                                                                                                                     |
+| **Vossa Alteza Real**                                | Príncipes e princesas de famílias reais.                                                                                                                                                                                 |
+| **Vossa Sereníssima Alteza**                         | Príncipes soberanos de algumas casas europeias.                                                                                                                                                                          |
+| **Vossa Serenidade**                                 | Príncipes soberanos (uso histórico).                                                                                                                                                                                     |
+| **Vossa Ducal Alteza**                               | Duques (uso histórico).                                                                                                                                                                                                  |
+| **Vossa Graça Ducal**                                | Duques (uso histórico).                                                                                                                                                                                                  |
+| **Vossa Senhoria Reverendíssima Monsenhor**          | Monsenhores.                                                                                                                                                                                                             |
+| **Vossa Reverendíssima Monsenhor**                   | Monsenhores.                                                                                                                                                                                                             |
+| **Vossa Reverendíssima Padre**                       | Padres (uso eclesiástico formal).                                                                                                                                                                                        |
+| **Vossa Paternidade Reverendíssima**                 | Superiores-gerais de algumas ordens religiosas.                                                                                                                                                                          |
+| **Vossa Caridade**                                   | Religiosos, em uso histórico.                                                                                                                                                                                            |
+| **Vossa Clemência**                                  | Soberanos (uso histórico).                                                                                                                                                                                               |
+| **Vossa Benignidade**                                | Altas autoridades, em documentos antigos.                                                                                                                                                                                |
+| **Vossa Magnanimidade**                              | Monarcas, em documentos históricos.                                                                                                                                                                                      |
+| **Vossa Fidelidade**                                 | Reis de Portugal (título histórico).                                                                                                                                                                                     |
+| **Vossa Majestade Fidelíssima**                      | Monarcas portugueses (uso histórico).                                                                                                                                                                                    |
+| **Vossa Majestade Britânica**                        | Rei ou rainha do Reino Unido (uso diplomático).                                                                                                                                                                          |
+| **Vossa Majestade Católica**                         | Reis da Espanha (uso histórico).                                                                                                                                                                                         |
+| **Vossa Majestade Cristianíssima**                   | Reis da França (uso histórico).                                                                                                                                                                                          |
+| **Vossa Majestade Apostólica**                       | Reis da Hungria (uso histórico).                                                                                                                                                                                         |
+| **Vossa Excelência Reverendíssima Patriarcal**       | Patriarcas da Igreja Católica.                                                                                                                                                                                           |
+| **Vossa Santíssima Paternidade**                     | Papa (forma solene e histórica).                                                                                                                                                                                         |
+
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="oqsri"></div>
+
+## `O que significa "retomar informações"?`
+
+Em provas, memorize esta ideia:
+
+> **Os pronomes não retomam necessariamente um substantivo; eles retomam um referente.**
+
+Esse referente pode ser:
+
+* ✅ um substantivo;
+* ✅ um grupo nominal;
+* ✅ uma oração inteira;
+* ✅ uma ideia;
+* ✅ uma pessoa do discurso (eu, tu, você, nós etc.), mesmo que esteja implícita.
+
+### `Caso 1 — Retoma um substantivo (o mais comum)`
+
+> João chegou cedo.  
+>  
+> **Ele** estava feliz.
+
+Quem é **ele**?
+
+➡ **João**.
+
+Como **João** é um substantivo próprio, o pronome o retoma.
+
+> Comprei um **livro**.  
+>  
+> **Ele** é muito interessante.
+
+**Ele** retoma **livro**.
+
+### `Caso 2 — Retoma um grupo nominal`
+
+Nem sempre o referente é apenas uma palavra.
+
+Pode ser uma expressão inteira.
+
+> O **professor de matemática** chegou.  
+>  
+> **Ele** começou a aula.
+
+O pronome não retoma apenas "professor".
+
+Retoma toda a expressão:
+
+> **o professor de matemática**
+
+### `Caso 3 — Retoma uma oração inteira`
+
+Isso também acontece.
+
+> Pedro foi aprovado no concurso.  
+>  
+> **Isso** deixou a família muito feliz.
+
+O que **isso** retoma?
+
+Não é uma palavra.
+
+É toda a ideia:
+
+> Pedro foi aprovado no concurso.
+
+Outro exemplo:
+
+> Maria desistiu do emprego.  
+>  
+> **Isso** surpreendeu todos.
+
+O pronome **isso** retoma toda a oração anterior.
+
+### `Caso 4 — Retoma uma ideia`
+
+> A inflação caiu.  
+>  
+> **Esse fato** animou os investidores.
+
+Ou:
+
+> A inflação caiu.  
+>  
+> **Isso** animou os investidores.
+
+O pronome retoma toda a informação anterior.
 
 ---
 

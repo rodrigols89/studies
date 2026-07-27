@@ -2,9 +2,7 @@
 
 ## Conteúdo
 
-- [`O que é um adjetivo?`](#what-is-adjective)
-- [`Tipos de adjetivos`](#types-of-adjectives)
-- [`Como identificar um adjetivo?`](#how-to-identify-an-adjective)
+- [`O que e como identificar um adjetivo?`](#what-is-adjective)
 <!---
 [WHITESPACE RULES]
 10 Whitespace character.
@@ -24,13 +22,22 @@
 
 <div id="what-is-adjective"></div>
 
-## `O que é um adjetivo?`
+## `O que e como identificar um adjetivo?`
 
 O **adjetivo** é a palavra que `acompanha o substantivo` para:
 
-> Substantivo em negrito: `**substantivo**`.
-> Adjetivo em caractere especial: ``.
-
+- **Indicar seu estado.**
+  - **porta** `aberta`
+  - **janela** `fechada`
+  - **criança** `doente`
+  - **paciente** `recuperado`
+  - **roupa** `molhada`
+- **Indicar sua condição.**
+  - **paciente** `enfermo`
+  - **trabalhador** `desempregado`
+  - **homem** `livre`
+  - **aluno** `aprovado`
+  - **cidadão** `aposentado`
 - **Caracterizá-lo.**
   - **homem** `alto`
   - **casa** `grande`
@@ -49,12 +56,6 @@ O **adjetivo** é a palavra que `acompanha o substantivo` para:
   - **fruta** `doce`
   - **livro** `interessante`
   - **música** `agradável`
-- **Indicar seu estado.**
-  - **porta** `aberta`
-  - **janela** `fechada`
-  - **criança** `doente`
-  - **paciente** `recuperado`
-  - **roupa** `molhada`
 - **Indicar seu aspecto.**
   - **céu** `azulado`
   - **parede** `esverdeada`
@@ -67,81 +68,14 @@ O **adjetivo** é a palavra que `acompanha o substantivo` para:
   - **queijo** `suíço`
   - **carro** `japonês`
   - **azeite** `português`
-- **Indicar sua condição.**
-  - **paciente** `enfermo`
-  - **trabalhador** `desempregado`
-  - **homem** `livre`
-  - **aluno** `aprovado`
-  - **cidadão** `aposentado`
 
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="types-of-adjectives"></div>
-
-## `Tipos de adjetivos`
-
-- **Primitivo:** `não deriva de outra palavra da língua portuguesa.`
-  - bom
-  - mau
-  - triste
-  - azul
-  - verde
-- **Derivado:** `deriva de outra palavra.`
-  - amoroso (amor)
-  - pedregoso (pedra)
-  - arenoso (areia)
-  - estudantil (estudante)
-  - famoso (fama)
-- **Simples:** `possui apenas um radical.`
-  - feliz
-  - grande
-  - alto
-  - pobre
-  - forte
-- **Composto:** `possui dois ou mais radicais.`
-  - luso-brasileiro
-  - azul-escuro
-  - econômico-financeiro
-  - afro-brasileiro
-  - verde-claro
-- **Pátrio (gentílico):** `indica a origem, nacionalidade ou procedência.`
-  - brasileiro
-  - argentino
-  - português
-  - paraibano
-  - europeu
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="how-to-identify-an-adjective"></div>
-
-## `Como identificar um adjetivo?`
+### `Como identificar um adjetivo?`
 
 Para identificar um adjetivo, verifique se a palavra:
 
-- Caracteriza um substantivo.
-- Atribui uma qualidade, estado, aspecto, origem ou condição ao substantivo.
 - Concorda com o substantivo em gênero e número (quando variável).
+- `Caracteriza um substantivo`.
+- `Atribui uma qualidade`, `estado`, `aspecto`, `origem` ou `condição ao substantivo`.
 - Pode ser intensificada por advérbios como **muito**, **bastante**, **tão**, **extremamente**, etc.
 
 ### `Exemplos`
@@ -171,16 +105,6 @@ Exemplos:
   - Bonita.
 - **Como é o aluno?**
   - Dedicado.
-
-Outra dica é observar se o adjetivo pode ser intensificado.
-
-Exemplos:
-
-- Muito bonito.
-- Extremamente feliz.
-- Bastante difícil.
-- Tão rápido.
-- Pouco experiente.
 
 ---
 

@@ -2,8 +2,7 @@
 
 ## Conteúdo
 
- - [`O que é um artigo?`](#what-is-article)
- - [`Como identificar um artigo?`](#how-to-identify-an-article)
+ - [`O que e como identificar um artigo?`](#what-is-article)
  - [`Contrações dos artigos (Preposição + Artigo)`](#contracoes-dos-artigos)
  - [`O artigo sempre determina um substantivo, mesmo que haja outras palavras entre eles`](#oasdusmqhopee)
 <!---
@@ -25,7 +24,7 @@
 
 <div id="what-is-article"></div>
 
-## `O que é um artigo?`
+## `O que e como identificar um artigo?`
 
 **Artigo** é a palavra que **acompanha o substantivo** para:
 
@@ -69,21 +68,7 @@ Indicando também seu:
      - umas flores
      - os alunos
 
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="how-to-identify-an-article"></div>
-
-## `Como identificar um artigo?`
+### `Como identificar um artigo?`
 
 Para identificar um artigo, verifique se a palavra:
 
