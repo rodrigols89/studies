@@ -5,6 +5,7 @@
  - **🧠 Planning:**
  - **👨‍💻 Development:**
    - **Python:**
+     - [Python Debugger](modules/development/python/pdb/README.md)
      - [Django](modules/development/python/django/README.md)
      - [Alembic](modules/development/python/alembic/README.md)
      - [FastAPI](modules/development/python/fastapi/README.md)
