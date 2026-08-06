@@ -6,14 +6,14 @@
   - [`Como memorizar as medias de comprimento (mais comuns)?`](#how-to-memorize-comprimento)
   - [`(Planejamento e Execução IESES) Dez decâmetros correspondem a`](#comprimento-q01)
 - [**Unidades de massa (Peso):**](#unidades-de-massa-peso)
-  - [`Convertendo de kg para g`](#massa-q01)
+  - [`Considere que, em um restaurante de barbecue americano...`](#massa-q01)
 - [**Unidades de capacidade:**](#unidades-capacidade)
 - **Unidades de área:**
 - [**Unidades de volume:**](#unidades-de-volume)
   - [`Um setor de armazenagem precisa registrar o volume de 2,75 m...`](#volume-q01)
-- **Unidades de tempo:**
+- [**Unidades de tempo:**](#unidades-de-tempo)
   - [`A metade da quarta parte de 1 dia, mais o triplo de 2 horas...`](#tempo-q01)
-- **Escalas:**
+- [**Escalas:**](#escalas)
   - [`A distância, em linha reta, entre as cidades de Viamão e Flo...`](#escalas-q01)
 - **Unidades de velocidade:**
 - **Unidades de vazão:**
@@ -143,135 +143,13 @@
 
 ## Unidades de comprimento
 
-![img](images/unidades-comprimento.png)  
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="how-to-memorize-comprimento"></div>
-
-## `Como memorizar as medias de comprimento (mais comuns)?`
-
 <details>
 
-<summary>RESPOSTA</summary>
+<summary>Quais as medidas mais comuns de "comprimento" e como converter de uma para a outra?</summary>
 
 <br/>
 
-## `Quilômetro = km (1000 m)`
-
-Para memorizar as medias de comprimento (mais comuns) nós começamos com **quilômetro (km)** que equivale a **1000 metros (m)**:
-
-**km (m1000)**
-
----
-
-## `Hectômetro = hm (100 m)`
-
-Depos nós temos o **hectômetro (hm)** que equivale a **100 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m)**
-
-> Como eu converto **100 hectômetro (hm)** para **quilômetro (km)**?
-
-Observe que estamos indo **uma casa para a esquerda**.
-
-**Na tabela:**
-
-- **➡️ Andou para a direita:** multiplique por 10 a cada casa.
-- **⬅️ Andou para a esquerda:** divida por 10 a cada casa.
-
-Então:
-
-$100 \div 10 = 10$
-
-Logo,
-
-$100\ \text{hm} = 10\ \text{km}$
-
-> E como eu converto **500 quilômetro (km)** para **hectômetro (hm)**?
-
-Observe que agora estamos indo **uma casa para a direita**.
-
-- **➡️ Andou para a direita:** multiplique por 10 a cada casa.
-- **⬅️ Andou para a esquerda:** divida por 10 a cada casa.
-
-Então:
-
-$500 \times 10 = 5000$
-
-Logo,
-
-$500\ \text{km} = 5000\ \text{hm}$
-
----
-
-## `Decámetro = dam (10 m)`
-
-Continuando, agora nós temos o **decámetro (dam)** que equivale a **10 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m) ➔ dam(10m)**
-
----
-
-## `Metro = m (1 m)`
-
-Agora, nós temos a unidade mais famosa de comprimento, o **metro (m)** que equivale a **1 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m) ➔ dam(10m) ➔ m(1m)**
-
----
-
-## `Decímetro = dm (0,1 m)`
-
-**NOTE:**  
-Agora, nós vamos para as unidades que medem menos de 1 metro (mais ainda usamos metros para medilas).
-
-Depois do **metro (m)** a próxima unidade é o **decímetro (dm)** que equivale a **0,1 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m) ➔ dam(10m) ➔ m(1m) ➔ dm(0,1m)**
-
----
-
-## `Centímetro = cm (0,01 m)`
-
-A próxima unidade é o **centímetro (cm)** que equivale a **0,01 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m) ➔ dam(10m) ➔ m(1m) ➔ dm(0,1m) ➔ cm(0,01m)**
-
----
-
-## `Milímetro = mm (0,001 m)`
-
-Por fim (não é a menor, mas vamos para por aqui), nós vamos ter o  **milímetro (mm)** que equivale a **0,001 metros (m)**:
-
-**1 km (1000m) ➔ 1 hm(100m) ➔ dam(10m) ➔ m(1m) ➔ dm(0,1m) ➔ cm(0,01m) ➔ mm(0,001m)**
-
----
-
-## Sistema Internacional de Unidades (SI) e potências de 10
-
-No **Sistema Internacional de Unidades (SI)**, cada prefixo representa uma potência de 10:
-
-| Prefixo   | Símbolo | Significa           |
-| --------- | ------- | ------------------- |
-| quilo     | k       | $(10^3 = 1000) $    |
-| hecto     | h       | $(10^2 = 100)$      |
-| deca      | da      | $(10^1 = 10) $      |
-| (unidade) | —       | $(10^0 = 1)$        |
-| deci      | d       | $(10^{-1} = 0,1)$   |
-| centi     | c       | $(10^{-2} = 0,01)$  |
-| mili      | m       | $(10^{-3} = 0,001)$ |
+![img](images/unidades-de-comprimento.png)  
 
 </details>
 
@@ -394,13 +272,8 @@ Nesta questão:
 - **10 dam = 100 m**
 - **100 m = 0,1 km**
 - **100 m = 10.000 cm**
-- Descer na escala → multiplica por 10.
-- Subir na escala → divide por 10.
-
-## 🎯 Nível da Questão
-
-**🟢 Fácil.**  
-A questão exige apenas conhecer a escala das unidades de comprimento e realizar conversões simples entre decâmetro, metro, quilômetro e centímetro. O maior risco é deslocar a vírgula incorretamente.
+- **Descer na escala → multiplica por 10.**
+- **Subir na escala → divide por 10.**
 
 ## 📚 Assuntos Relacionados
 
@@ -513,6 +386,7 @@ A questão exige apenas conhecer a escala das unidades de comprimento e realizar
 
 
 
+
 <!--- ( Unidades de massa (Peso) ) --->
 
 ---
@@ -521,9 +395,15 @@ A questão exige apenas conhecer a escala das unidades de comprimento e realizar
 
 ## Unidades de massa (Peso)
 
-![img](images/unidades-de-massa-peso.png)  
+<details>
 
+<summary>Quais as medidas mais comuns de "massa (peso)" e como converter de uma para a outra?</summary>
 
+<br/>
+
+![img](images/unidades-de-massa.png)  
+
+</details>
 
 
 
@@ -538,7 +418,7 @@ A questão exige apenas conhecer a escala das unidades de comprimento e realizar
 
 <div id="massa-q01"></div>
 
-## `Convertendo de kg para g`
+## `Considere que, em um restaurante de barbecue americano...`
 
 Considere que, em um restaurante de barbecue americano, 90 kg de costela suína crua vão para o defumador. Após cocção lenta, perde-se em média 30% do peso (desidratação + gordura). Cada porção consiste de 350 g pronta. Nesse cenário, quantas porções completas o restaurante consegue suprir?
 
@@ -554,262 +434,10 @@ Considere que, em um restaurante de barbecue americano, 90 kg de costela suína 
 
 <br/>
 
-Para essa questão vamos começar descobrindo quanto é 30% de 90kg:
-
-$0,30 x 90$
-
-```bash
-      90
-×   0,30
-────────
-```
-
-**⚠️ NOTE:**  
-Você pode ignorar o zero antes da vírgula quando ele estiver apenas indicando que o número é menor que 1.
-
-```bash
-      90
-×     30
-────────
-      00
-   +2700
-   ─────
-    2700
-```
-
-O número `0,30` possui 2 casas decimais, logo vamos ter que adicionar a vírgula de volta pulando 2 casas decimais:
-
- - 27,00
- - Ou simplesmente, 27
-
-Ou seja, 30% de 90kg é 27kg, subtraindo esse valor nós teremos: **63 kg**.
-
-Mas a questão que saber o seguinte:
-
-> **Cada porção consiste de 350 g pronta. Nesse cenário, quantas porções completas o restaurante consegue suprir?**
-
-Primeiro, vamos converter nossas **63kg** em **gramas**:
-
-- **1 kg = 1.000 g (ou 1 x 10³)**
-- **63 × 1.000 = 63.000 g**
-
-Agora, sabendo que nós temos **63,000g** e cada porção vai ter **350g** é só `dividir o total que nós temos pelo a quantidade por porção`:
-
-Se o restaurante tem **63.000 g** de alimento disponível e cada porção pronta pesa **350 g**, basta dividir:
-
-$\frac{63.000}{350} = 180$
-
-**RESPOSTA:**  
-O restaurante consegue servir **180 porções completas**.
-
-### `Resolvendo com regra de três`
-
-![img](images/convertendo-de-kg-para-g-01.png)  
+![img](images/massa-q01.png)  
 
 </details>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( Unidades de volume ) --->
-
----
-
-<div id="unidades-de-volume"></div>
-
-## Unidades de volume
-
-![img](images/unidades-volume.png)  
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-<div id="volume-q01"></div>
-
-## `Um setor de armazenagem precisa registrar o volume de 2,75 m...`
-
-Um setor de armazenagem precisa registrar o volume de 2,75 metros cúbicos de um fluido usando apenas marcações em litros. Classifique as assertivas como verdadeira (V) ou falsa (F):
-
-- `(__)` O volume total corresponde a 2.750 litros.
-- `(__)` Cada 0,25 metro cúbico equivale a 250 litros.
-- `(__)` O volume solicitado ultrapassa 3.000 litros.
-- `(__)` A conversão exige multiplicar o valor em metros cúbicos por 1.000.
-
-A sequência CORRETA, de cima para baixo, é:
-
-- `A)` V, V, F, V.
-- `B)` V, F, V, F.
-- `C)` F, V, F, V.
-- `D)` V, V, V, F.
-- `E)` F, F, V, V.
-
-
-<details>
-
-<summary>RESPOSTA</summary>
-
-<br/>
-
-Vamos começar entendendo a questão...
-
-Primeiro ele diz **"metros cúbicos"** que é o mesmo que:
-
-$1\ \text{m}^3 = 1.000\ \text{L}$
-
-Logo:
-
-$2,75\ \text{m}^3 = 2,75 \times 1.000 = 2.750\ \text{L}$
-
-Agora analisemos cada assertiva.
-
-### `1ª assertiva`
-
-> **O volume total corresponde a 2.750 litros.**
-
-✅ Verdadeira.
-
-### `2ª assertiva`
-
-> **Cada 0,25 metro cúbico equivale a 250 litros.**
-
-Como:
-
-$0,25 \times 1.000 = 250\ \text{L}$
-
-✅ Verdadeira.
-
-### `3ª assertiva`
-
-> **O volume solicitado ultrapassa 3.000 litros.**
-
-O volume é de **2.750 litros**, que é **menor** que 3.000 litros.
-
-❌ Falsa.
-
-### `4ª assertiva`
-
-> **A conversão exige multiplicar o valor em metros cúbicos por 1.000.**
-
-Essa é exatamente a regra:
-
-$\text{Litros} = \text{m}^3 \times 1.000$
-
-✅ Verdadeira.
-
-**SEQUÊNCIA CORRETA (DE CIMA PARA BAIXO):**  
-V, V, F, V.
-
-**✅ Gabarito:**
-
-- `A)` V, V, F, V.
-
-</details>
 
 
 
@@ -918,8 +546,174 @@ V, V, F, V.
 
 ## Unidades de capacidade
 
-![img](images/unidades-capacidade.png)  
+<details>
 
+<summary>Quais as medidas mais comuns de "capacidade" e como converter de uma para a outra?</summary>
+
+<br/>
+
+![img](images/unidades-de-capacidade.png)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Unidades de volume ) --->
+
+---
+
+<div id="unidades-de-volume"></div>
+
+## Unidades de volume
+
+<details>
+
+<summary>Quais as medidas mais comuns de "volume" e como converter de uma para a outra?</summary>
+
+<br/>
+
+![img](images/unidades-de-volume.png)  
+
+</details>
+
+
+
+
+
+
+
+
+
+
+---
+
+<div id="volume-q01"></div>
+
+## `Um setor de armazenagem precisa registrar o volume de 2,75 m...`
+
+Um setor de armazenagem precisa registrar o volume de 2,75 metros cúbicos de um fluido usando apenas marcações em litros. Classifique as assertivas como verdadeira (V) ou falsa (F):
+
+- `(__)` O volume total corresponde a 2.750 litros.
+- `(__)` Cada 0,25 metro cúbico equivale a 250 litros.
+- `(__)` O volume solicitado ultrapassa 3.000 litros.
+- `(__)` A conversão exige multiplicar o valor em metros cúbicos por 1.000.
+
+A sequência CORRETA, de cima para baixo, é:
+
+- `A)` V, V, F, V.
+- `B)` V, F, V, F.
+- `C)` F, V, F, V.
+- `D)` V, V, V, F.
+- `E)` F, F, V, V.
+
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/volume-q01.png)  
+
+</details>
 
 
 
@@ -1029,7 +823,15 @@ V, V, F, V.
 
 ## `Unidades de tempo`
 
-![img](images/unidades-tempo.png)  
+<details>
+
+<summary>Quais as medidas mais comuns de "tenpo" e como converter de uma para a outra?</summary>
+
+<br/>
+
+![img](images/unidades-de-tempo.png)  
+
+</details>
 
 
 
@@ -1177,9 +979,21 @@ Ou seha, **alternativa (B)**.
 
 <div id="escalas"></div>
 
+<div id="escalas"></div>
+
 ## `Escalas`
 
-![img](images/escalas.png)
+<details>
+
+<summary>Quais as medidas mais comuns de "escalas" e como interpreta-las?</summary>
+
+<br/>
+
+![img](images/escalas.png)  
+
+</details>
+
+
 
 
 
@@ -1432,7 +1246,17 @@ $1\ \text{km}=100.000\ \text{cm}$
 
 ## `Unidades de vazão`
 
+<details>
+
+<summary>Quais as medidas mais comuns de "vazão" e como interpreta-las?</summary>
+
+<br/>
+
 ![img](images/unidades-de-vazao.png)  
+
+</details>
+
+
 
 
 
@@ -1699,7 +1523,16 @@ $V=\text{Vazão}\times\text{Tempo}$
 
 ## Unidades de Internet (bits e bytes)
 
+<details>
+
+<summary>Quais as medidas mais comuns de "vazão" e como interpreta-las?</summary>
+
+<br/>
+
 ![img](images/unidades-de-internet.png)  
+
+</details>
+
 
 
 
