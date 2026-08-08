@@ -5,10 +5,10 @@
 - [**Unidades de comprimento:**](#unidades-de-comprimento)
   - [`Como memorizar as medias de comprimento (mais comuns)?`](#how-to-memorize-comprimento)
   - [`(Planejamento e Execução IESES) Dez decâmetros correspondem a`](#comprimento-q01)
-- [**Unidades de massa (Peso):**](#unidades-de-massa-peso)
+- [**Unidades de massa:**](#unidades-de-massa)
   - [`Considere que, em um restaurante de barbecue americano...`](#massa-q01)
 - [**Unidades de capacidade:**](#unidades-capacidade)
-- **Unidades de área:**
+- [**Unidades de área:**](#unidades-de-area)
 - [**Unidades de volume:**](#unidades-de-volume)
   - [`Um setor de armazenagem precisa registrar o volume de 2,75 m...`](#volume-q01)
 - [**Unidades de tempo:**](#unidades-de-tempo)
@@ -387,17 +387,17 @@ Nesta questão:
 
 
 
-<!--- ( Unidades de massa (Peso) ) --->
+<!--- ( Unidades de massa ) --->
 
 ---
 
-<div id="unidades-de-massa-peso"></div>
+<div id="unidades-de-massa"></div>
 
-## Unidades de massa (Peso)
+## Unidades de massa
 
 <details>
 
-<summary>Quais as medidas mais comuns de "massa (peso)" e como converter de uma para a outra?</summary>
+<summary>Quais as medidas mais comuns de "massa" e como converter de uma para a outra?</summary>
 
 <br/>
 
@@ -556,6 +556,123 @@ Considere que, em um restaurante de barbecue americano, 90 kg de costela suína 
 
 </details>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Unidades de area ) --->
+
+---
+
+<div id="unidades-area"></div>
+
+## Unidades de area
+
+<details>
+
+<summary>Quais as medidas mais comuns de "area" e como converter de uma para a outra?</summary>
+
+<br/>
+
+![img](images/unidades-de-area.png)  
+
+</details>
 
 
 
@@ -1265,10 +1382,6 @@ $1\ \text{km}=100.000\ \text{cm}$
 
 
 
-
-
-
-
 ---
 
 <div id="vazao-q01"></div>
@@ -1281,6 +1394,12 @@ Uma torneira despeja água a uma vazão constante de 3,6 L/min. Quantos metros c
 - B) 0,216 m³
 - C) 2,16 m³
 - D) 21,6 m³
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
 
 ## 🧠 Ideia Principal
 
@@ -1415,6 +1534,10 @@ $V=\text{Vazão}\times\text{Tempo}$
 - Grandezas e medidas
 - Regra de três simples aplicada à vazão
 - Problemas envolvendo reservatórios, torneiras e tubulações
+
+
+</details>
+
 
 
 
