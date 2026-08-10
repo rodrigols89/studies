@@ -2,13 +2,7 @@
 
 ## Conteúdo
 
- - **Matéria:**
-   - [Língua Portuguesa](modules/lingua-portuguesa/README.md)
-   - [Raciocínio Lógico](modules/raciocinio-logico/README.md)
-   - [Matemática](modules/matematica/README.md)
-   - [ENEM (Matemática)](modules/enem-math/README.md)
- - **Dicas & Truques:**
-   - [Como praticar](modules/como-praticar/README.md)
+ - [Matemática](modules/matematica/README.md)
 
 ---
 

@@ -9,8 +9,6 @@
 > A ***Aritmética*** é o ramo da Matemática que estuda os números e as operações básicas realizadas com eles — *adição*, *subtração*, *multiplicação* e *divisão* —, bem como suas propriedades e relações. **Seu foco principal está nos cálculos numéricos e na manipulação de quantidades**.
 
  - [Adição, Subtração, Multiplicação e Divisão](modules/aritmetica/add-sub-mult-div/README.md)
- - [Sistema de Unidade de Medidas](modules/aritmetica/sistema-de-unidade-de-medidas/README.md)
- - [Teoria dos Números](modules/aritmetica/number-theory/README.md)
 
 ---
 
@@ -19,15 +17,12 @@
 > A ***Álgebra*** é o ramo da Matemática que `utiliza símbolos e letras para representar números` e quantidades desconhecidas, chamadas de variáveis. Ela estuda *expressões algébricas*, *equações*, *inequações*, *funções* e as *relações entre grandezas*, permitindo generalizar propriedades e padrões matemáticos.
 
  - [Teoria dos Conjuntos](modules/algebra/set-theory/README.md)
- - [Expressões Algébricas](modules/algebra/algebraic-expressions/README.md)
 
 ---
 
 ## Geometria
 
 > A ***Geometria*** é o ramo da Matemática que **estuda as formas, os tamanhos, as posições e as propriedades das figuras no plano e no espaço**. Ela investiga *pontos*, *retas*, *planos*, *ângulos*, *figuras planas* e *sólidos geométricos*, permitindo descrever, medir e compreender as relações espaciais e as características das formas.
-
- - [Geometria Plana](modules/geometria/geometria-plana/README.md)
 
 ---
 

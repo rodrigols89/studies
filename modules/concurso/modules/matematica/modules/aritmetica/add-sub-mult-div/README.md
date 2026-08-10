@@ -8,12 +8,13 @@
    - [Como aplicar o conceito de pegar emprestado na subtração?](#sub-with-borrow)
  - **Divisão:**
    - [Quais são os compoenentes de uma divisão?](#div-components)
-   - [Regra da vírgula no quociente](#comma-rule)
+   - [Como terminar uma divisão que não terminou em zero?](#comma-rule)
    - [Divisão onde o dividendo tem mais de uma casa decimal](#div-more-units-01)
-   - [Algumas divisões necessitam pegar mais de um digito por vez](#div-more-units-2)
-   - [Regra do zero no quociente](#elevator-rule)
+   - [Divisões que não são possíveis pegando apenas um digito do dividendo](#div-more-units-2)
+   - [Divisão onde multiplicar qualquer número pelo divisor ultrapassar o dividendo](#elevator-rule)
    - [Como fazer divisão com números decimais?](#div-w-decimals)
- - [**REFERÊNCIA**](#ref)
+ - **Multiplicação:**
+   - [Multiplicação de números decimais (Vídeo)](https://www.youtube.com/shorts/e_f-maxvTN0)
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
@@ -132,8 +133,18 @@ Por exemplo:
 
 ![img](images/add-w-comma-00.png)  
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
 
 ![img](images/add-w-comma-01.png)  
+
+</details>
+
+
+
 
 
 
@@ -254,7 +265,16 @@ Por exemplo:
 \end{array}
 --->
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 ![img](images/sub-with-borrow-01.png)  
+
+</details>
+
 
 
 
@@ -365,7 +385,16 @@ Por exemplo:
 
 ## Quais são os compoenentes de uma divisão?
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 ![img](images/div-components.png)  
+
+</details>
+
 
 
 
@@ -380,15 +409,19 @@ Por exemplo:
 
 <div id="comma-rule"></div>
 
-## Regra da vírgula no quociente
+## Como terminar uma divisão que não terminou em zero?
 
-> Em alguns casos não tem como terminar uma divisão porque seu resto não terminou em zero.
+![img](images/div-school-01.png)  
 
-Por exemplo:
+<details>
 
-$9 \div 2$
+<summary>RESPOSTA</summary>
 
-![img](images/div-school.png)  
+<br/>
+
+![img](images/div-school-02.png)  
+
+</details>
 
 
 
@@ -411,8 +444,15 @@ Por exemplo:
 
 $438 \div 2$
 
-![img](images/div-more-units-01.png)
+<details>
 
+<summary>RESPOSTA</summary>
+
+<br/>
+
+![img](images/div-more-units-01.png)  
+
+</details>
 
 
 
@@ -426,15 +466,19 @@ $438 \div 2$
 
 <div id="div-more-units-2"></div>
 
-## Algumas divisões necessitam pegar mais de um digito por vez
-
-> Em algumas divisões se faz necessário pegar mais de um digito (unidade) por vez para fazer a divisão.
-
-Por exemplo:
+## Divisões que não são possíveis pegando apenas um digito do dividendo
 
 $5674 \div 20$
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 ![img](images/div-more-units-02.png)  
+
+</details>
 
 
 
@@ -449,16 +493,22 @@ $5674 \div 20$
 
 <div id="elevator-rule"></div>
 
-## Regra do zero no quociente
-
-Para entender a **"Regra do zero no quociente"** imagine que nós temos a seguinte divisão:
+## Divisão onde multiplicar qualquer número pelo divisor ultrapassar o dividendo
 
 ![img](images/elevator-rule-00.png)  
 
 **E agora?**  
 Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 ![img](images/elevator-rule-01.png)  
+
+</details>
 
 
 
@@ -477,123 +527,15 @@ Se nós multiplicarmos por 1 vai dá 6 que é maior do que 5.
 
 ![img](images/div-w-decimals-00.png)  
 
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
 ![img](images/div-w-decimals-01.png)  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( REFERÊNCIA ) --->
-
----
-
-<div id="ref"></div>
-
-## REFERÊNCIA
-
- - **Cursos:**
-   - [Licenciatura - Matemática](https://www.faculdadeunica.com.br/graduacao/ead/matematica-3080)
- - **Livros:**
-   - [Fundamentos Matemáticos Para a Ciência da Computação](https://www.amazon.com.br/Fundamentos-Matem%C3%A1ticos-Para-Ci%C3%AAncia-Computa%C3%A7%C3%A3o/dp/8521614225)
- - **Youtubers:**
-   - [Rota do Enem](https://www.youtube.com/@rotadoenemjp/videos)
+</details>
 
 ---
 
