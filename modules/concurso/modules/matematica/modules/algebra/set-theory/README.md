@@ -3,10 +3,11 @@
 ## Conteúdo
 
  - **Fundamentos:**
-   - [`Complementar de um conjunto`](#complement-of-sets)
- - **Interseção de Conjuntos:**
+   - [`Como criar um conjunto que foi definido por compreensão?`](#ccucqfdpc)
+ - [**Complementar de um conjunto**:](#complement-of-sets)
+ - [**Diferença de Conjuntos**:](#diff-of-sets)
+ - **Intersecção de Conjuntos:**
    - [`Como resolver um problema de "Intersecções de Conjuntos"`](#crupdic)
- - [**REFERÊNCIA**](#ref)
 <!---
 [WHITESPACE RULES]
 - Same topic = "10" Whitespace character.
@@ -118,28 +119,194 @@
 
 ---
 
+<div id="ccucqfdpc"></div>
+
+## `Como criar um conjunto que foi definido por compreensão?`
+
+Dados os conjuntos $A = \{x \mid x \text{ é par}\}$, $B = \{x \mid x \text{ é múltiplo de 3}\}$ e $C = \{x \mid x \text{ é múltiplo de 6}\}$, assinale uma relação correta entre $A$, $B$ e $C$.
+
+- **A)** $A \cup B = C$
+- **B)** $A \cap B = C$
+- **C)** $A - B = C$
+- **D)** $B - A = C$
+- **E)** $A \cap C = B$
+
+---
+
+Para resolver um problema de conjunto onde é dada uma regra (o conjunto é feito por compreensão), nós devemos montar esse conjunto a partir dessa regra:
+
+- **A = { x ∣ x é par }**
+  - A = {2, 4, 6, 8, 10, 12, 14, 16, 18, …}
+- **B = { x ∣ x é múltiplo de 3 }**
+  - B = { 3x1=3, 3x2=6, 3x3=9, 3x4=12, 3x5=15,  3x6=18,... }
+  - B = {3, 6, 9, 12, 15, 18}
+- **C = { x ∣ x é múltiplo de 6 }**
+  - C = { 6x1=6, 6x2=12,  6x3=18,...}
+  - C = {6, 12, 18}
+
+> **NOTE:**  
+> Como o intuito aqui não é apenas entender como montar um conjunto por compreensão (que segue uma regra), vamos resolver apenas a questão verdadeira.
+
+Vejamos a alternativa **B**: $A ∩ B = C$
+
+- A ∩ B = {6, 12, 18}  
+- C = {6, 12, 18}
+- A ∩ B = C (VERDADEIRO)
+
+**Gabarito:** Letra B
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Complementar de um conjunto ) --->
+
+---
+
 <div id="complement-of-sets"></div>
 
 ## `Complementar de um conjunto`
 
-O complementar de um conjunto **"A"** em *relação a um conjunto universal U* é o conjunto de todos os elementos em **"U"** que não estão em **"A"**.
+> **Como resolver um problema de “complementar de conjuntos”?**
 
-> **NOTAÇÃO:**  
-> É denotado por `A’`.
+De acordo com as leis de De Morgan, o complementar da interseção é igual à união dos complementares. Assim, dado um conjunto universo U, seja $X^{c}$ o complementar de X em relação a U. Considere o conjunto universo: U = {1,2,3,4,5} e os subconjuntos: A = {1,2} e B = {2,4}. O conjunto $A^{c} \cup B^{c}$ é igual a:
 
-Por exemplo:
+- **A)** {3,5}
+- **B)** {2,3,4,5}
+- **C)** {1,2,3,4,5}
+- **D)** {1,3,4,5}
 
-![img](images/complement-set-example.jpg)  
+<details>
 
+<summary>RESPOSTA</summary>
 
+<br/>
 
+- **O conjunto universo é:**
+  - U = {1,2,3,4,5}
+- **Os subconjuntos dados são:**
+  - A = {1,2}
+  - B = {2,4}
 
+Primeiro, calculamos os complementares em relação ao conjunto universo.
 
+- **O complementar de A é formado pelos elementos de U que não pertencem a A:**
+  - $A^{C} = \{3,4,5\}$
+- **O complementar de B é formado pelos elementos de U que não pertencem a B:**
+  - $B^{C} = \{1,3,5\}$
 
+Agora fazemos a união desses conjuntos:
 
+$A^{C} \cup B^{C} = \{3,4,5\} \cup \{1,3,5\}$
+ 
+A união de dois conjuntos é feita reunindo todos os elementos de ambos os conjuntos **sem repetir**:
 
+$A^{C} \cup B^{C} = \{1,3,4,5\}$
+ 
+Portanto, o conjunto obtido é **{1,3,4,5}**.
 
+**Gabarito:** Letra D.
 
+</details>
 
 
 
@@ -233,22 +400,195 @@ Por exemplo:
 
 
 
-<!--- ( Interseção de Conjuntos ) --->
+
+
+
+
+
+
+
+
+
+<!--- ( Complementar de um conjunto ) --->
+
+---
+
+<div id="diff-of-sets"></div>
+
+## `Diferença de Conjuntos`
+
+> **Como resolver um problema de “diferença de conjuntos”?**
+
+Sejam os conjuntos $A = \{-2, 0, 4, 5\}$, $B = \{-4, -3, 1, 5\}$ e $C = \{-1, 0, 3, 7\}$, a quantidade de elementos do conjunto solução da operação abaixo é um número natural que está entre:
+
+$A - \left[(A-B) \cap (C-A)\right] \cup (B-A)$
+
+- **A)** 0 e 2, incluindo 0 e 2.  
+- **B)** 6 e 8, incluindo 6 e excluindo 8.  
+- **C)** 3 e 5, excluindo 3 e incluindo 5.  
+- **D)** 5 e 7, incluindo 5 e excluindo 7.  
+- **E)** 7 e 9, excluindo 7 e incluindo 9.
+
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
+
+Antes de resolvermos essa operação, precisamos lembrar de algumas coisas (conceitos): 
+
+ - A `união entre os conjuntos` **P** e **Q** é o conjunto formado por todos os elementos que pertencem a pelo menos um desses conjuntos;
+ - A `intersecção entre os conjuntos` **P** e **Q** é o conjunto formado por todos os elementos que pertencem simultaneamente a esses conjuntos;
+ - A `diferença (P−Q)` **entre dois conjuntos**, nessa ordem, é o conjunto formado por:
+   - Todos os elementos que pertencem ao primeiro (P) conjunto e não pertencem ao segundo conjunto (Q);
+
+Ótimo, agora vamos identificar os conjunto que nós temos:
+
+- A = {−2, 0, 4, 5}
+- B = {−4, −3, 1, 5}
+- C = {−1, 0, 3, 7}
+
+Agora, a partir dos conjuntos acima nós devemos resolver a expressão lógica abaixo:
+
+${ A – [ (A − B) \cap (C − A) ] } \cup (B – A)$
+
+Vamos começar criando as `diferenças` necessárias:
+ 
+- (A−B) = {−2,0,4}
+- (C−A) = {−1,3,7}
+- (B−A) = {−4,−3,1}
+
+Substituindo, na expressão lógica nós teremos:
+
+$\{ \{−2,0,4,5\} – [ \{−2,0,4\} \cap \{−1,3,7\} ] \} \cup \{−4,−3,1\}$
+
+Resolvendo a intersecção dos colchetes, ficaremos com:
+
+$\{ {−2, 0, 4, 5} – ∅\} \cup \{−4, −3, 1\}$
+
+Agora, resolvendo a diferença das chaves, vamos obter:
+
+$\{−2, 0, 4, 5\} \cup \{−4, −3, 1\}$
+
+Por último, fazendo a união dos conjuntos resultantes, ficaremos com o seguinte conjunto: 
+
+$\{−4, −3, −2, 0, 1, 4, 5\}$
+ 
+Notem que esse conjunto tem 7 elementos...
+ 
+**Gabarito:** Letra B
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--- ( Intersecção de Conjuntos ) --->
 
 ---
 
 <div id="crupdic"></div>
 
-## `Como resolver um problema de "Intersecções de Conjuntos"`
-
-Para resolver um problema de `Intersecções de Conjuntos` nós seguimos os seguintes passos:
-
-- Encontrar os elementos que não aparecem em nenhum grupo (se tiver);
-- Aplicar o *"Princípio da Inclusão"*;
-- Aplicar o *"Princípio da Exclusão"*;
-- Por fim, precisamos adicionar de volta os elementos que foram removidos mais de uma vez no *"Princípio da Exclusão"*.
-
-## `EXEMPLO-01: (UFBA) Enquete sobre preferências esportivas`
+## `Como resolver um problema de "Intersecções de Conjuntos"?`
 
 Em uma enquete, várias pessoas foram entrevistadas acerca de suas preferências em relação a três esportes:
 
@@ -276,173 +616,76 @@ De acordo com esses dados, é correto afirmar que, nessa enquete, o número de p
  - d) 530
  - e) 570
 
-Seguindo o que foi descrito na introdução, vamos `encontrar os elementos que não aparecem em nenhum grupo (se tiver);`:
 
-```bash
-NENHUM(40)
-```
+<details>
 
-Agora, nós vamos apliar o **Princípio da Inclusão** que nada mais do que a `somar todos os grupos (categorias) individuais`:
+<summary></summary>
 
-```bash
-NENHUM(40) + Volei(300) + Basquete(260) + Tênis(200)
-```
+<br/>
 
-> **PROBLEMA:**  
-> Elementos que estão em mais de um conjunto foram *contados várias vezes*.
+RESPOSTA
 
-Para resolver esse problema de *contar várias vezes o mesmo elemento* vamos aplicar o **Princípio da Exclusão**, `subtraindo as interseções (removendo a contagens duplicadas)`:
+Para resolver um problema de Intersecção de Conjuntos nós podemos seguir os seguintes passos:
 
-```bash
-NENHUM(40) + Volei(300) + Basquete(260) + Tênis(200) - V/B(180) - V/T(130) - B/T(100)
-```
+ADICIONAR OS ELEMENTOS QUE NÃO PERTENCEM A NENHUM GRUPO (CONJUNTO)
 
-> **PROBLEMA:**  
-> Elementos que estão nos três conjuntos foram subtraídos duas vezes além da conta, então devem ser somados de volta.
+Nenhum = N(40)
 
-Para resolver esse problema, basta `adicionar a intersecção de todos os conjuntos (categorias)`:
+ADICIONAR O TOTAL DE ELEMENTOS POR CATEGORIA (CONJUNTO)
 
-```bash
-NENHUM(40) + Volei(300) + Basquete(260) + Tênis(200) - V/B(180) - V/T(130) - B/T(100) + V/B/T(50)
-```
+Volei = V(300)
+Basquete = B(260)
+Tênis = T(200)
+
+
+NOTE: Até o momento nós vamos ter a seguinte equação.
+
+
+N(40) + V(300) + B(260) + T(200)
+
+PROBLEMA:
+Como nós também temos elementos que pertencem a mais de uma categoria (conjunto), como V/B, V/T e B/T, os elementos acima vão ser contados mais de uma vez.
+
+
+APLICAR O PRINCÍPIO DA EXCLUSÃO PARA ELEMENTOS REPITIDOS
+
+Para resolver esse problema de contar várias vezes o mesmo elemento, vamos aplicar o Princípio da Exclusão, subtraindo os elementos que pertencem a dois conjuntos ao mesmo tempo (removendo a contagens duplicadas):
+
+N(40) + V(300) + B(260) + T(200) - V/B(180) - V/T(130) - B/T(100)
+
+
+
+
+PROBLEMA:
+Agora, nós entramos em outro problema… os elementos que estavam em mais de um conjunto foram subtraídos duas vezes além da conta, então devem ser somados de volta.
+
+
+Para resolver esse problema, basta adicionar a intersecção de todos os conjuntos (elemento):
+
+N(40) + V(300) + B(260) + T(200) - V/B(180) - V/T(130) - B/T(100) + V/B/T(50)
 
 Logo, o resultado será:
 
-```bash
 40 + 300 + 260 + 200 - 180 - 130 - 100 + 50 = 440
-```
 
 Uma maneira inteligente de resolver é somar todos os positivos e subtrair dos negativos:
 
-```bash
 (40 + 300 + 260 + 200 + 50) - (-180 - 130 - 100)
              850            -       410
 
+
  850
 -410
- ---
+ -----
  440
-```
 
-Logo, o número de pessoas entrevista foi **"440"**.
 
-**RESPOSTA:**  
-Opção `b`
+Logo, o número de pessoas entrevistadas foi "440".
 
+Gabarito: Letra B.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--- ( REFERÊNCIA ) --->
-
----
-
-<div id="ref"></div>
-
-## REFERÊNCIA
-
- - **Cursos:**
-   - [Licenciatura - Matemática](https://www.faculdadeunica.com.br/graduacao/ead/matematica-3080)
- - **Livros:**
-   - [Fundamentos Matemáticos Para a Ciência da Computação](https://www.amazon.com.br/Fundamentos-Matem%C3%A1ticos-Para-Ci%C3%AAncia-Computa%C3%A7%C3%A3o/dp/8521614225)
+</details>
 
 ---
 
