@@ -2,6 +2,7 @@
 
 ## Conteúdo
 
+ - [Raciocínio Lógico](modules/raciocinio-logico/README.md)
  - [Matemática](modules/matematica/README.md)
 
 ---

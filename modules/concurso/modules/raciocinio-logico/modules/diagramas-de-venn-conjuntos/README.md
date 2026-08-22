@@ -1,4 +1,4 @@
-# Teoria dos Conjuntos
+# Diagramas de Venn (Conjuntos)
 
 ## Conteúdo
 
@@ -131,7 +131,11 @@ Dados os conjuntos $A = \{x \mid x \text{ é par}\}$, $B = \{x \mid x \text{ é 
 - **D)** $B - A = C$
 - **E)** $A \cap C = B$
 
----
+<details>
+
+<summary>RESPOSTA</summary>
+
+<br/>
 
 Para resolver um problema de conjunto onde é dada uma regra (o conjunto é feito por compreensão), nós devemos montar esse conjunto a partir dessa regra:
 
@@ -155,6 +159,7 @@ Vejamos a alternativa **B**: $A ∩ B = C$
 
 **Gabarito:** Letra B
 
+</details>
 
 
 
@@ -409,7 +414,8 @@ Portanto, o conjunto obtido é **{1,3,4,5}**.
 
 
 
-<!--- ( Complementar de um conjunto ) --->
+
+<!--- ( Diferença de Conjuntos ) --->
 
 ---
 
@@ -619,48 +625,39 @@ De acordo com esses dados, é correto afirmar que, nessa enquete, o número de p
 
 <details>
 
-<summary></summary>
+<summary>RESPOSTA</summary>
 
 <br/>
 
-RESPOSTA
-
 Para resolver um problema de Intersecção de Conjuntos nós podemos seguir os seguintes passos:
 
-ADICIONAR OS ELEMENTOS QUE NÃO PERTENCEM A NENHUM GRUPO (CONJUNTO)
+**ADICIONAR OS ELEMENTOS QUE NÃO PERTENCEM A NENHUM GRUPO (CONJUNTO):**
 
-Nenhum = N(40)
+- Nenhum = N(40)
 
-ADICIONAR O TOTAL DE ELEMENTOS POR CATEGORIA (CONJUNTO)
+**ADICIONAR O TOTAL DE ELEMENTOS DE CATEGORIA (CONJUNTO):**
 
-Volei = V(300)
-Basquete = B(260)
-Tênis = T(200)
+- Volei = V(300)
+- Basquete = B(260)
+- Tênis = T(200)
 
-
-NOTE: Até o momento nós vamos ter a seguinte equação.
-
+Até o momento nós vamos ter a seguinte equação.
 
 N(40) + V(300) + B(260) + T(200)
 
-PROBLEMA:
+**⚠️ PROBLEMA:**  
 Como nós também temos elementos que pertencem a mais de uma categoria (conjunto), como V/B, V/T e B/T, os elementos acima vão ser contados mais de uma vez.
 
+**APLICAR O PRINCÍPIO DA EXCLUSÃO PARA ELEMENTOS REPITIDOS:**
 
-APLICAR O PRINCÍPIO DA EXCLUSÃO PARA ELEMENTOS REPITIDOS
-
-Para resolver esse problema de contar várias vezes o mesmo elemento, vamos aplicar o Princípio da Exclusão, subtraindo os elementos que pertencem a dois conjuntos ao mesmo tempo (removendo a contagens duplicadas):
+Para resolver esse problema de contar várias vezes o mesmo elemento, vamos aplicar o `Princípio da Exclusão`, subtraindo os elementos que pertencem a dois conjuntos ao mesmo tempo (removendo a contagens duplicadas):
 
 N(40) + V(300) + B(260) + T(200) - V/B(180) - V/T(130) - B/T(100)
 
-
-
-
-PROBLEMA:
+**⚠️ PROBLEMA:**  
 Agora, nós entramos em outro problema… os elementos que estavam em mais de um conjunto foram subtraídos duas vezes além da conta, então devem ser somados de volta.
 
-
-Para resolver esse problema, basta adicionar a intersecção de todos os conjuntos (elemento):
+**Para resolver esse problema, basta adicionar os elementos que pertencem a todas categorias (conjuntos):**
 
 N(40) + V(300) + B(260) + T(200) - V/B(180) - V/T(130) - B/T(100) + V/B/T(50)
 
@@ -673,17 +670,16 @@ Uma maneira inteligente de resolver é somar todos os positivos e subtrair dos n
 (40 + 300 + 260 + 200 + 50) - (-180 - 130 - 100)
              850            -       410
 
-
+```bash
  850
 -410
- -----
+----
  440
-
+```
 
 Logo, o número de pessoas entrevistadas foi "440".
 
-Gabarito: Letra B.
-
+**Gabarito:** Letra B.
 
 </details>
 
