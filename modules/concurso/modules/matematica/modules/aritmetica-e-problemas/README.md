@@ -1,25 +1,123 @@
-# Adição, Subtração, Multiplicação e Divisão
+# Aritmética e Problemas
 
-## Conteúdo
-
- - **Adição:**
-   - [Como fazer adição com números que tem vírgula?](#add-w-comma)
- - **Subtração:**
-   - [Como aplicar o conceito de pegar emprestado na subtração?](#sub-with-borrow)
- - **Divisão:**
-   - [Quais são os compoenentes de uma divisão?](#div-components)
-   - [Como terminar uma divisão que não terminou em zero?](#comma-rule)
-   - [Divisão onde o dividendo tem mais de uma casa decimal](#div-more-units-01)
-   - [Divisões que não são possíveis pegando apenas um digito do dividendo](#div-more-units-2)
-   - [Divisão onde multiplicar qualquer número pelo divisor ultrapassar o dividendo](#elevator-rule)
-   - [Como fazer divisão com números decimais?](#div-w-decimals)
- - **Multiplicação:**
-   - [Multiplicação de números decimais (Vídeo)](https://www.youtube.com/shorts/e_f-maxvTN0)
+- **Adição, Subtração, Multiplicação e Divisão:**
+  - **Adição:**
+    - [Como fazer adição com números que tem vírgula?](#add-w-comma)
+  - **Subtração:**
+    - [Como aplicar o conceito de pegar emprestado na subtração?](#sub-with-borrow)
+  - **Divisão:**
+    - [Quais são os compoenentes de uma divisão?](#div-components)
+    - [Como terminar uma divisão que não terminou em zero?](#comma-rule)
+    - [Divisão onde o dividendo tem mais de uma casa decimal](#div-more-units-01)
+    - [Divisões que não são possíveis pegando apenas um digito do dividendo](#div-more-units-2)
+    - [Divisão onde multiplicar qualquer número pelo divisor ultrapassar o dividendo](#elevator-rule)
+    - [Como fazer divisão com números decimais?](#div-w-decimals)
+  - **Multiplicação:**
+    - [Multiplicação de números decimais (Vídeo)](https://www.youtube.com/shorts/e_f-maxvTN0)
 <!---
 [WHITESPACE RULES]
-- Same topic = "10" Whitespace character.
+- Same topic = "20" Whitespace character.
 - Different topic = "100" Whitespace character.
 --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,90 +260,6 @@ Por exemplo:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--- ( Subtração ) --->
 
 ---
@@ -274,88 +288,6 @@ Por exemplo:
 ![img](images/sub-with-borrow-01.png)  
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
