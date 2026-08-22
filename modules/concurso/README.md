@@ -2,6 +2,7 @@
 
 ## Conteúdo
 
+ - [Língua Portuguesa](modules/lingua-portuguesa/README.md)
  - [Raciocínio Lógico](modules/raciocinio-logico/README.md)
  - [Matemática](modules/matematica/README.md)
 
