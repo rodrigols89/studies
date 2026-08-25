@@ -5,7 +5,7 @@
 - [Aritmética e Problemas](modules/aritmetica-e-problemas/README.md)
 - [Álgebra](#)
 - [Funções](#)
-- [Geometria Plana](#)
+- [Geometria Plana](modules/geometria-plana/README.md)
 - [Trigonometria](#)
 - [Progressões](#)
 - [Análise Combinatória](#)
