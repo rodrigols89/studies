@@ -12,7 +12,7 @@
 - [Probabilidade](#)
 - [Matemática Financeira](#)
 - [Estatística](#)
-- [Análise de Tabelas e Gráficos](#)
+- [Análise de Tabelas e Gráficos](modules/analise-de-tabelas-e-graficos/README.md)
 - [Binômio de Newton](#)
 - [Geometria Analítica](#)
 - [Geometria Espacial](#)
@@ -25,7 +25,6 @@
 - [Integral](#)
 - [Algoritmo](#)
 - [Física Matemática](#)
-
 
 ---
 
